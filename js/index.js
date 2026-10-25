@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <span class="k-option-title">View Current Trip</span>
             <span class="k-option-badge" style="background: rgba(255,255,255,0.22); color: #FFFFFF;">Live Itinerary</span>
           </div>
-          <p class="k-option-desc">Resume your active journey! Live countdown clock, step checklist, attached tickets, and memory album.</p>
+          <p class="k-option-desc">Your live itinerary, checklist, tickets and photos.</p>
         </div>
         <i data-lucide="chevron-right" class="k-option-arrow"></i>
       </a>
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <span class="k-option-title">Edit Live Itinerary</span>
             <span class="k-option-badge" style="background: #EEF2FF; color: #4338CA;">Manage</span>
           </div>
-          <p class="k-option-desc">Add activities, adjust times, attach PDF tickets, or reorder steps for your current itinerary.</p>
+          <p class="k-option-desc">Add steps, change times, attach tickets.</p>
         </div>
         <i data-lucide="chevron-right" class="k-option-arrow"></i>
       </a>
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <span class="k-option-title">My Virtual Trips</span>
             <span class="k-option-badge" style="background: #EFF6FF; color: #1D4ED8;">Blueprints</span>
           </div>
-          <p class="k-option-desc">Access saved multi-city blueprints, experiment with routes, and generate day plans.</p>
+          <p class="k-option-desc">Your saved multi-city plans.</p>
         </div>
         <i data-lucide="chevron-right" class="k-option-arrow"></i>
       </a>
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <span class="k-option-title">AI Curated Journeys</span>
             <span class="k-option-badge" style="background: #FEF3C7; color: #B45309;">Handcrafted</span>
           </div>
-          <p class="k-option-desc">Explore themed road trips, spiritual circuits, and video highlights across India.</p>
+          <p class="k-option-desc">Ready-made trips with day-by-day plans.</p>
         </div>
         <i data-lucide="chevron-right" class="k-option-arrow"></i>
       </a>
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <span class="k-option-title">India Explorer Passport</span>
             <span class="k-option-badge" style="background: #ECFDF5; color: #047857;">Hit List</span>
           </div>
-          <p class="k-option-desc">Track and stamp the destinations you've explored across India.</p>
+          <p class="k-option-desc">Stamp the places you have been.</p>
         </div>
         <i data-lucide="chevron-right" class="k-option-arrow"></i>
       </a>
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <span class="k-option-title">Have an Upcoming Trip?</span>
             <span class="k-option-badge" style="background: #EEF2FF; color: #4338CA;">Ready to go</span>
           </div>
-          <p class="k-option-desc">Head here if you have confirmed travel plans! Add your flights, hotels, tickets, boarding passes, and custom notes step-by-step.</p>
+          <p class="k-option-desc">Already booked? Add flights, hotels and tickets step by step.</p>
         </div>
         <i data-lucide="chevron-right" class="k-option-arrow"></i>
       </a>
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <span class="k-option-title">Start a Virtual Trip</span>
             <span class="k-option-badge" style="background: #EFF6FF; color: #1D4ED8;">Smart Planner</span>
           </div>
-          <p class="k-option-desc">Pick destinations across India, choose your pace and dietary style, and get an automated day plan with inter-city travel legs.</p>
+          <p class="k-option-desc">Pick cities, set your pace and food, get a day-by-day plan.</p>
         </div>
         <i data-lucide="chevron-right" class="k-option-arrow"></i>
       </a>
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <span class="k-option-title">AI Curated Journeys</span>
             <span class="k-option-badge" style="background: #FEF3C7; color: #B45309;">Handcrafted</span>
           </div>
-          <p class="k-option-desc">Browse pre-crafted spiritual circuits, coastal getaways, and heritage trails with YouTube video guides ready to customize.</p>
+          <p class="k-option-desc">Pilgrimage, coastal and heritage trips you can make your own.</p>
         </div>
         <i data-lucide="chevron-right" class="k-option-arrow"></i>
       </a>
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <span class="k-option-title">India Explorer Passport</span>
             <span class="k-option-badge" style="background: #ECFDF5; color: #047857;">Hit List</span>
           </div>
-          <p class="k-option-desc">Been there, done that! Mark Indian cities you've explored, collect official stamps, and grow your personal travel scratchpad.</p>
+          <p class="k-option-desc">Mark the cities you have visited and collect stamps.</p>
         </div>
         <i data-lucide="chevron-right" class="k-option-arrow"></i>
       </a>

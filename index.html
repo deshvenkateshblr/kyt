@@ -243,6 +243,18 @@
                                 .k-option-card:hover .k-option-arrow {
                                 transform: translateX(3px); color: #2563EB;
                                 }
+
+                                @media (max-width: 520px) {
+                                /* Icon, title and arrow share one row; the description gets the full card width. */
+                                .k-option-card { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 12px; row-gap: 4px; align-items: center; }
+                                .k-option-card > .k-option-body { display: contents; }
+                                .k-option-card .k-option-icon { grid-column: 1; grid-row: 1; margin-top: 0; }
+                                .k-option-card .k-option-head { grid-column: 2; grid-row: 1; flex-direction: column; align-items: flex-start; gap: 4px; margin-bottom: 0; }
+                                .k-option-card .k-option-arrow { grid-column: 3; grid-row: 1; margin-top: 0; }
+                                .k-option-card .k-option-desc { grid-column: 1 / -1; grid-row: 2; font-size: 0.82rem; }
+                                .k-option-card:not(:has(.k-option-icon)) .k-option-head { grid-column: 1 / -1; }
+                                .k-option-title { font-size: 1rem; }
+                                }
                                 .k-launch :focus-visible { outline-color: var(--sky-deep); }
 
                                 /* ------------------------------------------------------------------
@@ -559,7 +571,7 @@
                           <span class="k-option-title">Have an Upcoming Trip?</span>
                           <span class="k-option-badge" style="background: #EEF2FF; color: #4338CA;">Ready to go</span>
                         </div>
-                        <p class="k-option-desc">Head here if you have ready travel plans! Add flights, hotels, tickets, boarding passes, and custom notes step-by-step.</p>
+                        <p class="k-option-desc">Already booked? Add flights, hotels and tickets step by step.</p>
                       </div>
                     </a>
                     <a href="virtual_trip.html" class="k-option-card">
@@ -568,7 +580,7 @@
                           <span class="k-option-title">Start a Virtual Trip</span>
                           <span class="k-option-badge" style="background: #EFF6FF; color: #1D4ED8;">Smart Planner</span>
                         </div>
-                        <p class="k-option-desc">Pick destinations across India, choose your pace and dietary style, and get an automated day plan with inter-city travel legs.</p>
+                        <p class="k-option-desc">Pick cities, set your pace and food, get a day-by-day plan.</p>
                       </div>
                     </a>
                     <a href="curated_trips.html" class="k-option-card">
@@ -577,7 +589,7 @@
                           <span class="k-option-title">AI Curated Journeys</span>
                           <span class="k-option-badge" style="background: #FEF3C7; color: #B45309;">Handcrafted</span>
                         </div>
-                        <p class="k-option-desc">Browse pre-crafted spiritual circuits, coastal getaways, and heritage trails with YouTube video guides ready to customize.</p>
+                        <p class="k-option-desc">Pilgrimage, coastal and heritage trips you can make your own.</p>
                       </div>
                     </a>
                     <a href="visited.html" class="k-option-card">
@@ -586,7 +598,7 @@
                           <span class="k-option-title">India Explorer Passport</span>
                           <span class="k-option-badge" style="background: #ECFDF5; color: #047857;">Hit List</span>
                         </div>
-                        <p class="k-option-desc">Been there, done that! Mark Indian cities you've explored, collect official stamps, and grow your personal travel scratchpad.</p>
+                        <p class="k-option-desc">Mark the cities you have visited and collect stamps.</p>
                       </div>
                     </a>
                   </div>
@@ -1042,7 +1054,7 @@
     </main>
 
     <script src="./lib/lucide.js?v=1791377680"></script>
-    <script src="./js/index.js?v=1791377680"></script>
+    <script src="./js/index.js?v=1792300000"></script>
 
     <script src="./js/page-home.js?v=1792065002"></script>
   </body>
