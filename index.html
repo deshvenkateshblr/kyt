@@ -74,6 +74,10 @@
                                 ------------------------------------------------------------------ */
                                 .k-h1 { font-weight: 800; letter-spacing: -0.04em; line-height: 0.98; font-size: clamp(2rem, 9.4vw, 3.5rem); }
                                 .k-h1 span { display: block; white-space: nowrap; }
+                                @media (max-width: 640px) {
+                                .k-h1 { font-size: clamp(1.65rem, 7.8vw, 2.5rem); line-height: 1.05; }
+                                .k-h1 span { white-space: normal; }
+                                }
                                 .k-h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; font-size: clamp(1.8rem, 6vw, 2.9rem); max-width: 18ch; }
                                 .k-h3 { font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; font-size: 1.25rem; }
                                 .k-lead { font-size: clamp(1.0625rem, 3.4vw, 1.3rem); line-height: 1.55; max-width: 40ch; }
@@ -117,13 +121,31 @@
                                 .k-install-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
                                 .k-hero-pill { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.18); border: 1px solid rgba(255, 255, 255, 0.35); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #fff; font-weight: 700; font-size: 0.84rem; letter-spacing: 0.02em; padding: 4px 14px; border-radius: 999px; margin-bottom: 14px; }
                                 .k-hero-grid { display: grid; gap: 8px; padding-top: clamp(24px, 5vw, 48px); padding-bottom: clamp(70px, 12vw, 130px); }
+                                .k-hero-grid > * { min-width: 0; }
                                 .k-hero .k-lead { margin-top: 20px; color: #fff; }
                                 #launch { margin-top: 28px; scroll-margin-top: 16px; }
                                 .k-reassure { margin-top: 14px; font-size: 0.92rem; font-weight: 700; color: #fff; }
                                 .k-ridge { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: clamp(56px, 11vw, 120px); pointer-events: none; }
                                 @media (max-width: 480px) {
-                                .k-install-btn { padding: 6px 12px; font-size: 0.8rem; }
+                                .k-wrap {
+                                padding-left: max(16px, env(safe-area-inset-left));
+                                padding-right: max(16px, env(safe-area-inset-right));
+                                }
+                                .k-top { gap: 8px; }
+                                .k-brand { gap: 8px; }
+                                .k-brand-badge { height: 36px; padding: 3px 6px; border-radius: 10px; }
+                                .k-brand-badge img { height: 24px; max-width: 50px; }
+                                .k-brand-name { font-size: 1.1rem; }
+                                .k-brand-tagline { font-size: 0.65rem; }
+                                .k-install-btn { padding: 6px 10px; font-size: 0.78rem; gap: 6px; }
                                 .k-install-btn .k-install-long { display: none; }
+                                .k-menu-card { padding: 14px 12px; border-radius: 22px; }
+                                .k-menu-card-header { padding: 2px 4px 10px; margin-bottom: 10px; }
+                                .k-launch { padding: 10px 8px; border-radius: 18px; gap: 8px; }
+                                .k-option-card { padding: 10px 10px; gap: 10px; border-radius: 14px; }
+                                .k-option-icon { width: 36px; height: 36px; border-radius: 10px; }
+                                .k-option-icon svg { width: 18px; height: 18px; }
+                                .k-option-title { font-size: 0.88rem; }
                                 }
                                 @media (min-width: 900px) {
                                 .k-hero-grid { grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr); column-gap: 56px; align-items: center; }
@@ -202,7 +224,7 @@
 
                                 .k-option-body { flex: 1; min-width: 0; }
                                 .k-option-head {
-                                display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 2px;
+                                display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 2px; flex-wrap: wrap;
                                 }
                                 .k-option-title {
                                 font-weight: 800; font-size: 0.95rem; letter-spacing: -0.01em; line-height: 1.25; color: #0F172A;
