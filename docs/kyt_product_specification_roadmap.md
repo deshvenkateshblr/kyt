@@ -113,7 +113,7 @@ This is the shape to build towards, so the native app is an additional adapter a
 Replaced the Bucket List. Pick cities across India, set a taste profile (intent, diet, pace), choose origin, duration and night stays, and get an automated day plan with travel legs. Share by short link; refine with an external AI and review the diff before accepting.
 
 #### Module 4: Curated trips (live)
-Hand-curated, day-by-day trips with video galleries, produced through the admin tool. Open one as your own plan, or share it. Each trip also carries best months, special days (festivals and crowds), audience, budget, transport, tips and a Before You Go list. Tips and Before You Go are shown; best months, special days, audience and budget are authored but not yet displayed (TODO P0.1). Virtual trips show none of this guidance yet (TODO P1.2).
+Hand-curated, day-by-day trips with video galleries, produced through the admin tool. Open one as your own plan, or share it. Each trip also carries best months, special days (festivals and crowds), audience, budget, transport, tips and a Before You Go list. Tips and Before You Go are shown; best months, special days, audience and budget are authored but not yet displayed (TODO P1.7). Virtual trips show none of this guidance yet (TODO P1.2).
 
 #### Module 5: Passport, India Explorer (live)
 A "Been There Done That" grid of 145 cities with trust-based check-in (the user marks a city and sets the date). Filters, by-state grouping, Bronze, Silver and Gold levels, strength meters (States, Regions, Experiences, Landscapes) and a shareable card.
@@ -136,11 +136,15 @@ Virtual and curated trips share one macro-attribute model. Status shows what exi
 * **Intent:** spiritual, cultural, heritage, nature, leisure, adventure, mixed. Built.
 * **Diet:** vegetarian, Jain, satvik, any. Built.
 * **Pace:** relaxed, standard, deep dive. Built.
-* **Party composition** (family with elders, family with kids, couples or friends, solo): not built (TODO P0.2). The attractions' `mobility` tag (easy, walk, trek) can drive it; the `party` tag is "any" on 609 of 615 attractions, so it cannot.
+* **Party composition** (family with elders, family with kids, couples or friends, solo): not built (TODO P2.6). The attractions' `mobility` tag (easy, walk, trek) can drive it; the `party` tag is "any" on 609 of 615 attractions, so it cannot.
 * **Transit mode** (self-drive, hired cab, train, flight plus cab): not built (TODO P2.3).
 
 ### 6.3 Inter-city transit
-Transfer days follow a fixed shape: morning transit, midday check-in and lunch, afternoon and evening sights, dinner. Each leg links to live Google Maps driving directions. No duration is shown, because the distance table holds straight-line distances.
+Transfer days follow a fixed shape: morning transit, midday check-in and lunch, afternoon and evening sights, dinner. Each leg links to live Google Maps driving directions.
+
+**Decision (24 Oct 2026): KYT is not a routing app.** It does not compute travel times or routes; Google Maps does that live and better, its terms do not allow storing its results, and the distance table (`data/distance_matrix.js`) holds straight-line distances, so it cannot stand in for road distance. Rail and flight times are not stored either: no official, open, current source was found, and times vary by train.
+
+**Known problem.** The builder currently assumes fixed transfer times (4 h for a base transfer, 5 h for a day-excursion drive, 2 h for the return) whatever the distance, and uses a straight-line 130 km rule to choose "day excursion". Running the real builder showed impossible plans for hill and pilgrimage trips (Haridwar to Kedarnath as a day trip; Manali to Leh as a 4-hour drive). The fix is not better routing but access gates for the few places where a plan fails (TODO P0.1) and an explainer on every generated plan that the sequence is fluid and indicative and that local conditions should be checked in Google Maps first (TODO P0.2).
 
 ---
 
@@ -162,14 +166,14 @@ Unified toolbar, single back action per screen, responsive container.
 - [x] Origin city selector and dedicated Day 0.
 - [x] Stay allocation (night stays), travel duration stepper.
 - [x] Inter-city transfer cards with Google Maps driving links.
-- [ ] Travel time per leg, and a fit check when days are fewer than cities (TODO P0.3).
-- [ ] Party composition chips (TODO P0.2).
+- [ ] Duration nudge when days are fewer than cities (TODO P2.7).
+- [ ] Party composition chips (TODO P2.6).
 
 ### Phase 3: Fluid sequence day generation (mostly done)
 - [x] No artificial clock timestamps; day phase badges.
 - [x] Non-overlapping sequential spacing.
 - [ ] Curated steps shown with timing badges and checklist notes (verify).
-- [ ] Meal collision suppression with food-walk beats (TODO P2.5).
+- [ ] Fix contradictions in generated days: overnight stay followed by a return, steps at the same time, dawn and sunrise beats in the afternoon, double lunches; and add an explainer to every generated plan (TODO P0.2).
 
 ### Phase 4: Data safety and offline hardening (next)
 - [ ] Backup before End Trip, and one backup and restore for everything (TODO P1.3, P1.4).

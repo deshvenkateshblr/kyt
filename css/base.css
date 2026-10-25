@@ -78,3 +78,6 @@ body {
   z-index: 1;
 }
 
+
+/* Keyboard paste hint is meaningless on touch phones */
+@media (hover: none) and (pointer: coarse) { .kyt-paste-hint { display: none; } }

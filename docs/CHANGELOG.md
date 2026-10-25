@@ -240,3 +240,11 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - `data/cities.js`: every city carries `setting` (coast, hills, plains), `vibes` (1–3 of spiritual, heritage, nature, adventure, foodie) and `effort` (easy, trek). A test fails if any city lacks them.
     - Large page scripts moved out of the HTML files into `js/page-*.js`; a test requires each to be in the `sw.js` precache list. A test also checks that every inline script in the HTML parses (a format-on-save tool once broke string literals).
     - Service worker cache is `kyt-v53`. The e2e suite is 78 tests (`tests/e2e/01` to `05`).
+
+33. **Usability pass: first-trip frictions fixed (service worker cache `kyt-v54`)**
+    - **Start this trip.** The plan page (`trip_detail.html`) now has one clear primary "Start this trip" button; "Edit in Builder" and "Refine with AI" are secondary. The builder shows one "Trip Details & AI" link instead of three and one full-width Start button.
+    - **Start date is always asked.** A dialog (`KYT.ui.startTripLive` in `js/ui-components.js`) asks for the date, with nothing pre-filled, past dates refused and a "Today" shortcut. Starting also clears the previous trip's notes and cover photo.
+    - **No assumed origin.** New trips no longer default to Bengaluru. The builder asks where you start (or "Already in destination"), will not generate without it, and remembers the answer for the next trip.
+    - **Small fixes.** Home copy no longer promises sync or says curated trips are "coming soon". Own plans show "N cities · D days" instead of curated-journey text. The builder counts planned days without Day 0. The Ctrl+V hint is hidden on phones. Create with a blank name now focuses the field. The night-stay "Base Move" label reads "Move hotel: sleep in X".
+    - E2E suite is 85 tests, all passing.
+

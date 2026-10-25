@@ -27,7 +27,15 @@
     <File Path="data/cities.js" />
   </Folder>
   <Folder Name="/Solution Items/docs/">
+    <File Path="docs/build_city_details.md" />
+    <File Path="docs/build_virtual_trip.md" />
+    <File Path="docs/CHANGELOG.md" />
     <File Path="docs/criticalusecases.md" />
+    <File Path="docs/explorer_quests_spec.md" />
+    <File Path="docs/kyt_product_specification_roadmap.md" />
+    <File Path="docs/requirements_notes.md" />
+    <File Path="docs/TODO.md" />
+    <File Path="docs/VirtualTrip.md" />
   </Folder>
   <Folder Name="/Solution Items/icons/">
     <File Path="icons/icon-192.png" />

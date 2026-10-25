@@ -99,6 +99,10 @@ KYT.virtualTrips = (function () {
       return JSON.parse(localStorage.getItem(STORAGE_KEY_VTRIPS) || '[]');
     } catch (e) { return []; }
   }
+  // Where the traveller starts from is asked once, then remembered for the next trip.
+  const ORIGIN_MEMORY_KEY = 'kyt_last_origin';
+  function getRememberedOrigin() { try { return localStorage.getItem(ORIGIN_MEMORY_KEY) || ''; } catch (e) { return ''; } }
+  function rememberOrigin(id) { try { if (id) localStorage.setItem(ORIGIN_MEMORY_KEY, id); } catch (e) { /* storage unavailable */ } }
   function saveVTrips() { localStorage.setItem(STORAGE_KEY_VTRIPS, JSON.stringify(vtrips)); }
   function getActiveTrip() { return vtrips.find(t => t.id === currentTripId); }
   function ensureActiveTrip() {
@@ -107,7 +111,7 @@ KYT.virtualTrips = (function () {
       trip = {
         id: Date.now().toString(),
         name: 'My Trip',
-        originCity: 'bengaluru',
+        originCity: getRememberedOrigin(),
         cities: [],
         taste: { ...DEFAULT_TASTE },
         steps: null
@@ -116,17 +120,20 @@ KYT.virtualTrips = (function () {
       currentTripId = trip.id;
       saveVTrips();
     }
-    if (!trip.originCity) {
-      trip.originCity = 'bengaluru';
-    }
+    if (trip.originCity === undefined) trip.originCity = '';
     return trip;
   }
 
   // --- Actions ---
   function createNewTrip() {
     const name = DOM.newNameInput.value.trim();
-    if (!name) return;
-    const origin = (DOM.originCitySelect && DOM.originCitySelect.value) || 'bengaluru';
+    if (!name) {
+      DOM.newNameInput.classList.add('ring-2', 'ring-red-400');
+      DOM.newNameInput.placeholder = 'Give your trip a name first';
+      DOM.newNameInput.focus();
+      return;
+    }
+    const origin = (DOM.originCitySelect && DOM.originCitySelect.value) || getRememberedOrigin();
     const newTrip = {
       id: Date.now().toString(),
       name,
@@ -520,11 +527,11 @@ KYT.virtualTrips = (function () {
       } else if (currentStay === prevStayId && dayCity.id !== prevStayId) {
         statusBadge = `<span class="inline-flex items-center gap-1 text-[10px] font-bold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-md mt-1"><i data-lucide="car" class="w-3 h-3 text-amber-600"></i> Day Excursion from ${prevCityObj ? prevCityObj.name : 'base'} (returns to ${prevCityObj ? prevCityObj.name : 'hotel'} for night)</span>`;
       } else if (currentStay === dayCity.id && dayCity.id !== prevStayId) {
-        statusBadge = `<span class="inline-flex items-center gap-1 text-[10px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-md mt-1"><i data-lucide="hotel" class="w-3 h-3 text-blue-600"></i> Base Move (Check in & sleep in ${dayCity.name})</span>`;
+        statusBadge = `<span class="inline-flex items-center gap-1 text-[10px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-md mt-1"><i data-lucide="hotel" class="w-3 h-3 text-blue-600"></i> Move hotel: sleep in ${dayCity.name}</span>`;
       } else if (currentStay !== dayCity.id) {
         statusBadge = `<span class="inline-flex items-center gap-1 text-[10px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-2 py-0.5 rounded-md mt-1"><i data-lucide="hotel" class="w-3 h-3 text-indigo-600"></i> Evening Transfer (Explore ${dayCity.name} → Sleep in ${stayCityName})</span>`;
       } else {
-        statusBadge = `<span class="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-md mt-1"><i data-lucide="home" class="w-3 h-3 text-emerald-600"></i> Base Stay in ${dayCity.name}</span>`;
+        statusBadge = `<span class="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-md mt-1"><i data-lucide="home" class="w-3 h-3 text-emerald-600"></i> Staying in ${dayCity.name}</span>`;
       }
 
       let selectOptions = activeCityObjs.map(c => {
@@ -597,7 +604,8 @@ KYT.virtualTrips = (function () {
   function populateOriginSelector(currentOrigin) {
     if (!DOM.originCitySelect) return;
     if (DOM.originCitySelect.children.length === 0) {
-      let html = `<option value="already_there">📍 Already in destination (No Day 0 travel)</option>`;
+      let html = `<option value="" disabled>Where are you starting from?</option>`;
+      html += `<option value="already_there">📍 Already in destination (No Day 0 travel)</option>`;
       html += `<optgroup label="Popular Starting Hubs">`;
       POPULAR_ORIGINS.forEach(o => {
         html += `<option value="${o.id}">${o.name}</option>`;
@@ -620,14 +628,16 @@ KYT.virtualTrips = (function () {
       DOM.originCitySelect.innerHTML = html;
     }
 
-    DOM.originCitySelect.value = currentOrigin || 'bengaluru';
+    DOM.originCitySelect.value = currentOrigin || '';
   }
 
   function updateOriginDesc(trip) {
     if (!DOM.originDesc) return;
-    const origin = trip.originCity || 'bengaluru';
+    const origin = trip.originCity || '';
     const firstCity = trip.cities && trip.cities.length ? trip.cities[0] : null;
-    if (origin === 'already_there' || (firstCity && origin === firstCity)) {
+    if (!origin) {
+      DOM.originDesc.textContent = 'Needed to plan Day 0 travel';
+    } else if (origin === 'already_there' || (firstCity && origin === firstCity)) {
       DOM.originDesc.textContent = 'Day 1 starts directly in destination';
     } else {
       DOM.originDesc.textContent = 'Creates Day 0 transit & arrival';
@@ -640,7 +650,7 @@ KYT.virtualTrips = (function () {
     if (!trip) return;
 
     DOM.editNameInput.value = trip.name;
-    populateOriginSelector(trip.originCity || 'bengaluru');
+    populateOriginSelector(trip.originCity || '');
     updateOriginDesc(trip);
 
     // Taste Chips
@@ -816,7 +826,7 @@ KYT.virtualTrips = (function () {
     if (activeCities.length === 0) return [];
 
     const dietName = { veg: 'Vegetarian', jain: 'Jain', satvik: 'Satvik', any: 'Local' }[trip.taste?.diet] || 'Local';
-    const originCityId = trip.originCity || 'bengaluru';
+    const originCityId = trip.originCity || 'already_there';
     const firstCity = activeCities[0];
 
     const isAlreadyThere = originCityId === 'already_there' || originCityId === firstCity.id;
@@ -1250,10 +1260,6 @@ KYT.virtualTrips = (function () {
           <p class="text-xs text-slate-500 font-medium">Customized Day-by-Day Itinerary</p>
         </div>
         <div class="flex items-center gap-2 flex-wrap">
-          <a href="trip_detail.html?id=${encodeURIComponent(trip.id)}" class="inline-flex items-center gap-1.5 text-xs font-black text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 px-3.5 py-1.5 rounded-xl shadow-xs transition-all active:scale-95" title="View details, weather, video catalog, and AI refiner">
-            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-white"></i>
-            <span>Trip Details & AI</span>
-          </a>
           <button type="button" class="btn-builder-stays-modal inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 hover:text-blue-600 bg-white hover:bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200 transition-colors shadow-xs" title="Adjust Duration & Stays" onclick="window.openStayModal ? window.openStayModal() : (window.KYT && window.KYT.virtualTrips && window.KYT.virtualTrips.openStayModal && window.KYT.virtualTrips.openStayModal())">
             <i data-lucide="moon" class="w-3.5 h-3.5 text-indigo-500"></i>
             <span>Stays & Days</span>
@@ -1308,7 +1314,7 @@ KYT.virtualTrips = (function () {
     }
 
     const totalSteps = trip.steps.length;
-    const totalDays = Object.keys(days).length;
+    const totalDays = Object.keys(days).filter(k => Number(k) !== 0).length || Object.keys(days).length;
     html += `
       <div class="sticky bottom-0 -mx-4 px-4 pb-4 pt-3 bg-gradient-to-t from-slate-50 via-slate-50/95 to-transparent mt-4">
         <div class="bg-white rounded-2xl border border-slate-200 shadow-md p-4 flex flex-col gap-3">
@@ -1316,23 +1322,11 @@ KYT.virtualTrips = (function () {
             <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 shrink-0"></i>
             <span><strong class="text-slate-800">${totalSteps} activities</strong> across <strong class="text-slate-800">${totalDays} day${totalDays > 1 ? 's' : ''}</strong> planned for <strong class="text-slate-800">${KYT.utils.escapeHTML(trip.name)}</strong></span>
           </div>
-          <div class="flex items-center gap-2 text-sm text-slate-500 mb-1">
-            <i data-lucide="calendar" class="w-4 h-4 shrink-0"></i>
-            <label class="font-bold text-slate-700" for="vt-start-date">Start Date:</label>
-            <input type="date" id="vt-start-date" class="ml-auto bg-slate-50 border border-slate-200 rounded-lg px-2 py-1 text-sm font-medium text-slate-800 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-          </div>
-          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
-            <a href="trip_detail.html?id=${encodeURIComponent(trip.id)}"
-               class="flex-1 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 active:scale-[0.98] text-white font-extrabold rounded-xl text-sm flex items-center justify-center gap-2 transition-all shadow-sm shadow-indigo-200 text-center">
-              <i data-lucide="sparkles" class="w-4 h-4 text-white"></i>
-              View Trip Details & AI
-            </a>
-            <button onclick="KYT.virtualTrips.useAsMyTrip('${trip.id}')"
-               class="sm:w-auto py-3 px-5 bg-slate-100 hover:bg-slate-200 active:scale-[0.98] text-slate-700 font-extrabold rounded-xl text-sm flex items-center justify-center gap-2 transition-all border border-slate-200 shrink-0">
-              <i data-lucide="map" class="w-4 h-4 text-slate-500"></i>
-              Use as my trip
-            </button>
-          </div>
+          <button type="button" onclick="KYT.virtualTrips.useAsMyTrip('${trip.id}')"
+             class="w-full py-3 bg-blue-600 hover:bg-blue-700 active:scale-[0.98] text-white font-extrabold rounded-xl text-sm flex items-center justify-center gap-2 transition-all shadow-sm">
+            <i data-lucide="plane-takeoff" class="w-4 h-4"></i>
+            Start this trip
+          </button>
         </div>
       </div>
     `;
@@ -1443,6 +1437,7 @@ KYT.virtualTrips = (function () {
     }
 
     // ── Hub ──
+    if (DOM.newNameInput) DOM.newNameInput.addEventListener('input', () => DOM.newNameInput.classList.remove('ring-2', 'ring-red-400'));
     if (DOM.btnCreate) DOM.btnCreate.addEventListener('click', createNewTrip);
     if (DOM.newNameInput) {
       DOM.newNameInput.addEventListener('keypress', e => {
@@ -1474,6 +1469,8 @@ KYT.virtualTrips = (function () {
         const trip = getActiveTrip();
         if (trip) {
           trip.originCity = e.target.value;
+          rememberOrigin(trip.originCity);
+          DOM.originCitySelect.classList.remove('ring-2', 'ring-red-400');
           if (trip.steps && trip.steps.length > 0) {
             trip.steps = generateSteps(trip);
           }
@@ -1697,6 +1694,12 @@ KYT.virtualTrips = (function () {
         if (trip) {
           if (trip.steps && trip.steps.length > 0) {
             window.location.href = `trip_detail.html?id=${encodeURIComponent(trip.id)}`;
+          } else if (!trip.originCity && DOM.originCitySelect) {
+            // Never guess where the traveller is starting from.
+            DOM.originCitySelect.classList.add('ring-2', 'ring-red-400');
+            if (DOM.originDesc) DOM.originDesc.textContent = 'Choose where you start first';
+            DOM.originCitySelect.scrollIntoView({ block: 'center', behavior: 'smooth' });
+            DOM.originCitySelect.focus();
           } else {
             openStayModal();
           }
@@ -1818,7 +1821,7 @@ KYT.virtualTrips = (function () {
 
           const resolvedOrigin = (sharedOrigin === '0' || sharedOrigin === 'already_there')
             ? 'already_there'
-            : (((window.KYT && KYT.ui && KYT.ui.resolveCity) ? KYT.ui.resolveCity(sharedOrigin)?.id : null) || sharedOrigin || 'bengaluru');
+            : (((window.KYT && KYT.ui && KYT.ui.resolveCity) ? KYT.ui.resolveCity(sharedOrigin)?.id : null) || sharedOrigin || 'already_there');
           const resolvedDuration = (!isNaN(sharedDays) && sharedDays > 0) ? sharedDays : fullCities.length;
 
           let newTrip = null;
@@ -1899,83 +1902,11 @@ KYT.virtualTrips = (function () {
     init();
   }
 
+  /** Make this plan the live trip. The shared flow asks for the start date; it is never assumed. */
   async function useAsMyTrip(tripId) {
     const trip = vtrips.find(t => t.id === tripId);
-    if (!trip || !trip.steps || trip.steps.length === 0) return;
-
-    const currentStore = KYT.store.get();
-    if (currentStore && currentStore.stepsData && currentStore.stepsData.length > 0) {
-      if (!confirm(`This will overwrite your current active trip ("${currentStore.tripName}"). Do you want to proceed?`)) {
-        return;
-      }
-    }
-    const dateInput = document.getElementById('vt-start-date');
-    let startDate = new Date();
-    if (dateInput && dateInput.value) {
-      startDate = new Date(dateInput.value);
-    }
-
-    startDate.setHours(0, 0, 0, 0);
-
-    const stepsByDay = {};
-    trip.steps.forEach(s => {
-      const dId = s.dayId != null ? s.dayId : 1;
-      if (!stepsByDay[dId]) stepsByDay[dId] = [];
-      stepsByDay[dId].push(s);
-    });
-
-    const sortedDayIds = Object.keys(stepsByDay).map(Number).sort((a, b) => a - b);
-    const minDayId = sortedDayIds.length > 0 ? sortedDayIds[0] : 0;
-
-    const storeSteps = [];
-    let globalIdx = 0;
-
-    sortedDayIds.forEach(dayId => {
-      const daySteps = stepsByDay[dayId];
-      const targetDay = new Date(startDate);
-      const dayOffset = dayId - minDayId;
-      targetDay.setDate(targetDay.getDate() + dayOffset);
-
-      let prevTimeForDay = 0;
-
-      daySteps.forEach((s, stepInDayIdx) => {
-        const stepDate = new Date(targetDay);
-
-        if (dayId === 0) {
-          stepDate.setHours(16, 0, 0, 0);
-        } else {
-          let h = s.hour != null ? s.hour : 9;
-          let m = s.minute != null ? s.minute : 0;
-          stepDate.setHours(h, m, 0, 0);
-
-          if (stepInDayIdx > 0 && stepDate.getTime() <= prevTimeForDay) {
-            const nextTime = new Date(prevTimeForDay + 45 * 60 * 1000);
-            stepDate.setTime(nextTime.getTime());
-          }
-        }
-
-        prevTimeForDay = stepDate.getTime();
-
-        storeSteps.push({
-          id: Date.now() + (++globalIdx),
-          title: s.title,
-          icon: s.icon || 'map-pin',
-          where: s.where || s.cityName,
-          mapUrl: s.mapsUrl || '',
-          notes: s.notes || '',
-          targetTime: stepDate,
-          status: 'todo',
-          attachments: []
-        });
-      });
-    });
-
-    KYT.store.setTripName(trip.name);
-    KYT.store.setStepsData(storeSteps);
-    KYT.store.setCurrentIndex(0);
-    await KYT.store.saveData();
-
-    window.location.href = 'view_trip.html';
+    if (!trip) return;
+    await KYT.ui.startTripLive(trip);
   }
 
   const api = {

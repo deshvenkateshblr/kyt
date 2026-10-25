@@ -152,7 +152,7 @@ window.KYT.carousel = (() => {
             <button class="text-kyt-accent hover:text-blue-600 bg-blue-50 px-2.5 py-1 rounded-lg flex items-center gap-1.5 text-[11px] font-extrabold tracking-wide uppercase transition-colors" data-action="add-memory">
               <i data-lucide="camera" class="w-3.5 h-3.5"></i> Add Photo
             </button>
-            <p class="text-[9px] text-slate-400 font-medium mt-1 pr-1">or Ctrl+V to paste</p>
+            <p class="kyt-paste-hint text-[9px] text-slate-400 font-medium mt-1 pr-1">or Ctrl+V to paste</p>
           </div>
         </div>
         ${memoriesHtml}

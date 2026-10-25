@@ -43,7 +43,7 @@
           if (trip) {
             tripName = trip.name || 'My Trip';
             if (trip.curatedId) curatedParam = trip.curatedId;
-            originParam = trip.originCity || 'bengaluru';
+            originParam = trip.originCity || 'already_there';
             daysParam = trip.duration || (trip.cities ? trip.cities.length : 1);
 
             const shortC = trip.cities.map(id => {
@@ -186,6 +186,12 @@
         if (tastePace) pillItems.push(`<span class="${pillClass}">${esc(tastePace)}</span>`);
 
         pillsContainer.innerHTML = pillItems.join('');
+
+        // Own plans have no tagline: show a plain summary instead of marketing copy.
+        const descEl = document.getElementById('trip-desc');
+        if (descEl && !descEl.textContent.trim() && cityIds && cityIds.length) {
+          descEl.textContent = `${cityIds.length} ${cityIds.length > 1 ? 'cities' : 'city'} · ${totalDays} day${totalDays > 1 ? 's' : ''}`;
+        }
       }
       renderMetaPills();
 
@@ -297,7 +303,7 @@
           const shareTripName = (loadedVirtualTrip && loadedVirtualTrip.name) || tripName;
           const shareData = {
             title: `Check out ${shareTripName} on KYT`,
-            text: `Explore this curated journey featuring amazing cities and rich cultural experiences!`,
+            text: (cTrip && cTrip.tagline) || `A day-by-day plan on KYT: ${shareTripName}`,
             url: url.toString()
           };
           if (navigator.share) {
@@ -434,7 +440,7 @@
                 name: tripName || 'Shared Itinerary',
                 duration: daysParam || Math.max(1, restoredPlan.length),
                 cities: cityIds,
-                originCity: originParam || 'bengaluru',
+                originCity: originParam || 'already_there',
                 taste: { intent: 'mixed', diet: 'any', pace: 'standard' },
                 isAiRefined: true,
                 steps: newSteps
@@ -535,8 +541,8 @@
               ideaId: loadedVirtualTrip.id,
               title: loadedVirtualTrip.name || tripName,
               tagline: 'Custom trip plan',
-              originCity: (loadedVirtualTrip.originCity === 'already_there' || loadedVirtualTrip.originCity === '0') ? 'already_there' : (loadedVirtualTrip.originCity || 'bengaluru'),
-              originName: (loadedVirtualTrip.originCity === 'already_there' || loadedVirtualTrip.originCity === '0') ? 'the destination' : (KYT.ui.resolveCity(loadedVirtualTrip.originCity)?.name || loadedVirtualTrip.originCity || 'Bengaluru'),
+              originCity: (loadedVirtualTrip.originCity === 'already_there' || loadedVirtualTrip.originCity === '0') ? 'already_there' : (loadedVirtualTrip.originCity || 'already_there'),
+              originName: (loadedVirtualTrip.originCity === 'already_there' || loadedVirtualTrip.originCity === '0') ? 'the destination' : (KYT.ui.resolveCity(loadedVirtualTrip.originCity)?.name || loadedVirtualTrip.originCity || 'the destination'),
               durationDays: loadedVirtualTrip.duration || days.length || 1,
               cities: loadedVirtualTrip.cities || cityIds,
               taste: loadedVirtualTrip.taste || { intent: 'mixed', diet: 'any', pace: 'standard' },
@@ -571,8 +577,8 @@
           ideaId: 'trip_' + Date.now().toString(36),
           title: tripName || 'Curated Journey',
           tagline: 'Custom trip plan',
-          originCity: (originParam === '0' || originParam === 'already_there') ? 'already_there' : (originParam || 'bengaluru'),
-          originName: (originParam === '0' || originParam === 'already_there') ? 'the destination' : (KYT.ui.resolveCity(originParam)?.name || originParam || 'Bengaluru'),
+          originCity: (originParam === '0' || originParam === 'already_there') ? 'already_there' : (originParam || 'already_there'),
+          originName: (originParam === '0' || originParam === 'already_there') ? 'the destination' : (KYT.ui.resolveCity(originParam)?.name || originParam || 'the destination'),
           durationDays: daysParam || synthDays.length || 1,
           cities: cityIds,
           taste: { intent: 'mixed', diet: 'any', pace: 'standard' },
@@ -759,6 +765,7 @@
             renderRefinedItinerary(vTrip, curatedTrip, true);
             renderMetaPills();
             renderCitiesAndVideos();
+            refreshStartButton();
 
             const refEl = document.getElementById('refined-itinerary-section');
             if (refEl) {
@@ -994,6 +1001,45 @@
       if (initialCity) {
         KYT.ui.cityDetail.open(initialCity, false);
       }
+
+      // ── Start this trip ─────────────────────────────────────────────────────────
+      // The plan page's main action: make this plan the live trip. Shown only when there
+      // is an actual itinerary to start (a saved plan with steps, or a curated trip).
+      function findStartableTrip() {
+        let t = null;
+        if (tripId) {
+          try {
+            t = JSON.parse(localStorage.getItem('kyt_virtual_trips') || '[]').find(x => x.id === tripId) || null;
+          } catch (e) { }
+        }
+        if (!t && loadedVirtualTrip) t = loadedVirtualTrip;
+        if (t && t.steps && t.steps.length) return t;
+        if (cTrip && KYT.ui.convertCuratedTripToVirtual) {
+          const v = KYT.ui.convertCuratedTripToVirtual(cTrip);
+          if (v && v.steps && v.steps.length) return v;
+        }
+        return null;
+      }
+
+      function refreshStartButton() {
+        const btn = document.getElementById('btn-start-trip');
+        if (!btn) return;
+        const startable = !!findStartableTrip();
+        btn.classList.toggle('hidden', !startable);
+        btn.classList.toggle('flex', startable);
+      }
+
+      const startBtn = document.getElementById('btn-start-trip');
+      if (startBtn) {
+        let starting = false;
+        startBtn.addEventListener('click', async () => {
+          const t = findStartableTrip();
+          if (!t || starting) return;
+          starting = true;
+          try { await KYT.ui.startTripLive(t); } finally { starting = false; }
+        });
+      }
+      refreshStartButton();
 
       lucide.createIcons();
     });

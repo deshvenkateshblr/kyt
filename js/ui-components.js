@@ -14,6 +14,9 @@
  *   renderAttractionAccordion / renderCityCard / renderStepCard
  *   convertCuratedTripToVirtual / cityDetail.configure|open|close
  *
+ * Starting a trip (shared by trip_detail.html and virtual_trip.html):
+ *   buildLiveSteps / askStartDate / startTripLive  (needs KYT.store at call time)
+ *
  * Guarantees:
  *   window.KYT.utils.escapeHTML is always present, even on pages that
  *   do not load js/store.js (trip_detail.html, visited.html, …)
@@ -704,6 +707,152 @@ window.KYT.ui = (function () {
     };
   }
 
+  // ── 6b. Start a planned trip as the live trip ───────────────────────────────
+  // One implementation shared by the plan page (trip_detail.html) and the builder
+  // (virtual_trip.html). The traveller always chooses the start date; it is never
+  // assumed. Needs KYT.store (js/store.js) at call time, not at load time.
+
+  /** "YYYY-MM-DD" (from <input type=date>) -> local midnight Date, or null if invalid. */
+  function parseLocalDate(value) {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value || '');
+    if (!m) return null;
+    const d = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+    return isNaN(d.getTime()) ? null : d;
+  }
+
+  function toDateInputValue(d) {
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  }
+
+  /**
+   * Pure: turn a planned trip's steps into dated, strictly increasing live-trip steps.
+   * Day 0 (travel and arrival) falls on startDate at 16:00; each later day is one day on.
+   */
+  function buildLiveSteps(trip, startDate) {
+    const start = new Date(startDate);
+    start.setHours(0, 0, 0, 0);
+
+    const stepsByDay = {};
+    (trip.steps || []).forEach(s => {
+      const dId = s.dayId != null ? s.dayId : 1;
+      (stepsByDay[dId] = stepsByDay[dId] || []).push(s);
+    });
+    const dayIds = Object.keys(stepsByDay).map(Number).sort((a, b) => a - b);
+    const minDayId = dayIds.length ? dayIds[0] : 0;
+
+    const out = [];
+    let n = 0;
+    dayIds.forEach(dayId => {
+      const day = new Date(start);
+      day.setDate(day.getDate() + (dayId - minDayId));
+      let prev = 0;
+      stepsByDay[dayId].forEach((s, i) => {
+        const when = new Date(day);
+        if (dayId === 0) {
+          when.setHours(16, 0, 0, 0);
+        } else {
+          when.setHours(s.hour != null ? s.hour : 9, s.minute != null ? s.minute : 0, 0, 0);
+          if (i > 0 && when.getTime() <= prev) when.setTime(prev + 45 * 60 * 1000);
+        }
+        prev = when.getTime();
+        out.push({
+          id: Date.now() + (++n),
+          title: s.title,
+          icon: s.icon || 'map-pin',
+          where: s.where || s.cityName,
+          mapUrl: s.mapsUrl || '',
+          notes: s.notes || '',
+          targetTime: when,
+          status: 'todo',
+          attachments: []
+        });
+      });
+    });
+    return out;
+  }
+
+  /** Ask "When does your trip start?". Resolves to a local-midnight Date, or null if cancelled. */
+  function askStartDate() {
+    return new Promise(resolve => {
+      const esc = window.KYT.utils.escapeHTML;
+      const today = new Date(); today.setHours(0, 0, 0, 0);
+      const minValue = toDateInputValue(today);
+
+      const overlay = document.createElement('div');
+      overlay.id = 'kyt-start-date-overlay';
+      overlay.className = 'fixed inset-0 z-[200] flex items-end sm:items-center justify-center bg-slate-900/50 sm:p-4';
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-modal', 'true');
+      overlay.setAttribute('aria-labelledby', 'kyt-start-date-title');
+      overlay.innerHTML = `
+        <div class="w-full sm:max-w-sm bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl p-5 pb-6">
+          <h3 id="kyt-start-date-title" class="text-lg font-extrabold text-slate-900">When does your trip start?</h3>
+          <p class="text-sm text-slate-500 mt-1">Your first step is dated on this day and the rest follow from it.</p>
+          <div class="mt-4 flex items-center gap-2">
+            <input type="date" id="kyt-start-date-input" min="${esc(minValue)}" aria-label="Trip start date"
+              class="flex-1 min-w-0 bg-slate-50 border border-slate-200 rounded-xl px-3 py-3 text-base font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <button type="button" id="kyt-start-date-today"
+              class="shrink-0 px-4 py-3 rounded-xl bg-blue-50 text-blue-700 font-bold text-sm hover:bg-blue-100 active:scale-95 transition">Today</button>
+          </div>
+          <div class="mt-5 flex gap-3">
+            <button type="button" id="kyt-start-date-cancel"
+              class="flex-1 py-3 rounded-xl text-slate-600 font-bold text-sm hover:bg-slate-100 transition">Cancel</button>
+            <button type="button" id="kyt-start-date-confirm" disabled
+              class="flex-[2] py-3 rounded-xl bg-blue-600 text-white font-extrabold text-sm hover:bg-blue-700 active:scale-95 transition disabled:opacity-40 disabled:cursor-not-allowed">Start trip</button>
+          </div>
+        </div>`;
+      document.body.appendChild(overlay);
+
+      const input = overlay.querySelector('#kyt-start-date-input');
+      const confirmBtn = overlay.querySelector('#kyt-start-date-confirm');
+      const valid = () => { const d = parseLocalDate(input.value); return d && d >= today ? d : null; };
+      const sync = () => { confirmBtn.disabled = !valid(); };
+      const finish = value => {
+        document.removeEventListener('keydown', onKey);
+        overlay.remove();
+        resolve(value);
+      };
+      const onKey = e => { if (e.key === 'Escape') finish(null); };
+
+      input.addEventListener('input', sync);
+      input.addEventListener('change', sync);
+      overlay.querySelector('#kyt-start-date-today').addEventListener('click', () => { input.value = minValue; sync(); confirmBtn.focus(); });
+      overlay.querySelector('#kyt-start-date-cancel').addEventListener('click', () => finish(null));
+      overlay.addEventListener('click', e => { if (e.target === overlay) finish(null); });
+      confirmBtn.addEventListener('click', () => { const d = valid(); if (d) finish(d); });
+      document.addEventListener('keydown', onKey);
+      input.focus();
+    });
+  }
+
+  /**
+   * Make a planned trip (a virtual trip with steps) the live trip.
+   * Asks before replacing an existing live trip, then asks for the start date.
+   * Resolves false if the traveller backed out; otherwise navigates to the live view.
+   */
+  async function startTripLive(trip) {
+    if (!trip || !trip.steps || !trip.steps.length) return false;
+    if (!window.KYT.store) return false;
+
+    await KYT.store.loadData();
+    const current = KYT.store.get();
+    if (current.stepsData && current.stepsData.length > 0) {
+      if (!confirm(`This will overwrite your current active trip ("${current.tripName}"). Do you want to proceed?`)) return false;
+    }
+
+    const startDate = await askStartDate();
+    if (!startDate) return false;
+
+    KYT.store.setTripName(trip.name);
+    KYT.store.setTripNotes('');
+    KYT.store.setCoverImage(null);
+    KYT.store.setStepsData(buildLiveSteps(trip, startDate));
+    KYT.store.setCurrentIndex(0);
+    await KYT.store.saveData();
+    window.location.href = 'view_trip.html';
+    return true;
+  }
+
   // ── 7. Unified City Detail Slide-Over Controller ────────────────────────────
   const cityDetail = (function () {
     const historyStack = [];
@@ -1041,6 +1190,11 @@ window.KYT.ui = (function () {
     renderCityCard,
     renderStepCard,
     convertCuratedTripToVirtual,
+    /** Start a planned trip as the live trip */
+    parseLocalDate,
+    buildLiveSteps,
+    askStartDate,
+    startTripLive,
     /** City detail slide-over */
     cityDetail
   };

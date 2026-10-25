@@ -1,5 +1,5 @@
 'use strict';
-/** Virtual trips: hub, city picking, taste filtering, itinerary build, "Use as my trip", share link. */
+/** Virtual trips: hub, city picking, taste filtering, itinerary build, "Start this trip", share link. */
 const { test, before, after } = require('node:test');
 const assert = require('node:assert/strict');
 const { launch, newPhone, seedTrip, iso } = require('./helpers');
@@ -12,10 +12,11 @@ async function openHub(page) {
   await page.goto(env.base + '/virtual_trip.html');
   await page.waitForSelector('#vt-new-name');
 }
-async function createTrip(page, name) {
+async function createTrip(page, name, origin = 'bengaluru') {
   await page.fill('#vt-new-name', name);
   await page.click('#btn-vt-create');
   await page.waitForSelector('#vt-screen-canvas:not(.hidden)');
+  if (origin) await page.selectOption('#vt-origin-city', origin);
 }
 async function addCity(page, query, id) {
   await page.fill('#vt-city-search', query);
@@ -145,7 +146,37 @@ test('taste: Jain diet never includes a stop that is tagged for other diets only
   await context.close();
 });
 
-test('"Use as my trip" turns the plan into the live trip, honouring the chosen start date', async () => {
+// ── Starting a plan as the live trip: the traveller always chooses the start date ───────────────
+const ymd = d => { const x = new Date(d); return `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, '0')}-${String(x.getDate()).padStart(2, '0')}`; };
+/** Build a plan and stay on the plan page (trip_detail.html), where "Start this trip" lives. */
+async function buildToPlanPage(page, name, cities) {
+  await openHub(page);
+  await createTrip(page, name);
+  for (const [q, id] of cities) { await page.fill('#vt-city-search', ''); await addCity(page, q, id); }
+  await page.click('#btn-vt-build');
+  await page.locator('#btn-modal-confirm-build').click();
+  await page.waitForURL('**/trip_detail.html*');
+  await page.waitForSelector('#btn-edit-plan');
+}
+/** Answer the "When does your trip start?" dialog with a date, checking Start is disabled until then. */
+async function chooseStartDate(page, date) {
+  await page.waitForSelector('#kyt-start-date-input');
+  assert.equal(await page.locator('#kyt-start-date-confirm').isDisabled(), true, 'Start is disabled until a date is chosen');
+  await page.fill('#kyt-start-date-input', date);
+  assert.equal(await page.locator('#kyt-start-date-confirm').isDisabled(), false);
+  await page.click('#kyt-start-date-confirm');
+}
+async function liveTrip(page) {
+  await page.waitForURL('**/view_trip.html');
+  await page.waitForFunction(() => window.KYT && KYT.store.get().stepsData.length > 0);
+  return page.evaluate(() => {
+    const s = KYT.store.get();
+    return { name: s.tripName, notes: s.tripNotes, cover: s.tripCoverImage, n: s.stepsData.length,
+      steps: s.stepsData.map(x => ({ t: x.title, d: new Date(x.targetTime).toISOString(), st: x.status })) };
+  });
+}
+
+test('"Start this trip" in the builder turns the plan into the live trip on the chosen start date', async () => {
   const { context, page } = await newPhone(env.browser);
   await openHub(page);
   await createTrip(page, 'Agra and Jaipur');
@@ -153,20 +184,13 @@ test('"Use as my trip" turns the plan into the live trip, honouring the chosen s
   await page.fill('#vt-city-search', '');
   await addCity(page, 'Jaipur', 'jaipur');
   await buildPlan(page);
-  await page.waitForSelector('#vt-start-date');
-  await page.fill('#vt-start-date', '2027-03-15');
   const planned = (await stored(page))[0].steps;
-  await page.getByRole('button', { name: /Use as my trip/ }).click();
-  await page.waitForURL('**/view_trip.html');
-  await page.waitForFunction(() => window.KYT && KYT.store.get().stepsData.length > 0);
+  await page.getByRole('button', { name: /Start this trip/ }).click();
+  await chooseStartDate(page, '2027-03-15');
 
-  const live = await page.evaluate(() => {
-    const s = KYT.store.get();
-    return { name: s.tripName, n: s.stepsData.length, steps: s.stepsData.map(x => ({ t: x.title, d: new Date(x.targetTime), st: x.status })) };
-  });
+  const live = await liveTrip(page);
   assert.equal(live.name, 'Agra and Jaipur');
   assert.equal(live.n, planned.length);
-  const ymd = d => { const x = new Date(d); return `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, '0')}-${String(x.getDate()).padStart(2, '0')}`; };
   assert.equal(ymd(live.steps[0].d), '2027-03-15', 'Day 0 lands on the start date');
   assert.equal(ymd(live.steps.at(-1).d), '2027-03-17', 'Day 2 lands on the subsequent day');
   assert.ok(live.steps.every(s => s.st === 'todo'));
@@ -177,41 +201,88 @@ test('"Use as my trip" turns the plan into the live trip, honouring the chosen s
   await context.close();
 });
 
-test('"Use as my trip" with no date defaults to today', async () => {
+test('the plan page offers "Start this trip" as its main action, and it starts the trip on the chosen date', async () => {
   const { context, page } = await newPhone(env.browser);
-  await openHub(page);
-  await createTrip(page, 'Quick');
-  await addCity(page, 'Agra', 'agra');
-  await buildPlan(page);
-  await page.waitForSelector('#vt-start-date');
-  await page.getByRole('button', { name: /Use as my trip/ }).click();
-  await page.waitForURL('**/view_trip.html');
-  await page.waitForFunction(() => window.KYT && KYT.store.get().stepsData.length > 0);
-  const sameDay = await page.evaluate(() => {
-    const d = new Date(KYT.store.get().stepsData[0].targetTime), n = new Date();
-    return d.toDateString() === n.toDateString();
-  });
-  assert.equal(sameDay, true);
+  await buildToPlanPage(page, 'Rajasthan', [['Jaipur', 'jaipur'], ['Udaipur', 'udaipur']]);
+  assert.equal(await page.locator('#btn-start-trip').isVisible(), true);
+  assert.match(await page.locator('#btn-start-trip').innerText(), /Start this trip/);
+  // it comes before Refine with AI / Edit in Builder / Share
+  const order = await page.evaluate(() => ['btn-start-trip', 'btn-open-ai-refine', 'btn-edit-plan', 'btn-share-trip']
+    .map(id => document.getElementById(id).getBoundingClientRect().top));
+  assert.ok(order[0] < order[1] && order[0] < order[2] && order[0] < order[3], 'Start this trip is the first action');
+
+  await page.click('#btn-start-trip');
+  await chooseStartDate(page, '2027-06-01');
+  const live = await liveTrip(page);
+  assert.equal(live.name, 'Rajasthan');
+  assert.equal(ymd(live.steps[0].d), '2027-06-01');
   await context.close();
 });
 
-test('"Use as my trip" asks before overwriting an existing active trip, and Cancel keeps it', async () => {
+test('the start dialog never assumes a date: Cancel and Escape leave everything as it was, and Today is explicit', async () => {
   const { context, page } = await newPhone(env.browser);
-  await seedTrip(page, env.base, { name: 'Existing Trip', steps: [{ title: 'Keep me', targetTime: iso(2, 9) }] });
-  await openHub(page);
-  await createTrip(page, 'New plan');
-  await addCity(page, 'Agra', 'agra');
-  await buildPlan(page);
-  await page.waitForSelector('#vt-start-date');
+  await buildToPlanPage(page, 'Cancel me', [['Agra', 'agra']]);
+  await page.click('#btn-start-trip');
+  await page.waitForSelector('#kyt-start-date-input');
+  assert.equal(await page.locator('#kyt-start-date-input').inputValue(), '', 'no date is pre-filled');
+  await page.click('#kyt-start-date-cancel');
+  assert.equal(await page.locator('#kyt-start-date-overlay').count(), 0);
+  assert.match(page.url(), /trip_detail\.html/);
+
+  await page.click('#btn-start-trip');
+  await page.waitForSelector('#kyt-start-date-input');
+  await page.keyboard.press('Escape');
+  assert.equal(await page.locator('#kyt-start-date-overlay').count(), 0);
+  assert.match(page.url(), /trip_detail\.html/);
+  const live = await page.evaluate(async () => { await KYT.store.loadData(); return KYT.store.get().stepsData.length; });
+  assert.equal(live, 0, 'cancelling does not start a trip');
+
+  await page.click('#btn-start-trip');
+  await page.waitForSelector('#kyt-start-date-input');
+  await page.click('#kyt-start-date-today');
+  assert.equal(await page.locator('#kyt-start-date-input').inputValue(), ymd(new Date()));
+  assert.equal(await page.locator('#kyt-start-date-confirm').isDisabled(), false);
+  await page.fill('#kyt-start-date-input', '2020-01-01');
+  assert.equal(await page.locator('#kyt-start-date-confirm').isDisabled(), true, 'a date in the past is not accepted');
+  await context.close();
+});
+
+test('starting asks before overwriting an existing active trip; Cancel keeps it, and a new start clears its notes and cover', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await seedTrip(page, env.base, { name: 'Existing Trip', notes: 'old notes', steps: [{ title: 'Keep me', targetTime: iso(2, 9) }] });
+  await buildToPlanPage(page, 'New plan', [['Agra', 'agra']]);
   page.removeAllListeners('dialog');
   let asked = '';
   page.on('dialog', d => { asked = d.message(); d.dismiss(); });
-  await page.getByRole('button', { name: /Use as my trip/ }).click();
-  await page.waitForTimeout(400);
+  await page.click('#btn-start-trip');
+  await page.waitForTimeout(500);
   assert.match(asked, /overwrite your current active trip \("Existing Trip"\)/);
-  assert.match(page.url(), /virtual_trip\.html/);
-  const name = await page.evaluate(async () => { await KYT.store.loadData(); return KYT.store.get().tripName; });
-  assert.equal(name, 'Existing Trip');
+  assert.equal(await page.locator('#kyt-start-date-overlay').count(), 0, 'no date question once the overwrite is refused');
+  const kept = await page.evaluate(async () => { await KYT.store.loadData(); return KYT.store.get().tripName; });
+  assert.equal(kept, 'Existing Trip');
+
+  page.removeAllListeners('dialog');
+  page.on('dialog', d => d.accept());
+  await page.click('#btn-start-trip');
+  await chooseStartDate(page, '2027-02-10');
+  const live = await liveTrip(page);
+  assert.equal(live.name, 'New plan');
+  assert.equal(live.notes, '', 'the old trip notes do not leak into the new trip');
+  assert.ok(!live.cover, 'the old cover image does not leak into the new trip');
+  await context.close();
+});
+
+test('the builder has one way back to the plan page and one way forward; the day count ignores the travel day', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openHub(page);
+  await createTrip(page, 'Three days');
+  for (const [q, id] of [['Jaipur', 'jaipur'], ['Udaipur', 'udaipur'], ['Jodhpur', 'jodhpur']]) { await page.fill('#vt-city-search', ''); await addCity(page, q, id); }
+  await buildPlan(page);
+  await page.waitForSelector('#vt-screen-builder:not(.hidden)');
+  assert.equal(await page.locator('a:visible', { hasText: 'Trip Details & AI' }).count(), 1, 'exactly one Trip Details & AI link');
+  assert.equal(await page.locator('#vt-start-date').count(), 0, 'no hidden start-date field');
+  assert.equal(await page.getByRole('button', { name: /Start this trip/ }).count(), 1);
+  assert.match(await page.locator('#vt-itinerary-list').innerText(), /across 3 days planned for Three days/);
   await context.close();
 });
 
@@ -304,10 +375,73 @@ test('generating a day plan leads to trip-detail with Refine with AI, and Edit i
   await page.waitForSelector('#vt-screen-builder:not(.hidden)');
   assert.match(await page.locator('#vt-itinerary-list').innerText(), /Jaipur/);
 
-  // Verify Builder has Trip Details & AI navigation link
+  // Verify Builder has a Trip Details & AI navigation link back to the plan page
   const detailsLink = page.locator('a[href*="trip_detail.html"]');
-  assert.ok((await detailsLink.count()) >= 2, 'Builder contains links back to trip_detail.html');
+  assert.ok((await detailsLink.count()) >= 1, 'Builder contains a link back to trip_detail.html');
 
   await context.close();
 });
 
+
+
+test('origin is never assumed: nothing pre-selected, build asks for it, then it is remembered for the next trip', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openHub(page);
+  await createTrip(page, 'First Trip', null);
+  assert.equal(await page.locator('#vt-origin-city').inputValue(), '');
+  assert.match(await page.locator('#vt-origin-city option:checked').innerText(), /Where are you starting from/);
+  await addCity(page, 'Jaipur', 'jaipur');
+  await page.click('#btn-vt-build');
+  assert.equal(await page.locator('#btn-modal-confirm-build').isVisible(), false, 'must not open stay modal without an origin');
+  assert.match(await page.locator('#vt-origin-desc').innerText(), /Choose where you start/);
+  await page.selectOption('#vt-origin-city', 'chennai');
+  await page.click('#btn-vt-build');
+  await page.locator('#btn-modal-confirm-build').waitFor({ state: 'visible' });
+  // second trip starts with the remembered choice
+  await openHub(page);
+  await createTrip(page, 'Second Trip', null);
+  assert.equal(await page.locator('#vt-origin-city').inputValue(), 'chennai');
+  await context.close();
+});
+
+test('"Already in destination" is still available and skips Day 0', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openHub(page);
+  await createTrip(page, 'Local Trip', 'already_there');
+  await addCity(page, 'Jaipur', 'jaipur');
+  await page.click('#btn-vt-build');
+  await page.locator('#btn-modal-confirm-build').waitFor({ state: 'visible' });
+  await page.locator('#btn-modal-confirm-build').click();
+  await page.waitForURL('**/trip_detail.html*');
+  assert.doesNotMatch(await page.locator('body').innerText(), /DAY 0/i);
+  await context.close();
+});
+
+test('blank trip name: Create gives feedback instead of silently doing nothing', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openHub(page);
+  await page.click('#btn-vt-create');
+  assert.equal(await page.locator('#vt-screen-canvas').isHidden(), true);
+  assert.match(await page.locator('#vt-new-name').getAttribute('placeholder'), /name/i);
+  assert.equal(await page.evaluate(() => document.activeElement.id), 'vt-new-name');
+  await context.close();
+});
+
+test('own plan page shows a plain summary, not curated-journey marketing copy; phones get no Ctrl+V hint', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await buildToPlanPage(page, 'Rajasthan', [['Jaipur', 'jaipur'], ['Udaipur', 'udaipur']]);
+  const body = await page.locator('body').innerText();
+  assert.doesNotMatch(body, /curated journey|amazing cities/i);
+  assert.match(await page.locator('#trip-desc').innerText(), /2 cities/);
+  await page.goto(env.base + '/configure_trip.html');
+  assert.equal(await page.locator('.kyt-paste-hint').first().isVisible(), false);
+  await context.close();
+});
+
+test('home page makes no sync promise and does not say curated trips are "coming soon"', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.goto(env.base + '/index.html');
+  const body = await page.locator('body').innerText();
+  assert.doesNotMatch(body, /effortless sync|coming soon|on the way/i);
+  await context.close();
+});
