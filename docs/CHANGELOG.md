@@ -1,6 +1,6 @@
-# KYT (Know Your Travel) — Project Status & Todo
+# KYT (Know Your Travel) — Changelog
 
-## ✅ Completed
+What has been built, newest last. Open work lives in [TODO.md](TODO.md); design intent and architecture live in [kyt_product_specification_roadmap.md](kyt_product_specification_roadmap.md).
 
 1. **Short Share URL Acronyms**
    - Created short 3-letter acronyms for all cities and 3-letter compact codes for taste profiles (intent, diet, pace) to generate clean, short shareable URLs.
@@ -55,7 +55,7 @@
     - Bumped service worker cache version to `kyt-v23` in `sw.js`.
 
 11. **Phase 1: Navigation & Header Unification & Centralized JS Component**
-    - Created reusable JavaScript header module [`js/header.js`](file:///C:/Venkatesh/KYT/js/header.js) driving the top header across all views via `KYT.header.render()`.
+    - Created reusable JavaScript header module [`js/header.js`](../js/header.js) driving the top header across all views via `KYT.header.render()`.
     - Fixed back navigation from Trip Detail back to My Virtual Trips (`← My Trips` back link/button).
     - Removed redundant extra "Home" pill from top right of `trip_detail.html` (logo already serves as brand home link).
     - Unified sticky white header across `virtual_trip.html` (Hub, Canvas, Builder) and `trip_detail.html` with clean divider, breadcrumbs, and Share action.
@@ -65,56 +65,56 @@
 
 12. **Current Trip: View $\leftrightarrow$ Configure Navigation Loop & Toolbar**
     - Updated `configure_trip.html` with a clean sticky header featuring `← View Trip` back navigation and brand logo.
-    - Updated `closeConfigView()` in [`js/config.js`](file:///C:/Venkatesh/KYT/js/config.js) so saving ("Save & Close") returns directly to [`view_trip.html`](file:///C:/Venkatesh/KYT/view_trip.html) instead of redirecting to home.
-    - Enhanced `#main-toolbar` in [`view_trip.html`](file:///C:/Venkatesh/KYT/view_trip.html) to include AI Curated Trips (`curated_trips.html`) alongside Home, Virtual Trips, Memory Album, and Edit Itinerary.
+    - Updated `closeConfigView()` in [`js/config.js`](../js/config.js) so saving ("Save & Close") returns directly to [`view_trip.html`](../view_trip.html) instead of redirecting to home.
+    - Enhanced `#main-toolbar` in [`view_trip.html`](../view_trip.html) to include AI Curated Trips (`curated_trips.html`) alongside Home, Virtual Trips, Memory Album, and Edit Itinerary.
     - Preserved mobile-first touch optimization on both screens.
 
 13. **Unified App Floating Toolbar & Self-Contained Album Modal Dialog**
-    - Added `KYT.header.renderMainToolbar(container, options)` in [`js/header.js`](file:///C:/Venkatesh/KYT/js/header.js) driving the exact same mobile-optimized floating pill toolbar across [`view_trip.html`](file:///C:/Venkatesh/KYT/view_trip.html), [`curated_trips.html`](file:///C:/Venkatesh/KYT/curated_trips.html), and [`visited.html`](file:///C:/Venkatesh/KYT/visited.html).
+    - Added `KYT.header.renderMainToolbar(container, options)` in [`js/header.js`](../js/header.js) driving the exact same mobile-optimized floating pill toolbar across [`view_trip.html`](../view_trip.html), [`curated_trips.html`](../curated_trips.html), and [`visited.html`](../visited.html).
     - Standardized navigation icons across the toolbar: Home (`index.html`), Virtual Trips (`virtual_trip.html`), AI Curated (`curated_trips.html`), Album (opens modal), Digital Passport (`visited.html`), plus contextual Edit / Live Trip actions.
     - Built self-contained Album modal dialog (`KYT.header.openAlbum()` / `KYT.header.closeAlbum()`) with an explicit **X close button** at top-right, backdrop click-to-dismiss, and `Escape` key handler. Works uniformly whether invoked from View Trip, Curated Trips, or Digital Passport.
     - Kept strict mobile touch optimization (`max-w-md mx-auto`, touch targets $\ge 42\text{px}$).
 
 14. **Complete App Navigation Header Unification (`virtual_trip.html` & `trip_detail.html`)**
-    - Replaced disconnected headers on [`virtual_trip.html`](file:///C:/Venkatesh/KYT/virtual_trip.html) and [`trip_detail.html`](file:///C:/Venkatesh/KYT/trip_detail.html) with the same unified `#main-toolbar` driven by `KYT.header.renderMainToolbar`.
-    - On [`virtual_trip.html`](file:///C:/Venkatesh/KYT/virtual_trip.html):
+    - Replaced disconnected headers on [`virtual_trip.html`](../virtual_trip.html) and [`trip_detail.html`](../trip_detail.html) with the same unified `#main-toolbar` driven by `KYT.header.renderMainToolbar`.
+    - On [`virtual_trip.html`](../virtual_trip.html):
       - Renders the floating toolbar with **Trips** active in Hub mode.
       - Seamlessly displays a compact contextual subnav bar (`← My Trips` / `← Edit Cities` & `Share`) when entering Canvas or Builder mode.
-    - On [`trip_detail.html`](file:///C:/Venkatesh/KYT/trip_detail.html):
+    - On [`trip_detail.html`](../trip_detail.html):
       - Renders the floating toolbar at the top with full access to Home, Trips, Curated, Album, Passport, and Live Trip.
       - Added a clean breadcrumb back link (`← Back to Curated Trips` or `← Back to My Trips`) based on origin.
-    - Bumped service worker cache to `kyt-v29` in [`sw.js`](file:///C:/Venkatesh/KYT/sw.js).
+    - Bumped service worker cache to `kyt-v29` in [`sw.js`](../sw.js).
 
 15. **Articulated Onboarding Options on Home (`index.html` & `js/index.js`)**
-    - Redesigned the primary Trip Menu cards on [`index.html`](file:///C:/Venkatesh/KYT/index.html) with clear descriptive guidance for each user intent:
+    - Redesigned the primary Trip Menu cards on [`index.html`](../index.html) with clear descriptive guidance for each user intent:
       - **Have an Upcoming Trip?** (`configure_trip.html`): "Head here if you have confirmed travel plans! Add your flights, hotels, tickets, boarding passes, and custom notes step-by-step."
       - **Start a Virtual Trip** (`virtual_trip.html`): "Pick destinations across India, choose your pace and dietary style, and get an automated day plan with inter-city travel legs."
       - **AI Curated Journeys** (`curated_trips.html`): "Browse handcrafted spiritual circuits, coastal getaways, and heritage trails with YouTube video guides ready to customize."
       - **My Digital Passport** (`visited.html`): "Been there, done that! Mark Indian cities you've explored, collect official stamps, and grow your personal travel scratchpad."
     - Enhanced returning user view with rich card styling and live countdown hero link for active itineraries.
     - Updated noscript fallback with matching structured cards.
-    - Bumped service worker cache to `kyt-v30` in [`sw.js`](file:///C:/Venkatesh/KYT/sw.js).
+    - Bumped service worker cache to `kyt-v30` in [`sw.js`](../sw.js).
 
 16. **Hero Tagline Update (`index.html`)**
-    - Updated hero tagline from *"Live every story."* to *"Happy journey!"* in [`index.html`](file:///C:/Venkatesh/KYT/index.html) for a warm, authentic Indian travel touch:
+    - Updated hero tagline from *"Live every story."* to *"Happy journey!"* in [`index.html`](../index.html) for a warm, authentic Indian travel touch:
       - *Know your travel.*
       - *Plan it your way.*
       - *Happy journey!*
 
 17. **Full Test Suite Verification & Resiliency Polish**
     - Executed the complete test suite covering all unit, catalog integrity, core itinerary engine, offline PWA, and browser e2e tests.
-    - Resolved DOM ID collision between `#main-toolbar` and [`curated_trips.html`](file:///C:/Venkatesh/KYT/curated_trips.html) drawer button by prefixing toolbar nav items with `kyt-nav-*` in [`js/header.js`](file:///C:/Venkatesh/KYT/js/header.js).
-    - Hardened offline cache fallback in [`sw.js`](file:///C:/Venkatesh/KYT/sw.js) with `{ ignoreSearch: true }` so requests with cache query params reliably serve the cached app shell assets.
+    - Resolved DOM ID collision between `#main-toolbar` and [`curated_trips.html`](../curated_trips.html) drawer button by prefixing toolbar nav items with `kyt-nav-*` in [`js/header.js`](../js/header.js).
+    - Hardened offline cache fallback in [`sw.js`](../sw.js) with `{ ignoreSearch: true }` so requests with cache query params reliably serve the cached app shell assets.
     - **110 passed, 0 failed** (56 admin core tests + 54 browser e2e tests across all four test suites).
-    - Bumped service worker cache to `kyt-v32` in [`sw.js`](file:///C:/Venkatesh/KYT/sw.js).
+    - Bumped service worker cache to `kyt-v32` in [`sw.js`](../sw.js).
 
 18. **Origin City Selection, Day 0 Fluid Arrival, Day 1 Morning Start & Non-Overlapping Time Spacing**
-    - Added Starting Point (Origin City) selector to the Virtual Trip Canvas in [`virtual_trip.html`](file:///C:/Venkatesh/KYT/virtual_trip.html) with popular starting hubs and an "Already in destination" option.
+    - Added Starting Point (Origin City) selector to the Virtual Trip Canvas in [`virtual_trip.html`](../virtual_trip.html) with popular starting hubs and an "Already in destination" option.
     - Implemented dedicated **Day 0: Travel & Arrival** generated with exactly one fluid block ("Activities for today are fluid depending on time of arrival") with Google Maps directions from the origin city.
     - Ensured **Day 1 begins in the morning** with morning refreshment & breakfast followed by matched sightseeing beats.
     - Removed rigid time slots (e.g. `15:00`) from the builder UI in favor of natural sequential order, day phase badges (`Arrival`, `Morning`, `Midday`, `Afternoon`, `Evening`), and suggestive timing hints.
     - Resolved time overlapping in `useAsMyTrip()` by calculating strictly increasing, non-overlapping `targetTime`s with minimum buffer spacing and proper day offsets.
-    - Bumped service worker cache to `kyt-v33` in [`sw.js`](file:///C:/Venkatesh/KYT/sw.js).
+    - Bumped service worker cache to `kyt-v33` in [`sw.js`](../sw.js).
 
 19. **Transit Days (Day 2+) Chronological Narrative Sequence & Post-Arrival Afternoon Beat Mapping**
     - Fixed Day 2+ ordering defect where catalog beats with early morning hours (e.g., `Bhimashankar Jyotirlinga` at 06:00 AM) preceded the morning inter-city travel leg (`Travel to Bhimashankar`).
@@ -127,7 +127,7 @@
       6. Return Journey (21:00 PM on final day)
     - Added self-healing routine (`sanitizeOrRegenerateSteps`) on builder launch so existing plans stored in localStorage automatically repair their order.
     - Added a convenient "Reset Order" action to the builder header.
-    - Bumped service worker cache to `kyt-v34` in [`sw.js`](file:///C:/Venkatesh/KYT/sw.js).
+    - Bumped service worker cache to `kyt-v34` in [`sw.js`](../sw.js).
 
 20. **Travel Duration & Daily Night Stay Allocation (Automatic Day Excursions & Night Travel)**
     - Added **Trip Duration** stepper (`[-] X Days [+]`) on the Canvas with pacing hints.
@@ -140,7 +140,7 @@
       - **Day Excursion**: Morning Drive from base $\rightarrow$ Lunch $\rightarrow$ Afternoon Sights $\rightarrow$ Return Drive to base hotel $\rightarrow$ Dinner & Sleep at base (zero false hotel check-ins).
       - **Base Transfer**: Morning Transit $\rightarrow$ Hotel Check-in $\rightarrow$ Lunch $\rightarrow$ Sights $\rightarrow$ Dinner & Sleep in destination.
       - **Overnight Travel**: Evening departure milestone boarding night train or sleeper coach.
-    - Bumped service worker cache to `kyt-v35` in [`sw.js`](file:///C:/Venkatesh/KYT/sw.js).
+    - Bumped service worker cache to `kyt-v35` in [`sw.js`](../sw.js).
 
 21. **Decoupled City Selection & Progressive Stay Modal**
     - **Clean Canvas**: Removed inline duration and night stay wrappers from the Canvas top card so users can freely search, browse, and add multiple destinations without viewport obstruction.
@@ -163,7 +163,7 @@
     - **`curated_trips.html`**: Converted preview timeline cards to `KYT.ui.renderStepCard(s, { variant: 'curated-preview' })` and updated "Open in Virtual Trips to Edit" action to use `KYT.ui.convertCuratedTripToVirtual(trip)`.
     - **Harness & Resiliency**: Updated `tests/e2e/helpers.js` to auto-detect installed Chromium browsers (Edge/Chrome) when `KYT_CHROMIUM` is unset; updated curated trips count regex in `04-passport-curated-pwa.test.js` to match full catalog size.
     - **110 passed, 0 failed** across all unit and functional E2E test suites.
-    - Bumped service worker cache to `kyt-v40` in [`sw.js`](file:///C:/Venkatesh/KYT/sw.js).
+    - Bumped service worker cache to `kyt-v40` in [`sw.js`](../sw.js).
 
 24. **Trip-Level Metadata URL Preservation & Hero Banner Badges**
     - **`js/virtual-trips.js`**: Encoded `origin` (`'0'` if destination-starts / `already_there`, else resolved city code) and `days` (`trip.duration || trip.cities.length || 1`) in `shareCurrentTrip()`. In `init()`, read `origin` and `days` during shared trip imports, resolved origin via `KYT.ui.resolveCity`, assigned duration, and cleaned URL params.
@@ -175,7 +175,7 @@
       - **Step 1 (`#ai-step-1`)**: Thumb-friendly twist chips (`Exact Google Maps links & timings`, `Strictly Vegetarian / Satvik dining`, `Relaxed pace, fewer stops`, `Family & senior-friendly`, `Hidden local gems`), optional custom input `#ai-custom-twist`, primary button `#btn-copy-open-gemini` (copies prompt & opens Gemini), native OS share `#btn-share-prompt-native`, and collapsible raw prompt `<details>`.
       - **Step 2 (`#ai-step-2`)**: Back button, giant 1-tap clipboard button `#btn-paste-clipboard` with auto-pulse on tab return (`visibilitychange`), instant auto-apply on paste (`paste` listener triggers after 100ms when `{` and `}` are detected), and explicit `#btn-apply-ai-plan`.
     - **Validation & Rendering**: Parses with `KYTAdmin.extractJson`, `KYTAdmin.toTripList`, and `KYTAdmin.validateTrip`, converting to virtual trip via `KYT.ui.convertCuratedTripToVirtual`. Automatically saves to `localStorage` (`kyt_virtual_trips`), triggers haptic vibration (`navigator.vibrate(40)`), renders `#refined-itinerary-section` with day-by-day preview timeline, and smoothly scrolls into view.
-    - **PWA Caching**: Added `./admin/core.js` to `APP_SHELL` in [`sw.js`](file:///C:/Venkatesh/KYT/sw.js) and bumped cache to `kyt-v41`. All 110 tests pass.
+    - **PWA Caching**: Added `./admin/core.js` to `APP_SHELL` in [`sw.js`](../sw.js) and bumped cache to `kyt-v41`. All 110 tests pass.
 
 26. **"Refine with AI" Visibility Fix & Action Disambiguation in `trip_detail.html`**
     - **Visibility & Contrast Fix**: Resolved root cause of the faint button by replacing Tailwind v4 `bg-linear-to-*` syntax with valid Tailwind v3 `bg-gradient-to-*` syntax. Applied vibrant, high-contrast gradient (`bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700`) with sparkles badge and elevation shadow to `#btn-open-ai-refine`, modal header, and primary modal CTAs.
@@ -189,11 +189,11 @@
     - **Bug 2 (`city.beats` & `att.title` in `getTripForPrompt()`)**: Updated the fallback synthesis loop in `getTripForPrompt()` (`trip_detail.html`) to correctly read `city.beats` and `att.title` matching `data/cities.js`.
     - **Bug 3 (`DOM.btnBuild` Regression in `js/virtual-trips.js`)**: Fixed `DOM.btnBuild` ("Generate Day Plan") click listener to open the progressive stays & duration modal (`openStayModal()`) instead of prematurely executing `generateSteps(trip)` and bypassing stay customization. Updated e2e test helper to confirm the stay modal during tests.
     - **Bug 4 (Trip ID Linking & Cross-Device Sharing for AI-Refined Trips)**: Changed `tripId` to mutable `let tripId` in `trip_detail.html`; when an AI-refined plan is applied in `applyAiResponseText`, `tripId = vTrip.id` is linked and URL state is updated (`window.history.replaceState`). Updated `#btn-edit-plan` to open the active AI trip (`virtual_trip.html?id=${activeId}`) instead of redirecting to raw params. Added URL-safe compression/decompression helpers (`KYT.ui.encodeAiTrip` & `KYT.ui.decodeAiTrip`) to share AI itineraries across devices via `?ai=`, and protected AI trips from unwanted regeneration in `sanitizeOrRegenerateSteps`.
-    - Bumped service worker cache to `kyt-v42` in [`sw.js`](file:///C:/Venkatesh/KYT/sw.js). **All 110 tests pass (56 unit tests + 54 browser E2E tests).**
+    - Bumped service worker cache to `kyt-v42` in [`sw.js`](../sw.js). **All 110 tests pass (56 unit tests + 54 browser E2E tests).**
 
 28. **Decoupled "Refine with AI" into Standalone `js/ai-refine.js` & 3-Step Review Wizard**
-    - **Reverted `admin/core.js` & Service Worker**: Removed all trip-refinement logic from `admin/core.js` so it remains exclusively for the admin catalog editor. Replaced `'./admin/core.js'` with `'./js/ai-refine.js'` in `APP_SHELL` in [`sw.js`](file:///C:/Venkatesh/KYT/sw.js) and bumped cache to `kyt-v43`.
-    - **Standalone Module [`js/ai-refine.js`](file:///C:/Venkatesh/KYT/js/ai-refine.js) (`window.KYT.aiRefine`)**:
+    - **Reverted `admin/core.js` & Service Worker**: Removed all trip-refinement logic from `admin/core.js` so it remains exclusively for the admin catalog editor. Replaced `'./admin/core.js'` with `'./js/ai-refine.js'` in `APP_SHELL` in [`sw.js`](../sw.js) and bumped cache to `kyt-v43`.
+    - **Standalone Module [`js/ai-refine.js`](../js/ai-refine.js) (`window.KYT.aiRefine`)**:
       - **`buildEnrichPrompt(tripContext, twistText)`**: Generates structured, human-readable Google Gemini prompts with locked destinations, taste/pace filtering, logical fluid sequence phases (`Morning`, `Midday`, `Afternoon`, `Evening`), temple opening/afternoon closure windows (12:30 PM–4:00 PM), and exact Google Maps links (`mapsUrl`).
       - **`parseAndDiff(rawText, originalTripContext)`**: Tolerantly extracts JSON (supporting code fences, Unicode curly quotes, trailing commas, and comment stripping without breaking `https://` URLs). Auto-generates Google Maps search links for any steps lacking URLs and calculates a detailed diff summary (`totalSteps`, `mapsCount`, `verifyCount`, `addedOrEnriched`, and `removedSteps`).
       - **3-Step Modal UI Controller (`init(options)`)**:
@@ -203,67 +203,40 @@
     - **Verification**: **All 110 tests pass (56 unit tests + 54 browser E2E tests).**
 
 29. **URL Shortening & WhatsApp "URL too long" Share Fix**
-    - **Root Cause**: When an AI-refined itinerary was accepted in [`trip_detail.html`](file:///C:/Venkatesh/KYT/trip_detail.html), `onAccept` serialized the full trip object into a base64 query parameter `?ai=...`, injecting over 7,100 characters into the URL. Sharing this link via WhatsApp triggered an immediate error ("URL too long") due to messaging URL length limits.
+    - **Root Cause**: When an AI-refined itinerary was accepted in [`trip_detail.html`](../trip_detail.html), `onAccept` serialized the full trip object into a base64 query parameter `?ai=...`, injecting over 7,100 characters into the URL. Sharing this link via WhatsApp triggered an immediate error ("URL too long") due to messaging URL length limits.
     - **Clean Share URL Construction**:
-      - Updated `#btn-share-trip` click listener in [`trip_detail.html`](file:///C:/Venkatesh/KYT/trip_detail.html) to always strip `&ai=` and construct a lightweight URL with standard compact parameters (`trip`, `cities`, `taste`, `origin`, `days`, `id`, `curated`). The shared link is reduced from >7,100 chars to <150 chars.
-      - Updated `onAccept` callback in [`trip_detail.html`](file:///C:/Venkatesh/KYT/trip_detail.html) to link `vTrip.id` and purge `ai` from `window.history.replaceState`.
+      - Updated `#btn-share-trip` click listener in [`trip_detail.html`](../trip_detail.html) to always strip `&ai=` and construct a lightweight URL with standard compact parameters (`trip`, `cities`, `taste`, `origin`, `days`, `id`, `curated`). The shared link is reduced from >7,100 chars to <150 chars.
+      - Updated `onAccept` callback in [`trip_detail.html`](../trip_detail.html) to link `vTrip.id` and purge `ai` from `window.history.replaceState`.
       - Added automatic address bar sanitization on page load when an incoming link contains legacy `?ai=`: imports the AI itinerary into `localStorage` (if not already present) and immediately removes `?ai=` from the address bar via `window.history.replaceState`.
-      - Added length safeguard in `KYT.ui.encodeAiTrip` ([`js/ui-components.js`](file:///C:/Venkatesh/KYT/js/ui-components.js)) to reject JSON payloads >800 characters, preventing oversized query strings across the app.
-      - Updated `shareCurrentTrip()` in [`js/virtual-trips.js`](file:///C:/Venkatesh/KYT/js/virtual-trips.js) to preserve `trip.id`.
-    - **Test Coverage**: Added automated E2E test in [`tests/e2e/04-passport-curated-pwa.test.js`](file:///C:/Venkatesh/KYT/tests/e2e/04-passport-curated-pwa.test.js) validating that sharing produces a clean URL (<300 chars, no `&ai=`), and that incoming URLs with `&ai=` are sanitized in the browser address bar immediately.
+      - Added length safeguard in `KYT.ui.encodeAiTrip` ([`js/ui-components.js`](../js/ui-components.js)) to reject JSON payloads >800 characters, preventing oversized query strings across the app.
+      - Updated `shareCurrentTrip()` in [`js/virtual-trips.js`](../js/virtual-trips.js) to preserve `trip.id`.
+    - **Test Coverage**: Added automated E2E test in [`tests/e2e/04-passport-curated-pwa.test.js`](../tests/e2e/04-passport-curated-pwa.test.js) validating that sharing produces a clean URL (<300 chars, no `&ai=`), and that incoming URLs with `&ai=` are sanitized in the browser address bar immediately.
 
 30. **Client-Side Compressed Itinerary Sharing & Privacy Consent for GitHub Pages**
     - **GitHub Pages Native Architecture**: As `vividnova.com` is hosted statically on GitHub Pages with zero server-side code, trip sharing uses a 100% serverless, zero-account client-side architecture.
-    - **Compact Plan Compression**: Built `compressPlan` and `decompressPlan` in [`js/ui-components.js`](file:///C:/Venkatesh/KYT/js/ui-components.js) using the browser's native `CompressionStream('deflate-raw')` / `DecompressionStream('deflate-raw')`. It packages all sequenced days, steps, hours, minutes, titles, locations, and icons into a compact ~890-char string (`&plan=...`). The entire URL is ~1,030 characters, well within WhatsApp's 2,048 limit.
-    - **Privacy Consent Modal**: Implemented `#share-consent-modal` in [`trip_detail.html`](file:///C:/Venkatesh/KYT/trip_detail.html) with explicit checkbox required before sharing:
+    - **Compact Plan Compression**: Built `compressPlan` and `decompressPlan` in [`js/ui-components.js`](../js/ui-components.js) using the browser's native `CompressionStream('deflate-raw')` / `DecompressionStream('deflate-raw')`. It packages all sequenced days, steps, hours, minutes, titles, locations, and icons into a compact ~890-char string (`&plan=...`). The entire URL is ~1,030 characters, well within WhatsApp's 2,048 limit.
+    - **Privacy Consent Modal**: Implemented `#share-consent-modal` in [`trip_detail.html`](../trip_detail.html) with explicit checkbox required before sharing:
       `[ ] I understand that anyone with this URL can access your trip data.`
       The share button is disabled until checked.
-    - **Automatic Plan Decompression on Recipient Device**: When a companion opens the link, [`trip_detail.html`](file:///C:/Venkatesh/KYT/trip_detail.html) decompresses the plan, restores all 18 customized steps and timings, auto-generates Google Maps links dynamically, saves the trip into `localStorage`, and cleans `plan` from the address bar via `history.replaceState`.
+    - **Automatic Plan Decompression on Recipient Device**: When a companion opens the link, [`trip_detail.html`](../trip_detail.html) decompresses the plan, restores all 18 customized steps and timings, auto-generates Google Maps links dynamically, saves the trip into `localStorage`, and cleans `plan` from the address bar via `history.replaceState`.
     - **Full Test Verification**: **All 56 tests pass (0 failures).**
 
 31. **Cloudflare Worker URL Shortener Integration (Ultra-Short 55-char links)**
     - **Worker & KV Namespace Setup**:
-      - Created [`cloudflare-worker/worker.js`](file:///C:/Venkatesh/KYT/cloudflare-worker/worker.js) handling `POST /api/trip` (stores itinerary JSON in `TRIP_KV` with 60-day auto-expiry, returns 6-character random alphanumeric code `id`) and `GET /api/trip/:id` (retrieves stored trip with full CORS support).
+      - Created [`cloudflare-worker/worker.js`](../cloudflare-worker/worker.js) handling `POST /api/trip` (stores itinerary JSON in `TRIP_KV` with 60-day auto-expiry, returns 6-character random alphanumeric code `id`) and `GET /api/trip/:id` (retrieves stored trip with full CORS support).
       - User deployed the worker to `https://kyt-share.deshvenkatesh.workers.dev` bound to KV namespace `TRIP_KV`.
     - **Front-End Integration & Robust Protocol Handling**:
-      - Configured `window.KYT_SHORTENER_URL = 'https://kyt-share.deshvenkatesh.workers.dev'` in [`trip_detail.html`](file:///C:/Venkatesh/KYT/trip_detail.html).
+      - Configured `window.KYT_SHORTENER_URL = 'https://kyt-share.deshvenkatesh.workers.dev'` in [`trip_detail.html`](../trip_detail.html).
       - Added `getShortenerEndpoint()` helper ensuring protocol normalization (`https://` automatically prepended if omitted) for both link generation (`POST /api/trip`) and retrieval (`GET /api/trip/:id`).
       - Verified live end-to-end worker connectivity: health check, trip creation, and trip retrieval tests all returned HTTP 200 with stored itinerary intact.
       - Preserved seamless fallback to browser-deflated compact link (`&plan=...`) if worker is unreachable.
     - **Test Suite**:
-      - Added automated E2E test in [`tests/e2e/04-passport-curated-pwa.test.js`](file:///C:/Venkatesh/KYT/tests/e2e/04-passport-curated-pwa.test.js) validating `?c=` shortcode generation upon privacy consent and cross-device restoration into a fresh browser session.
-      - Bumped service worker cache to `kyt-v46` in [`sw.js`](file:///C:/Venkatesh/KYT/sw.js).
+      - Added automated E2E test in [`tests/e2e/04-passport-curated-pwa.test.js`](../tests/e2e/04-passport-curated-pwa.test.js) validating `?c=` shortcode generation upon privacy consent and cross-device restoration into a fresh browser session.
+      - Bumped service worker cache to `kyt-v46` in [`sw.js`](../sw.js).
       - **All 57 automated tests pass (57 pass, 0 fail).**
 
----
-
-## 🟡 In Progress / Under Execution
-
-1. **KYT Product Specification & Roadmap Execution**
-   - Detailed specification and governing principles captured in [kyt_product_specification_roadmap.md](file:///C:/Venkatesh/KYT/kyt_product_specification_roadmap.md).
-   - **Phase 1**: Navigation & Header Unification across Virtual Trip, Trip Detail, and Builder (Completed ✅).
-   - **Phase 2 (Underway)**:
-     - [x] Origin City selector & dedicated Day 0: Travel & Arrival.
-     - [x] Day 1 begins in the morning without timetable clutter.
-     - [x] Non-overlapping sequential time spacing.
-     - [x] Travel Duration & Night Stay Allocation (*Overnight Base* 🏨 vs *Day Excursion* 🚗 vs *Overnight Travel* 🌙).
-     - [x] Decoupled city selection from stays modal; pure "Overnight Travel" labeling.
-     - [ ] Intelligent Prioritization Nudge when trip duration is shorter than selected cities (`duration < cities.length`).
-     - [ ] Party Composition chips (*Family with Elders, Kids, Friends, Solo*).
-   - **Phase 3**: Fluid Sequence Day Generation (High-Fidelity Curated Blueprint, meal collision suppression).
-
----
-
-## 📋 Backlog / Future Enhancements
-
-1. **Admin City Management Page**
-   - Create an admin page where an admin user can add a new city along with all attractions, videos, and nearby destinations.
-   - Automatically save/write or export updates to data files (`cities.js`, `city_videos_data.js`, `distance_matrix.js`).
-
-2. **Food Filter & Culinary Metadata**
-   - Add meaningful food filter options when searching/filtering cities (e.g. popular local cuisines, dietary availability, satvik/veg options).
-   - Ensure each city object in `cities.js` contains rich food and culinary metadata.
-
-3. **Food-Specific Videos**
-   - Gather food-specific videos separately to showcase local culinary specialties and street food scenes for each destination.
-
+32. **India Explorer Passport, v47–v53 (summarised from the project handoff)**
+    - `visited.html` and `js/passport-extras.js`: filters sheet, by-state grouping, Bronze / Silver / Gold levels (Silver at 8 cities, Gold at 25 cities or 10 states), strength meters (States, Regions, Experiences, Landscapes) shown as chips, and a canvas-drawn share card. City cards open the shared city detail sheet.
+    - `data/cities.js`: every city carries `setting` (coast, hills, plains), `vibes` (1–3 of spiritual, heritage, nature, adventure, foodie) and `effort` (easy, trek). A test fails if any city lacks them.
+    - Large page scripts moved out of the HTML files into `js/page-*.js`; a test requires each to be in the `sw.js` precache list. A test also checks that every inline script in the HTML parses (a format-on-save tool once broke string literals).
+    - Service worker cache is `kyt-v53`. The e2e suite is 78 tests (`tests/e2e/01` to `05`).

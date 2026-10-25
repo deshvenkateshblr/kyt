@@ -149,23 +149,49 @@ window.PassportExtras = (function () {
     });
     el.addEventListener('change', e => { if (e.target.id === 'pf-state') { filters.state = e.target.value; refreshSheet(); changed(); } });
   }
-  function openSheet() { ensureSheet(); refreshSheet(); document.getElementById('pf-overlay').classList.remove('hidden'); }
-  function closeSheet() { const o = document.getElementById('pf-overlay'); if (o) o.classList.add('hidden'); }
-  function resetFilters() { GROUPS.forEach(g => filters[g.id].clear()); filters.state = ''; }
+  function openSheet() {
+    ensureSheet();
+    refreshSheet();
+    document.getElementById('pf-overlay').classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+  }
+  function closeSheet() {
+    const o = document.getElementById('pf-overlay');
+    if (o) o.classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
+  }
+  function resetFilters() {
+    GROUPS.forEach(g => filters[g.id].clear());
+    filters.state = '';
+    activeQuestId = null;
+  }
 
   function labelFor(gid, key) { const g = GROUPS.find(x => x.id === gid); return g ? g.options[key] : key; }
-  function renderChips(el, btn) {
+  function renderChips(el, btn, questBtn) {
     const n = activeCount();
     if (btn) { const badge = btn.querySelector('[data-badge]'); if (badge) { badge.textContent = n; badge.classList.toggle('hidden', !n); } }
+    if (questBtn) {
+      const qBadge = questBtn.querySelector('[data-quest-badge]');
+      if (qBadge) {
+        qBadge.classList.toggle('hidden', !activeQuestId);
+      }
+      questBtn.classList.toggle('border-blue-600', !!activeQuestId);
+      questBtn.classList.toggle('bg-blue-50', !!activeQuestId);
+      questBtn.classList.toggle('text-blue-700', !!activeQuestId);
+    }
     if (!el) return;
     const items = [];
     GROUPS.forEach(g => filters[g.id].forEach(k => items.push([g.id, k, labelFor(g.id, k)])));
     if (filters.state) items.push(['state', filters.state, filters.state]);
     el.classList.toggle('hidden', !items.length);
     el.innerHTML = items.map(([g, k, l]) => `<button type="button" data-rm-g="${g}" data-rm-k="${esc(k)}" class="shrink-0 inline-flex items-center gap-1.5 pl-3 pr-2 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold">${esc(l)} <span aria-hidden="true" class="text-blue-400">&#10005;</span></button>`).join('') +
-      (items.length > 1 ? `<button type="button" data-rm-all class="shrink-0 text-xs font-bold text-slate-400 px-2">Clear all</button>` : '');
+      (items.length > 1 ? `<button type="button" data-rm-all class="shrink-0 text-xs font-bold text-slate-400 px-2 cursor-pointer">Clear all</button>` : '');
   }
-  function removeChip(g, k) { if (g === 'state') filters.state = ''; else filters[g].delete(k); }
+  function removeChip(g, k) {
+    if (g === 'quest') activeQuestId = null;
+    else if (g === 'state') filters.state = '';
+    else filters[g].delete(k);
+  }
 
   function changed() { onChange(); }
   function init(opts) { onChange = opts.onChange; getCities = opts.getCities; }
@@ -246,6 +272,209 @@ window.PassportExtras = (function () {
           ${m.items ? chips(m) : bar(m)}</div>`).join('')}</div>
       </details>`;
     const d = el.querySelector('details'); if (d) d.addEventListener('toggle', () => { if (!mq('(min-width: 1024px)')) strengthOpen = d.open; });
+  }
+
+  // ── 4. Explorer Quests Sheet (Selection List by Category) ──────────────────────────────────
+  let activeQuestId = null;
+  let activeQuestCategory = 'all';
+
+  const ALL_QUESTS_ENTRY = {
+    id: 'all',
+    title: 'All Explorer Quests',
+    subtitle: 'Curated thematic trails across spiritual, heritage, nature and regional journeys',
+    icon: 'compass',
+    category: 'all',
+    get cityIds() {
+      if (!window.KYT_QUESTS) return [];
+      const set = new Set();
+      window.KYT_QUESTS.forEach(q => q.cityIds.forEach(id => set.add(id)));
+      return Array.from(set);
+    }
+  };
+
+  function getActiveQuest() {
+    if (!activeQuestId) return null;
+    if (activeQuestId === 'all') return ALL_QUESTS_ENTRY;
+    if (!window.KYT_QUEST_STORE) return null;
+    return window.KYT_QUEST_STORE.getById(activeQuestId);
+  }
+
+  function setActiveQuest(id) {
+    activeQuestId = (activeQuestId === id) ? null : (id || null);
+  }
+
+  function questsSheetBody() {
+    const all = getCities();
+    const visitedSet = new Set(all.filter(c => c.visited).map(c => c.id));
+    const allQuests = window.KYT_QUEST_STORE ? window.KYT_QUEST_STORE.getAll() : [];
+    const categories = window.KYT_QUEST_STORE ? window.KYT_QUEST_STORE.getCategories() : [];
+
+    // 1. Category / Pillar Tabs
+    let html = `<div class="mb-4">
+      <p class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 mb-2">Pillar / Category</p>
+      <div class="flex flex-wrap gap-1.5" id="pq-cat-tabs">`;
+
+    categories.forEach(cat => {
+      const count = cat.id === 'all' ? allQuests.length : allQuests.filter(q => q.category === cat.id).length;
+      const isActive = activeQuestCategory === cat.id;
+      html += `<button type="button" data-pq-cat="${cat.id}"
+        class="px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${isActive ? 'bg-slate-900 text-white shadow-2xs' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}">
+        ${cat.label} <span class="${isActive ? 'text-slate-300' : 'text-slate-400'} font-medium text-[11px]">${count}</span>
+      </button>`;
+    });
+    html += `</div></div>`;
+
+    // Active Quest Indicator / Clear Option (if one is already active)
+    if (activeQuestId) {
+      const cur = getActiveQuest();
+      html += `<div class="mb-3.5 px-3.5 py-2.5 bg-blue-50 border border-blue-200 rounded-xl flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2 min-w-0">
+          <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-600 shrink-0"></i>
+          <span class="text-xs font-bold text-blue-900 truncate">Active: ${esc(cur?.title || '')}</span>
+        </div>
+        <button type="button" data-pq-id="" class="text-xs font-black text-blue-700 hover:text-blue-900 cursor-pointer underline shrink-0">Clear Quest</button>
+      </div>`;
+    }
+
+    // 2. Quest Selection List (single scrollbar, spacious and readable)
+    html += `<div>
+      <p class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 mb-2">Select a Quest</p>
+      <div class="flex flex-col gap-2">`;
+
+    // When in "all" category, show "All Explorer Quests" as the first selection item
+    if (activeQuestCategory === 'all') {
+      const isSelectedAll = activeQuestId === 'all';
+      const allQuestCityIds = ALL_QUESTS_ENTRY.cityIds;
+      const seenAll = allQuestCityIds.filter(id => visitedSet.has(id)).length;
+      const totalAll = allQuestCityIds.length;
+      let allBadgeHtml = '';
+      if (seenAll === totalAll && totalAll > 0) {
+        allBadgeHtml = `<span class="px-2.5 py-1 rounded-full text-[11px] font-black bg-amber-400 text-slate-900 shrink-0 shadow-2xs">🏆 ${totalAll}/${totalAll}</span>`;
+      } else if (seenAll > 0) {
+        allBadgeHtml = `<span class="px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-blue-100 text-blue-800 shrink-0">${seenAll}/${totalAll} visited</span>`;
+      }
+
+      html += `<button type="button" data-pq-id="all"
+        class="w-full text-left p-3.5 rounded-2xl border transition-all flex items-center justify-between gap-3 cursor-pointer ${isSelectedAll ? 'bg-blue-50/80 border-blue-600 ring-2 ring-blue-500/20 shadow-xs' : 'bg-gradient-to-r from-blue-50/50 via-indigo-50/30 to-slate-50 border-blue-200/80 hover:bg-blue-50 hover:border-blue-300'}">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-10 h-10 rounded-xl ${isSelectedAll ? 'bg-blue-600 text-white' : 'bg-white border border-blue-200 text-blue-600'} flex items-center justify-center shrink-0 shadow-2xs">
+            <i data-lucide="compass" class="w-5 h-5"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-sm font-black text-slate-900 leading-snug">All Explorer Quests</div>
+            <div class="text-xs font-semibold text-slate-500 mt-0.5">28 Quests · ${totalAll} destinations</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          ${allBadgeHtml}
+          ${isSelectedAll ? `<i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0"></i>` : `<i data-lucide="chevron-right" class="w-4 h-4 text-slate-300 shrink-0"></i>`}
+        </div>
+      </button>`;
+    }
+
+    // Quest items in active category
+    const filtered = window.KYT_QUEST_STORE ? window.KYT_QUEST_STORE.getByCategory(activeQuestCategory) : [];
+    filtered.forEach(q => {
+      const isSelected = activeQuestId === q.id;
+      const seen = q.cityIds.filter(id => visitedSet.has(id)).length;
+      const total = q.cityIds.length;
+      const isComplete = seen === total;
+
+      // Point 3: Summarized data ONLY where completed or partial (zero clutter if 0 visited)
+      let badgeHtml = '';
+      if (isComplete) {
+        badgeHtml = `<span class="px-2.5 py-1 rounded-full text-[11px] font-black bg-amber-400 text-slate-900 shrink-0 shadow-2xs">🏆 ${total}/${total}</span>`;
+      } else if (seen > 0) {
+        badgeHtml = `<span class="px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-blue-100 text-blue-800 shrink-0">${seen}/${total} visited</span>`;
+      }
+
+      html += `<button type="button" data-pq-id="${q.id}"
+        class="w-full text-left p-3.5 rounded-2xl border transition-all flex items-center justify-between gap-3 cursor-pointer ${isSelected ? 'bg-blue-50/80 border-blue-600 ring-2 ring-blue-500/20 shadow-xs' : 'bg-slate-50 border-slate-200 hover:bg-slate-100 hover:border-slate-300'}">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-10 h-10 rounded-xl ${isSelected ? 'bg-blue-600 text-white' : 'bg-white border border-slate-200 text-slate-700'} flex items-center justify-center shrink-0 shadow-2xs">
+            <i data-lucide="${q.icon}" class="w-5 h-5"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-sm font-black text-slate-800 leading-snug">${esc(q.title)}</div>
+            <div class="text-xs font-semibold text-slate-400 mt-0.5">${q.cityIds.length} destinations</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          ${badgeHtml}
+          ${isSelected ? `<i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0"></i>` : `<i data-lucide="chevron-right" class="w-4 h-4 text-slate-300 shrink-0"></i>`}
+        </div>
+      </button>`;
+    });
+
+    html += `</div></div>`;
+    return html;
+  }
+
+  function refreshQuestsSheet() {
+    const body = document.getElementById('pq-body');
+    if (!body) return;
+    const top = body.scrollTop;
+    body.innerHTML = questsSheetBody();
+    body.scrollTop = top;
+    if (window.lucide) window.lucide.createIcons();
+  }
+
+  function ensureQuestsSheet() {
+    if (document.getElementById('pq-overlay')) return;
+    const el = document.createElement('div');
+    el.id = 'pq-overlay';
+    el.className = 'hidden fixed inset-0 z-[90] bg-slate-900/50 backdrop-blur-sm flex items-end sm:items-center justify-center overflow-hidden';
+    el.innerHTML = `
+      <div class="bg-white w-full max-w-md rounded-t-3xl sm:rounded-3xl max-h-[85vh] sm:max-h-[80vh] flex flex-col shadow-2xl overflow-hidden" role="dialog" aria-modal="true" aria-label="Explorer Quests">
+        <div class="flex items-center justify-between px-5 pt-5 pb-3 border-b border-slate-100 shrink-0">
+          <div>
+            <h3 class="text-lg font-black text-slate-900 flex items-center gap-2">
+              <i data-lucide="compass" class="w-5 h-5 text-blue-600"></i> Explorer Quests
+            </h3>
+            <p class="text-xs text-slate-500 font-medium mt-0.5">Choose a quest to explore its destinations</p>
+          </div>
+          <button type="button" id="pq-close" class="p-2 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 transition-colors cursor-pointer" aria-label="Close">&#10005;</button>
+        </div>
+        <div id="pq-body" class="p-5 overflow-y-auto overscroll-contain flex-1"></div>
+      </div>`;
+    document.body.appendChild(el);
+    el.addEventListener('click', e => {
+      if (e.target === el || e.target.closest('#pq-close')) return closeQuestsSheet();
+      const catBtn = e.target.closest('[data-pq-cat]');
+      if (catBtn) {
+        activeQuestCategory = catBtn.dataset.pqCat;
+        refreshQuestsSheet();
+        return;
+      }
+      const questBtn = e.target.closest('[data-pq-id]');
+      if (questBtn) {
+        const qid = questBtn.dataset.pqId;
+        setActiveQuest(qid);
+        closeQuestsSheet();
+        changed();
+      }
+    });
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        const o = document.getElementById('pq-overlay');
+        if (o && !o.classList.contains('hidden')) closeQuestsSheet();
+      }
+    });
+  }
+
+  function openQuestsSheet() {
+    ensureQuestsSheet();
+    refreshQuestsSheet();
+    const o = document.getElementById('pq-overlay');
+    if (o) o.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+    if (window.lucide) window.lucide.createIcons();
+  }
+
+  function closeQuestsSheet() {
+    const o = document.getElementById('pq-overlay');
+    if (o) o.classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
   }
 
   function rr(ctx, x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
@@ -369,7 +598,32 @@ window.PassportExtras = (function () {
     return cy + h;
   }
 
-  function drawCard(canvas, all, visited, name, showCities) {
+  function getTopQuests(visited, limit = 3) {
+    const quests = window.KYT_QUESTS || [];
+    if (!quests.length) return [];
+    const visitedSet = new Set(visited.map(c => c.id));
+    const scored = quests.map(q => {
+      const got = q.cityIds.filter(id => visitedSet.has(id)).length;
+      const total = q.cityIds.length;
+      const pct = total ? got / total : 0;
+      return {
+        id: q.id,
+        title: q.title,
+        got,
+        of: total,
+        pct,
+        completed: got === total && total > 0
+      };
+    });
+    scored.sort((a, b) => {
+      if (b.pct !== a.pct) return b.pct - a.pct;
+      if (b.got !== a.got) return b.got - a.got;
+      return 0;
+    });
+    return scored.slice(0, limit);
+  }
+
+  function drawCard(canvas, all, visited, name, showCities, showQuests = true) {
     canvas.width = W; canvas.height = H;
     const ctx = canvas.getContext('2d');
     const F = (w, s) => `${w} ${s}px "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif`;
@@ -392,8 +646,17 @@ window.PassportExtras = (function () {
     ctx.fillStyle = g; rr(ctx, px, py, pw, ph, 40); ctx.fill();
 
     const who = (name || '').trim();
-    ctx.textAlign = 'left'; ctx.fillStyle = '#fbbf24'; ctx.font = F(800, 26);
-    ctx.fillText((who ? `${who}'s India` : 'My India so far').toUpperCase(), px + 44, py + 60);
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#fbbf24';
+    if (who) {
+      ctx.font = '800 28px "Doto", "Courier New", monospace';
+      try { ctx.letterSpacing = '1px'; } catch (e) {}
+      ctx.fillText(who.toUpperCase(), px + 44, py + 60, 520);
+      try { ctx.letterSpacing = '0px'; } catch (e) {}
+    } else {
+      ctx.font = F(800, 26);
+      ctx.fillText('MY INDIA SO FAR', px + 44, py + 60);
+    }
 
     const num = String(S.cities), nsz = num.length >= 3 ? 210 : 250;
     ctx.font = F(800, nsz); ctx.fillStyle = '#fff'; ctx.fillText(num, px + 44, py + 286);
@@ -414,7 +677,8 @@ window.PassportExtras = (function () {
     // right column: passport strength, with the named values as chips
     ctx.textAlign = 'left'; ctx.fillStyle = '#a5b4fc'; ctx.font = F(800, 20); ctx.fillText('PASSPORT STRENGTH', tx, py + 104);
     let y = py + 124;
-    M.forEach(m => {
+    const metersToShow = showQuests ? M.filter(m => m.id === 'states' || m.id === 'regions') : M;
+    metersToShow.forEach(m => {
       ctx.textAlign = 'left'; ctx.fillStyle = '#fff'; ctx.font = F(700, 22); ctx.fillText(m.label, tx, y + 18);
       ctx.textAlign = 'right'; ctx.fillStyle = '#c7d2fe'; ctx.fillText(`${m.got}/${m.of}`, tx + tw, y + 18);
       if (m.items) y = drawChips(ctx, m.items, tx, y + 28, tw, F) + 12;
@@ -424,6 +688,39 @@ window.PassportExtras = (function () {
         y += 54;
       }
     });
+
+    if (showQuests) {
+      const topQuests = getTopQuests(visited, 3);
+      if (topQuests.length) {
+        y += 6;
+        ctx.textAlign = 'left'; ctx.fillStyle = '#a5b4fc'; ctx.font = F(800, 18); ctx.fillText('TOP QUESTS', tx, y + 14);
+        y += 24;
+        topQuests.forEach(q => {
+          ctx.textAlign = 'left';
+          ctx.fillStyle = '#fff';
+          ctx.font = F(700, 18);
+          ctx.fillText(q.title, tx, y + 14, tw - 60);
+
+          ctx.textAlign = 'right';
+          ctx.fillStyle = q.completed ? '#34d399' : '#c7d2fe';
+          ctx.font = F(700, 16);
+          ctx.fillText(`${q.got}/${q.of}`, tx + tw, y + 14);
+
+          // mini progress bar
+          const barY = y + 22, barH = 6;
+          ctx.fillStyle = 'rgba(255,255,255,.16)';
+          rr(ctx, tx, barY, tw, barH, 3);
+          ctx.fill();
+          if (q.got > 0) {
+            const fillW = Math.max(Math.round(tw * (q.got / q.of)), 8);
+            ctx.fillStyle = q.completed ? '#34d399' : '#fbbf24';
+            rr(ctx, tx, barY, fillW, barH, 3);
+            ctx.fill();
+          }
+          y += 36;
+        });
+      }
+    }
 
     // level seal in the top-right corner, overlapping the dashboard edge
     drawLevelSeal(ctx, W - 178, 160, 100, P, 0.12);
@@ -464,8 +761,23 @@ window.PassportExtras = (function () {
           <div class="flex items-center justify-between mb-3"><h3 class="text-base font-extrabold text-slate-900">Your share card</h3>
             <button type="button" id="sh-close" class="p-2 rounded-full bg-slate-100 text-slate-500" aria-label="Close">&#10005;</button></div>
           <canvas id="sh-canvas" class="w-full h-auto rounded-2xl border border-slate-200 bg-orange-50"></canvas>
-          <input id="sh-name" type="text" maxlength="24" placeholder="Add your name (optional)" class="mt-3 w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold">
-          <label class="flex items-center gap-2 mt-2.5 text-sm font-semibold text-slate-700"><input id="sh-list" type="checkbox" checked class="w-4 h-4 accent-blue-600"> List my stamped cities</label>
+          <div class="mt-3 space-y-2">
+            <label class="flex items-center gap-2 text-sm font-semibold text-slate-700 cursor-pointer select-none">
+              <input id="sh-inc-name" type="checkbox" checked class="w-4 h-4 accent-blue-600 rounded">
+              <span>Include my name on card</span>
+            </label>
+            <div id="sh-name-wrap">
+              <input id="sh-name" type="text" maxlength="29" placeholder="Enter your name" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <label class="flex items-center gap-2 text-sm font-semibold text-slate-700 cursor-pointer select-none">
+              <input id="sh-quests" type="checkbox" checked class="w-4 h-4 accent-blue-600 rounded">
+              <span>Include Explorer Quests</span>
+            </label>
+            <label class="flex items-center gap-2 text-sm font-semibold text-slate-700 cursor-pointer select-none">
+              <input id="sh-list" type="checkbox" checked class="w-4 h-4 accent-blue-600 rounded">
+              <span>List my stamped cities</span>
+            </label>
+          </div>
           <p class="text-[11px] text-slate-400 mt-1">Untick to share only the numbers. Dates are never shown.</p>
           <div class="flex gap-2.5 mt-3"><button type="button" id="sh-save" class="flex-1 py-3 rounded-xl bg-slate-100 text-slate-800 font-bold text-sm">Save image</button>
             <button type="button" id="sh-share" class="flex-1 py-3 rounded-xl bg-blue-600 text-white font-bold text-sm">Share</button></div>
@@ -475,12 +787,55 @@ window.PassportExtras = (function () {
     }
     overlay.classList.remove('hidden');
     const canvas = overlay.querySelector('#sh-canvas'), nameEl = overlay.querySelector('#sh-name');
+    const incNameEl = overlay.querySelector('#sh-inc-name'), nameWrap = overlay.querySelector('#sh-name-wrap');
+    const questsEl = overlay.querySelector('#sh-quests');
+    const listEl = overlay.querySelector('#sh-list');
+
     let saved = ''; try { saved = localStorage.getItem('kyt_share_name') || ''; } catch (e) {}
     nameEl.value = saved;
-    const listEl = overlay.querySelector('#sh-list');
-    const draw = () => drawCard(canvas, all, visited, nameEl.value, listEl.checked);
+
+    let savedInc = true;
+    try {
+      const stored = localStorage.getItem('kyt_share_inc_name');
+      if (stored !== null) savedInc = stored === 'true';
+    } catch (e) {}
+    if (incNameEl) {
+      incNameEl.checked = savedInc;
+      if (nameWrap) nameWrap.classList.toggle('hidden', !savedInc);
+    }
+
+    let savedQuests = true;
+    try {
+      const storedQ = localStorage.getItem('kyt_share_quests');
+      if (storedQ !== null) savedQuests = storedQ === 'true';
+    } catch (e) {}
+    if (questsEl) questsEl.checked = savedQuests;
+
+    const getName = () => (incNameEl && incNameEl.checked ? nameEl.value.trim() : '');
+    const showQuests = () => (questsEl ? questsEl.checked : true);
+    const draw = () => drawCard(canvas, all, visited, getName(), listEl.checked, showQuests());
+    if (incNameEl) {
+      incNameEl.onchange = () => {
+        try { localStorage.setItem('kyt_share_inc_name', incNameEl.checked ? 'true' : 'false'); } catch (e) {}
+        if (nameWrap) nameWrap.classList.toggle('hidden', !incNameEl.checked);
+        if (incNameEl.checked) nameEl.focus();
+        draw();
+      };
+    }
+    if (questsEl) {
+      questsEl.onchange = () => {
+        try { localStorage.setItem('kyt_share_quests', questsEl.checked ? 'true' : 'false'); } catch (e) {}
+        draw();
+      };
+    }
     listEl.onchange = draw;
-    const redraw = () => Promise.all([document.fonts && document.fonts.load ? Promise.all(['600', '700', '800'].map(w => document.fonts.load(w + ' 40px "Plus Jakarta Sans"'))).catch(() => {}) : null, ready()]).then(draw);
+    const redraw = () => Promise.all([
+      document.fonts && document.fonts.load ? Promise.all([
+        ...['600', '700', '800'].map(w => document.fonts.load(w + ' 40px "Plus Jakarta Sans"')),
+        document.fonts.load('800 28px "Doto"')
+      ]).catch(() => {}) : null,
+      ready()
+    ]).then(draw);
     redraw();
     nameEl.oninput = () => { try { localStorage.setItem('kyt_share_name', nameEl.value); } catch (e) {} draw(); };
     const toBlob = () => new Promise(res => canvas.toBlob(res, 'image/png'));
@@ -497,5 +852,6 @@ window.PassportExtras = (function () {
   }
 
   return { init, apply, attrs, filters, activeCount, openSheet, closeSheet, resetFilters, removeChip, renderChips,
-           renderGrouped, toggleState, openShare, drawCard, drawSeal, persona, stats, meters, renderStrength, ready, LEVELS };
+           renderGrouped, toggleState, openShare, drawCard, drawSeal, persona, stats, meters, renderStrength, ready, LEVELS,
+           openQuestsSheet, closeQuestsSheet, getActiveQuest, setActiveQuest, getTopQuests };
 })();

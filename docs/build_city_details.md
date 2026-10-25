@@ -1,5 +1,7 @@
 # Rich City Detail Pages - Enhancement Plan
 
+> **Status note (24 Oct 2026):** this is a design reference. Open items from it (sections 1, 4 and 6) are tracked only in [TODO.md](TODO.md) (P3.3, P3.2, P1.2). Sections 2, 3 and 5 are done.
+
 This document outlines the roadmap and features to be implemented for the "Rich City Detail" slide-over view. The goal is to make each city page highly immersive, shareable, and actionable for users building their virtual trips.
 
 ## 1. YouTube Video Header Carousel

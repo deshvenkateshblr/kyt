@@ -8,8 +8,8 @@
           <link rel="stylesheet" href="./css/index.css?v=1791377680">
             <script src="./lib/tailwindcss.js?v=1791377680"></script>
             <link rel="preconnect" href="https://fonts.googleapis.com">
-              <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-                <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+            <link href="https://fonts.googleapis.com/css2?family=Doto:ROND,wght@100,700;100,800;100,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
                   <script src="./lib/lucide.js?v=1791377680"></script>
                   <style>
                     body {
@@ -94,56 +94,89 @@
 
       <!-- Search, Filter & Sort Bar -->
       <section class="max-w-6xl mx-auto px-4 w-full">
-        <div class="bg-white rounded-2xl border border-slate-200/90 p-3 sm:p-4 shadow-sm flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+        <div class="bg-white rounded-2xl border border-slate-200/90 p-3 sm:p-4 shadow-sm flex flex-col gap-3">
 
-          <!-- Live City Search -->
-          <div class="relative flex-1">
-            <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
-            <input type="text" id="search-input" placeholder="Search 145+ cities, states, or aliases (e.g. Kashi, Ooty, Goa)..."
-              class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 text-slate-800 text-xs sm:text-sm font-semibold rounded-xl pl-9 pr-9 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all placeholder:text-slate-400">
+          <!-- Top Controls Row: Search, Status, Filters, Sort -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+            <!-- Live City Search -->
+            <div class="relative flex-1">
+              <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+              <input type="text" id="search-input" placeholder="Search 145+ cities, states, or aliases (e.g. Kashi, Ooty, Goa)..."
+                class="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 text-slate-800 text-xs sm:text-sm font-semibold rounded-xl pl-9 pr-9 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all placeholder:text-slate-400">
               <button type="button" id="btn-clear-search" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 rounded-full hover:bg-slate-200 transition-colors" title="Clear search">
                 <i data-lucide="x" class="w-3.5 h-3.5"></i>
               </button>
             </div>
 
-          <!-- Filter and Sort Controls -->
-          <div class="flex items-center gap-2 shrink-0">
-            <!-- Status Filter -->
-            <div class="relative flex-1 sm:flex-initial">
-              <select id="filter-select" class="w-full sm:w-auto appearance-none bg-slate-50 hover:bg-slate-100/80 border border-slate-200 text-slate-700 py-2.5 pl-3 pr-7 rounded-xl text-xs sm:text-sm font-bold shadow-2xs focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer transition-all">
-                <option value="all">All Cities</option>
-                <option value="visited">Visited Only</option>
-                <option value="unvisited">Unvisited Only</option>
-              </select>
-              <i data-lucide="filter" class="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
-            </div>
+            <!-- Filter and Sort Controls -->
+            <div class="flex items-center gap-2 shrink-0 flex-wrap sm:flex-nowrap">
+              <!-- Explorer Quests Button -->
+              <button type="button" id="btn-open-quests" class="relative shrink-0 inline-flex items-center gap-1.5 bg-slate-50 hover:bg-slate-100/80 border border-slate-200 text-slate-700 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all cursor-pointer">
+                <i data-lucide="compass" class="w-3.5 h-3.5 text-blue-600"></i> Quests
+                <span data-quest-badge="" class="hidden min-w-[18px] h-[18px] px-1 rounded-full bg-blue-600 text-white text-[10px] leading-[18px] text-center font-bold">1</span>
+              </button>
 
-            <!-- Interesting-city filters -->
-            <button type="button" id="btn-open-filters" class="relative shrink-0 inline-flex items-center gap-1.5 bg-slate-50 hover:bg-slate-100/80 border border-slate-200 text-slate-700 py-2.5 pl-3 pr-3 rounded-xl text-xs sm:text-sm font-bold focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
-              <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5 text-slate-400"></i> Filters
-              <span data-badge="" class="hidden min-w-[18px] h-[18px] px-1 rounded-full bg-blue-600 text-white text-[10px] leading-[18px] text-center">0</span>
-            </button>
+              <!-- Status Filter -->
+              <div class="relative flex-1 sm:flex-initial">
+                <select id="filter-select" class="w-full sm:w-auto appearance-none bg-slate-50 hover:bg-slate-100/80 border border-slate-200 text-slate-700 py-2.5 pl-3 pr-7 rounded-xl text-xs sm:text-sm font-bold shadow-2xs focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer transition-all">
+                  <option value="all">All Cities</option>
+                  <option value="visited">Visited Only</option>
+                  <option value="unvisited">Unvisited Only</option>
+                </select>
+                <i data-lucide="filter" class="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+              </div>
 
-            <!-- Sort Selection -->
-            <div class="relative flex-1 sm:flex-initial">
-              <select id="sort-select" class="w-full sm:w-auto appearance-none bg-slate-50 hover:bg-slate-100/80 border border-slate-200 text-slate-700 py-2.5 pl-3 pr-7 rounded-xl text-xs sm:text-sm font-bold shadow-2xs focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer transition-all">
-                <option value="default">Default</option>
-                <option value="recent">Recent</option>
-                <option value="alpha">A-Z</option>
-                <option value="state">By state</option>
-              </select>
-              <i data-lucide="arrow-up-down" class="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+              <!-- Interesting-city filters -->
+              <button type="button" id="btn-open-filters" class="relative shrink-0 inline-flex items-center gap-1.5 bg-slate-50 hover:bg-slate-100/80 border border-slate-200 text-slate-700 py-2.5 pl-3 pr-3 rounded-xl text-xs sm:text-sm font-bold focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all cursor-pointer">
+                <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5 text-slate-400"></i> Filters
+                <span data-badge="" class="hidden min-w-[18px] h-[18px] px-1 rounded-full bg-blue-600 text-white text-[10px] leading-[18px] text-center">0</span>
+              </button>
+
+              <!-- Sort Selection -->
+              <div class="relative flex-1 sm:flex-initial">
+                <select id="sort-select" class="w-full sm:w-auto appearance-none bg-slate-50 hover:bg-slate-100/80 border border-slate-200 text-slate-700 py-2.5 pl-3 pr-7 rounded-xl text-xs sm:text-sm font-bold shadow-2xs focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer transition-all">
+                  <option value="default">Default</option>
+                  <option value="recent">Recent</option>
+                  <option value="alpha">A-Z</option>
+                  <option value="state">By state</option>
+                </select>
+                <i data-lucide="arrow-up-down" class="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+              </div>
             </div>
           </div>
 
         </div>
 
-        <!-- Active filter chips (hidden until a filter is on) -->
+        <!-- Active filter chips (hidden until a filter or quest is on) -->
         <div id="active-filters" class="hidden flex gap-2 overflow-x-auto mt-2.5 pb-0.5 [scrollbar-width:none]"></div>
 
-        <!-- Results Indicator -->
-        <div class="flex items-center justify-between text-xs text-slate-500 font-semibold px-1 mt-2.5">
-          <span id="results-count">Showing all destinations</span>
+        <!-- Results Indicator & Quest Explainer -->
+        <div class="px-1 mt-2.5 space-y-2">
+          <div class="flex items-center justify-between text-xs text-slate-500 font-semibold">
+            <span id="results-count">Showing all destinations</span>
+          </div>
+
+          <!-- Rich Quest Explainer Section (visible only when a quest is active) -->
+          <div id="quest-explainer-card" class="hidden p-3.5 bg-blue-50/70 border border-blue-200/80 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+            <div class="flex items-start gap-3 min-w-0">
+              <div id="quest-explainer-icon-wrap" class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-2xs">
+                <i data-lucide="compass" id="quest-explainer-icon" class="w-5 h-5"></i>
+              </div>
+              <div class="min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 bg-blue-200/70 text-blue-900 rounded-md">Explorer Quest</span>
+                  <div id="quest-explainer-title" class="text-sm font-black text-slate-900">Quest Title</div>
+                </div>
+                <p id="quest-explainer-desc" class="text-xs font-medium text-slate-600 mt-1 leading-relaxed">Quest subtitle description</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0 self-start sm:self-center">
+              <div id="quest-explainer-stats"></div>
+              <button type="button" id="btn-clear-quest" class="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-blue-100/60 rounded-full transition-colors cursor-pointer" title="Exit Quest" aria-label="Exit Quest">
+                <i data-lucide="x" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -231,12 +264,13 @@
     </div>
 
     <script src="./data/cities.js?v=1791377680"></script>
+    <script src="./data/quests.js?v=1792065005"></script>
     <script src="./data/distance_matrix.js?v=1791377680"></script>
     <script src="./data/city_videos_data.js?v=1791377680"></script>
     <script src="./js/passport-store.js?v=1792065000"></script>
-    <script src="./js/passport-extras.js?v=1792065001"></script>
+    <script src="./js/passport-extras.js?v=1792065010"></script>
     <script src="./js/ui-components.js?v=1792065000"></script>
     <script src="./js/header.js?v=1791377680"></script>
-    <script src="./js/page-passport.js?v=1792065002"></script>
+    <script src="./js/page-passport.js?v=1792065006"></script>
   </body>
 </html>

@@ -1,5 +1,7 @@
 # Next Iteration: Virtual Trip Enhancements
 
+> **Status note (24 Oct 2026):** this is a design reference. Sections 1, 2, 3 (magic link) and 5 are built. Still open: the library filters from section 6 (TODO P2.1), attraction images from section 4 (TODO P4.1) and a `.json` export and import for virtual trips (covered by TODO P1.4). Open items are tracked only in [TODO.md](TODO.md).
+
 This document outlines the next set of requirements and features to be implemented for the Virtual Trips functionality in KYT (Know Your Travel).
 
 ## 1. City Distance Estimation

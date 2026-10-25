@@ -269,6 +269,29 @@ test('catalog: curated trips reference real cities and have steps on every day',
   });
 });
 
+test('catalog: quests reference real cities, have unique ids, valid categories, and < 15 cities each', () => {
+  const ids = new Set(load('data/cities.js', 'KYT_CITIES').map(c => c.id));
+  const quests = load('data/quests.js', 'KYT_QUESTS');
+  const validCategories = new Set(['spiritual', 'heritage', 'nature', 'regional']);
+  const questIds = new Set();
+
+  assert.ok(Array.isArray(quests) && quests.length >= 20, 'expected at least 20 quests');
+  quests.forEach(q => {
+    assert.ok(q.id && typeof q.id === 'string', 'quest needs an id');
+    assert.ok(!questIds.has(q.id), `duplicate quest id: ${q.id}`);
+    questIds.add(q.id);
+    assert.ok(q.title && typeof q.title === 'string', `${q.id} needs a title`);
+    assert.ok(q.subtitle && typeof q.subtitle === 'string', `${q.id} needs a subtitle`);
+    assert.ok(q.icon && typeof q.icon === 'string', `${q.id} needs an icon`);
+    assert.ok(validCategories.has(q.category), `${q.id} has invalid category: ${q.category}`);
+    assert.ok(Array.isArray(q.cityIds) && q.cityIds.length > 0, `${q.id} needs non-empty cityIds`);
+    assert.ok(q.cityIds.length < 15, `${q.id} has ${q.cityIds.length} cities (must be < 15)`);
+    q.cityIds.forEach(cid => {
+      assert.ok(ids.has(cid), `${q.id} references unknown city id: ${cid}`);
+    });
+  });
+});
+
 test('sharing a trip from trip_detail requires privacy consent and generates valid share link', async () => {
   const { context, page } = await newPhone(env.browser);
   await context.grantPermissions(['clipboard-read', 'clipboard-write'], { origin: env.base });

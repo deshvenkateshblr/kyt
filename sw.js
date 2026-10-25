@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kyt-v53';
+const CACHE_NAME = 'kyt-v62';
 
 // Files that make up the offline-capable app shell
 const APP_SHELL = [
@@ -12,6 +12,7 @@ const APP_SHELL = [
   './trip_detail.html',
   './curated_trips.html',
   './data/curated_trips.js',
+  './data/quests.js',
   './js/ai-refine.js',
   './manifest.json',
   './css/base.css',

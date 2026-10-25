@@ -80,9 +80,16 @@
       const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
       let cities = baseList(allCities);
 
+      // 0. Active Explorer Quest filter (alters the city view to show the cities within)
+      const visitedSet = new Set(allCities.filter(c => c.visited).map(c => c.id));
+      const activeQuest = PassportExtras.getActiveQuest();
+      if (activeQuest) {
+        cities = cities.filter(c => activeQuest.cityIds.includes(c.id));
+      }
+
       // 1. City-attribute filters (vibe, setting, effort, food, region, state)
       cities = PassportExtras.apply(cities);
-      PassportExtras.renderChips(document.getElementById('active-filters'), document.getElementById('btn-open-filters'));
+      PassportExtras.renderChips(document.getElementById('active-filters'), document.getElementById('btn-open-filters'), document.getElementById('btn-open-quests'));
 
       // 3. Sorting
       if (sortVal === 'alpha') {
@@ -108,9 +115,51 @@
       });
       }
 
-      // 4. Update results count indicator
+      // 4. Update results count indicator and Quest Explainer section
+      const questCardEl = document.getElementById('quest-explainer-card');
+      const questIconEl = document.getElementById('quest-explainer-icon');
+      const questTitleEl = document.getElementById('quest-explainer-title');
+      const questDescEl = document.getElementById('quest-explainer-desc');
+      const questStatsEl = document.getElementById('quest-explainer-stats');
+
+      if (activeQuest && questCardEl) {
+        questCardEl.classList.remove('hidden');
+        if (questTitleEl) questTitleEl.textContent = activeQuest.title;
+        if (questDescEl) questDescEl.textContent = activeQuest.subtitle;
+        if (questIconEl) questIconEl.setAttribute('data-lucide', activeQuest.icon || 'compass');
+
+        // Calculate progress within this quest
+        const qTotal = activeQuest.cityIds.length;
+        const qSeen = activeQuest.cityIds.filter(id => visitedSet.has(id)).length;
+        const qPct = qTotal > 0 ? Math.round((qSeen / qTotal) * 100) : 0;
+        const isComplete = qSeen === qTotal && qTotal > 0;
+
+        if (questStatsEl) {
+          if (isComplete) {
+            questStatsEl.innerHTML = `<span class="px-2.5 py-1 rounded-full text-xs font-black bg-amber-400 text-slate-900 shadow-2xs">🏆 Completed (${qTotal}/${qTotal})</span>`;
+          } else if (qSeen > 0) {
+            questStatsEl.innerHTML = `<span class="px-2.5 py-1 rounded-full text-xs font-bold bg-blue-600 text-white shadow-2xs">${qSeen}/${qTotal} stamped (${qPct}%)</span>`;
+          } else {
+            questStatsEl.innerHTML = `<span class="px-2.5 py-1 rounded-full text-xs font-bold bg-white border border-blue-200 text-slate-500">${qTotal} destinations</span>`;
+          }
+        }
+      } else if (questCardEl) {
+        questCardEl.classList.add('hidden');
+      }
+
       if (resultsCountEl) {
-      if (PassportExtras.activeCount()) {
+      const questTitle = activeQuest ? `"${activeQuest.title}"` : '';
+      if (activeQuest && PassportExtras.activeCount()) {
+      resultsCountEl.textContent = `Showing ${cities.length} destinations in ${questTitle} matching your filters` + (query ? ` and "${query}"` : '');
+      } else if (activeQuest) {
+      if (filterVal === 'visited') {
+      resultsCountEl.textContent = `Showing ${cities.length} visited destinations in ${questTitle}` + (query ? ` matching "${query}"` : '');
+      } else if (filterVal === 'unvisited') {
+      resultsCountEl.textContent = `Showing ${cities.length} unvisited destinations in ${questTitle}` + (query ? ` matching "${query}"` : '');
+      } else {
+      resultsCountEl.textContent = `Showing ${cities.length} destinations in ${questTitle}` + (query ? ` matching "${query}"` : '');
+      }
+      } else if (PassportExtras.activeCount()) {
       resultsCountEl.textContent = `Showing ${cities.length} matching your filters` + (query ? ` and "${query}"` : '');
       } else if (query) {
       resultsCountEl.textContent = `Showing ${cities.length} matching "${query}"`;
@@ -181,6 +230,15 @@
 
       // Filters sheet, active chips, state groups, share
       PassportExtras.init({ onChange: renderCities, getCities: () => baseList(window.PassportStore.getPassportCities()) });
+      const btnQuests = document.getElementById('btn-open-quests');
+      if (btnQuests) btnQuests.addEventListener('click', () => PassportExtras.openQuestsSheet());
+      const btnClearQuest = document.getElementById('btn-clear-quest');
+      if (btnClearQuest) {
+        btnClearQuest.addEventListener('click', () => {
+          PassportExtras.setActiveQuest(null);
+          renderCities();
+        });
+      }
       document.getElementById('btn-open-filters').addEventListener('click', () => PassportExtras.openSheet());
       document.getElementById('active-filters').addEventListener('click', e => {
       if (e.target.closest('[data-rm-all]')) PassportExtras.resetFilters();
