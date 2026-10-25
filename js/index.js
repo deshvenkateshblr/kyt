@@ -164,7 +164,48 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   container.innerHTML = html;
   lucide.createIcons();
+  if (!isReturningUser) nudgeOptionsOnce(container);
 });
+
+/**
+ * First visit only: briefly light up each option in turn, as a hover would on a desktop,
+ * so a new user sees that the cards are tappable. Skipped for reduced-motion users and
+ * stopped at the first touch, click or scroll.
+ */
+function nudgeOptionsOnce(container) {
+  try {
+    if (localStorage.getItem('kyt_home_nudged')) return;
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const cards = Array.from(container.querySelectorAll('.k-option-card'));
+    if (!cards.length) return;
+    const timers = [];
+    let started = false;
+    const events = ['pointerdown', 'touchstart', 'wheel', 'keydown'];
+    const stop = () => {
+      timers.forEach(clearTimeout);
+      cards.forEach(c => c.classList.remove('k-nudge'));
+      events.forEach(ev => window.removeEventListener(ev, stop));
+    };
+    const run = () => {
+      if (started) return;
+      started = true;
+      localStorage.setItem('kyt_home_nudged', '1');
+      events.forEach(ev => window.addEventListener(ev, stop, { passive: true }));
+      cards.forEach((card, i) => {
+        timers.push(setTimeout(() => card.classList.add('k-nudge'), 400 + i * 650));
+        timers.push(setTimeout(() => card.classList.remove('k-nudge'), 400 + i * 650 + 600));
+      });
+      timers.push(setTimeout(stop, 400 + cards.length * 650 + 100));
+    };
+    // Only play once the menu is actually on screen, otherwise nobody sees it.
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        if (entries.some(e => e.isIntersecting)) { io.disconnect(); run(); }
+      }, { threshold: 0.6 });
+      io.observe(container);
+    } else run();
+  } catch (e) { /* storage blocked: no nudge */ }
+}
 
 function checkExistingTrip() {
   return new Promise((resolve) => {

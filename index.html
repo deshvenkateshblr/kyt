@@ -196,11 +196,17 @@
                                 transition: transform 0.16s ease, background-color 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
                                 cursor: pointer; text-align: left;
                                 }
+                                @media (hover: hover) {
                                 .k-option-card:hover {
                                 transform: translateY(-2px); background: #FFFFFF; border-color: #BFD3F8;
                                 box-shadow: 0 8px 18px -4px rgba(37, 99, 235, 0.18);
                                 }
-                                .k-option-card:active { transform: scale(0.985); }
+                                }
+                                /* Touch feedback: the card visibly presses in and darkens while held */
+                                .k-option-card:active { transform: scale(0.97); background: #E6EEFB; border-color: #93B4F0; box-shadow: none; }
+                                .k-option-card.k-option-primary:active { background: linear-gradient(135deg, #1E40AF 0%, #0B1220 100%); }
+
+                                .k-option-card { -webkit-tap-highlight-color: transparent; box-shadow: 0 2px 6px -2px rgba(15, 23, 42, 0.18); border-color: #D5DFF0; }
 
                                 .k-option-card.k-option-primary {
                                 background: linear-gradient(135deg, #1E3A8A 0%, #0F172A 100%);
@@ -213,7 +219,7 @@
                                 }
                                 .k-option-card.k-option-primary .k-option-desc { color: #CBD5E1; }
                                 .k-option-card.k-option-primary .k-option-title { color: #FFFFFF; }
-                                .k-option-card.k-option-primary .k-option-arrow { color: #93C5FD; }
+                                .k-option-card.k-option-primary .k-option-arrow { color: #0F172A; background: #fff; }
 
                                 .k-option-icon {
                                 width: 42px; height: 42px; border-radius: 12px;
@@ -237,12 +243,11 @@
                                 font-size: 0.78rem; line-height: 1.4; color: #64748B; font-weight: 500; margin: 0;
                                 }
                                 .k-option-arrow {
-                                margin-top: 10px; width: 16px; height: 16px; color: #94A3B8; flex-shrink: 0;
+                                margin-top: 6px; box-sizing: border-box; width: 30px; height: 30px; padding: 6px; border-radius: 999px;
+                                color: #fff; background: #2563EB; flex-shrink: 0;
                                 transition: transform 0.15s ease, color 0.15s ease;
                                 }
-                                .k-option-card:hover .k-option-arrow {
-                                transform: translateX(3px); color: #2563EB;
-                                }
+                                @media (hover: hover) { .k-option-card:hover .k-option-arrow { transform: translateX(3px); } }
 
                                 @media (max-width: 520px) {
                                 /* Icon, title and arrow share one row; the description gets the full card width. */
@@ -255,6 +260,10 @@
                                 .k-option-card:not(:has(.k-option-icon)) .k-option-head { grid-column: 1 / -1; }
                                 .k-option-title { font-size: 1rem; }
                                 }
+                                /* One-time first-visit hint: same look as hover, driven by js/index.js */
+                                .k-option-card { transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
+                                .k-option-card.k-nudge { transform: translateY(-3px) scale(1.015); background: #FFFFFF; border-color: #60A5FA; box-shadow: 0 10px 22px -6px rgba(37, 99, 235, 0.35); }
+                                .k-option-card.k-nudge .k-option-arrow { transform: translateX(4px); }
                                 .k-launch :focus-visible { outline-color: var(--sky-deep); }
 
                                 /* ------------------------------------------------------------------
@@ -1054,7 +1063,7 @@
     </main>
 
     <script src="./lib/lucide.js?v=1791377680"></script>
-    <script src="./js/index.js?v=1792300000"></script>
+    <script src="./js/index.js?v=1792310000"></script>
 
     <script src="./js/page-home.js?v=1792065002"></script>
   </body>

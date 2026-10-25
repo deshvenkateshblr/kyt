@@ -445,3 +445,26 @@ test('home page makes no sync promise and does not say curated trips are "coming
   assert.doesNotMatch(body, /effortless sync|coming soon|on the way/i);
   await context.close();
 });
+
+test('home menu: first visit lights each option in turn once, then never again; reduced motion gets none', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.goto(env.base + '/index.html');
+  await page.waitForSelector('#options-container:not(.hidden)');
+  await page.evaluate(() => document.querySelector('#options-container').scrollIntoView({ block: 'center' }));
+  const seen = new Set();
+  for (let i = 0; i < 16; i++) {
+    await page.waitForTimeout(250);
+    (await page.evaluate(() => [...document.querySelectorAll('.k-option-card')].findIndex(c => c.classList.contains('k-nudge')))) >= 0 && seen.add(await page.evaluate(() => [...document.querySelectorAll('.k-option-card')].findIndex(c => c.classList.contains('k-nudge'))));
+  }
+  assert.ok(seen.size >= 4, 'all four options were highlighted in turn, saw ' + [...seen]);
+  await page.reload(); await page.waitForSelector('#options-container:not(.hidden)');
+  await page.waitForTimeout(1500);
+  assert.equal(await page.locator('.k-nudge').count(), 0, 'does not repeat on the next visit');
+  await context.close();
+  const rm = await env.browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' });
+  const p2 = await rm.newPage(); await p2.goto(env.base + '/index.html'); await p2.waitForSelector('#options-container:not(.hidden)');
+  await p2.waitForTimeout(1500);
+  assert.equal(await p2.locator('.k-nudge').count(), 0);
+  assert.equal(await p2.evaluate(() => localStorage.getItem('kyt_home_nudged')), null);
+  await rm.close();
+});
