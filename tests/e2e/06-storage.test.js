@@ -138,3 +138,21 @@ test('the home page and the trip editor both link to Back up and restore', async
   assert.ok(await page.locator('[data-kyt-backup]').count() >= 1);
   await context.close();
 });
+
+test('every page carries one feedback link to info@vividnova.com, added by the single js/footer.js', async () => {
+  const fsx = require('node:fs'), pth = require('node:path');
+  const root = pth.resolve(__dirname, '..', '..');
+  const pages = fsx.readdirSync(root).filter(f => f.endsWith('.html'));
+  assert.ok(pages.length >= 7);
+  assert.ok(fsx.readFileSync(pth.join(root, 'sw.js'), 'utf8').includes('./js/footer.js'), 'footer.js must be in the service worker shell');
+  for (const f of pages) {
+    const { context, page } = await newPhone(env.browser);
+    await page.goto(env.base + '/' + f);
+    await page.waitForSelector('#kyt-feedback-footer a');
+    assert.equal(await page.locator('#kyt-feedback-footer').count(), 1, f);
+    const href = await page.locator('#kyt-feedback-footer a').getAttribute('href');
+    assert.match(href, /^mailto:info@vividnova\.com\?subject=KYT%20feedback&body=/, f);
+    assert.ok(decodeURIComponent(href).includes(f), `${f}: the page name should be in the message`);
+    await context.close();
+  }
+});

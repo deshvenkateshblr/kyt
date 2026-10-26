@@ -256,3 +256,7 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - Roadmap §3.4 still describes the target: one `KYT.storage` repository, media as Blobs, and the native app archive. The single-trip export (Export Trip) still leaves out photos and tickets; the new backup includes them.
     - E2E suite: 94 tests (`tests/e2e/06-storage.test.js` is new). The passport strength-panel test got a short wait, because it raced the async toggle event.
 
+35. **Feedback link on every page (`js/footer.js`, service worker cache `kyt-v69`)**
+    - One script adds a "Send feedback" mail link (to `info@vividnova.com`, with a subject and the page name) at the foot of every page. To change the address, edit `FEEDBACK_EMAIL` in that file. A new page gets the link by including the script.
+    - E2E suite: 95 tests.
+
