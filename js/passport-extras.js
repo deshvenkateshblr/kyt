@@ -851,7 +851,543 @@ window.PassportExtras = (function () {
     };
   }
 
+  // ── Explorer Map Modal & High-Res Poster ──────────────────────────────────────────────────
+  const MAP_BOUNDS = { minLng: 68.0, maxLng: 97.5, minLat: 7.5, maxLat: 37.5 };
+  const COS_LAT_REF = Math.cos(22.5 * Math.PI / 180);
+  const SPAN_LNG_DEG = (MAP_BOUNDS.maxLng - MAP_BOUNDS.minLng) * COS_LAT_REF;
+  const SPAN_LAT_DEG = (MAP_BOUNDS.maxLat - MAP_BOUNDS.minLat);
+
+  function getMapProjection(W, H, pad) {
+    pad = pad || { top: 40, bottom: 40, left: 30, right: 30 };
+    const mapW = W - pad.left - pad.right;
+    const mapH = H - pad.top - pad.bottom;
+    const scale = Math.min(mapW / SPAN_LNG_DEG, mapH / SPAN_LAT_DEG);
+    const renderW = SPAN_LNG_DEG * scale;
+    const renderH = SPAN_LAT_DEG * scale;
+    const offsetX = pad.left + (mapW - renderW) / 2;
+    const offsetY = pad.top + (mapH - renderH) / 2;
+    return function project(lng, lat) {
+      const x = offsetX + (lng - MAP_BOUNDS.minLng) * COS_LAT_REF * scale;
+      const y = offsetY + (MAP_BOUNDS.maxLat - lat) * scale;
+      return [x, y];
+    };
+  }
+
+  function drawMapLandmass(ctx, project, opts = {}) {
+    const geojson = window.INDIA_GEOJSON;
+    if (!geojson || !geojson.features || !geojson.features.length) return;
+    const polys = geojson.features[0].geometry.coordinates;
+
+    ctx.save();
+    if (opts.shadowBlur) {
+      ctx.shadowColor = opts.shadowColor || 'rgba(37, 99, 235, 0.25)';
+      ctx.shadowBlur = opts.shadowBlur;
+    }
+
+    polys.forEach(ringList => {
+      ringList.forEach(ring => {
+        if (!ring || !ring.length) return;
+        ctx.beginPath();
+        const [x0, y0] = project(ring[0][0], ring[0][1]);
+        ctx.moveTo(x0, y0);
+        for (let i = 1; i < ring.length; i++) {
+          const [xi, yi] = project(ring[i][0], ring[i][1]);
+          ctx.lineTo(xi, yi);
+        }
+        ctx.closePath();
+        ctx.fillStyle = opts.landFill || '#132044';
+        ctx.fill();
+        ctx.strokeStyle = opts.landStroke || '#2563eb';
+        ctx.lineWidth = opts.landStrokeWidth || 1.6;
+        ctx.stroke();
+      });
+    });
+    ctx.restore();
+  }
+
+  function drawMapGrid(ctx, W, H, step = 60) {
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.035)';
+    ctx.lineWidth = 1;
+    for (let x = 0; x < W; x += step) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, H);
+      ctx.stroke();
+    }
+    for (let y = 0; y < H; y += step) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(W, y);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  let mapModalInitialized = false;
+  let activeMapFilter = 'visited';
+  let activeHoveredCity = null;
+
+  function openMapModal(all) {
+    const modal = document.getElementById('explorer-map-modal');
+    if (!modal) return;
+
+    const visited = all.filter(c => c.visited);
+    const totalCount = all.length;
+    const visitedCount = visited.length;
+    const pct = totalCount > 0 ? Math.round((visitedCount / totalCount) * 100) : 0;
+
+    // Update Header & Counts
+    const subtitleEl = document.getElementById('map-modal-subtitle');
+    if (subtitleEl) {
+      subtitleEl.textContent = `${visitedCount} of ${totalCount} destinations stamped • ${pct}% of India explored`;
+    }
+    const countVisitedEl = document.getElementById('map-count-visited');
+    if (countVisitedEl) countVisitedEl.textContent = visitedCount;
+    const countTotalEl = document.getElementById('map-count-total');
+    if (countTotalEl) countTotalEl.textContent = totalCount;
+
+    // Prepare full city list with coordinates and visited flag
+    const mappedCities = all.map(c => {
+      const orig = src(c);
+      return {
+        ...orig,
+        visited: !!c.visited,
+        date: c.date || ''
+      };
+    }).filter(c => typeof c.lat === 'number' && typeof c.lng === 'number');
+
+    const canvas = document.getElementById('explorer-map-canvas');
+    const container = document.getElementById('map-canvas-container');
+    const tooltip = document.getElementById('map-city-tooltip');
+    if (!canvas || !container) return;
+
+    // Set canvas internal resolution
+    const W = 900, H = 1100;
+    canvas.width = W;
+    canvas.height = H;
+
+    const proj = getMapProjection(W, H, { top: 50, bottom: 50, left: 40, right: 40 });
+
+    // Precalculate projected coords
+    mappedCities.forEach(c => {
+      const [px, py] = proj(c.lng, c.lat);
+      c._px = px;
+      c._py = py;
+    });
+
+    function render() {
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, W, H);
+
+      // Deep luxury navy gradient
+      const bg = ctx.createLinearGradient(0, 0, W, H);
+      bg.addColorStop(0, '#091026');
+      bg.addColorStop(0.5, '#0d1838');
+      bg.addColorStop(1, '#070d1e');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, W, H);
+
+      // Grid texture
+      drawMapGrid(ctx, W, H, 55);
+
+      // Survey of India Vector Landmass
+      drawMapLandmass(ctx, proj, {
+        landFill: '#132044',
+        landStroke: '#38bdf8',
+        landStrokeWidth: 1.6,
+        shadowBlur: 25,
+        shadowColor: 'rgba(37, 99, 235, 0.35)'
+      });
+
+      // Draw unvisited dots first (if in 'all' view)
+      if (activeMapFilter === 'all') {
+        mappedCities.filter(c => !c.visited).forEach(c => {
+          ctx.beginPath();
+          ctx.arc(c._px, c._py, 3, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(148, 163, 184, 0.45)';
+          ctx.fill();
+        });
+      }
+
+      // Draw visited pins
+      mappedCities.filter(c => c.visited).forEach(c => {
+        // Outer soft glow
+        ctx.beginPath();
+        ctx.arc(c._px, c._py, 9, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(245, 158, 11, 0.28)';
+        ctx.fill();
+
+        // Pin core
+        ctx.beginPath();
+        ctx.arc(c._px, c._py, 4.5, 0, Math.PI * 2);
+        ctx.fillStyle = '#fbbf24';
+        ctx.fill();
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 1.6;
+        ctx.stroke();
+      });
+
+      // Highlight active hovered/selected pin
+      if (activeHoveredCity) {
+        const c = activeHoveredCity;
+        ctx.beginPath();
+        ctx.arc(c._px, c._py, 16, 0, Math.PI * 2);
+        ctx.fillStyle = c.visited ? 'rgba(245, 158, 11, 0.35)' : 'rgba(148, 163, 184, 0.35)';
+        ctx.fill();
+        ctx.strokeStyle = c.visited ? 'rgba(251, 191, 36, 0.7)' : 'rgba(203, 213, 225, 0.7)';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(c._px, c._py, 6, 0, Math.PI * 2);
+        ctx.fillStyle = c.visited ? '#f59e0b' : '#94a3b8';
+        ctx.fill();
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Subtle floating text label
+        ctx.save();
+        ctx.font = '700 13px "Plus Jakarta Sans", sans-serif';
+        ctx.fillStyle = '#ffffff';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
+        ctx.shadowBlur = 6;
+        ctx.textAlign = c._px > W / 2 ? 'right' : 'left';
+        const lx = c._px > W / 2 ? c._px - 14 : c._px + 14;
+        ctx.fillText(c.name, lx, c._py + 5);
+        ctx.restore();
+      }
+    }
+
+    function showTooltip(city, clientX, clientY) {
+      if (!tooltip || !city) return;
+      activeHoveredCity = city;
+      render();
+
+      const nameEl = document.getElementById('map-tooltip-name');
+      const stateEl = document.getElementById('map-tooltip-state');
+      const badgeEl = document.getElementById('map-tooltip-badge');
+      const notesEl = document.getElementById('map-tooltip-notes');
+      const btnView = document.getElementById('map-tooltip-btn-view');
+
+      if (nameEl) nameEl.textContent = city.name;
+      if (stateEl) stateEl.textContent = city.state || '';
+      if (badgeEl) {
+        if (city.visited) {
+          badgeEl.textContent = '✓ Stamped' + (city.date ? ' • ' + city.date : '');
+          badgeEl.className = 'px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
+        } else {
+          badgeEl.textContent = 'Unvisited';
+          badgeEl.className = 'px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-800 text-slate-400 border border-slate-700';
+        }
+      }
+      if (notesEl) {
+        notesEl.textContent = city.notes || (city.state ? `Explore attractions and experiences in ${city.name}, ${city.state}.` : '');
+      }
+
+      if (btnView) {
+        btnView.onclick = () => {
+          tooltip.classList.add('hidden');
+          if (window.KYT && window.KYT.ui && window.KYT.ui.cityDetail) {
+            window.KYT.ui.cityDetail.open(city.id, true);
+          }
+        };
+      }
+
+      // Position tooltip clamped within container
+      const containerRect = container.getBoundingClientRect();
+      const tipW = 280;
+      const tipH = 150;
+      let left = clientX - containerRect.left + 15;
+      let top = clientY - containerRect.top + 15;
+
+      if (left + tipW > containerRect.width - 15) {
+        left = clientX - containerRect.left - tipW - 15;
+      }
+      if (left < 10) left = 10;
+      if (top + tipH > containerRect.height - 15) {
+        top = clientY - containerRect.top - tipH - 15;
+      }
+      if (top < 10) top = 10;
+
+      tooltip.style.left = `${left}px`;
+      tooltip.style.top = `${top}px`;
+      tooltip.classList.remove('hidden');
+    }
+
+    function hideTooltip() {
+      if (tooltip) tooltip.classList.add('hidden');
+      if (activeHoveredCity) {
+        activeHoveredCity = null;
+        render();
+      }
+    }
+
+    function handlePointer(e) {
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+      const x = (e.clientX - rect.left) * scaleX;
+      const y = (e.clientY - rect.top) * scaleY;
+
+      const candidates = activeMapFilter === 'all'
+        ? mappedCities
+        : mappedCities.filter(c => c.visited);
+
+      let closest = null;
+      let minDist = 22; // Hit threshold in canvas px
+
+      for (const c of candidates) {
+        const d = Math.hypot(c._px - x, c._py - y);
+        if (d < minDist) {
+          minDist = d;
+          closest = c;
+        }
+      }
+
+      if (closest) {
+        showTooltip(closest, e.clientX, e.clientY);
+      } else if (e.type === 'click') {
+        hideTooltip();
+      }
+    }
+
+    // Bind event handlers once
+    if (!mapModalInitialized) {
+      mapModalInitialized = true;
+
+      const btnClose = document.getElementById('btn-close-map-modal');
+      if (btnClose) {
+        btnClose.onclick = () => {
+          modal.classList.add('hidden');
+          hideTooltip();
+        };
+      }
+
+      modal.onclick = (e) => {
+        if (e.target === modal) {
+          modal.classList.add('hidden');
+          hideTooltip();
+        }
+      };
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+          modal.classList.add('hidden');
+          hideTooltip();
+        }
+      });
+
+      const btnFilterVisited = document.getElementById('map-filter-visited');
+      const btnFilterAll = document.getElementById('map-filter-all');
+
+      if (btnFilterVisited && btnFilterAll) {
+        btnFilterVisited.onclick = () => {
+          activeMapFilter = 'visited';
+          btnFilterVisited.className = 'px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 shadow transition-all cursor-pointer';
+          btnFilterAll.className = 'px-3 py-1.5 rounded-lg text-slate-300 hover:text-white transition-all cursor-pointer';
+          hideTooltip();
+          render();
+        };
+
+        btnFilterAll.onclick = () => {
+          activeMapFilter = 'all';
+          btnFilterAll.className = 'px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 shadow transition-all cursor-pointer';
+          btnFilterVisited.className = 'px-3 py-1.5 rounded-lg text-slate-300 hover:text-white transition-all cursor-pointer';
+          hideTooltip();
+          render();
+        };
+      }
+
+      const btnDownload = document.getElementById('btn-download-map-poster');
+      if (btnDownload) {
+        btnDownload.onclick = () => {
+          exportMapPoster(all);
+        };
+      }
+
+      canvas.addEventListener('mousemove', (e) => {
+        if (e.buttons === 0) handlePointer(e);
+      });
+      canvas.addEventListener('pointerdown', handlePointer);
+      canvas.addEventListener('click', handlePointer);
+    }
+
+    // Open modal and render
+    modal.classList.remove('hidden');
+    hideTooltip();
+    render();
+    if (window.lucide) lucide.createIcons();
+  }
+
+  async function exportMapPoster(all) {
+    const visited = all.filter(c => c.visited);
+    const totalCount = all.length;
+    const visitedCount = visited.length;
+    const pct = totalCount > 0 ? Math.round((visitedCount / totalCount) * 100) : 0;
+    const pers = persona(visited);
+
+    let savedName = '';
+    try {
+      const inc = localStorage.getItem('kyt_share_inc_name');
+      if (inc !== 'false') savedName = (localStorage.getItem('kyt_share_name') || '').trim();
+    } catch (e) {}
+
+    const posterCanvas = document.createElement('canvas');
+    const W = 1200, H = 1500;
+    posterCanvas.width = W;
+    posterCanvas.height = H;
+    const ctx = posterCanvas.getContext('2d');
+
+    // Load fonts
+    try {
+      if (document.fonts && document.fonts.load) {
+        await Promise.all([
+          document.fonts.load('800 36px "Plus Jakarta Sans"'),
+          document.fonts.load('700 24px "Plus Jakarta Sans"'),
+          document.fonts.load('800 28px "Doto"')
+        ]);
+      }
+    } catch (e) {}
+
+    // Background luxury gradient
+    const bg = ctx.createLinearGradient(0, 0, W, H);
+    bg.addColorStop(0, '#091026');
+    bg.addColorStop(0.5, '#0d1838');
+    bg.addColorStop(1, '#070d1e');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    // Lat/lng subtle grid texture
+    drawMapGrid(ctx, W, H, 60);
+
+    // Decorative luxury border frame
+    ctx.strokeStyle = 'rgba(245, 158, 11, 0.3)';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(30, 30, W - 60, H - 60);
+
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(36, 36, W - 72, H - 72);
+
+    // Header Branding
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#f59e0b';
+    ctx.font = '800 20px "Plus Jakarta Sans", sans-serif';
+    ctx.letterSpacing = '3px';
+    ctx.fillText('INDIA EXPLORER PASSPORT', W / 2, 85);
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '800 42px "Plus Jakarta Sans", sans-serif';
+    ctx.letterSpacing = '0px';
+    const mainTitle = savedName ? `${savedName}'s Travel Map` : 'My India Travel Map';
+    ctx.fillText(mainTitle, W / 2, 138);
+
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '600 20px "Plus Jakarta Sans", sans-serif';
+    ctx.fillText(`${visitedCount} of ${totalCount} Destinations Stamped · ${pct}% Explored`, W / 2, 175);
+
+    // Map Projection
+    const proj = getMapProjection(W, H, { top: 220, bottom: 150, left: 90, right: 90 });
+
+    // Survey of India Vector Landmass
+    drawMapLandmass(ctx, proj, {
+      landFill: '#15244f',
+      landStroke: '#38bdf8',
+      landStrokeWidth: 2,
+      shadowBlur: 35,
+      shadowColor: 'rgba(37, 99, 235, 0.35)'
+    });
+
+    // Mapped cities with coordinates
+    const mapped = visited.map(c => {
+      const orig = src(c);
+      const [px, py] = proj(orig.lng, orig.lat);
+      return { ...orig, _px: px, _py: py };
+    }).filter(c => typeof c.lat === 'number' && typeof c.lng === 'number');
+
+    // Draw city pins
+    mapped.forEach(c => {
+      // Glow
+      ctx.beginPath();
+      ctx.arc(c._px, c._py, 12, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(245, 158, 11, 0.28)';
+      ctx.fill();
+
+      // Pin core
+      ctx.beginPath();
+      ctx.arc(c._px, c._py, 5.5, 0, Math.PI * 2);
+      ctx.fillStyle = '#fbbf24';
+      ctx.fill();
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 1.8;
+      ctx.stroke();
+
+      // Label
+      ctx.save();
+      ctx.font = '700 14px "Plus Jakarta Sans", sans-serif';
+      ctx.fillStyle = '#ffffff';
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
+      ctx.shadowBlur = 6;
+      ctx.textAlign = c._px > W / 2 ? 'left' : 'right';
+      const lx = c._px > W / 2 ? c._px + 12 : c._px - 12;
+      ctx.fillText(c.name, lx, c._py + 5);
+      ctx.restore();
+    });
+
+    // Persona Stamp Badge (Bottom Left)
+    ctx.save();
+    ctx.translate(65, H - 105);
+    ctx.fillStyle = 'rgba(15, 23, 42, 0.75)';
+    ctx.strokeStyle = 'rgba(245, 158, 11, 0.4)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    if (ctx.roundRect) ctx.roundRect(0, 0, 260, 56, 16);
+    else ctx.rect(0, 0, 260, 56);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#f59e0b';
+    ctx.font = '800 13px "Plus Jakarta Sans", sans-serif';
+    ctx.fillText('EXPLORER STATUS', 18, 22);
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '800 16px "Plus Jakarta Sans", sans-serif';
+    ctx.fillText(pers.title || 'India Explorer', 18, 44);
+    ctx.restore();
+
+    // Footer (Bottom Center / Right)
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#64748b';
+    ctx.font = '600 15px "Plus Jakarta Sans", sans-serif';
+    ctx.fillText('Survey of India Accurate Boundary · Stamped with KYT · vividnova.com/kyt', W / 2, H - 50);
+
+    const toBlob = () => new Promise(res => posterCanvas.toBlob(res, 'image/png'));
+    const blob = await toBlob();
+    const file = new File([blob], 'my-india-travel-map.png', { type: 'image/png' });
+
+    try {
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          title: mainTitle,
+          text: `Check out my India Explorer Map on KYT! ${visitedCount} destinations stamped. vividnova.com/kyt`
+        });
+      } else {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'my-india-travel-map.png';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }
+    } catch (e) {}
+  }
+
   return { init, apply, attrs, filters, activeCount, openSheet, closeSheet, resetFilters, removeChip, renderChips,
            renderGrouped, toggleState, openShare, drawCard, drawSeal, persona, stats, meters, renderStrength, ready, LEVELS,
-           openQuestsSheet, closeQuestsSheet, getActiveQuest, setActiveQuest, getTopQuests };
+           openQuestsSheet, closeQuestsSheet, getActiveQuest, setActiveQuest, getTopQuests,
+           openMapModal, exportMapPoster };
 })();

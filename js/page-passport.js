@@ -272,6 +272,10 @@
       const t = e.target.closest('[data-state-toggle]');
       if (t) { PassportExtras.toggleState(t.dataset.stateToggle); renderCities(); }
       });
+      const btnOpenMap = document.getElementById('btn-open-map-view');
+      if (btnOpenMap) {
+        btnOpenMap.addEventListener('click', () => PassportExtras.openMapModal(window.PassportStore.getPassportCities()));
+      }
       document.getElementById('btn-share-passport').addEventListener('click', () => PassportExtras.openShare(window.PassportStore.getPassportCities()));
 
       // Initial render

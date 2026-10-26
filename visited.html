@@ -82,7 +82,11 @@
 
             <div id="passport-strength" class="mt-5 max-w-md lg:max-w-none w-full bg-white/5 border border-white/10 rounded-2xl p-3.5 lg:p-5 lg:mt-0 lg:col-start-2 lg:row-start-1 lg:row-span-2"></div>
 
-            <div class="mt-4 lg:col-start-1 lg:row-start-2">
+            <div class="mt-4 flex flex-wrap items-center gap-3 lg:col-start-1 lg:row-start-2">
+              <button type="button" id="btn-open-map-view" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-900 text-amber-300 border border-amber-400/40 text-sm font-extrabold shadow-md transition-all hover:scale-[1.02] active:scale-95 cursor-pointer">
+                <i data-lucide="map" class="w-4 h-4 text-amber-300"></i>
+                <span>Your Explorer Map</span>
+              </button>
               <button type="button" id="btn-share-passport" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-900 text-sm font-extrabold shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
                 <i data-lucide="share-2" class="w-4 h-4"></i>
                 <span>Share my passport</span>
@@ -263,16 +267,89 @@
       </div>
     </div>
 
+    <!-- Explorer Map Modal -->
+    <div id="explorer-map-modal" class="hidden fixed inset-0 z-[96] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 md:p-6" role="dialog" aria-modal="true" aria-labelledby="map-modal-title">
+      <div class="bg-slate-900 border border-slate-800 text-white rounded-3xl w-full max-w-4xl h-[92vh] max-h-[880px] flex flex-col shadow-2xl overflow-hidden relative">
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-slate-800 bg-slate-900/95 shrink-0">
+          <div class="flex items-center gap-2.5 sm:gap-3">
+            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-amber-400/15 border border-amber-400/30 flex items-center justify-center text-amber-300 shrink-0">
+              <i data-lucide="map" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+            </div>
+            <div>
+              <h2 id="map-modal-title" class="text-base sm:text-lg font-black tracking-tight text-white flex items-center gap-2">
+                Your Explorer Map
+              </h2>
+              <p id="map-modal-subtitle" class="text-xs text-slate-400 font-medium truncate">
+                Survey of India accurate vector outline
+              </p>
+            </div>
+          </div>
+          <button type="button" id="btn-close-map-modal" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-400 hover:text-white transition-colors cursor-pointer" aria-label="Close modal">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- Controls / Filter bar -->
+        <div class="px-4 sm:px-6 py-2.5 sm:py-3 bg-slate-900/80 border-b border-slate-800/80 flex flex-wrap items-center justify-between gap-2.5 shrink-0">
+          <div class="flex items-center bg-slate-950/60 p-1 rounded-xl border border-slate-800 text-xs font-bold">
+            <button type="button" id="map-filter-visited" class="px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 shadow transition-all cursor-pointer">
+              Visited Only (<span id="map-count-visited">0</span>)
+            </button>
+            <button type="button" id="map-filter-all" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white transition-all cursor-pointer">
+              All Destinations (<span id="map-count-total">159</span>)
+            </button>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button type="button" id="btn-download-map-poster" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-extrabold shadow-sm transition-all hover:scale-[1.02] active:scale-95 cursor-pointer">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i>
+              <span>Download Map Poster</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Map Canvas & Interactive Viewport -->
+        <div id="map-canvas-container" class="relative flex-1 min-h-0 w-full overflow-hidden bg-[#070d1e] flex items-center justify-center p-2 sm:p-3">
+          <canvas id="explorer-map-canvas" class="rounded-2xl shadow-xl transition-all cursor-crosshair" style="width: auto; height: auto; max-width: 100%; max-height: 100%; aspect-ratio: 900 / 1100; object-fit: contain;"></canvas>
+
+          <!-- Interactive City Tooltip / Card -->
+          <div id="map-city-tooltip" class="hidden absolute z-20 pointer-events-auto bg-slate-900/95 border border-amber-400/40 rounded-2xl p-3 shadow-2xl backdrop-blur-md max-w-xs transition-all">
+            <div class="flex items-start justify-between gap-2 mb-1.5">
+              <div>
+                <h4 id="map-tooltip-name" class="text-sm font-black text-white">City Name</h4>
+                <p id="map-tooltip-state" class="text-[11px] font-semibold text-slate-400">State Name</p>
+              </div>
+              <span id="map-tooltip-badge" class="px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Visited</span>
+            </div>
+            <p id="map-tooltip-notes" class="text-xs text-slate-300 line-clamp-2 mb-2.5 font-medium"></p>
+            <div class="flex items-center gap-2">
+              <button type="button" id="map-tooltip-btn-view" class="flex-1 py-1.5 px-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-all text-center cursor-pointer">
+                Explore Destination →
+              </button>
+            </div>
+          </div>
+
+          <!-- Bottom hint overlay -->
+          <div class="absolute bottom-3 left-4 pointer-events-none hidden sm:flex items-center gap-2 px-2.5 py-1 rounded-lg bg-slate-950/70 border border-slate-800 text-[11px] text-slate-400 backdrop-blur-xs">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+            <span>Tap any pin to view details</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="./data/cities.js?v=1792940000"></script>
     <script src="./data/quests.js?v=1792065005"></script>
     <script src="./data/distance_matrix.js?v=1791377680"></script>
     <script src="./data/city_videos_data.js?v=1791377680"></script>
+    <script src="./data/india-map.js?v=1792940000"></script>
     <script src="./js/passport-store.js?v=1792400000"></script>
-    <script src="./js/passport-extras.js?v=1792065010"></script>
+    <script src="./js/passport-extras.js?v=1792940001"></script>
     <script src="./js/backup.js?v=1792700000"></script>
     <script src="./js/ui-components.js?v=1792150000"></script>
     <script src="./js/header.js?v=1791377680"></script>
-    <script src="./js/page-passport.js?v=1792700000"></script>
-    <script src="./js/footer.js?v=1792800000"></script>
+    <script src="./js/page-passport.js?v=1792940000"></script>
+    <script src="./js/footer.js?v=1792940001"></script>
 </body>
 </html>
