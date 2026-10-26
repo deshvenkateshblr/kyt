@@ -190,7 +190,7 @@ window.KYT.social = (() => {
         <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 leading-tight max-w-3xl">${tripName}</h1>
         <p class="text-slate-500 font-semibold text-base md:text-lg mb-10">${dateRangeStr}&nbsp;&nbsp;·&nbsp;&nbsp;${days.length} Days&nbsp;&nbsp;·&nbsp;&nbsp;${totalPhotos} Photos</p>
         <div class="mt-auto flex flex-col items-center opacity-60 text-xs text-slate-400">
-          <p class="font-semibold mb-1">vividnova.com/KYT/</p>
+          <p class="font-semibold mb-1">vividnova.com/kyt/</p>
           <p class="max-w-sm text-center leading-relaxed">No accounts, no tracking — your data never leaves your browser.</p>
         </div>
       </div>`;
@@ -287,7 +287,7 @@ window.KYT.social = (() => {
         pageMargins: [50, 70, 50, 60],
         info: { title: `${data.tripName} — Memory Journal` },
         footer: (currentPage, pageCount) => ({
-          text: `KYT · Know Your Travel · vividnova.com/KYT/ · Page ${currentPage} of ${pageCount}`,
+          text: `KYT · Know Your Travel · vividnova.com/kyt/ · Page ${currentPage} of ${pageCount}`,
           alignment: 'center',
           fontSize: 8,
           color: '#94a3b8',
@@ -328,7 +328,7 @@ window.KYT.social = (() => {
       docDefinition.content.push({ text: `Memory Journal  ·  ${dateRangeStr}  ·  ${allDates.length} Days  ·  ${totalPhotos} Photos`, style: 'subheader' });
       docDefinition.content.push({
         text: [
-          { text: 'vividnova.com/KYT/\n', link: 'https://vividnova.com/KYT/', color: '#3B82F6', decoration: 'underline' },
+          { text: 'vividnova.com/kyt/\n', link: 'https://vividnova.com/kyt/', color: '#3B82F6', decoration: 'underline' },
           { text: 'No accounts, no tracking — your data never leaves your browser.', color: '#94a3b8', fontSize: 9, italics: true }
         ],
         alignment: 'center', margin: [40, 0, 40, 60]

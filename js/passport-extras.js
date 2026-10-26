@@ -843,7 +843,7 @@ window.PassportExtras = (function () {
     overlay.querySelector('#sh-save').onclick = download;
     overlay.querySelector('#sh-share').onclick = async () => {
       const file = new File([await toBlob()], 'my-india-kyt.png', { type: 'image/png' });
-      const text = `${visited.length} cities stamped on my India Explorer Passport (${persona(visited).title} level). Your turn: how much of India have you seen? vividnova.com/KYT`;
+      const text = `${visited.length} cities stamped on my India Explorer Passport (${persona(visited).title} level). Your turn: how much of India have you seen? vividnova.com/kyt`;
       try {
         if (navigator.canShare && navigator.canShare({ files: [file] })) await navigator.share({ files: [file], title: 'My India so far', text });
         else await download();
