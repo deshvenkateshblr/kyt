@@ -156,3 +156,18 @@ test('every page carries one feedback link to info@vividnova.com, added by the s
     await context.close();
   }
 });
+
+test('footer wording, and the backup sheet reports whether storage works on this device', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.goto(env.base + '/visited.html');
+  await page.waitForSelector('#kyt-feedback-footer');
+  assert.equal((await page.locator('#kyt-feedback-footer').innerText()).trim(), 'Questions, comments and feedback, write to info@vividnova.com');
+  await page.evaluate(() => PassportStore.unlockCity('agra'));
+  await page.reload(); await page.waitForSelector('#cards-container h3');
+  assert.equal(await page.evaluate(() => Object.keys(JSON.parse(localStorage.getItem('kyt_passport'))).join()), 'agra', 'stamp survives a reload');
+  await page.evaluate(() => KYT.backup.openSheet());
+  await page.waitForSelector('#kyt-backup-sheet');
+  const txt = await page.locator('#kyt-backup-sheet').innerText();
+  assert.match(txt, /This device check[\s\S]*✓ Settings and passport storage works[\s\S]*✓ Trip storage works[\s\S]*1 city stamped here/);
+  await context.close();
+});

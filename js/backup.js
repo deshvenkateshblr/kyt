@@ -66,6 +66,30 @@ window.KYT.backup = (() => {
     return out;
   }
 
+  // ── "does storage work on this device?" ────────────────────────────────────
+  async function selfTest() {
+    const out = { local: false, idb: false, passportCities: 0, mode: 'a browser tab' };
+    try { localStorage.setItem('kyt_probe', '1'); out.local = localStorage.getItem('kyt_probe') === '1'; localStorage.removeItem('kyt_probe'); } catch (e) { /* blocked or full */ }
+    try {
+      out.idb = await new Promise(resolve => {
+        const r = indexedDB.open('kyt_probe', 1);
+        r.onupgradeneeded = () => r.result.createObjectStore('p');
+        r.onerror = () => resolve(false);
+        r.onsuccess = () => {
+          const db = r.result;
+          try {
+            const tx = db.transaction('p', 'readwrite'); tx.objectStore('p').put('1', 'k');
+            tx.oncomplete = () => { db.close(); indexedDB.deleteDatabase('kyt_probe'); resolve(true); };
+            tx.onerror = () => { db.close(); resolve(false); };
+          } catch (e) { db.close(); resolve(false); }
+        };
+      });
+    } catch (e) { /* unsupported */ }
+    out.passportCities = Object.keys(readJson(KEYS.passport, {})).length;
+    if ((window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone) out.mode = 'the installed app';
+    return out;
+  }
+
   // ── build / download ──────────────────────────────────────────────────────
   async function buildBackup() {
     const backup = {
@@ -157,6 +181,7 @@ window.KYT.backup = (() => {
 
   async function openSheet() {
     const st = await storageStatus();
+    const t = await selfTest();
     const last = readLocal(KEYS.lastBackup);
     const lastTxt = last ? `Last backup: ${new Date(last).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })}` : 'No backup yet';
     const prot = st.persisted === null ? '' : (st.persisted ? 'Protected from automatic cleanup.' : 'Not yet protected from automatic cleanup by the browser, so a backup matters.');
@@ -164,6 +189,10 @@ window.KYT.backup = (() => {
       <h2 style="margin:0 0 6px;font-size:20px;font-weight:900">Back up &amp; restore</h2>
       <p style="margin:0 0 4px;font-size:14px;line-height:1.5;color:#475569">KYT keeps everything on this device only: no account, no cloud. Clearing browser data, switching phones or running out of space can erase it.</p>
       <p style="margin:0 0 12px;font-size:14px;line-height:1.5;color:#475569">One file holds your passport, virtual trips and current trip, with photos and tickets.</p>
+      <p style="margin:0 0 6px;font-size:12.5px;line-height:1.6;color:#334155"><strong>This device check</strong><br>
+        ${t.local ? '✓' : '✗'} Settings and passport storage ${t.local ? 'works' : 'is blocked or full'} · ${t.idb ? '✓' : '✗'} Trip storage ${t.idb ? 'works' : 'is blocked or full'}<br>
+        Running as ${esc(t.mode)} · ${t.passportCities} ${t.passportCities === 1 ? 'city' : 'cities'} stamped here<br>
+        <span style="color:#64748B">The installed app and the browser keep separate data. Use a backup to move between them.</span></p>
       <p style="margin:0;font-size:12.5px;font-weight:700;color:#64748B">${esc(lastTxt)}${prot ? ' · ' + esc(prot) : ''}</p>
       <div id="kyt-backup-msg" aria-live="polite" style="margin-top:10px;font-size:14px;font-weight:700;color:#047857"></div>
       <button type="button" id="kyt-backup-download" style="${PRIMARY}">Download backup</button>
@@ -223,5 +252,5 @@ window.KYT.backup = (() => {
     else bind();
   }
 
-  return { safeSet, requestPersistence, storageStatus, buildBackup, downloadBackup, restoreFromText, openSheet, confirmEndTrip, bind };
+  return { selfTest, safeSet, requestPersistence, storageStatus, buildBackup, downloadBackup, restoreFromText, openSheet, confirmEndTrip, bind };
 })();

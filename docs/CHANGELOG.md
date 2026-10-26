@@ -258,5 +258,5 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
 
 35. **Feedback link on every page (`js/footer.js`, service worker cache `kyt-v69`)**
     - One script adds a "Send feedback" mail link (to `info@vividnova.com`, with a subject and the page name) at the foot of every page. To change the address, edit `FEEDBACK_EMAIL` in that file. A new page gets the link by including the script.
-    - E2E suite: 95 tests.
+    - Footer text is "Questions, comments and feedback, write to info@vividnova.com". The backup sheet now has a "This device check" (does browser storage work, installed app or browser tab, cities stamped here), added while chasing a report of passport stamps not surviving between sessions on a phone. E2E suite: 96 tests.
 
