@@ -11,8 +11,6 @@ Last reviewed: 24 Oct 2026, against service worker cache `kyt-v53`.
 
 ---
 
-## Let us add a feedback email link to footer of all pages.
-
 ## The traveller's journey: what exists and what is missing
 
 | Stage | What the traveller asks | KYT today | Gap |

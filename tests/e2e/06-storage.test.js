@@ -138,3 +138,87 @@ test('the home page and the trip editor both link to Back up and restore', async
   assert.ok(await page.locator('[data-kyt-backup]').count() >= 1);
   await context.close();
 });
+
+test('every page carries one feedback link to info@vividnova.com, added by the single js/footer.js', async () => {
+  const fsx = require('node:fs'), pth = require('node:path');
+  const root = pth.resolve(__dirname, '..', '..');
+  const pages = fsx.readdirSync(root).filter(f => f.endsWith('.html'));
+  assert.ok(pages.length >= 7);
+  assert.ok(fsx.readFileSync(pth.join(root, 'sw.js'), 'utf8').includes('./js/footer.js'), 'footer.js must be in the service worker shell');
+  for (const f of pages) {
+    const { context, page } = await newPhone(env.browser);
+    await page.goto(env.base + '/' + f);
+    await page.waitForSelector('#kyt-feedback-footer a');
+    assert.equal(await page.locator('#kyt-feedback-footer').count(), 1, f);
+    const href = await page.locator('#kyt-feedback-footer a').first().getAttribute('href');
+    assert.match(href, /^mailto:info@vividnova\.com\?subject=KYT%20feedback&body=/, f);
+    assert.ok(decodeURIComponent(href).includes(f), `${f}: the page name should be in the message`);
+    await context.close();
+  }
+});
+
+test('footer wording, and the backup sheet reports whether storage works on this device', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.goto(env.base + '/visited.html');
+  await page.waitForSelector('#kyt-feedback-footer');
+  assert.match((await page.locator('#kyt-feedback-footer').innerText()).trim(), /^Questions, comments and feedback, write to info@vividnova\.com\n/);
+  await page.evaluate(() => PassportStore.unlockCity('agra'));
+  await page.reload(); await page.waitForSelector('#cards-container h3');
+  assert.equal(await page.evaluate(() => Object.keys(JSON.parse(localStorage.getItem('kyt_passport'))).join()), 'agra', 'stamp survives a reload');
+  await page.evaluate(() => KYT.backup.openSheet());
+  await page.waitForSelector('#kyt-backup-sheet');
+  const txt = await page.locator('#kyt-backup-sheet').innerText();
+  assert.match(txt, /This device check[\s\S]*✓ Settings and passport storage works[\s\S]*✓ Trip storage works[\s\S]*1 city stamped here/);
+  await context.close();
+});
+
+test('passport: floating counter appears after scrolling, counts live, and takes you back to the top', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.goto(env.base + '/visited.html');
+  await page.waitForSelector('#cards-container h3');
+  assert.equal(await page.locator('#passport-float').isVisible(), false, 'hidden while the header counter is on screen');
+  await page.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; window.scrollTo(0, 1500); });
+  await page.waitForSelector('#passport-float', { state: 'visible' });
+  assert.match(await page.locator('#passport-float').innerText(), /0\s*visited/);
+  await page.locator('[onclick^="markVisited"]').first().click();
+  await page.waitForFunction(() => /1\s*visited/.test(document.getElementById('passport-float').innerText));
+  await page.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; });
+  await page.click('#passport-float');
+  await page.waitForFunction(() => window.scrollY < 5);
+  await context.close();
+});
+
+test('installed app with no data explains that it is separate from Safari, once; home page warns before adding', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.addInitScript(() => { Object.defineProperty(navigator, 'standalone', { value: true }); });
+  await page.goto(env.base + '/index.html');
+  await page.waitForSelector('#kyt-fresh-notice');
+  assert.match(await page.locator('#kyt-fresh-notice').innerText(), /separate from Safari/);
+  await page.reload(); await page.waitForTimeout(800);
+  assert.equal(await page.locator('#kyt-fresh-notice').count(), 0, 'shown only once');
+  assert.match(await page.locator('.k-device-note').first().innerText(), /Already using KYT in Safari\?[\s\S]*Back up or restore your data/);
+  await context.close();
+});
+
+test('every page prints the app version, and it matches the service worker cache name', async () => {
+  const fsx = require('node:fs'), pth = require('node:path');
+  const root = pth.resolve(__dirname, '..', '..');
+  const sw = /CACHE_NAME = 'kyt-v(\d+)'/.exec(fsx.readFileSync(pth.join(root, 'sw.js'), 'utf8'))[1];
+  const { context, page } = await newPhone(env.browser);
+  for (const f of ['index.html', 'visited.html']) {
+    await page.goto(env.base + '/' + f);
+    await page.waitForSelector('#kyt-version');
+    assert.equal((await page.locator('#kyt-version').innerText()).match(/^KYT version (\d+)/)[1], sw, `${f}: footer version must equal sw.js (bump both together)`);
+  }
+  await context.close();
+});
+
+test('Refresh app clears the offline cache and service worker, then reloads', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.goto(env.base + '/index.html');
+  await page.waitForFunction(() => navigator.serviceWorker && navigator.serviceWorker.controller || true);
+  await page.evaluate(async () => { await caches.open('kyt-v1'); });
+  const [nav] = await Promise.all([page.waitForNavigation(), page.click('#kyt-refresh')]);
+  assert.equal(await page.evaluate(async () => (await caches.keys()).includes('kyt-v1')), false, 'old cache removed');
+  await context.close();
+});

@@ -10,6 +10,28 @@
       const btnClearSearch = document.getElementById('btn-clear-search');
       const resultsCountEl = document.getElementById('results-count');
 
+      // Floating counter + jump to top: visible once the hero has scrolled away, bottom right within thumb reach.
+      const floatBtn = document.createElement('button');
+      floatBtn.type = 'button'; floatBtn.id = 'passport-float';
+      floatBtn.style.cssText = 'position:fixed;left:14px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:70;display:none;align-items:center;gap:8px;padding:12px 16px;min-height:48px;border:0;border-radius:999px;background:#0F172A;color:#fff;font:800 15px system-ui,-apple-system,sans-serif;box-shadow:0 10px 24px rgba(15,23,42,.4);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .18s ease';
+      document.body.appendChild(floatBtn);
+      floatBtn.addEventListener('click', () => {
+        const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      });
+      let lastFloatCount = null;
+      function updateFloatingCounter(visited, total) {
+        floatBtn.innerHTML = `<span style="background:#22C55E;color:#052E16;border-radius:999px;padding:2px 9px;font-size:14px">${visited}</span><span>visited</span><span aria-hidden="true" style="font-size:18px;line-height:1">&uarr;</span>`;
+        floatBtn.setAttribute('aria-label', `${visited} of ${total} cities visited. Back to top.`);
+        if (lastFloatCount !== null && lastFloatCount !== visited && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+          floatBtn.style.transform = 'scale(1.12)'; setTimeout(() => { floatBtn.style.transform = ''; }, 180);
+        }
+        lastFloatCount = visited;
+      }
+      function placeFloat() { floatBtn.style.display = window.scrollY > 520 ? 'inline-flex' : 'none'; }
+      window.addEventListener('scroll', placeFloat, { passive: true });
+      placeFloat();
+
       window.unmarkVisited = function(cityId) {
       if (window.PassportStore.lockCity(cityId)) {
       renderCities();
@@ -63,6 +85,7 @@
       if (progressEl) {
       progressEl.textContent = `${progressPercent}% of India Explored (${visitedCount} of ${totalCitiesCount})`;
       }
+      updateFloatingCounter(visitedCount, totalCitiesCount);
       PassportExtras.renderStrength(document.getElementById('passport-strength'), allCities);
       const shareBtn = document.getElementById('btn-share-passport');
       if (shareBtn) { shareBtn.disabled = visitedCount === 0; shareBtn.title = visitedCount === 0 ? 'Stamp a city first' : ''; }
