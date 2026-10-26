@@ -79,7 +79,7 @@
       category: 'spiritual',
       cityIds: [
         'guwahati', 'kolkata', 'varanasi', 'madurai', 'kancheepuram',
-        'mysore', 'vijayawada', 'deoghar', 'gaya', 'srisailam'
+        'mysore', 'vijayawada', 'deoghar', 'gaya', 'srisailam', 'kolhapur'
       ]
     },
     {
@@ -133,7 +133,7 @@
       category: 'heritage',
       cityIds: [
         'pune', 'mahabaleshwar', 'lonavala', 'aurangabad', 'matheran',
-        'thanjavur'
+        'thanjavur', 'kolhapur', 'alibaug'
       ]
     },
     {
@@ -156,7 +156,7 @@
       cityIds: [
         'madurai', 'thanjavur', 'hampi', 'belur', 'halebidu',
         'badami', 'pattadakal', 'kancheepuram', 'mysore', 'tiruchirappalli',
-        'thrissur'
+        'thrissur', 'mahabalipuram'
       ]
     },
     {
@@ -239,7 +239,7 @@
       category: 'nature',
       cityIds: [
         'guwahati', 'shillong', 'cherrapunji', 'mawlynnong', 'tawang',
-        'ziro', 'majuli', 'kaziranga', 'gangtok', 'pelling'
+        'ziro', 'majuli', 'kaziranga', 'gangtok', 'pelling', 'kohima'
       ]
     },
     {
@@ -250,7 +250,7 @@
       category: 'nature',
       cityIds: [
         'ranthambore', 'jim-corbett', 'kaziranga', 'sundarbans', 'wayanad',
-        'bhimashankar'
+        'bhimashankar', 'thekkady', 'gir'
       ]
     },
     {

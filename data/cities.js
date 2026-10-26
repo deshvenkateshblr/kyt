@@ -137,7 +137,9 @@ window.KYT_CITIES = [
     "state": "Uttar Pradesh",
     "district": "Agra",
     "setting": "plains",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "easy",
     "code": "agr"
   },
@@ -299,14 +301,20 @@ window.KYT_CITIES = [
     "state": "Rajasthan",
     "district": "Jaipur",
     "setting": "plains",
-    "vibes": ["heritage", "foodie"],
+    "vibes": [
+      "heritage",
+      "foodie"
+    ],
     "effort": "easy",
     "code": "jai"
   },
   {
     "id": "goa",
     "setting": "coast",
-    "vibes": ["nature", "heritage"],
+    "vibes": [
+      "nature",
+      "heritage"
+    ],
     "effort": "easy",
     "code": "goa",
     "name": "Goa",
@@ -580,7 +588,9 @@ window.KYT_CITIES = [
     "state": "Kerala",
     "district": "Idukki",
     "setting": "hills",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "mun"
   },
@@ -745,7 +755,10 @@ window.KYT_CITIES = [
     "state": "Rajasthan",
     "district": "Udaipur",
     "setting": "plains",
-    "vibes": ["heritage", "nature"],
+    "vibes": [
+      "heritage",
+      "nature"
+    ],
     "effort": "easy",
     "code": "uda"
   },
@@ -890,7 +903,11 @@ window.KYT_CITIES = [
     "state": "Uttar Pradesh",
     "district": "Varanasi",
     "setting": "plains",
-    "vibes": ["spiritual", "heritage", "foodie"],
+    "vibes": [
+      "spiritual",
+      "heritage",
+      "foodie"
+    ],
     "effort": "easy",
     "code": "var"
   },
@@ -1053,7 +1070,10 @@ window.KYT_CITIES = [
     "state": "Delhi",
     "district": "Old Delhi",
     "setting": "plains",
-    "vibes": ["heritage", "foodie"],
+    "vibes": [
+      "heritage",
+      "foodie"
+    ],
     "effort": "easy",
     "code": "del"
   },
@@ -1193,7 +1213,10 @@ window.KYT_CITIES = [
     "state": "Maharashtra",
     "district": "Mumbai Suburban",
     "setting": "coast",
-    "vibes": ["heritage", "foodie"],
+    "vibes": [
+      "heritage",
+      "foodie"
+    ],
     "effort": "easy",
     "code": "mum"
   },
@@ -1331,7 +1354,10 @@ window.KYT_CITIES = [
     "state": "Kerala",
     "district": "Ernakulam",
     "setting": "coast",
-    "vibes": ["heritage", "foodie"],
+    "vibes": [
+      "heritage",
+      "foodie"
+    ],
     "effort": "easy",
     "code": "koc"
   },
@@ -1468,7 +1494,11 @@ window.KYT_CITIES = [
     "state": "Uttarakhand",
     "district": "Dehradun",
     "setting": "hills",
-    "vibes": ["spiritual", "adventure", "nature"],
+    "vibes": [
+      "spiritual",
+      "adventure",
+      "nature"
+    ],
     "effort": "easy",
     "code": "ris"
   },
@@ -1607,7 +1637,10 @@ window.KYT_CITIES = [
     "state": "Himachal Pradesh",
     "district": "Kullu",
     "setting": "hills",
-    "vibes": ["adventure", "nature"],
+    "vibes": [
+      "adventure",
+      "nature"
+    ],
     "effort": "trek",
     "code": "man"
   },
@@ -1747,7 +1780,10 @@ window.KYT_CITIES = [
     "state": "Himachal Pradesh",
     "district": "Shimla",
     "setting": "hills",
-    "vibes": ["heritage", "nature"],
+    "vibes": [
+      "heritage",
+      "nature"
+    ],
     "effort": "easy",
     "code": "shi"
   },
@@ -1915,7 +1951,10 @@ window.KYT_CITIES = [
     "state": "West Bengal",
     "district": "Darjeeling",
     "setting": "hills",
-    "vibes": ["nature", "heritage"],
+    "vibes": [
+      "nature",
+      "heritage"
+    ],
     "effort": "easy",
     "code": "dar"
   },
@@ -2054,7 +2093,9 @@ window.KYT_CITIES = [
     "state": "Tamil Nadu",
     "district": "Nilgiris",
     "setting": "hills",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "oot"
   },
@@ -2195,7 +2236,9 @@ window.KYT_CITIES = [
     "state": "Karnataka",
     "district": "Mysuru",
     "setting": "plains",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "easy",
     "code": "mys"
   },
@@ -2334,7 +2377,10 @@ window.KYT_CITIES = [
     "state": "Telangana",
     "district": "Hyderabad",
     "setting": "plains",
-    "vibes": ["heritage", "foodie"],
+    "vibes": [
+      "heritage",
+      "foodie"
+    ],
     "effort": "easy",
     "code": "hyd"
   },
@@ -2474,7 +2520,10 @@ window.KYT_CITIES = [
     "state": "West Bengal",
     "district": "Kolkata",
     "setting": "plains",
-    "vibes": ["heritage", "foodie"],
+    "vibes": [
+      "heritage",
+      "foodie"
+    ],
     "effort": "easy",
     "code": "kol"
   },
@@ -2616,7 +2665,10 @@ window.KYT_CITIES = [
     "state": "Tamil Nadu",
     "district": "Chennai",
     "setting": "coast",
-    "vibes": ["heritage", "spiritual"],
+    "vibes": [
+      "heritage",
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "che"
   },
@@ -2755,14 +2807,19 @@ window.KYT_CITIES = [
     "state": "Puducherry",
     "district": "Karaikal",
     "setting": "coast",
-    "vibes": ["heritage", "spiritual"],
+    "vibes": [
+      "heritage",
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "pon"
   },
   {
     "id": "hampi",
     "setting": "plains",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "trek",
     "code": "hmp",
     "name": "Hampi",
@@ -3028,7 +3085,10 @@ window.KYT_CITIES = [
     "state": "Andaman and Nicobar Islands",
     "district": "North and Middle Andaman",
     "setting": "coast",
-    "vibes": ["nature", "adventure"],
+    "vibes": [
+      "nature",
+      "adventure"
+    ],
     "effort": "easy",
     "code": "and"
   },
@@ -3168,7 +3228,10 @@ window.KYT_CITIES = [
     "state": "Jammu and Kashmir",
     "district": "Srinagar",
     "setting": "hills",
-    "vibes": ["nature", "heritage"],
+    "vibes": [
+      "nature",
+      "heritage"
+    ],
     "effort": "easy",
     "code": "sri"
   },
@@ -3304,7 +3367,11 @@ window.KYT_CITIES = [
     "state": "Ladakh",
     "district": "Leh",
     "setting": "hills",
-    "vibes": ["adventure", "spiritual", "nature"],
+    "vibes": [
+      "adventure",
+      "spiritual",
+      "nature"
+    ],
     "effort": "easy",
     "code": "leh"
   },
@@ -3452,7 +3519,11 @@ window.KYT_CITIES = [
     "state": "Punjab",
     "district": "Amritsar",
     "setting": "plains",
-    "vibes": ["spiritual", "foodie", "heritage"],
+    "vibes": [
+      "spiritual",
+      "foodie",
+      "heritage"
+    ],
     "effort": "easy",
     "code": "amr"
   },
@@ -3592,7 +3663,10 @@ window.KYT_CITIES = [
     "state": "Rajasthan",
     "district": "Jaisalmer",
     "setting": "plains",
-    "vibes": ["heritage", "adventure"],
+    "vibes": [
+      "heritage",
+      "adventure"
+    ],
     "effort": "easy",
     "code": "ja1"
   },
@@ -3735,7 +3809,9 @@ window.KYT_CITIES = [
     "state": "Rajasthan",
     "district": "Jodhpur",
     "setting": "plains",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "easy",
     "code": "jod"
   },
@@ -3855,7 +3931,9 @@ window.KYT_CITIES = [
     "state": "Rajasthan",
     "district": "Ajmer",
     "setting": "plains",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "trek",
     "code": "pus"
   },
@@ -3967,7 +4045,9 @@ window.KYT_CITIES = [
     "state": "Madhya Pradesh",
     "district": "Chhatarpur",
     "setting": "plains",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "easy",
     "code": "kha"
   },
@@ -4083,14 +4163,19 @@ window.KYT_CITIES = [
     "state": "Kerala",
     "district": "Alappuzha",
     "setting": "coast",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "all"
   },
   {
     "id": "gokarna",
     "setting": "coast",
-    "vibes": ["spiritual", "nature"],
+    "vibes": [
+      "spiritual",
+      "nature"
+    ],
     "effort": "trek",
     "code": "gkn",
     "name": "Gokarna",
@@ -4312,7 +4397,11 @@ window.KYT_CITIES = [
     "state": "Tamil Nadu",
     "district": "Madurai",
     "setting": "plains",
-    "vibes": ["spiritual", "heritage", "foodie"],
+    "vibes": [
+      "spiritual",
+      "heritage",
+      "foodie"
+    ],
     "effort": "easy",
     "code": "mad"
   },
@@ -4447,7 +4536,10 @@ window.KYT_CITIES = [
     "state": "Tamil Nadu",
     "district": "Kanniyakumari",
     "setting": "coast",
-    "vibes": ["spiritual", "nature"],
+    "vibes": [
+      "spiritual",
+      "nature"
+    ],
     "effort": "easy",
     "code": "kan"
   },
@@ -4559,7 +4651,10 @@ window.KYT_CITIES = [
     "state": "Rajasthan",
     "district": "Sawai Madhopur",
     "setting": "hills",
-    "vibes": ["nature", "heritage"],
+    "vibes": [
+      "nature",
+      "heritage"
+    ],
     "effort": "easy",
     "code": "ran"
   },
@@ -4670,7 +4765,10 @@ window.KYT_CITIES = [
     "state": "Uttarakhand",
     "district": "Pauri Garhwal",
     "setting": "hills",
-    "vibes": ["nature", "adventure"],
+    "vibes": [
+      "nature",
+      "adventure"
+    ],
     "effort": "easy",
     "code": "jim"
   },
@@ -4807,7 +4905,9 @@ window.KYT_CITIES = [
     "state": "Uttarakhand",
     "district": "Nainital",
     "setting": "hills",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "trek",
     "code": "nai"
   },
@@ -4944,7 +5044,9 @@ window.KYT_CITIES = [
     "state": "Uttarakhand",
     "district": "Dehradun",
     "setting": "hills",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "mus"
   },
@@ -5082,7 +5184,9 @@ window.KYT_CITIES = [
     "state": "Karnataka",
     "district": "Kodagu",
     "setting": "hills",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "coo"
   },
@@ -5194,7 +5298,10 @@ window.KYT_CITIES = [
     "state": "Kerala",
     "district": "Wayanad",
     "setting": "hills",
-    "vibes": ["nature", "adventure"],
+    "vibes": [
+      "nature",
+      "adventure"
+    ],
     "effort": "trek",
     "code": "way"
   },
@@ -5309,7 +5416,9 @@ window.KYT_CITIES = [
     "state": "Maharashtra",
     "district": "Satara",
     "setting": "hills",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "mah"
   },
@@ -5427,7 +5536,9 @@ window.KYT_CITIES = [
     "state": "Maharashtra",
     "district": "Pune",
     "setting": "hills",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "lon"
   },
@@ -5566,7 +5677,10 @@ window.KYT_CITIES = [
     "state": "Maharashtra",
     "district": "Pune",
     "setting": "plains",
-    "vibes": ["heritage", "foodie"],
+    "vibes": [
+      "heritage",
+      "foodie"
+    ],
     "effort": "easy",
     "code": "pun"
   },
@@ -5706,7 +5820,9 @@ window.KYT_CITIES = [
     "state": "Maharashtra",
     "district": "Chhatrapati Sambhajinagar",
     "setting": "plains",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "easy",
     "code": "aur"
   },
@@ -5856,7 +5972,10 @@ window.KYT_CITIES = [
     "state": "Gujarat",
     "district": "Ahmedabad",
     "setting": "plains",
-    "vibes": ["heritage", "foodie"],
+    "vibes": [
+      "heritage",
+      "foodie"
+    ],
     "effort": "easy",
     "code": "ahm"
   },
@@ -5970,7 +6089,10 @@ window.KYT_CITIES = [
     "state": "Gujarat",
     "district": "Kutch",
     "setting": "plains",
-    "vibes": ["nature", "heritage"],
+    "vibes": [
+      "nature",
+      "heritage"
+    ],
     "effort": "easy",
     "code": "kut"
   },
@@ -6086,7 +6208,9 @@ window.KYT_CITIES = [
     "state": "Gujarat",
     "district": "Devbhumi Dwaraka",
     "setting": "coast",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "dwa"
   },
@@ -6201,7 +6325,9 @@ window.KYT_CITIES = [
     "state": "Gujarat",
     "district": "Gir Somnath",
     "setting": "coast",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "som"
   },
@@ -6318,7 +6444,9 @@ window.KYT_CITIES = [
     "state": "Madhya Pradesh",
     "district": "Gwalior",
     "setting": "plains",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "easy",
     "code": "gwa"
   },
@@ -6431,7 +6559,10 @@ window.KYT_CITIES = [
     "state": "Madhya Pradesh",
     "district": "Niwari",
     "setting": "plains",
-    "vibes": ["heritage", "spiritual"],
+    "vibes": [
+      "heritage",
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "orc"
   },
@@ -6543,7 +6674,10 @@ window.KYT_CITIES = [
     "state": "Madhya Pradesh",
     "district": "Bhopal",
     "setting": "plains",
-    "vibes": ["heritage", "nature"],
+    "vibes": [
+      "heritage",
+      "nature"
+    ],
     "effort": "easy",
     "code": "bho"
   },
@@ -6670,7 +6804,10 @@ window.KYT_CITIES = [
     "state": "Madhya Pradesh",
     "district": "Indore",
     "setting": "plains",
-    "vibes": ["foodie", "heritage"],
+    "vibes": [
+      "foodie",
+      "heritage"
+    ],
     "effort": "easy",
     "code": "ind"
   },
@@ -6784,7 +6921,10 @@ window.KYT_CITIES = [
     "state": "Odisha",
     "district": "Puri",
     "setting": "coast",
-    "vibes": ["spiritual", "nature"],
+    "vibes": [
+      "spiritual",
+      "nature"
+    ],
     "effort": "easy",
     "code": "pur"
   },
@@ -6928,7 +7068,10 @@ window.KYT_CITIES = [
     "state": "Odisha",
     "district": "Khordha",
     "setting": "plains",
-    "vibes": ["heritage", "spiritual"],
+    "vibes": [
+      "heritage",
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "bhu"
   },
@@ -7039,7 +7182,9 @@ window.KYT_CITIES = [
     "state": "Odisha",
     "district": "Puri",
     "setting": "coast",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "easy",
     "code": "kon"
   },
@@ -7178,7 +7323,10 @@ window.KYT_CITIES = [
     "state": "Assam",
     "district": "Kamrup Metropolitan",
     "setting": "plains",
-    "vibes": ["spiritual", "nature"],
+    "vibes": [
+      "spiritual",
+      "nature"
+    ],
     "effort": "easy",
     "code": "guw"
   },
@@ -7292,7 +7440,9 @@ window.KYT_CITIES = [
     "state": "Meghalaya",
     "district": "East Khasi Hills",
     "setting": "hills",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "sh1"
   },
@@ -7400,7 +7550,10 @@ window.KYT_CITIES = [
     "state": "Meghalaya",
     "district": "East Khasi Hills",
     "setting": "hills",
-    "vibes": ["nature", "adventure"],
+    "vibes": [
+      "nature",
+      "adventure"
+    ],
     "effort": "trek",
     "code": "ch1"
   },
@@ -7511,7 +7664,10 @@ window.KYT_CITIES = [
     "state": "Arunachal Pradesh",
     "district": "Tawang",
     "setting": "hills",
-    "vibes": ["spiritual", "nature"],
+    "vibes": [
+      "spiritual",
+      "nature"
+    ],
     "effort": "easy",
     "code": "taw"
   },
@@ -7628,7 +7784,10 @@ window.KYT_CITIES = [
     "state": "Sikkim",
     "district": "Gangtok",
     "setting": "hills",
-    "vibes": ["nature", "spiritual"],
+    "vibes": [
+      "nature",
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "gan"
   },
@@ -7742,7 +7901,10 @@ window.KYT_CITIES = [
     "state": "Sikkim",
     "district": "Gyalshing",
     "setting": "hills",
-    "vibes": ["nature", "spiritual"],
+    "vibes": [
+      "nature",
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "pel"
   },
@@ -7858,7 +8020,10 @@ window.KYT_CITIES = [
     "state": "Assam",
     "district": "Golaghat",
     "setting": "hills",
-    "vibes": ["nature", "adventure"],
+    "vibes": [
+      "nature",
+      "adventure"
+    ],
     "effort": "easy",
     "code": "kaz"
   },
@@ -7999,7 +8164,10 @@ window.KYT_CITIES = [
     "state": "Himachal Pradesh",
     "district": "Kangra",
     "setting": "hills",
-    "vibes": ["spiritual", "nature"],
+    "vibes": [
+      "spiritual",
+      "nature"
+    ],
     "effort": "trek",
     "code": "dha"
   },
@@ -8110,7 +8278,10 @@ window.KYT_CITIES = [
     "state": "Himachal Pradesh",
     "district": "Chamba",
     "setting": "hills",
-    "vibes": ["nature", "heritage"],
+    "vibes": [
+      "nature",
+      "heritage"
+    ],
     "effort": "trek",
     "code": "dal"
   },
@@ -8240,7 +8411,11 @@ window.KYT_CITIES = [
       "Kaza"
     ],
     "setting": "hills",
-    "vibes": ["adventure", "spiritual", "nature"],
+    "vibes": [
+      "adventure",
+      "spiritual",
+      "nature"
+    ],
     "effort": "trek",
     "code": "spi",
     "lat": 32.2461,
@@ -8380,7 +8555,9 @@ window.KYT_CITIES = [
     "state": "Tamil Nadu",
     "district": "Ramanathapuram",
     "setting": "coast",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "ram"
   },
@@ -8492,7 +8669,10 @@ window.KYT_CITIES = [
     "state": "Tamil Nadu",
     "district": "Thanjavur",
     "setting": "plains",
-    "vibes": ["heritage", "spiritual"],
+    "vibes": [
+      "heritage",
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "tha"
   },
@@ -8603,7 +8783,9 @@ window.KYT_CITIES = [
     "state": "Tamil Nadu",
     "district": "Dindigul",
     "setting": "hills",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "kod"
   },
@@ -8719,7 +8901,9 @@ window.KYT_CITIES = [
     "state": "Maharashtra",
     "district": "Raigad",
     "setting": "hills",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "mat"
   },
@@ -8828,7 +9012,10 @@ window.KYT_CITIES = [
     "state": "Uttarakhand",
     "district": "Chamoli",
     "setting": "hills",
-    "vibes": ["adventure", "nature"],
+    "vibes": [
+      "adventure",
+      "nature"
+    ],
     "effort": "trek",
     "code": "aul"
   },
@@ -8943,7 +9130,10 @@ window.KYT_CITIES = [
     "state": "Uttarakhand",
     "district": "Rudraprayag",
     "setting": "hills",
-    "vibes": ["spiritual", "adventure"],
+    "vibes": [
+      "spiritual",
+      "adventure"
+    ],
     "effort": "trek",
     "code": "ked"
   },
@@ -9057,7 +9247,9 @@ window.KYT_CITIES = [
     "state": "Uttarakhand",
     "district": "Chamoli",
     "setting": "hills",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "trek",
     "code": "bad"
   },
@@ -9178,7 +9370,9 @@ window.KYT_CITIES = [
     "state": "Uttarakhand",
     "district": "Haridwar",
     "setting": "plains",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "har"
   },
@@ -9300,7 +9494,9 @@ window.KYT_CITIES = [
     "state": "Uttar Pradesh",
     "district": "Mathura",
     "setting": "plains",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "ma1"
   },
@@ -9417,7 +9613,9 @@ window.KYT_CITIES = [
     "state": "Uttar Pradesh",
     "district": "Mathura",
     "setting": "plains",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "vri"
   },
@@ -9535,7 +9733,9 @@ window.KYT_CITIES = [
     "state": "Uttar Pradesh",
     "district": "Ayodhya",
     "setting": "plains",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "ayo"
   },
@@ -9655,7 +9855,9 @@ window.KYT_CITIES = [
     "state": "Uttar Pradesh",
     "district": "Prayagraj",
     "setting": "plains",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "pra"
   },
@@ -9770,7 +9972,9 @@ window.KYT_CITIES = [
     "state": "Bihar",
     "district": "Gaya",
     "setting": "plains",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "gay"
   },
@@ -9881,7 +10085,10 @@ window.KYT_CITIES = [
     "state": "Bihar",
     "district": "Nalanda",
     "setting": "plains",
-    "vibes": ["heritage", "spiritual"],
+    "vibes": [
+      "heritage",
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "nal"
   },
@@ -9994,7 +10201,10 @@ window.KYT_CITIES = [
     "state": "Bihar",
     "district": "Nalanda",
     "setting": "plains",
-    "vibes": ["spiritual", "heritage"],
+    "vibes": [
+      "spiritual",
+      "heritage"
+    ],
     "effort": "easy",
     "code": "raj"
   },
@@ -10107,7 +10317,10 @@ window.KYT_CITIES = [
     "state": "Uttar Pradesh",
     "district": "Varanasi",
     "setting": "plains",
-    "vibes": ["spiritual", "heritage"],
+    "vibes": [
+      "spiritual",
+      "heritage"
+    ],
     "effort": "easy",
     "code": "sar"
   },
@@ -10217,7 +10430,9 @@ window.KYT_CITIES = [
     "state": "Meghalaya",
     "district": "East Khasi Hills",
     "setting": "hills",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "maw"
   },
@@ -10330,7 +10545,9 @@ window.KYT_CITIES = [
     "state": "Arunachal Pradesh",
     "district": "Lower Subansiri",
     "setting": "hills",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "zir"
   },
@@ -10445,7 +10662,10 @@ window.KYT_CITIES = [
     "state": "Assam",
     "district": "Majuli",
     "setting": "plains",
-    "vibes": ["heritage", "nature"],
+    "vibes": [
+      "heritage",
+      "nature"
+    ],
     "effort": "easy",
     "code": "maj"
   },
@@ -10556,7 +10776,10 @@ window.KYT_CITIES = [
     "state": "Andaman and Nicobar Islands",
     "district": "South Andaman",
     "setting": "coast",
-    "vibes": ["nature", "adventure"],
+    "vibes": [
+      "nature",
+      "adventure"
+    ],
     "effort": "easy",
     "code": "hav"
   },
@@ -10668,7 +10891,9 @@ window.KYT_CITIES = [
     "state": "Andaman and Nicobar Islands",
     "district": "South Andaman",
     "setting": "coast",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "nei"
   },
@@ -10780,7 +11005,10 @@ window.KYT_CITIES = [
     "state": "Lakshadweep",
     "district": "Lakshadweep",
     "setting": "coast",
-    "vibes": ["nature", "adventure"],
+    "vibes": [
+      "nature",
+      "adventure"
+    ],
     "effort": "easy",
     "code": "lak"
   },
@@ -10893,7 +11121,10 @@ window.KYT_CITIES = [
     "state": "Uttarakhand",
     "district": "Chamoli",
     "setting": "hills",
-    "vibes": ["nature", "adventure"],
+    "vibes": [
+      "nature",
+      "adventure"
+    ],
     "effort": "trek",
     "code": "cho"
   },
@@ -11004,7 +11235,10 @@ window.KYT_CITIES = [
     "state": "Rajasthan",
     "district": "Sirohi",
     "setting": "hills",
-    "vibes": ["nature", "spiritual"],
+    "vibes": [
+      "nature",
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "mou"
   },
@@ -11127,7 +11361,10 @@ window.KYT_CITIES = [
     "state": "Rajasthan",
     "district": "Bikaner",
     "setting": "plains",
-    "vibes": ["heritage", "foodie"],
+    "vibes": [
+      "heritage",
+      "foodie"
+    ],
     "effort": "easy",
     "code": "bik"
   },
@@ -11239,7 +11476,9 @@ window.KYT_CITIES = [
     "state": "Rajasthan",
     "district": "Chittorgarh",
     "setting": "plains",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "easy",
     "code": "chi"
   },
@@ -11352,7 +11591,9 @@ window.KYT_CITIES = [
     "state": "Kerala",
     "district": "Kottayam",
     "setting": "coast",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "kum"
   },
@@ -11466,7 +11707,9 @@ window.KYT_CITIES = [
     "state": "Kerala",
     "district": "Thiruvananthapuram",
     "setting": "coast",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "kov"
   },
@@ -11584,7 +11827,10 @@ window.KYT_CITIES = [
     "state": "Kerala",
     "district": "Thiruvananthapuram",
     "setting": "coast",
-    "vibes": ["nature", "spiritual"],
+    "vibes": [
+      "nature",
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "va1"
   },
@@ -11701,7 +11947,10 @@ window.KYT_CITIES = [
     "state": "Kerala",
     "district": "Thrissur",
     "setting": "plains",
-    "vibes": ["heritage", "spiritual"],
+    "vibes": [
+      "heritage",
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "thr"
   },
@@ -11812,7 +12061,10 @@ window.KYT_CITIES = [
     "state": "Karnataka",
     "district": "Hassan",
     "setting": "plains",
-    "vibes": ["heritage", "spiritual"],
+    "vibes": [
+      "heritage",
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "bel"
   },
@@ -11925,7 +12177,9 @@ window.KYT_CITIES = [
     "state": "Karnataka",
     "district": "Mandya",
     "setting": "plains",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "easy",
     "code": "hal"
   },
@@ -12038,7 +12292,9 @@ window.KYT_CITIES = [
     "state": "Karnataka",
     "district": "Bagalkote",
     "setting": "plains",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "trek",
     "code": "ba1"
   },
@@ -12151,7 +12407,9 @@ window.KYT_CITIES = [
     "state": "Karnataka",
     "district": "Bagalkote",
     "setting": "plains",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "easy",
     "code": "pat"
   },
@@ -12265,7 +12523,9 @@ window.KYT_CITIES = [
     "state": "Andhra Pradesh",
     "district": "NTR",
     "setting": "plains",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "vij"
   },
@@ -12381,7 +12641,9 @@ window.KYT_CITIES = [
     "state": "Andhra Pradesh",
     "district": "Tirupati",
     "setting": "hills",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "tir"
   },
@@ -12492,7 +12754,9 @@ window.KYT_CITIES = [
     "state": "Andhra Pradesh",
     "district": "Visakhapatnam",
     "setting": "coast",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "vis"
   },
@@ -12609,7 +12873,9 @@ window.KYT_CITIES = [
     "state": "Jharkhand",
     "district": "Ranchi",
     "setting": "plains",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "ra1"
   },
@@ -12728,7 +12994,10 @@ window.KYT_CITIES = [
     "state": "Bihar",
     "district": "Patna",
     "setting": "plains",
-    "vibes": ["heritage", "spiritual"],
+    "vibes": [
+      "heritage",
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "pa1"
   },
@@ -12843,7 +13112,9 @@ window.KYT_CITIES = [
     "state": "Bihar",
     "district": "Gaya",
     "setting": "plains",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "bod"
   },
@@ -12960,7 +13231,9 @@ window.KYT_CITIES = [
     "state": "Gujarat",
     "district": "Surat",
     "setting": "coast",
-    "vibes": ["foodie"],
+    "vibes": [
+      "foodie"
+    ],
     "effort": "easy",
     "code": "sur"
   },
@@ -13077,7 +13350,9 @@ window.KYT_CITIES = [
     "state": "Gujarat",
     "district": "Vadodara",
     "setting": "plains",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "easy",
     "code": "vad"
   },
@@ -13192,7 +13467,9 @@ window.KYT_CITIES = [
     "state": "Gujarat",
     "district": "Rajkot",
     "setting": "plains",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "easy",
     "code": "ra2"
   },
@@ -13304,7 +13581,9 @@ window.KYT_CITIES = [
     "state": "Gujarat",
     "district": "Gandhinagar",
     "setting": "plains",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "ga1"
   },
@@ -13420,7 +13699,9 @@ window.KYT_CITIES = [
     "state": "Chandigarh",
     "district": "Chandigarh",
     "setting": "plains",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "easy",
     "code": "cha"
   },
@@ -13532,7 +13813,9 @@ window.KYT_CITIES = [
     "state": "Punjab",
     "district": "Ludhiana",
     "setting": "plains",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "easy",
     "code": "lud"
   },
@@ -13649,7 +13932,9 @@ window.KYT_CITIES = [
     "state": "Punjab",
     "district": "Jalandhar",
     "setting": "plains",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "jal"
   },
@@ -13763,7 +14048,10 @@ window.KYT_CITIES = [
     "state": "Punjab",
     "district": "Patiala",
     "setting": "plains",
-    "vibes": ["heritage", "foodie"],
+    "vibes": [
+      "heritage",
+      "foodie"
+    ],
     "effort": "easy",
     "code": "pa2"
   },
@@ -13878,7 +14166,9 @@ window.KYT_CITIES = [
     "state": "Chhattisgarh",
     "district": "Raipur",
     "setting": "plains",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "easy",
     "code": "rai"
   },
@@ -13990,7 +14280,9 @@ window.KYT_CITIES = [
     "state": "Chhattisgarh",
     "district": "Durg",
     "setting": "plains",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "easy",
     "code": "bhi"
   },
@@ -14103,7 +14395,9 @@ window.KYT_CITIES = [
     "state": "Jharkhand",
     "district": "East Singhbhum",
     "setting": "plains",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "jam"
   },
@@ -14213,7 +14507,9 @@ window.KYT_CITIES = [
     "state": "Jharkhand",
     "district": "Dhanbad",
     "setting": "plains",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "dh1"
   },
@@ -14349,7 +14645,10 @@ window.KYT_CITIES = [
     "state": "Uttarakhand",
     "district": "Dehradun",
     "setting": "hills",
-    "vibes": ["nature", "heritage"],
+    "vibes": [
+      "nature",
+      "heritage"
+    ],
     "effort": "easy",
     "code": "deh"
   },
@@ -14466,7 +14765,10 @@ window.KYT_CITIES = [
     "state": "Jammu and Kashmir",
     "district": "Jammu",
     "setting": "plains",
-    "vibes": ["spiritual", "heritage"],
+    "vibes": [
+      "spiritual",
+      "heritage"
+    ],
     "effort": "easy",
     "code": "ja2"
   },
@@ -14579,7 +14881,10 @@ window.KYT_CITIES = [
     "state": "Jammu and Kashmir",
     "district": "Baramulla",
     "setting": "hills",
-    "vibes": ["adventure", "nature"],
+    "vibes": [
+      "adventure",
+      "nature"
+    ],
     "effort": "easy",
     "code": "gul"
   },
@@ -14690,7 +14995,10 @@ window.KYT_CITIES = [
     "state": "Jammu and Kashmir",
     "district": "Anantnag",
     "setting": "hills",
-    "vibes": ["nature", "adventure"],
+    "vibes": [
+      "nature",
+      "adventure"
+    ],
     "effort": "easy",
     "code": "pah"
   },
@@ -14800,7 +15108,10 @@ window.KYT_CITIES = [
     "state": "Jammu and Kashmir",
     "district": "Ganderbal",
     "setting": "hills",
-    "vibes": ["nature", "adventure"],
+    "vibes": [
+      "nature",
+      "adventure"
+    ],
     "effort": "easy",
     "code": "son"
   },
@@ -14911,7 +15222,9 @@ window.KYT_CITIES = [
     "state": "Ladakh",
     "district": "Kargil",
     "setting": "hills",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "easy",
     "code": "kar"
   },
@@ -15026,7 +15339,9 @@ window.KYT_CITIES = [
     "state": "West Bengal",
     "district": "Darjeeling",
     "setting": "plains",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "sil"
   },
@@ -15141,7 +15456,10 @@ window.KYT_CITIES = [
     "state": "West Bengal",
     "district": "Kalimpong",
     "setting": "hills",
-    "vibes": ["nature", "heritage"],
+    "vibes": [
+      "nature",
+      "heritage"
+    ],
     "effort": "easy",
     "code": "kal"
   },
@@ -15252,7 +15570,9 @@ window.KYT_CITIES = [
     "state": "West Bengal",
     "district": "Darjeeling",
     "setting": "hills",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "mir"
   },
@@ -15364,7 +15684,9 @@ window.KYT_CITIES = [
     "state": "West Bengal",
     "district": "Purba Medinipur",
     "setting": "coast",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "dig"
   },
@@ -15474,7 +15796,9 @@ window.KYT_CITIES = [
     "state": "West Bengal",
     "district": "Purba Medinipur",
     "setting": "coast",
-    "vibes": ["nature"],
+    "vibes": [
+      "nature"
+    ],
     "effort": "easy",
     "code": "ma2"
   },
@@ -15584,7 +15908,10 @@ window.KYT_CITIES = [
     "state": "West Bengal",
     "district": "South 24 Parganas",
     "setting": "coast",
-    "vibes": ["nature", "adventure"],
+    "vibes": [
+      "nature",
+      "adventure"
+    ],
     "effort": "easy",
     "code": "sun"
   },
@@ -15728,7 +16055,10 @@ window.KYT_CITIES = [
     "state": "Karnataka",
     "district": "Bengaluru Urban",
     "setting": "plains",
-    "vibes": ["heritage", "foodie"],
+    "vibes": [
+      "heritage",
+      "foodie"
+    ],
     "effort": "easy",
     "code": "ben"
   },
@@ -15867,7 +16197,10 @@ window.KYT_CITIES = [
     "state": "Uttar Pradesh",
     "district": "Lucknow",
     "setting": "plains",
-    "vibes": ["heritage", "foodie"],
+    "vibes": [
+      "heritage",
+      "foodie"
+    ],
     "effort": "easy",
     "code": "luc"
   },
@@ -16008,7 +16341,9 @@ window.KYT_CITIES = [
     "state": "Maharashtra",
     "district": "Ahilyanagar",
     "setting": "plains",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "sh2"
   },
@@ -16178,7 +16513,10 @@ window.KYT_CITIES = [
     "state": "Tamil Nadu",
     "district": "Kanchipuram",
     "setting": "plains",
-    "vibes": ["spiritual", "heritage"],
+    "vibes": [
+      "spiritual",
+      "heritage"
+    ],
     "effort": "easy",
     "code": "ka1"
   },
@@ -16271,7 +16609,9 @@ window.KYT_CITIES = [
       }
     ],
     "setting": "plains",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "ujj"
   },
@@ -16357,7 +16697,10 @@ window.KYT_CITIES = [
       }
     ],
     "setting": "hills",
-    "vibes": ["spiritual", "nature"],
+    "vibes": [
+      "spiritual",
+      "nature"
+    ],
     "effort": "easy",
     "code": "sr1",
     "notes": "Home to the Mallikarjuna Jyotirlinga and Bhramaramba Shakti Peeth, a sacred town on the banks of River Krishna.",
@@ -16454,7 +16797,9 @@ window.KYT_CITIES = [
       }
     ],
     "setting": "plains",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "omk",
     "notes": "A sacred island on the Narmada river, shaped like the holy 'Om', housing one of the 12 revered Jyotirlingas.",
@@ -16549,7 +16894,10 @@ window.KYT_CITIES = [
       }
     ],
     "setting": "hills",
-    "vibes": ["spiritual", "nature"],
+    "vibes": [
+      "spiritual",
+      "nature"
+    ],
     "effort": "trek",
     "code": "bh1",
     "notes": "An ancient shrine in the Sahyadri mountains, famous for its Jyotirlinga and the lush Bhimashankar Wildlife Sanctuary.",
@@ -16644,7 +16992,9 @@ window.KYT_CITIES = [
       }
     ],
     "setting": "plains",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "nas",
     "notes": "An ancient holy city on the Godavari river, famous for the Kumbh Mela, Trimbakeshwar Jyotirlinga, and vineyards.",
@@ -16741,7 +17091,9 @@ window.KYT_CITIES = [
       }
     ],
     "setting": "plains",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "deo",
     "notes": "A major Hindu pilgrimage site renowned for the Baidyanath Jyotirlinga temple, attracting millions during Shravan.",
@@ -16838,7 +17190,10 @@ window.KYT_CITIES = [
       }
     ],
     "setting": "plains",
-    "vibes": ["spiritual", "heritage"],
+    "vibes": [
+      "spiritual",
+      "heritage"
+    ],
     "effort": "easy",
     "code": "ti1",
     "notes": "An ancient city centered around the Rock Fort, and home to the massive Sri Ranganathaswamy Temple in Srirangam.",
@@ -16934,7 +17289,9 @@ window.KYT_CITIES = [
       }
     ],
     "setting": "coast",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "easy",
     "code": "thi",
     "notes": "The capital of Kerala, distinguished by its British colonial architecture, art galleries, and the magnificent Padmanabhaswamy Temple.",
@@ -17025,7 +17382,9 @@ window.KYT_CITIES = [
       }
     ],
     "setting": "plains",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "gur",
     "notes": "A bustling temple town in Kerala, home to the revered Guruvayur Sri Krishna Temple, often called the 'Dwarka of the South'.",
@@ -17120,7 +17479,9 @@ window.KYT_CITIES = [
       }
     ],
     "setting": "plains",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "pan",
     "notes": "A major pilgrimage city on the banks of the Chandrabhaga River, dedicated to Lord Vitthal and Rukmini.",
@@ -17215,7 +17576,9 @@ window.KYT_CITIES = [
       }
     ],
     "setting": "plains",
-    "vibes": ["spiritual"],
+    "vibes": [
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "nat",
     "notes": "A picturesque town in the Aravalli hills, famous for its Shrinathji Temple, dedicated to Lord Krishna.",
@@ -17231,7 +17594,10 @@ window.KYT_CITIES = [
   {
     "id": "udupi",
     "setting": "coast",
-    "vibes": ["spiritual", "foodie"],
+    "vibes": [
+      "spiritual",
+      "foodie"
+    ],
     "effort": "easy",
     "code": "udp",
     "name": "Udupi",
@@ -17409,14 +17775,19 @@ window.KYT_CITIES = [
     "state": "Madhya Pradesh",
     "district": "Khargone",
     "setting": "plains",
-    "vibes": ["heritage", "spiritual"],
+    "vibes": [
+      "heritage",
+      "spiritual"
+    ],
     "effort": "easy",
     "code": "ma3"
   },
   {
     "id": "hubli",
     "setting": "plains",
-    "vibes": ["heritage"],
+    "vibes": [
+      "heritage"
+    ],
     "effort": "easy",
     "code": "hbl",
     "name": "Hubballi (Hubli)",
@@ -17510,5 +17881,1749 @@ window.KYT_CITIES = [
       "Hubballi",
       "Dharwad"
     ]
+  },
+  {
+    "id": "kolhapur",
+    "name": "Kolhapur",
+    "icon": "landmark",
+    "dayOffset": 0,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kolhapur%20India",
+    "notes": "Ancient city on the Panchganga river known for the revered Ambabai (Mahalakshmi) Temple, Maratha royal heritage at New Palace, and historic Panhala Fort.",
+    "beats": [
+      {
+        "title": "Shri Mahalakshmi (Ambabai) Temple",
+        "icon": "landmark",
+        "where": "Bhavani Mandap, Kolhapur",
+        "hour": 7,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahalakshmi%20Temple%2C%20Kolhapur",
+        "notes": "Historic 7th-century Chalukyan stone temple and major Shakti Peetha dedicated to Goddess Mahalakshmi (Ambabai), renowned for its intricate carvings and Kirnotsav festival."
+      },
+      {
+        "title": "New Palace & Chhatrapati Shahu Museum",
+        "icon": "landmark",
+        "where": "Bhawani Mandap, Kolhapur",
+        "hour": 10,
+        "intent": [
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=New%20Palace%2C%20Kolhapur",
+        "notes": "Exquisite 19th-century black polished stone palace featuring Indo-Saracenic architecture, stained glass, and personal memorabilia and royal artefacts of the Bhonsle dynasty."
+      },
+      {
+        "title": "Kolhapuri Misal & Thali at Phadtare or Opal",
+        "icon": "utensils",
+        "where": "Shivaji Udyamnagar, Kolhapur",
+        "hour": 13,
+        "intent": [
+          "culinary"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "diet": [
+          "any",
+          "veg"
+        ],
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Phadtare%20Misal%2C%20Kolhapur",
+        "notes": "Savor legendary spicy Kolhapuri misal with pav, followed by traditional regional fare featuring Tambada Rassa (red curry) and Pandhra Rassa (white curry)."
+      },
+      {
+        "title": "Panhala Fort excursion",
+        "icon": "landmark",
+        "where": "Panhala, Kolhapur",
+        "hour": 15,
+        "intent": [
+          "cultural",
+          "adventure"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Panhala%20Fort%2C%20Kolhapur",
+        "notes": "Strategic Sahyadri hill fort where Chhatrapati Shivaji Maharaj spent over 500 days, featuring Teen Darwaza, Sajja Kothi, and sweeping valley vistas."
+      },
+      {
+        "title": "Rankala Lake evening walk",
+        "icon": "camera",
+        "where": "Rankala Lake, Kolhapur",
+        "hour": 18,
+        "intent": [
+          "cultural",
+          "nature"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rankala%20Lake%2C%20Kolhapur",
+        "notes": "Historic freshwater lake surrounded by gardens, Chaupati street food vendors, and the imposing Sandhya Math structure emerging from the water."
+      }
+    ],
+    "aliases": [
+      "Karvir",
+      "Dakshin Kashi",
+      "Kolhapur City"
+    ],
+    "lat": 16.705,
+    "lng": 74.2433,
+    "state": "Maharashtra",
+    "district": "Kolhapur",
+    "setting": "plains",
+    "vibes": [
+      "spiritual",
+      "heritage",
+      "foodie"
+    ],
+    "effort": "easy",
+    "code": "klh"
+  },
+  {
+    "id": "mahabalipuram",
+    "name": "Mahabalipuram",
+    "icon": "landmark",
+    "dayOffset": 0,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahabalipuram%20India",
+    "notes": "UNESCO World Heritage coastal town famous for 7th-century Pallava rock-cut cave temples, monolithic monolithic rathas, and the iconic seaside Shore Temple.",
+    "beats": [
+      {
+        "title": "Shore Temple sunrise",
+        "icon": "landmark",
+        "where": "Shore Temple, Mahabalipuram",
+        "hour": 6,
+        "intent": [
+          "cultural",
+          "spiritual"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shore%20Temple%2C%20Mahabalipuram",
+        "notes": "Iconic 8th-century granite structural temple perched on the Bay of Bengal coastline, built by Pallava king Narasimhavarman II."
+      },
+      {
+        "title": "Pancha Rathas (Five Rathas)",
+        "icon": "landmark",
+        "where": "Five Rathas, Mahabalipuram",
+        "hour": 9,
+        "intent": [
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pancha%20Rathas%2C%20Mahabalipuram",
+        "notes": "Remarkable monolithic rock-cut shrines named after the Pandavas and Draupadi, carved out of single granite boulders in Dravidian architectural styles."
+      },
+      {
+        "title": "Arjuna's Penance & Krishna's Butterball",
+        "icon": "landmark",
+        "where": "Arjunas Penance, Mahabalipuram",
+        "hour": 11,
+        "intent": [
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Arjuna%27s%20Penance%2C%20Mahabalipuram",
+        "notes": "World's largest open-air stone relief depicting the Descent of the Ganga, next to Krishna's Butterball, a giant 250-tonne boulder perched impossibly on a slope."
+      },
+      {
+        "title": "Fresh coastal seafood & cafe lunch",
+        "icon": "utensils",
+        "where": "Othavadai Street, Mahabalipuram",
+        "hour": 13,
+        "intent": [
+          "culinary"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "diet": [
+          "any",
+          "veg"
+        ],
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Othavadai%20Street%2C%20Mahabalipuram",
+        "notes": "Relax at coastal traveler cafes and seafood shacks along Othavadai Street serving fresh grilled catch, filter coffee, and traditional South Indian meals."
+      },
+      {
+        "title": "Mahabalipuram Beach & Lighthouse",
+        "icon": "camera",
+        "where": "Mahabalipuram Beach, Mahabalipuram",
+        "hour": 16,
+        "intent": [
+          "nature",
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahabalipuram%20Lighthouse",
+        "notes": "Climb the 1904 circular stone lighthouse for panoramic coastal views followed by an evening stroll on the golden sand beach."
+      }
+    ],
+    "aliases": [
+      "Mamallapuram",
+      "Seven Pagodas",
+      "Mahabs"
+    ],
+    "lat": 12.6269,
+    "lng": 80.1927,
+    "state": "Tamil Nadu",
+    "district": "Chengalpattu",
+    "setting": "coast",
+    "vibes": [
+      "heritage",
+      "spiritual"
+    ],
+    "effort": "easy",
+    "code": "mbl"
+  },
+  {
+    "id": "thekkady",
+    "name": "Thekkady",
+    "icon": "trees",
+    "dayOffset": 0,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thekkady%20India",
+    "notes": "Wild sanctuary in the Cardamom Hills centered around Periyar Lake, celebrated for wild elephant herds, fragrant spice plantations, and Kerala martial arts.",
+    "beats": [
+      {
+        "title": "Periyar National Park Lake Boat Safari",
+        "icon": "trees",
+        "where": "Periyar Tiger Reserve, Thekkady",
+        "hour": 7,
+        "intent": [
+          "nature",
+          "adventure"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Periyar%20National%20Park%20Boat%20Safari",
+        "notes": "Early morning boat cruise on Periyar Lake inside the tiger reserve, observing wild elephants, gaur, sambar deer, and water birds along the forest shoreline."
+      },
+      {
+        "title": "Spice Plantation Guided Walk",
+        "icon": "trees",
+        "where": "Kumily, Thekkady",
+        "hour": 11,
+        "intent": [
+          "nature",
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Spice%20Plantation%2C%20Thekkady",
+        "notes": "Walk through organic spice gardens learning how cardamom, pepper vines, cinnamon, cloves, nutmeg, and vanilla are cultivated and harvested."
+      },
+      {
+        "title": "Traditional Kerala lunch & spice shopping",
+        "icon": "utensils",
+        "where": "Kumily Town, Thekkady",
+        "hour": 13,
+        "intent": [
+          "culinary"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "diet": [
+          "any",
+          "veg"
+        ],
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kumily%20Town%2C%20Thekkady",
+        "notes": "Taste Kerala sadya meals cooked with freshly ground local spices, and shop for farm-fresh green cardamom and pepper in the bustling spice market."
+      },
+      {
+        "title": "Kalaripayattu Martial Arts & Kathakali show",
+        "icon": "landmark",
+        "where": "Kadathanadan Kalari Centre, Thekkady",
+        "hour": 18,
+        "intent": [
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kadathanadan%20Kalari%20Centre%2C%20Thekkady",
+        "notes": "Evening showcase of Kalaripayattu, the world's oldest martial art form, with acrobatics and fire weapons, paired with traditional Kathakali classical dance."
+      }
+    ],
+    "aliases": [
+      "Periyar",
+      "Kumily"
+    ],
+    "lat": 9.6031,
+    "lng": 77.1615,
+    "state": "Kerala",
+    "district": "Idukki",
+    "setting": "hills",
+    "vibes": [
+      "nature",
+      "adventure"
+    ],
+    "effort": "easy",
+    "code": "tkd"
+  },
+  {
+    "id": "chikmagalur",
+    "name": "Chikmagalur",
+    "icon": "mountain",
+    "dayOffset": 0,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chikmagalur%20India",
+    "notes": "The coffee cradle of India set amidst misty Sahyadri peaks, verdant Arabica plantations, sparkling waterfalls, and trekking trails.",
+    "beats": [
+      {
+        "title": "Mullayanagiri Peak trek & view",
+        "icon": "mountain",
+        "where": "Mullayanagiri, Chikmagalur",
+        "hour": 6,
+        "intent": [
+          "adventure",
+          "nature"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "trek",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mullayanagiri%20Peak%2C%20Chikmagalur",
+        "notes": "Ascend to the highest peak in Karnataka (1,930 m) for sweeping cloud-bed views, misty cool winds, and the hilltop Shiva temple."
+      },
+      {
+        "title": "Baba Budangiri & Manikyadhara Falls",
+        "icon": "mountain",
+        "where": "Baba Budan Range, Chikmagalur",
+        "hour": 10,
+        "intent": [
+          "cultural",
+          "spiritual"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Baba%20Budangiri%2C%20Chikmagalur",
+        "notes": "Historic shrine named after Sufi saint Baba Budan who introduced coffee to India from Yemen, nearby the sacred perennial Manikyadhara waterfall."
+      },
+      {
+        "title": "Estate coffee tasting & Malnad cuisine",
+        "icon": "utensils",
+        "where": "KM Road, Chikmagalur",
+        "hour": 13,
+        "intent": [
+          "culinary"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "diet": [
+          "any",
+          "veg"
+        ],
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chikmagalur%20Coffee%20Estate",
+        "notes": "Relish piping hot filter coffee brewed with freshly roasted beans alongside Malnad staples like akki rotti, bamboo shoot curry, and tender jackfruit fry."
+      },
+      {
+        "title": "Hebbe Falls jeep safari",
+        "icon": "trees",
+        "where": "Kemmangundi, Chikmagalur",
+        "hour": 15,
+        "intent": [
+          "adventure",
+          "nature"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "trek",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hebbe%20Falls%2C%20Chikmagalur",
+        "notes": "Off-road jeep trail through lush private coffee estates leading to the roaring two-tiered cascade of Hebbe Falls."
+      }
+    ],
+    "aliases": [
+      "Chikkamagaluru",
+      "Coffee Land of Karnataka"
+    ],
+    "lat": 13.3161,
+    "lng": 75.772,
+    "state": "Karnataka",
+    "district": "Chikkamagaluru",
+    "setting": "hills",
+    "vibes": [
+      "nature",
+      "adventure"
+    ],
+    "effort": "trek",
+    "code": "ckm"
+  },
+  {
+    "id": "kevadia",
+    "name": "Kevadia",
+    "icon": "landmark",
+    "dayOffset": 0,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kevadia%20India",
+    "notes": "Town on the Narmada River home to the Statue of Unity, the world's tallest statue, alongside the Sardar Sarovar Dam and ecological theme gardens.",
+    "beats": [
+      {
+        "title": "Statue of Unity & Viewing Gallery",
+        "icon": "landmark",
+        "where": "Ekta Nagar, Kevadia",
+        "hour": 9,
+        "intent": [
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Statue%20of%20Unity%2C%20Kevadia",
+        "notes": "Stand before the monumental 182-metre bronze tribute to Sardar Vallabhbhai Patel and ride high-speed lifts to the viewing gallery inside the chest."
+      },
+      {
+        "title": "Valley of Flowers & Butterfly Garden",
+        "icon": "trees",
+        "where": "Narmada Riverfront, Kevadia",
+        "hour": 12,
+        "intent": [
+          "nature"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Valley%20of%20Flowers%2C%20Kevadia",
+        "notes": "Expansive botanical garden with vibrant floral landscapes, selfie points, and walkways along the banks of the Narmada."
+      },
+      {
+        "title": "Sardar Sarovar Dam Viewpoint",
+        "icon": "camera",
+        "where": "Sardar Sarovar Dam, Kevadia",
+        "hour": 14,
+        "intent": [
+          "cultural",
+          "adventure"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sardar%20Sarovar%20Dam%2C%20Kevadia",
+        "notes": "View the colossal gravity dam on the Narmada River, one of the world's largest concrete structures, providing water to millions across Western India."
+      },
+      {
+        "title": "Statue of Unity Evening Laser Projection Show",
+        "icon": "sparkles",
+        "where": "Statue of Unity Complex, Kevadia",
+        "hour": 19,
+        "intent": [
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Statue%20of%20Unity%20Laser%20Show",
+        "notes": "Dazzling evening sound and light show mapping the life and unification mission of Sardar Patel across the surface of the statue."
+      }
+    ],
+    "aliases": [
+      "Ekta Nagar",
+      "Statue of Unity City"
+    ],
+    "lat": 21.838,
+    "lng": 73.7191,
+    "state": "Gujarat",
+    "district": "Narmada",
+    "setting": "plains",
+    "vibes": [
+      "heritage",
+      "nature"
+    ],
+    "effort": "easy",
+    "code": "kvd"
+  },
+  {
+    "id": "jabalpur",
+    "name": "Jabalpur",
+    "icon": "landmark",
+    "dayOffset": 0,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jabalpur%20India",
+    "notes": "Heartland city on the sacred Narmada River famed for the soaring white marble gorges of Bhedaghat and the roaring mist of Dhuandhar Falls.",
+    "beats": [
+      {
+        "title": "Bhedaghat Marble Rocks Boat Ride",
+        "icon": "camera",
+        "where": "Bhedaghat, Jabalpur",
+        "hour": 8,
+        "intent": [
+          "nature",
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhedaghat%20Marble%20Rocks%2C%20Jabalpur",
+        "notes": "Glide on the turquoise Narmada River through a canyon of gleaming 100-foot white and pink marble cliffs as local boatmen recite folk poetry."
+      },
+      {
+        "title": "Dhuandhar Falls & Cable Car",
+        "icon": "camera",
+        "where": "Dhuandhar, Bhedaghat, Jabalpur",
+        "hour": 11,
+        "intent": [
+          "nature",
+          "adventure"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dhuandhar%20Falls%2C%20Jabalpur",
+        "notes": "Witness the Narmada plunging over jagged rock into a thunderous gorge, creating a massive cloud of white mist giving the falls its name ('smoke cascade')."
+      },
+      {
+        "title": "Chausath Yogini Temple",
+        "icon": "landmark",
+        "where": "Bhedaghat, Jabalpur",
+        "hour": 14,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chausath%20Yogini%20Temple%2C%20Jabalpur",
+        "notes": "10th-century Kalachuri circular open-air temple perched on a hill, housing 64 intricately carved stone yogini statues surrounding Lord Shiva."
+      },
+      {
+        "title": "Madan Mahal Fort & Balancing Rock",
+        "icon": "landmark",
+        "where": "Madan Mahal, Jabalpur",
+        "hour": 16,
+        "intent": [
+          "cultural",
+          "adventure"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Madan%20Mahal%20Fort%2C%20Jabalpur",
+        "notes": "11th-century Gondwana watchtower fort built by King Madan Shah atop a granite knoll, nearby a miraculous natural boulder balancing precariously on another."
+      }
+    ],
+    "aliases": [
+      "Sanskaardhaani",
+      "Jubbulpore"
+    ],
+    "lat": 23.1815,
+    "lng": 79.9864,
+    "state": "Madhya Pradesh",
+    "district": "Jabalpur",
+    "setting": "plains",
+    "vibes": [
+      "nature",
+      "heritage",
+      "spiritual"
+    ],
+    "effort": "easy",
+    "code": "jbp"
+  },
+  {
+    "id": "murudeshwar",
+    "name": "Murudeshwar",
+    "icon": "landmark",
+    "dayOffset": 0,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Murudeshwar%20India",
+    "notes": "Spectacular coastal pilgrimage site on the Arabian Sea renowned for the world's second-tallest Shiva statue and the towering 20-storey Raja Gopura.",
+    "beats": [
+      {
+        "title": "Murudeshwar Temple & Raja Gopura",
+        "icon": "landmark",
+        "where": "Bhatkal, Murudeshwar",
+        "hour": 7,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Murudeshwar%20Temple",
+        "notes": "Ancient shrine on Kanduka Hill surrounded by the sea on three sides, crowned by a 249-foot high Raja Gopura with lift access to the top floor."
+      },
+      {
+        "title": "Colossal 123-ft Shiva Statue & Geeta Upadesh",
+        "icon": "landmark",
+        "where": "Kanduka Hill, Murudeshwar",
+        "hour": 10,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shiva%20Statue%2C%20Murudeshwar",
+        "notes": "Marvel at the gigantic silver-toned Shiva statue glistening in the sea breeze, with underground dioramas depicting the story of Ravana and the Atma Linga."
+      },
+      {
+        "title": "Coastal Karnataka seafood & coconut curry",
+        "icon": "utensils",
+        "where": "Temple Road, Murudeshwar",
+        "hour": 13,
+        "intent": [
+          "culinary"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "diet": [
+          "any",
+          "veg"
+        ],
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Temple%20Road%20Murudeshwar",
+        "notes": "Enjoy coastal Karavali cuisine with neer dosa, fresh fish fry, banana leaf thalis, and sweet coconut payasam."
+      },
+      {
+        "title": "Murudeshwar Beach & water sports",
+        "icon": "camera",
+        "where": "Murudeshwar Beach, Murudeshwar",
+        "hour": 16,
+        "intent": [
+          "nature",
+          "adventure"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Murudeshwar%20Beach",
+        "notes": "Stroll along the calm curve of sandy beach with views of the temple silhouette, water scooters, boat rides, and sunsets over the Arabian Sea."
+      }
+    ],
+    "aliases": [
+      "Murudeshwara",
+      "Kanduka Giri"
+    ],
+    "lat": 14.094,
+    "lng": 74.4899,
+    "state": "Karnataka",
+    "district": "Uttara Kannada",
+    "setting": "coast",
+    "vibes": [
+      "spiritual",
+      "heritage",
+      "nature"
+    ],
+    "effort": "easy",
+    "code": "mdw"
+  },
+  {
+    "id": "warangal",
+    "name": "Warangal",
+    "icon": "landmark",
+    "dayOffset": 0,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Warangal%20India",
+    "notes": "Historic capital of the medieval Kakatiya dynasty, celebrated for the UNESCO-listed floating-brick Ramappa Temple and magnificent stone gateways.",
+    "beats": [
+      {
+        "title": "UNESCO Ramappa Temple (Kakatiya Rudreshwara)",
+        "icon": "landmark",
+        "where": "Palampet, Warangal",
+        "hour": 8,
+        "intent": [
+          "cultural",
+          "spiritual"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ramappa%20Temple%2C%20Warangal",
+        "notes": "13th-century Kakatiya masterpiece built on a star-shaped platform with lightweight floating bricks, sandbox foundation, and breathtaking carved bracket figures."
+      },
+      {
+        "title": "Thousand Pillar Temple (Veyikandla Gudi)",
+        "icon": "landmark",
+        "where": "Hanamkonda, Warangal",
+        "hour": 11,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thousand%20Pillar%20Temple%2C%20Warangal",
+        "notes": "12th-century Chalukyan-Kakatiya architectural marvel dedicated to Shiva, Vishnu, and Surya, with intricately carved interlocking stone pillars and a monolith Nandi."
+      },
+      {
+        "title": "Warangal Fort & Kakatiya Kala Thoranam",
+        "icon": "landmark",
+        "where": "Warangal Fort, Warangal",
+        "hour": 15,
+        "intent": [
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Warangal%20Fort",
+        "notes": "Explore the stone fortress ruins featuring four ornate ceremonial archways (Kala Thoranam) that form the official emblem of the state of Telangana."
+      },
+      {
+        "title": "Bhadrakali Temple & Lake Promenade",
+        "icon": "camera",
+        "where": "Bhadrakali Lake, Warangal",
+        "hour": 17,
+        "intent": [
+          "spiritual",
+          "nature"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhadrakali%20Temple%2C%20Warangal",
+        "notes": "Ancient lakefront temple dedicated to Goddess Bhadrakali, seated in a tranquil natural rock setting with scenic sunset lake views."
+      }
+    ],
+    "aliases": [
+      "Orugallu",
+      "Ekashila Nagaram",
+      "Hanamkonda"
+    ],
+    "lat": 17.9689,
+    "lng": 79.5941,
+    "state": "Telangana",
+    "district": "Warangal",
+    "setting": "plains",
+    "vibes": [
+      "heritage",
+      "spiritual"
+    ],
+    "effort": "easy",
+    "code": "wgl"
+  },
+  {
+    "id": "gir",
+    "name": "Gir National Park",
+    "icon": "trees",
+    "dayOffset": 0,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gir%20National%20Park%20India",
+    "notes": "The solitary sanctuary of the endangered Asiatic Lion in the wild, spanning teak forests, rocky hills, and deep ravines in Saurashtra.",
+    "beats": [
+      {
+        "title": "Sasan Gir Morning Jeep Safari",
+        "icon": "trees",
+        "where": "Sasan Gir, Junagadh",
+        "hour": 6,
+        "intent": [
+          "nature",
+          "adventure"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sasan%20Gir%20Safari",
+        "notes": "Open-top jeep safari through the core dry deciduous forest tracking majestic Asiatic lion prides, leopards, spotted deer, and crested serpent eagles."
+      },
+      {
+        "title": "Devalia Safari Park (Gir Interpretation Zone)",
+        "icon": "trees",
+        "where": "Devalia, Gir",
+        "hour": 10,
+        "intent": [
+          "nature"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Devalia%20Safari%20Park%2C%20Gir",
+        "notes": "Fenced ecological interpretation habitat allowing guaranteed wildlife sightings of lions, leopards, and blackbucks in a short safari circuit."
+      },
+      {
+        "title": "Kathiyawadi Thali at a village dhaba",
+        "icon": "utensils",
+        "where": "Sasan Gir Village, Gir",
+        "hour": 13,
+        "intent": [
+          "culinary"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "diet": [
+          "any",
+          "veg"
+        ],
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sasan%20Gir%20Village",
+        "notes": "Indulge in authentic Gujarati Kathiyawadi cuisine with sev tameta nu shaak, bajra rotla with fresh white butter, garlic chutney, and chaas."
+      },
+      {
+        "title": "Kamleshwar Dam bird watching",
+        "icon": "camera",
+        "where": "Kamleshwar Dam, Gir",
+        "hour": 16,
+        "intent": [
+          "nature"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kamleshwar%20Dam%2C%20Gir",
+        "notes": "The water lifeline of Gir nestled in the reserve, known as a breeding ground for marsh crocodiles and diverse migratory waterfowl."
+      }
+    ],
+    "aliases": [
+      "Sasan Gir",
+      "Gir Forest",
+      "Lion Country"
+    ],
+    "lat": 21.1243,
+    "lng": 70.8242,
+    "state": "Gujarat",
+    "district": "Junagadh",
+    "setting": "plains",
+    "vibes": [
+      "nature",
+      "adventure"
+    ],
+    "effort": "easy",
+    "code": "gir"
+  },
+  {
+    "id": "chilika",
+    "name": "Chilika Lake",
+    "icon": "camera",
+    "dayOffset": 0,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chilika%20Lake%20India",
+    "notes": "Asia's largest brackish lagoon, home to rare Irrawaddy dolphins, migratory flamingo flocks, and sacred island shrines on the Bay of Bengal.",
+    "beats": [
+      {
+        "title": "Satapada Irrawaddy Dolphin Boat Tour",
+        "icon": "camera",
+        "where": "Satapada, Chilika",
+        "hour": 7,
+        "intent": [
+          "nature",
+          "adventure"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Satapada%20Chilika%20Lake",
+        "notes": "Morning motorized boat cruise out onto the lagoon estuary to spot playful Irrawaddy dolphins breaching near the sea mouth."
+      },
+      {
+        "title": "Kalijai Island Temple",
+        "icon": "landmark",
+        "where": "Kalijai Island, Chilika",
+        "hour": 11,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kalijai%20Temple%2C%20Chilika",
+        "notes": "Picturesque island shrine dedicated to Goddess Kalijai, revered by local fishermen and celebrated in Odia folklore and poetry."
+      },
+      {
+        "title": "Fresh Lagoon Crab & Prawn Feast",
+        "icon": "utensils",
+        "where": "Barkul, Chilika",
+        "hour": 13,
+        "intent": [
+          "culinary"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "diet": [
+          "any"
+        ],
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Barkul%20Chilika%20Dhaba",
+        "notes": "Taste mouthwatering Chilika specialties like butter garlic crab, crispy jumbo prawn fry, and freshwater fish curry at lakeside eateries."
+      },
+      {
+        "title": "Mangalajodi Bird Sanctuary wetland trail",
+        "icon": "trees",
+        "where": "Mangalajodi, Chilika",
+        "hour": 15,
+        "intent": [
+          "nature"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mangalajodi%20Ecotourism%2C%20Chilika",
+        "notes": "Silently row through reedy wetlands where reformed poachers guide birders among lakhs of migratory ducks, herons, and waders."
+      }
+    ],
+    "aliases": [
+      "Chilka",
+      "Chilika Lagoon"
+    ],
+    "lat": 19.7042,
+    "lng": 85.3197,
+    "state": "Odisha",
+    "district": "Puri",
+    "setting": "coast",
+    "vibes": [
+      "nature",
+      "adventure"
+    ],
+    "effort": "easy",
+    "code": "clk"
+  },
+  {
+    "id": "alibaug",
+    "name": "Alibaug",
+    "icon": "camera",
+    "dayOffset": 0,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Alibaug%20India",
+    "notes": "Coastal Konkan getaway fringed by coconut groves, sandy beaches, fresh seafood, and the 17th-century island sea fortress of Kolaba.",
+    "beats": [
+      {
+        "title": "Kolaba Sea Fort low-tide walk",
+        "icon": "landmark",
+        "where": "Alibaug Beach, Alibaug",
+        "hour": 8,
+        "intent": [
+          "cultural",
+          "adventure"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kolaba%20Fort%2C%20Alibaug",
+        "notes": "Walk or take a horse cart across the wet seabed at low tide to explore the Maratha naval fortress built by Chhatrapati Shivaji Maharaj."
+      },
+      {
+        "title": "Nagaon & Kihim Beach relaxation",
+        "icon": "camera",
+        "where": "Nagaon, Alibaug",
+        "hour": 11,
+        "intent": [
+          "nature",
+          "adventure"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nagaon%20Beach%2C%20Alibaug",
+        "notes": "Enjoy quiet strolls on flat black-sand beaches shaded by dense suru trees, with optional parasailing and jet-ski water sports."
+      },
+      {
+        "title": "Authentic Konkani seafood lunch",
+        "icon": "utensils",
+        "where": "Alibaug Town, Alibaug",
+        "hour": 13,
+        "intent": [
+          "culinary"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "diet": [
+          "any",
+          "veg"
+        ],
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sanman%20Restaurant%2C%20Alibaug",
+        "notes": "Feast on celebrated Konkani thalis featuring crispy rava-fried surmai or pomfret, solkadhi, and spicy crab masala."
+      },
+      {
+        "title": "Kanakeshwar Temple forest hill climb",
+        "icon": "landmark",
+        "where": "Mapgaon, Alibaug",
+        "hour": 16,
+        "intent": [
+          "spiritual",
+          "adventure"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "trek",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kanakeshwar%20Temple%2C%20Alibaug",
+        "notes": "Climb the 700 ancient stone stairs through dense green hills to reach this historic Shiva shrine offering calm air and bird songs."
+      }
+    ],
+    "aliases": [
+      "Alibag",
+      "Konkan Coast Gateway"
+    ],
+    "lat": 18.6414,
+    "lng": 72.8722,
+    "state": "Maharashtra",
+    "district": "Raigad",
+    "setting": "coast",
+    "vibes": [
+      "nature",
+      "foodie"
+    ],
+    "effort": "easy",
+    "code": "abg"
+  },
+  {
+    "id": "shantiniketan",
+    "name": "Shantiniketan",
+    "icon": "landmark",
+    "dayOffset": 0,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shantiniketan%20India",
+    "notes": "UNESCO World Heritage open-air university town founded by Nobel Laureate Rabindranath Tagore, steeped in literature, Baul music, and arts.",
+    "beats": [
+      {
+        "title": "Visva-Bharati University Open-Air Campus",
+        "icon": "landmark",
+        "where": "Visva-Bharati, Shantiniketan",
+        "hour": 8,
+        "intent": [
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Visva-Bharati%20University%2C%20Shantiniketan",
+        "notes": "Stroll through the iconic tree-shaded open-air classrooms of Kala Bhavana and Patha Bhavana adorned with Ramkinkar Baij sculptures and murals."
+      },
+      {
+        "title": "Rabindra Bhavana & Uttarayan Complex",
+        "icon": "landmark",
+        "where": "Uttarayan, Shantiniketan",
+        "hour": 10,
+        "intent": [
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rabindra%20Bhavana%2C%20Shantiniketan",
+        "notes": "Museum complex housing Tagore's Nobel medallion replica, manuscripts, paintings, and the five architectural houses where the poet lived."
+      },
+      {
+        "title": "Traditional Bengali Thali & Posto cuisine",
+        "icon": "utensils",
+        "where": "Bolpur, Shantiniketan",
+        "hour": 13,
+        "intent": [
+          "culinary"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "diet": [
+          "any",
+          "veg"
+        ],
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bolpur%20Shantiniketan%20Restaurant",
+        "notes": "Savor an authentic Rarh Bengal feast featuring shukto, aloo posto (poppy seeds), kosha mangsho, luchi, and sweet mishti doi."
+      },
+      {
+        "title": "Sonajhurir Haat (Saturday Forest Bazaar)",
+        "icon": "sparkles",
+        "where": "Sonajhuri Forest, Shantiniketan",
+        "hour": 15,
+        "intent": [
+          "cultural",
+          "nature"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sonajhurir%20Haat%2C%20Shantiniketan",
+        "notes": "Vibrant weekly village fair in the Sonajhuri forest where Baul singers play ektara under trees and artisans sell dokra metal craft and kantha sarees."
+      }
+    ],
+    "aliases": [
+      "Bolpur",
+      "Tagore Town",
+      "Santiniketan"
+    ],
+    "lat": 23.6775,
+    "lng": 87.6836,
+    "state": "West Bengal",
+    "district": "Birbhum",
+    "setting": "plains",
+    "vibes": [
+      "heritage",
+      "foodie"
+    ],
+    "effort": "easy",
+    "code": "shn"
+  },
+  {
+    "id": "kohima",
+    "name": "Kohima",
+    "icon": "mountain",
+    "dayOffset": 0,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kohima%20India",
+    "notes": "Scenic hill capital of Nagaland nestled amidst green ridges, celebrated for the Hornbill Festival, Naga tribal culture, and heroic WWII history.",
+    "beats": [
+      {
+        "title": "Kisama Heritage Village",
+        "icon": "landmark",
+        "where": "Kisama, Kohima",
+        "hour": 8,
+        "intent": [
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kisama%20Heritage%20Village%2C%20Kohima",
+        "notes": "Cultural village venue of the world-famous Hornbill Festival, showcasing authentic morungs (dormitories), wood carvings, and tribal traditions of the 16 Naga tribes."
+      },
+      {
+        "title": "Kohima War Cemetery & Memorial",
+        "icon": "landmark",
+        "where": "Garrison Hill, Kohima",
+        "hour": 11,
+        "intent": [
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kohima%20War%2C%20Cemetery",
+        "notes": "Immaculate Commonwealth cemetery on the battleground of the 1944 Battle of Kohima, featuring the famous Kohima Epitaph inscription."
+      },
+      {
+        "title": "Traditional Naga cuisine & market walk",
+        "icon": "utensils",
+        "where": "Kohima Local Market, Kohima",
+        "hour": 13,
+        "intent": [
+          "culinary"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "diet": [
+          "any"
+        ],
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kohima%20Local%20Market",
+        "notes": "Experience indigenous Naga flavors flavored with smoked meats, fiery Raja Mircha (Bhut Jolokia), fermented bamboo shoots, and fresh greens."
+      },
+      {
+        "title": "Kohima State Museum & Cathedral",
+        "icon": "camera",
+        "where": "Bayavu Hill, Kohima",
+        "hour": 15,
+        "intent": [
+          "cultural",
+          "spiritual"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nagaland%20State%20Museum%2C%20Kohima",
+        "notes": "Explore exhibits of rare Naga tribal costumes, jewelry, musical instruments, and headgear, followed by Mary Help of Christians Cathedral."
+      }
+    ],
+    "aliases": [
+      "Kewhira",
+      "Nagaland Capital"
+    ],
+    "lat": 25.6751,
+    "lng": 94.1086,
+    "state": "Nagaland",
+    "district": "Kohima",
+    "setting": "hills",
+    "vibes": [
+      "heritage",
+      "nature"
+    ],
+    "effort": "easy",
+    "code": "khm"
+  },
+  {
+    "id": "mantralayam",
+    "name": "Mantralayam",
+    "icon": "landmark",
+    "dayOffset": 0,
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mantralayam%20India",
+    "notes": "Sacred pilgrimage town on the banks of the Tungabhadra River, revered as the Jeeva Samadhi seat of 17th-century Vaishnavite saint Sri Raghavendra Swamy.",
+    "beats": [
+      {
+        "title": "Shri Raghavendra Swamy Mutt (Brindavan)",
+        "icon": "landmark",
+        "where": "Mutt Road, Mantralayam",
+        "hour": 7,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Raghavendra%20Swamy%20Mutt%2C%20Mantralayam",
+        "notes": "The sacred Moola Brindavanam where Guru Raghavendra Swamy entered Jeeva Samadhi in 1671, featuring morning abhisheka, Tulasi archana, and divine peace."
+      },
+      {
+        "title": "Tungabhadra River Holy Dip & Snana Ghats",
+        "icon": "camera",
+        "where": "Tungabhadra Ghat, Mantralayam",
+        "hour": 9,
+        "intent": [
+          "spiritual",
+          "nature"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tungabhadra%20River%2C%20Mantralayam",
+        "notes": "Perform ritual snana (holy bath) in the tranquil waters of the sacred Tungabhadra River along the wide stone ghats adjoining the mutt."
+      },
+      {
+        "title": "Mutt Annapoorna Annadanam Bhojana",
+        "icon": "utensils",
+        "where": "Annapoorna Dining Hall, Mantralayam",
+        "hour": 12,
+        "intent": [
+          "culinary",
+          "spiritual"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "diet": [
+          "satvik",
+          "veg",
+          "any"
+        ],
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Annapoorna%20Dining%20Hall%2C%20Mantralayam",
+        "notes": "Experience traditional Madhwa satvik prasada served with devotion, featuring steamed rice, saaru, kootu, paysam, and cow ghee."
+      },
+      {
+        "title": "Panchamukhi Anjaneya Swamy Temple excursion",
+        "icon": "landmark",
+        "where": "Gandhal, near Mantralayam",
+        "hour": 15,
+        "intent": [
+          "spiritual",
+          "adventure"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Panchamukhi%20Anjaneya%20Temple%20Mantralayam",
+        "notes": "Historic rock-cave shrine 20 km away where Guru Raghavendra performed 12 years of penance and beheld the 5-faced Hanuman, amidst miraculous natural rock formations."
+      },
+      {
+        "title": "Manchalamma Temple & Evening Rathotsavam",
+        "icon": "sparkles",
+        "where": "Mutt Complex, Mantralayam",
+        "hour": 18,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Manchalamma%20Temple%20Mantralayam",
+        "notes": "Pay homage to the presiding village deity Goddess Manchalamma, followed by witnessing the resplendent evening Golden Chariot procession around the temple."
+      }
+    ],
+    "aliases": [
+      "Manchale",
+      "Mantralaya",
+      "Sri Raghavendra Teertha Kshetra"
+    ],
+    "lat": 15.9392,
+    "lng": 77.4293,
+    "state": "Andhra Pradesh",
+    "district": "Kurnool",
+    "setting": "plains",
+    "vibes": [
+      "spiritual",
+      "heritage"
+    ],
+    "effort": "easy",
+    "code": "mtm"
   }
 ];

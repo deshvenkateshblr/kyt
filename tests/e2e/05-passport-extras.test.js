@@ -187,7 +187,7 @@ test('levels: Bronze under 8 cities, Silver from 8, Gold from 25 cities or 10 st
   await context.close();
 });
 
-test('share card: city list can be switched off, and a full 145-city list still fits without overflow', async () => {
+test('share card: city list can be switched off, and a full city list still fits without overflow', async () => {
   const { context, page } = await newPhone(env.browser);
   await page.goto(env.base + '/visited.html');
   await page.waitForSelector('#cards-container h3');
@@ -197,7 +197,7 @@ test('share card: city list can be switched off, and a full 145-city list still 
   await page.click('#btn-share-passport');
   await page.waitForSelector('#sh-canvas');
   await page.waitForTimeout(400);
-  assert.equal(await page.evaluate(() => window.PassportStore.getPassportCities().filter(c => c.visited).length), 145);
+  assert.equal(await page.evaluate(() => window.PassportStore.getPassportCities().filter(c => c.visited).length), await page.evaluate(() => window.KYT_CITIES.length));
   const withList = await page.evaluate(() => document.getElementById('sh-canvas').toDataURL().length);
   await page.uncheck('#sh-list');
   await page.waitForTimeout(200);

@@ -17,7 +17,7 @@ window.PassportExtras = (function () {
     'Madhya Pradesh': 'Central', 'Chhattisgarh': 'Central',
     'Karnataka': 'South', 'Kerala': 'South', 'Tamil Nadu': 'South', 'Andhra Pradesh': 'South', 'Telangana': 'South', 'Puducherry': 'South',
     'West Bengal': 'East', 'Odisha': 'East', 'Bihar': 'East', 'Jharkhand': 'East',
-    'Assam': 'North-East', 'Meghalaya': 'North-East', 'Arunachal Pradesh': 'North-East', 'Sikkim': 'North-East',
+    'Assam': 'North-East', 'Meghalaya': 'North-East', 'Arunachal Pradesh': 'North-East', 'Sikkim': 'North-East', 'Nagaland': 'North-East',
     'Andaman and Nicobar Islands': 'Islands', 'Lakshadweep': 'Islands'
   };
   const REGIONS = ['North', 'South', 'East', 'West', 'Central', 'North-East', 'Islands'];
