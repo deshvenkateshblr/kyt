@@ -171,3 +171,31 @@ test('footer wording, and the backup sheet reports whether storage works on this
   assert.match(txt, /This device check[\s\S]*✓ Settings and passport storage works[\s\S]*✓ Trip storage works[\s\S]*1 city stamped here/);
   await context.close();
 });
+
+test('passport: floating counter appears after scrolling, counts live, and takes you back to the top', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.goto(env.base + '/visited.html');
+  await page.waitForSelector('#cards-container h3');
+  assert.equal(await page.locator('#passport-float').isVisible(), false, 'hidden while the header counter is on screen');
+  await page.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; window.scrollTo(0, 1500); });
+  await page.waitForSelector('#passport-float', { state: 'visible' });
+  assert.match(await page.locator('#passport-float').innerText(), /0\s*visited/);
+  await page.locator('[onclick^="markVisited"]').first().click();
+  await page.waitForFunction(() => /1\s*visited/.test(document.getElementById('passport-float').innerText));
+  await page.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; });
+  await page.click('#passport-float');
+  await page.waitForFunction(() => window.scrollY < 5);
+  await context.close();
+});
+
+test('installed app with no data explains that it is separate from Safari, once; home page warns before adding', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.addInitScript(() => { Object.defineProperty(navigator, 'standalone', { value: true }); });
+  await page.goto(env.base + '/index.html');
+  await page.waitForSelector('#kyt-fresh-notice');
+  assert.match(await page.locator('#kyt-fresh-notice').innerText(), /separate from Safari/);
+  await page.reload(); await page.waitForTimeout(800);
+  assert.equal(await page.locator('#kyt-fresh-notice').count(), 0, 'shown only once');
+  assert.match(await page.locator('.k-device-note').first().innerText(), /Already using KYT in Safari\?[\s\S]*Back up or restore your data/);
+  await context.close();
+});

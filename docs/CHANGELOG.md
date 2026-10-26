@@ -258,5 +258,9 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
 
 35. **Feedback link on every page (`js/footer.js`, service worker cache `kyt-v69`)**
     - One script adds a "Send feedback" mail link (to `info@vividnova.com`, with a subject and the page name) at the foot of every page. To change the address, edit `FEEDBACK_EMAIL` in that file. A new page gets the link by including the script.
-    - Footer text is "Questions, comments and feedback, write to info@vividnova.com". The backup sheet now has a "This device check" (does browser storage work, installed app or browser tab, cities stamped here), added while chasing a report of passport stamps not surviving between sessions on a phone. E2E suite: 96 tests.
+    - Footer text is "Questions, comments and feedback, write to info@vividnova.com". The backup sheet now has a "This device check" (does browser storage work, installed app or browser tab, cities stamped here), added while chasing a report of passport stamps not surviving between sessions on a phone. E2E suite: 98 tests.
+
+36. **Passport floating counter; iPhone Home Screen storage warning (service worker cache `kyt-v71`)**
+    - `visited.html`: a floating "N visited ↑" pill appears bottom left once you scroll past the header. It updates as you mark cities and takes you back to the top when tapped.
+    - An iPhone Home Screen app keeps its own storage, separate from Safari, so it starts empty. The home page install steps now say to back up first. The installed app shows a one-time "Starting fresh?" notice with a Restore shortcut when it opens with no data.
 

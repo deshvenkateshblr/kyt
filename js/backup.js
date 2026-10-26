@@ -239,6 +239,24 @@ window.KYT.backup = (() => {
     });
   }
 
+  // First launch of the installed app with nothing in it: on iPhone it does not share data with Safari.
+  function maybeShowFreshAppNotice() {
+    try {
+      const standalone = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone;
+      if (!standalone || localStorage.getItem('kyt_fresh_notice')) return;
+      localStorage.setItem('kyt_fresh_notice', '1');
+      const empty = !Object.keys(readJson(KEYS.passport, {})).length && !readJson(KEYS.vtrips, []).length;
+      if (!empty) return;
+      const el = document.createElement('div');
+      el.id = 'kyt-fresh-notice'; el.setAttribute('role', 'status');
+      el.style.cssText = 'position:fixed;left:12px;right:12px;top:calc(12px + env(safe-area-inset-top));z-index:280;max-width:480px;margin:0 auto;padding:14px 16px;border-radius:16px;background:#1E3A8A;color:#fff;font:600 14px/1.45 system-ui,sans-serif;box-shadow:0 14px 30px rgba(0,0,0,.35)';
+      el.innerHTML = 'Starting fresh? This app keeps its own data, separate from Safari. If you used KYT in Safari first, back it up there, then restore it here. <div style="display:flex;gap:10px;margin-top:10px"><button type="button" data-kyt-backup style="flex:1;padding:10px;border-radius:12px;border:0;background:#fff;color:#1E3A8A;font:800 14px system-ui">Restore a backup</button><button type="button" id="kyt-fresh-dismiss" style="flex:1;padding:10px;border-radius:12px;border:2px solid #93C5FD;background:none;color:#fff;font:800 14px system-ui">Got it</button></div>';
+      document.body.appendChild(el);
+      bind(el);
+      el.querySelector('#kyt-fresh-dismiss').onclick = () => el.remove();
+    } catch (e) { /* storage blocked */ }
+  }
+
   // Any element marked data-kyt-backup opens the sheet.
   function bind(root) {
     (root || document).querySelectorAll('[data-kyt-backup]').forEach(el => {
@@ -248,8 +266,9 @@ window.KYT.backup = (() => {
     });
   }
   if (typeof document !== 'undefined') {
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => bind());
-    else bind();
+    const start = () => { bind(); maybeShowFreshAppNotice(); };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+    else start();
   }
 
   return { selfTest, safeSet, requestPersistence, storageStatus, buildBackup, downloadBackup, restoreFromText, openSheet, confirmEndTrip, bind };
