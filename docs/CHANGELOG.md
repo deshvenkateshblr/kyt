@@ -264,3 +264,6 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - `visited.html`: a floating "N visited ↑" pill appears bottom left once you scroll past the header. It updates as you mark cities and takes you back to the top when tapped.
     - An iPhone Home Screen app keeps its own storage, separate from Safari, so it starts empty. The home page install steps now say to back up first. The installed app shows a one-time "Starting fresh?" notice with a Restore shortcut when it opens with no data.
 
+37. **App version in every footer, and "Refresh app" (service worker cache `kyt-v72`)**
+    - `js/footer.js` prints "KYT version N" under the feedback line on every page, and warns when the phone's offline copy belongs to a different build. "Refresh app" removes the service worker and offline caches and reloads. To release: bump `APP_VERSION` in `js/footer.js` and `CACHE_NAME` in `sw.js` together; a test fails if they differ.
+

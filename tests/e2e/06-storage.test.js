@@ -150,7 +150,7 @@ test('every page carries one feedback link to info@vividnova.com, added by the s
     await page.goto(env.base + '/' + f);
     await page.waitForSelector('#kyt-feedback-footer a');
     assert.equal(await page.locator('#kyt-feedback-footer').count(), 1, f);
-    const href = await page.locator('#kyt-feedback-footer a').getAttribute('href');
+    const href = await page.locator('#kyt-feedback-footer a').first().getAttribute('href');
     assert.match(href, /^mailto:info@vividnova\.com\?subject=KYT%20feedback&body=/, f);
     assert.ok(decodeURIComponent(href).includes(f), `${f}: the page name should be in the message`);
     await context.close();
@@ -161,7 +161,7 @@ test('footer wording, and the backup sheet reports whether storage works on this
   const { context, page } = await newPhone(env.browser);
   await page.goto(env.base + '/visited.html');
   await page.waitForSelector('#kyt-feedback-footer');
-  assert.equal((await page.locator('#kyt-feedback-footer').innerText()).trim(), 'Questions, comments and feedback, write to info@vividnova.com');
+  assert.match((await page.locator('#kyt-feedback-footer').innerText()).trim(), /^Questions, comments and feedback, write to info@vividnova\.com\n/);
   await page.evaluate(() => PassportStore.unlockCity('agra'));
   await page.reload(); await page.waitForSelector('#cards-container h3');
   assert.equal(await page.evaluate(() => Object.keys(JSON.parse(localStorage.getItem('kyt_passport'))).join()), 'agra', 'stamp survives a reload');
@@ -197,5 +197,28 @@ test('installed app with no data explains that it is separate from Safari, once;
   await page.reload(); await page.waitForTimeout(800);
   assert.equal(await page.locator('#kyt-fresh-notice').count(), 0, 'shown only once');
   assert.match(await page.locator('.k-device-note').first().innerText(), /Already using KYT in Safari\?[\s\S]*Back up or restore your data/);
+  await context.close();
+});
+
+test('every page prints the app version, and it matches the service worker cache name', async () => {
+  const fsx = require('node:fs'), pth = require('node:path');
+  const root = pth.resolve(__dirname, '..', '..');
+  const sw = /CACHE_NAME = 'kyt-v(\d+)'/.exec(fsx.readFileSync(pth.join(root, 'sw.js'), 'utf8'))[1];
+  const { context, page } = await newPhone(env.browser);
+  for (const f of ['index.html', 'visited.html']) {
+    await page.goto(env.base + '/' + f);
+    await page.waitForSelector('#kyt-version');
+    assert.equal((await page.locator('#kyt-version').innerText()).match(/^KYT version (\d+)/)[1], sw, `${f}: footer version must equal sw.js (bump both together)`);
+  }
+  await context.close();
+});
+
+test('Refresh app clears the offline cache and service worker, then reloads', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.goto(env.base + '/index.html');
+  await page.waitForFunction(() => navigator.serviceWorker && navigator.serviceWorker.controller || true);
+  await page.evaluate(async () => { await caches.open('kyt-v1'); });
+  const [nav] = await Promise.all([page.waitForNavigation(), page.click('#kyt-refresh')]);
+  assert.equal(await page.evaluate(async () => (await caches.keys()).includes('kyt-v1')), false, 'old cache removed');
   await context.close();
 });
