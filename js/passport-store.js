@@ -146,8 +146,16 @@ window.PassportStore = (function() {
     return false;
   }
 
+  function getTotalCitiesCount() {
+    if (window.KYT && typeof window.KYT.getCityCount === 'function') {
+      return window.KYT.getCityCount();
+    }
+    return Array.isArray(window.KYT_CITIES) ? window.KYT_CITIES.length : 0;
+  }
+
   return {
     getPassportCities,
+    getTotalCitiesCount,
     unlockCity,
     lockCity,
     updateDate

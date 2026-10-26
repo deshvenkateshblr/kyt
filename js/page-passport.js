@@ -72,7 +72,7 @@
       if (!container) return;
       container.innerHTML = '';
       const allCities = window.PassportStore.getPassportCities();
-      const totalCitiesCount = allCities.length;
+      const totalCitiesCount = (window.PassportStore && typeof window.PassportStore.getTotalCitiesCount === 'function') ? window.PassportStore.getTotalCitiesCount() : allCities.length;
       const visitedCount = allCities.filter(c => c.visited).length;
 
       // Update Prominent Visited Counter and Progress

@@ -19627,3 +19627,28 @@ window.KYT_CITIES = [
     "code": "mtm"
   }
 ];
+
+// Central City Catalog Accessors & Statistics
+if (typeof window !== 'undefined') {
+  window.KYT = window.KYT || {};
+  window.KYT.getCities = function() {
+    return Array.isArray(window.KYT_CITIES) ? window.KYT_CITIES : [];
+  };
+  window.KYT.getCityCount = function() {
+    return window.KYT.getCities().length;
+  };
+  window.KYT.getCatalogStats = function() {
+    var cities = window.KYT.getCities();
+    var states = new Set();
+    var attractions = 0;
+    for (var i = 0; i < cities.length; i++) {
+      if (cities[i].state) states.add(cities[i].state);
+      if (Array.isArray(cities[i].beats)) attractions += cities[i].beats.length;
+    }
+    return {
+      citiesCount: cities.length,
+      statesCount: states.size,
+      attractionsCount: attractions
+    };
+  };
+}
