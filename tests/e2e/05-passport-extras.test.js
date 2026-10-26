@@ -261,6 +261,7 @@ test('strength panel: always open beside the title on desktop; tablet remembers 
   const t8 = await mk(800);
   assert.equal(await t8.pg.locator('#passport-strength details').evaluate(x => x.open), true, 'open by default on a tablet');
   await t8.pg.click('#passport-strength summary');
+  await t8.pg.waitForTimeout(150);                                                  // let the async 'toggle' event record the choice
   await t8.pg.fill('#search-input', 'goa'); await t8.pg.waitForTimeout(200);       // re-render keeps the choice
   assert.equal(await t8.pg.locator('#passport-strength details').evaluate(x => x.open), false, 'stays closed after the user closed it');
   await t8.c.close();

@@ -264,7 +264,7 @@
           vtrips.push(newVTrip);
         }
 
-        localStorage.setItem('kyt_virtual_trips', JSON.stringify(vtrips));
+        if (window.KYT && KYT.backup) { if (!KYT.backup.safeSet('kyt_virtual_trips', JSON.stringify(vtrips))) return; } else localStorage.setItem('kyt_virtual_trips', JSON.stringify(vtrips));
 
         // Open directly in virtual_trip.html with ID
         window.location.href = `virtual_trip.html?id=${newVTrip.id}`;

@@ -41,7 +41,8 @@ window.PassportStore = (function() {
 
   function saveStore(data) {
     try {
-      localStorage.setItem(STORE_KEY, JSON.stringify(data));
+      const json = JSON.stringify(data);
+      if (window.KYT && KYT.backup) KYT.backup.safeSet(STORE_KEY, json); else localStorage.setItem(STORE_KEY, json);
     } catch (e) {
       console.warn("Could not write to localStorage", e);
     }

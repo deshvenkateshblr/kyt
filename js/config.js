@@ -202,7 +202,11 @@ window.KYT.config = (() => {
 
   
   async function endTrip() {
-    if (confirm('Are you sure you want to end and delete the current trip?')) {
+    // Ending deletes steps, notes, tickets and photos for good: offer a backup first.
+    let go = false;
+    if (KYT.backup && KYT.backup.confirmEndTrip) go = !!(await KYT.backup.confirmEndTrip(KYT.store.get().tripName));
+    else go = confirm('Are you sure you want to end and delete the current trip?');
+    if (go) {
       // Stamp visits for cities present in this trip before deleting
       if (window.PassportStore && window.KYT_CITIES) {
         const { stepsData } = KYT.store.get();

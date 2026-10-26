@@ -248,3 +248,11 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **Small fixes.** Home copy no longer promises sync or says curated trips are "coming soon". Own plans show "N cities · D days" instead of curated-journey text. The builder counts planned days without Day 0. The Ctrl+V hint is hidden on phones. Create with a blank name now focuses the field. The night-stay "Base Move" label reads "Move hotel: sleep in X".
     - E2E suite is 85 tests, all passing.
 
+34. **Storage safety: one backup, backup before End Trip, persistence, visible save failures (`js/backup.js`, service worker cache `kyt-v68`)**
+    - **One backup file** (`kytBackup: 1`) holds the passport, all virtual trips and the current trip with its photos and tickets. "Back up or restore your data" on the home page, and "Back up or restore everything" in the trip editor, open one sheet to download or restore it. Restore validates the file, shows what it will replace, and changes nothing if the file is wrong or damaged. Single-trip files are pointed to Import Trip.
+    - **End Trip** now asks first: download a backup and end, end without one, or keep the trip.
+    - **Persistent storage** is requested after the first save (`navigator.storage.persist()`), and the sheet says whether the browser has granted it.
+    - **Failed saves are visible.** Writes to `localStorage` (virtual trips, passport) go through `KYT.backup.safeSet`, which shows a "no room left" message with a Back up now shortcut instead of failing silently. The trip save message now says what to do.
+    - Roadmap §3.4 still describes the target: one `KYT.storage` repository, media as Blobs, and the native app archive. The single-trip export (Export Trip) still leaves out photos and tickets; the new backup includes them.
+    - E2E suite: 94 tests (`tests/e2e/06-storage.test.js` is new). The passport strength-panel test got a short wait, because it raced the async toggle event.
+

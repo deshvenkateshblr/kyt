@@ -48,7 +48,7 @@ To protect privacy, speed and ease of use, KYT operates under these parameters:
 **It gives:** room for far more than `localStorage` (Chrome allows up to 60% of disk per origin, Safari about 60%, Firefox up to the smaller of 10% of disk or 10 GiB); asynchronous access that does not block the page; native storage of Blobs (photos need no base64 inflation); transactions and indexes, so a list of many trips can be read cheaply; full offline use with no account. (Browser limits: MDN, *Storage quotas and eviction criteria*.)
 
 **It does not give:**
-* **Durability.** Without a persistence request, data is best-effort: the browser may evict it when the device is short on space, and the user can clear it at any time. The app does not yet call `navigator.storage.persist()`. Safari may also delete script-written data for a site that has had no interaction for seven days of browser use when cross-site tracking prevention is on; how this treats a Home Screen install needs testing on a device (TODO V2).
+* **Durability.** (Since CHANGELOG 34 the app asks for persistent storage after the first save; the note below describes why that matters and what remains.) Without a persistence request, data is best-effort: the browser may evict it when the device is short on space, and the user can clear it at any time. The app does not yet call `navigator.storage.persist()`. Safari may also delete script-written data for a site that has had no interaction for seven days of browser use when cross-site tracking prevention is on; how this treats a Home Screen install needs testing on a device (TODO V2).
 * **Portability.** Data belongs to one browser on one device. A new phone, a different browser, or (possibly) Safari versus the installed Home Screen app each start empty.
 * **A backup.** Nothing exports the passport or virtual trips, and the trip export omits attachments and photos.
 * **Quota awareness.** The app never checks free space. A failed trip save shows a generic alert; the virtual-trip and passport saves fail without telling the user.
@@ -59,7 +59,7 @@ To protect privacy, speed and ease of use, KYT operates under these parameters:
 
 Most travellers have one or two active trips. The web app is built for that. An archive of any number of past trips is a feature of the native mobile app (Phase 5), which doubles as the user's local trip library.
 
-Until then, the web app protects the user instead of archiving for them: a full backup before "End Trip", a single backup and restore for everything, and a persistence request (TODO P1.3 to P1.5).
+Until then, the web app protects the user instead of archiving for them: a full backup before "End Trip", a single backup and restore for everything, and a persistence request (built, CHANGELOG 34).
 
 ### 3.4 Target storage model
 
@@ -176,8 +176,8 @@ Unified toolbar, single back action per screen, responsive container.
 - [ ] Fix contradictions in generated days: overnight stay followed by a return, steps at the same time, dawn and sunrise beats in the afternoon, double lunches; and add an explainer to every generated plan (TODO P0.2).
 
 ### Phase 4: Data safety and offline hardening (next)
-- [ ] Backup before End Trip, and one backup and restore for everything (TODO P1.3, P1.4).
-- [ ] Persistent storage request and visible save failures (TODO P1.5).
+- [x] Backup before End Trip, and one backup and restore for everything (CHANGELOG 34).
+- [x] Persistent storage request and visible save failures (CHANGELOG 34).
 - [ ] Real-device checks of storage and the share card (TODO V1, V2).
 - [ ] Repository layer and Blob media store (section 3.4; TODO P2.4).
 - [ ] Service worker cache bump with every changed asset (ongoing).

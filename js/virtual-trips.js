@@ -103,7 +103,11 @@ KYT.virtualTrips = (function () {
   const ORIGIN_MEMORY_KEY = 'kyt_last_origin';
   function getRememberedOrigin() { try { return localStorage.getItem(ORIGIN_MEMORY_KEY) || ''; } catch (e) { return ''; } }
   function rememberOrigin(id) { try { if (id) localStorage.setItem(ORIGIN_MEMORY_KEY, id); } catch (e) { /* storage unavailable */ } }
-  function saveVTrips() { localStorage.setItem(STORAGE_KEY_VTRIPS, JSON.stringify(vtrips)); }
+  function saveVTrips() {
+    const json = JSON.stringify(vtrips);
+    if (window.KYT && KYT.backup) return KYT.backup.safeSet(STORAGE_KEY_VTRIPS, json);
+    try { localStorage.setItem(STORAGE_KEY_VTRIPS, json); return true; } catch (e) { alert('Your last change could not be saved: this device is out of space.'); return false; }
+  }
   function getActiveTrip() { return vtrips.find(t => t.id === currentTripId); }
   function ensureActiveTrip() {
     let trip = getActiveTrip();

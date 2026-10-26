@@ -182,6 +182,7 @@
                                 }
                                 .k-menu-card #launch { margin-top: 0; }
                                 .k-menu-card .k-launch { box-shadow: 0 14px 28px -10px rgba(6, 20, 66, 0.2); }
+                                .k-backup-link { display: block; margin: 8px auto 0; padding: 10px 14px; min-height: 44px; background: none; border: 0; color: #fff; font: 700 0.9rem/1.2 inherit; text-decoration: underline; text-underline-offset: 3px; opacity: 0.95; cursor: pointer; }
                                 .k-menu-card .k-reassure { text-align: center; margin-top: 14px; opacity: 0.9; }
 
                                 /* Launcher: filled in by js/index.js (new user or returning user) */
@@ -614,6 +615,7 @@
                 </noscript>
               </div>
               <p class="k-reassure">No sign-up. Your trips stay on your phone.</p>
+              <button type="button" class="k-backup-link" data-kyt-backup>Back up or restore your data</button>
             </div>
           </section>
         </div>
@@ -1063,6 +1065,8 @@
     </main>
 
     <script src="./lib/lucide.js?v=1791377680"></script>
+    <script src="./js/store.js?v=1792400000"></script>
+    <script src="./js/backup.js?v=1792400000"></script>
     <script src="./js/index.js?v=1792310000"></script>
 
     <script src="./js/page-home.js?v=1792065002"></script>

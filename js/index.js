@@ -19,79 +19,74 @@ document.addEventListener('DOMContentLoaded', async () => {
       </div>
 
       <!-- Option 1: Live Trip (Hero Highlight) -->
-      <a href="view_trip.html" class="k-option-card k-option-primary">
+      <div class="k-option-item"><a href="view_trip.html" class="k-option-card k-option-primary">
         <div class="k-option-icon" style="background: #2563EB; color: #FFFFFF;">
           <i data-lucide="plane"></i>
         </div>
         <div class="k-option-body">
           <div class="k-option-head">
             <span class="k-option-title">View Current Trip</span>
-            <span class="k-option-badge" style="background: rgba(255,255,255,0.22); color: #FFFFFF;">Live Itinerary</span>
           </div>
-          <p class="k-option-desc">Your live itinerary, checklist, tickets and photos.</p>
         </div>
         <i data-lucide="chevron-right" class="k-option-arrow"></i>
       </a>
+      <p class="k-option-desc">Your live itinerary, checklist, tickets and photos.</p></div>
 
       <!-- Option 2: Edit Itinerary -->
-      <a href="configure_trip.html" class="k-option-card">
+      <div class="k-option-item"><a href="configure_trip.html" class="k-option-card">
         <div class="k-option-icon" style="background: #EEF2FF; color: #4F46E5;">
           <i data-lucide="settings-2"></i>
         </div>
         <div class="k-option-body">
           <div class="k-option-head">
             <span class="k-option-title">Edit Live Itinerary</span>
-            <span class="k-option-badge" style="background: #EEF2FF; color: #4338CA;">Manage</span>
           </div>
-          <p class="k-option-desc">Add steps, change times, attach tickets.</p>
         </div>
         <i data-lucide="chevron-right" class="k-option-arrow"></i>
       </a>
+      <p class="k-option-desc">Add steps, change times, attach tickets.</p></div>
 
       <!-- Option 3: Virtual Trips -->
-      <a href="virtual_trip.html" class="k-option-card">
+      <div class="k-option-item"><a href="virtual_trip.html" class="k-option-card">
         <div class="k-option-icon" style="background: #EFF6FF; color: #2563EB;">
           <i data-lucide="compass"></i>
         </div>
         <div class="k-option-body">
           <div class="k-option-head">
             <span class="k-option-title">My Virtual Trips</span>
-            <span class="k-option-badge" style="background: #EFF6FF; color: #1D4ED8;">Blueprints</span>
           </div>
-          <p class="k-option-desc">Your saved multi-city plans.</p>
         </div>
         <i data-lucide="chevron-right" class="k-option-arrow"></i>
       </a>
+      <p class="k-option-desc">Your saved multi-city plans.</p></div>
 
       <!-- Option 4: AI Curated Trips -->
-      <a href="curated_trips.html" class="k-option-card">
+      <div class="k-option-item"><a href="curated_trips.html" class="k-option-card">
         <div class="k-option-icon" style="background: #FEF3C7; color: #D97706;">
           <i data-lucide="sparkles"></i>
         </div>
         <div class="k-option-body">
           <div class="k-option-head">
             <span class="k-option-title">AI Curated Journeys</span>
-            <span class="k-option-badge" style="background: #FEF3C7; color: #B45309;">Handcrafted</span>
           </div>
-          <p class="k-option-desc">Ready-made trips with day-by-day plans.</p>
         </div>
         <i data-lucide="chevron-right" class="k-option-arrow"></i>
       </a>
+      <p class="k-option-desc">Ready-made trips with day-by-day plans.</p></div>
 
       <!-- Option 5: Digital Passport -->
-      <a href="visited.html" class="k-option-card">
+      <div class="k-option-item"><a href="visited.html" class="k-option-card">
         <div class="k-option-icon" style="background: #ECFDF5; color: #059669;">
           <i data-lucide="stamp"></i>
         </div>
         <div class="k-option-body">
           <div class="k-option-head">
             <span class="k-option-title">India Explorer Passport</span>
-            <span class="k-option-badge" style="background: #ECFDF5; color: #047857;">Hit List</span>
           </div>
-          <p class="k-option-desc">Stamp the places you have been.</p>
         </div>
         <i data-lucide="chevron-right" class="k-option-arrow"></i>
       </a>
+      <p class="k-option-desc">Stamp the places you have been.</p></div>
     `;
   } else {
     html = `
@@ -101,64 +96,60 @@ document.addEventListener('DOMContentLoaded', async () => {
       </div>
 
       <!-- Option 1: Upcoming Trip (Clear recommendation for confirmed trips) -->
-      <a href="configure_trip.html" class="k-option-card">
+      <div class="k-option-item"><a href="configure_trip.html" class="k-option-card">
         <div class="k-option-icon" style="background: #EEF2FF; color: #4F46E5;">
           <i data-lucide="calendar-check-2"></i>
         </div>
         <div class="k-option-body">
           <div class="k-option-head">
-            <span class="k-option-title">Have an Upcoming Trip?</span>
-            <span class="k-option-badge" style="background: #EEF2FF; color: #4338CA;">Ready to go</span>
+            <span class="k-option-title">Upcoming Trip</span>
           </div>
-          <p class="k-option-desc">Already booked? Add flights, hotels and tickets step by step.</p>
         </div>
         <i data-lucide="chevron-right" class="k-option-arrow"></i>
       </a>
+      <p class="k-option-desc">Tickets and hotels already booked? Start here.</p></div>
 
       <!-- Option 2: Smart Virtual Trip Planner -->
-      <a href="virtual_trip.html" class="k-option-card">
+      <div class="k-option-item"><a href="virtual_trip.html" class="k-option-card">
         <div class="k-option-icon" style="background: #EFF6FF; color: #2563EB;">
           <i data-lucide="compass"></i>
         </div>
         <div class="k-option-body">
           <div class="k-option-head">
             <span class="k-option-title">Start a Virtual Trip</span>
-            <span class="k-option-badge" style="background: #EFF6FF; color: #1D4ED8;">Smart Planner</span>
           </div>
-          <p class="k-option-desc">Pick cities, set your pace and food, get a day-by-day plan.</p>
         </div>
         <i data-lucide="chevron-right" class="k-option-arrow"></i>
       </a>
+      <p class="k-option-desc">Know where you are going? Start here.</p></div>
 
       <!-- Option 3: AI Curated Trips -->
-      <a href="curated_trips.html" class="k-option-card">
+      <div class="k-option-item"><a href="curated_trips.html" class="k-option-card">
         <div class="k-option-icon" style="background: #FEF3C7; color: #D97706;">
           <i data-lucide="sparkles"></i>
         </div>
         <div class="k-option-body">
           <div class="k-option-head">
             <span class="k-option-title">AI Curated Journeys</span>
-            <span class="k-option-badge" style="background: #FEF3C7; color: #B45309;">Handcrafted</span>
           </div>
-          <p class="k-option-desc">Pilgrimage, coastal and heritage trips you can make your own.</p>
         </div>
         <i data-lucide="chevron-right" class="k-option-arrow"></i>
       </a>
+      <p class="k-option-desc">Not sure where to go? Start here for ideas.</p></div>
 
       <!-- Option 4: Digital Passport -->
-      <a href="visited.html" class="k-option-card">
+      <div class="k-option-item"><a href="visited.html" class="k-option-card">
         <div class="k-option-icon" style="background: #ECFDF5; color: #059669;">
           <i data-lucide="stamp"></i>
         </div>
         <div class="k-option-body">
           <div class="k-option-head">
             <span class="k-option-title">India Explorer Passport</span>
-            <span class="k-option-badge" style="background: #ECFDF5; color: #047857;">Hit List</span>
           </div>
-          <p class="k-option-desc">Mark the cities you have visited and collect stamps.</p>
         </div>
         <i data-lucide="chevron-right" class="k-option-arrow"></i>
       </a>
+      <p class="k-option-desc">Been there, done that? Create a share card of all the places you have visited.</p></div>
     `;
   }
 

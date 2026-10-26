@@ -191,6 +191,7 @@ test('End Current Trip wipes the trip and returns to the new-user launcher', asy
   await page.goto(env.base + '/configure_trip.html');
   await page.waitForSelector('#btn-end-trip');
   await page.click('#btn-end-trip');
+  await page.click('#kyt-end-skip');
   await page.waitForURL('**/index.html');
   await page.waitForSelector('#options-container a');
   assert.equal(await page.locator('#options-container a[href="view_trip.html"]').count(), 0);
@@ -205,6 +206,7 @@ test('ending a trip stamps the passport for cities named in its steps', async ()
   await page.goto(env.base + '/configure_trip.html');
   await page.waitForSelector('#btn-end-trip');
   await page.click('#btn-end-trip');
+  await page.click('#kyt-end-skip');
   await page.waitForURL('**/index.html');
   const stored = await page.evaluate(() => JSON.parse(localStorage.getItem('kyt_passport') || '{}'));
   assert.ok(stored.agra, 'Agra should be marked visited after ending a trip that mentions Agra');

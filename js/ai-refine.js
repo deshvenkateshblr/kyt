@@ -575,7 +575,7 @@ JSON SCHEMA:
       } else {
         stored.unshift(vTrip);
       }
-      localStorage.setItem('kyt_virtual_trips', JSON.stringify(stored));
+      if (window.KYT && KYT.backup) KYT.backup.safeSet('kyt_virtual_trips', JSON.stringify(stored)); else localStorage.setItem('kyt_virtual_trips', JSON.stringify(stored));
     } catch (e) {
       console.warn('Could not save to localStorage:', e);
     }
