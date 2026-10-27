@@ -267,3 +267,26 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
 37. **App version in every footer, and "Refresh app" (service worker cache `kyt-v72`)**
     - `js/footer.js` prints "KYT version N" under the feedback line on every page, and warns when the phone's offline copy belongs to a different build. "Refresh app" removes the service worker and offline caches and reloads. To release: bump `APP_VERSION` in `js/footer.js` and `CACHE_NAME` in `sw.js` together; a test fails if they differ.
 
+38. **Destination Catalog Expansion to 159 Cities & Lowercase URL Consistency (service worker cache `kyt-v74`)**
+    - **Expanded Destinations**: Increased database from 145 to 159 cities in `data/cities.js` with complete geographic coordinates, setting (`coast`, `hills`, `plains`), travel vibes, effort levels, attraction beats, and direct Google Maps links.
+    - **URL Consistency**: Standardized all internal and canonical external URLs to lowercase `vividnova.com/kyt`.
+
+39. **Explorer Quests in India Explorer Passport (`visited.html`, `data/quests.js`, `js/passport-extras.js`)**
+    - **Quests Catalog**: Added 28 curated cultural and geographical quests across 4 pillars (Spiritual, Heritage, Nature, Regional) covering 138 of 159 destinations (86.8%).
+    - **Quests Selection Sheet**: Integrated `[Quests]` trigger button in `visited.html` opening a category-pill filtered modal dialog with real-time completion tracking and trophy badges (🏆).
+    - **Active Quest Explainer Bar**: Filtered destination grid with a dedicated banner showing quest icon, title, full description, completion status, and a one-click `✕` exit button.
+    - **Canvas Share Card Integration**: Dynamically ranks and renders "TOP QUESTS" with custom progress bars on the 1200x630 share card, with a persistent `Include Explorer Quests` user toggle.
+
+40. **Interactive India Explorer Vector Map & Downloadable Poster (`visited.html`, `data/india-map.js`, `js/passport-extras.js`, service worker cache `kyt-v77`)**
+    - **Survey of India Compliant Vector Map**: Fully client-side, offline projection of India's mainland, coastlines, and island territories in `data/india-map.js`.
+    - **Interactive Explorer Map Modal**: Added "Your Explorer Map" launcher button to the Passport hero. Displays all 159 coordinates with custom glow effects, pulsing markers, and a toggle between "Visited Only" and "All Destinations".
+    - **Pin Callouts**: Clicking any destination pin displays a rich slide-in details card showing the city name, state, brief overview, stamped date, and direct navigation to explore the destination.
+    - **High-Res Poster Download**: One-click "Download Map Poster" generating an authentic dark-mode explorer poster with coordinate grids and explorer stats.
+    - **Responsive Viewport Containment**: Modal height bounded (`h-[92vh] max-h-[880px]`) with aspect-ratio preservation (`900/1100`) preventing double scrollbars and overflow on desktop and mobile.
+
+41. **Trip Detail & Builder Unification, 2-Hop Friction Removal & Compact Header (service worker cache `kyt-v79`)**
+    - **Compact View Trip Header (`trip_detail.html`)**: Condensed bloated 5-tier header (~360px) into a sleek 2-row layout (~95px high, >60% vertical space savings). Row 1 hosts back navigation and primary "Start this trip" button; Row 2 hosts trip title, inline duration badge, metadata pills (`📍 From Bengaluru`, `🗓️ 5 Days`, `Spiritual`, `Satvik`), and secondary actions (`Refine with AI`, `Edit Trip`, `Share`). Itinerary days and destination cards are now immediately visible above the fold.
+    - **Unified Header on Edit Trip (`virtual_trip.html`)**: Replaced fragmented subnav with the exact same hero header as View Trip (same blue styling, inline editable title, metadata pills). All key actions (`Trip Details & AI`, `Stays & Days`, `Share`) remain persistently accessible.
+    - **Mode Switcher Tabs (`Edit Cities` vs `Day Plan`)**: Integrated clean tabs in the edit header (`[ 📍 Edit Cities ]` $\leftrightarrow$ `[ 🗓️ Day Plan (X) ]`). Toggling between destinations and the day-by-day plan keeps the header firmly anchored, eliminating the feeling of being thrown into a different screen.
+    - **Elimination of Confusing Separate Edits & 2-Hop Loop**: Removed redundant "Edit Cities" button from `trip_detail.html`, unifying into one clear "Edit Trip" button with smart routing (builder for planned trips, canvas for unbuilt drafts). In the My Trips hub, clicking an unbuilt trip directly opens its canvas with zero extra hops.
+    - **Helpful Empty State**: Trips with 0 destinations show an inviting card with an actionable `[+ Add Destinations]` button instead of dead text.
