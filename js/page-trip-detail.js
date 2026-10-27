@@ -725,6 +725,8 @@
 
             ${highlightsHtml}
 
+            ${planBadgeLabel === 'Curated Blueprint' ? '' : KYT.ui.renderGeneratedPlanNotice()}
+
             <div>
               <h4 class="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">Day-by-Day Schedule</h4>
               <div class="space-y-4">

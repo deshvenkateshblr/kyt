@@ -152,6 +152,21 @@ window.KYT.ui = (function () {
     return (PHASE_META[phase] && PHASE_META[phase].style) || 'bg-slate-100 text-slate-600 border-slate-200';
   }
 
+  /**
+   * Amber notice shown with every auto-generated plan (builder and plan page): the sequence is
+   * a suggestion, times are indicative, and live conditions are checked in Google Maps.
+   * Same look as the notice on curated_trips.html.
+   */
+  function renderGeneratedPlanNotice() {
+    return `
+      <div id="generated-plan-notice" class="bg-amber-50/90 border border-amber-200/90 rounded-2xl p-3.5 sm:p-4 flex items-start gap-3 text-xs text-amber-950 shadow-2xs">
+        <i data-lucide="info" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
+        <div class="leading-relaxed">
+          <span class="font-bold">A suggested sequence, not a schedule.</span> Times are indicative and every step can be moved or removed. Before you set out, check road, weather and opening conditions in Google Maps.
+        </div>
+      </div>`;
+  }
+
   /** Render a single PACE_META badge span. */
   function renderPaceBadge(paceKey) {
     const m = PACE_META[paceKey];
@@ -1179,6 +1194,7 @@ window.KYT.ui = (function () {
     formatSuggestedTime,
     phaseStyle,
     renderPaceBadge,
+    renderGeneratedPlanNotice,
     renderMobilityBadge,
     categoryMeta,
     encodeAiTrip,

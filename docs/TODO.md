@@ -1,7 +1,7 @@
 # KYT: Prioritized TODO
 
 The single list of open work. Done work is in [CHANGELOG.md](CHANGELOG.md). Design intent and architecture are in [kyt_product_specification_roadmap.md](kyt_product_specification_roadmap.md).
-Last reviewed: 24 Oct 2026, against service worker cache `kyt-v53`.
+Last reviewed: 27 Oct 2026, against service worker cache `kyt-v80`.
 
 **How to use this file:** keep every open item here and nowhere else. When something ships, move it to the changelog. Other docs link here instead of keeping their own TODO lists.
 
@@ -17,7 +17,7 @@ Last reviewed: 24 Oct 2026, against service worker cache `kyt-v53`.
 |---|---|---|---|
 | Find a plan | "What can I do in 3 days from my city?" | 145 cities. 3 curated trips (two Tirupati, one Mathura and Vrindavan), from Bengaluru and Delhi. | Few ready-made plans |
 | Pick the time | "Is this a good month? Will it be crowded?" | Curated trips hold best months and festival and crowd days, but nothing shows them, and the best months are unsourced AI text. The 145 cities hold no seasonal information. | Hidden, unverified, or missing |
-| Check it fits | "Can I really do this in 4 days?" | A Google Maps link per leg. The builder assumes fixed transfer times (4 h, 5 h or 2 h) whatever the distance, so some plans are impossible: see P1.0 and P0.2. | Plans can be wrong |
+| Check it fits | "Can I really do this in 4 days?" | A Google Maps link per leg. The builder assumes fixed transfer times (4 h, 5 h or 2 h) whatever the distance, so some plans are impossible: see P1.0. Every generated plan now says it is a suggested sequence and to check Google Maps (CHANGELOG 38). | Plans can be wrong |
 | Suit the group | "My parents can't climb. We have kids." | Each attraction shows an access badge (easy, walk, trek). Plans do not use it. | Not used |
 | Prepare | "What do I book, carry and wear?" | Curated trips show a Before You Go list and tips. Virtual trips show nothing. | Missing for virtual trips |
 | Travel | "What is next? Where are my tickets?" | Now view, attachments, offline use. | Works |
@@ -27,11 +27,7 @@ Last reviewed: 24 Oct 2026, against service worker cache `kyt-v53`.
 
 ## P0: Generated plans must not look careless
 
-Found by running the real builder on five scenarios (Golden Triangle, Kerala hills, Manali to Leh, Haridwar to Rishikesh to Kedarnath, Kerala in 3 days). Plains trips look reasonable; the failures are in the hills and pilgrimage trips where a wrong plan costs a traveller most.
-
-| ID | Item | Why it matters | Evidence |
-|---|---|---|---|
-| P0.2 | **Fix the contradictions in generated days.** (a) Do not show "Overnight Stay" and then a "Return Journey" an hour later (3 of 4 scenarios). (b) No two steps at the same time (3 of 4). (c) Beats named for a time of day (dawn, sunrise, morning prayers) keep that time of day (4 of 4; for example Shanti Stupa "sunrise" at 13:30). (d) No second lunch when a lunch beat already exists (2 of 4). (e) **An explainer on every auto-generated plan**, wherever one is shown (the builder and the trip detail page): the sequence is fluid, indicative and flexible, and the traveller should check local conditions in online maps first. Reuse the amber info banner that `curated_trips.html` already carries (it tells people the itinerary is an AI draft to review and verify), reworded for generated plans, for example: "This is a suggested sequence, not a schedule. Times are indicative and every step can be moved or removed. Before you set out, check road, weather and opening conditions in Google Maps." Legs keep their live Maps links. Add the scenarios as tests under `tests/e2e`. | These show in nearly every generated plan and make it look careless. (e) sets honest expectations: the builder still assumes fixed transfer times and cannot know today's roads, and only curated trips say so today. | Fixed transfer times in every run: 4.0 h base transfer, 5.0 h excursion drive, 2.0 h return, so Kochi to Alleppey got 5 h and the Leh check-in read "Morning (~11:30 AM)". |
+Clear. The contradictions in generated days and the explainer on every generated plan shipped in CHANGELOG 38. The remaining cause of impossible plans, fixed transfer times for hill and pilgrimage places, is P1.0.
 
 ## P1: A confident first trip, and not losing what you built
 
@@ -54,6 +50,7 @@ Found by running the real builder on five scenarios (Golden Triangle, Kerala hil
 | P2.5 | **Free-flow search on curated trips.** Worth doing once P1.1 grows the list. | Finding the right trip among many. | Old backlog |
 | P2.6 | **Plan for elders, kids and fitness.** Party chips (family with elders, family with kids, friends, solo). Use each attraction's `mobility` (331 easy, 250 walk, 32 trek) and the city `effort` flag to leave out or warn on strenuous stops. The `party` tag cannot drive this: it is "any" on 609 of 615 attractions. | Pilgrimages with parents are a core use. Useful, but fewer travellers are blocked by its absence than by P0 and P1. | Data review |
 | P2.7 | **Duration nudge:** warn when the trip has fewer days than cities. Needs no distance data. | Stops people building overpacked plans. | Roadmap Phase 2 |
+| P2.8 | **Extra days in one city repeat the same attractions.** When a trip has more days than cities, each extra day lists the last city's attractions again (Leh on days 3 and 4 is identical). Spread the attractions across the days, or leave the spare days open for the traveller. | A repeated day looks careless and tells the traveller to do the same things twice. | Seen while checking P0.2: Manali to Leh in 4 days, Haridwar to Kedarnath in 4 days. |
 
 ## P3: Convenience and delight
 
@@ -96,7 +93,7 @@ Who are the first hundred users, and in which language do they plan? If they are
 
 | Idea | Why not now |
 |---|---|
-| Own travel-time and route estimates | Google Maps does this live and better, its terms do not let us store its results, and tables built from OpenStreetMap raise licence questions for a paid app. Keep live Maps links (P0.2). |
+| Own travel-time and route estimates | Google Maps does this live and better, its terms do not let us store its results, and tables built from OpenStreetMap raise licence questions for a paid app. Keep live Maps links (CHANGELOG 38). |
 | Rail and flight times | No official, open, current source found; IRCTC publishes no public API we could confirm. Link out instead. |
 | Budget and expense tracking | A separate product. KYT sequences and remembers; it does not manage money. |
 | Hotel, train or flight booking, or booking-email import | Needs accounts and servers, which the app avoids. |
