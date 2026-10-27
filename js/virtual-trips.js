@@ -401,6 +401,7 @@ KYT.virtualTrips = (function () {
         tabBadge.classList.toggle('hidden', stepCount === 0);
       }
       if (trip) renderHeaderMetaPills(trip);
+      syncEmptyTripControls(trip);
 
     } else if (screen === 'builder') {
       DOM.screenBuilder.classList.remove('hidden');
@@ -442,6 +443,7 @@ KYT.virtualTrips = (function () {
         tabBadge.classList.toggle('hidden', stepCount === 0);
       }
       if (trip) renderHeaderMetaPills(trip);
+      syncEmptyTripControls(trip);
     }
 
     if (window.lucide) lucide.createIcons();
@@ -726,6 +728,54 @@ KYT.virtualTrips = (function () {
     }
   }
 
+  // The Start & Travel Style card: open only while the starting point is missing (it is required),
+  // collapsed with Done, and never re-opened by a re-render once the traveller has used it.
+  let prefsTripId = null;
+  let prefsTouched = false;
+
+  function renderPrefsSummary(trip) {
+    const el = document.getElementById('vt-pref-summary-value');
+    if (!el) return;
+    if (!trip.originCity) {
+      el.textContent = 'Choose where you start';
+      el.className = 'text-[11px] font-bold text-rose-600 truncate';
+      return;
+    }
+    const label = (key) => {
+      const o = (TASTE_FIELDS[key] || []).find(x => x.id === (trip.taste || {})[key]);
+      return o ? o.label : '';
+    };
+    let where = 'Already there';
+    if (trip.originCity !== 'already_there') {
+      const c = window.KYT_CITIES ? window.KYT_CITIES.find(x => x.id === trip.originCity) : null;
+      where = 'From ' + (c ? c.name : trip.originCity);
+    }
+    const diet = (trip.taste && trip.taste.diet && trip.taste.diet !== 'any') ? label('diet') : '';
+    el.textContent = [where, label('intent'), label('pace'), diet].filter(Boolean).join(' · ');
+    el.className = 'text-[11px] font-bold text-slate-500 truncate';
+  }
+
+  // An empty trip has nothing to plan, share or review yet: those controls wait for a first destination
+  // instead of answering with an alert.
+  function syncEmptyTripControls(trip) {
+    const hasCities = Boolean(trip && trip.cities && trip.cities.length > 0);
+    ['vt-header-btn-stays', 'vt-tab-builder'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (el.dataset.baseTitle === undefined) el.dataset.baseTitle = el.getAttribute('title') || '';
+      el.disabled = !hasCities;
+      el.classList.toggle('opacity-40', !hasCities);
+      el.classList.toggle('cursor-not-allowed', !hasCities);
+      el.title = hasCities ? el.dataset.baseTitle : 'Add a destination first';
+    });
+    ['vt-subnav-share', 'vt-subnav-detail'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el && !hasCities) el.classList.add('hidden');
+    });
+    const shareBtn = document.getElementById('vt-subnav-share');
+    if (shareBtn && hasCities) shareBtn.classList.remove('hidden');
+  }
+
   // --- Rendering Canvas ---
   function renderCanvas() {
     const trip = getActiveTrip();
@@ -755,14 +805,17 @@ KYT.virtualTrips = (function () {
 
     const prefDetails = document.getElementById('vt-preferences-details');
     if (prefDetails) {
-      prefDetails.open = (trip.cities.length === 0);
+      if (prefsTripId !== trip.id) {
+        prefsTripId = trip.id;
+        prefsTouched = false;
+        prefDetails.open = !trip.originCity;
+      } else if (!prefsTouched && trip.originCity && trip.cities.length > 0) {
+        prefDetails.open = false;
+      }
     }
-    const prefLabel = document.getElementById('vt-pref-summary-label');
-    if (prefLabel) {
-      const origName = (trip.originCity && (window.KYT_CITIES.find(c => c.id === trip.originCity)?.name || trip.originCity)) || 'Origin';
-      const vibe = trip.taste ? (trip.taste.vibe || trip.taste.theme || '') : '';
-      prefLabel.textContent = `Preferences (From ${origName}${vibe ? ' • ' + vibe : ''})`;
-    }
+    renderPrefsSummary(trip);
+    renderHeaderMetaPills(trip);
+    syncEmptyTripControls(trip);
 
     if (trip.cities.length === 0) {
       DOM.selectedCitiesRoot.innerHTML = '';
@@ -1712,8 +1765,25 @@ KYT.virtualTrips = (function () {
           }
           saveVTrips();
           updateOriginDesc(trip);
+          renderPrefsSummary(trip);
+          renderHeaderMetaPills(trip);
         }
       });
+    }
+
+    // Done collapses the Start & Travel Style card; opening it by hand is respected from then on.
+    const prefsDetails = document.getElementById('vt-preferences-details');
+    if (prefsDetails) {
+      const prefsSummaryEl = prefsDetails.querySelector('summary');
+      if (prefsSummaryEl) prefsSummaryEl.addEventListener('click', () => { prefsTouched = true; });
+      const btnPrefsDone = document.getElementById('btn-vt-prefs-done');
+      if (btnPrefsDone) {
+        btnPrefsDone.addEventListener('click', () => {
+          prefsTouched = true;
+          prefsDetails.open = false;
+          prefsDetails.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        });
+      }
     }
 
     if (DOM.tasteRoot) {

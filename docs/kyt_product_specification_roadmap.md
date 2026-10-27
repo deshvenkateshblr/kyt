@@ -144,7 +144,7 @@ Transfer days follow a fixed shape: morning transit, midday check-in and lunch, 
 
 **Decision (24 Oct 2026): KYT is not a routing app.** It does not compute travel times or routes; Google Maps does that live and better, its terms do not allow storing its results, and the distance table (`data/distance_matrix.js`) holds straight-line distances, so it cannot stand in for road distance. Rail and flight times are not stored either: no official, open, current source was found, and times vary by train.
 
-**Known problem.** The builder currently assumes fixed transfer times (4 h for a base transfer, 5 h for a day-excursion drive, 2 h for the return) whatever the distance, and uses a straight-line 130 km rule to choose "day excursion". Running the real builder showed impossible plans for hill and pilgrimage trips (Haridwar to Kedarnath as a day trip; Manali to Leh as a 4-hour drive). The fix is not better routing but access gates for the few places where a plan fails (TODO P1.0). Every generated plan, in the builder and on the plan page, now carries an explainer that the sequence is suggested and indicative and that local conditions should be checked in Google Maps first (CHANGELOG 38).
+**Known problem.** The builder currently assumes fixed transfer times (4 h for a base transfer, 5 h for a day-excursion drive, 2 h for the return) whatever the distance, and uses a straight-line 130 km rule to choose "day excursion". Running the real builder showed impossible plans for hill and pilgrimage trips (Haridwar to Kedarnath as a day trip; Manali to Leh as a 4-hour drive). The fix is not better routing but access gates for the few places where a plan fails (TODO P1.0). Every generated plan, in the builder and on the plan page, now carries an explainer that the sequence is suggested and indicative and that local conditions should be checked in Google Maps first (CHANGELOG 42).
 
 ---
 
@@ -173,7 +173,7 @@ Unified toolbar, single back action per screen, responsive container.
 - [x] No artificial clock timestamps; day phase badges.
 - [x] Non-overlapping sequential spacing.
 - [ ] Curated steps shown with timing badges and checklist notes (verify).
-- [x] Fix contradictions in generated days (overnight stay followed by a return, steps at the same time, dawn and sunrise beats in the afternoon, double lunches) and add an explainer to every generated plan (CHANGELOG 38).
+- [x] Fix contradictions in generated days (overnight stay followed by a return, steps at the same time, dawn and sunrise beats in the afternoon, double lunches) and add an explainer to every generated plan (CHANGELOG 42).
 
 ### Phase 4: Data safety and offline hardening (next)
 - [x] Backup before End Trip, and one backup and restore for everything (CHANGELOG 34).

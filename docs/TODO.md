@@ -1,7 +1,7 @@
 # KYT: Prioritized TODO
 
 The single list of open work. Done work is in [CHANGELOG.md](CHANGELOG.md). Design intent and architecture are in [kyt_product_specification_roadmap.md](kyt_product_specification_roadmap.md).
-Last reviewed: 27 Oct 2026, against service worker cache `kyt-v80`.
+Last reviewed: 27 Oct 2026, against service worker cache `kyt-v81`.
 
 **How to use this file:** keep every open item here and nowhere else. When something ships, move it to the changelog. Other docs link here instead of keeping their own TODO lists.
 
@@ -17,7 +17,7 @@ Last reviewed: 27 Oct 2026, against service worker cache `kyt-v80`.
 |---|---|---|---|
 | Find a plan | "What can I do in 3 days from my city?" | 145 cities. 3 curated trips (two Tirupati, one Mathura and Vrindavan), from Bengaluru and Delhi. | Few ready-made plans |
 | Pick the time | "Is this a good month? Will it be crowded?" | Curated trips hold best months and festival and crowd days, but nothing shows them, and the best months are unsourced AI text. The 145 cities hold no seasonal information. | Hidden, unverified, or missing |
-| Check it fits | "Can I really do this in 4 days?" | A Google Maps link per leg. The builder assumes fixed transfer times (4 h, 5 h or 2 h) whatever the distance, so some plans are impossible: see P1.0. Every generated plan now says it is a suggested sequence and to check Google Maps (CHANGELOG 38). | Plans can be wrong |
+| Check it fits | "Can I really do this in 4 days?" | A Google Maps link per leg. The builder assumes fixed transfer times (4 h, 5 h or 2 h) whatever the distance, so some plans are impossible: see P1.0. Every generated plan now says it is a suggested sequence and to check Google Maps (CHANGELOG 42). | Plans can be wrong |
 | Suit the group | "My parents can't climb. We have kids." | Each attraction shows an access badge (easy, walk, trek). Plans do not use it. | Not used |
 | Prepare | "What do I book, carry and wear?" | Curated trips show a Before You Go list and tips. Virtual trips show nothing. | Missing for virtual trips |
 | Travel | "What is next? Where are my tickets?" | Now view, attachments, offline use. | Works |
@@ -27,7 +27,7 @@ Last reviewed: 27 Oct 2026, against service worker cache `kyt-v80`.
 
 ## P0: Generated plans must not look careless
 
-Clear. The contradictions in generated days and the explainer on every generated plan shipped in CHANGELOG 38. The remaining cause of impossible plans, fixed transfer times for hill and pilgrimage places, is P1.0.
+Clear. The contradictions in generated days and the explainer on every generated plan shipped in CHANGELOG 42. The remaining cause of impossible plans, fixed transfer times for hill and pilgrimage places, is P1.0.
 
 ## P1: A confident first trip, and not losing what you built
 
@@ -38,6 +38,7 @@ Clear. The contradictions in generated days and the explainer on every generated
 | P1.2 | **Plan-ahead notes and official links where they matter.** Add a short note (booking window, registration or permit, ID, dress code) and the official website to the cities that need one, starting with the Himalayan trek and major pilgrimage cities. Verify each against the official source and leave the rest blank. Show it in the city sheet and in virtual plans. It can share the sourcing work of P1.0. | Protects against missed bookings and fake booking sites, which is why the owner asked for `officialWebsite`. | Curated trips already show this; virtual trips do not. Only 43 of 615 attraction notes mention timings, fees or booking at all. |
 | P1.6 | **Weather by month for every city:** average high, low and rainfall, shown as a small strip in the city sheet. Generate once with a script from ERA5 reanalysis and store 36 numbers per city in `data/cities.js`; no runtime calls. Because the native app will be paid, do not use Open-Meteo's free API (non-commercial only): use the Copernicus Climate Data Store (ERA5 moved to CC BY in July 2025; confirm commercial use on the dataset page) or a paid Open-Meteo plan. Spot-check the hill cities against IMD normals, since 11 to 25 km grid cells smooth out mountains. | "Which month?" is the first question about any trip. | The 145 cities hold no seasonal data. |
 | P1.7 | **Best months and special days, honestly sourced.** Show best months and festival or crowd days on curated trip cards and the detail page, and flag a start date outside the best months. First re-derive the curated `bestMonths` from P1.6 plus P1.0, or label them unverified: today they are pasted AI text with empty `sources`. Add month-level special days (never exact dates, which move with the lunar calendar) with a source link, for about 25 places where crowds or closures change a plan. | Festival crowds can change a plan completely. | `bestMonths` is on 3 of 3 curated trips and `specialDays` on 2 of 3; neither is shown anywhere. |
+| P1.8 | **One slim header and an editable Day Plan (proposed, awaiting the owner's decision).** (a) Replace the three header rows (back and actions, title and pills, Edit Cities and Day Plan tabs) plus the separate Stays & Days button with one title row with a ⋯ menu (Share, Trip Details & AI) and one three-step switch: Cities, Days and stays, Plan. Later steps unlock as the trip is ready; the start and style summary appears once. (b) Make "Edit Trip" land on a Day Plan that can actually be edited: move a stop up or down, edit its title, time and notes, delete, and add a stop from the city's remaining attractions; nights per city inline; changing cities or days regenerates only the affected days and keeps manual edits, so Reset Order is rarely needed (and moves into the ⋯ menu with a confirm). Shrink the sticky Start this trip card to a slim bar. | The header takes about a third of a phone screen (165 to 229 px under a 62 px toolbar), "Edit Trip" opens a screen whose only edits are delete and Reset Order, and the sticky Start card covers about a third of the plan. | Walkthrough of the create-and-edit flow at 390x844 on 27 Oct 2026. |
 
 ## P2: Smoother planning
 
@@ -93,7 +94,7 @@ Who are the first hundred users, and in which language do they plan? If they are
 
 | Idea | Why not now |
 |---|---|
-| Own travel-time and route estimates | Google Maps does this live and better, its terms do not let us store its results, and tables built from OpenStreetMap raise licence questions for a paid app. Keep live Maps links (CHANGELOG 38). |
+| Own travel-time and route estimates | Google Maps does this live and better, its terms do not let us store its results, and tables built from OpenStreetMap raise licence questions for a paid app. Keep live Maps links (CHANGELOG 42). |
 | Rail and flight times | No official, open, current source found; IRCTC publishes no public API we could confirm. Link out instead. |
 | Budget and expense tracking | A separate product. KYT sequences and remembers; it does not manage money. |
 | Hotel, train or flight booking, or booking-email import | Needs accounts and servers, which the app avoids. |
