@@ -920,6 +920,127 @@ KYT.virtualTrips = (function () {
     return true;
   }
 
+  // ── Time-of-day awareness for generated days (TODO P0.2) ─────────────────────
+  // A beat whose title names a time of day ("sunrise", "morning prayers", "sunset", "dinner")
+  // keeps that time of day. Returns the window [min, max] (in hours) and a preferred start,
+  // or null for a beat that can happen at any time.
+  const LUNCH_TITLE_RE = /\b(lunch|thali|sadya|biryani)\b/i;
+  const LUNCH_HINT_RE = /lunch|chaat|thali|food|sweets|petha/i;
+  const DINNER_HINT_RE = /dinner|food|thali|dhabha/i;
+
+  function isLunchBeat(beat) {
+    const hr = Number(beat.hour);
+    if (LUNCH_TITLE_RE.test(beat.title || '')) return true;
+    return hr >= 12 && hr < 15 && (beat.icon === 'utensils' || LUNCH_HINT_RE.test(beat.title || ''));
+  }
+
+  function isDinnerBeat(beat) {
+    return Number(beat.hour) >= 18 && (beat.icon === 'utensils' || DINNER_HINT_RE.test(beat.title || ''));
+  }
+
+  function beatTimeWindow(beat) {
+    const t = String(beat.title || '').toLowerCase();
+    const hr = (beat.hour != null && !isNaN(Number(beat.hour))) ? Number(beat.hour) : null;
+    const win = (kind, min, max, fallback) => ({
+      kind, min, max, pref: Math.min(max, Math.max(min, hr != null ? hr : fallback))
+    });
+    if (/\b(sunrise|dawn|daybreak|early[- ]morning|mangla aarti)\b/.test(t)) return win('dawn', 5, 8, 6);
+    if (/\bmorning\b/.test(t)) return win('morning', 6, 11, 8);
+    if (/\bsunset\b/.test(t)) return win('sunset', 16.5, 19, 17.5);
+    if (/\b(dusk|twilight|evening|aarti)\b/.test(t)) return win('evening', 17.5, 20.5, 18.5);
+    if (/\b(light (&|and) (water|sound)|sound (&|and) light|laser|light show|light ceremony)\b/.test(t)) return win('show', 18.5, 21.5, 19);
+    if (/\b(night|midnight)\b/.test(t)) return win('night', 19.5, 22, 20);
+    if (/\bdinner\b/.test(t) || isDinnerBeat(beat)) return win('dinner', 18.5, 21.5, 20);
+    if (/\bbrunch\b/.test(t)) return win('brunch', 10.5, 12.5, 11);
+    if (isLunchBeat(beat)) return win('lunch', 11.5, 15, 13);
+    return null;
+  }
+
+  function hoursToHM(t) {
+    let h = Math.floor(t + 1e-9);
+    let m = Math.round((t - h) * 60);
+    if (m >= 60) { h += 1; m = 0; }
+    return { h, m };
+  }
+
+  /**
+   * Lays one day's catalog beats on a timeline so that no two steps start together, a beat that
+   * names a time of day keeps it, and the day never holds two lunches. A beat that cannot fit
+   * its time of day on this day (a sunrise on a day spent in transit) is left out of the day
+   * rather than shown at the wrong hour.
+   *
+   * ctx: floor (earliest start), timedCap / flowCap (latest start of a time-bound / ordinary beat),
+   *      flowStart, useHints, anchors (hours already taken), lunchPref, genericDinner ({pref, max} | null)
+   * Returns { items: [{ beat, t }], lunchAt, dinnerAt } with hours as decimals.
+   */
+  function layoutDayBeats(matched, ctx) {
+    const blocked = [];                      // open intervals in which no new step may start
+    const block = (t, after = 0.5) => blocked.push([t - 0.5, t + after]);
+    const isFree = x => !blocked.some(([lo, hi]) => x > lo + 1e-9 && x < hi - 1e-9);
+    const pickNear = (pref, lo, hi, dir) => {
+      for (let k = 0; k <= 48; k++) {
+        const step = Math.ceil(k / 2) * 0.25;
+        const cand = k === 0 ? pref : pref + ((k % 2 === 1) ? dir : -dir) * step;
+        if (cand < lo - 1e-9 || cand > hi + 1e-9) continue;
+        if (isFree(cand)) return cand;
+      }
+      return null;
+    };
+    ctx.anchors.forEach(t => block(t));
+
+    const items = [];
+    const timed = matched.map(b => ({ b, w: beatTimeWindow(b) })).filter(x => x.w)
+      .sort((x, y) => x.w.pref - y.w.pref);
+    let lunchPlaced = false, dinnerPlaced = false;
+    timed.forEach(({ b, w }) => {
+      const lo = Math.max(w.min, ctx.floor), hi = Math.min(w.max, ctx.timedCap);
+      if (lo > hi) return;
+      const later = w.kind === 'morning' || w.kind === 'lunch' || w.kind === 'brunch';
+      const t = pickNear(Math.min(hi, Math.max(lo, w.pref)), lo, hi, later ? 1 : -1);
+      if (t == null) return;
+      block(t, w.kind === 'lunch' ? 1.0 : 0.5);
+      items.push({ beat: b, t });
+      if (w.kind === 'lunch') lunchPlaced = true;
+      if (isDinnerBeat(b) && t >= 18) dinnerPlaced = true;
+    });
+
+    let lunchAt = null;
+    if (!lunchPlaced) {
+      lunchAt = pickNear(ctx.lunchPref, 12, 15, 1);
+      if (lunchAt == null) lunchAt = pickNear(ctx.lunchPref, 11.5, 15.5, 1);
+      if (lunchAt != null) block(lunchAt, 1.0);
+    }
+    let dinnerAt = null;
+    if (ctx.genericDinner && !dinnerPlaced) {
+      const g = ctx.genericDinner;
+      dinnerAt = pickNear(g.pref, 18.5, g.max, -1);
+      if (dinnerAt == null) dinnerAt = pickNear(g.pref, 18, 22, -1);
+      if (dinnerAt == null) dinnerAt = g.pref;
+      block(dinnerAt);
+    }
+
+    const flow = matched.filter(b => !beatTimeWindow(b));
+    const span = ctx.flowCap - ctx.flowStart;
+    let spacing = 1.5;
+    if (flow.length > 1 && (flow.length - 1) * spacing > span) {
+      spacing = Math.max(1.0, Math.floor((span / (flow.length - 1)) * 4) / 4);
+    }
+    let cursor = ctx.flowStart;
+    flow.forEach(b => {
+      const hr = (b.hour != null && !isNaN(Number(b.hour))) ? Number(b.hour) : null;
+      const cap = (hr != null && hr >= 18) ? ctx.timedCap : ctx.flowCap;
+      let t = (ctx.useHints && hr != null && hr >= 9) ? Math.max(cursor, hr) : cursor;
+      for (let guard = 0; !isFree(t) && guard < 80; guard++) t += 0.25;
+      if (t > cap + 1e-9) return;
+      block(t);
+      items.push({ beat: b, t });
+      cursor = t + spacing;
+    });
+
+    items.sort((x, y) => x.t - y.t);
+    return { items, lunchAt, dinnerAt };
+  }
+
   function generateSteps(trip) {
     let steps = [];
     let stepCounter = 0;
@@ -1000,10 +1121,12 @@ KYT.virtualTrips = (function () {
       const isMorningTransfer = !isFirstDay && (city.id !== prevStayCityId) && (tonightStay !== prevStayCityId) && (prevStayCityId !== 'overnight_travel');
       const isOvernightTravel = tonightStay === 'overnight_travel';
       const isEveningTransfer = !isExcursion && !isOvernightTravel && (tonightStay !== city.id);
+      // On the final day of a trip that ends away from home the traveller goes home tonight:
+      // there is no second base to move to and no night to stay.
+      const returningToday = isLastDay && !isAlreadyThere && !isOvernightTravel;
+      const eveningTransfer = isEveningTransfer && !returningToday;
 
       const matched = (city.beats || []).filter(b => beatMatches(b, trip.taste)).sort((a, b) => (a.hour || 0) - (b.hour || 0));
-      const hasMiddayMeal = matched.some(b => (b.hour >= 12 && b.hour < 15) && (b.icon === 'utensils' || (b.title && /lunch|chaat|thali|food|sweets|petha/i.test(b.title))));
-      const hasEveningMeal = matched.some(b => (b.hour >= 18) && (b.icon === 'utensils' || (b.title && /dinner|food|thali|dhabha/i.test(b.title))));
 
       // ── PHASE 1: MORNING ──
       if (prevStayCityId === 'overnight_travel') {
@@ -1101,11 +1224,30 @@ KYT.virtualTrips = (function () {
       }
 
       // ── PHASE 2: MIDDAY & DAYTIME SIGHTSEEING ──
-      const maxSightseeingHour = (isEveningTransfer || isExcursion) ? 17.0 : (isOvernightTravel ? 18.0 : 18.5);
-      let currentHour = (isExcursion || isMorningTransfer) ? 13.5 : 10.0;
-      let addedLunch = false;
+      // The morning is free for sightseeing unless it is spent in transit (excursion drive or a
+      // base transfer). A beat that names a time of day keeps it; one that cannot fit today is left out.
+      const isArrivalMorning = prevStayCityId === 'overnight_travel';
+      const morningFree = isArrivalMorning || !(isExcursion || isMorningTransfer);
+      const dayEndsEarly = isExcursion || eveningTransfer;
+      const fixedAnchors = daySteps.map(s => s.hour + (s.minute || 0) / 60);
+      if (isOvernightTravel) fixedAnchors.push(21.5);
+      else if (isExcursion) fixedAnchors.push(18, 20);
+      else if (eveningTransfer) fixedAnchors.push(18, 20.5);
 
-      if (isExcursion || isMorningTransfer) {
+      const layout = layoutDayBeats(matched, {
+        floor: isArrivalMorning ? 9.5 : (morningFree ? 5 : 12.5),
+        flowStart: morningFree ? 10.0 : 13.5,
+        flowCap: dayEndsEarly ? 17.0 : (isOvernightTravel ? 18.0 : 18.5),
+        timedCap: dayEndsEarly ? 17.0 : (isOvernightTravel ? 18.0 : (returningToday ? 19.5 : 20.5)),
+        useHints: morningFree,
+        anchors: fixedAnchors,
+        lunchPref: morningFree ? 13.0 : 12.5,
+        genericDinner: dayEndsEarly ? null : { pref: isOvernightTravel ? 19.5 : 20.0, max: 21.0 }
+      });
+
+      if (layout.lunchAt != null) {
+        const lh = hoursToHM(layout.lunchAt);
+        const lPhase = KYT.ui.hourToPhase(lh.h);
         daySteps.push({
           id: Date.now().toString() + '_' + (++stepCounter),
           dayId: dayId,
@@ -1115,52 +1257,16 @@ KYT.virtualTrips = (function () {
           where: city.name,
           mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(dietName + ' Lunch in ' + city.name)}`,
           icon: 'utensils',
-          phase: 'Midday',
-          suggestedTime: 'Midday (~12:30 PM)',
-          hour: 12,
-          minute: 30
+          phase: lPhase,
+          suggestedTime: KYT.ui.formatSuggestedTime(lh.h, lh.m, lPhase),
+          hour: lh.h,
+          minute: lh.m
         });
-        addedLunch = true;
       }
 
-      matched.forEach(beat => {
-        let beatHour;
-        if (isExcursion || isMorningTransfer) {
-          beatHour = Math.min(maxSightseeingHour, Math.max(13.5, currentHour));
-          currentHour = beatHour + 1.5;
-        } else {
-          if (beat.hour != null && beat.hour >= 9) {
-            beatHour = Math.min(maxSightseeingHour, Math.max(currentHour, beat.hour));
-          } else {
-            beatHour = Math.min(maxSightseeingHour, currentHour);
-          }
-          currentHour = beatHour + 1.5;
-        }
-
-        if (!addedLunch && !hasMiddayMeal && beatHour >= 13.0) {
-          daySteps.push({
-            id: Date.now().toString() + '_' + (++stepCounter),
-            dayId: dayId,
-            cityName: city.name,
-            title: `${dietName} Lunch in ${city.name}`,
-            notes: `Savour authentic regional cuisine and thali meals at a popular local eatery.`,
-            where: city.name,
-            mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(dietName + ' Lunch in ' + city.name)}`,
-            icon: 'utensils',
-            phase: 'Midday',
-            suggestedTime: 'Midday (~13:00 PM)',
-            hour: 13,
-            minute: 0
-          });
-          addedLunch = true;
-          if (beatHour < 14.0) beatHour = 14.0;
-        }
-
-        const h = Math.floor(beatHour);
-        const m = Math.round((beatHour - h) * 60);
+      layout.items.forEach(({ beat, t }) => {
+        const { h, m } = hoursToHM(t);
         const phase = KYT.ui.hourToPhase(h);
-        const suggested = KYT.ui.formatSuggestedTime(h, m, phase);
-
         daySteps.push({
           id: Date.now().toString() + '_' + (++stepCounter),
           dayId: dayId,
@@ -1171,33 +1277,16 @@ KYT.virtualTrips = (function () {
           mapsUrl: beat.mapsUrl || '',
           icon: beat.icon || 'map-pin',
           phase: phase,
-          suggestedTime: suggested,
+          suggestedTime: KYT.ui.formatSuggestedTime(h, m, phase),
           hour: h,
           minute: m
         });
       });
 
-      if (!addedLunch && !hasMiddayMeal) {
-        daySteps.push({
-          id: Date.now().toString() + '_' + (++stepCounter),
-          dayId: dayId,
-          cityName: city.name,
-          title: `${dietName} Lunch in ${city.name}`,
-          notes: `Savour authentic regional cuisine and thali meals at a popular local eatery.`,
-          where: city.name,
-          mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(dietName + ' Lunch in ' + city.name)}`,
-          icon: 'utensils',
-          phase: 'Midday',
-          suggestedTime: 'Midday (~13:00 PM)',
-          hour: 13,
-          minute: 0
-        });
-        addedLunch = true;
-      }
-
       // ── PHASE 3: EVENING & NIGHT STAY ──
       if (isOvernightTravel) {
-        if (!hasEveningMeal) {
+        if (layout.dinnerAt != null) {
+          const dh = hoursToHM(layout.dinnerAt);
           daySteps.push({
             id: Date.now().toString() + '_' + (++stepCounter),
             dayId: dayId,
@@ -1207,10 +1296,10 @@ KYT.virtualTrips = (function () {
             where: city.name,
             mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Dinner restaurants in ' + city.name)}`,
             icon: 'utensils',
-            phase: 'Evening',
-            suggestedTime: 'Evening (~19:30 PM)',
-            hour: 19,
-            minute: 30
+            phase: KYT.ui.hourToPhase(dh.h),
+            suggestedTime: KYT.ui.formatSuggestedTime(dh.h, dh.m),
+            hour: dh.h,
+            minute: dh.m
           });
         }
 
@@ -1252,8 +1341,10 @@ KYT.virtualTrips = (function () {
           id: Date.now().toString() + '_' + (++stepCounter),
           dayId: dayId,
           cityName: prevBaseName,
-          title: `Dinner & Night Stay in ${prevBaseName}`,
-          notes: `Wind down after your excursion with dinner in ${prevBaseName} and rest at your hotel.`,
+          title: returningToday ? `Dinner in ${prevBaseName}` : `Dinner & Night Stay in ${prevBaseName}`,
+          notes: returningToday
+            ? `Wind down after your excursion with dinner in ${prevBaseName} before the journey home.`
+            : `Wind down after your excursion with dinner in ${prevBaseName} and rest at your hotel.`,
           where: prevBaseName,
           mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Dinner restaurants in ' + prevBaseName)}`,
           icon: 'utensils',
@@ -1263,7 +1354,7 @@ KYT.virtualTrips = (function () {
           minute: 0
         });
 
-      } else if (isEveningTransfer) {
+      } else if (eveningTransfer) {
         const transferUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(city.name + ' India')}&destination=${encodeURIComponent(stayCityName + ' India')}&travelmode=driving`;
         daySteps.push({
           id: Date.now().toString() + '_' + (++stepCounter),
@@ -1296,27 +1387,32 @@ KYT.virtualTrips = (function () {
         });
 
       } else {
-        if (!hasEveningMeal) {
+        if (layout.dinnerAt != null) {
+          const dh = hoursToHM(layout.dinnerAt);
           daySteps.push({
             id: Date.now().toString() + '_' + (++stepCounter),
             dayId: dayId,
             cityName: city.name,
-            title: `Dinner & Overnight Stay in ${city.name}`,
-            notes: `Wind down with dinner and soak in the evening atmosphere of ${city.name}.`,
+            title: returningToday ? `Dinner in ${city.name}` : `Dinner & Overnight Stay in ${city.name}`,
+            notes: returningToday
+              ? `Enjoy a last dinner in ${city.name} and soak in the evening atmosphere before the journey home.`
+              : `Wind down with dinner and soak in the evening atmosphere of ${city.name}.`,
             where: city.name,
             mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Dinner restaurants in ' + city.name)}`,
             icon: 'utensils',
-            phase: 'Evening',
-            suggestedTime: 'Evening (~20:00 PM)',
-            hour: 20,
-            minute: 0
+            phase: KYT.ui.hourToPhase(dh.h),
+            suggestedTime: KYT.ui.formatSuggestedTime(dh.h, dh.m),
+            hour: dh.h,
+            minute: dh.m
           });
         }
       }
 
       // ── PHASE 4: RETURN JOURNEY ON FINAL DAY ──
-      if (isLastDay && !isAlreadyThere && !isOvernightTravel) {
-        const returnOriginCityName = isExcursion ? prevBaseName : (isEveningTransfer ? stayCityName : city.name);
+      if (returningToday) {
+        const returnOriginCityName = isExcursion ? prevBaseName : city.name;
+        const lastStepAt = Math.max(0, ...daySteps.map(s => s.hour + (s.minute || 0) / 60));
+        const rh = hoursToHM(Math.max(21.0, Math.ceil((lastStepAt + 1.0) * 4) / 4));
         daySteps.push({
           id: Date.now().toString() + '_' + (++stepCounter),
           dayId: dayId,
@@ -1327,13 +1423,25 @@ KYT.virtualTrips = (function () {
           mapsUrl: `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(returnOriginCityName + ' India')}&destination=${encodeURIComponent(originName + ' India')}&travelmode=driving`,
           icon: 'car',
           phase: 'Evening',
-          suggestedTime: 'Evening (~21:00 PM)',
-          hour: 21,
-          minute: 0
+          suggestedTime: KYT.ui.formatSuggestedTime(rh.h, rh.m, 'Evening'),
+          hour: rh.h,
+          minute: rh.m
         });
       }
 
       daySteps.sort((a, b) => ((a.hour || 0) * 60 + (a.minute || 0)) - ((b.hour || 0) * 60 + (b.minute || 0)));
+      // Safety net: no two steps of a day start at the same time.
+      for (let i = 1; i < daySteps.length; i++) {
+        const prevAt = daySteps[i - 1].hour * 60 + (daySteps[i - 1].minute || 0);
+        const at = daySteps[i].hour * 60 + (daySteps[i].minute || 0);
+        if (at <= prevAt) {
+          const bumped = hoursToHM((prevAt + 15) / 60);
+          daySteps[i].hour = bumped.h;
+          daySteps[i].minute = bumped.m;
+          daySteps[i].phase = KYT.ui.hourToPhase(bumped.h);
+          daySteps[i].suggestedTime = KYT.ui.formatSuggestedTime(bumped.h, bumped.m, daySteps[i].phase);
+        }
+      }
       steps = steps.concat(daySteps);
     }
 
@@ -1362,7 +1470,8 @@ KYT.virtualTrips = (function () {
     if (DOM.editNameInput) DOM.editNameInput.value = trip.name;
     renderHeaderMetaPills(trip);
 
-    let html = `
+    // Hand-curated blueprints keep their own wording; every generated plan carries the explainer.
+    let html = (trip.curatedId ? '' : KYT.ui.renderGeneratedPlanNotice()) + `
       <div class="flex items-center justify-between gap-3 mb-2 pb-1 border-b border-slate-200/70">
         <p class="text-xs font-black uppercase text-slate-700 tracking-wider">Day-by-Day Itinerary</p>
         <div class="flex items-center gap-2">
@@ -1822,7 +1931,10 @@ KYT.virtualTrips = (function () {
           if (trip.steps && trip.steps.length > 0) {
             window.location.href = `trip_detail.html?id=${encodeURIComponent(trip.id)}`;
           } else if (!trip.originCity && DOM.originCitySelect) {
-            // Never guess where the traveller is starting from.
+            // Never guess where the traveller is starting from. The selector lives in the collapsed
+            // Preferences panel, so open it or the prompt would point at something hidden.
+            const prefsPanel = document.getElementById('vt-preferences-details');
+            if (prefsPanel) prefsPanel.open = true;
             DOM.originCitySelect.classList.add('ring-2', 'ring-red-400');
             if (DOM.originDesc) DOM.originDesc.textContent = 'Choose where you start first';
             DOM.originCitySelect.scrollIntoView({ block: 'center', behavior: 'smooth' });
