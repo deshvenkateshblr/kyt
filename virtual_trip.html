@@ -668,34 +668,76 @@
   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 
   <!-- EXPLORE VIEW (Wishlist / Cities) -->
-  <aside id="virtual-trips-view" class="flex flex-col w-full h-screen bg-slate-50 text-slate-800 flex-1 overflow-hidden"
+  <aside id="virtual-trips-view" class="flex flex-col w-full min-h-0 flex-1 bg-slate-50 text-slate-800 overflow-hidden"
     aria-label="My Trips">
     <!-- Floating App Toolbar (Driven by KYT.header.renderMainToolbar) -->
     <header id="main-toolbar"
       class="w-full max-w-md mx-auto flex justify-between items-center z-[60] bg-white/50 backdrop-blur-md rounded-2xl p-2 border border-white/60 shadow-sm mt-3 px-3 sm:px-4 mb-2 relative shrink-0">
     </header>
 
-    <!-- Subnav Bar (Contextual navigation for Canvas & Builder) -->
-    <div id="vt-subnav-bar"
-      class="w-full max-w-4xl mx-auto px-4 pb-2 shrink-0 hidden flex items-center justify-between">
-      <button type="button" id="vt-subnav-back"
-        class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-blue-600 bg-white px-3 py-1.5 rounded-full border border-slate-200 shadow-xs active:scale-95 transition-all">
-        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
-        <span id="vt-subnav-back-label">My Trips</span>
-      </button>
-      <div class="flex items-center gap-2">
-        <a id="vt-subnav-detail" href="#"
-          class="hidden inline-flex items-center gap-1.5 text-xs font-black text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 px-3 py-1.5 rounded-full shadow-xs active:scale-95 transition-all">
-          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-white"></i>
-          <span>Trip Details & AI</span>
-        </a>
-        <button type="button" id="vt-subnav-share"
-          class="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-full border border-blue-200 shadow-xs active:scale-95 transition-all">
-          <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
-          <span>Share</span>
-        </button>
+    <!-- Unified Edit Trip Hero Header (Matches trip_detail.html hero) -->
+    <header id="vt-subnav-bar"
+      class="w-full bg-blue-50/90 py-3 sm:py-3.5 px-4 border-b border-blue-100 shadow-2xs shrink-0 hidden">
+      <div class="max-w-4xl mx-auto space-y-2">
+        <!-- Top Row: Back Navigation on Left, Actions on Right -->
+        <div class="flex items-center justify-between gap-2.5">
+          <div class="flex items-center gap-2">
+            <button type="button" id="vt-subnav-back"
+              class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-blue-600 active:scale-95 transition-all bg-white px-3 py-1.5 rounded-full border border-slate-200 shadow-2xs cursor-pointer">
+              <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+              <span id="vt-subnav-back-label">My Trips</span>
+            </button>
+          </div>
+
+          <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+            <a id="vt-subnav-detail" href="#"
+              class="hidden inline-flex items-center gap-1.5 text-xs font-bold text-white bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 hover:from-indigo-700 px-3.5 py-1.5 rounded-full shadow-2xs active:scale-95 transition-all cursor-pointer border border-indigo-400/30">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-300 fill-amber-300/40"></i>
+              <span>Trip Details & AI</span>
+            </a>
+            <button type="button" id="vt-header-btn-stays"
+              class="btn-builder-stays-modal inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 hover:text-blue-600 bg-white hover:bg-slate-50 px-3 py-1.5 rounded-full border border-slate-200 transition-colors shadow-2xs cursor-pointer"
+              onclick="window.openStayModal ? window.openStayModal() : (window.KYT && window.KYT.virtualTrips && window.KYT.virtualTrips.openStayModal && window.KYT.virtualTrips.openStayModal())"
+              title="Adjust duration and night stays">
+              <i data-lucide="moon" class="w-3.5 h-3.5 text-indigo-500"></i>
+              <span>Stays & Days</span>
+            </button>
+            <button type="button" id="vt-subnav-share"
+              class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 px-3 py-1.5 rounded-full border border-slate-200 shadow-2xs active:scale-95 transition-all cursor-pointer">
+              <i data-lucide="share-2" class="w-3.5 h-3.5 text-slate-500"></i>
+              <span>Share</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Middle Row: Title & Badges on Left, Tabs on Right -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+          <div class="min-w-0 flex-1">
+            <div class="flex items-center gap-2">
+              <input type="text" id="vt-edit-name"
+                class="w-full max-w-md text-xl sm:text-2xl font-black text-blue-950 tracking-tight leading-tight bg-transparent border-b border-dashed border-blue-200 hover:border-blue-400 focus:border-blue-600 focus:outline-none transition-colors truncate"
+                placeholder="Trip name">
+            </div>
+            <div id="vt-header-meta-pills" class="flex flex-wrap items-center gap-1.5 mt-1.5 empty:hidden"></div>
+          </div>
+
+          <!-- Mode Switcher Tabs (Edit Cities vs Day Plan) -->
+          <div class="flex items-center gap-1 bg-white/90 p-1 rounded-xl border border-blue-200/70 shadow-2xs shrink-0 self-start sm:self-center">
+            <button type="button" id="vt-tab-canvas"
+              class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+              <span>Edit Cities</span>
+            </button>
+            <button type="button" id="vt-tab-builder"
+              class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer">
+              <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+              <span>Day Plan</span>
+              <span id="vt-tab-plan-badge" class="ml-0.5 text-[10px] font-extrabold px-1.5 py-0.2 rounded-full bg-blue-100 text-blue-700"></span>
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
+    </header>
 
     <!-- --- HUB: Trip list ------------------------------------------------ -->
     <div id="vt-screen-hub" class="flex-1 overflow-y-auto p-4 max-w-4xl mx-auto w-full space-y-4">
@@ -716,61 +758,78 @@
     </div>
 
     <!-- --- PLAN: Choose cities & travel style --------------------------- -->
-    <div id="vt-screen-canvas" class="flex-1 hidden flex-col overflow-hidden max-w-4xl mx-auto w-full">
-      <!-- Sticky settings panel -->
-      <div
-        class="p-4 bg-white shadow-sm shrink-0 border-b border-slate-200 space-y-4 md:rounded-b-2xl md:border md:my-2 md:shadow-md">
+    <div id="vt-screen-canvas" class="flex-1 overflow-y-auto p-3 sm:p-4 max-w-4xl mx-auto w-full space-y-4 hidden flex-col bg-slate-50">
+      <!-- Route & Selected Destinations Card -->
+      <div class="p-3.5 sm:p-4 bg-white rounded-2xl border border-slate-200/90 shadow-xs space-y-3 shrink-0">
+        <!-- Selected Destinations Header with View/Generate Itinerary button -->
+        <div class="flex items-center justify-between gap-2.5 border-b border-slate-100 pb-2.5">
+          <div class="flex items-center gap-2">
+            <p class="text-xs font-black uppercase text-slate-700 tracking-wider">Destinations Route</p>
+          </div>
+          <button id="btn-vt-build"
+            class="py-2.5 px-4 bg-blue-600 text-white font-black rounded-xl text-xs sm:text-sm shadow-sm hover:bg-blue-700 active:scale-[0.98] transition-all hidden flex items-center justify-center gap-1.5 shrink-0 cursor-pointer">
+            <i data-lucide="calendar" class="w-4 h-4"></i> View Itinerary
+          </button>
+        </div>
 
-        <!-- Trip name (editable inline) -->
-        <input type="text" id="vt-edit-name"
-          class="w-full text-xl font-black text-slate-800 border-b-2 border-transparent hover:border-slate-200 focus:border-blue-500 focus:outline-none transition-colors pb-1"
-          placeholder="Trip name">
-
-        <!-- Starting Point (Origin City) -->
+        <!-- Selected destinations pills -->
         <div>
           <div class="flex items-center justify-between mb-1.5">
-            <p class="text-[10px] uppercase font-bold text-slate-400 tracking-widest flex items-center gap-1">
-              <i data-lucide="navigation" class="w-3 h-3 text-blue-500"></i> Starting Point (Origin)
-            </p>
-            <span class="text-[10px] text-slate-400 italic" id="vt-origin-desc">Creates Day 0 transit</span>
+            <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Your Destinations</p>
+            <span id="vt-city-count-badge" class="text-[11px] font-bold text-blue-600"></span>
           </div>
-          <div class="relative">
-            <select id="vt-origin-city"
-              class="w-full bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer appearance-none transition-colors pr-8">
-            </select>
-            <i data-lucide="chevron-down"
-              class="w-4 h-4 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+          <div id="vt-selected-cities" class="flex flex-wrap gap-1.5 empty:hidden"></div>
+          <p id="vt-empty-cities" class="text-xs text-slate-400 italic py-1">No destinations added yet. Search below to add.</p>
+        </div>
+
+        <!-- Action group placeholder (Edit activities / stays / reset) -->
+        <div id="vt-rebuild-actions"></div>
+
+        <!-- Collapsible Preferences: Travel Style & Starting Point -->
+        <details id="vt-preferences-details" class="group bg-slate-50 border border-slate-200/80 rounded-xl p-2.5 transition-all">
+          <summary class="flex items-center justify-between cursor-pointer text-xs font-bold text-slate-600 select-none">
+            <span class="flex items-center gap-1.5">
+              <i data-lucide="sliders" class="w-3.5 h-3.5 text-blue-500"></i>
+              <span id="vt-pref-summary-label">Travel Style & Starting Point</span>
+            </span>
+            <span class="text-[11px] text-blue-600 font-semibold group-open:hidden flex items-center gap-0.5">Preferences ▾</span>
+            <span class="text-[11px] text-slate-400 font-semibold hidden group-open:inline flex items-center gap-0.5">Hide ▴</span>
+          </summary>
+          <div class="pt-3 space-y-3 border-t border-slate-200/60 mt-2">
+            <!-- Starting Point (Origin City) -->
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider flex items-center gap-1">
+                  <i data-lucide="navigation" class="w-3 h-3 text-blue-500"></i> Starting Point (Origin)
+                </p>
+                <span class="text-[10px] text-slate-400 italic" id="vt-origin-desc">Creates Day 0 transit</span>
+              </div>
+              <div class="relative">
+                <select id="vt-origin-city"
+                  class="w-full bg-white hover:bg-slate-100/80 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer appearance-none transition-colors pr-8">
+                </select>
+                <i data-lucide="chevron-down"
+                  class="w-4 h-4 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+              </div>
+            </div>
+
+            <!-- Travel style chips -->
+            <div>
+              <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1.5">Travel Style</p>
+              <div id="vt-taste" class="flex gap-1.5 flex-wrap"></div>
+            </div>
           </div>
-        </div>
-
-        <!-- Travel style chips -->
-        <div>
-          <p class="text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-2">Travel Style</p>
-          <div id="vt-taste" class="flex gap-2 flex-wrap"></div>
-        </div>
-
-        <!-- Selected cities pills -->
-        <div>
-          <p class="text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-2">Your Cities</p>
-          <div id="vt-selected-cities" class="flex flex-wrap gap-2 empty:hidden"></div>
-          <p id="vt-empty-cities" class="text-xs text-slate-400 italic">Search below and tap Add to include a city.</p>
-        </div>
-
-        <!-- Build CTA -->
-        <button id="btn-vt-build"
-          class="w-full py-3 bg-blue-600 text-white font-black rounded-xl text-sm shadow-sm hover:bg-blue-700 active:scale-[0.98] transition-all hidden flex items-center justify-center gap-2">
-          <i data-lucide="wand-2" class="w-4 h-4"></i> Generate Day Plan
-        </button>
+        </details>
       </div>
 
-      <!-- City library (scrollable) -->
-      <div class="flex-1 overflow-y-auto bg-slate-50 p-4">
-        <div class="sticky top-0 bg-slate-50 pb-3 z-10">
+      <!-- City library with sticky search -->
+      <div class="space-y-3 pb-8">
+        <div class="sticky top-0 bg-slate-50/95 backdrop-blur-md pt-1 pb-2.5 z-10">
           <div class="relative">
             <i data-lucide="search"
-              class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none"></i>
-            <input type="text" id="vt-city-search" placeholder="Search 150+ destinations..."
-              class="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none"></i>
+            <input type="text" id="vt-city-search" placeholder="Search 150+ destinations to add (e.g. Deogarh, Agra, Varanasi)..."
+              class="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-sm font-semibold text-slate-800 placeholder:text-slate-400 shadow-xs focus:outline-none focus:ring-2 focus:ring-blue-500">
           </div>
         </div>
         <div id="vt-city-list" class="space-y-3"></div>
@@ -968,7 +1027,7 @@
   <script src="./js/header.js?v=1791377680"></script>
   <script src="./js/backup.js?v=1792700000"></script>
   <script src="./js/ui-components.js?v=1792150000"></script>
-  <script src="./js/virtual-trips.js?v=1792400000"></script>
+  <script src="./js/virtual-trips.js?v=1792940002"></script>
 
   <script src="./js/app.js?v=1791377680"></script>
 
@@ -996,7 +1055,7 @@
       }, 100);
     });
   </script>
-  <script src="./js/footer.js?v=1792800000"></script>
+  <script src="./js/footer.js?v=1792940002"></script>
 </body>
 
 </html>

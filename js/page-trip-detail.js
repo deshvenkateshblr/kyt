@@ -132,7 +132,7 @@
         if (!pillsContainer) return;
         const pillItems = [];
         const esc = (s) => (window.KYT && KYT.utils && KYT.utils.escapeHTML) ? KYT.utils.escapeHTML(s) : s;
-        const pillClass = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-white text-blue-900 border border-blue-200/80 shadow-xs';
+        const pillClass = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-white text-blue-900 border border-blue-200/80 shadow-2xs';
 
         // 1. Starting Point (Origin)
         if (originParam === '0' || originParam === 'already_there') {
@@ -316,14 +316,28 @@
         });
       }
 
-      document.getElementById('btn-edit-plan').addEventListener('click', () => {
-        const activeId = (loadedVirtualTrip && loadedVirtualTrip.id) || tripId;
-        if (activeId) {
-          window.location.href = `virtual_trip.html?id=${encodeURIComponent(activeId)}&screen=builder`;
-        } else {
-          window.location.href = `virtual_trip.html${window.location.search}&screen=builder`;
-        }
-      });
+      const btnEditPlan = document.getElementById('btn-edit-plan');
+      if (btnEditPlan) {
+        btnEditPlan.addEventListener('click', () => {
+          const activeId = (loadedVirtualTrip && loadedVirtualTrip.id) || tripId;
+          let hasSteps = false;
+          if (loadedVirtualTrip && loadedVirtualTrip.steps && loadedVirtualTrip.steps.length > 0) {
+            hasSteps = true;
+          } else if (tripId) {
+            try {
+              const vts = JSON.parse(localStorage.getItem('kyt_virtual_trips') || '[]');
+              const t = vts.find(x => x.id === tripId);
+              if (t && t.steps && t.steps.length > 0) hasSteps = true;
+            } catch (e) { }
+          }
+          const targetScreen = hasSteps ? 'builder' : 'canvas';
+          if (activeId) {
+            window.location.href = `virtual_trip.html?id=${encodeURIComponent(activeId)}&screen=${targetScreen}`;
+          } else {
+            window.location.href = `virtual_trip.html${window.location.search}&screen=${targetScreen}`;
+          }
+        });
+      }
 
       // ── AI Refine Controller & Itinerary Renderer ─────────────────────────────
       let loadedVirtualTrip = null;
@@ -773,6 +787,13 @@
             }
           }
         });
+
+        if (params.get('refine') === '1' || params.get('refine') === 'true') {
+          setTimeout(() => {
+            const btn = document.getElementById('btn-open-ai-refine');
+            if (btn) btn.click();
+          }, 200);
+        }
       }
 
       function renderCitiesAndVideos() {
@@ -792,7 +813,18 @@
         }
 
         if (!cityIds || !cityIds.length) {
-          citiesGrid.innerHTML = '<p class="text-sm text-slate-500">No cities selected in this trip.</p>';
+          citiesGrid.innerHTML = `
+            <div class="col-span-full text-center py-8 px-4 bg-slate-50 rounded-2xl border border-dashed border-slate-200">
+              <div class="w-10 h-10 mx-auto mb-2 text-slate-400 flex items-center justify-center bg-white rounded-full shadow-xs">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </div>
+              <p class="font-bold text-slate-700 mb-1">No destinations added to this trip yet</p>
+              <p class="text-xs text-slate-400 mb-4 max-w-sm mx-auto">Add cities to build your day-by-day itinerary and explore attractions.</p>
+              <button type="button" onclick="document.getElementById('btn-edit-plan').click()" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2.5 rounded-full text-sm shadow-xs transition-colors cursor-pointer">
+                <i data-lucide="plus" class="w-4 h-4"></i> Add Destinations
+              </button>
+            </div>
+          `;
           videoGallery.innerHTML = '<p class="text-sm text-slate-500 p-4 border border-dashed border-slate-200 rounded-xl text-center w-full col-span-full">No videos available.</p>';
           if (videoFilters) videoFilters.innerHTML = '';
           if (window.lucide) lucide.createIcons();
