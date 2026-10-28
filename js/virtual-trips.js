@@ -292,12 +292,27 @@ KYT.virtualTrips = (function () {
   }
 
   // --- Screens ---
-    function renderHeaderMetaPills(trip) {
+  let currentScreen = 'hub';
+
+  function renderHeaderMetaPills(trip) {
     const pillsContainer = document.getElementById('vt-header-meta-pills');
     if (!pillsContainer || !trip) return;
     const pillClass = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-white text-blue-900 border border-blue-200/80 shadow-2xs';
     const esc = (s) => (window.KYT && KYT.utils && KYT.utils.escapeHTML) ? KYT.utils.escapeHTML(s) : s;
     const pillItems = [];
+    const hasCities = Boolean(trip.cities && trip.cities.length);
+
+    // While cities are being picked the card below already shows the start and style, so the header
+    // only carries the length of the trip, and nothing at all until there is a trip to measure.
+    if (currentScreen === 'canvas') {
+      if (hasCities) {
+        const d = trip.duration || trip.cities.length;
+        pillsContainer.innerHTML = `<span class="${pillClass}">🗓️ ${d} Day${d > 1 ? 's' : ''}</span>`;
+      } else {
+        pillsContainer.innerHTML = '';
+      }
+      return;
+    }
 
     // Origin
     if (trip.originCity === '0' || trip.originCity === 'already_there') {
@@ -333,6 +348,7 @@ KYT.virtualTrips = (function () {
   }
 
   function showScreen(screen) {
+    currentScreen = screen;
     DOM.screenHub.classList.add('hidden');
     DOM.screenCanvas.classList.add('hidden');
     DOM.screenCanvas.classList.remove('flex');
@@ -719,61 +735,42 @@ KYT.virtualTrips = (function () {
     if (!DOM.originDesc) return;
     const origin = trip.originCity || '';
     const firstCity = trip.cities && trip.cities.length ? trip.cities[0] : null;
+    // Said only when it helps: the start is missing, or there is no travel day to plan.
     if (!origin) {
-      DOM.originDesc.textContent = 'Needed to plan Day 0 travel';
+      DOM.originDesc.textContent = 'Needed to plan your journey there';
     } else if (origin === 'already_there' || (firstCity && origin === firstCity)) {
-      DOM.originDesc.textContent = 'Day 1 starts directly in destination';
+      DOM.originDesc.textContent = 'Day 1 starts directly in the destination';
     } else {
-      DOM.originDesc.textContent = 'Creates Day 0 transit & arrival';
+      DOM.originDesc.textContent = '';
+    }
+    if (DOM.originCitySelect) {
+      DOM.originCitySelect.classList.toggle('border-amber-400', !origin);
+      DOM.originCitySelect.classList.toggle('border-slate-200', Boolean(origin));
     }
   }
 
-  // The Start & Travel Style card: open only while the starting point is missing (it is required),
-  // collapsed with Done, and never re-opened by a re-render once the traveller has used it.
+  // The Style line shows the current choices; the chips behind it stay closed until asked for, and Done
+  // closes them. Changing trips closes them too.
   let prefsTripId = null;
-  let prefsTouched = false;
 
   function renderPrefsSummary(trip) {
     const el = document.getElementById('vt-pref-summary-value');
     if (!el) return;
-    if (!trip.originCity) {
-      el.textContent = 'Choose where you start';
-      el.className = 'text-[11px] font-bold text-rose-600 truncate';
-      return;
-    }
     const label = (key) => {
       const o = (TASTE_FIELDS[key] || []).find(x => x.id === (trip.taste || {})[key]);
       return o ? o.label : '';
     };
-    let where = 'Already there';
-    if (trip.originCity !== 'already_there') {
-      const c = window.KYT_CITIES ? window.KYT_CITIES.find(x => x.id === trip.originCity) : null;
-      where = 'From ' + (c ? c.name : trip.originCity);
-    }
-    const diet = (trip.taste && trip.taste.diet && trip.taste.diet !== 'any') ? label('diet') : '';
-    el.textContent = [where, label('intent'), label('pace'), diet].filter(Boolean).join(' · ');
-    el.className = 'text-[11px] font-bold text-slate-500 truncate';
+    el.textContent = [label('intent'), label('diet'), label('pace')].filter(Boolean).join(' · ');
   }
 
-  // An empty trip has nothing to plan, share or review yet: those controls wait for a first destination
-  // instead of answering with an alert.
+  // An empty trip has nothing to plan, share or review yet. Those controls are not shown until a first
+  // destination is added, so nothing sits greyed out without saying why.
   function syncEmptyTripControls(trip) {
     const hasCities = Boolean(trip && trip.cities && trip.cities.length > 0);
-    ['vt-header-btn-stays', 'vt-tab-builder'].forEach(id => {
+    ['vt-header-btn-stays', 'vt-mode-tabs', 'vt-subnav-share', 'vt-subnav-detail'].forEach(id => {
       const el = document.getElementById(id);
-      if (!el) return;
-      if (el.dataset.baseTitle === undefined) el.dataset.baseTitle = el.getAttribute('title') || '';
-      el.disabled = !hasCities;
-      el.classList.toggle('opacity-40', !hasCities);
-      el.classList.toggle('cursor-not-allowed', !hasCities);
-      el.title = hasCities ? el.dataset.baseTitle : 'Add a destination first';
+      if (el) el.classList.toggle('hidden', !hasCities);
     });
-    ['vt-subnav-share', 'vt-subnav-detail'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el && !hasCities) el.classList.add('hidden');
-    });
-    const shareBtn = document.getElementById('vt-subnav-share');
-    if (shareBtn && hasCities) shareBtn.classList.remove('hidden');
   }
 
   // --- Rendering Canvas ---
@@ -804,14 +801,9 @@ KYT.virtualTrips = (function () {
     if (badge) badge.textContent = trip.cities.length > 0 ? `${trip.cities.length} selected` : '';
 
     const prefDetails = document.getElementById('vt-preferences-details');
-    if (prefDetails) {
-      if (prefsTripId !== trip.id) {
-        prefsTripId = trip.id;
-        prefsTouched = false;
-        prefDetails.open = !trip.originCity;
-      } else if (!prefsTouched && trip.originCity && trip.cities.length > 0) {
-        prefDetails.open = false;
-      }
+    if (prefDetails && prefsTripId !== trip.id) {
+      prefsTripId = trip.id;
+      prefDetails.open = false;
     }
     renderPrefsSummary(trip);
     renderHeaderMetaPills(trip);
@@ -1771,15 +1763,12 @@ KYT.virtualTrips = (function () {
       });
     }
 
-    // Done collapses the Start & Travel Style card; opening it by hand is respected from then on.
+    // Done closes the style chips.
     const prefsDetails = document.getElementById('vt-preferences-details');
     if (prefsDetails) {
-      const prefsSummaryEl = prefsDetails.querySelector('summary');
-      if (prefsSummaryEl) prefsSummaryEl.addEventListener('click', () => { prefsTouched = true; });
       const btnPrefsDone = document.getElementById('btn-vt-prefs-done');
       if (btnPrefsDone) {
         btnPrefsDone.addEventListener('click', () => {
-          prefsTouched = true;
           prefsDetails.open = false;
           prefsDetails.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
         });
@@ -2001,10 +1990,7 @@ KYT.virtualTrips = (function () {
           if (trip.steps && trip.steps.length > 0) {
             window.location.href = `trip_detail.html?id=${encodeURIComponent(trip.id)}`;
           } else if (!trip.originCity && DOM.originCitySelect) {
-            // Never guess where the traveller is starting from. The selector lives in the collapsed
-            // Preferences panel, so open it or the prompt would point at something hidden.
-            const prefsPanel = document.getElementById('vt-preferences-details');
-            if (prefsPanel) prefsPanel.open = true;
+            // Never guess where the traveller is starting from.
             DOM.originCitySelect.classList.add('ring-2', 'ring-red-400');
             if (DOM.originDesc) DOM.originDesc.textContent = 'Choose where you start first';
             DOM.originCitySelect.scrollIntoView({ block: 'center', behavior: 'smooth' });

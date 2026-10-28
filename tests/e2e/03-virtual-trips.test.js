@@ -112,6 +112,7 @@ test('taste: Culinary intent keeps food stops and drops sightseeing-only stops',
   const { context, page } = await newPhone(env.browser);
   await openHub(page);
   await createTrip(page, 'Foodie Agra');
+  await page.click('#vt-preferences-details summary');   // Style is closed until Change
   await page.click('.vt-chip[data-field="intent"][data-id="culinary"]');
   await addCity(page, 'Agra', 'agra');
   await buildPlan(page);
@@ -126,6 +127,7 @@ test('taste: Jain diet never includes a stop that is tagged for other diets only
   const { context, page } = await newPhone(env.browser);
   await openHub(page);
   await createTrip(page, 'Jain trip');
+  await page.click('#vt-preferences-details summary');   // Style is closed until Change
   await page.click('.vt-chip[data-field="diet"][data-id="jain"]');
   for (const [q, id] of [['Jaipur', 'jaipur'], ['Varanasi', 'varanasi'], ['Goa', 'goa'], ['Delhi', 'delhi']]) {
     await addCity(page, q, id); await page.fill('#vt-city-search', '');

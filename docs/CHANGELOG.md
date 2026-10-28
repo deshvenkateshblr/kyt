@@ -310,3 +310,9 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **Header follows the cities.** The duration pill kept showing "1 Day" after cities were added; it and the start pill now update as the trip is set up.
     - **Tests:** `tests/e2e/08-trip-setup.test.js` (5 tests).
 
+44. **A new virtual trip starts as one compact card (service worker cache `kyt-v82`)**
+    - **One card instead of an empty "Your Route" and a separate Start & Style card.** "From" (the starting point, a required field, so it is always visible, outlined amber and explained with "Needed to plan your journey there" until chosen), "Destinations" (a one-line prompt, "Add your first destination from the list below", until there is one, then the route in order with the Generate Day Plan button) and "Style" (one line, "Mixed · Any food · Standard", with Change opening the chips and Done closing them). The start no longer hides inside a collapsed panel, which is why the "Choose where you start" prompt used to point at nothing visible.
+    - **Controls that do not apply yet are not shown, instead of shown greyed with no reason.** Stays & Days, the Edit Cities / Day Plan switch, Share and Trip Details & AI appear with the first destination and go again if the last is removed. This replaces the disabled state added in 43.
+    - **Header no longer repeats the card.** While cities are picked it carries only the trip length ("2 Days"), and nothing for an empty trip (it used to say "1 Day"); the full start and style summary shows on the Day Plan.
+    - **Tests:** `tests/e2e/08-trip-setup.test.js` rewritten for the new card (5 tests).
+
