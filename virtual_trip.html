@@ -523,6 +523,8 @@
   <!-- Memory Card Render View -->
   <div id="memory-card-view" class="fixed inset-0 bg-slate-50 z-[90] hidden flex flex-col animate-fade-in">
     <style>
+      @keyframes vt-shake { 0%,100% { transform: translateX(0); } 20%,60% { transform: translateX(-5px); } 40%,80% { transform: translateX(5px); } }
+      .vt-shake { animation: vt-shake .4s ease-in-out; }
       @media print {
 
         html,
@@ -787,9 +789,9 @@
       </section>
 
       <!-- One action at a time: Continue while choosing, Generate once the route is set -->
-      <div id="vt-canvas-bar" class="hidden pb-3 shrink-0">
+      <div id="vt-canvas-bar" class="hidden pb-3 shrink-0 flex justify-end">
         <button id="btn-vt-build"
-          class="w-full py-3 px-4 bg-blue-600 text-white font-black rounded-xl text-sm shadow-md hover:bg-blue-700 active:scale-[0.98] transition-all hidden flex items-center justify-center gap-1.5 cursor-pointer">
+          class="ml-auto px-6 py-2.5 bg-blue-600 text-white font-bold rounded-full text-sm shadow-xs hover:bg-blue-700 active:scale-[0.98] transition-all hidden flex items-center justify-center gap-1.5 cursor-pointer">
           <i data-lucide="calendar" class="w-4 h-4"></i> View Itinerary
         </button>
       </div>

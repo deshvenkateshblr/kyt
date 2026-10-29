@@ -339,3 +339,9 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **One "Day-by-Day" heading** on the plan page (the extra "Day-by-Day Plan" badge shows only for AI-refined and curated plans), and the "suggested sequence, not a schedule" notice is a small grey line instead of an amber box.
     - **Thin cities are topped up.** If a city has fewer than three stops for the chosen interest (Mumbai for Spiritual and Vegetarian had one), the day adds its other sights, still within the food choice. Culinary trips stay food-led.
     - **Tests:** one new test in `07-generated-plans.test.js` (120 in all).
+
+48. **Mumbai's temples, a compact Generate button, and a clear "start missing" signal (service worker cache `kyt-v86`)**
+    - **Mumbai data:** six temples added to `data/cities.js` (Siddhivinayak at Prabhadevi, Mumbadevi at Bhuleshwar, Babulnath at Girgaon, Walkeshwar on Malabar Hill, ISKCON Juhu, Radha Gopinath at Chowpatty). Mahalakshmi was already part of the Haji Ali beat. Mumbai now has 11 stops, 7 of them spiritual. Other thinly covered cities are likely; the top-up in CHANGELOG 47 covers them until they are filled in.
+    - **Generate Day Plan** is a compact right-aligned button, like Continue.
+    - **Missing start:** pressing Generate without a starting point outlines From in red, shakes it once and shows "Choose where you start from to generate the plan" in red under it until one is chosen. No alert.
+    - **Tests:** one each in 07 and 08 (122 in all).

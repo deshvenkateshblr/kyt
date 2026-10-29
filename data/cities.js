@@ -1181,6 +1181,148 @@ window.KYT_CITIES = [
         "notes": "Iconic 15th-century Indo-Islamic shrine resting on an islet connected by a narrow pedestrian causeway accessible during low tide."
       },
       {
+        "title": "Siddhivinayak Temple darshan",
+        "icon": "landmark",
+        "where": "Prabhadevi, Mumbai",
+        "hour": 8,
+        "intent": [
+          "spiritual"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shree%20Siddhivinayak%20Temple%2C%20Prabhadevi%2C%20Mumbai",
+        "notes": "Mumbai's most visited Ganesha temple, built in 1801. Tuesdays draw very long queues, so go early on any other day."
+      },
+      {
+        "title": "Mumbadevi Temple & Zaveri Bazaar",
+        "icon": "landmark",
+        "where": "Bhuleshwar, Mumbai",
+        "hour": 9,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mumbadevi%20Temple%2C%20Bhuleshwar%2C%20Mumbai",
+        "notes": "Shrine of Mumba Devi, the goddess the city is named after, set in the lanes of Bhuleshwar beside the old Zaveri jewellery bazaar."
+      },
+      {
+        "title": "Babulnath Temple Shiva darshan",
+        "icon": "landmark",
+        "where": "Girgaon, Mumbai",
+        "hour": 11,
+        "intent": [
+          "spiritual"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Babulnath%20Temple%2C%20Girgaon%2C%20Mumbai",
+        "notes": "Hilltop Shiva temple above Girgaon Chowpatty, reached by a long flight of steps, with views over the bay."
+      },
+      {
+        "title": "Walkeshwar Temple & Banganga Tank",
+        "icon": "landmark",
+        "where": "Malabar Hill, Mumbai",
+        "hour": 15,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Walkeshwar%20Temple%2C%20Malabar%20Hill%2C%20Mumbai",
+        "notes": "Ancient Shiva temple on Malabar Hill beside the stepped Banganga Tank, a quiet pocket in the middle of the city."
+      },
+      {
+        "title": "ISKCON Juhu evening aarti",
+        "icon": "landmark",
+        "where": "Juhu, Mumbai",
+        "hour": 17,
+        "intent": [
+          "spiritual"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=ISKCON%20Temple%20Juhu%2C%20Mumbai",
+        "notes": "White-marble Radha Rasabihari temple with kirtan and evening aarti; vegetarian prasad and a restaurant on site."
+      },
+      {
+        "title": "Radha Gopinath Temple at Chowpatty",
+        "icon": "landmark",
+        "where": "Girgaon Chowpatty, Mumbai",
+        "hour": 18,
+        "intent": [
+          "spiritual"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sri%20Sri%20Radha%20Gopinath%20Temple%2C%20Chowpatty%2C%20Mumbai",
+        "notes": "Krishna temple facing Girgaon Chowpatty beach; arrive for the evening aarti, then walk the beach."
+      },
+      {
         "title": "Marine Drive Queen's Necklace sunset walk",
         "icon": "waves",
         "where": "Marine Drive, Churchgate, Mumbai",

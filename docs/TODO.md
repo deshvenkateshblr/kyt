@@ -1,7 +1,7 @@
 # KYT: Prioritized TODO
 
 The single list of open work. Done work is in [CHANGELOG.md](CHANGELOG.md). Design intent and architecture are in [kyt_product_specification_roadmap.md](kyt_product_specification_roadmap.md).
-Last reviewed: 27 Oct 2026, against service worker cache `kyt-v85`.
+Last reviewed: 27 Oct 2026, against service worker cache `kyt-v86`.
 
 **How to use this file:** keep every open item here and nowhere else. When something ships, move it to the changelog. Other docs link here instead of keeping their own TODO lists.
 

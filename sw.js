@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kyt-v85';
+const CACHE_NAME = 'kyt-v86';
 
 // Files that make up the offline-capable app shell
 const APP_SHELL = [

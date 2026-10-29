@@ -197,3 +197,31 @@ test('after the first city, the places nearest to it are offered first', async (
   assert.doesNotMatch(await page.locator('#vt-city-list').innerText(), /Near Mumbai/i);
   await context.close();
 });
+
+test('Generate is a compact button, and a missing start is flagged on the field (no alert) until it is chosen', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await newTrip(page);
+  await addCity(page, 'Jaipur', 'jaipur');
+  await page.click('#btn-vt-dest-done');
+  const w = await page.locator('#btn-vt-build').evaluate(b => b.getBoundingClientRect().width / window.innerWidth);
+  assert.ok(w < 0.6, `compact, got ${Math.round(w * 100)}% of the screen`);
+
+  await page.click('#btn-vt-build');
+  await page.click('#btn-vt-build');   // pressing it again changes nothing and still says why
+  assert.deepEqual(page.dialogs, [], 'no alert');
+  assert.equal(await visible(page, '#vt-screen-builder'), false);
+  assert.match(await page.locator('#vt-origin-city').getAttribute('class'), /border-rose-500/);
+  const desc = page.locator('#vt-origin-desc');
+  assert.match(await desc.innerText(), /Choose where you start/);
+  assert.match(await desc.getAttribute('class'), /text-rose-600/);
+  const rgb = await desc.evaluate(e => getComputedStyle(e).color);
+  const [r, g, b] = rgb.match(/\d+/g).map(Number);
+  assert.ok(r > 180 && g < 80 && b < 120, `the message is really red, got ${rgb}`);
+
+  await page.selectOption('#vt-origin-city', 'delhi');
+  assert.doesNotMatch(await page.locator('#vt-origin-city').getAttribute('class'), /border-rose-500/);
+  assert.equal((await desc.innerText()).trim(), '', 'the message goes once a start is chosen');
+  await page.click('#btn-vt-build');
+  await page.waitForSelector('#vt-screen-builder:not(.hidden)');
+  await context.close();
+});

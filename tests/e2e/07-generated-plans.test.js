@@ -253,3 +253,15 @@ test('an interest a city cannot serve still gets sights, not a day of only meals
   assert.equal((body.match(/day-by-day/gi) || []).length, 1, 'one Day-by-Day heading');
   await context.close();
 });
+
+test('Mumbai has its famous temples, so a Spiritual vegetarian day is full of them', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.goto(env.base + '/virtual_trip.html');
+  const titles = await page.evaluate(() => window.KYT_CITIES.find(c => c.id === 'mumbai').beats.map(b => b.title).join('|'));
+  for (const t of ['Siddhivinayak', 'Mumbadevi', 'Babulnath', 'ISKCON Juhu', 'Walkeshwar', 'Radha Gopinath', 'Haji Ali Dargah & Mahalaxmi']) {
+    assert.match(titles, new RegExp(t), `${t} is listed`);
+  }
+  const spiritual = await page.evaluate(() => window.KYT_CITIES.find(c => c.id === 'mumbai').beats.filter(b => b.intent.includes('spiritual')).length);
+  assert.ok(spiritual >= 7, `got ${spiritual}`);
+  await context.close();
+});

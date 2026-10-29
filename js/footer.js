@@ -10,7 +10,7 @@
 (function () {
   'use strict';
   const FEEDBACK_EMAIL = 'info@vividnova.com';
-  const APP_VERSION = 85;
+  const APP_VERSION = 86;
 
   function render() {
     if (document.getElementById('kyt-feedback-footer')) return;

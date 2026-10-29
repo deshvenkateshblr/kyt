@@ -658,6 +658,8 @@ KYT.virtualTrips = (function () {
     const origin = trip.originCity || '';
     const firstCity = trip.cities && trip.cities.length ? trip.cities[0] : null;
     // Said only when it helps: the start is missing, or there is no travel day to plan.
+    DOM.originDesc.classList.remove('text-rose-600', 'font-semibold');
+    DOM.originDesc.classList.add('italic', 'text-slate-400');
     if (!origin) {
       DOM.originDesc.textContent = 'Needed to plan your journey there';
     } else if (origin === 'already_there' || (firstCity && origin === firstCity)) {
@@ -1863,7 +1865,8 @@ KYT.virtualTrips = (function () {
         if (trip) {
           trip.originCity = e.target.value;
           rememberOrigin(trip.originCity);
-          DOM.originCitySelect.classList.remove('ring-2', 'ring-red-400');
+          DOM.originCitySelect.classList.remove('ring-2', 'ring-rose-300', 'border-rose-500');
+          updateOriginDesc(trip);
           if (trip.steps && trip.steps.length > 0) {
             trip.steps = regeneratePlan(trip);
           }
@@ -2138,8 +2141,16 @@ KYT.virtualTrips = (function () {
         if (!trip) return;
         if (!trip.originCity && DOM.originCitySelect) {
           // Never guess where the traveller is starting from.
-          DOM.originCitySelect.classList.add('ring-2', 'ring-red-400');
-          if (DOM.originDesc) DOM.originDesc.textContent = 'Choose where you start first';
+          // Say plainly what is missing, on the field itself: red outline, a short shake and a red line
+          // under it that stays until a start is chosen.
+          DOM.originCitySelect.classList.remove('border-amber-400');
+          DOM.originCitySelect.classList.add('ring-2', 'ring-rose-300', 'border-rose-500');
+          DOM.originCitySelect.classList.remove('vt-shake'); void DOM.originCitySelect.offsetWidth; DOM.originCitySelect.classList.add('vt-shake');
+          if (DOM.originDesc) {
+            DOM.originDesc.textContent = 'Choose where you start from to generate the plan';
+            DOM.originDesc.classList.remove('italic', 'text-slate-400');
+            DOM.originDesc.classList.add('text-rose-600', 'font-semibold');
+          }
           DOM.originCitySelect.scrollIntoView({ block: 'center', behavior: 'smooth' });
           DOM.originCitySelect.focus();
           return;
