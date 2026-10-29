@@ -526,24 +526,34 @@ window.KYT.ui = (function () {
         ? `<span class="text-[10px] text-slate-400 font-medium">· ${esc(suggestedTime)}</span>`
         : '';
 
+      const sid = esc(step.id);
+      const actionBtn = 'p-2 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-blue-50 disabled:opacity-25 disabled:hover:bg-transparent disabled:hover:text-slate-400 disabled:cursor-default transition-colors cursor-pointer';
+      const addedChip = step.custom
+        ? `<span class="text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-md border bg-indigo-50 text-indigo-700 border-indigo-200">Added</span>`
+        : '';
+
       return `
-        <div class="relative flex items-start gap-3 p-3.5 bg-white rounded-xl border border-slate-100 shadow-sm mt-2 group hover:border-slate-200 transition-colors">
+        <div class="relative flex items-start gap-3 p-3.5 bg-white rounded-xl border border-slate-100 shadow-sm mt-2 group hover:border-slate-200 transition-colors" data-step-id="${sid}">
           <div class="p-2 bg-blue-50 text-blue-600 rounded-lg shrink-0 mt-0.5">
             <i data-lucide="${esc(step.icon || 'map-pin')}" class="w-4 h-4"></i>
           </div>
-          <div class="flex-1 min-w-0 pr-8">
+          <div class="flex-1 min-w-0">
             <div class="flex items-center gap-1.5 flex-wrap mb-1">
               ${phaseBadge}
               ${suggestiveText}
+              ${addedChip}
             </div>
             <p class="text-sm font-bold text-slate-800 leading-tight">${esc(step.title)}</p>
             ${notesText}
             ${verifyTags}
             ${mapsLink}
+            <div class="flex items-center justify-end gap-0.5 mt-1.5 -mb-1.5 -mr-1.5">
+              <button type="button" class="${actionBtn}" onclick="moveVirtualTripStep('${sid}', -1)" ${options.isFirst ? 'disabled' : ''} title="Move earlier" aria-label="Move earlier"><i data-lucide="chevron-up" class="w-4 h-4"></i></button>
+              <button type="button" class="${actionBtn}" onclick="moveVirtualTripStep('${sid}', 1)" ${options.isLast ? 'disabled' : ''} title="Move later" aria-label="Move later"><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+              <button type="button" class="${actionBtn}" onclick="editVirtualTripStep('${sid}')" title="Edit stop" aria-label="Edit stop"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+              <button type="button" class="p-2 rounded-lg text-slate-300 hover:text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer" onclick="deleteVirtualTripStep('${sid}')" title="Delete step" aria-label="Delete stop"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+            </div>
           </div>
-          <button type="button" class="absolute right-2 top-2.5 p-1.5 text-slate-300 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-all" onclick="deleteVirtualTripStep('${esc(step.id)}')" title="Delete step">
-            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
-          </button>
         </div>
       `;
     }

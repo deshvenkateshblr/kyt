@@ -71,6 +71,8 @@ async function newPhone(browser, opts = {}) {
     return route.abort();
   });
   const page = await context.newPage();
+  // KYT_PW_TIMEOUT (ms) shortens how long a missing element is waited for, to see failures quickly.
+  page.setDefaultTimeout(Number(process.env.KYT_PW_TIMEOUT) || 30000);
   const errors = [];
   page.on('pageerror', e => errors.push(String(e)));
   page.errors = errors;

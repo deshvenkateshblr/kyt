@@ -316,3 +316,10 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **Header no longer repeats the card.** While cities are picked it carries only the trip length ("2 Days"), and nothing for an empty trip (it used to say "1 Day"); the full start and style summary shows on the Day Plan.
     - **Tests:** `tests/e2e/08-trip-setup.test.js` rewritten for the new card (5 tests).
 
+45. **Trip setup in the order you think about it, and an editable Day Plan (TODO P1.8, service worker cache `kyt-v83`)**
+    - **Cities first.** A new trip opens on just the city picker. "Continue" collapses the choice into a route card (From, Days, Style) with the cities as chips you can add to, edit or remove; one "Generate Day Plan" button follows.
+    - **Slim header.** One title row with a ⋯ menu (share, trip details, reset plan) and a Setup / Day Plan switch; the Stays & Days row became the Days line of the card.
+    - **Editable Day Plan.** Move a stop earlier or later, edit its title, time, place and notes, add a stop (typed, or one of the city's remaining attractions) or delete one. The sticky Start bar is a slim one-line bar.
+    - **Edits survive a rebuild.** Changing days, start or cities regenerates the plan but keeps edited and added stops (`regeneratePlan`); "Reset plan" is the only thing that drops them.
+    - **Known limits:** a deleted suggested stop can come back after a rebuild; an edit is kept only while a suggested stop with the same day and original title still exists; transfer times are still fixed (P1.0).
+    - **Tests:** `tests/e2e/09-plan-editing.test.js` (5 tests); 03, 07 and 08 updated for the new flow; `KYT_PW_TIMEOUT` shortens Playwright waits.

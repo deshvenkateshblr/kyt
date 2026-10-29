@@ -180,12 +180,13 @@ async function buildPlan(page, name, cities) {
   await page.fill('#vt-new-name', name);
   await page.click('#btn-vt-create');
   await page.waitForSelector('#vt-screen-canvas:not(.hidden)');
-  await page.selectOption('#vt-origin-city', 'bengaluru');
   for (const [q, id] of cities) {
     await page.fill('#vt-city-search', q);
     await page.click(`.btn-add-city[data-id="${id}"]`);
     await page.fill('#vt-city-search', '');
   }
+  await page.click('#btn-vt-dest-done');
+  await page.selectOption('#vt-origin-city', 'bengaluru');
   await page.click('#btn-vt-build');
   await page.locator('#btn-modal-confirm-build').click();
   await page.waitForURL('**/trip_detail.html*');
