@@ -226,3 +226,30 @@ test('P0.2 (e): a curated trip opened in the builder keeps its own wording and g
   assert.equal(await page.locator('#vt-itinerary-list #generated-plan-notice').count(), 0);
   await context.close();
 });
+
+test('an interest a city cannot serve still gets sights, not a day of only meals; the notice is one quiet line', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.goto(env.base + '/virtual_trip.html');
+  await page.fill('#vt-new-name', 'Quiet');
+  await page.click('#btn-vt-create');
+  await page.waitForSelector('#vt-screen-canvas:not(.hidden)');
+  await page.fill('#vt-city-search', 'Mumbai');
+  await page.click('.btn-add-city[data-id="mumbai"]');
+  await page.click('#btn-vt-dest-done');
+  await page.selectOption('#vt-origin-city', 'already_there');
+  await page.click('.vt-chip[data-field="intent"][data-id="spiritual"]');
+  await page.click('.vt-chip[data-field="diet"][data-id="veg"]');
+  await page.click('#btn-vt-build');
+  await page.waitForSelector('#vt-screen-builder:not(.hidden)');
+  const day1 = (await page.evaluate(() => JSON.parse(localStorage.getItem('kyt_virtual_trips'))[0].steps)).filter(s => s.dayId === 1);
+  const sights = day1.filter(s => !/breakfast|lunch|dinner|refreshment/i.test(s.title));
+  assert.ok(sights.length >= 2, `Day 1 has sights, got: ${day1.map(s => s.title).join(' | ')}`);
+  const h = await page.locator('#generated-plan-notice').evaluate(e => e.getBoundingClientRect().height);
+  assert.ok(h < 60, `notice is a quiet line or two, got ${Math.round(h)}px`);
+  // the plan page says "Day-by-Day" once
+  await page.click('#vt-subnav-back');
+  await page.waitForSelector('#btn-edit-plan');
+  const body = await page.locator('#refined-itinerary-section').innerText();
+  assert.equal((body.match(/day-by-day/gi) || []).length, 1, 'one Day-by-Day heading');
+  await context.close();
+});

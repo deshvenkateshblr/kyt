@@ -1092,7 +1092,15 @@ KYT.virtualTrips = (function () {
       const returningToday = isLastDay && !isAlreadyThere && !isOvernightTravel;
       const eveningTransfer = isEveningTransfer && !returningToday;
 
-      const matched = (city.beats || []).filter(b => beatMatches(b, trip.taste)).sort((a, b) => (a.hour || 0) - (b.hour || 0));
+      // Interests are a preference, food rules are not: when a city has little for the chosen interest
+      // (fewer than three stops), top the day up with its other sights, still within the food choice.
+      let matched = (city.beats || []).filter(b => beatMatches(b, trip.taste));
+      if (matched.length < 3 && trip.taste.intent !== 'culinary') {   // a food-led trip stays food-led
+        const have = new Set(matched.map(b => b.title));
+        const extra = (city.beats || []).filter(b => !have.has(b.title) && beatMatches(b, { ...trip.taste, intent: 'mixed' }));
+        matched = matched.concat(extra.slice(0, 3 - matched.length));
+      }
+      matched.sort((a, b) => (a.hour || 0) - (b.hour || 0));
 
       // ── PHASE 1: MORNING ──
       if (prevStayCityId === 'overnight_travel') {

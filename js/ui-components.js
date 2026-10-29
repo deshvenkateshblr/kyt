@@ -159,12 +159,10 @@ window.KYT.ui = (function () {
    */
   function renderGeneratedPlanNotice() {
     return `
-      <div id="generated-plan-notice" class="bg-amber-50/90 border border-amber-200/90 rounded-2xl p-3.5 sm:p-4 flex items-start gap-3 text-xs text-amber-950 shadow-2xs">
-        <i data-lucide="info" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
-        <div class="leading-relaxed">
-          <span class="font-bold">A suggested sequence, not a schedule.</span> Times are indicative and every step can be moved or removed. Before you set out, check road, weather and opening conditions in Google Maps.
-        </div>
-      </div>`;
+      <p id="generated-plan-notice" class="flex items-start gap-1.5 text-[11px] leading-snug text-slate-500">
+        <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400 shrink-0 mt-px"></i>
+        <span><span class="font-semibold text-slate-600">A suggested sequence, not a schedule.</span> Times are indicative; check road, weather and opening hours in Google Maps before you set out.</span>
+      </p>`;
   }
 
   /** Render a single PACE_META badge span. */

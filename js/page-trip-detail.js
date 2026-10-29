@@ -707,16 +707,12 @@
 
         container.innerHTML = `
           <div class="bg-gradient-to-b from-indigo-50/70 to-white rounded-3xl border border-indigo-100 p-5 sm:p-6 shadow-sm space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-indigo-100/60">
-              <div class="space-y-1">
-                <div class="flex items-center gap-2">
-                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black ${planBadgeBg} shadow-xs">
-                    <i data-lucide="${planBadgeIcon}" class="w-3.5 h-3.5 ${isAiRefined ? 'text-amber-300' : 'text-white'}"></i> ${planBadgeLabel}
-                  </span>
-                </div>
-                ${tagline ? `<p class="text-xs sm:text-sm text-slate-600">${KYT.utils.escapeHTML(tagline)}</p>` : ''}
-              </div>
-            </div>
+            ${(planBadgeLabel !== 'Day-by-Day Plan' || tagline) ? `<div class="space-y-1 pb-4 border-b border-indigo-100/60">
+              ${planBadgeLabel !== 'Day-by-Day Plan' ? `<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black ${planBadgeBg} shadow-xs">
+                <i data-lucide="${planBadgeIcon}" class="w-3.5 h-3.5 ${isAiRefined ? 'text-amber-300' : 'text-white'}"></i> ${planBadgeLabel}
+              </span>` : ''}
+              ${tagline ? `<p class="text-xs sm:text-sm text-slate-600">${KYT.utils.escapeHTML(tagline)}</p>` : ''}
+            </div>` : ''}
 
             ${highlightsHtml}
 

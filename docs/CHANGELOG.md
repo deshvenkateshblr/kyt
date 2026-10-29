@@ -333,3 +333,9 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **No repeats on the plan page:** the trip name and the length of the trip each appear once.
     - **Tests:** 03, 07, 08 and 09 updated; 08 gains Continue placement and nearby-first tests (119 in all).
 
+
+47. **Quieter plan page, a plain Continue, and no day of only meals (service worker cache `kyt-v85`)**
+    - **Continue** is a compact button at the right of the Destinations card, not a full-width bar.
+    - **One "Day-by-Day" heading** on the plan page (the extra "Day-by-Day Plan" badge shows only for AI-refined and curated plans), and the "suggested sequence, not a schedule" notice is a small grey line instead of an amber box.
+    - **Thin cities are topped up.** If a city has fewer than three stops for the chosen interest (Mumbai for Spiritual and Vegetarian had one), the day adds its other sights, still within the food choice. Culinary trips stay food-led.
+    - **Tests:** one new test in `07-generated-plans.test.js` (120 in all).
