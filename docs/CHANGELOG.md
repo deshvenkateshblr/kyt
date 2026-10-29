@@ -345,3 +345,7 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **Generate Day Plan** is a compact right-aligned button, like Continue.
     - **Missing start:** pressing Generate without a starting point outlines From in red, shakes it once and shows "Choose where you start from to generate the plan" in red under it until one is chosen. No alert.
     - **Tests:** one each in 07 and 08 (122 in all).
+
+49. **Changing the style now changes the plan (service worker cache `kyt-v87`)**
+    - After a plan existed, tapping an Interests, Food or Pace chip on the setup screen updated the label but left the old plan in place. It now rebuilds the plan like a change of start, keeping stops you edited or added. AI-refined and curated plans are left alone.
+    - **Tests:** one new test in `09-plan-editing.test.js` (123 in all).

@@ -201,3 +201,30 @@ test('delete a stop still works from the new controls, and the activity count fo
   assert.match(await page.locator('#vt-itinerary-list').innerText(), new RegExp(`${after.length} activities`));
   await context.close();
 });
+
+test('changing the style after the plan exists rebuilds it, and keeps stops you added', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openEditor(page, [['Mumbai', 'mumbai']]);
+  const sights = async () => (await stored(page))[0].steps.filter(s => s.dayId === 1).map(s => s.title).join(' | ');
+  await page.click('#btn-vt-edit-setup');
+  await page.click('.vt-chip[data-field="intent"][data-id="spiritual"]');
+  const spiritual = await sights();
+  assert.match(spiritual, /Siddhivinayak|Babulnath|Mumbadevi|Walkeshwar|ISKCON|Radha Gopinath/, 'temples for Spiritual');
+
+  await page.click('#btn-vt-build');
+  await page.waitForSelector('#vt-screen-builder:not(.hidden)');
+  await page.locator('button[onclick="addVirtualTripStep(1)"]').click();
+  await page.fill('#vt-step-title', 'Meet cousin');
+  await page.click('#btn-save-vt-step');
+
+  await page.click('#btn-vt-edit-setup');
+  await page.click('.vt-chip[data-field="intent"][data-id="mixed"]');
+  const mixed = await sights();
+  assert.notEqual(mixed, spiritual, 'the plan changed with the style');
+  assert.match(mixed, /Gateway of India|Elephanta|Marine Drive/, 'sights come back for Mixed');
+  assert.match(mixed, /Meet cousin/, 'and the added stop is still there');
+  await page.click('#btn-vt-build');
+  await page.waitForSelector('#vt-screen-builder:not(.hidden)');
+  assert.match(await page.locator('#vt-itinerary-list').innerText(), /Gateway of India/, 'the plan screen shows it too');
+  await context.close();
+});

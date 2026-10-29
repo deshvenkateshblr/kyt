@@ -1934,7 +1934,10 @@ KYT.virtualTrips = (function () {
         const trip = getActiveTrip();
         if (trip) {
           trip.taste[chip.dataset.field] = chip.dataset.id;
-          if (!trip.steps || trip.steps.length === 0) {
+          // The plan follows the style: rebuild it (keeping stops you edited or added), as the start does.
+          if (trip.steps && trip.steps.length > 0 && !(trip.curatedId || trip.isAiRefined || (trip.id && trip.id.startsWith('ai_')))) {
+            trip.steps = regeneratePlan(trip);
+          } else if (!trip.steps || trip.steps.length === 0) {
             trip.steps = null;
           }
           saveVTrips();
