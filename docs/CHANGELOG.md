@@ -323,3 +323,13 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **Edits survive a rebuild.** Changing days, start or cities regenerates the plan but keeps edited and added stops (`regeneratePlan`); "Reset plan" is the only thing that drops them.
     - **Known limits:** a deleted suggested stop can come back after a rebuild; an edit is kept only while a suggested stop with the same day and original title still exists; transfer times are still fixed (P1.0).
     - **Tests:** `tests/e2e/09-plan-editing.test.js` (5 tests); 03, 07 and 08 updated for the new flow; `KYT_PW_TIMEOUT` shortens Playwright waits.
+
+46. **Setup trimmed to what a first-time user needs; Generate goes straight to the editable plan (service worker cache `kyt-v84`)**
+    - **Nearby cities first.** After you add a city, the picker lists the 8 closest to the latest one under "Near X" (from the distance matrix), then "All destinations". Searching still searches everything.
+    - **Continue is part of the Destinations card**, under the chips, not a bar floating over the list.
+    - **No Setup / Day Plan switch, no ⋯ menu.** The header is back, the trip name and Share. "Edit cities & setup" and "Reset plan" live on the plan screen, next to a one-line summary ("From Delhi · 2 days · Mixed · Any food · Standard").
+    - **Style is fully shown** with what each choice means (Interests, Food, Pace), instead of a closed "Mixed · Any food · Standard" line.
+    - **No dialog on Generate.** The stays dialog is now optional (Days → Edit); Generate builds the plan, sleeping places default sensibly, and opens the plan where stops can be moved, edited, added and deleted. "Start this trip" and "View Trip" lead on to the plan page.
+    - **No repeats on the plan page:** the trip name and the length of the trip each appear once.
+    - **Tests:** 03, 07, 08 and 09 updated; 08 gains Continue placement and nearby-first tests (119 in all).
+

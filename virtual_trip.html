@@ -675,65 +675,22 @@
       class="w-full max-w-md mx-auto flex justify-between items-center z-[60] bg-white/50 backdrop-blur-md rounded-2xl p-2 border border-white/60 shadow-sm mt-3 px-3 sm:px-4 mb-2 relative shrink-0">
     </header>
 
-    <!-- Edit Trip header: one title row with a menu, and the Setup / Day Plan switch -->
+    <!-- Trip header: back, the trip's name, Share. Nothing else repeats what the screen below shows. -->
     <header id="vt-subnav-bar"
       class="w-full bg-blue-50/90 py-2.5 px-4 border-b border-blue-100 shadow-2xs shrink-0 hidden">
-      <div class="max-w-4xl mx-auto space-y-2">
-        <div class="flex items-center gap-2">
-          <button type="button" id="vt-subnav-back"
-            class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-blue-600 active:scale-95 transition-all bg-white px-3 py-1.5 rounded-full border border-slate-200 shadow-2xs cursor-pointer shrink-0 whitespace-nowrap">
-            <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
-            <span id="vt-subnav-back-label">My Trips</span>
-          </button>
-          <input type="text" id="vt-edit-name"
-            class="flex-1 min-w-0 text-lg sm:text-xl font-black text-blue-950 tracking-tight leading-tight bg-transparent border-b border-dashed border-blue-200 hover:border-blue-400 focus:border-blue-600 focus:outline-none transition-colors truncate"
-            placeholder="Trip name" aria-label="Trip name">
-
-          <div id="vt-menu-wrap" class="relative shrink-0">
-            <button type="button" id="vt-menu-btn" aria-haspopup="menu" aria-expanded="false" aria-label="More actions"
-              class="w-9 h-9 flex items-center justify-center rounded-full bg-white border border-slate-200 text-slate-600 hover:text-blue-600 shadow-2xs active:scale-95 transition-all cursor-pointer">
-              <i data-lucide="more-horizontal" class="w-4 h-4"></i>
-            </button>
-            <div id="vt-menu" role="menu"
-              class="hidden absolute right-0 top-full mt-1.5 w-56 bg-white rounded-xl border border-slate-200 shadow-lg z-30 py-1">
-              <button type="button" id="vt-header-btn-stays" role="menuitem"
-                class="btn-builder-stays-modal w-full flex items-center gap-2.5 px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50 text-left cursor-pointer"
-                onclick="window.openStayModal ? window.openStayModal() : (window.KYT && window.KYT.virtualTrips && window.KYT.virtualTrips.openStayModal && window.KYT.virtualTrips.openStayModal())">
-                <i data-lucide="moon" class="w-4 h-4 text-indigo-500"></i> Days &amp; stays
-              </button>
-              <button type="button" id="vt-subnav-share" role="menuitem"
-                class="w-full flex items-center gap-2.5 px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50 text-left cursor-pointer">
-                <i data-lucide="share-2" class="w-4 h-4 text-slate-500"></i> Share
-              </button>
-              <a id="vt-subnav-detail" href="#" role="menuitem"
-                class="hidden w-full flex items-center gap-2.5 px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50 text-left cursor-pointer">
-                <i data-lucide="sparkles" class="w-4 h-4 text-indigo-500"></i> Trip details &amp; AI
-              </a>
-              <button type="button" id="vt-menu-reset" role="menuitem"
-                class="hidden w-full flex items-center gap-2.5 px-3.5 py-2.5 text-xs font-bold text-rose-600 hover:bg-rose-50 text-left cursor-pointer border-t border-slate-100">
-                <i data-lucide="rotate-cw" class="w-4 h-4"></i> Reset plan to suggested
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Switch: Setup (destinations and trip attributes) vs the Day Plan -->
-        <div class="flex items-center justify-between gap-2 flex-wrap">
-        <div id="vt-mode-tabs" class="flex items-center gap-1 bg-white/90 p-1 rounded-xl border border-blue-200/70 shadow-2xs">
-          <button type="button" id="vt-tab-canvas"
-            class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer">
-            <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
-            <span>Setup</span>
-          </button>
-          <button type="button" id="vt-tab-builder"
-            class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer">
-            <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
-            <span>Day Plan</span>
-            <span id="vt-tab-plan-badge" class="ml-0.5 text-[10px] font-extrabold px-1.5 py-0.2 rounded-full bg-blue-100 text-blue-700"></span>
-          </button>
-        </div>
-        <div id="vt-header-meta-pills" class="flex flex-wrap items-center gap-1.5 empty:hidden"></div>
-        </div>
+      <div class="max-w-4xl mx-auto flex items-center gap-2">
+        <button type="button" id="vt-subnav-back"
+          class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-blue-600 active:scale-95 transition-all bg-white px-3 py-1.5 rounded-full border border-slate-200 shadow-2xs cursor-pointer shrink-0 whitespace-nowrap">
+          <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+          <span id="vt-subnav-back-label">My Trips</span>
+        </button>
+        <input type="text" id="vt-edit-name"
+          class="flex-1 min-w-0 text-lg sm:text-xl font-black text-blue-950 tracking-tight leading-tight bg-transparent border-b border-dashed border-blue-200 hover:border-blue-400 focus:border-blue-600 focus:outline-none transition-colors truncate"
+          placeholder="Trip name" aria-label="Trip name">
+        <button type="button" id="vt-subnav-share" aria-label="Share trip" title="Share"
+          class="hidden shrink-0 w-9 h-9 items-center justify-center rounded-full bg-white border border-slate-200 text-slate-600 hover:text-blue-600 shadow-2xs active:scale-95 transition-all cursor-pointer">
+          <i data-lucide="share-2" class="w-4 h-4"></i>
+        </button>
       </div>
     </header>
 
@@ -771,6 +728,10 @@
           </button>
         </div>
         <div id="vt-selected-cities" class="flex flex-wrap gap-1.5 mt-2.5 empty:hidden"></div>
+        <button type="button" id="btn-vt-dest-done"
+          class="hidden w-full mt-3 py-2.5 bg-blue-600 text-white font-black rounded-xl text-sm shadow-xs hover:bg-blue-700 active:scale-[0.98] transition-all items-center justify-center gap-1.5 cursor-pointer">
+          Continue
+        </button>
         <p id="vt-empty-cities" class="text-sm text-slate-500 mt-2">Where do you want to go? Search below and add the places in the order you will visit them.</p>
 
         <!-- The picker lives inside the panel it fills -->
@@ -816,32 +777,17 @@
           </button>
         </div>
 
-        <details id="vt-preferences-details" class="group border-t border-slate-100 pt-2.5">
-          <summary class="flex items-center justify-between gap-2 cursor-pointer select-none">
-            <span class="flex items-center gap-1.5 min-w-0">
-              <i data-lucide="sliders" class="w-3.5 h-3.5 text-blue-500 shrink-0"></i>
-              <span class="text-xs font-black uppercase text-slate-700 tracking-wider shrink-0">Style</span>
-              <span id="vt-pref-summary-value" class="text-[11px] font-bold text-slate-500 truncate"></span>
-            </span>
-            <span class="text-[11px] font-bold text-blue-600 shrink-0 group-open:hidden">Change</span>
-          </summary>
-          <div class="pt-3 space-y-3">
-            <div id="vt-taste" class="flex gap-1.5 flex-wrap"></div>
-            <button type="button" id="btn-vt-prefs-done"
-              class="w-full py-2.5 bg-blue-50 text-blue-700 hover:bg-blue-100 active:scale-[0.99] font-bold rounded-xl text-xs transition-all cursor-pointer">
-              Done
-            </button>
-          </div>
-        </details>
+        <div id="vt-style" class="border-t border-slate-100 pt-3">
+          <p class="flex items-center gap-1.5 text-xs font-black uppercase text-slate-700 tracking-wider mb-2">
+            <i data-lucide="sliders" class="w-3.5 h-3.5 text-blue-500"></i> Style
+          </p>
+          <div id="vt-taste" class="space-y-3"></div>
+        </div>
         <div id="vt-rebuild-actions"></div>
       </section>
 
       <!-- One action at a time: Continue while choosing, Generate once the route is set -->
-      <div id="vt-canvas-bar" class="hidden sticky bottom-0 -mx-3 sm:-mx-4 px-3 sm:px-4 pb-3 pt-2 bg-gradient-to-t from-slate-50 via-slate-50/95 to-transparent z-10 shrink-0">
-        <button type="button" id="btn-vt-dest-done"
-          class="hidden w-full py-3 bg-blue-600 text-white font-black rounded-xl text-sm shadow-md hover:bg-blue-700 active:scale-[0.98] transition-all items-center justify-center gap-1.5 cursor-pointer">
-          Continue
-        </button>
+      <div id="vt-canvas-bar" class="hidden pb-3 shrink-0">
         <button id="btn-vt-build"
           class="w-full py-3 px-4 bg-blue-600 text-white font-black rounded-xl text-sm shadow-md hover:bg-blue-700 active:scale-[0.98] transition-all hidden flex items-center justify-center gap-1.5 cursor-pointer">
           <i data-lucide="calendar" class="w-4 h-4"></i> View Itinerary

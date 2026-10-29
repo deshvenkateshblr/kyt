@@ -35,6 +35,25 @@ KYT.virtualTrips = (function () {
     ]
   };
 
+  // What each choice means, shown beside it
+  const TASTE_INFO = {
+    intent: { title: 'Interests', hints: {
+      mixed: 'A bit of everything: sights, food, culture',
+      spiritual: 'Temples, ghats, pilgrimage stops',
+      cultural: 'Forts, museums, heritage and crafts',
+      adventure: 'Outdoors, treks, active days',
+      culinary: 'Local food and markets first' } },
+    diet: { title: 'Food', hints: {
+      any: 'No restriction on food stops',
+      veg: 'Vegetarian places only',
+      jain: 'Jain-friendly food only',
+      satvik: 'No onion or garlic' } },
+    pace: { title: 'Pace', hints: {
+      short: 'Only the quick highlights',
+      standard: 'Main sights at an easy pace',
+      deep: 'Longer, slower stops with more time at each' } }
+  };
+
   const DEFAULT_TASTE = { intent: 'mixed', diet: 'any', pace: 'standard' };
 
   const POPULAR_ORIGINS = [
@@ -294,57 +313,19 @@ KYT.virtualTrips = (function () {
   // --- Screens ---
   let currentScreen = 'hub';
 
-  function renderHeaderMetaPills(trip) {
-    const pillsContainer = document.getElementById('vt-header-meta-pills');
-    if (!pillsContainer || !trip) return;
-    const pillClass = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-white text-blue-900 border border-blue-200/80 shadow-2xs';
-    const esc = (s) => (window.KYT && KYT.utils && KYT.utils.escapeHTML) ? KYT.utils.escapeHTML(s) : s;
-    const pillItems = [];
-    const hasCities = Boolean(trip.cities && trip.cities.length);
-
-    // While cities are being picked the card below already shows the start and style, so the header
-    // only carries the length of the trip, and nothing at all until there is a trip to measure.
-    if (currentScreen === 'canvas') {
-      if (hasCities) {
-        const d = trip.duration || trip.cities.length;
-        pillsContainer.innerHTML = `<span class="${pillClass}">🗓️ ${d} Day${d > 1 ? 's' : ''}</span>`;
-      } else {
-        pillsContainer.innerHTML = '';
-      }
-      return;
-    }
-
-    // Origin
-    if (trip.originCity === '0' || trip.originCity === 'already_there') {
-      pillItems.push(`<span class="${pillClass}">📍 Starts in destination</span>`);
-    } else if (trip.originCity) {
-      const orig = window.KYT_CITIES ? window.KYT_CITIES.find(c => c.id === trip.originCity) : null;
-      pillItems.push(`<span class="${pillClass}">📍 From ${esc(orig ? orig.name : trip.originCity)}</span>`);
-    }
-
-    // Duration
-    const totalDays = trip.duration || (trip.cities && trip.cities.length ? trip.cities.length : 1);
-    pillItems.push(`<span class="${pillClass}">🗓️ ${totalDays} Day${totalDays > 1 ? 's' : ''}</span>`);
-
-    // Taste
-    if (trip.taste) {
-      const tasteLabels = {
-        intent: { mixed: 'Mixed', spiritual: 'Spiritual', cultural: 'Cultural', adventure: 'Adventure', culinary: 'Culinary', nature: 'Nature' },
-        diet: { any: 'Any food', veg: 'Vegetarian', jain: 'Jain', satvik: 'Satvik' },
-        pace: { short: 'Short', standard: 'Standard', deep: 'Deep', relaxed: 'Relaxed', fast: 'Fast' }
-      };
-      if (trip.taste.intent && tasteLabels.intent[trip.taste.intent]) {
-        pillItems.push(`<span class="${pillClass}">${esc(tasteLabels.intent[trip.taste.intent])}</span>`);
-      }
-      if (trip.taste.diet && tasteLabels.diet[trip.taste.diet]) {
-        pillItems.push(`<span class="${pillClass}">${esc(tasteLabels.diet[trip.taste.diet])}</span>`);
-      }
-      if (trip.taste.pace && tasteLabels.pace[trip.taste.pace]) {
-        pillItems.push(`<span class="${pillClass}">${esc(tasteLabels.pace[trip.taste.pace])}</span>`);
-      }
-    }
-
-    pillsContainer.innerHTML = pillItems.join('');
+  // "From Mumbai · 3 days · Mixed · Any food · Standard", shown on the plan screen
+  function tripSummaryText(trip) {
+    const nameOf = id => { const c = window.KYT_CITIES && window.KYT_CITIES.find(x => x.id === id); return c ? c.name : id; };
+    const parts = [];
+    if (trip.originCity === '0' || trip.originCity === 'already_there') parts.push('Starts in the destination');
+    else if (trip.originCity) parts.push('From ' + nameOf(trip.originCity));
+    const d = trip.duration || (trip.cities && trip.cities.length) || 1;
+    parts.push(`${d} day${d > 1 ? 's' : ''}`);
+    ['intent', 'diet', 'pace'].forEach(k => {
+      const o = (TASTE_FIELDS[k] || []).find(x => x.id === (trip.taste || {})[k]);
+      if (o) parts.push(o.label);
+    });
+    return parts.join(' · ');
   }
 
   function showScreen(screen) {
@@ -358,14 +339,6 @@ KYT.virtualTrips = (function () {
     const subnavBack = document.getElementById('vt-subnav-back');
     const subnavBackLabel = document.getElementById('vt-subnav-back-label');
     const subnavShare = document.getElementById('vt-subnav-share');
-    const subnavDetails = document.getElementById('vt-subnav-detail');
-    const tabCanvas = document.getElementById('vt-tab-canvas');
-    const tabBuilder = document.getElementById('vt-tab-builder');
-    const tabBadge = document.getElementById('vt-tab-plan-badge');
-    const menuReset = document.getElementById('vt-menu-reset');
-    const menuPanel = document.getElementById('vt-menu');
-    if (menuPanel) menuPanel.classList.add('hidden');
-    if (menuReset) menuReset.classList.toggle('hidden', screen !== 'builder');
 
     if (window.KYT && KYT.header) {
       KYT.header.renderMainToolbar('main-toolbar', { active: 'virtual' });
@@ -374,95 +347,34 @@ KYT.virtualTrips = (function () {
     if (screen === 'hub') {
       DOM.screenHub.classList.remove('hidden');
       if (subnavBar) subnavBar.classList.add('hidden');
-    } else if (screen === 'canvas') {
-      DOM.screenCanvas.classList.remove('hidden');
-      DOM.screenCanvas.classList.add('flex');
+    } else {
+      if (screen === 'canvas') {
+        DOM.screenCanvas.classList.remove('hidden');
+        DOM.screenCanvas.classList.add('flex');
+      } else {
+        DOM.screenBuilder.classList.remove('hidden');
+      }
       const trip = getActiveTrip();
       const hasPlan = Boolean(trip && trip.steps && trip.steps.length > 0);
-
       if (subnavBar) {
         subnavBar.classList.remove('hidden');
-        if (subnavBackLabel) subnavBackLabel.textContent = hasPlan ? 'View Trip' : 'My Trips';
+        // On the plan, "back" is the trip (setup is one tap away inside the plan); on setup it is the plan
+        // if there is one, else My Trips.
+        if (subnavBackLabel) subnavBackLabel.textContent = (hasPlan || screen === 'builder') ? 'View Trip' : 'My Trips';
         if (subnavBack) {
           subnavBack.onclick = (e) => {
             e.preventDefault();
-            if (hasPlan && trip) {
+            if (trip && (hasPlan || screen === 'builder')) {
               window.location.href = `trip_detail.html?id=${encodeURIComponent(trip.id)}`;
             } else {
               openHub();
             }
           };
         }
-        if (subnavDetails) {
-          if (trip) {
-            subnavDetails.classList.remove('hidden');
-            subnavDetails.href = `trip_detail.html?id=${encodeURIComponent(trip.id)}&refine=1`;
-          } else {
-            subnavDetails.classList.add('hidden');
-          }
-        }
         if (subnavShare) {
-          subnavShare.onclick = (e) => {
-            e.preventDefault();
-            shareCurrentTrip();
-          };
+          subnavShare.onclick = (e) => { e.preventDefault(); shareCurrentTrip(); };
         }
       }
-
-      if (tabCanvas) {
-        tabCanvas.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer bg-blue-600 text-white shadow-2xs';
-      }
-      if (tabBuilder) {
-        tabBuilder.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer text-slate-600 hover:text-blue-700';
-      }
-      if (tabBadge && trip) {
-        const stepCount = (trip.steps && trip.steps.length) || 0;
-        tabBadge.textContent = stepCount > 0 ? stepCount : '';
-        tabBadge.classList.toggle('hidden', stepCount === 0);
-      }
-      if (trip) renderHeaderMetaPills(trip);
-      syncEmptyTripControls(trip);
-
-    } else if (screen === 'builder') {
-      DOM.screenBuilder.classList.remove('hidden');
-      const trip = getActiveTrip();
-      if (subnavBar) {
-        subnavBar.classList.remove('hidden');
-        if (subnavBackLabel) subnavBackLabel.textContent = 'View Trip';
-        if (subnavBack) {
-          subnavBack.onclick = (e) => {
-            e.preventDefault();
-            if (trip) {
-              window.location.href = `trip_detail.html?id=${encodeURIComponent(trip.id)}`;
-            } else {
-              openHub();
-            }
-          };
-        }
-        if (subnavDetails && trip) {
-          subnavDetails.classList.remove('hidden');
-          subnavDetails.href = `trip_detail.html?id=${encodeURIComponent(trip.id)}&refine=1`;
-        }
-        if (subnavShare) {
-          subnavShare.onclick = (e) => {
-            e.preventDefault();
-            shareCurrentTrip();
-          };
-        }
-      }
-
-      if (tabCanvas) {
-        tabCanvas.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer text-slate-600 hover:text-blue-700';
-      }
-      if (tabBuilder) {
-        tabBuilder.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer bg-blue-600 text-white shadow-2xs';
-      }
-      if (tabBadge && trip) {
-        const stepCount = (trip.steps && trip.steps.length) || 0;
-        tabBadge.textContent = stepCount > 0 ? stepCount : '';
-        tabBadge.classList.toggle('hidden', stepCount === 0);
-      }
-      if (trip) renderHeaderMetaPills(trip);
       syncEmptyTripControls(trip);
     }
 
@@ -568,7 +480,6 @@ KYT.virtualTrips = (function () {
     const trip = getActiveTrip();
     if (trip && currentScreen === 'canvas') {
       renderStaysSummary(trip);
-      renderHeaderMetaPills(trip);
     }
   }
 
@@ -765,24 +676,13 @@ KYT.virtualTrips = (function () {
   let setupTripId = null;   // the trip the Setup screen was last drawn for
   let pickerOpen = true;    // destinations picker open (choosing) or collapsed (route set)
 
-  function renderPrefsSummary(trip) {
-    const el = document.getElementById('vt-pref-summary-value');
-    if (!el) return;
-    const label = (key) => {
-      const o = (TASTE_FIELDS[key] || []).find(x => x.id === (trip.taste || {})[key]);
-      return o ? o.label : '';
-    };
-    el.textContent = [label('intent'), label('diet'), label('pace')].filter(Boolean).join(' · ');
-  }
 
   // An empty trip has nothing to plan, share or review yet. Those controls are not shown until a first
   // destination is added, so nothing sits greyed out without saying why.
   function syncEmptyTripControls(trip) {
     const hasContent = Boolean(trip && ((trip.cities && trip.cities.length > 0) || (trip.steps && trip.steps.length > 0)));
-    ['vt-menu-wrap', 'vt-mode-tabs'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.classList.toggle('hidden', !hasContent);
-    });
+    const share = document.getElementById('vt-subnav-share');
+    if (share) { share.classList.toggle('hidden', !hasContent); share.classList.toggle('flex', hasContent); }
   }
 
   // "2 days · stay in Jaipur, Udaipur" for the Days row
@@ -814,33 +714,37 @@ KYT.virtualTrips = (function () {
     populateOriginSelector(trip.originCity || '');
     updateOriginDesc(trip);
 
-    // Taste Chips
+    // Style: every choice is visible with what it means, so nothing needs to be opened to understand it.
     DOM.tasteRoot.innerHTML = Object.keys(TASTE_FIELDS).map(key => {
+      const info = TASTE_INFO[key];
       const chips = TASTE_FIELDS[key].map(opt => {
         const isOn = trip.taste[key] === opt.id;
         const classes = isOn
           ? "vt-chip bg-blue-600 text-white font-bold px-3 py-1.5 rounded-full text-xs shadow-sm whitespace-nowrap"
           : "vt-chip bg-white text-slate-600 border border-slate-200 font-medium px-3 py-1.5 rounded-full text-xs hover:bg-slate-50 whitespace-nowrap";
-        return `<button type="button" class="${classes}" data-field="${key}" data-id="${opt.id}">${opt.label}</button>`;
+        return `<button type="button" class="${classes}" data-field="${key}" data-id="${opt.id}" aria-pressed="${isOn}">${opt.label}</button>`;
       }).join('');
-      return `<div class="flex gap-2">${chips}</div>`;
+      const cur = TASTE_FIELDS[key].find(o => o.id === trip.taste[key]);
+      return `<div>
+        <div class="flex items-baseline justify-between gap-2 mb-1.5">
+          <span class="text-[11px] font-black uppercase tracking-wider text-slate-500">${info.title}</span>
+          <span class="text-[11px] text-slate-400 text-right">${cur && info.hints[cur.id] ? info.hints[cur.id] : ''}</span>
+        </div>
+        <div class="flex gap-1.5 flex-wrap">${chips}</div>
+      </div>`;
     }).join('');
 
     // Destinations come first: the panel is a picker while choosing and collapses to the route once set.
     if (setupTripId !== trip.id) {
       setupTripId = trip.id;
       pickerOpen = trip.cities.length === 0;
-      const prefDetails = document.getElementById('vt-preferences-details');
-      if (prefDetails) prefDetails.open = false;
     }
     if (trip.cities.length === 0) pickerOpen = true;
     const hasCities = trip.cities.length > 0;
 
     const badge = document.getElementById('vt-city-count-badge');
     if (badge) badge.textContent = hasCities ? `· ${trip.cities.length} selected` : '';
-    renderPrefsSummary(trip);
     renderStaysSummary(trip);
-    renderHeaderMetaPills(trip);
     syncEmptyTripControls(trip);
 
     const show = (id, on) => { const el = document.getElementById(id); if (el) el.classList.toggle('hidden', !on); };
@@ -858,7 +762,7 @@ KYT.virtualTrips = (function () {
     }
     DOM.btnBuild.classList.toggle('hidden', !(hasCities && !pickerOpen));
     if (trip.steps && trip.steps.length > 0) {
-      DOM.btnBuild.innerHTML = `<i data-lucide="calendar" class="w-4 h-4"></i> View Itinerary (${trip.steps.length} activities)`;
+      DOM.btnBuild.innerHTML = `<i data-lucide="calendar" class="w-4 h-4"></i> Open Day Plan (${trip.steps.length} stops)`;
     } else {
       DOM.btnBuild.innerHTML = `<i data-lucide="wand-2" class="w-4 h-4"></i> Generate Day Plan`;
     }
@@ -922,12 +826,28 @@ KYT.virtualTrips = (function () {
       return;
     }
 
-    DOM.cityListRoot.innerHTML = available.map(city =>
-      KYT.ui.renderCityCard(city, {
-        variant: 'library',
-        isAdded: trip.cities.includes(city.id)
-      })
-    ).join('');
+    const card = city => KYT.ui.renderCityCard(city, { variant: 'library', isAdded: trip.cities.includes(city.id) });
+    const label = text => `<p class="text-[11px] font-black uppercase tracking-wider text-slate-400 pt-1">${text}</p>`;
+
+    // Once a destination is picked, the places closest to the latest one come first.
+    let html;
+    const anchorId = trip.cities[trip.cities.length - 1];
+    const row = !query && anchorId && window.KYT_DISTANCE_MATRIX && window.KYT_DISTANCE_MATRIX[anchorId];
+    if (row) {
+      const near = Object.entries(row)
+        .filter(([id]) => !trip.cities.includes(id))
+        .sort((a, b) => a[1] - b[1])
+        .map(([id]) => available.find(c => c.id === id))
+        .filter(Boolean)
+        .slice(0, 8);
+      const nearIds = new Set(near.map(c => c.id));
+      const anchor = window.KYT_CITIES.find(c => c.id === anchorId);
+      html = (near.length ? label(`Near ${KYT.utils.escapeHTML(anchor ? anchor.name : '')}`) + near.map(card).join('') + label('All destinations') : '') +
+        available.filter(c => !nearIds.has(c.id)).map(card).join('');
+    } else {
+      html = available.map(card).join('');
+    }
+    DOM.cityListRoot.innerHTML = html;
 
     if (window.lucide) lucide.createIcons();
 
@@ -1717,14 +1637,16 @@ KYT.virtualTrips = (function () {
     if (!trip || !trip.steps) return;
 
     if (DOM.editNameInput) DOM.editNameInput.value = trip.name;
-    renderHeaderMetaPills(trip);
 
     // Hand-curated blueprints keep their own wording; every generated plan carries the explainer.
-    let html = (trip.curatedId ? '' : KYT.ui.renderGeneratedPlanNotice()) + `
-      <div class="mb-1 pb-1 border-b border-slate-200/70">
-        <p class="text-xs font-black uppercase text-slate-700 tracking-wider">Day-by-Day Itinerary</p>
-        <p class="text-[11px] text-slate-400 mt-0.5">Use the arrows to reorder a day, the pencil to edit a stop, and + to add one. Your changes are kept when you adjust cities or days.</p>
+    let html = `
+      <div class="flex items-center gap-2 flex-wrap bg-white border border-slate-200/90 rounded-2xl px-3.5 py-2.5 shadow-xs">
+        <p class="w-full text-xs font-bold text-slate-600 leading-snug">${KYT.utils.escapeHTML(tripSummaryText(trip))}</p>
+        <button type="button" id="btn-vt-edit-setup" class="text-[11px] font-bold text-blue-600 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-full transition-colors cursor-pointer">Edit cities &amp; setup</button>
+        <button type="button" id="btn-vt-reset-plan" class="ml-auto text-[11px] font-bold text-slate-500 hover:text-rose-600 px-2 py-1.5 rounded-full transition-colors cursor-pointer">Reset plan</button>
       </div>
+      ${trip.curatedId ? '' : KYT.ui.renderGeneratedPlanNotice()}
+      <p class="text-[11px] text-slate-500 px-1">Use the arrows to reorder a day, the pencil to edit a stop and <strong>Add stop</strong> to add one. Your changes are kept when you adjust cities or days.</p>
     `;
 
     // Group steps by dayId
@@ -1787,15 +1709,16 @@ KYT.virtualTrips = (function () {
     `;
 
     DOM.itineraryListRoot.innerHTML = html;
-    const planBadge = document.getElementById('vt-tab-plan-badge');
-    if (planBadge) { planBadge.textContent = totalSteps > 0 ? totalSteps : ''; planBadge.classList.toggle('hidden', totalSteps === 0); }
-    const btnStays = DOM.itineraryListRoot.querySelector('.btn-builder-stays-modal');
-    if (btnStays) {
-      btnStays.addEventListener('click', (e) => {
-        e.preventDefault();
-        openStayModal();
-      });
-    }
+    const btnEditSetup = document.getElementById('btn-vt-edit-setup');
+    if (btnEditSetup) btnEditSetup.addEventListener('click', () => openCanvas(currentTripId));
+    const btnResetPlan = document.getElementById('btn-vt-reset-plan');
+    if (btnResetPlan) btnResetPlan.addEventListener('click', () => {
+      if (confirm('Reset the whole plan to the suggested one? Stops you edited or added will be lost.')) {
+        trip.steps = generateSteps(trip);
+        saveVTrips();
+        renderBuilder();
+      }
+    });
     if (window.lucide) lucide.createIcons();
   }
 
@@ -1885,26 +1808,6 @@ KYT.virtualTrips = (function () {
     vtrips = loadVTrips();
 
     if (DOM.btnClose) DOM.btnClose.addEventListener('click', closeView);
-    const tabCanvas = document.getElementById('vt-tab-canvas');
-    if (tabCanvas) {
-      tabCanvas.addEventListener('click', () => {
-        openCanvas(currentTripId);
-      });
-    }
-    const tabBuilder = document.getElementById('vt-tab-builder');
-    if (tabBuilder) {
-      tabBuilder.addEventListener('click', () => {
-        const trip = getActiveTrip();
-        if (trip && trip.steps && trip.steps.length > 0) {
-          openBuilder();
-        } else if (trip && trip.cities && trip.cities.length > 0) {
-          openStayModal();
-        } else {
-          alert('Add at least one destination first to view or build your day plan.');
-        }
-      });
-    }
-
 
     const btnOpen = document.getElementById('btn-open-virtual-trips');
     if (btnOpen) {
@@ -1959,7 +1862,6 @@ KYT.virtualTrips = (function () {
           saveVTrips();
           updateOriginDesc(trip);
           renderPrefsSummary(trip);
-          renderHeaderMetaPills(trip);
         }
       });
     }
@@ -1984,38 +1886,6 @@ KYT.virtualTrips = (function () {
     }
     const btnStaysRow = document.getElementById('btn-vt-stays-row');
     if (btnStaysRow) btnStaysRow.addEventListener('click', () => openStayModal());
-
-    // ⋯ menu: Days & stays, Share, Trip details & AI, Reset plan
-    const menuBtn = document.getElementById('vt-menu-btn');
-    const menuPanel = document.getElementById('vt-menu');
-    const closeMenu = () => {
-      if (!menuPanel) return;
-      menuPanel.classList.add('hidden');
-      if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
-    };
-    if (menuBtn && menuPanel) {
-      menuBtn.addEventListener('click', e => {
-        e.stopPropagation();
-        const opening = menuPanel.classList.contains('hidden');
-        menuPanel.classList.toggle('hidden', !opening);
-        menuBtn.setAttribute('aria-expanded', opening ? 'true' : 'false');
-      });
-      menuPanel.addEventListener('click', e => { if (e.target.closest('[role="menuitem"]')) closeMenu(); });
-      document.addEventListener('click', e => { if (!e.target.closest('#vt-menu-wrap')) closeMenu(); });
-      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
-    }
-    const menuReset = document.getElementById('vt-menu-reset');
-    if (menuReset) {
-      menuReset.addEventListener('click', () => {
-        const trip = getActiveTrip();
-        if (!trip) return;
-        if (confirm('Reset the whole plan to the suggested one? Stops you edited or added will be lost.')) {
-          trip.steps = generateSteps(trip);
-          saveVTrips();
-          renderBuilder();
-        }
-      });
-    }
 
     // Add / edit a stop
     const stepModal = stepModalEl();
@@ -2045,17 +1915,6 @@ KYT.virtualTrips = (function () {
       }
     }
 
-    // Done closes the style chips.
-    const prefsDetails = document.getElementById('vt-preferences-details');
-    if (prefsDetails) {
-      const btnPrefsDone = document.getElementById('btn-vt-prefs-done');
-      if (btnPrefsDone) {
-        btnPrefsDone.addEventListener('click', () => {
-          prefsDetails.open = false;
-          prefsDetails.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-        });
-      }
-    }
 
     if (DOM.tasteRoot) {
       DOM.tasteRoot.addEventListener('click', e => {
@@ -2195,7 +2054,7 @@ KYT.virtualTrips = (function () {
           closeStayModal();
           trip.steps = regeneratePlan(trip);
           saveVTrips();
-          window.location.href = `trip_detail.html?id=${encodeURIComponent(trip.id)}`;
+          openBuilder();
         }
       });
     }
@@ -2268,19 +2127,24 @@ KYT.virtualTrips = (function () {
     if (DOM.btnBuild) {
       DOM.btnBuild.addEventListener('click', () => {
         const trip = getActiveTrip();
-        if (trip) {
-          if (trip.steps && trip.steps.length > 0) {
-            window.location.href = `trip_detail.html?id=${encodeURIComponent(trip.id)}`;
-          } else if (!trip.originCity && DOM.originCitySelect) {
-            // Never guess where the traveller is starting from.
-            DOM.originCitySelect.classList.add('ring-2', 'ring-red-400');
-            if (DOM.originDesc) DOM.originDesc.textContent = 'Choose where you start first';
-            DOM.originCitySelect.scrollIntoView({ block: 'center', behavior: 'smooth' });
-            DOM.originCitySelect.focus();
-          } else {
-            openStayModal();
-          }
+        if (!trip) return;
+        if (!trip.originCity && DOM.originCitySelect) {
+          // Never guess where the traveller is starting from.
+          DOM.originCitySelect.classList.add('ring-2', 'ring-red-400');
+          if (DOM.originDesc) DOM.originDesc.textContent = 'Choose where you start first';
+          DOM.originCitySelect.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          DOM.originCitySelect.focus();
+          return;
         }
+        // The card already holds everything the plan needs (start, days, stays, style): no dialog, straight
+        // to the plan, where it can be edited.
+        if (!(trip.steps && trip.steps.length > 0)) {
+          trip.duration = trip.duration || trip.cities.length || 1;
+          renderStayModal();   // fills in a sensible place to sleep for each day
+          trip.steps = regeneratePlan(trip);
+          saveVTrips();
+        }
+        openBuilder();
       });
     }
 

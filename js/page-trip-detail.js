@@ -146,9 +146,8 @@
           }
         }
 
-        // 2. Duration
+        // (The length of the trip is in the title chip below the name, so no pill repeats it.)
         const totalDays = daysParam || (cityIds && cityIds.length ? cityIds.length : 1);
-        pillItems.push(`<span class="${pillClass}">🗓️ ${totalDays} Day${totalDays > 1 ? 's' : ''}</span>`);
 
         // 3. Taste Profile
         const tasteCodeMap = {
@@ -714,11 +713,7 @@
                   <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black ${planBadgeBg} shadow-xs">
                     <i data-lucide="${planBadgeIcon}" class="w-3.5 h-3.5 ${isAiRefined ? 'text-amber-300' : 'text-white'}"></i> ${planBadgeLabel}
                   </span>
-                  <span class="text-xs font-bold text-indigo-700 bg-indigo-100/70 px-2.5 py-1 rounded-full">
-                    🗓️ ${duration} Day${duration > 1 ? 's' : ''}
-                  </span>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-black text-slate-800 tracking-tight">${KYT.utils.escapeHTML(title)}</h3>
                 ${tagline ? `<p class="text-xs sm:text-sm text-slate-600">${KYT.utils.escapeHTML(tagline)}</p>` : ''}
               </div>
             </div>

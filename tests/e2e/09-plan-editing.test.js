@@ -31,9 +31,6 @@ async function openEditor(page, cities = [['Agra', 'agra'], ['Jaipur', 'jaipur']
   await page.click('#btn-vt-dest-done');
   await page.selectOption('#vt-origin-city', 'delhi');
   await page.click('#btn-vt-build');
-  await page.locator('#btn-modal-confirm-build').click();
-  await page.waitForURL('**/trip_detail.html*');
-  await page.click('#btn-edit-plan');
   await page.waitForSelector('#vt-screen-builder:not(.hidden)');
 }
 
@@ -159,13 +156,14 @@ test('rebuilding after the days change keeps edited and added stops; Reset plan 
   await page.fill('#vt-step-time', '20:30');
   await page.click('#btn-save-vt-step');
 
-  // change the days from the menu, which rebuilds the plan
-  await page.click('#vt-menu-btn');
-  await page.click('#vt-header-btn-stays');
+  // change the days from the setup screen, which rebuilds the plan and returns to it
+  await page.click('#btn-vt-edit-setup');
+  await page.waitForSelector('#vt-screen-canvas:not(.hidden)');
+  await page.click('#btn-vt-stays-row');
   await page.waitForSelector('#vt-stay-modal:not(.hidden)');
   await page.click('#btn-modal-duration-plus');
   await page.click('#btn-modal-confirm-build');
-  await page.waitForURL('**/trip_detail.html*');
+  await page.waitForSelector('#vt-screen-builder:not(.hidden)');
 
   let t = (await stored(page))[0];
   assert.equal(t.duration, 3);
@@ -175,25 +173,23 @@ test('rebuilding after the days change keeps edited and added stops; Reset plan 
   assert.ok(dayOf(t, 3).length > 0, 'the new day was generated');
 
   // changing the start rebuilds too
-  await page.click('#btn-edit-plan');
-  await page.waitForSelector('#vt-screen-builder:not(.hidden)');
-  await page.click('#vt-tab-canvas');
+  await page.click('#btn-vt-edit-setup');
+  await page.waitForSelector('#vt-screen-canvas:not(.hidden)');
   await page.selectOption('#vt-origin-city', 'mumbai');
   t = (await stored(page))[0];
   assert.ok(dayOf(t, 2).some(s => s.title === 'Family dinner'), 'still there after the start changed');
 
   // an added stop on a day that no longer exists goes with the day
-  await page.click('#vt-tab-builder');
+  await page.click('#btn-vt-build');
   await page.waitForSelector('#vt-screen-builder:not(.hidden)');
-  await page.click('#vt-menu-btn');
-  await page.click('#vt-menu-reset');
+  await page.click('#btn-vt-reset-plan');
   t = (await stored(page))[0];
   assert.equal(t.steps.some(s => s.custom || s.edited), false, 'Reset plan returns to the suggested plan');
   assert.equal(t.steps.some(s => s.title === 'Family dinner'), false);
   await context.close();
 });
 
-test('delete a stop still works from the new controls, and the plan tab count follows the stops', async () => {
+test('delete a stop still works from the new controls, and the activity count follows the stops', async () => {
   const { context, page } = await newPhone(env.browser);
   await openEditor(page);
   const before = (await stored(page))[0].steps;
@@ -202,6 +198,6 @@ test('delete a stop still works from the new controls, and the plan tab count fo
   const after = (await stored(page))[0].steps;
   assert.equal(after.length, before.length - 1);
   assert.equal(after.some(s => s.id === victim.id), false);
-  assert.equal((await page.locator('#vt-tab-plan-badge').innerText()).trim(), String(after.length));
+  assert.match(await page.locator('#vt-itinerary-list').innerText(), new RegExp(`${after.length} activities`));
   await context.close();
 });

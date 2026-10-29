@@ -188,7 +188,8 @@ async function buildPlan(page, name, cities) {
   await page.click('#btn-vt-dest-done');
   await page.selectOption('#vt-origin-city', 'bengaluru');
   await page.click('#btn-vt-build');
-  await page.locator('#btn-modal-confirm-build').click();
+  await page.waitForSelector('#vt-screen-builder:not(.hidden)');
+  await page.click('#vt-subnav-back');
   await page.waitForURL('**/trip_detail.html*');
   await page.waitForSelector('#btn-edit-plan');
 }

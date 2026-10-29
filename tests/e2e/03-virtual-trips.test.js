@@ -32,15 +32,13 @@ async function addCity(page, query, id) {
 async function buildPlan(page) {
   await proceed(page);
   await page.click('#btn-vt-build');
-  const confirmBtn = page.locator('#btn-modal-confirm-build');
-  try {
-    await confirmBtn.waitFor({ state: 'visible', timeout: 1000 });
-    await confirmBtn.click();
-    await page.waitForURL('**/trip_detail.html*');
-    await page.waitForSelector('#btn-edit-plan');
-    await page.click('#btn-edit-plan');
-    await page.waitForSelector('#vt-screen-builder:not(.hidden)');
-  } catch(e) {}
+  await page.waitForSelector('#vt-screen-builder:not(.hidden)');
+}
+/** From the Day Plan editor to the trip's plan page (its "View Trip" back button). */
+async function viewTrip(page) {
+  await page.click('#vt-subnav-back');
+  await page.waitForURL('**/trip_detail.html*');
+  await page.waitForSelector('#btn-edit-plan');
 }
 const stored = page => page.evaluate(() => JSON.parse(localStorage.getItem('kyt_virtual_trips') || '[]'));
 
@@ -125,8 +123,7 @@ test('taste: Culinary intent keeps food stops and drops sightseeing-only stops',
   await openHub(page);
   await createTrip(page, 'Foodie Agra');
   await addCity(page, 'Agra', 'agra');
-  await proceed(page);                                   // Style is part of the trip card, after Continue
-  await page.click('#vt-preferences-details summary');   // and closed until Change
+  await proceed(page);                                   // Style sits in the trip card, after Continue
   await page.click('.vt-chip[data-field="intent"][data-id="culinary"]');
   await buildPlan(page);
   await page.waitForSelector('#vt-screen-builder:not(.hidden)');
@@ -144,7 +141,6 @@ test('taste: Jain diet never includes a stop that is tagged for other diets only
     await addCity(page, q, id); await page.fill('#vt-city-search', '');
   }
   await proceed(page);
-  await page.click('#vt-preferences-details summary');
   await page.click('.vt-chip[data-field="diet"][data-id="jain"]');
   await buildPlan(page);
   await page.waitForSelector('#vt-screen-builder:not(.hidden)');
@@ -171,9 +167,8 @@ async function buildToPlanPage(page, name, cities) {
   for (const [q, id] of cities) { await page.fill('#vt-city-search', ''); await addCity(page, q, id); }
   await proceed(page);
   await page.click('#btn-vt-build');
-  await page.locator('#btn-modal-confirm-build').click();
-  await page.waitForURL('**/trip_detail.html*');
-  await page.waitForSelector('#btn-edit-plan');
+  await page.waitForSelector('#vt-screen-builder:not(.hidden)');
+  await viewTrip(page);
 }
 /** Answer the "When does your trip start?" dialog with a date, checking Start is disabled until then. */
 async function chooseStartDate(page, date) {
@@ -296,9 +291,8 @@ test('the builder has one way back to the plan page and one way forward; the day
   for (const [q, id] of [['Jaipur', 'jaipur'], ['Udaipur', 'udaipur'], ['Jodhpur', 'jodhpur']]) { await page.fill('#vt-city-search', ''); await addCity(page, q, id); }
   await buildPlan(page);
   await page.waitForSelector('#vt-screen-builder:not(.hidden)');
-  await page.click('#vt-menu-btn');
-  assert.equal(await page.locator('a:visible', { hasText: 'Trip details & AI' }).count(), 1, 'exactly one Trip details & AI link, in the menu');
-  await page.keyboard.press('Escape');
+  assert.equal(await page.locator('#vt-subnav-back').innerText().then(t => t.trim()), 'View Trip', 'one way back to the plan page');
+  assert.equal(await page.locator('#vt-menu-btn').count(), 0, 'no overflow menu');
   assert.equal(await page.locator('#vt-start-date').count(), 0, 'no hidden start-date field');
   assert.equal(await page.getByRole('button', { name: /Start this trip/ }).count(), 1);
   assert.match(await page.locator('#vt-itinerary-list').innerText(), /\d+ activities\s+·\s+3 days/);
@@ -373,11 +367,11 @@ test('generating a day plan leads to trip-detail with Refine with AI, and Edit i
   await addCity(page, 'Jaipur', 'jaipur');
   await proceed(page);
   await page.click('#btn-vt-build');
-  await page.waitForSelector('#btn-modal-confirm-build:not(.hidden)');
-  await page.click('#btn-modal-confirm-build');
-
-  // Verify navigation to trip_detail.html with the trip id
-  await page.waitForURL('**/trip_detail.html*');
+  // Generate goes straight to the editable plan: no dialog in between
+  await page.waitForSelector('#vt-screen-builder:not(.hidden)');
+  assert.equal(await page.locator('#vt-stay-modal').isVisible(), false);
+  assert.match(await page.locator('#vt-itinerary-list').innerText(), /Jaipur/);
+  await viewTrip(page);
   assert.ok(page.url().includes('trip_detail.html'));
   assert.match(page.url(), /id=/);
 
@@ -395,9 +389,8 @@ test('generating a day plan leads to trip-detail with Refine with AI, and Edit i
   await page.waitForSelector('#vt-screen-builder:not(.hidden)');
   assert.match(await page.locator('#vt-itinerary-list').innerText(), /Jaipur/);
 
-  // Verify Builder has a Trip Details & AI navigation link back to the plan page
-  const detailsLink = page.locator('a[href*="trip_detail.html"]');
-  assert.ok((await detailsLink.count()) >= 1, 'Builder contains a link back to trip_detail.html');
+  // The plan editor's one way back is the trip's plan page
+  assert.match(await page.locator('#vt-subnav-back').innerText(), /View Trip/);
 
   await context.close();
 });
@@ -413,11 +406,11 @@ test('origin is never assumed: nothing pre-selected, build asks for it, then it 
   assert.equal(await page.locator('#vt-origin-city').inputValue(), '');
   assert.match(await page.locator('#vt-origin-city option:checked').innerText(), /Where are you starting from/);
   await page.click('#btn-vt-build');
-  assert.equal(await page.locator('#btn-modal-confirm-build').isVisible(), false, 'must not open stay modal without an origin');
+  assert.equal(await page.locator('#vt-screen-builder').isVisible(), false, 'must not build without an origin');
   assert.match(await page.locator('#vt-origin-desc').innerText(), /Choose where you start/);
   await page.selectOption('#vt-origin-city', 'chennai');
   await page.click('#btn-vt-build');
-  await page.locator('#btn-modal-confirm-build').waitFor({ state: 'visible' });
+  await page.waitForSelector('#vt-screen-builder:not(.hidden)');
   // second trip starts with the remembered choice
   await openHub(page);
   await createTrip(page, 'Second Trip', null);
@@ -434,9 +427,8 @@ test('"Already in destination" is still available and skips Day 0', async () => 
   await addCity(page, 'Jaipur', 'jaipur');
   await proceed(page);
   await page.click('#btn-vt-build');
-  await page.locator('#btn-modal-confirm-build').waitFor({ state: 'visible' });
-  await page.locator('#btn-modal-confirm-build').click();
-  await page.waitForURL('**/trip_detail.html*');
+  await page.waitForSelector('#vt-screen-builder:not(.hidden)');
+  await viewTrip(page);
   assert.doesNotMatch(await page.locator('body').innerText(), /DAY 0/i);
   await context.close();
 });
