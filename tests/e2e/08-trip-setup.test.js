@@ -81,7 +81,7 @@ test('choosing destinations comes first: Continue collapses the picker into the 
   await context.close();
 });
 
-test('the trip card lists From, Days and Style as short rows; the start is flagged while missing', async () => {
+test('setup is only destinations and a start: no Days, Style or dialog; the start is flagged while missing', async () => {
   const { context, page } = await newPhone(env.browser);
   await newTrip(page);
   await addCity(page, 'Jaipur', 'jaipur');
@@ -96,21 +96,9 @@ test('the trip card lists From, Days and Style as short rows; the start is flagg
   await page.selectOption('#vt-origin-city', 'already_there');
   assert.match(await page.locator('#vt-origin-desc').innerText(), /Day 1 starts directly/);
 
-  assert.match(await page.locator('#vt-stays-summary').innerText(), /^2 days · stay in Jaipur, Udaipur$/);
-  await page.click('#btn-vt-stays-row');
-  await page.waitForSelector('#vt-stay-modal:not(.hidden)');
-  await page.click('#btn-modal-duration-plus');
-  await page.click('#btn-close-stay-modal');
-  assert.match(await page.locator('#vt-stays-summary').innerText(), /^3 days · stay in /);
-
-  // Style is fully visible, each group says what it is and what the chosen option means
-  const style = await page.locator('#vt-style').innerText();
-  for (const word of ['Interests', 'Food', 'Pace', 'Mixed', 'Any food', 'Standard']) assert.match(style, new RegExp(word, 'i'));
-  assert.match(style, /A bit of everything/, 'Mixed is explained');
-  assert.match(style, /Main sights at an easy pace/, 'Standard is explained');
-  await page.click('.vt-chip[data-field="diet"][data-id="jain"]');
-  assert.match(await page.locator('#vt-style').innerText(), /Jain-friendly food only/);
-  assert.equal(await page.locator('#btn-vt-prefs-done').count(), 0, 'nothing to open or close');
+  for (const sel of ['#vt-stays-summary', '#btn-vt-stays-row', '#vt-style', '#vt-taste', '#vt-stay-modal']) {
+    assert.equal(await page.locator(sel).count(), 0, `${sel} is gone from setup`);
+  }
   await context.close();
 });
 
@@ -132,7 +120,7 @@ test('with the starting point remembered from last time, the next trip has it al
   await context.close();
 });
 
-test('the header is just back, the name and Share; the plan screen owns the summary, with no repeats', async () => {
+test('the header is just back, the name and Share; the Day Plan owns the summary, with no repeats', async () => {
   const { context, page } = await newPhone(env.browser);
   await newTrip(page);
   await addCity(page, 'Jaipur', 'jaipur');
@@ -145,15 +133,18 @@ test('the header is just back, the name and Share; the plan screen owns the summ
   const headerHeight = await page.evaluate(() => document.getElementById('vt-subnav-bar').getBoundingClientRect().height);
   assert.ok(headerHeight < 70, `one slim row, got ${Math.round(headerHeight)}px`);
 
-  // Generate: no dialog, straight to the editable plan with the summary and the way back to setup
+  // Plan the days: no dialog, the Day Plan opens empty with one tab per city
   await page.click('#btn-vt-build');
   await page.waitForSelector('#vt-screen-builder:not(.hidden)');
-  assert.equal(await visible(page, '#vt-stay-modal'), false);
-  const summary = await page.locator('#vt-itinerary-list').innerText();
-  assert.match(summary, /From Delhi · 2 days · Mixed · Any food · Standard/);
+  assert.equal(await page.locator('#vt-day-tabs [role="tab"]').count(), 2);
+  assert.match(await page.locator('#vt-itinerary-list').innerText(), /From Delhi · 2 days/);
   assert.equal(await visible(page, '#btn-vt-edit-setup'), true);
-  assert.equal(await visible(page, '#btn-vt-reset-plan'), true);
-  assert.equal(await page.locator('[data-step-id]').first().getByRole('button', { name: 'Edit stop' }).count(), 1, 'stops are editable right here');
+  assert.equal(await visible(page, '#btn-vt-suggest'), true);
+  assert.equal(await page.locator('#vt-subnav-back-label').innerText(), 'Setup', 'with nothing planned, back is the setup');
+
+  await page.click('#btn-vt-suggest');
+  assert.equal(await page.locator('[data-step-id]').first().getByRole('button', { name: 'Edit stop' }).count(), 1, 'steps are editable right here');
+  assert.equal(await page.locator('#vt-subnav-back-label').innerText(), 'View Trip');
 
   // back to setup and again to the plan, which now says "Open Day Plan"
   await page.click('#btn-vt-edit-setup');

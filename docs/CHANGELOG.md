@@ -349,3 +349,13 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
 49. **Changing the style now changes the plan (service worker cache `kyt-v87`)**
     - After a plan existed, tapping an Interests, Food or Pace chip on the setup screen updated the label but left the old plan in place. It now rebuilds the plan like a change of start, keeping stops you edited or added. AI-refined and curated plans are left alone.
     - **Tests:** one new test in `09-plan-editing.test.js` (123 in all).
+
+50. **The virtual trip is built by hand, with the intelligence as suggestions (TODO P1.8, service worker cache `kyt-v88`)**
+    - **New flow.** Name the trip, pick cities (nearest first), choose where you start, "Plan the days". The Day Plan opens empty with **one tab per day** (a day per city; + Day, Remove day, and a city picker per day). Nothing is generated unless you ask.
+    - **Suggestions with their metadata.** Each tab lists that city's attractions with time-of-day, effort and food badges; tap Add and it becomes a step in time order. "Sorted for Mixed · Any food · Standard · Change" sorts the list (fits first, "More in X" after) and hides nothing.
+    - **Three step types.** A **stop**, a **stay** (where you sleep, check-in time) and **travel** (from, to, road/train/bus/flight/other, how long, a Google Maps route link, and "About N km apart" from the distance data). The day suggests the travel from the previous city or your start, the way home on the last day, and a stay for each night; each is one tap to add and then editable.
+    - **Suggest a plan** is one button that fills only the empty days with the existing generator and tags its travel steps. Setup is now only Destinations and From.
+    - **Gone:** the stays dialog, Days and Style on the setup card, the rebuild that kept your edits (there is nothing to rebuild), the "Added" chip. Style changes no longer touch the plan.
+    - **Days follow cities:** a new city adds a day, removing one takes its days and steps (asks first if it has steps), and trips saved earlier get their days worked out from their steps the first time they open. City arrows hide once steps exist.
+    - **Tests:** `09-plan-editing.test.js` rewritten (10 tests); 03, 07 and 08 updated.
+

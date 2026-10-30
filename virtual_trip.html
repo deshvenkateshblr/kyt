@@ -768,31 +768,13 @@
           <p class="text-[10px] text-slate-400 italic mt-1 ml-1 empty:hidden" id="vt-origin-desc"></p>
         </div>
 
-        <div class="flex items-center gap-2.5">
-          <span class="flex items-center gap-1.5 text-xs font-black uppercase text-slate-700 tracking-wider shrink-0 w-[4.5rem]">
-            <i data-lucide="moon" class="w-3.5 h-3.5 text-indigo-500"></i> Days
-          </span>
-          <button type="button" id="btn-vt-stays-row"
-            class="flex-1 min-w-0 flex items-center justify-between gap-2 bg-white hover:bg-slate-100/80 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-700 transition-colors cursor-pointer text-left">
-            <span id="vt-stays-summary" class="truncate"></span>
-            <span class="text-[11px] font-bold text-blue-600 shrink-0">Edit</span>
-          </button>
-        </div>
-
-        <div id="vt-style" class="border-t border-slate-100 pt-3">
-          <p class="flex items-center gap-1.5 text-xs font-black uppercase text-slate-700 tracking-wider mb-2">
-            <i data-lucide="sliders" class="w-3.5 h-3.5 text-blue-500"></i> Style
-          </p>
-          <div id="vt-taste" class="space-y-3"></div>
-        </div>
-        <div id="vt-rebuild-actions"></div>
-      </section>
+              </section>
 
       <!-- One action at a time: Continue while choosing, Generate once the route is set -->
       <div id="vt-canvas-bar" class="hidden pb-3 shrink-0 flex justify-end">
         <button id="btn-vt-build"
           class="ml-auto px-6 py-2.5 bg-blue-600 text-white font-bold rounded-full text-sm shadow-xs hover:bg-blue-700 active:scale-[0.98] transition-all hidden flex items-center justify-center gap-1.5 cursor-pointer">
-          <i data-lucide="calendar" class="w-4 h-4"></i> View Itinerary
+          <i data-lucide="calendar" class="w-4 h-4"></i> Plan the days
         </button>
       </div>
     </div>
@@ -815,27 +797,47 @@
         </button>
       </div>
       <div class="flex-1 overflow-y-auto p-5 space-y-3.5">
-        <div id="vt-step-pick-wrap" class="hidden">
-          <label for="vt-step-pick" class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">Pick one of <span id="vt-step-pick-city"></span>'s attractions</label>
-          <select id="vt-step-pick" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"></select>
-          <p class="text-[11px] text-slate-400 mt-1">or write your own below.</p>
-        </div>
-        <div>
+        <!-- Stop -->
+        <div id="vt-fields-stop">
           <label for="vt-step-title" class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">What</label>
-          <input type="text" id="vt-step-title" maxlength="120" placeholder="e.g. Evening walk by the lake"
-            class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <input type="text" id="vt-step-title" maxlength="120" placeholder="e.g. Evening walk by the lake" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
           <p id="vt-step-error" class="hidden text-xs font-semibold text-rose-600 mt-1">Give the stop a name.</p>
+        </div>
+        <!-- Travel -->
+        <div id="vt-fields-travel" class="hidden space-y-3.5">
+          <div class="grid grid-cols-2 gap-3">
+            <div><label for="vt-travel-from" class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">From</label>
+              <input type="text" id="vt-travel-from" maxlength="80" placeholder="City or place" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"></div>
+            <div><label for="vt-travel-to" class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">To</label>
+              <input type="text" id="vt-travel-to" maxlength="80" placeholder="City or place" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"></div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div><label for="vt-travel-mode" class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">How</label>
+              <select id="vt-travel-mode" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="road">Road (car or taxi)</option>
+                <option value="train">Train</option>
+                <option value="bus">Bus</option>
+                <option value="flight">Flight</option>
+                <option value="other">Other</option>
+              </select></div>
+            <div><label for="vt-travel-duration" class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">Takes about</label>
+              <input type="text" id="vt-travel-duration" maxlength="30" placeholder="e.g. 4 h" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"></div>
+          </div>
+          <p id="vt-travel-hint" class="text-[11px] text-slate-400 empty:hidden"></p>
+        </div>
+        <!-- Stay -->
+        <div id="vt-fields-stay" class="hidden">
+          <label for="vt-stay-place" class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">Where you stay</label>
+          <input type="text" id="vt-stay-place" maxlength="120" placeholder="Hotel or area (optional)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label for="vt-step-time" class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">When</label>
-            <input type="time" id="vt-step-time"
-              class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <label for="vt-step-time" id="vt-step-time-label" class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">When</label>
+            <input type="time" id="vt-step-time" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
           </div>
-          <div>
+          <div id="vt-step-where-wrap">
             <label for="vt-step-where" class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">Where</label>
-            <input type="text" id="vt-step-where" maxlength="120" placeholder="Place or area"
-              class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <input type="text" id="vt-step-where" maxlength="120" placeholder="Place or area" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
           </div>
         </div>
         <div>
@@ -851,89 +853,6 @@
     </div>
   </div>
 
-  <!-- DURATION & NIGHT STAYS MODAL -->
-  <div id="vt-stay-modal"
-    class="fixed inset-0 z-[110] bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4 transition-opacity duration-200 opacity-0">
-    <div id="vt-stay-modal-dialog"
-      class="bg-white w-full max-w-lg rounded-2xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden transform scale-95 transition-transform duration-200">
-
-      <!-- Sticky Header -->
-      <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100 shrink-0 bg-white">
-        <div class="flex items-center gap-2.5">
-          <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
-            <i data-lucide="moon" class="w-4 h-4 text-indigo-600"></i>
-          </div>
-          <div>
-            <h3 class="text-base font-black text-slate-800">Trip Duration & Night Stays</h3>
-            <p class="text-[11px] text-slate-400 font-medium">Customize your days and choose where you sleep each night.
-            </p>
-          </div>
-        </div>
-        <button type="button" id="btn-close-stay-modal"
-          class="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-colors"
-          title="Close">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-
-      <!-- Modal Body (Scrollable) -->
-      <div class="flex-1 overflow-y-auto p-5 space-y-5 bg-slate-50/60">
-
-        <!-- Trip Duration Section -->
-        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-xs space-y-2">
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-xs font-black text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
-                <i data-lucide="calendar" class="w-3.5 h-3.5 text-blue-600"></i> Trip Duration
-              </p>
-              <p class="text-[11px] text-slate-400" id="vt-modal-duration-hint">Adjust total days</p>
-            </div>
-
-            <!-- Stepper -->
-            <div class="flex items-center gap-2">
-              <button type="button" id="btn-modal-duration-minus"
-                class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 font-extrabold flex items-center justify-center transition-all border border-slate-200 text-base"
-                title="Decrease days">−</button>
-              <div class="py-1.5 px-3 bg-slate-50 border border-slate-200 rounded-xl min-w-[76px] text-center">
-                <span id="vt-modal-duration-val" class="text-sm font-black text-slate-800">1</span>
-                <span class="text-xs font-bold text-slate-500 ml-1">Days</span>
-              </div>
-              <button type="button" id="btn-modal-duration-plus"
-                class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 font-extrabold flex items-center justify-center transition-all border border-slate-200 text-base"
-                title="Increase days">+</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Night Stays & Base Allocation -->
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <p class="text-xs font-black text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
-              <i data-lucide="home" class="w-3.5 h-3.5 text-indigo-600"></i> Night Stays & Bases
-            </p>
-            <span class="text-[10px] text-slate-400 italic">Where you sleep each night</span>
-          </div>
-          <div id="vt-modal-night-stays-list" class="space-y-2.5">
-            <!-- Dynamic night stay rows -->
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Footer CTA -->
-      <div class="flex items-center justify-end gap-2.5 px-5 py-3.5 bg-white border-t border-slate-100 shrink-0">
-        <button type="button" id="btn-cancel-stay-modal"
-          class="px-4 py-2.5 text-xs font-bold text-slate-600 hover:bg-slate-100 rounded-xl transition-colors">
-          Cancel
-        </button>
-        <button type="button" id="btn-modal-confirm-build"
-          class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-xs font-black rounded-xl shadow-md flex items-center gap-1.5 transition-all">
-          <i data-lucide="wand-2" class="w-4 h-4"></i> Generate Day Plan
-        </button>
-      </div>
-
-    </div>
-  </div>
 
   <!--  RICH CITY DETAIL SLIDE-OVER  -->
   <div id="city-detail-overlay"

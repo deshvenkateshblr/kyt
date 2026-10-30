@@ -526,9 +526,13 @@ window.KYT.ui = (function () {
 
       const sid = esc(step.id);
       const actionBtn = 'p-2 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-blue-50 disabled:opacity-25 disabled:hover:bg-transparent disabled:hover:text-slate-400 disabled:cursor-default transition-colors cursor-pointer';
-      const addedChip = step.custom
-        ? `<span class="text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-md border bg-indigo-50 text-indigo-700 border-indigo-200">Added</span>`
-        : '';
+      const typeChip = step.type === 'travel'
+        ? `<span class="text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-md border bg-sky-50 text-sky-700 border-sky-200">Travel</span>`
+        : (step.type === 'stay'
+          ? `<span class="text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-md border bg-violet-50 text-violet-700 border-violet-200">Stay</span>`
+          : '');
+      const travelLine = step.type === 'travel' && (step.duration || step.mode)
+        ? `<p class="text-[11px] text-slate-400 mt-0.5">${esc(step.duration ? 'About ' + step.duration : '')}</p>` : '';
 
       return `
         <div class="relative flex items-start gap-3 p-3.5 bg-white rounded-xl border border-slate-100 shadow-sm mt-2 group hover:border-slate-200 transition-colors" data-step-id="${sid}">
@@ -539,16 +543,17 @@ window.KYT.ui = (function () {
             <div class="flex items-center gap-1.5 flex-wrap mb-1">
               ${phaseBadge}
               ${suggestiveText}
-              ${addedChip}
+              ${typeChip}
             </div>
             <p class="text-sm font-bold text-slate-800 leading-tight">${esc(step.title)}</p>
+            ${travelLine}
             ${notesText}
             ${verifyTags}
             ${mapsLink}
             <div class="flex items-center justify-end gap-0.5 mt-1.5 -mb-1.5 -mr-1.5">
               <button type="button" class="${actionBtn}" onclick="moveVirtualTripStep('${sid}', -1)" ${options.isFirst ? 'disabled' : ''} title="Move earlier" aria-label="Move earlier"><i data-lucide="chevron-up" class="w-4 h-4"></i></button>
               <button type="button" class="${actionBtn}" onclick="moveVirtualTripStep('${sid}', 1)" ${options.isLast ? 'disabled' : ''} title="Move later" aria-label="Move later"><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
-              <button type="button" class="${actionBtn}" onclick="editVirtualTripStep('${sid}')" title="Edit stop" aria-label="Edit stop"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+              <button type="button" class="${actionBtn}" onclick="editVirtualTripStep('${sid}')" title="Edit" aria-label="Edit stop"><i data-lucide="pencil" class="w-4 h-4"></i></button>
               <button type="button" class="p-2 rounded-lg text-slate-300 hover:text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer" onclick="deleteVirtualTripStep('${sid}')" title="Delete step" aria-label="Delete stop"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
             </div>
           </div>
