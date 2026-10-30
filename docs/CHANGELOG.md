@@ -366,3 +366,6 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **Tests:** `10-access-gates.test.js` (3 tests).
 52. **Two more access notes (TODO P1.0, service worker cache `kyt-v90`)**
     - Badrinath (shrine shuts about six months a year, reopened 23 April 2026) and Spiti Valley (cut off from the Manali side by snow at Kunzum Pass; Gramphu to Losar shut from 25 November 2025), each with a source link and a "usually closed" month window. Sonamarg, Kargil and the Leh road windows stay blank: the only source found for the Zojila closure was from 2017, and the Manali to Leh reopening article is from 2024.
+53. **"N videos" link on every city card (service worker cache `kyt-v91`)**
+    - City cards (picker, trip page, nearby, passport) show a blue underlined "▶ N videos" link when the city has videos, so people know there is an overview to watch. It opens the city sheet, where the videos play. Cities without videos show nothing.
+    - **Tests:** one added to `10-access-gates.test.js`.

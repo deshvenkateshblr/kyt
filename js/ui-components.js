@@ -277,6 +277,13 @@ window.KYT.ui = (function () {
   }
 
   // ── 4. Unified City Card Renderer ───────────────────────────────────────────
+  /** A link-styled "N videos" cue for city cards; empty when the city has none. The whole card opens the city sheet, where the videos play. */
+  function videoLink(city) {
+    const n = (window.KYT_CITY_VIDEOS && window.KYT_CITY_VIDEOS[city.id] || []).length;
+    if (!n) return '';
+    return `<span class="city-videos-link inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 underline decoration-blue-300 underline-offset-2 hover:text-blue-800 shrink-0" data-videos="${n}"><i data-lucide="play-circle" class="w-3.5 h-3.5"></i>${n} video${n !== 1 ? 's' : ''}</span>`;
+  }
+
   function renderCityCard(city, options = {}) {
     if (!city) return '';
     const variant = options.variant || 'summary';
@@ -308,6 +315,7 @@ window.KYT.ui = (function () {
               </div>
               <div>
                 <h4 class="text-lg font-bold text-slate-800 group-hover:text-blue-600 transition-colors">${esc(city.name)}</h4>
+                ${videoLink(city) ? `<div class="mt-0.5">${videoLink(city)}</div>` : ''}
                 <p class="text-xs text-slate-500 mt-1 line-clamp-3">${esc(city.notes || city.description || 'A beautiful destination to explore.')}</p>
               </div>
             </div>
@@ -349,6 +357,7 @@ window.KYT.ui = (function () {
                   <h4 class="font-black text-slate-800 text-base">${esc(city.name)}</h4>
                   ${city.aliases && city.aliases.length ? `<span class="text-xs font-medium text-slate-400">(${esc(city.aliases.join(', '))})</span>` : ''}
                   <span class="text-[9px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full shrink-0">${beatCount} attraction${beatCount !== 1 ? 's' : ''}</span>
+                  ${videoLink(city)}
                 </div>
                 <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">${esc(city.notes || city.description || 'Explore this destination')}</p>
               </div>
@@ -439,6 +448,7 @@ window.KYT.ui = (function () {
       return `
         <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-3 cursor-pointer hover:border-blue-400 transition-all flex flex-col h-full" data-nearby-id="${esc(city.id)}">
           <h4 class="font-black text-slate-800 text-xs truncate">${esc(city.name)}</h4>
+          ${videoLink(city) ? `<div class="mb-1">${videoLink(city)}</div>` : ''}
           ${dist != null ? `<p class="text-[10px] text-blue-600 font-semibold mb-1.5">${esc(dist)} km away</p>` : ''}
           <p class="text-[10px] text-slate-500 leading-tight line-clamp-2 mb-2 flex-1">${esc(city.notes || city.description || 'Explore this nearby destination.')}</p>
           <div class="mt-auto">
@@ -507,6 +517,7 @@ window.KYT.ui = (function () {
             ${statePill}
             <h3 class="text-lg font-black text-slate-800 tracking-tight">${esc(city.name)}</h3>
             ${aliasText}
+            ${videoLink(city) ? `<div class="mt-1">${videoLink(city)}</div>` : ''}
           </div>
           <p class="text-xs text-slate-600 font-medium mb-5 flex-1 leading-relaxed relative z-10">${esc(city.desc)}</p>
           <div class="flex items-center justify-between mt-auto relative z-10 pt-3 border-t border-slate-100">

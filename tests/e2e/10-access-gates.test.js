@@ -74,3 +74,25 @@ test('the city sheet and the Day Plan warn for Kedarnath and stay quiet for Jaip
   assert.equal(await page.locator('#cd-access').count(), 0, 'Jaipur has no warning');
   await context.close();
 });
+
+test('city cards say how many videos a city has, and only when it has some', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await open(page);
+  await page.fill('#vt-new-name', 'Videos');
+  await page.click('#btn-vt-create');
+  await page.waitForSelector('#vt-screen-canvas:not(.hidden)');
+  const { withVideos, without } = await page.evaluate(() => {
+    const v = window.KYT_CITY_VIDEOS;
+    const ids = window.KYT_CITIES.map(c => c.id);
+    return { withVideos: ids.find(i => (v[i] || []).length > 0), without: ids.find(i => !(v[i] || []).length) };
+  });
+  assert.ok(withVideos, 'some city has videos');
+  const html = (id) => page.evaluate((id) => KYT.ui.renderCityCard(window.KYT_CITIES.find(c => c.id === id), { variant: 'library' }), id);
+  assert.match(await html(withVideos), /city-videos-link[^>]*>.*\d+ videos?/s);
+  if (without) assert.doesNotMatch(await html(without), /city-videos-link/);
+  for (const variant of ['summary', 'nearby']) {
+    const h = await page.evaluate(([id, v]) => KYT.ui.renderCityCard(window.KYT_CITIES.find(c => c.id === id), { variant: v }), [withVideos, variant]);
+    assert.match(h, /city-videos-link/, `${variant} card too`);
+  }
+  await context.close();
+});
