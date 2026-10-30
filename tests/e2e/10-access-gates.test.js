@@ -21,7 +21,7 @@ test('every access note has a kind, a note, month windows that make sense and an
   const { context, page } = await newPhone(env.browser);
   await open(page);
   const rows = await page.evaluate(() => window.KYT_CITIES.filter(c => c.access).map(c => ({ id: c.id, ...c.access })));
-  assert.ok(rows.length >= 6, 'the verified places are recorded');
+  assert.ok(rows.length >= 8, 'the verified places are recorded');
   for (const a of rows) {
     assert.ok(['trek', 'seasonal', 'altitude', 'permit'].includes(a.kind), `${a.id} kind`);
     assert.ok(a.note && a.note.length > 20, `${a.id} note`);

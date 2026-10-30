@@ -8445,6 +8445,15 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Spiti%20Valley%20Himachal%20Pradesh%20India",
     "notes": "The Middle Land between Tibet and India, a cold high-altitude desert known for millennium-old monasteries, stark valleys, and fossil villages.",
+    "access": {
+      "kind": "seasonal",
+      "note": "Heavy snow at Kunzum Pass cuts Spiti off from the Manali side for the winter (the Gramphu to Losar stretch was shut from 25 November in 2025). Reopening varies with snow.",
+      "closed": [
+        12,
+        5
+      ],
+      "source": "https://www.tribuneindia.com/news/himachal/gramphu-losar-stretch-shut-for-winter-as-spiti-braces-for-isolation"
+    },
     "beats": [
       {
         "title": "Key Monastery (Kye Gompa) morning prayers",
@@ -9306,6 +9315,15 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Badrinath%20Uttarakhand%20India",
     "notes": "The prime Char Dham pilgrimage site in the Himalayas, dedicated to Lord Vishnu (Badri Vishal) between Nar and Narayana mountain ranges.",
+    "access": {
+      "kind": "seasonal",
+      "note": "The shrine shuts for about six months each winter (gates reopened on 23 April in 2026). Dates are announced each year.",
+      "closed": [
+        11,
+        4
+      ],
+      "source": "https://dailypioneer.com/news/gates-of-badrinath-dham-to-reopen-on-april-23"
+    },
     "beats": [
       {
         "title": "Badrinath Temple & Tapt Kund bath",

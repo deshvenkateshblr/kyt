@@ -364,3 +364,5 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **Generator.** A trek or altitude place is never a day excursion: the night is spent there (`defaultNightStays`). Kedarnath from Rishikesh (102 km) used to be a drive-out-and-back day.
     - **Not recorded, not verified at an official source:** Badrinath, Spiti Valley, Sonamarg, Kargil and the Manali to Leh and Srinagar to Leh road windows. `effort: trek` was not used as the signal: it is wrong for several cities (see V3).
     - **Tests:** `10-access-gates.test.js` (3 tests).
+52. **Two more access notes (TODO P1.0, service worker cache `kyt-v90`)**
+    - Badrinath (shrine shuts about six months a year, reopened 23 April 2026) and Spiti Valley (cut off from the Manali side by snow at Kunzum Pass; Gramphu to Losar shut from 25 November 2025), each with a source link and a "usually closed" month window. Sonamarg, Kargil and the Leh road windows stay blank: the only source found for the Zojila closure was from 2017, and the Manali to Leh reopening article is from 2024.
