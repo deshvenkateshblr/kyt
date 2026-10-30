@@ -1311,7 +1311,9 @@ KYT.virtualTrips = (function () {
       if (i === 0) { stays[dayId] = dayCityObj.id; continue; }
       const prev = stays[dayId - 1];
       const dist = prev && prev !== 'overnight_travel' ? kmBetween(prev, dayCityObj.id) : null;
-      stays[dayId] = (dist != null && dist <= 130) ? prev : dayCityObj.id;
+      // A place reached on foot or needing acclimatisation is never a day trip: sleep there.
+      const gated = KYT.ui.accessInfo(dayCityObj)?.gated;
+      stays[dayId] = (dist != null && dist <= 130 && !gated) ? prev : dayCityObj.id;
     }
     return stays;
   }
@@ -1672,6 +1674,8 @@ KYT.virtualTrips = (function () {
     } else {
       html += `<p id="vt-day-empty" class="text-xs text-slate-500 bg-white/70 border border-dashed border-slate-300 rounded-xl px-3.5 py-3">Nothing planned for this day yet. Pick from the suggestions below, or add your own.</p>`;
     }
+
+    html += KYT.ui.renderAccessNote(city, 'vt-day-access');
 
     const hints = dayHints(trip, day);
     if (hints.length) {

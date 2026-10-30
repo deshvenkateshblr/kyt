@@ -3384,6 +3384,12 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Leh%20Ladakh%20India",
     "notes": "A high-altitude Himalayan desert city known for stark dramatic landscapes, Buddhist monasteries, and crystal mountain lakes.",
+    "access": {
+      "kind": "altitude",
+      "note": "Rest for at least 48 hours after arriving in Leh before any activity or higher passes.",
+      "rest": 48,
+      "source": "https://leh.nic.in/48-hours-acclimatization-for-tourists-arriving-in-leh/"
+    },
     "beats": [
       {
         "title": "Shanti Stupa sunrise & Leh Palace",
@@ -7706,6 +7712,11 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tawang%20Arunachal%20Pradesh%20India",
     "notes": "A high-altitude Himalayan jewel in Arunachal Pradesh, famous for India's largest Buddhist monastery and snow-clad passes.",
+    "access": {
+      "kind": "permit",
+      "note": "Visitors need an Inner Line Permit (eILP) to enter Arunachal Pradesh.",
+      "source": "https://arunachalilp.com"
+    },
     "beats": [
       {
         "title": "Tawang Monastery (Galden Namgey Lhatse)",
@@ -9168,6 +9179,15 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kedarnath%20Uttarakhand%20India",
     "notes": "One of the twelve Jyotirlingas and the most revered of the Chota Char Dham shrines, nestled amidst majestic snow-clad Himalayan peaks.",
+    "access": {
+      "kind": "trek",
+      "note": "Reached on foot: a 16–18 km trek from Gaurikund. Online registration is required. The shrine closes for winter (it reopened on 22 April in 2026).",
+      "closed": [
+        11,
+        4
+      ],
+      "source": "https://www.newsbytesapp.com/news/india/kedarnath-temple-reopens-april-22-for-2026-char-dham-yatra/tldr"
+    },
     "beats": [
       {
         "title": "Kedarnath Temple darshan & morning prayers",
@@ -10585,6 +10605,11 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ziro%20Valley%20Arunachal%20Pradesh%20India",
     "notes": "A picturesque UNESCO-tentative valley in Arunachal Pradesh, home to the Apatani tribe, pine-clad paddy fields, and music festivals.",
+    "access": {
+      "kind": "permit",
+      "note": "Visitors need an Inner Line Permit (eILP) to enter Arunachal Pradesh.",
+      "source": "https://arunachalilp.com"
+    },
     "beats": [
       {
         "title": "Apatani Tribal Villages (Hong & Hari)",
@@ -11161,6 +11186,15 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chopta%20Uttarakhand%20India",
     "notes": "Often called the Mini Switzerland of Uttarakhand, a pristine meadow gateway to the highest Shiva temple at Tungnath and Chandrashila.",
+    "access": {
+      "kind": "seasonal",
+      "note": "Tungnath temple closes for winter (portals closed on 6 November 2025) and its deity winters at Makkumath.",
+      "closed": [
+        11,
+        4
+      ],
+      "source": "https://www.etvbharat.com/en/state/portals-of-tungnath-temple-closed-for-winter-season-enn25110603706"
+    },
     "beats": [
       {
         "title": "Tungnath Temple trek (Highest Shiva Temple)",
@@ -19507,6 +19541,11 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kohima%20India",
     "notes": "Scenic hill capital of Nagaland nestled amidst green ridges, celebrated for the Hornbill Festival, Naga tribal culture, and heroic WWII history.",
+    "access": {
+      "kind": "permit",
+      "note": "Visitors need an Inner Line Permit to enter Nagaland.",
+      "source": "https://ilp.nagaland.gov.in/about"
+    },
     "beats": [
       {
         "title": "Kisama Heritage Village",

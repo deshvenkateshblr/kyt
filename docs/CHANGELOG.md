@@ -358,4 +358,9 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **Gone:** the stays dialog, Days and Style on the setup card, the rebuild that kept your edits (there is nothing to rebuild), the "Added" chip. Style changes no longer touch the plan.
     - **Days follow cities:** a new city adds a day, removing one takes its days and steps (asks first if it has steps), and trips saved earlier get their days worked out from their steps the first time they open. City arrows hide once steps exist.
     - **Tests:** `09-plan-editing.test.js` rewritten (10 tests); 03, 07 and 08 updated.
-
+51. **Access and season notes for places where a normal plan fails (TODO P1.0, service worker cache `kyt-v89`)**
+    - **Data.** `data/cities.js` gains an optional `access` field (`kind`: trek, seasonal, altitude or permit; `note`; optional `closed` month window; `source` link). Six places are recorded, each from a page read this session: Kedarnath (16 to 18 km trek from Gaurikund, registration, winter closure), Chopta (Tungnath closes for winter), Leh (rest 48 hours on arrival, Leh district notice), Kohima (Nagaland Inner Line Permit), Tawang and Ziro (Arunachal eILP). Month windows are "usually", never exact dates.
+    - **Warnings.** The city sheet and the open day in the Day Plan show an amber note with a Source link.
+    - **Generator.** A trek or altitude place is never a day excursion: the night is spent there (`defaultNightStays`). Kedarnath from Rishikesh (102 km) used to be a drive-out-and-back day.
+    - **Not recorded, not verified at an official source:** Badrinath, Spiti Valley, Sonamarg, Kargil and the Manali to Leh and Srinagar to Leh road windows. `effort: trek` was not used as the signal: it is wrong for several cities (see V3).
+    - **Tests:** `10-access-gates.test.js` (3 tests).

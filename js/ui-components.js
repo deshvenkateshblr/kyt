@@ -157,6 +157,33 @@ window.KYT.ui = (function () {
    * a suggestion, times are indicative, and live conditions are checked in Google Maps.
    * Same look as the notice on curated_trips.html.
    */
+  const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const ACCESS_LABEL = { trek: 'On foot', seasonal: 'Seasonal', altitude: 'High altitude', permit: 'Permit needed' };
+
+  /** Access note for a city whose normal plan fails (trek, winter closure, altitude, permit). Null for most places. */
+  function accessInfo(city) {
+    const a = city && city.access;
+    if (!a) return null;
+    const closed = a.closed ? `Usually closed ${MONTHS[a.closed[0] - 1]} to ${MONTHS[a.closed[1] - 1]}.` : '';
+    return {
+      kind: a.kind,
+      label: ACCESS_LABEL[a.kind] || 'Check access',
+      text: a.note + (closed ? ' ' + closed : ''),
+      source: a.source || '',
+      gated: a.kind === 'trek' || a.kind === 'altitude'
+    };
+  }
+
+  function renderAccessNote(city, id) {
+    const info = accessInfo(city);
+    if (!info) return '';
+    const esc = KYT.utils.escapeHTML;
+    const src = /^https:\/\//.test(info.source) ? ` <a href="${esc(info.source)}" target="_blank" rel="noopener noreferrer" class="underline">Source</a>` : '';
+    return `<div ${id ? `id="${id}" ` : ''}data-access-kind="${esc(info.kind)}" class="flex items-start gap-2 text-xs text-amber-900 bg-amber-50 border border-amber-200 rounded-xl px-3 py-2">
+      <i data-lucide="triangle-alert" class="w-4 h-4 text-amber-600 shrink-0 mt-px"></i>
+      <p class="leading-snug"><span class="font-extrabold">${esc(info.label)}.</span> ${esc(info.text)}${src}</p></div>`;
+  }
+
   function renderGeneratedPlanNotice() {
     return `
       <p id="generated-plan-notice" class="flex items-start gap-1.5 text-[11px] leading-snug text-slate-500">
@@ -1002,6 +1029,13 @@ window.KYT.ui = (function () {
 
       // Attractions Accordion
       const attrList = document.getElementById('cd-attractions-list');
+      const oldAccess = document.getElementById('cd-access');
+      if (oldAccess) oldAccess.remove();
+      const accessHtml = renderAccessNote(city, 'cd-access');
+      if (accessHtml && attrList && attrList.parentElement) {
+        attrList.parentElement.insertAdjacentHTML('beforebegin', accessHtml);
+        if (window.lucide) window.lucide.createIcons();
+      }
       if (attrList) {
         if (city.beats && city.beats.length > 0) {
           attrList.innerHTML = city.beats.map(b => renderAttractionAccordion(b, city.name)).join('');
@@ -1208,6 +1242,8 @@ window.KYT.ui = (function () {
     phaseStyle,
     renderPaceBadge,
     renderGeneratedPlanNotice,
+    accessInfo,
+    renderAccessNote,
     renderMobilityBadge,
     categoryMeta,
     encodeAiTrip,
