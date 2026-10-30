@@ -281,8 +281,16 @@ window.KYT.ui = (function () {
   function videoLink(city) {
     const n = (window.KYT_CITY_VIDEOS && window.KYT_CITY_VIDEOS[city.id] || []).length;
     if (!n) return '';
-    return `<span class="city-videos-link inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 underline decoration-blue-300 underline-offset-2 hover:text-blue-800 shrink-0" data-videos="${n}"><i data-lucide="play-circle" class="w-3.5 h-3.5"></i>${n} video${n !== 1 ? 's' : ''}</span>`;
+    let href = '#';
+    try { const u = new URL(window.location.href); u.searchParams.set('city', city.id); href = u.pathname + u.search; } catch (e) { /* keep # */ }
+    return `<a href="${esc(href)}" class="city-videos-link inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 underline decoration-blue-300 underline-offset-2 hover:text-blue-800 shrink-0" data-videos="${n}" aria-label="Watch ${n} video${n !== 1 ? 's' : ''} about ${esc(city.name)}"><i data-lucide="play-circle" class="w-3.5 h-3.5"></i>${n} video${n !== 1 ? 's' : ''}</a>`;
   }
+
+  // A normal link to ?city=<id>, so it can be opened in a new tab or shared; a plain click opens the city sheet in place.
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest && e.target.closest('a.city-videos-link');
+    if (a && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button)) e.preventDefault();
+  }, true);
 
   function renderCityCard(city, options = {}) {
     if (!city) return '';

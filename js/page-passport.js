@@ -301,7 +301,7 @@
       });
       const open = (id, push) => { KYT.ui.cityDetail.open(id, push); syncMain(id); };
       container.addEventListener('click', e => {
-      if (e.target.closest('button, a, input, select, label, [data-state-toggle]')) return;      // card buttons keep their own behaviour
+      if (e.target.closest('button, a:not(.city-videos-link), input, select, label, [data-state-toggle]')) return;      // card buttons keep their own behaviour
       const card = e.target.closest('[data-city-id]');
       if (card) open(card.dataset.cityId, true);
       });

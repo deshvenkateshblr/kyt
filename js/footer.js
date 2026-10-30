@@ -10,7 +10,7 @@
 (function () {
   'use strict';
   const FEEDBACK_EMAIL = 'info@vividnova.com';
-  const APP_VERSION = 91;
+  const APP_VERSION = 92;
 
   function render() {
     if (document.getElementById('kyt-feedback-footer')) return;
@@ -19,12 +19,10 @@
     const body = encodeURIComponent(`\n\n\n(Sent from KYT, page: ${page})`);
     const wrap = document.createElement('div');
     wrap.id = 'kyt-feedback-footer';
-    wrap.style.cssText = 'box-sizing:border-box;width:100%;padding:14px 16px calc(14px + env(safe-area-inset-bottom));text-align:center;font:600 13px/1.4 system-ui,-apple-system,sans-serif;color:#64748B;background:#F8FAFC;border-top:1px solid #E2E8F0;';
-    wrap.innerHTML = `Questions, comments and feedback, write to <a href="mailto:${FEEDBACK_EMAIL}?subject=${subject}&body=${body}" style="display:inline-block;padding:8px 2px;color:#1D4ED8;font-weight:800;text-decoration:underline;text-underline-offset:3px">${FEEDBACK_EMAIL}</a>`;
-    const ver = document.createElement('div');
-    ver.style.cssText = 'margin-top:6px;font-size:11.5px;font-weight:700;color:#94A3B8;';
-    ver.innerHTML = `<span id="kyt-version">KYT version ${APP_VERSION}</span> · <a href="#" id="kyt-refresh" style="color:#64748B;text-decoration:underline;text-underline-offset:2px;display:inline-block;padding:6px 2px">Refresh app</a>`;
-    wrap.appendChild(ver);
+    wrap.style.cssText = 'box-sizing:border-box;width:100%;padding:6px 12px calc(6px + env(safe-area-inset-bottom));text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font:600 12px/1.6 system-ui,-apple-system,sans-serif;color:#64748B;background:#F8FAFC;border-top:1px solid #E2E8F0;';
+    const link = 'color:#1D4ED8;font-weight:800;text-decoration:underline;text-underline-offset:3px';
+    wrap.innerHTML = `Feedback: <a href="mailto:${FEEDBACK_EMAIL}?subject=${subject}&body=${body}" style="${link}">${FEEDBACK_EMAIL}</a> · <span id="kyt-version">v${APP_VERSION}</span> · <a href="#" id="kyt-refresh" style="color:#64748B;text-decoration:underline;text-underline-offset:2px">Refresh app</a>`;
+    const ver = wrap;
     ver.querySelector('#kyt-refresh').addEventListener('click', async e => {
       e.preventDefault();
       e.target.textContent = 'Refreshing…';
@@ -39,8 +37,9 @@
       const mine = keys.map(k => /^kyt-v(\d+)$/.exec(k)).filter(Boolean).map(m => +m[1]);
       if (mine.length && !mine.includes(APP_VERSION)) {
         const el = ver.querySelector('#kyt-version');
-        el.textContent += ` (offline copy is v${Math.max(...mine)}: tap Refresh app)`;
+        el.textContent += ` (offline copy is v${Math.max(...mine)})`;
         el.style.color = '#B45309';
+        wrap.style.whiteSpace = 'normal';
       }
     }).catch(() => {});
     document.body.appendChild(wrap);

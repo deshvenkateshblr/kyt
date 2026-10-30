@@ -161,7 +161,7 @@ test('footer wording, and the backup sheet reports whether storage works on this
   const { context, page } = await newPhone(env.browser);
   await page.goto(env.base + '/visited.html');
   await page.waitForSelector('#kyt-feedback-footer');
-  assert.match((await page.locator('#kyt-feedback-footer').innerText()).trim(), /^Questions, comments and feedback, write to info@vividnova\.com\n/);
+  assert.match((await page.locator('#kyt-feedback-footer').innerText()).trim(), /^Feedback: info@vividnova\.com · v\d+ · Refresh app$/);
   await page.evaluate(() => PassportStore.unlockCity('agra'));
   await page.reload(); await page.waitForSelector('#cards-container h3');
   assert.equal(await page.evaluate(() => Object.keys(JSON.parse(localStorage.getItem('kyt_passport'))).join()), 'agra', 'stamp survives a reload');
@@ -208,7 +208,7 @@ test('every page prints the app version, and it matches the service worker cache
   for (const f of ['index.html', 'visited.html']) {
     await page.goto(env.base + '/' + f);
     await page.waitForSelector('#kyt-version');
-    assert.equal((await page.locator('#kyt-version').innerText()).match(/^KYT version (\d+)/)[1], sw, `${f}: footer version must equal sw.js (bump both together)`);
+    assert.equal((await page.locator('#kyt-version').innerText()).match(/^v(\d+)/)[1], sw, `${f}: footer version must equal sw.js (bump both together)`);
   }
   await context.close();
 });

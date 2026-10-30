@@ -222,15 +222,15 @@ test('"Start this trip" in the builder turns the plan into the live trip on the 
   await context.close();
 });
 
-test('the plan page offers "Start this trip" as its main action, and it starts the trip on the chosen date', async () => {
+test('the plan page offers "Start this trip" as a quiet last action, after Refine, Edit and Share, and it starts the trip on the chosen date', async () => {
   const { context, page } = await newPhone(env.browser);
   await buildToPlanPage(page, 'Rajasthan', [['Jaipur', 'jaipur'], ['Udaipur', 'udaipur']]);
   assert.equal(await page.locator('#btn-start-trip').isVisible(), true);
   assert.match(await page.locator('#btn-start-trip').innerText(), /Start this trip/);
-  // it comes before Refine with AI / Edit in Builder / Share
+  // viewing, refining and sharing come first; starting the trip is the last of them
   const order = await page.evaluate(() => ['btn-start-trip', 'btn-open-ai-refine', 'btn-edit-plan', 'btn-share-trip']
     .map(id => document.getElementById(id).getBoundingClientRect().top));
-  assert.ok(order[0] < order[1] && order[0] < order[2] && order[0] < order[3], 'Start this trip is the first action');
+  assert.ok(order[0] > order[1] && order[0] >= order[2] && order[0] >= order[3], 'Start this trip is not the first action');
 
   await page.click('#btn-start-trip');
   await chooseStartDate(page, '2027-06-01');

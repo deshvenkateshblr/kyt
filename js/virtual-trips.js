@@ -1641,7 +1641,7 @@ KYT.virtualTrips = (function () {
     `;
 
     // 2. Day tabs
-    html += `<div id="vt-day-tabs" role="tablist" class="flex items-stretch gap-1.5 overflow-x-auto pb-1 -mx-1 px-1">` +
+    html += `<div id="vt-day-tabs" role="tablist" class="sticky -top-4 z-20 flex items-stretch gap-1.5 overflow-x-auto -mx-4 px-4 py-2 bg-slate-50/95 backdrop-blur border-b border-slate-200/70">` +
       days.map(d => {
         const c = cityById(d.cityId);
         const on = d.id === day.id;
@@ -1733,15 +1733,17 @@ KYT.virtualTrips = (function () {
         </div>
       </section>`;
 
-    // 5. Start bar
+    // 5. Bottom bar: viewing, refining and sharing the trip come first; starting it is a later, quieter step
     const planDays = days.filter(d => d.id >= 1).length;
     html += `
       <div class="sticky bottom-0 -mx-4 px-4 py-2.5 bg-white/95 backdrop-blur border-t border-slate-200 mt-4 flex items-center gap-3 z-10">
         <p class="flex-1 min-w-0 text-xs text-slate-500 leading-snug"><strong class="text-slate-800">${totalSteps} ${totalSteps === 1 ? 'activity' : 'activities'}</strong> · ${planDays} day${planDays > 1 ? 's' : ''}</p>
         <button type="button" ${totalSteps ? '' : 'disabled'} onclick="KYT.virtualTrips.useAsMyTrip('${esc(trip.id)}')"
-           class="shrink-0 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed active:scale-[0.98] text-white font-extrabold rounded-xl text-sm flex items-center justify-center gap-2 transition-all shadow-sm">
-          <i data-lucide="plane-takeoff" class="w-4 h-4"></i>
-          Start this trip
+           class="shrink-0 text-xs font-bold text-slate-500 hover:text-blue-700 underline underline-offset-2 disabled:no-underline disabled:text-slate-300 disabled:cursor-not-allowed cursor-pointer px-1 py-2">Start this trip</button>
+        <button type="button" id="btn-vt-view-trip" ${totalSteps ? '' : 'disabled'}
+           class="shrink-0 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed active:scale-[0.98] text-white font-extrabold rounded-xl text-sm flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer">
+          <i data-lucide="eye" class="w-4 h-4"></i>
+          View trip
         </button>
       </div>`;
 
@@ -1755,6 +1757,7 @@ KYT.virtualTrips = (function () {
     if (!trip) return;
     const t = e.target;
     const q = sel => t.closest(sel);
+    if (q('#btn-vt-view-trip')) { window.location.href = `trip_detail.html?id=${encodeURIComponent(trip.id)}`; return; }
     const dayTab = q('[data-day-id][role="tab"]');
     if (dayTab) { activeDayId = Number(dayTab.dataset.dayId); renderBuilder(); return; }
     if (q('#btn-vt-add-day')) {
@@ -2056,7 +2059,7 @@ KYT.virtualTrips = (function () {
         }
 
         const cityCard = e.target.closest('article[data-city-id]');
-        if (cityCard && !e.target.closest('.vt-attraction-pill') && !e.target.closest('.vt-attraction-detail') && !e.target.closest('a')) {
+        if (cityCard && !e.target.closest('.vt-attraction-pill') && !e.target.closest('.vt-attraction-detail') && !e.target.closest('a:not(.city-videos-link)')) {
           openCityDetail(cityCard.dataset.cityId);
         }
       });

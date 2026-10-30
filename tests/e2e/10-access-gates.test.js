@@ -96,3 +96,62 @@ test('city cards say how many videos a city has, and only when it has some', asy
   }
   await context.close();
 });
+
+async function planFor(page, cityId, query) {
+  await open(page);
+  await page.fill('#vt-new-name', 'Sticky');
+  await page.click('#btn-vt-create');
+  await page.waitForSelector('#vt-screen-canvas:not(.hidden)');
+  await page.fill('#vt-city-search', query);
+  await page.click(`.btn-add-city[data-id="${cityId}"]`);
+  await page.click('#btn-vt-dest-done');
+  await page.waitForSelector('#vt-trip-card:not(.hidden)');
+  await page.selectOption('#vt-origin-city', 'bengaluru');
+  await page.click('#btn-vt-build');
+  await page.waitForSelector('#vt-screen-builder:not(.hidden)');
+  await page.click('#btn-vt-suggest');
+  await page.waitForSelector('#vt-day-panel .step-card, #vt-day-panel [data-step-id]');
+}
+
+test('the "N videos" cue is a real link to the city page and a plain click opens the sheet', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await open(page);
+  await page.fill('#vt-new-name', 'Links');
+  await page.click('#btn-vt-create');
+  await page.waitForSelector('#vt-screen-canvas:not(.hidden)');
+  await page.fill('#vt-city-search', 'Jaipur');
+  const link = page.locator('article[data-city-id="jaipur"] a.city-videos-link');
+  await link.waitFor();
+  assert.match(await link.getAttribute('href'), /[?&]city=jaipur/, 'a real href to the city');
+  await link.click();
+  await page.waitForSelector('#city-detail-overlay:not(.hidden)');
+  assert.equal(await page.locator('#cd-title').innerText(), 'Jaipur');
+  await context.close();
+});
+
+test('the day tabs stay at the top while the day scrolls, and View trip leads the bottom bar', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await planFor(page, 'jaipur', 'Jaipur');
+  await page.evaluate(() => { document.getElementById('vt-screen-builder').scrollTop = 600; });
+  const gap = await page.evaluate(() => {
+    const t = document.getElementById('vt-day-tabs').getBoundingClientRect().top;
+    const s = document.getElementById('vt-screen-builder').getBoundingClientRect().top;
+    return Math.abs(t - s);
+  });
+  assert.ok(gap < 2, `tabs pinned to the top of the plan (gap ${gap})`);
+  const view = await page.locator('#btn-vt-view-trip').boundingBox();
+  const start = await page.getByRole('button', { name: /Start this trip/ }).boundingBox();
+  assert.ok(view.width > start.width, 'View trip is the bigger, primary button');
+  assert.ok(start.x < view.x, 'Start this trip sits quietly beside it');
+  await context.close();
+});
+
+test('the footer is one line on a phone', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await open(page);
+  await page.waitForSelector('#kyt-feedback-footer');
+  const h = await page.locator('#kyt-feedback-footer').evaluate(el => el.getBoundingClientRect().height);
+  assert.ok(h < 40, `footer height ${h}`);
+  assert.equal(await page.locator('#kyt-feedback-footer').evaluate(el => el.scrollWidth <= el.clientWidth), true, 'nothing cut off');
+  await context.close();
+});

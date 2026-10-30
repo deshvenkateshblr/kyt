@@ -366,6 +366,12 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **Tests:** `10-access-gates.test.js` (3 tests).
 52. **Two more access notes (TODO P1.0, service worker cache `kyt-v90`)**
     - Badrinath (shrine shuts about six months a year, reopened 23 April 2026) and Spiti Valley (cut off from the Manali side by snow at Kunzum Pass; Gramphu to Losar shut from 25 November 2025), each with a source link and a "usually closed" month window. Sonamarg, Kargil and the Leh road windows stay blank: the only source found for the Zojila closure was from 2017, and the Manali to Leh reopening article is from 2024.
-53. **"N videos" link on every city card (service worker cache `kyt-v91`)**
+53. **"N videos" link on every city card (service worker cache `kyt-v91`, refined in 54)**
     - City cards (picker, trip page, nearby, passport) show a blue underlined "▶ N videos" link when the city has videos, so people know there is an overview to watch. It opens the city sheet, where the videos play. Cities without videos show nothing.
     - **Tests:** one added to `10-access-gates.test.js`.
+54. **Videos link is a real link; sticky day tabs; one-line footer; Start this trip played down (service worker cache `kyt-v92`)**
+    - **Videos.** The "N videos" cue is now an `<a href="...?city=id">`: a plain click opens the city sheet in place, a new-tab click or copy opens the same city page.
+    - **Day Plan.** The day tabs stay pinned at the top while a day scrolls. The bottom bar leads with **View trip** (to the trip page, where Refine with AI and Share live); **Start this trip** is a small underlined link beside it.
+    - **Trip page.** Start this trip moved out of the top row to the end of the action row (after Refine with AI, Edit Trip, Share) as a quiet outlined pill.
+    - **Footer.** One line: "Feedback: info@vividnova.com · v92 · Refresh app" (was three lines on an iPhone). The stale-cache warning may still wrap.
+    - **Tests:** three added to `10-access-gates.test.js`; 03 and 06 updated.
