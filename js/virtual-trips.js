@@ -531,6 +531,18 @@ KYT.virtualTrips = (function () {
       DOM.btnBuild.innerHTML = `<i data-lucide="calendar" class="w-4 h-4"></i> Plan the days`;
     }
 
+    const routeLink = document.getElementById('vt-route-link');
+    if (routeLink) {
+      const origin = trip.originCity && trip.originCity !== 'already_there' && trip.originCity !== '0' ? placeName(trip.originCity) : '';
+      const stops = (origin ? [origin] : []).concat(trip.cities.map(placeName)).filter(Boolean).slice(0, 10);
+      routeLink.classList.toggle('hidden', trip.cities.length < 2);
+      if (trip.cities.length >= 2 && stops.length >= 2) {
+        const q = n => encodeURIComponent(n + ' India');
+        routeLink.href = `https://www.google.com/maps/dir/?api=1&origin=${q(stops[0])}&destination=${q(stops[stops.length - 1])}` +
+          (stops.length > 2 ? `&waypoints=${stops.slice(1, -1).map(q).join('%7C')}` : '') + '&travelmode=driving';
+      }
+    }
+
     DOM.selectedCitiesRoot.innerHTML = trip.cities.map((cId, idx) => {
       const city = window.KYT_CITIES.find(c => c.id === cId);
       const name = city ? KYT.utils.escapeHTML(city.name) : KYT.utils.escapeHTML(cId);
@@ -1318,6 +1330,22 @@ KYT.virtualTrips = (function () {
     return stays;
   }
 
+  /** True when a journey like this generated step is already in the plan: into this day's city from yesterday, or out of it into tomorrow's. */
+  function plannedAlready(trip, dayId, title) {
+    const days = sortedDays(trip).filter(d => d.id >= 1);
+    const idx = days.findIndex(d => d.id === dayId);
+    if (idx < 0) return false;
+    const here = cityById(days[idx].cityId);
+    const prev = idx > 0 ? days[idx - 1] : null;
+    const next = idx < days.length - 1 ? days[idx + 1] : null;
+    const nextCity = next ? cityById(next.cityId) : null;
+    const trav = list => list.filter(x => x.type === 'travel');
+    if (here && prev && title.includes(here.name) && trav(stepsOfDay(trip, prev.id)).some(x => x.to === here.name)) return true;
+    if (here && nextCity && nextCity.id !== here.id && title.includes(nextCity.name) &&
+      trav(stepsOfDay(trip, next.id).concat(stepsOfDay(trip, dayId))).some(x => x.from === here.name && x.to === nextCity.name)) return true;
+    return false;
+  }
+
   function suggestPlan(trip) {
     ensureDays(trip);
     const cityIds = [...new Set(trip.days.filter(d => d.id >= 1).map(d => d.cityId).filter(Boolean))];
@@ -1332,6 +1360,7 @@ KYT.virtualTrips = (function () {
       if (d === 0 && !known.has(0)) { trip.days.unshift({ id: 0, cityId: cityIds[0] || '' }); known.add(0); }
       if (!known.has(d)) return;
       st.type = TRAVEL_TITLE_RE.test(st.title) ? 'travel' : 'stop';
+      if (st.type === 'travel' && plannedAlready(trip, d, st.title)) return;
       (trip.steps = trip.steps || []).push(st);
       added++;
     });
@@ -1592,6 +1621,26 @@ KYT.virtualTrips = (function () {
     return { fits, others, all: fits.concat(others), city };
   }
 
+  /** Where "Add travel" starts: if the journey into this day's city is already planned (yesterday or today) the next one leaves it, otherwise it arrives. */
+  function travelPrefill(trip, dayId) {
+    const city = dayCity(trip, dayId);
+    if (!city) return {};
+    const days = sortedDays(trip).filter(d => d.id >= 1);
+    const idx = days.findIndex(d => d.id === dayId);
+    const origin = trip.originCity && trip.originCity !== 'already_there' && trip.originCity !== '0' ? placeName(trip.originCity) : '';
+    const prev = idx > 0 ? days[idx - 1] : null;
+    const next = idx >= 0 && idx < days.length - 1 ? days[idx + 1] : null;
+    const arrives = s => s.type === 'travel' && s.to === city.name;
+    const arrived = stepsOfDay(trip, dayId).some(arrives) || (prev && stepsOfDay(trip, prev.id).some(arrives));
+    if (arrived) {
+      const nc = next && next.cityId !== city.id ? cityById(next.cityId) : null;
+      return { from: city.name, to: nc ? nc.name : (idx === days.length - 1 ? origin : ''), hour: 17 };
+    }
+    const prevCity = prev ? cityById(prev.cityId) : null;
+    const from = prevCity && prevCity.id !== city.id ? prevCity.name : (idx === 0 ? origin : '');
+    return { from, to: city.name, hour: 9 };
+  }
+
   function dayHints(trip, day) {
     const esc = KYT.utils.escapeHTML;
     const hints = [];
@@ -1831,11 +1880,7 @@ KYT.virtualTrips = (function () {
       return;
     }
     if (q('#btn-vt-add-own')) { openStepEditor({ mode: 'add', kind: 'stop', dayId: activeDayId }); return; }
-    if (q('#btn-vt-add-travel')) {
-      const c = dayCity(trip, activeDayId);
-      openStepEditor({ mode: 'add', kind: 'travel', dayId: activeDayId, prefill: { to: c ? c.name : '' } });
-      return;
-    }
+    if (q('#btn-vt-add-travel')) { openStepEditor({ mode: 'add', kind: 'travel', dayId: activeDayId, prefill: travelPrefill(trip, activeDayId) }); return; }
     if (q('#btn-vt-add-stay')) { openStepEditor({ mode: 'add', kind: 'stay', dayId: activeDayId }); return; }
     if (q('#btn-vt-style-toggle')) { styleOpen = !styleOpen; renderBuilder(); return; }
     const chip = q('#vt-taste .vt-chip');

@@ -216,3 +216,47 @@ test('Day Plan flow: the next step is the next empty day, travel to the next cit
   assert.equal(await page.getByRole('button', { name: /Start this trip/ }).count(), 1);
   await context.close();
 });
+
+test('Add travel starts from what is planned: arriving unless the journey in is already there; Suggest a plan keeps it', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await threeCityTrip(page);
+  const fields = async () => [await page.locator('#vt-travel-from').inputValue(), await page.locator('#vt-travel-to').inputValue()];
+  // Day 1 (Pune), nothing planned: the journey arrives, from where the trip starts
+  await page.click('#btn-vt-add-travel');
+  assert.deepEqual(await fields(), ['Bengaluru', 'Pune']);
+  await page.click('#btn-cancel-step-modal');
+  // Day 1 gets an overnight journey to Nashik; Day 2's journey in is therefore planned
+  await page.click('[data-overnight="1"]');
+  await page.click('#btn-save-vt-step');
+  await page.click('[data-day-id="2"][role="tab"]');
+  await page.click('#btn-vt-add-travel');
+  assert.deepEqual(await fields(), ['Nashik', 'Aurangabad'], 'the next journey leaves Nashik');
+  await page.click('#btn-cancel-step-modal');
+  // Suggest a plan fills the empty days without a second journey into Nashik
+  await page.click('#btn-vt-suggest');
+  await page.click('[data-day-id="2"][role="tab"]');
+  const day2 = await page.locator('#vt-day-panel').innerText();
+  assert.doesNotMatch(day2, /Travel to Nashik|Travel from Pune to Nashik/, 'no duplicate journey into Nashik');
+  await page.click('[data-day-id="1"][role="tab"]');
+  assert.equal(await page.locator('#vt-day-panel').getByText(/Overnight travel: Pune to Nashik/).count(), 1, 'the planned journey is kept');
+  await context.close();
+});
+
+test('with two or more cities there is a Google Maps route link in their order', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await open(page);
+  await page.fill('#vt-new-name', 'Route');
+  await page.click('#btn-vt-create');
+  await page.waitForSelector('#vt-screen-canvas:not(.hidden)');
+  const link = page.locator('#vt-route-link');
+  for (const [q, id] of [['Pune', 'pune'], ['Nashik', 'nashik'], ['Aurangabad', 'aurangabad']]) {
+    assert.equal(await link.isVisible(), id === 'aurangabad', `link before adding ${id}`);
+    await page.fill('#vt-city-search', q);
+    await page.click(`.btn-add-city[data-id="${id}"]`);
+    await page.fill('#vt-city-search', '');
+  }
+  assert.equal(await link.getAttribute('target'), '_blank');
+  const href = decodeURIComponent(await link.getAttribute('href'));
+  assert.match(href, /origin=Pune India&destination=Aurangabad India&waypoints=Nashik India/);
+  await context.close();
+});

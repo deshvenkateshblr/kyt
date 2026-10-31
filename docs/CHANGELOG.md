@@ -382,3 +382,8 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **Directions.** The travel editor shows a live "Directions in Google Maps" link (new tab) that follows From, To and How; saved travel steps say "Directions in Google Maps".
     - **Type-ahead.** From and To suggest the trip's cities first, then every destination and popular starting point.
     - **Tests:** one end-to-end test added to `10-access-gates.test.js`.
+56. **Add travel starts from the plan; Suggest a plan keeps planned journeys; route map link (service worker cache `kyt-v94`)**
+    - **Add travel** no longer assumes the day's city is the destination. If a journey into it is already planned (that day or the day before) it starts there and heads for the next day's city (or home on the last day); otherwise it arrives, from the previous day's city or where the trip starts.
+    - **Suggest a plan** skips a generated journey that duplicates one already planned: into a day's city from the day before, or out of it into the next day's city.
+    - **Route link.** With two or more destinations, "See the route on Google Maps to check the order" opens the trip's cities in order (starting point first) as one Google Maps route in a new tab.
+    - **Tests:** two added to `10-access-gates.test.js`.
