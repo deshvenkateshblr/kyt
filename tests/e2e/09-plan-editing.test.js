@@ -289,3 +289,26 @@ test('trips saved before day tabs open with days worked out from their steps', a
   assert.match(await page.locator('[data-step-id]').first().innerText(), /Taj Mahal/);
   await context.close();
 });
+
+test('Suggest a plan follows each day\'s own city, and days in the same city do not repeat attractions', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openPlan(page);
+  const run = cities => page.evaluate(cities => {
+    const t = { id: 't', name: 't', cities: [...new Set(cities)], originCity: 'already_there', duration: cities.length,
+      taste: { intent: 'mixed', diet: 'any', pace: 'standard' }, nightStays: null, steps: null,
+      days: cities.map((c, i) => ({ id: i + 1, cityId: c })) };
+    KYT.virtualTrips.suggestPlan(t);
+    const beatTitles = id => new Set(window.KYT_CITIES.find(c => c.id === id).beats.map(b => b.title));
+    return cities.map((c, i) => {
+      const own = beatTitles(c);
+      return (t.steps || []).filter(s => s.dayId === i + 1 && own.has(s.title)).map(s => s.title);
+    });
+  }, cities);
+
+  // Agra, Agra, Jaipur: day 3 must be Jaipur's attractions, and day 2 must not repeat day 1's.
+  const [d1, d2, d3] = await run(['agra', 'agra', 'jaipur']);
+  assert.ok(d1.length > 0 && d2.length > 0, 'both Agra days have attractions');
+  assert.equal(d2.filter(t => d1.includes(t)).length, 0, `Agra day 2 repeats day 1: ${d1} / ${d2}`);
+  assert.ok(d3.length > 0, 'day 3 holds Jaipur attractions, not a repeat of the last Agra day');
+  await context.close();
+});

@@ -113,13 +113,16 @@ test('P0.2 (c): sunrise and morning beats keep the morning, and a transit day do
   const { context, page } = await newPhone(env.browser);
   await openBuilderPage(page);
   const [leh] = await runScenarios(page, [SCENARIOS[2]]);
-  const at = (day, re) => leh.steps.find(s => s.dayId === day && re.test(s.title));
+  // Days 3 and 4 are both free days in Leh and now share its attractions (TODO P2.8), so a morning stop may land on either.
+  const at = (re) => leh.steps.find(s => s.dayId >= 3 && re.test(s.title));
   const transit = leh.steps.filter(s => s.dayId === 2);
   assert.equal(transit.some(s => /sunrise|morning prayers/i.test(s.title)), false, 'the day spent driving to Leh holds no sunrise or morning prayers');
-  const sunrise = at(3, /Shanti Stupa sunrise/);
+  const sunrise = at(/Shanti Stupa sunrise/);
   assert.ok(sunrise && sunrise.hour <= 8, 'Shanti Stupa sunrise is at dawn on a free day');
-  const prayers = at(3, /Thiksey Monastery morning prayers/);
+  const prayers = at(/Thiksey Monastery morning prayers/);
   assert.ok(prayers && prayers.hour <= 11, 'morning prayers stay in the morning');
+  const lehTitles = d => leh.steps.filter(s => s.dayId === d).map(s => s.title);
+  assert.equal(lehTitles(3).filter(t => /Shanti Stupa|Thiksey|Leh Palace|Hemis/.test(t) && lehTitles(4).includes(t)).length, 0, 'the two free Leh days do not repeat an attraction');
   await context.close();
 });
 

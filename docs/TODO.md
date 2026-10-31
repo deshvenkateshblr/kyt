@@ -1,7 +1,7 @@
 # KYT: Prioritized TODO
 
 The single list of open work. Done work is in [CHANGELOG.md](CHANGELOG.md). Design intent and architecture are in [kyt_product_specification_roadmap.md](kyt_product_specification_roadmap.md).
-Last reviewed: 27 Oct 2026, against service worker cache `kyt-v94`.
+Last reviewed: 27 Oct 2026, against service worker cache `kyt-v95`.
 
 **How to use this file:** keep every open item here and nowhere else. When something ships, move it to the changelog. Other docs link here instead of keeping their own TODO lists.
 
@@ -52,7 +52,6 @@ Clear. The contradictions in generated days and the explainer on every generated
 | P2.5 | **Free-flow search on curated trips.** Worth doing once P1.1 grows the list. | Finding the right trip among many. | Old backlog |
 | P2.6 | **Plan for elders, kids and fitness.** Party chips (family with elders, family with kids, friends, solo). Use each attraction's `mobility` (331 easy, 250 walk, 32 trek) and the city `effort` flag to leave out or warn on strenuous stops. The `party` tag cannot drive this: it is "any" on 609 of 615 attractions. | Pilgrimages with parents are a core use. Useful, but fewer travellers are blocked by its absence than by P0 and P1. | Data review |
 | P2.7 | **Duration nudge:** warn when the trip has fewer days than cities. Needs no distance data. | Stops people building overpacked plans. | Roadmap Phase 2 |
-| P2.8 | **Extra days in one city repeat the same attractions.** When a trip has more days than cities, each extra day lists the last city's attractions again (Leh on days 3 and 4 is identical). Spread the attractions across the days, or leave the spare days open for the traveller. | A repeated day looks careless and tells the traveller to do the same things twice. | Seen while checking P0.2: Manali to Leh in 4 days, Haridwar to Kedarnath in 4 days. |
 
 ## P3: Convenience and delight
 

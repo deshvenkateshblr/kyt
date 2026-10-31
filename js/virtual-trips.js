@@ -827,6 +827,13 @@ KYT.virtualTrips = (function () {
 
     // ── Day 1 and subsequent days ──
     const numDays = trip.duration || activeCities.length;
+    // Days spent in the same city share its attractions instead of repeating them (TODO P2.8):
+    // visit k of n takes every n-th stop, so each day still mixes mornings and evenings.
+    const cityAt = i => activeCities[i] || activeCities[activeCities.length - 1];
+    const visitsTotal = {};
+    for (let i = 0; i < numDays; i++) visitsTotal[cityAt(i).id] = (visitsTotal[cityAt(i).id] || 0) + 1;
+    const visitsSoFar = {};
+    const placedByCity = {};
     for (let dayIdx = 0; dayIdx < numDays; dayIdx++) {
       let daySteps = [];
       const dayId = dayIdx + 1;
@@ -879,6 +886,16 @@ KYT.virtualTrips = (function () {
         matched = matched.concat(extra.slice(0, 3 - matched.length));
       }
       matched.sort((a, b) => (a.hour || 0) - (b.hour || 0));
+      const visit = visitsSoFar[city.id] = (visitsSoFar[city.id] || 0) + 1;
+      const visitsLeft = (visitsTotal[city.id] || 1) - visit;   // days still to come in this city
+      if ((visitsTotal[city.id] || 1) > 1) {
+        // Skip what an earlier day here already placed. A day that cannot hold a stop (a transit day,
+        // say) leaves it free for the next one. Each day but the last takes its share of what is left.
+        const taken = placedByCity[city.id] || (placedByCity[city.id] = new Set());
+        const fresh = matched.filter(b => !taken.has(b.title));
+        const share = Math.ceil(fresh.length / (visitsLeft + 1));
+        matched = visitsLeft > 0 ? fresh.filter((b, i) => i % (visitsLeft + 1) === 0).slice(0, share) : fresh;
+      }
 
       // ── PHASE 1: MORNING ──
       if (prevStayCityId === 'overnight_travel') {
@@ -1194,6 +1211,10 @@ KYT.virtualTrips = (function () {
           daySteps[i].suggestedTime = KYT.ui.formatSuggestedTime(bumped.h, bumped.m, daySteps[i].phase);
         }
       }
+      if ((visitsTotal[city.id] || 1) > 1) {
+        const taken = placedByCity[city.id] || (placedByCity[city.id] = new Set());
+        daySteps.forEach(s => { if ((city.beats || []).some(b => b.title === s.title)) taken.add(s.title); });
+      }
       steps = steps.concat(daySteps);
     }
 
@@ -1348,7 +1369,9 @@ KYT.virtualTrips = (function () {
 
   function suggestPlan(trip) {
     ensureDays(trip);
-    const cityIds = [...new Set(trip.days.filter(d => d.id >= 1).map(d => d.cityId).filter(Boolean))];
+    // One city per day, in day order and NOT de-duplicated: the generator reads day N's city from
+    // position N, so a plan of Agra, Agra, Jaipur must stay Agra, Agra, Jaipur.
+    const cityIds = sortedDays(trip).filter(d => d.id >= 1).map(d => d.cityId).filter(Boolean);
     const temp = { ...trip, cities: cityIds.length ? cityIds : trip.cities, steps: null, nightStays: null };
     temp.nightStays = defaultNightStays(temp);
     const filled = new Set((trip.steps || []).map(s => Number(s.dayId)));

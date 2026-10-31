@@ -387,3 +387,7 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **Suggest a plan** skips a generated journey that duplicates one already planned: into a day's city from the day before, or out of it into the next day's city.
     - **Route link.** With two or more destinations, "See the route on Google Maps to check the order" opens the trip's cities in order (starting point first) as one Google Maps route in a new tab.
     - **Tests:** two added to `10-access-gates.test.js`.
+57. **Suggest a plan follows each day's own city; days in the same city share its attractions (service worker cache `kyt-v95`)**
+    - **Suggest a plan** read a day's city by its position in a de-duplicated city list, so Agra, Agra, Jaipur became Agra, Jaipur, Jaipur. It now keeps one city per day, in day order.
+    - **Extra days in one city no longer repeat** (TODO P2.8). Each day takes its share of the attractions not yet placed there; a day that cannot hold a stop, such as a transit day, leaves it for the next.
+    - **Tests:** one added to `09-plan-editing.test.js`; `07-generated-plans.test.js` P0.2 (c) now accepts Leh's morning stops on either free day and checks the two days do not repeat. 138 pass.
