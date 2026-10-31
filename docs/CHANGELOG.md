@@ -375,3 +375,10 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **Trip page.** Start this trip moved out of the top row to the end of the action row (after Refine with AI, Edit Trip, Share) as a quiet outlined pill.
     - **Footer.** One line: "Feedback: info@vividnova.com · v92 · Refresh app" (was three lines on an iPhone). The stale-cache warning may still wrap.
     - **Tests:** three added to `10-access-gates.test.js`; 03 and 06 updated.
+55. **Day Plan flow fixes from the owner's walkthrough (service worker cache `kyt-v93`)**
+    - **Next step is the next day.** Once a day has something, the bottom bar says "Plan Day N" (the next empty day). **View trip** and **Start this trip** appear only when every day has at least one step; the bar shows "N to plan" until then.
+    - **Travel to the next city.** Each day offers "Travel to <next city> for Day N" (evening) when the next day is in a different city; the arrival hint on that next day is dropped once the journey is already planned.
+    - **Overnight travel** returns as a tick box on a travel step ("you sleep on the way"), also offered as its own hint beside "Stay in X tonight"; a night with an overnight journey no longer asks for a stay.
+    - **Directions.** The travel editor shows a live "Directions in Google Maps" link (new tab) that follows From, To and How; saved travel steps say "Directions in Google Maps".
+    - **Type-ahead.** From and To suggest the trip's cities first, then every destination and popular starting point.
+    - **Tests:** one end-to-end test added to `10-access-gates.test.js`.

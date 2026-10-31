@@ -807,9 +807,9 @@
         <div id="vt-fields-travel" class="hidden space-y-3.5">
           <div class="grid grid-cols-2 gap-3">
             <div><label for="vt-travel-from" class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">From</label>
-              <input type="text" id="vt-travel-from" maxlength="80" placeholder="City or place" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"></div>
+              <input type="text" id="vt-travel-from" maxlength="80" list="vt-place-list" autocomplete="off" placeholder="City or place" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"></div>
             <div><label for="vt-travel-to" class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">To</label>
-              <input type="text" id="vt-travel-to" maxlength="80" placeholder="City or place" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"></div>
+              <input type="text" id="vt-travel-to" maxlength="80" list="vt-place-list" autocomplete="off" placeholder="City or place" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"></div>
           </div>
           <div class="grid grid-cols-2 gap-3">
             <div><label for="vt-travel-mode" class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">How</label>
@@ -824,6 +824,9 @@
               <input type="text" id="vt-travel-duration" maxlength="30" placeholder="e.g. 4 h" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"></div>
           </div>
           <p id="vt-travel-hint" class="text-[11px] text-slate-400 empty:hidden"></p>
+          <label class="flex items-center gap-2 text-xs font-bold text-slate-600 cursor-pointer"><input type="checkbox" id="vt-travel-overnight" class="w-4 h-4 accent-blue-600"> Overnight journey (you sleep on the way, so no stay that night)</label>
+          <a id="vt-travel-maps" href="#" target="_blank" rel="noopener noreferrer" class="hidden inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-800 underline underline-offset-2"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i>Directions in Google Maps</a>
+          <datalist id="vt-place-list"></datalist>
         </div>
         <!-- Stay -->
         <div id="vt-fields-stay" class="hidden">

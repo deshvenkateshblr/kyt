@@ -622,7 +622,7 @@ window.KYT.ui = (function () {
       if (step.mapsUrl) {
         actionBadgeHtml = `
           <a href="${esc(step.mapsUrl)}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-[10px] font-bold text-blue-600 hover:text-blue-800 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-100 mt-1.5 transition-colors">
-            <i data-lucide="map-pin" class="w-3 h-3 text-blue-500"></i> View on Google Maps
+            <i data-lucide="map-pin" class="w-3 h-3 text-blue-500"></i> ${step.type === 'travel' ? 'Directions in Google Maps' : 'View on Google Maps'}
           </a>
         `;
       } else if (isHotel) {

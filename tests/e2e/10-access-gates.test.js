@@ -155,3 +155,64 @@ test('the footer is one line on a phone', async () => {
   assert.equal(await page.locator('#kyt-feedback-footer').evaluate(el => el.scrollWidth <= el.clientWidth), true, 'nothing cut off');
   await context.close();
 });
+
+async function threeCityTrip(page) {
+  await open(page);
+  await page.fill('#vt-new-name', 'Maharashtra');
+  await page.click('#btn-vt-create');
+  await page.waitForSelector('#vt-screen-canvas:not(.hidden)');
+  for (const [q, id] of [['Pune', 'pune'], ['Nashik', 'nashik'], ['Aurangabad', 'aurangabad']]) {
+    await page.fill('#vt-city-search', q);
+    await page.click(`.btn-add-city[data-id="${id}"]`);
+    await page.fill('#vt-city-search', '');
+  }
+  await page.click('#btn-vt-dest-done');
+  await page.waitForSelector('#vt-trip-card:not(.hidden)');
+  await page.selectOption('#vt-origin-city', 'bengaluru');
+  await page.click('#btn-vt-build');
+  await page.waitForSelector('#vt-screen-builder:not(.hidden)');
+}
+
+test('Day Plan flow: the next step is the next empty day, travel to the next city is offered, overnight travel replaces a stay', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await threeCityTrip(page);
+  // 1. an empty Day 1: nothing to move on to yet, and no View trip or Start
+  assert.equal(await page.locator('#btn-vt-next-day').count(), 0);
+  assert.equal(await page.locator('#btn-vt-view-trip').count(), 0);
+  // add one stop on Day 1: the bar moves on to Day 2, still no View trip
+  await page.locator('[data-add-beat]').first().click();
+  assert.match(await page.locator('#btn-vt-next-day').innerText(), /Plan Day 2/);
+  assert.equal(await page.locator('#btn-vt-view-trip').count(), 0, 'View trip waits until every day has something');
+  // 4. Day 1 offers travel to Day 2's city, by day or overnight, and a stay
+  const hints = await page.locator('#vt-day-hints').innerText();
+  assert.match(hints, /Travel to Nashik for Day 2/);
+  assert.match(hints, /Overnight travel to Nashik/);
+  assert.match(hints, /Stay in Pune tonight/);
+  // 5. choosing overnight travel opens the editor with the box ticked, and the Maps link opens in a new tab
+  await page.click('[data-overnight="1"]');
+  assert.equal(await page.locator('#vt-travel-overnight').isChecked(), true);
+  assert.equal(await page.locator('#vt-step-time').inputValue(), '21:00');
+  const maps = page.locator('#vt-travel-maps');
+  assert.equal(await maps.isVisible(), true);
+  assert.equal(await maps.getAttribute('target'), '_blank');
+  assert.match(await maps.getAttribute('href'), /google\.com\/maps\/dir\/.*origin=Pune.*destination=Nashik/);
+  // 3. From and To suggest places
+  assert.equal(await page.locator('#vt-travel-from').getAttribute('list'), 'vt-place-list');
+  assert.ok(await page.locator('#vt-place-list option').count() > 100);
+  await page.click('#btn-save-vt-step');
+  const card = page.locator('#vt-day-panel').getByText(/Overnight travel: Pune to Nashik/);
+  assert.equal(await card.count(), 1);
+  assert.equal(await page.locator('#vt-day-panel a[href*="maps/dir"][target="_blank"]').count(), 1, 'the step carries a directions link');
+  assert.doesNotMatch(await page.locator('#vt-day-hints').innerText(), /Stay in Pune|Overnight travel to Nashik/, 'no stay or second travel needed that night');
+  // Day 2 does not offer the same journey again as an arrival
+  await page.click('[data-day-id="2"][role="tab"]');
+  assert.doesNotMatch(await page.locator('#vt-day-hints').innerText(), /Travel from Pune to Nashik/);
+  // fill the other days: View trip and Start appear
+  for (const d of [2, 3]) {
+    await page.click(`[data-day-id="${d}"][role="tab"]`);
+    if (await page.locator('[data-add-beat]').count()) await page.locator('[data-add-beat]').first().click();
+  }
+  assert.equal(await page.locator('#btn-vt-view-trip').count(), 1, 'every day planned: View trip is the next step');
+  assert.equal(await page.getByRole('button', { name: /Start this trip/ }).count(), 1);
+  await context.close();
+});

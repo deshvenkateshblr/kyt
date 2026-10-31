@@ -1355,9 +1355,9 @@ KYT.virtualTrips = (function () {
   }
   function newStepId() { return Date.now().toString() + '_n' + Math.floor(Math.random() * 1e5); }
   function mapsSearch(q) { return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`; }
-  function travelTitle(from, to, mode) {
+  function travelTitle(from, to, mode, overnight) {
     const m = (MODE_META[mode] || MODE_META.other).label;
-    return `Travel: ${from} to ${to}${m ? ' ' + m : ''}`;
+    return `${overnight ? 'Overnight travel' : 'Travel'}: ${from} to ${to}${m ? ' ' + m : ''}`;
   }
   function travelMapsUrl(from, to, mode) {
     const gm = (MODE_META[mode] || MODE_META.other).gm;
@@ -1470,6 +1470,7 @@ KYT.virtualTrips = (function () {
       set('vt-step-where', step.where);
       set('vt-travel-from', step.from); set('vt-travel-to', step.to);
       set('vt-travel-mode', step.mode || 'road'); set('vt-travel-duration', step.duration);
+      $('vt-travel-overnight').checked = Boolean(step.overnight);
       set('vt-stay-place', step.where === (dayCity(trip, ctx.dayId) || {}).name ? '' : step.where);
       set('vt-step-time', step.hour != null ? `${pad2(step.hour)}:${pad2(step.minute || 0)}` : '');
       set('vt-step-notes', step.notes);
@@ -1477,17 +1478,32 @@ KYT.virtualTrips = (function () {
       set('vt-step-title', ''); set('vt-step-where', '');
       set('vt-travel-from', pre.from); set('vt-travel-to', pre.to);
       set('vt-travel-mode', pre.mode || 'road'); set('vt-travel-duration', '');
+      $('vt-travel-overnight').checked = Boolean(pre.overnight);
       set('vt-stay-place', '');
       const dflt = kind === 'stay' ? 21 * 60 : (kind === 'travel' ? (pre.hour != null ? pre.hour * 60 : 9 * 60) : 12 * 60);
       const t = freeTime(trip, ctx.dayId, Math.floor(dflt / 60), dflt % 60);
       set('vt-step-time', `${pad2(t.h)}:${pad2(t.m)}`);
       set('vt-step-notes', '');
     }
+    fillPlaceList(trip);
     updateTravelHint();
     m.classList.remove('hidden');
     if (window.lucide) lucide.createIcons();
     const first = { stop: 'vt-step-title', travel: 'vt-travel-from', stay: 'vt-stay-place' }[kind];
     setTimeout(() => { const t = $(first); if (t) t.focus(); }, 50);
+  }
+
+  /** Type-ahead for From and To: the trip's own cities first, then every destination and the popular starting points. */
+  function fillPlaceList(trip) {
+    const dl = document.getElementById('vt-place-list');
+    if (!dl) return;
+    const names = [];
+    const add = n => { if (n && !names.includes(n)) names.push(n); };
+    (trip.cities || []).forEach(id => add(placeName(id)));
+    if (trip.originCity && trip.originCity !== 'already_there' && trip.originCity !== '0') add(placeName(trip.originCity));
+    (window.KYT_CITIES || []).forEach(c => add(c.name));
+    POPULAR_ORIGINS.forEach(o => add(o.name));
+    dl.innerHTML = names.map(n => `<option value="${KYT.utils.escapeHTML(n)}"></option>`).join('');
   }
 
   /** "About 170 km apart" under the From / To fields, when both are places we know. */
@@ -1499,6 +1515,12 @@ KYT.virtualTrips = (function () {
     const to = cityByName(document.getElementById('vt-travel-to').value);
     const km = from && to ? kmBetween(from.id, to.id) : null;
     hint.textContent = km != null ? `About ${km} km apart by road. Check live times in Google Maps.` : '';
+    const link = document.getElementById('vt-travel-maps');
+    if (link) {
+      const f = document.getElementById('vt-travel-from').value.trim(), t = document.getElementById('vt-travel-to').value.trim();
+      link.classList.toggle('hidden', !(f && t));
+      if (f && t) link.href = travelMapsUrl(f, t, document.getElementById('vt-travel-mode').value);
+    }
   }
 
   function saveStepEditor() {
@@ -1526,8 +1548,9 @@ KYT.virtualTrips = (function () {
     } else if (kind === 'travel') {
       if (!val('vt-travel-from') || !val('vt-travel-to')) return fail('Say where you travel from and to.', val('vt-travel-from') ? 'vt-travel-to' : 'vt-travel-from');
       const mode = $('vt-travel-mode').value;
+      const overnight = $('vt-travel-overnight').checked;
       fields = {
-        title: travelTitle(val('vt-travel-from'), val('vt-travel-to'), mode), from: val('vt-travel-from'), to: val('vt-travel-to'),
+        title: travelTitle(val('vt-travel-from'), val('vt-travel-to'), mode, overnight), overnight, from: val('vt-travel-from'), to: val('vt-travel-to'),
         mode, duration: val('vt-travel-duration'), where: val('vt-travel-to'),
         mapsUrl: travelMapsUrl(val('vt-travel-from'), val('vt-travel-to'), mode), icon: (MODE_META[mode] || MODE_META.other).icon
       };
@@ -1579,18 +1602,33 @@ KYT.virtualTrips = (function () {
     const mine = stepsOfDay(trip, day.id);
     const origin = trip.originCity && trip.originCity !== 'already_there' && trip.originCity !== '0' ? trip.originCity : '';
     const fromId = idx > 0 ? days[idx - 1].cityId : origin;
-    if (fromId && fromId !== city.id && !mine.some(s => s.type === 'travel')) {
+    const prevSteps = idx > 0 ? stepsOfDay(trip, days[idx - 1].id) : [];
+    const travelTo = (list, name) => list.some(s => s.type === 'travel' && s.to === name);
+    const hasTravelIn = !mine.some(s => s.type === 'travel' && s.to === city.name) && !travelTo(prevSteps, city.name);
+    const hintData = (from, to, km, hour, extra = '') =>
+      `data-hint="travel" data-from="${esc(from)}" data-to="${esc(to)}" data-km="${km == null ? '' : km}" data-hour="${hour}"${extra}`;
+    if (fromId && fromId !== city.id && hasTravelIn) {
       const km = kmBetween(fromId, city.id);
       hints.push({ key: 'travel', icon: 'route', text: `Travel from ${placeName(fromId)} to ${city.name}`, sub: km != null ? `about ${km} km` : '',
-        data: `data-hint="travel" data-from="${esc(placeName(fromId))}" data-to="${esc(city.name)}" data-km="${km == null ? '' : km}" data-hour="6"` });
+        data: hintData(placeName(fromId), city.name, km, 6) });
     }
     const isLast = idx === days.length - 1;
+    const next = !isLast ? days[idx + 1] : null;
+    const nextCity = next && next.cityId && next.cityId !== city.id ? cityById(next.cityId) : null;
+    const leavesToday = nextCity && mine.some(s => s.type === 'travel' && s.to === nextCity.name);
+    if (nextCity && !leavesToday) {
+      const km = kmBetween(city.id, nextCity.id);
+      hints.push({ key: 'travel-next', icon: 'route', text: `Travel to ${nextCity.name} for Day ${next.id}`, sub: km != null ? `about ${km} km` : '',
+        data: hintData(city.name, nextCity.name, km, 17) });
+      hints.push({ key: 'overnight', icon: 'moon', text: `Overnight travel to ${nextCity.name}`, sub: km != null ? `about ${km} km, sleep on the way` : 'sleep on the way',
+        data: hintData(city.name, nextCity.name, km, 21, ' data-overnight="1"') });
+    }
     if (isLast && origin && origin !== city.id && !mine.some(s => s.type === 'travel' && s.to === placeName(origin))) {
       const km = kmBetween(city.id, origin);
       hints.push({ key: 'return', icon: 'route', text: `Travel back to ${placeName(origin)}`, sub: km != null ? `about ${km} km` : '',
-        data: `data-hint="travel" data-from="${esc(city.name)}" data-to="${esc(placeName(origin))}" data-km="${km == null ? '' : km}" data-hour="18"` });
+        data: hintData(city.name, placeName(origin), km, 18) });
     }
-    if (!isLast && !mine.some(s => s.type === 'stay')) {
+    if (!isLast && !mine.some(s => s.type === 'stay') && !mine.some(s => s.type === 'travel' && s.overnight)) {
       hints.push({ key: 'stay', icon: 'bed-double', text: `Stay in ${city.name} tonight`, sub: '', data: 'data-hint="stay"' });
     }
     return hints;
@@ -1733,19 +1771,28 @@ KYT.virtualTrips = (function () {
         </div>
       </section>`;
 
-    // 5. Bottom bar: viewing, refining and sharing the trip come first; starting it is a later, quieter step
+    // 5. Bottom bar: while a day is still empty the next step is that day; viewing and starting the trip wait until every day has something
     const planDays = days.filter(d => d.id >= 1).length;
-    html += `
-      <div class="sticky bottom-0 -mx-4 px-4 py-2.5 bg-white/95 backdrop-blur border-t border-slate-200 mt-4 flex items-center gap-3 z-10">
-        <p class="flex-1 min-w-0 text-xs text-slate-500 leading-snug"><strong class="text-slate-800">${totalSteps} ${totalSteps === 1 ? 'activity' : 'activities'}</strong> · ${planDays} day${planDays > 1 ? 's' : ''}</p>
-        <button type="button" ${totalSteps ? '' : 'disabled'} onclick="KYT.virtualTrips.useAsMyTrip('${esc(trip.id)}')"
-           class="shrink-0 text-xs font-bold text-slate-500 hover:text-blue-700 underline underline-offset-2 disabled:no-underline disabled:text-slate-300 disabled:cursor-not-allowed cursor-pointer px-1 py-2">Start this trip</button>
-        <button type="button" id="btn-vt-view-trip" ${totalSteps ? '' : 'disabled'}
-           class="shrink-0 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed active:scale-[0.98] text-white font-extrabold rounded-xl text-sm flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer">
-          <i data-lucide="eye" class="w-4 h-4"></i>
-          View trip
-        </button>
+    const emptyPlanDays = days.filter(d => d.id >= 1 && stepsOfDay(trip, d.id).length === 0);
+    const nextEmpty = emptyPlanDays.find(d => d.id > day.id && d.id !== day.id) || emptyPlanDays.find(d => d.id !== day.id) || emptyPlanDays[0];
+    const summary = `<p class="flex-1 min-w-0 text-xs text-slate-500 leading-snug"><strong class="text-slate-800">${totalSteps} ${totalSteps === 1 ? 'activity' : 'activities'}</strong> · ${planDays} day${planDays > 1 ? 's' : ''}${emptyPlanDays.length ? ` · ${emptyPlanDays.length} to plan` : ''}</p>`;
+    const barCls = 'sticky bottom-0 -mx-4 px-4 py-2.5 bg-white/95 backdrop-blur border-t border-slate-200 mt-4 flex items-center gap-3 z-10';
+    const primary = 'shrink-0 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 active:scale-[0.98] text-white font-extrabold rounded-xl text-sm flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer';
+    if (nextEmpty && mine.length === 0) {
+      html += `<div id="vt-bottom-bar" class="${barCls}">${summary}</div>`;
+    } else if (nextEmpty) {
+      html += `
+      <div id="vt-bottom-bar" class="${barCls}">${summary}
+        <button type="button" id="btn-vt-next-day" data-day-id="${nextEmpty.id}" class="${primary}">Plan Day ${nextEmpty.id}<i data-lucide="arrow-right" class="w-4 h-4"></i></button>
       </div>`;
+    } else {
+      html += `
+      <div id="vt-bottom-bar" class="${barCls}">${summary}
+        <button type="button" onclick="KYT.virtualTrips.useAsMyTrip('${esc(trip.id)}')"
+           class="shrink-0 text-xs font-bold text-slate-500 hover:text-blue-700 underline underline-offset-2 cursor-pointer px-1 py-2">Start this trip</button>
+        <button type="button" id="btn-vt-view-trip" class="${primary}"><i data-lucide="eye" class="w-4 h-4"></i>View trip</button>
+      </div>`;
+    }
 
     DOM.itineraryListRoot.innerHTML = html;
     if (window.lucide) lucide.createIcons();
@@ -1757,6 +1804,8 @@ KYT.virtualTrips = (function () {
     if (!trip) return;
     const t = e.target;
     const q = sel => t.closest(sel);
+    const nextDayBtn = q('#btn-vt-next-day');
+    if (nextDayBtn) { activeDayId = Number(nextDayBtn.dataset.dayId); renderBuilder(); const sc = document.getElementById('vt-screen-builder'); if (sc) sc.scrollTop = 0; return; }
     if (q('#btn-vt-view-trip')) { window.location.href = `trip_detail.html?id=${encodeURIComponent(trip.id)}`; return; }
     const dayTab = q('[data-day-id][role="tab"]');
     if (dayTab) { activeDayId = Number(dayTab.dataset.dayId); renderBuilder(); return; }
@@ -1799,8 +1848,8 @@ KYT.virtualTrips = (function () {
       const km = hint.dataset.km === '' ? null : Number(hint.dataset.km);
       openStepEditor({
         mode: 'add', kind: 'travel', dayId: activeDayId,
-        prefill: { from: hint.dataset.from, to: hint.dataset.to, mode: km != null && km > 700 ? 'flight' : (km != null && km > 350 ? 'train' : 'road'),
-          hour: hint.dataset.hour ? Number(hint.dataset.hour) : 9 }
+        prefill: { from: hint.dataset.from, to: hint.dataset.to, mode: km != null && km > 700 ? 'flight' : (km != null && (km > 350 || hint.dataset.overnight === '1') ? 'train' : 'road'),
+          hour: hint.dataset.hour ? Number(hint.dataset.hour) : 9, overnight: hint.dataset.overnight === '1' }
       });
     }
   }
@@ -1975,6 +2024,12 @@ KYT.virtualTrips = (function () {
         titleInput.addEventListener('input', () => document.getElementById('vt-step-error').classList.add('hidden'));
         titleInput.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); saveStepEditor(); } });
       }
+      ['vt-travel-mode'].forEach(id => { const el = document.getElementById(id); if (el) el.addEventListener('change', updateTravelHint); });
+      const overnightEl = document.getElementById('vt-travel-overnight');
+      if (overnightEl) overnightEl.addEventListener('change', () => {
+        const t = document.getElementById('vt-step-time');
+        if (overnightEl.checked && t && t.value && Number(t.value.slice(0, 2)) < 17) t.value = '21:00';
+      });
       ['vt-travel-from', 'vt-travel-to'].forEach(id => {
         const el = document.getElementById(id);
         if (!el) return;
