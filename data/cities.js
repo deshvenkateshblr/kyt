@@ -6207,6 +6207,27 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kutch%20Gujarat%20India",
     "notes": "A vast white salt desert offering surreal landscapes, vibrant tribal textile crafts, and cultural celebrations under the full moon.",
+    "beforeYouGo": {
+      "official": "https://rannutsav.net/",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "permit",
+          "text": "Visitors to the White Rann at Dhordo need an Online Entry Permit, which Gujarat Tourism directs them to get through the state’s rannpermit.gujarat.gov.in portal.",
+          "source": "https://gujarattourism.com/fair-and-festival/rann-utsav.html"
+        },
+        {
+          "kind": "season",
+          "text": "The Rann Utsav Tent City runs through the cooler months, roughly November to early March, with November to February preferred.",
+          "source": "https://rannutsav.net/"
+        },
+        {
+          "kind": "book",
+          "text": "Tents and packages are booked through the booking link on rannutsav.net, run by the official booking partner. Authorised resellers may also sell packages.",
+          "source": "https://rannutsav.net/official-rann-utsav-website/"
+        }
+      ]
+    },
     "beats": [
       {
         "title": "Great Rann of Kutch white desert sunset",
@@ -6442,6 +6463,27 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Somnath%20Gujarat%20India",
     "notes": "Home to the revered Somnath Temple, the first of the twelve sacred Jyotirlingas, perched grandly beside the Arabian Sea.",
+    "beforeYouGo": {
+      "official": "https://somnath.org/",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "book",
+          "text": "Pooja and donations are booked online only at somnath.org. The Trust warns that it never takes payment over WhatsApp, social media or private numbers.",
+          "source": "https://somnath.org/online-donation/"
+        },
+        {
+          "kind": "rule",
+          "text": "Phones, cameras, smartwatches and all electronic gadgets are banned inside the temple, and so is photography. Free cloak room lockers are available.",
+          "source": "https://somnath.org/faq/"
+        },
+        {
+          "kind": "dress",
+          "text": "Sarees, dhotis, pants, T-shirts and skirts are fine. Mini skirts and disrespectful clothing are not allowed, and footwear comes off before entering.",
+          "source": "https://somnath.org/faq/"
+        }
+      ]
+    },
     "beats": [
       {
         "title": "Somnath Jyotirlinga Temple morning darshan",
@@ -7811,6 +7853,27 @@ window.KYT_CITIES = [
       "note": "Visitors need an Inner Line Permit (eILP) to enter Arunachal Pradesh.",
       "source": "https://arunachalilp.com"
     },
+    "beforeYouGo": {
+      "official": "https://eilp.arunachal.gov.in/",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "permit",
+          "text": "Indian visitors need the tourist e-ILP (electronic Inner Line Permit) for Arunachal, applied for online through the Apply ILP link on the state eILP portal.",
+          "source": "https://eilp.arunachal.gov.in/ilpInfo"
+        },
+        {
+          "kind": "id",
+          "text": "Upload a recent colour passport-style photo and one ID scan: driving licence, passport, ration card, voter ID, Aadhaar or PRC. DigiLocker can be used.",
+          "source": "https://eilp.arunachal.gov.in/ilpInfo"
+        },
+        {
+          "kind": "rule",
+          "text": "Official pages give different stay limits: 14 days on the state tourism page, up to 30 days for a provisional permit on the portal. Confirm when you apply.",
+          "source": "https://arunachaltourism.com/ilp/"
+        }
+      ]
+    },
     "beats": [
       {
         "title": "Tawang Monastery (Galden Namgey Lhatse)",
@@ -8573,6 +8636,27 @@ window.KYT_CITIES = [
         5
       ],
       "source": "https://www.tribuneindia.com/news/himachal/gramphu-losar-stretch-shut-for-winter-as-spiti-braces-for-isolation"
+    },
+    "beforeYouGo": {
+      "official": "https://himachaltourism.gov.in/",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "permit",
+          "text": "Indian citizens need no permit for Spiti. The Inner Line Permit is for foreign tourists on the Shimla to Kinnaur route.",
+          "source": "https://himachaltourism.gov.in/destination/spiti-valley/"
+        },
+        {
+          "kind": "season",
+          "text": "Regular buses to Kaza run May to October from Shimla and July to October from Manali. The state lists April to October as the good time to visit.",
+          "source": "https://himachaltourism.gov.in/destination/spiti-valley/"
+        },
+        {
+          "kind": "rule",
+          "text": "Tell the SDM, police or tourism office before a high-altitude trek, and use only government-registered guides, porters and agencies.",
+          "source": "https://himachaltourism.gov.in/travel-safety-tips/"
+        }
+      ]
     },
     "beats": [
       {
@@ -10805,6 +10889,27 @@ window.KYT_CITIES = [
       "kind": "permit",
       "note": "Visitors need an Inner Line Permit (eILP) to enter Arunachal Pradesh.",
       "source": "https://arunachalilp.com"
+    },
+    "beforeYouGo": {
+      "official": "https://eilp.arunachal.gov.in/",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "permit",
+          "text": "Indian visitors need the tourist e-ILP (electronic Inner Line Permit) for Arunachal, applied for online through the Apply ILP link on the state eILP portal.",
+          "source": "https://eilp.arunachal.gov.in/ilpInfo"
+        },
+        {
+          "kind": "id",
+          "text": "Upload a recent colour passport-style photo and one ID scan: driving licence, passport, ration card, voter ID, Aadhaar or PRC. DigiLocker can be used.",
+          "source": "https://eilp.arunachal.gov.in/ilpInfo"
+        },
+        {
+          "kind": "rule",
+          "text": "Official pages give different stay limits: 14 days on the state tourism page, up to 30 days for a provisional permit on the portal. Confirm when you apply.",
+          "source": "https://arunachaltourism.com/ilp/"
+        }
+      ]
     },
     "beats": [
       {
@@ -17051,6 +17156,22 @@ window.KYT_CITIES = [
       "Nature",
       "Forest"
     ],
+    "beforeYouGo": {
+      "official": "https://www.srisailadevasthanam.org/en-in/",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "book",
+          "text": "Abhishekam and puja tickets can be booked online. Carry a printed ticket and an ID in the ticket holder’s name; tickets cannot be transferred or cancelled.",
+          "source": "https://onlinebooking.srisailamonline.com/"
+        },
+        {
+          "kind": "dress",
+          "text": "Traditional dress is required for sevas and pujas: pancha with kanduva for men, saree with blouse for women. Other dress is not allowed.",
+          "source": "https://onlinebooking.srisailamonline.com/"
+        }
+      ]
+    },
     "beats": [
       {
         "title": "Mallikarjuna Jyotirlinga",
@@ -17150,6 +17271,27 @@ window.KYT_CITIES = [
       "River",
       "Heritage"
     ],
+    "beforeYouGo": {
+      "official": "https://shriomkareshwar.org/",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "book",
+          "text": "Ordinary darshan is free with no booking. Optional priority (Shighra) darshan tickets, pooja, rooms and prasad can be booked on the trust’s official website.",
+          "source": "https://shriomkareshwar.org/"
+        },
+        {
+          "kind": "rule",
+          "text": "Priority tickets work only in the chosen time slot, not during temple service breaks, and are non-refundable. One reschedule before the date is allowed through the helpline.",
+          "source": "https://shriomkareshwar.org/FAQ.aspx"
+        },
+        {
+          "kind": "dress",
+          "text": "The trust’s FAQ states no official dress code; ordinary modest clothing is recommended.",
+          "source": "https://shriomkareshwar.org/FAQ.aspx"
+        }
+      ]
+    },
     "beats": [
       {
         "title": "Omkareshwar Jyotirlinga",
@@ -17345,6 +17487,27 @@ window.KYT_CITIES = [
       "Heritage",
       "Vineyards"
     ],
+    "beforeYouGo": {
+      "official": "https://trimbakeshwartrust.com/",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "book",
+          "text": "Trimbakeshwar temple: the trust’s site takes online bookings for donation darshan passes, Rudrabhishek and Laghurudra pujas and Bhaktniwas stays. Offline donation darshan is available at a counter.",
+          "source": "https://trimbakeshwartrust.com/"
+        },
+        {
+          "kind": "id",
+          "text": "Trimbakeshwar online darshan pass holders show a photo ID and the QR pass at the gate. The pass is non-transferable, valid only on the booked date, and covers up to four other people.",
+          "source": "https://trimbakeshwartrust.com/onlinevip"
+        },
+        {
+          "kind": "rule",
+          "text": "Online Rudrabhishek and Laghurudra pujas are performed remotely only, so you cannot attend them at the temple. Bookings are non-refundable and non-cancellable.",
+          "source": "https://trimbakeshwartrust.com/online-puja-booking"
+        }
+      ]
+    },
     "beats": [
       {
         "title": "Trimbakeshwar Temple",
@@ -17443,6 +17606,22 @@ window.KYT_CITIES = [
       "Spiritual",
       "Culture"
     ],
+    "beforeYouGo": {
+      "official": "https://deoghar.nic.in/",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "season",
+          "text": "During the month-long Shravan pilgrimage, lakhs of kanwar devotees reach Baidyanath Dham, so expect very heavy crowds at the temple.",
+          "source": "https://deoghar.nic.in/shrawani-mela/"
+        },
+        {
+          "kind": "rule",
+          "text": "A district notice for the 2025 Shravani Mela barred VIP darshan at the temple during the Mela, so do not count on special access in Shravan.",
+          "source": "https://deoghar.nic.in/shrawani-mela-2025-related-document/"
+        }
+      ]
+    },
     "beats": [
       {
         "title": "Baidyanath Jyotirlinga",
@@ -19793,6 +19972,27 @@ window.KYT_CITIES = [
       "kind": "permit",
       "note": "Visitors need an Inner Line Permit to enter Nagaland.",
       "source": "https://ilp.nagaland.gov.in/about"
+    },
+    "beforeYouGo": {
+      "official": "https://ilp.nagaland.gov.in/",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "permit",
+          "text": "Apply for the Inner Line Permit on the official ILP portal with an OTP-verified phone number and get an SMS confirmation. Manual applications go through Nagaland House or a district Deputy Commissioner’s office.",
+          "source": "https://ilp.nagaland.gov.in/faq"
+        },
+        {
+          "kind": "permit",
+          "text": "A domestic tourist’s permit is valid for 30 days. Give a local contact; no guarantor is needed.",
+          "source": "https://ilp.nagaland.gov.in/faq"
+        },
+        {
+          "kind": "rule",
+          "text": "Online tourist permits applied for in working hours are usually approved in about four hours; those made after hours are handled early the next working day.",
+          "source": "https://ilp.nagaland.gov.in/faq"
+        }
+      ]
     },
     "beats": [
       {

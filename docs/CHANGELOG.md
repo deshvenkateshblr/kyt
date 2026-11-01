@@ -396,3 +396,6 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **City sheet** shows a Before you go section under the access note and above the attractions, with a Source link on every item, the official website and the month it was checked.
     - **City cards** (the trip builder's library card and the summary card) carry a small "Before you go" cue naming the first kind of note, only for cities that have one.
     - **Tests:** `11-before-you-go.test.js` added (3).
+59. **Before you go for ten more cities (service worker cache `kyt-v97`)**
+    - Tawang, Ziro, Kohima, Spiti Valley, Kutch, Somnath, Srisailam, Omkareshwar, Nashik (Trimbakeshwar) and Deoghar, 28 items, same rules as entry 58: read on an official page, linked to it, no prices. Twenty cities now carry `beforeYouGo` (62 items).
+    - Where official pages disagree, the item says so rather than picking one: Arunachal's stay limit (14 days on the tourism page, up to 30 on the e-ILP portal). Ujjain, Shirdi, Leh, Dwarka, Rameswaram and Bhimashankar stay blank (see TODO P1.2).
