@@ -6,6 +6,27 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Agra%20India",
     "notes": "Home to the iconic Taj Mahal, a masterpiece of Mughal architecture and imperial heritage.",
+    "beforeYouGo": {
+      "official": "https://www.asiagracircle.in/",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "rule",
+          "text": "The Taj Mahal is closed every Friday, except for a short midday window when the mosque is open for prayer.",
+          "source": "https://www.asiagracircle.in/tajmahal.html"
+        },
+        {
+          "kind": "season",
+          "text": "Daytime visiting runs from sunrise to sunset. Night viewing is held only on the full-moon night and the two nights either side, never on Fridays and not in Ramzan.",
+          "source": "https://www.asiagracircle.in/tajmahal.html"
+        },
+        {
+          "kind": "rule",
+          "text": "Food, drones, tripods and similar tools, torches, helmets, large bags, flowers, religious items, pens and pencils, smoking items, liquor and weapons are not allowed inside the complex.",
+          "source": "https://www.asiagracircle.in/visitor-information.html"
+        }
+      ]
+    },
     "beats": [
       {
         "title": "Taj Mahal",
@@ -769,6 +790,32 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Varanasi%20India",
     "notes": "The spiritual heart of India, famous for its ancient temples, sacred ghats, and timeless devotion.",
+    "beforeYouGo": {
+      "official": "https://shrikashivishwanath.org",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "book",
+          "text": "Aarti slots, including Mangla Aarti, can be booked on the temple website, its booking app or at the temple help desk.",
+          "source": "https://www.shrikashivishwanath.org/pdffile/FAQ_SHRI_KASHI_VISHWANTH_TEMPLE_2_0_pdf.pdf"
+        },
+        {
+          "kind": "rule",
+          "text": "Mangla Aarti runs 3 to 4 am. Report by 2:30 am and enter through Gate 1.",
+          "source": "https://www.shrikashivishwanath.org/pdffile/FAQ_SHRI_KASHI_VISHWANTH_TEMPLE_2_0_pdf.pdf"
+        },
+        {
+          "kind": "rule",
+          "text": "Aarti bookings cannot be cancelled or moved to another date, and the fee is treated as a donation, so it is not refunded.",
+          "source": "https://www.shrikashivishwanath.org/pdffile/FAQ_SHRI_KASHI_VISHWANTH_TEMPLE_2_0_pdf.pdf"
+        },
+        {
+          "kind": "rule",
+          "text": "Phones, other gadgets and even pens are not allowed inside. Free lockers are provided near the temple.",
+          "source": "https://www.shrikashivishwanath.org/pdffile/FAQ_SHRI_KASHI_VISHWANTH_TEMPLE_2_0_pdf.pdf"
+        }
+      ]
+    },
     "beats": [
       {
         "title": "Sunrise boat ride on the Ganges",
@@ -3101,6 +3148,32 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Andaman%20Islands%20India",
     "notes": "A tropical archipelago known for its crystal-clear turquoise waters, pristine coral reefs, and colonial history.",
+    "beforeYouGo": {
+      "official": "https://dss.andamannicobar.gov.in/",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "book",
+          "text": "Book government inter-island ferries online on the official STARS e-ticketing portal of the Directorate of Shipping Services.",
+          "source": "https://dss.andamannicobar.gov.in/ShipETicketingWeb/user-instructions.jsp"
+        },
+        {
+          "kind": "id",
+          "text": "Enter a valid ID when booking and carry the same original when boarding. Any government photo ID is accepted for Port Blair to the nearby islands.",
+          "source": "https://dss.andamannicobar.gov.in/ShipETicketingWeb/terms-and-conditions.jsp"
+        },
+        {
+          "kind": "permit",
+          "text": "Indian nationals going from Port Blair to the Nicobar group need a Tribal Pass. For nearby islands such as Havelock and Neil, only photo ID is listed.",
+          "source": "https://dss.andamannicobar.gov.in/ShipETicketingWeb/terms-and-conditions.jsp"
+        },
+        {
+          "kind": "rule",
+          "text": "Reserved forests, wildlife sanctuaries and tribal reserves need separate approval. Report 2 hours before sailing; boarding closes 30 minutes before.",
+          "source": "https://tourism.andamannicobar.gov.in/userpages/admin/whatsnewfile/2026030570Restricted%20Area%20Permit.pdf"
+        }
+      ]
+    },
     "beats": [
       {
         "title": "Cellular Jail National Memorial",
@@ -6966,6 +7039,27 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Puri%20Odisha%20India",
     "notes": "One of the four sacred Dhams of Hinduism, famous for the Jagannath Temple, golden surf beaches, and the world-renowned Rath Yatra.",
+    "beforeYouGo": {
+      "official": "https://www.shreejagannatha.in",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "rule",
+          "text": "Mobile phones, electronic gadgets, umbrellas, leather items, footwear and cooked food are not allowed in and around the temple premises.",
+          "source": "https://www.shreejagannatha.in/dos-donts/"
+        },
+        {
+          "kind": "dress",
+          "text": "Devotees are asked to bathe and wear clean clothes before darshan.",
+          "source": "https://www.shreejagannatha.in/dos-donts/"
+        },
+        {
+          "kind": "rule",
+          "text": "Alcohol and other intoxicants, non-vegetarian food and begging are barred. Keep to the queues and silence inside, and watch for pickpockets and monkeys.",
+          "source": "https://www.shreejagannatha.in/dos-donts/"
+        }
+      ]
+    },
     "beats": [
       {
         "title": "Jagannath Temple darshan & Mahaprasad",
@@ -7831,6 +7925,32 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gangtok%20Sikkim%20India",
     "notes": "The capital of Sikkim, offering stunning views of Mount Kanchenjunga, Tibetan monasteries, mountain cable cars, and alpine lakes.",
+    "beforeYouGo": {
+      "official": "https://sikkimtourism.gov.in",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "permit",
+          "text": "Indian visitors need a Protected Area Permit for Tsomgo Lake, Nathu La, Zuluk, Lachung, Lachen, Gurudongmar and other border areas.",
+          "source": "https://www.sikkim.gov.in/department/departmentmenudetails?url=Menu%3Dtourism-civil-aviation-department%2Fgeneral-info"
+        },
+        {
+          "kind": "book",
+          "text": "Protected-area tours must be arranged through a government-registered travel agency or tour operator.",
+          "source": "https://www.sikkim.gov.in/department/departmentmenudetails?url=Menu%3Dtourism-civil-aviation-department%2Fgeneral-info"
+        },
+        {
+          "kind": "rule",
+          "text": "Nathu La is closed on Mondays. Permits are issued Tuesday to Sunday.",
+          "source": "https://www.sikkim.gov.in/department/departmentmenudetails?url=Menu%3Dtourism-civil-aviation-department%2Fgeneral-info"
+        },
+        {
+          "kind": "id",
+          "text": "Accepted IDs are an Indian passport, voter ID, driving licence or government ID. Aadhaar is not valid for permit processing.",
+          "source": "https://www.sikkim.gov.in/department/departmentmenudetails?url=Menu%3Dtourism-civil-aviation-department%2Fgeneral-info"
+        }
+      ]
+    },
     "beats": [
       {
         "title": "Rumtek Monastery (Dharma Chakra Centre)",
@@ -9197,6 +9317,27 @@ window.KYT_CITIES = [
       ],
       "source": "https://www.newsbytesapp.com/news/india/kedarnath-temple-reopens-april-22-for-2026-char-dham-yatra/tldr"
     },
+    "beforeYouGo": {
+      "official": "https://registrationandtouristcare.uk.gov.in/",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "permit",
+          "text": "Register yourself and your vehicle on the state yatra portal before you set out. It is free, and you verify again at each shrine on arrival.",
+          "source": "https://registrationandtouristcare.uk.gov.in/"
+        },
+        {
+          "kind": "id",
+          "text": "Carry valid photo ID and your downloaded Yatra Registration Letter (it has a QR code) for checks at verification points.",
+          "source": "https://registrationandtouristcare.uk.gov.in/"
+        },
+        {
+          "kind": "book",
+          "text": "Helicopter tickets to Kedarnath are sold only on the IRCTC HeliYatra site. You need your yatra registration number first.",
+          "source": "https://www.heliyatra.irctc.co.in/"
+        }
+      ]
+    },
     "beats": [
       {
         "title": "Kedarnath Temple darshan & morning prayers",
@@ -9323,6 +9464,22 @@ window.KYT_CITIES = [
         4
       ],
       "source": "https://dailypioneer.com/news/gates-of-badrinath-dham-to-reopen-on-april-23"
+    },
+    "beforeYouGo": {
+      "official": "https://badrinath-kedarnath.gov.in/",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "permit",
+          "text": "Register on the state yatra portal before the Char Dham journey. It is free, and you carry the registration letter with photo ID.",
+          "source": "https://registrationandtouristcare.uk.gov.in/"
+        },
+        {
+          "kind": "season",
+          "text": "The temple opens in late April or early May on a date fixed by the Hindu calendar, and closes shortly after Deepawali in October or November.",
+          "source": "https://garhwal.uk.gov.in/badrinath/"
+        }
+      ]
     },
     "beats": [
       {
@@ -9806,6 +9963,27 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ayodhya%20India",
     "notes": "A deeply spiritual city on the sacred Saryu River, revered as the birthplace of Lord Rama and capital of the Kosala kingdom.",
+    "beforeYouGo": {
+      "official": "https://srjbtkshetra.org",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "book",
+          "text": "Aarti and darshan passes are booked online on the Trust’s site, and the Trust says there is no charge.",
+          "source": "https://srjbtkshetra.org"
+        },
+        {
+          "kind": "book",
+          "text": "Passes open up to 90 days ahead. Applying is not confirmation: approval usually takes 24 to 48 hours, while same-day passes confirm at once.",
+          "source": "https://srjbtkshetra.org/sugam-darshan-passes-up-to-90-days-in-advance/"
+        },
+        {
+          "kind": "rule",
+          "text": "Book only at online.srjbtkshetra.org and do not pay anyone for a pass. The Trust asks you to report anyone demanding money to report@srjbtk.org.",
+          "source": "https://srjbtkshetra.org/sugam-darshan-passes-up-to-90-days-in-advance/"
+        }
+      ]
+    },
     "beats": [
       {
         "title": "Shri Ram Janmabhoomi Mandir darshan",
@@ -11089,6 +11267,32 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lakshadweep%20Islands%20India",
     "notes": "An untouched tropical archipelago of coral atolls, turquoise lagoons, crystal waters, and vibrant marine life in the Arabian Sea.",
+    "beforeYouGo": {
+      "official": "https://lakshadweep.gov.in/",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "permit",
+          "text": "Anyone who is not a native of Lakshadweep needs an entry permit to enter and stay on the islands.",
+          "source": "https://services.india.gov.in/service/detail/obtaining-entry-permit-to-lakshadweep"
+        },
+        {
+          "kind": "book",
+          "text": "Apply online on the official e-permit portal. Each form covers up to six people, and the permit is emailed to you.",
+          "source": "https://epermit.utl.gov.in/"
+        },
+        {
+          "kind": "book",
+          "text": "Confirm your permit and tour with Lakshadweep Tourism (SPORTS) before you leave home.",
+          "source": "https://samudram.utl.gov.in/sprt_TravelTips.aspx"
+        },
+        {
+          "kind": "rule",
+          "text": "Liquor is banned on all islands except Bangaram, and picking up coral or harming marine life is punishable.",
+          "source": "https://samudram.utl.gov.in/sprt_TravelTips.aspx"
+        }
+      ]
+    },
     "beats": [
       {
         "title": "Agatti Island lagoon & coral reef snorkeling",
@@ -12730,6 +12934,32 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tirupati%20Andhra%20Pradesh%20India",
     "notes": "One of the world's most visited and wealthiest pilgrimage centers, home to Lord Sri Venkateswara on the sacred seven Tirumala hills.",
+    "beforeYouGo": {
+      "official": "https://ttdevasthanams.ap.gov.in",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "book",
+          "text": "Special entry darshan, sevas and rooms are booked online ahead. Each category opens on its own announced date, so check the monthly quota schedule.",
+          "source": "https://news.tirumala.org/january-darshan-and-seva-online-quota-release-schedule/"
+        },
+        {
+          "kind": "book",
+          "text": "Register on the official TTD site first. It is mandatory before booking sevas or accommodation, and your confirmation shows your reporting time.",
+          "source": "https://www.tirumala.org/Advancebooking.aspx"
+        },
+        {
+          "kind": "dress",
+          "text": "Traditional dress is expected for sevas, break darshan and the paid darshan queues: dhoti or pyjama with an upper cloth for men; saree, half-saree or churidar with an upper cloth for women.",
+          "source": "https://www.tirumala.org/DressCode.aspx"
+        },
+        {
+          "kind": "rule",
+          "text": "Book only through the official TTD website, ttdevasthanams.ap.gov.in, as the trust’s own announcements advise.",
+          "source": "https://news.tirumala.org/january-darshan-and-seva-online-quota-release-schedule/"
+        }
+      ]
+    },
     "beats": [
       {
         "title": "Tirumala Venkateswara Temple darshan & laddu",

@@ -391,3 +391,8 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **Suggest a plan** read a day's city by its position in a de-duplicated city list, so Agra, Agra, Jaipur became Agra, Jaipur, Jaipur. It now keeps one city per day, in day order.
     - **Extra days in one city no longer repeat** (TODO P2.8). Each day takes its share of the attractions not yet placed there; a day that cannot hold a stop, such as a transit day, leaves it for the next.
     - **Tests:** one added to `09-plan-editing.test.js`; `07-generated-plans.test.js` P0.2 (c) now accepts Leh's morning stops on either free day and checks the two days do not repeat. 138 pass.
+58. **Before you go on the city sheet, with a cue on city cards (service worker cache `kyt-v96`)**
+    - **New field `beforeYouGo`** in `data/cities.js`: an `official` website, a `checked` month and two to four items, each with a kind (book, permit, id, dress, rule, season), one plain sentence and the official page it was read from. Ten cities so far: Tirupati, Varanasi, Ayodhya, Agra, Puri, Kedarnath, Badrinath, Gangtok, Lakshadweep and the Andaman Islands (34 items). Prices are left out on purpose, and nothing is included that was not read on an official page.
+    - **City sheet** shows a Before you go section under the access note and above the attractions, with a Source link on every item, the official website and the month it was checked.
+    - **City cards** (the trip builder's library card and the summary card) carry a small "Before you go" cue naming the first kind of note, only for cities that have one.
+    - **Tests:** `11-before-you-go.test.js` added (3).

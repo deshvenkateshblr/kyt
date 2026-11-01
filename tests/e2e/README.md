@@ -20,5 +20,6 @@ Set KYT_CHROMIUM=/path/to/chrome to use an existing browser binary.
 | 08-trip-setup | a new empty trip is just a picker, Continue sits inside the Destinations card, nearby cities first, setup is only destinations and a start (flagged while missing, compact button), slim header, Plan the days opens the empty Day Plan |
 | 09-plan-editing | day tabs (one per city, + Day, Remove day, city per day), suggestions with badges that sort by style and hide nothing, stop add/edit/move/delete, travel and stay as steps of their own with hints, Suggest a plan fills only empty days, days follow cities, saved trips from before day tabs open |
 | 10-access-gates | `access` notes are well formed and sourced, no day trip to a trek place, the city sheet and Day Plan warn |
+| 11-before-you-go | `beforeYouGo` entries have an official site, a check month and a source on every item, the city sheet shows them under the access note, city cards carry a cue only where notes exist |
 
 Note: tests that reload the page wait for the IndexedDB write to settle first (`waitForSaved` in helpers.js); without that pause a reload within a few ms of a save was seen to return the old value about 1 run in 40.

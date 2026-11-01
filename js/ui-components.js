@@ -184,6 +184,60 @@ window.KYT.ui = (function () {
       <p class="leading-snug"><span class="font-extrabold">${esc(info.label)}.</span> ${esc(info.text)}${src}</p></div>`;
   }
 
+  // ── Before you go: short, sourced notes on what to book, carry and know before a city (data/cities.js `beforeYouGo`) ──
+  const BYG_META = {
+    book:   { icon: 'ticket',     label: 'Book ahead' },
+    permit: { icon: 'file-text',  label: 'Permit' },
+    id:     { icon: 'user-check', label: 'ID' },
+    dress:  { icon: 'shirt',      label: 'Dress' },
+    rule:   { icon: 'ban',        label: 'Rules' },
+    season: { icon: 'calendar',   label: 'When' }
+  };
+
+  /** The Before you go notes for a city, or null when it has none (most cities). */
+  function beforeYouGoInfo(city) {
+    const b = city && city.beforeYouGo;
+    if (!b || !Array.isArray(b.items) || !b.items.length) return null;
+    const kinds = [...new Set(b.items.map(i => i.kind).filter(k => BYG_META[k]))];
+    const m = /^(\d{4})-(\d{2})$/.exec(b.checked || '');
+    return {
+      items: b.items,
+      official: /^https:\/\//.test(b.official || '') ? b.official : '',
+      checked: m ? `${MONTHS[Number(m[2]) - 1]} ${m[1]}` : '',
+      kinds
+    };
+  }
+
+  /** The Before you go section of the city sheet. */
+  function renderBeforeYouGo(city, id) {
+    const info = beforeYouGoInfo(city);
+    if (!info) return '';
+    const esc = KYT.utils.escapeHTML;
+    const link = (url, text) => /^https:\/\//.test(url || '')
+      ? ` <a href="${esc(url)}" target="_blank" rel="noopener noreferrer" class="text-indigo-600 underline whitespace-nowrap">${text}</a>` : '';
+    const rows = info.items.map(it => {
+      const m = BYG_META[it.kind] || BYG_META.rule;
+      return `<li data-byg-kind="${esc(it.kind)}" class="flex items-start gap-2">
+        <i data-lucide="${m.icon}" class="w-4 h-4 text-indigo-500 shrink-0 mt-px"></i>
+        <p class="leading-snug"><span class="font-bold">${m.label}.</span> ${esc(it.text)}${link(it.source, 'Source')}</p></li>`;
+    }).join('');
+    const foot = [info.official ? `<a href="${esc(info.official)}" target="_blank" rel="noopener noreferrer" class="font-semibold text-indigo-700 underline">Official website</a>` : '',
+      info.checked ? `Checked ${esc(info.checked)}` : ''].filter(Boolean).join(' · ');
+    return `<div ${id ? `id="${id}" ` : ''}class="text-xs text-slate-700 bg-indigo-50/60 border border-indigo-100 rounded-xl px-3 py-2.5 space-y-2">
+      <p class="flex items-center gap-1.5 font-extrabold text-indigo-900 uppercase tracking-wider text-[11px]"><i data-lucide="clipboard-check" class="w-4 h-4"></i> Before you go</p>
+      <ul class="space-y-1.5">${rows}</ul>
+      ${foot ? `<p class="text-[11px] text-slate-500">${foot}</p>` : ''}</div>`;
+  }
+
+  /** A small cue on a city card: this place has notes worth reading before planning it. */
+  function renderBeforeYouGoChip(city) {
+    const info = beforeYouGoInfo(city);
+    if (!info) return '';
+    const esc = KYT.utils.escapeHTML;
+    const shown = BYG_META[info.kinds[0]] ? BYG_META[info.kinds[0]].label : '';
+    return `<span data-byg-chip class="inline-flex items-center gap-1 text-[10px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-100 rounded-full px-2 py-0.5" title="${esc(info.kinds.map(k => BYG_META[k].label).join(', '))}"><i data-lucide="clipboard-check" class="w-3 h-3"></i>Before you go${shown ? ': ' + esc(shown) : ''}</span>`;
+  }
+
   function renderGeneratedPlanNotice() {
     return `
       <p id="generated-plan-notice" class="flex items-start gap-1.5 text-[11px] leading-snug text-slate-500">
@@ -324,6 +378,7 @@ window.KYT.ui = (function () {
               <div>
                 <h4 class="text-lg font-bold text-slate-800 group-hover:text-blue-600 transition-colors">${esc(city.name)}</h4>
                 ${videoLink(city) ? `<div class="mt-0.5">${videoLink(city)}</div>` : ''}
+                ${renderBeforeYouGoChip(city) ? `<div class="mt-1">${renderBeforeYouGoChip(city)}</div>` : ''}
                 <p class="text-xs text-slate-500 mt-1 line-clamp-3">${esc(city.notes || city.description || 'A beautiful destination to explore.')}</p>
               </div>
             </div>
@@ -367,6 +422,7 @@ window.KYT.ui = (function () {
                   <span class="text-[9px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full shrink-0">${beatCount} attraction${beatCount !== 1 ? 's' : ''}</span>
                   ${videoLink(city)}
                 </div>
+                ${renderBeforeYouGoChip(city) ? `<div class="mb-1.5">${renderBeforeYouGoChip(city)}</div>` : ''}
                 <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">${esc(city.notes || city.description || 'Explore this destination')}</p>
               </div>
               <div class="shrink-0 flex items-center gap-2">
@@ -1053,8 +1109,15 @@ window.KYT.ui = (function () {
       const accessHtml = renderAccessNote(city, 'cd-access');
       if (accessHtml && attrList && attrList.parentElement) {
         attrList.parentElement.insertAdjacentHTML('beforebegin', accessHtml);
-        if (window.lucide) window.lucide.createIcons();
       }
+      // Before you go sits under the access note, above the attractions
+      const oldByg = document.getElementById('cd-byg');
+      if (oldByg) oldByg.remove();
+      const bygHtml = renderBeforeYouGo(city, 'cd-byg');
+      if (bygHtml && attrList && attrList.parentElement) {
+        attrList.parentElement.insertAdjacentHTML('beforebegin', bygHtml);
+      }
+      if ((accessHtml || bygHtml) && window.lucide) window.lucide.createIcons();
       if (attrList) {
         if (city.beats && city.beats.length > 0) {
           attrList.innerHTML = city.beats.map(b => renderAttractionAccordion(b, city.name)).join('');
@@ -1263,6 +1326,9 @@ window.KYT.ui = (function () {
     renderGeneratedPlanNotice,
     accessInfo,
     renderAccessNote,
+    beforeYouGoInfo,
+    renderBeforeYouGo,
+    renderBeforeYouGoChip,
     renderMobilityBadge,
     categoryMeta,
     encodeAiTrip,
