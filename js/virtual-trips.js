@@ -1283,6 +1283,100 @@ KYT.virtualTrips = (function () {
     const d = (m[a] && m[a][b]) != null ? m[a][b] : (m[b] && m[b][a]);
     return d != null ? d : null;
   }
+
+  function parseDurationMinutes(val) {
+    if (val == null || val === '') return null;
+    if (typeof val === 'number') return val;
+    const s = String(val).trim().toLowerCase();
+    const hm = /^(\d+(?:\.\d+)?)\s*(?:h|hr|hours?)(?:\s*(\d+)\s*(?:m|min|mins?))?$/.exec(s);
+    if (hm) {
+      const hours = parseFloat(hm[1]);
+      const mins = hm[2] ? parseInt(hm[2], 10) : 0;
+      return Math.round(hours * 60) + mins;
+    }
+    const mOnly = /^(\d+)\s*(?:m|min|mins?)$/.exec(s);
+    if (mOnly) return parseInt(mOnly[1], 10);
+    const numOnly = /^(\d+)$/.exec(s);
+    if (numOnly) return parseInt(numOnly[1], 10);
+    return null;
+  }
+
+  function formatDuration(mins) {
+    if (!mins || mins <= 0) return '';
+    const h = Math.floor(mins / 60);
+    const m = mins % 60;
+    if (h && m) return `${h}h ${m}m`;
+    if (h) return `${h}h`;
+    return `${m}m`;
+  }
+
+  function estimatedDriveMinutes(fromIdOrName, toIdOrName) {
+    const fromCity = cityById(fromIdOrName) || cityByName(fromIdOrName);
+    const toCity = cityById(toIdOrName) || cityByName(toIdOrName);
+    let km = fromCity && toCity ? kmBetween(fromCity.id, toCity.id) : null;
+    if (km == null && fromCity && toCity && fromCity.lat && toCity.lat) {
+      const R = 6371;
+      const dLat = (toCity.lat - fromCity.lat) * Math.PI / 180;
+      const dLng = (toCity.lng - fromCity.lng) * Math.PI / 180;
+      const a = Math.sin(dLat / 2) ** 2 + Math.cos(fromCity.lat * Math.PI / 180) * Math.cos(toCity.lat * Math.PI / 180) * Math.sin(dLng / 2) ** 2;
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      km = Math.round(R * c * 1.25);
+    }
+    if (!km) return 90;
+    const mins = Math.round((km / 45) * 60) + 15;
+    return Math.max(30, Math.round(mins / 15) * 15);
+  }
+
+  function defaultStepDuration(b) {
+    if (!b) return 90;
+    if (b.durationMin) return b.durationMin;
+    if (b.type === 'travel') {
+      if (b.duration) {
+        const p = parseDurationMinutes(b.duration);
+        if (p) return p;
+      }
+      if (b.from && b.to) return estimatedDriveMinutes(b.from, b.to);
+      return 90;
+    }
+    if (b.type === 'stay') return 30;
+    const title = (b.title || '').toLowerCase();
+    const icon = b.icon || '';
+    const intents = Array.isArray(b.intent) ? b.intent : [];
+    
+    if (icon === 'coffee' || /breakfast|tea|chai|coffee|poha|bakery|morning snack/i.test(title)) return 45;
+    if (icon === 'utensils' || intents.includes('culinary') || /lunch|dinner|food trail|feast|bazaar|restaurant|sweets|chaat/i.test(title)) return 75;
+    if (/jyotirlinga|darshan|aarti|sanctum|corridor/i.test(title)) return 120;
+    if (/fort|palace|museum|safari|national park|trek|observatory/i.test(title)) return 120;
+    if (/sunset|ghat|lake|viewpoint|park|garden/i.test(title)) return 60;
+    return 90;
+  }
+
+  function citiesOfDay(trip, dayId) {
+    const d = (trip.days || []).find(x => x.id === dayId);
+    const startCity = cityById(d && d.cityId) || cityById((trip.cities || [])[0]);
+    const result = [];
+    const seen = new Set();
+    const add = c => {
+      if (c && !seen.has(c.id)) {
+        seen.add(c.id);
+        result.push(c);
+      }
+    };
+    if (startCity) add(startCity);
+    const steps = stepsOfDay(trip, dayId);
+    steps.forEach(s => {
+      if (s.type === 'travel') {
+        const fromC = cityByName(s.from) || cityById(s.from);
+        const toC = cityByName(s.to) || cityById(s.to);
+        if (fromC) add(fromC);
+        if (toC) add(toC);
+      } else if (s.cityName) {
+        const c = cityByName(s.cityName) || cityById(s.cityName);
+        if (c) add(c);
+      }
+    });
+    return result.length ? result : (startCity ? [startCity] : []);
+  }
   function syncDuration(trip) {
     trip.duration = (trip.days || []).filter(d => d.id >= 1).length || (trip.cities && trip.cities.length) || 1;
   }
@@ -1430,10 +1524,43 @@ KYT.virtualTrips = (function () {
   let activeDayId = null;      // the day tab that is open
   let styleOpen = false;       // the "style of suggestions" chips are shown
   let builderTripId = null;
+  let activeDrawerCityId = null; // currently selected city tab in suggestions drawer for multi-city days
 
-  function setStepTime(step, h, m) {
+  function currentDrawerCity(trip, dayId, requestedCityId) {
+    const dayCities = citiesOfDay(trip, dayId);
+    if (requestedCityId) {
+      const found = dayCities.find(c => c.id === requestedCityId) || cityById(requestedCityId);
+      if (found) return found;
+    }
+    if (activeDrawerCityId) {
+      const found = dayCities.find(c => c.id === activeDrawerCityId);
+      if (found) return found;
+    }
+    const mine = stepsOfDay(trip, dayId);
+    if (mine.length > 0) {
+      const last = mine[mine.length - 1];
+      if (last.type === 'travel' && last.to) {
+        const toC = cityByName(last.to) || cityById(last.to);
+        if (toC) return toC;
+      } else if (last.cityName) {
+        const c = cityByName(last.cityName) || cityById(last.cityName);
+        if (c) return c;
+      }
+    }
+    return dayCities[0] || dayCity(trip, dayId);
+  }
+
+  function setStepTime(step, h, m, durationMin) {
     step.hour = h;
     step.minute = m;
+    if (durationMin != null) {
+      step.durationMin = durationMin;
+    } else if (!step.durationMin) {
+      step.durationMin = defaultStepDuration(step);
+    }
+    const endM = h * 60 + m + (step.durationMin || 60);
+    step.endHour = Math.floor(endM / 60) % 24;
+    step.endMinute = endM % 60;
     step.phase = KYT.ui.hourToPhase(h);
     step.suggestedTime = KYT.ui.formatSuggestedTime(h, m, step.phase);
   }
@@ -1472,32 +1599,59 @@ KYT.virtualTrips = (function () {
   }
   function pushStep(trip, step, h, m) {
     const t = freeTime(trip, step.dayId, h, m);
-    setStepTime(step, t.h, t.m);
+    setStepTime(step, t.h, t.m, step.durationMin);
     if (!trip.steps) trip.steps = [];
     trip.steps.push(step);
     sortAllSteps(trip);
   }
 
-  function addBeatStep(trip, dayId, beatIndex) {
-    const city = dayCity(trip, dayId);
-    const beat = suggestionsFor(trip, dayId).all[beatIndex];
+  function addBeatStep(trip, dayId, beatIndex, targetCityId) {
+    const city = (targetCityId && (cityById(targetCityId) || cityByName(targetCityId))) || currentDrawerCity(trip, dayId);
+    const sg = suggestionsFor(trip, dayId, city ? city.id : null);
+    const beat = sg.all[beatIndex];
     if (!beat || !city) return;
+    const dur = beat.durationMin || defaultStepDuration(beat);
+    const mine = stepsOfDay(trip, dayId);
+    let h, m;
+    if (mine.length > 0) {
+      const last = mine[mine.length - 1];
+      const lastDur = last.durationMin || defaultStepDuration(last);
+      const lastEnd = (last.hour || 0) * 60 + (last.minute || 0) + lastDur;
+      const nextMins = Math.min(lastEnd + 15, 23 * 60 + 45);
+      h = Math.floor(nextMins / 60);
+      m = nextMins % 60;
+    } else {
+      h = beat.hour != null ? beat.hour : 9;
+      m = 0;
+    }
     pushStep(trip, {
       id: newStepId(), dayId, cityName: city.name, type: 'stop', title: beat.title, notes: beat.notes || '',
       where: beat.where || city.name, mapsUrl: beat.mapsUrl || mapsSearch((beat.where || beat.title) + ' ' + city.name),
-      icon: beat.icon || 'map-pin', src: beat.title
-    }, beat.hour != null ? beat.hour : 10, 0);
+      icon: beat.icon || 'map-pin', src: beat.title, durationMin: dur
+    }, h, m);
     saveVTrips();
     renderBuilder();
   }
 
   function addStayStep(trip, dayId, place) {
-    const city = dayCity(trip, dayId);
+    const cities = citiesOfDay(trip, dayId);
+    const city = cities[cities.length - 1] || dayCity(trip, dayId);
     if (!city) return;
+    const mine = stepsOfDay(trip, dayId);
+    let h = 21, m = 0;
+    if (mine.length > 0) {
+      const last = mine[mine.length - 1];
+      const lastDur = last.durationMin || defaultStepDuration(last);
+      const lastEnd = (last.hour || 0) * 60 + (last.minute || 0) + lastDur;
+      const nextM = Math.min(Math.max(lastEnd + 15, 21 * 60), 23 * 60 + 30);
+      h = Math.floor(nextM / 60);
+      m = nextM % 60;
+    }
     pushStep(trip, {
       id: newStepId(), dayId, cityName: city.name, type: 'stay', title: `Stay in ${place || city.name}`, notes: '',
-      where: place || city.name, mapsUrl: mapsSearch(`hotels in ${place || city.name}`), icon: 'bed-double'
-    }, 21, 0);
+      where: place || city.name, mapsUrl: mapsSearch(`hotels in ${place || city.name}`), icon: 'bed-double',
+      durationMin: 30
+    }, h, m);
     saveVTrips();
     renderBuilder();
   }
@@ -1512,9 +1666,9 @@ KYT.virtualTrips = (function () {
     const other = day[k + dir];
     if (!other) return;
     const a = trip.steps[i];
-    const ta = { h: a.hour, m: a.minute }, tb = { h: other.hour, m: other.minute };
-    setStepTime(a, tb.h, tb.m);
-    setStepTime(other, ta.h, ta.m);
+    const ta = { h: a.hour, m: a.minute, d: a.durationMin }, tb = { h: other.hour, m: other.minute, d: other.durationMin };
+    setStepTime(a, tb.h, tb.m, a.durationMin);
+    setStepTime(other, ta.h, ta.m, other.durationMin);
     sortAllSteps(trip);
     saveVTrips();
     renderBuilder();
@@ -1577,7 +1731,7 @@ KYT.virtualTrips = (function () {
     } else {
       set('vt-step-title', ''); set('vt-step-where', '');
       set('vt-travel-from', pre.from); set('vt-travel-to', pre.to);
-      set('vt-travel-mode', pre.mode || 'road'); set('vt-travel-duration', '');
+      set('vt-travel-mode', pre.mode || 'road'); set('vt-travel-duration', pre.duration || '');
       $('vt-travel-overnight').checked = Boolean(pre.overnight);
       set('vt-stay-place', '');
       const dflt = kind === 'stay' ? 21 * 60 : (kind === 'travel' ? (pre.hour != null ? pre.hour * 60 : 9 * 60) : 12 * 60);
@@ -1638,25 +1792,39 @@ KYT.virtualTrips = (function () {
       if (kind !== 'stop') $('vt-step-error').parentElement.insertAdjacentElement('afterend', $('vt-step-error'));
       $(focusId).focus();
     };
-    const city = dayCity(trip, ctx.dayId);
+    const drawerCity = currentDrawerCity(trip, ctx.dayId);
+    const city = drawerCity || dayCity(trip, ctx.dayId);
     const cityName = (city && city.name) || '';
     let fields;
     if (kind === 'stop') {
       if (!val('vt-step-title')) return fail('Give the stop a name.', 'vt-step-title');
       const where = val('vt-step-where');
-      fields = { title: val('vt-step-title'), where, mapsUrl: mapsSearch((where || val('vt-step-title')) + ' ' + cityName), icon: 'map-pin' };
+      const durMin = defaultStepDuration({ title: val('vt-step-title'), where, icon: 'map-pin' });
+      fields = {
+        title: val('vt-step-title'), where,
+        mapsUrl: mapsSearch((where || val('vt-step-title')) + ' ' + (where && cityByName(where) ? '' : cityName)),
+        icon: 'map-pin', durationMin: durMin
+      };
     } else if (kind === 'travel') {
       if (!val('vt-travel-from') || !val('vt-travel-to')) return fail('Say where you travel from and to.', val('vt-travel-from') ? 'vt-travel-to' : 'vt-travel-from');
       const mode = $('vt-travel-mode').value;
       const overnight = $('vt-travel-overnight').checked;
+      const fromVal = val('vt-travel-from');
+      const toVal = val('vt-travel-to');
+      const durVal = val('vt-travel-duration') || formatDuration(estimatedDriveMinutes(fromVal, toVal));
+      const durMin = parseDurationMinutes(durVal) || estimatedDriveMinutes(fromVal, toVal);
       fields = {
-        title: travelTitle(val('vt-travel-from'), val('vt-travel-to'), mode, overnight), overnight, from: val('vt-travel-from'), to: val('vt-travel-to'),
-        mode, duration: val('vt-travel-duration'), where: val('vt-travel-to'),
-        mapsUrl: travelMapsUrl(val('vt-travel-from'), val('vt-travel-to'), mode), icon: (MODE_META[mode] || MODE_META.other).icon
+        title: travelTitle(fromVal, toVal, mode, overnight), overnight, from: fromVal, to: toVal,
+        mode, duration: durVal, durationMin: durMin, where: toVal,
+        mapsUrl: travelMapsUrl(fromVal, toVal, mode), icon: (MODE_META[mode] || MODE_META.other).icon
       };
+      const toCityObj = cityByName(toVal);
+      if (toCityObj && !trip.cities.includes(toCityObj.id)) {
+        trip.cities.push(toCityObj.id);
+      }
     } else {
       const place = val('vt-stay-place');
-      fields = { title: `Stay in ${place || cityName}`, where: place || cityName, mapsUrl: mapsSearch(`hotels in ${place || cityName}`), icon: 'bed-double' };
+      fields = { title: `Stay in ${place || cityName}`, where: place || cityName, mapsUrl: mapsSearch(`hotels in ${place || cityName}`), icon: 'bed-double', durationMin: 30 };
     }
     fields.notes = val('vt-step-notes');
 
@@ -1664,12 +1832,12 @@ KYT.virtualTrips = (function () {
       const step = (trip.steps || []).find(s => s.id === ctx.stepId);
       if (!step) return closeStepEditor();
       Object.assign(step, fields);
-      if (parts) setStepTime(step, parseInt(parts[1], 10), parseInt(parts[2], 10));
+      if (parts) setStepTime(step, parseInt(parts[1], 10), parseInt(parts[2], 10), step.durationMin);
     } else {
       const h = parts ? parseInt(parts[1], 10) : 12, mi = parts ? parseInt(parts[2], 10) : 0;
       const step = Object.assign({ id: newStepId(), dayId: ctx.dayId, cityName, type: kind }, fields);
       if (!trip.steps) trip.steps = [];
-      setStepTime(step, h, mi);
+      setStepTime(step, h, mi, step.durationMin);
       trip.steps.push(step);
     }
     sortAllSteps(trip);
@@ -1683,8 +1851,8 @@ KYT.virtualTrips = (function () {
   const EFFORT_LABEL = { easy: 'Easy', walk: 'Some walking', moderate: 'Moderate', hard: 'Demanding', trek: 'Trek' };
 
   /** The city's attractions that are not in the plan yet: ones that fit the chosen style first. */
-  function suggestionsFor(trip, dayId) {
-    const city = dayCity(trip, dayId);
+  function suggestionsFor(trip, dayId, targetCityId) {
+    const city = targetCityId ? (cityById(targetCityId) || cityByName(targetCityId)) : currentDrawerCity(trip, dayId);
     const used = new Set((trip.steps || []).map(s => s.src || s.title));
     const beats = city ? (city.beats || []).filter(b => !used.has(b.title)) : [];
     const fits = beats.filter(b => beatMatches(b, trip.taste)).sort((a, b) => (a.hour || 0) - (b.hour || 0));
@@ -1701,11 +1869,30 @@ KYT.virtualTrips = (function () {
     const origin = trip.originCity && trip.originCity !== 'already_there' && trip.originCity !== '0' ? placeName(trip.originCity) : '';
     const prev = idx > 0 ? days[idx - 1] : null;
     const next = idx >= 0 && idx < days.length - 1 ? days[idx + 1] : null;
+    const mine = stepsOfDay(trip, dayId);
     const arrives = s => s.type === 'travel' && s.to === city.name;
-    const arrived = stepsOfDay(trip, dayId).some(arrives) || (prev && stepsOfDay(trip, prev.id).some(arrives));
-    if (arrived) {
-      const nc = next && next.cityId !== city.id ? cityById(next.cityId) : null;
-      return { from: city.name, to: nc ? nc.name : (idx === days.length - 1 ? origin : ''), hour: 17 };
+    const arrived = mine.some(arrives) || (prev && stepsOfDay(trip, prev.id).some(arrives));
+    
+    const hasSteps = mine.length > 0;
+    const currentDayCity = mine.some(s => s.type === 'travel')
+      ? (cityByName(mine.filter(s => s.type === 'travel').slice(-1)[0].to) || city)
+      : city;
+
+    let depHour = 17;
+    if (hasSteps) {
+      const last = mine[mine.length - 1];
+      const lastDur = last.durationMin || defaultStepDuration(last);
+      const lastEnd = (last.hour || 0) * 60 + (last.minute || 0) + lastDur;
+      const nextM = Math.min(lastEnd + 15, 23 * 60);
+      depHour = Math.floor(nextM / 60);
+    }
+
+    if (arrived || (hasSteps && !mine.some(s => s.type === 'travel'))) {
+      const nc = next && next.cityId !== currentDayCity.id ? cityById(next.cityId) : null;
+      const nextUnvisited = (trip.cities || []).map(cityById).filter(Boolean).find(c => c.id !== currentDayCity.id && !mine.some(s => s.to === c.name));
+      const targetCity = nc || nextUnvisited;
+      const dur = targetCity ? formatDuration(estimatedDriveMinutes(currentDayCity.id, targetCity.id)) : '';
+      return { from: currentDayCity.name, to: targetCity ? targetCity.name : (idx === days.length - 1 ? origin : ''), hour: depHour, duration: dur };
     }
     const prevCity = prev ? cityById(prev.cityId) : null;
     const from = prevCity && prevCity.id !== city.id ? prevCity.name : (idx === 0 ? origin : '');
@@ -1725,6 +1912,15 @@ KYT.virtualTrips = (function () {
     const prevSteps = idx > 0 ? stepsOfDay(trip, days[idx - 1].id) : [];
     const travelTo = (list, name) => list.some(s => s.type === 'travel' && s.to === name);
     const hasTravelIn = !mine.some(s => s.type === 'travel' && s.to === city.name) && !travelTo(prevSteps, city.name);
+    
+    let depHour = 17;
+    if (mine.length > 0) {
+      const last = mine[mine.length - 1];
+      const lastDur = last.durationMin || defaultStepDuration(last);
+      const lastEnd = (last.hour || 0) * 60 + (last.minute || 0) + lastDur;
+      depHour = Math.min(23, Math.floor((lastEnd + 15) / 60));
+    }
+
     const hintData = (from, to, km, hour, extra = '') =>
       `data-hint="travel" data-from="${esc(from)}" data-to="${esc(to)}" data-km="${km == null ? '' : km}" data-hour="${hour}"${extra}`;
     if (fromId && fromId !== city.id && hasTravelIn) {
@@ -1738,8 +1934,10 @@ KYT.virtualTrips = (function () {
     const leavesToday = nextCity && mine.some(s => s.type === 'travel' && s.to === nextCity.name);
     if (nextCity && !leavesToday) {
       const km = kmBetween(city.id, nextCity.id);
-      hints.push({ key: 'travel-next', icon: 'route', text: `Travel to ${nextCity.name} for Day ${next.id}`, sub: km != null ? `about ${km} km` : '',
-        data: hintData(city.name, nextCity.name, km, 17) });
+      const mins = estimatedDriveMinutes(city.id, nextCity.id);
+      const durStr = formatDuration(mins);
+      hints.push({ key: 'travel-next', icon: 'route', text: `Travel to ${nextCity.name} for Day ${next.id}`, sub: km != null ? `about ${km} km${durStr ? ' · ~' + durStr : ''}` : '',
+        data: hintData(city.name, nextCity.name, km, depHour, durStr ? ` data-dur="${esc(durStr)}"` : '') });
       hints.push({ key: 'overnight', icon: 'moon', text: `Overnight travel to ${nextCity.name}`, sub: km != null ? `about ${km} km, sleep on the way` : 'sleep on the way',
         data: hintData(city.name, nextCity.name, km, 21, ' data-overnight="1"') });
     }
@@ -1748,8 +1946,10 @@ KYT.virtualTrips = (function () {
       hints.push({ key: 'return', icon: 'route', text: `Travel back to ${placeName(origin)}`, sub: km != null ? `about ${km} km` : '',
         data: hintData(city.name, placeName(origin), km, 18) });
     }
+    const lastTravel = mine.filter(s => s.type === 'travel').slice(-1)[0];
+    const endCity = lastTravel && lastTravel.to ? (cityByName(lastTravel.to) || city) : city;
     if (!isLast && !mine.some(s => s.type === 'stay') && !mine.some(s => s.type === 'travel' && s.overnight)) {
-      hints.push({ key: 'stay', icon: 'bed-double', text: `Stay in ${city.name} tonight`, sub: '', data: 'data-hint="stay"' });
+      hints.push({ key: 'stay', icon: 'bed-double', text: `Stay in ${endCity.name} tonight`, sub: '', data: 'data-hint="stay"' });
     }
     return hints;
   }
@@ -1801,24 +2001,29 @@ KYT.virtualTrips = (function () {
     // 2. Day tabs
     html += `<div id="vt-day-tabs" role="tablist" class="sticky -top-4 z-20 flex items-stretch gap-1.5 overflow-x-auto -mx-4 px-4 py-2 bg-slate-50/95 backdrop-blur border-b border-slate-200/70">` +
       days.map(d => {
-        const c = cityById(d.cityId);
+        const dCities = citiesOfDay(trip, d.id);
         const on = d.id === day.id;
         const n = stepsOfDay(trip, d.id).length;
+        const tabCityLabel = dCities.length > 1 ? `${dCities[0].name} → ${dCities[dCities.length - 1].name}` : (dCities[0] ? dCities[0].name : '');
         return `<button type="button" role="tab" aria-selected="${on}" data-day-id="${d.id}"
           class="shrink-0 text-left px-3 py-1.5 rounded-xl border transition-colors cursor-pointer ${on ? 'bg-blue-600 border-blue-600 text-white shadow-xs' : 'bg-white border-slate-200 text-slate-600 hover:border-blue-300'}">
           <span class="block text-xs font-extrabold leading-tight">${d.id === 0 ? 'Day 0' : 'Day ' + d.id}${n ? ` <span class="${on ? 'text-blue-100' : 'text-slate-400'} font-bold">· ${n}</span>` : ''}</span>
-          <span class="block text-[10px] font-semibold leading-tight ${on ? 'text-blue-100' : 'text-slate-400'} max-w-[7.5rem] truncate">${esc(c ? c.name : '')}</span>
+          <span class="block text-[10px] font-semibold leading-tight ${on ? 'text-blue-100' : 'text-slate-400'} max-w-[8.5rem] truncate">${esc(tabCityLabel)}</span>
         </button>`;
       }).join('') +
       `<button type="button" id="btn-vt-add-day" class="shrink-0 px-3 py-1.5 rounded-xl border border-dashed border-slate-300 text-xs font-bold text-slate-500 hover:text-blue-600 hover:border-blue-300 cursor-pointer" aria-label="Add a day">+ Day</button></div>`;
 
     // 3. The open day: city, planned steps, hints, add buttons
+    const dayCities = citiesOfDay(trip, day.id);
     const cityOptions = trip.cities.map(id => { const c = cityById(id); return c ? `<option value="${esc(c.id)}"${c.id === (city && city.id) ? ' selected' : ''}>${esc(c.name)}</option>` : ''; }).join('');
     const locked = mine.length > 0;
     html += `
       <section id="vt-day-panel" class="space-y-3" data-day-id="${day.id}">
-        <div class="flex items-center gap-2">
-          <h2 class="text-sm font-black text-slate-800 shrink-0">${day.id === 0 ? 'Day 0: Travel &amp; Arrival' : 'Day ' + day.id}</h2>
+        <div class="flex items-center gap-2 flex-wrap">
+          <h2 class="text-sm font-black text-slate-800 shrink-0">
+            ${day.id === 0 ? 'Day 0: Travel &amp; Arrival' : 'Day ' + day.id}
+            ${dayCities.length > 1 ? `<span class="text-xs font-bold text-slate-500 ml-1">(${esc(dayCities.map(c => c.name).join(' → '))})</span>` : ''}
+          </h2>
           <div class="relative min-w-0">
             <select id="vt-day-city" aria-label="City for this day" ${locked ? 'disabled title="Remove this day\'s steps to change its city"' : ''}
               class="appearance-none bg-white border border-slate-200 rounded-lg pl-2.5 pr-7 py-1 text-xs font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 ${locked ? 'opacity-70' : 'cursor-pointer'}">${cityOptions}</select>
@@ -1828,7 +2033,62 @@ KYT.virtualTrips = (function () {
         </div>`;
 
     if (mine.length) {
-      html += `<div class="relative">${mine.map((st, k) => KYT.ui.renderStepCard(st, { variant: 'builder', isFirst: k === 0, isLast: k === mine.length - 1 })).join('')}</div>`;
+      const hasTravel = mine.some(s => s.type === 'travel');
+      if (hasTravel) {
+        const slots = [];
+        let currentSlot = null;
+        let curCity = dayCity(trip, day.id);
+        
+        mine.forEach((st, idx) => {
+          if (st.type === 'travel') {
+            if (currentSlot && currentSlot.steps.length) {
+              slots.push(currentSlot);
+              currentSlot = null;
+            }
+            slots.push({ type: 'travel', step: st, globalIndex: idx });
+            curCity = cityByName(st.to) || cityById(st.to) || curCity;
+          } else {
+            const stepCity = st.cityName ? (cityByName(st.cityName) || cityById(st.cityName)) : curCity;
+            if (!currentSlot || currentSlot.city?.id !== (stepCity ? stepCity.id : curCity?.id)) {
+              if (currentSlot && currentSlot.steps.length) slots.push(currentSlot);
+              currentSlot = { type: 'city', city: stepCity || curCity, steps: [] };
+            }
+            currentSlot.steps.push({ step: st, globalIndex: idx });
+          }
+        });
+        if (currentSlot && currentSlot.steps.length) slots.push(currentSlot);
+
+        html += `<div class="space-y-3">` + slots.map(slot => {
+          if (slot.type === 'travel') {
+            return `
+              <div class="my-2">
+                <div class="flex items-center gap-2 mb-1.5">
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-sky-50 border border-sky-200 text-xs font-black uppercase tracking-wider text-sky-800">
+                    <i data-lucide="route" class="w-3.5 h-3.5 text-sky-600"></i>
+                    Transit: ${esc(slot.step.from || '')} → ${esc(slot.step.to || '')}
+                  </span>
+                  <div class="h-px flex-1 bg-sky-200/60"></div>
+                </div>
+                ${KYT.ui.renderStepCard(slot.step, { variant: 'builder', isFirst: slot.globalIndex === 0, isLast: slot.globalIndex === mine.length - 1 })}
+              </div>`;
+          } else {
+            return `
+              <div>
+                <div class="flex items-center gap-2 pt-1.5 pb-1">
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 border border-slate-200 text-xs font-black uppercase tracking-wider text-slate-700">
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-blue-600"></i>
+                    In ${esc(slot.city ? slot.city.name : 'Destination')}
+                  </span>
+                  <div class="h-px flex-1 bg-slate-200/60"></div>
+                  <span class="text-[10px] font-bold text-slate-400">${slot.steps.length} stop${slot.steps.length > 1 ? 's' : ''}</span>
+                </div>
+                <div class="relative">${slot.steps.map(item => KYT.ui.renderStepCard(item.step, { variant: 'builder', isFirst: item.globalIndex === 0, isLast: item.globalIndex === mine.length - 1 })).join('')}</div>
+              </div>`;
+          }
+        }).join('') + `</div>`;
+      } else {
+        html += `<div class="relative">${mine.map((st, k) => KYT.ui.renderStepCard(st, { variant: 'builder', isFirst: k === 0, isLast: k === mine.length - 1 })).join('')}</div>`;
+      }
     } else {
       html += `<p id="vt-day-empty" class="text-xs text-slate-500 bg-white/70 border border-dashed border-slate-300 rounded-xl px-3.5 py-3">Nothing planned for this day yet. Pick from the suggestions below, or add your own.</p>`;
     }
@@ -1852,8 +2112,9 @@ KYT.virtualTrips = (function () {
           <button type="button" id="btn-vt-add-stay" class="${btn} bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 inline-flex items-center gap-1"><i data-lucide="bed-double" class="w-3 h-3"></i> Add a stay</button>
         </div>`;
 
-    // 4. Suggestions for this day's city, in the chosen style
-    const sg = suggestionsFor(trip, day.id);
+    // 4. Suggestions for this day's active city, in the chosen style
+    const drawerCity = currentDrawerCity(trip, day.id);
+    const sg = suggestionsFor(trip, day.id, drawerCity ? drawerCity.id : null);
     const row = (b, i) => {
       const effort = EFFORT_LABEL[b.mobility] || '';
       const diet = Array.isArray(b.diet) && !b.diet.includes('any') ? b.diet.map(x => ({ veg: 'Veg', jain: 'Jain', satvik: 'No onion-garlic' }[x] || x)).join(' / ') : '';
@@ -1873,7 +2134,16 @@ KYT.virtualTrips = (function () {
     const styleLine = ['intent', 'diet', 'pace'].map(k => (TASTE_FIELDS[k].find(o => o.id === t[k]) || {}).label).filter(Boolean).join(' · ');
     html += `
         <div class="pt-1">
-          <p class="text-xs font-black uppercase text-slate-700 tracking-wider">${city ? 'Things to do in ' + esc(city.name) : 'Suggestions'}</p>
+          ${dayCities.length > 1 ? `
+            <div class="flex items-center gap-1.5 mb-2.5 overflow-x-auto pb-1">
+              <span class="text-[10px] font-black uppercase text-slate-400 shrink-0">City:</span>
+              ${dayCities.map(c => {
+                const isCur = drawerCity && c.id === drawerCity.id;
+                return `<button type="button" data-drawer-city="${esc(c.id)}" class="text-xs font-bold px-3 py-1 rounded-full border transition-colors cursor-pointer shrink-0 ${isCur ? 'bg-indigo-600 text-white border-indigo-600 shadow-xs' : 'bg-white text-slate-600 border-slate-200 hover:border-indigo-300'}">${esc(c.name)}</button>`;
+              }).join('')}
+            </div>
+          ` : ''}
+          <p class="text-xs font-black uppercase text-slate-700 tracking-wider">${drawerCity ? 'Things to do in ' + esc(drawerCity.name) : 'Suggestions'}</p>
           <button type="button" id="btn-vt-style-toggle" class="mt-1 mb-2 -ml-1 ${btn} text-slate-500 hover:text-blue-600 inline-flex items-center gap-1" aria-expanded="${styleOpen}"><i data-lucide="sliders" class="w-3 h-3"></i> Sorted for ${esc(styleLine)} · ${styleOpen ? 'Hide' : 'Change'}</button>
           ${styleOpen ? `<div id="vt-taste" class="space-y-3 bg-white rounded-xl border border-slate-100 p-3 mb-2">${Object.keys(TASTE_FIELDS).map(key => {
             const info = TASTE_INFO[key];
@@ -1927,8 +2197,14 @@ KYT.virtualTrips = (function () {
     const nextDayBtn = q('#btn-vt-next-day');
     if (nextDayBtn) { activeDayId = Number(nextDayBtn.dataset.dayId); renderBuilder(); const sc = document.getElementById('vt-screen-builder'); if (sc) sc.scrollTop = 0; return; }
     if (q('#btn-vt-view-trip')) { window.location.href = `trip_detail.html?id=${encodeURIComponent(trip.id)}`; return; }
+    const drawerCityBtn = q('[data-drawer-city]');
+    if (drawerCityBtn) {
+      activeDrawerCityId = drawerCityBtn.dataset.drawerCity;
+      renderBuilder();
+      return;
+    }
     const dayTab = q('[data-day-id][role="tab"]');
-    if (dayTab) { activeDayId = Number(dayTab.dataset.dayId); renderBuilder(); return; }
+    if (dayTab) { activeDayId = Number(dayTab.dataset.dayId); activeDrawerCityId = null; renderBuilder(); return; }
     if (q('#btn-vt-add-day')) {
       const days = sortedDays(trip);
       const last = days[days.length - 1];
@@ -1957,7 +2233,11 @@ KYT.virtualTrips = (function () {
     const chip = q('#vt-taste .vt-chip');
     if (chip) { trip.taste[chip.dataset.field] = chip.dataset.id; saveVTrips(); renderBuilder(); return; }
     const addBeat = q('[data-add-beat]');
-    if (addBeat) { addBeatStep(trip, activeDayId, Number(addBeat.dataset.addBeat)); return; }
+    if (addBeat) {
+      const dCity = currentDrawerCity(trip, activeDayId);
+      addBeatStep(trip, activeDayId, Number(addBeat.dataset.addBeat), dCity ? dCity.id : null);
+      return;
+    }
     const hint = q('[data-hint]');
     if (hint) {
       if (hint.dataset.hint === 'stay') { addStayStep(trip, activeDayId); return; }

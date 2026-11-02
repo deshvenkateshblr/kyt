@@ -621,10 +621,24 @@ window.KYT.ui = (function () {
       const phase = step.phase || (step.hour != null ? hourToPhase(step.hour) : '');
       const pStyle = phaseStyle(phase);
       const phaseBadge = phase ? `<span class="text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-md border ${pStyle}">${esc(phase)}</span>` : '';
+
+      const pad2 = n => String(n).padStart(2, '0');
+      let timeWindowStr = '';
+      if (step.hour != null) {
+        const startStr = `${pad2(step.hour)}:${pad2(step.minute || 0)}`;
+        if (step.endHour != null) {
+          const endStr = `${pad2(step.endHour)}:${pad2(step.endMinute || 0)}`;
+          const dur = step.durationMin || ((step.endHour * 60 + step.endMinute) - (step.hour * 60 + (step.minute || 0)));
+          const durFmt = dur > 0 ? (dur >= 60 ? `${Math.floor(dur / 60)}h${dur % 60 ? ' ' + (dur % 60) + 'm' : ''}` : `${dur}m`) : '';
+          timeWindowStr = `${startStr} – ${endStr}${durFmt ? ' · ' + durFmt : ''}`;
+        } else {
+          timeWindowStr = startStr;
+        }
+      }
       const suggestedTime = step.suggestedTime || (step.hour != null ? formatSuggestedTime(step.hour, step.minute, phase) : '');
-      const suggestiveText = (suggestedTime && suggestedTime !== phase)
-        ? `<span class="text-[10px] text-slate-400 font-medium">· ${esc(suggestedTime)}</span>`
-        : '';
+      const suggestiveText = timeWindowStr
+        ? `<span class="text-[10px] text-slate-500 font-bold tabular-nums">· ${esc(timeWindowStr)}</span>`
+        : ((suggestedTime && suggestedTime !== phase) ? `<span class="text-[10px] text-slate-400 font-medium">· ${esc(suggestedTime)}</span>` : '');
 
       const sid = esc(step.id);
       const actionBtn = 'p-2 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-blue-50 disabled:opacity-25 disabled:hover:bg-transparent disabled:hover:text-slate-400 disabled:cursor-default transition-colors cursor-pointer';
@@ -664,7 +678,12 @@ window.KYT.ui = (function () {
     }
 
     if (variant === 'curated-preview') {
-      const timeStr = `${String(step.hour != null ? step.hour : 9).padStart(2, '0')}:${String(step.minute || 0).padStart(2, '0')}`;
+      const pad2 = n => String(n).padStart(2, '0');
+      const startStr = `${pad2(step.hour != null ? step.hour : 9)}:${pad2(step.minute || 0)}`;
+      let timeStr = startStr;
+      if (step.endHour != null) {
+        timeStr = `${startStr} – ${pad2(step.endHour)}:${pad2(step.endMinute || 0)}`;
+      }
       const verifyTags = (step.verify || []).map(v => `
         <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200 text-[10px] font-bold mt-1.5">
           <i data-lucide="alert-circle" class="w-2.5 h-2.5 text-amber-600"></i> ${esc(v)}
@@ -706,7 +725,7 @@ window.KYT.ui = (function () {
           </div>
           <div class="text-[11px] font-semibold text-slate-500 mt-0.5 flex items-center gap-1">
             <span>${esc(step.where || 'Location')}</span>
-            ${step.durationMin ? `<span class="opacity-40">•</span><span>~${esc(step.durationMin)} mins</span>` : ''}
+            ${step.durationMin ? `<span class="opacity-40">•</span><span>~${esc(step.durationMin)} mins</span>` : (step.duration ? `<span class="opacity-40">•</span><span>${esc(step.duration)}</span>` : '')}
           </div>
           ${step.notes ? `<p class="text-xs text-slate-600 mt-1 leading-relaxed">${esc(step.notes)}</p>` : ''}
           ${verifyTags ? `<div class="flex flex-wrap gap-1">${verifyTags}</div>` : ''}

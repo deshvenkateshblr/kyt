@@ -638,12 +638,50 @@
           });
           const dayKeys = Object.keys(dayBuckets).sort((a, b) => Number(a) - Number(b));
           daysHtml = dayKeys.map(d => {
-            const stepsHtml = dayBuckets[d].map(s =>
-              KYT.ui.renderStepCard(s, { variant: 'curated-preview' })
-            ).join('');
+            const dSteps = dayBuckets[d];
+            const distinctCities = [];
+            dSteps.forEach(s => {
+              if (s.type === 'travel') {
+                if (s.from && !distinctCities.includes(s.from)) distinctCities.push(s.from);
+                if (s.to && !distinctCities.includes(s.to)) distinctCities.push(s.to);
+              } else if (s.cityName && !distinctCities.includes(s.cityName)) {
+                distinctCities.push(s.cityName);
+              }
+            });
+            const hasMultipleCities = distinctCities.length > 1 || dSteps.some(s => s.type === 'travel');
+
+            let currentCityName = distinctCities[0] || dSteps[0]?.cityName || '';
+            const stepsHtml = dSteps.map((s, idx) => {
+              let headerHtml = '';
+              if (hasMultipleCities) {
+                if (s.type === 'travel') {
+                  currentCityName = s.to || currentCityName;
+                  headerHtml = `
+                    <div class="flex items-center gap-2 pt-2.5 pb-1">
+                      <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-sky-50 border border-sky-200 text-[10px] font-black uppercase tracking-wider text-sky-800">
+                        <i data-lucide="route" class="w-3 h-3 text-sky-600"></i> Transit to ${KYT.utils.escapeHTML(s.to || '')}
+                      </span>
+                      <div class="h-px flex-1 bg-sky-100"></div>
+                    </div>
+                  `;
+                } else if (idx === 0 || (s.cityName && s.cityName !== currentCityName)) {
+                  currentCityName = s.cityName || currentCityName;
+                  headerHtml = `
+                    <div class="flex items-center gap-2 pt-2 pb-1">
+                      <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-black uppercase tracking-wider">
+                        <i data-lucide="map-pin" class="w-2.5 h-2.5 text-blue-600"></i> In ${KYT.utils.escapeHTML(currentCityName)}
+                      </span>
+                      <div class="h-px flex-1 bg-slate-100"></div>
+                    </div>
+                  `;
+                }
+              }
+              return headerHtml + KYT.ui.renderStepCard(s, { variant: 'curated-preview' });
+            }).join('');
+
             const dayNum = Number(d);
             const dayLabel = dayNum === 0 ? 'Day 0: Travel & Arrival' : `Day ${d}`;
-            const daySub = KYT.utils.escapeHTML(dayBuckets[d][0]?.cityName || 'Itinerary Schedule');
+            const daySub = KYT.utils.escapeHTML(distinctCities.length > 1 ? distinctCities.join(' → ') : (distinctCities[0] || dSteps[0]?.cityName || 'Itinerary Schedule'));
             return `
               <div class="bg-white rounded-2xl border border-slate-200/80 p-4 shadow-2xs">
                 <div class="flex items-center gap-2 mb-3 pb-2 border-b border-slate-100">
