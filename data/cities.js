@@ -17094,7 +17094,7 @@ window.KYT_CITIES = [
     "district": "Ujjain",
     "beats": [
       {
-        "title": "Mahakaleshwar Jyotirlinga & Bhasma Aarti",
+        "title": "Mahakaleshwar Jyotirlinga",
         "icon": "landmark",
         "where": "Jaisinghpura, Ujjain",
         "hour": 6,
@@ -17115,7 +17115,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "notes": "One of the twelve sacred Jyotirlingas, home to the south-facing Dakshinmurti Shiva. Renowned for its holy dawn Bhasma Aarti and three-tiered sanctum.",
+        "notes": "One of the twelve sacred Jyotirlingas, home to the south-facing Dakshinmurti Shiva and a revered three-tiered sanctum. Special Bhasma Aarti seva takes place at dawn with advance booking.",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahakaleshwar%20Jyotirlinga%2C%20Ujjain"
       },
       {

@@ -533,13 +533,27 @@ KYT.virtualTrips = (function () {
 
     const routeLink = document.getElementById('vt-route-link');
     if (routeLink) {
-      const origin = trip.originCity && trip.originCity !== 'already_there' && trip.originCity !== '0' ? placeName(trip.originCity) : '';
-      const stops = (origin ? [origin] : []).concat(trip.cities.map(placeName)).filter(Boolean).slice(0, 10);
-      routeLink.classList.toggle('hidden', trip.cities.length < 2);
-      if (trip.cities.length >= 2 && stops.length >= 2) {
-        const q = n => encodeURIComponent(mapPoint(n));
-        routeLink.href = `https://www.google.com/maps/dir/?api=1&origin=${q(stops[0])}&destination=${q(stops[stops.length - 1])}` +
-          (stops.length > 2 ? `&waypoints=${stops.slice(1, -1).map(q).join('%7C')}` : '') + '&travelmode=driving';
+      // Connect only destinations in trip.cities (exclude origin city) with clean city names and place IDs
+      const stops = (trip.cities || []).map(placeName).filter(Boolean).slice(0, 10);
+      routeLink.classList.toggle('hidden', stops.length < 2);
+      if (stops.length >= 2) {
+        const q = n => encodeURIComponent(/india/i.test(n) ? n : `${n} India`);
+        const first = cityByName(stops[0]);
+        const last = cityByName(stops[stops.length - 1]);
+        let url = `https://www.google.com/maps/dir/?api=1&origin=${q(stops[0])}`;
+        if (first && first.placeId) url += `&origin_place_id=${encodeURIComponent(first.placeId)}`;
+        url += `&destination=${q(stops[stops.length - 1])}`;
+        if (last && last.placeId) url += `&destination_place_id=${encodeURIComponent(last.placeId)}`;
+        if (stops.length > 2) {
+          const middle = stops.slice(1, -1);
+          url += `&waypoints=${middle.map(q).join('%7C')}`;
+          const midCities = middle.map(cityByName).filter(Boolean);
+          if (midCities.some(c => c.placeId)) {
+            url += `&waypoint_place_ids=${midCities.map(c => encodeURIComponent(c.placeId || '')).join('%7C')}`;
+          }
+        }
+        url += '&travelmode=driving';
+        routeLink.href = url;
       }
     }
 
@@ -1247,11 +1261,11 @@ KYT.virtualTrips = (function () {
       (c.aliases && c.aliases.some(a => a.toLowerCase() === n || a.toLowerCase() === clean))
     ) || null;
   }
-  /** Resolve place string/object to exact lat,lng coordinates when known, preventing ambiguous Google Maps routing. */
+  /** Resolve place string/object to clean unambiguous city name with country, preventing shop/house reverse-geocodes. */
   function mapPoint(place) {
     if (!place) return '';
-    if (typeof place === 'object' && place.lat != null && place.lng != null) {
-      return `${place.lat},${place.lng}`;
+    if (typeof place === 'object' && place.name) {
+      return /india/i.test(place.name) ? place.name : `${place.name} India`;
     }
     const s = String(place).trim();
     if (/^-?\d+(\.\d+)?\s*,\s*-?\d+(\.\d+)?$/.test(s)) {
@@ -1259,17 +1273,14 @@ KYT.virtualTrips = (function () {
     }
     const clean = s.toLowerCase().replace(/ \(.*\)| \/ ncr/g, '').trim();
     const city = cityByName(s) || (window.KYT_CITIES || []).find(c => c.id === clean || c.name.toLowerCase() === clean);
-    if (city && city.lat != null && city.lng != null) {
-      return `${city.lat},${city.lng}`;
+    if (city && city.name) {
+      return /india/i.test(city.name) ? city.name : `${city.name} India`;
     }
     const pop = POPULAR_ORIGINS.find(o => o.id === clean || o.name.toLowerCase().startsWith(clean));
     if (pop) {
-      const popCity = cityById(pop.id);
-      if (popCity && popCity.lat != null && popCity.lng != null) {
-        return `${popCity.lat},${popCity.lng}`;
-      }
+      return /india/i.test(pop.name) ? pop.name : `${pop.name} India`;
     }
-    return /india/i.test(s) ? s : `${s}, India`;
+    return /india/i.test(s) ? s : `${s} India`;
   }
   function placeName(id) {
     const c = cityById(id);
@@ -1353,7 +1364,10 @@ KYT.virtualTrips = (function () {
 
   function citiesOfDay(trip, dayId) {
     const d = (trip.days || []).find(x => x.id === dayId);
-    const startCity = cityById(d && d.cityId) || cityById((trip.cities || [])[0]);
+    const configuredCity = cityById(d && d.cityId) || cityById((trip.cities || [])[0]);
+    const steps = stepsOfDay(trip, dayId);
+    if (!steps.length) return configuredCity ? [configuredCity] : [];
+
     const result = [];
     const seen = new Set();
     const add = c => {
@@ -1362,8 +1376,7 @@ KYT.virtualTrips = (function () {
         result.push(c);
       }
     };
-    if (startCity) add(startCity);
-    const steps = stepsOfDay(trip, dayId);
+
     steps.forEach(s => {
       if (s.type === 'travel') {
         const fromC = cityByName(s.from) || cityById(s.from);
@@ -1375,7 +1388,9 @@ KYT.virtualTrips = (function () {
         if (c) add(c);
       }
     });
-    return result.length ? result : (startCity ? [startCity] : []);
+
+    if (!result.length && configuredCity) add(configuredCity);
+    return result;
   }
   function syncDuration(trip) {
     trip.duration = (trip.days || []).filter(d => d.id >= 1).length || (trip.cities && trip.cities.length) || 1;
@@ -2017,14 +2032,15 @@ KYT.virtualTrips = (function () {
     const dayCities = citiesOfDay(trip, day.id);
     const cityOptions = trip.cities.map(id => { const c = cityById(id); return c ? `<option value="${esc(c.id)}"${c.id === (city && city.id) ? ' selected' : ''}>${esc(c.name)}</option>` : ''; }).join('');
     const locked = mine.length > 0;
+    const isMultiCity = dayCities.length > 1;
     html += `
       <section id="vt-day-panel" class="space-y-3" data-day-id="${day.id}">
         <div class="flex items-center gap-2 flex-wrap">
           <h2 class="text-sm font-black text-slate-800 shrink-0">
             ${day.id === 0 ? 'Day 0: Travel &amp; Arrival' : 'Day ' + day.id}
-            ${dayCities.length > 1 ? `<span class="text-xs font-bold text-slate-500 ml-1">(${esc(dayCities.map(c => c.name).join(' → '))})</span>` : ''}
+            ${isMultiCity ? `<span class="text-xs font-bold text-slate-500 ml-1">(${esc(dayCities.map(c => c.name).join(' → '))})</span>` : ''}
           </h2>
-          <div class="relative min-w-0">
+          <div class="relative min-w-0 ${isMultiCity ? 'hidden' : ''}">
             <select id="vt-day-city" aria-label="City for this day" ${locked ? 'disabled title="Remove this day\'s steps to change its city"' : ''}
               class="appearance-none bg-white border border-slate-200 rounded-lg pl-2.5 pr-7 py-1 text-xs font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 ${locked ? 'opacity-70' : 'cursor-pointer'}">${cityOptions}</select>
             <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none"></i>
