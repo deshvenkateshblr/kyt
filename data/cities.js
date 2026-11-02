@@ -17055,7 +17055,28 @@ window.KYT_CITIES = [
     "icon": "landmark",
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ujjain%20India",
-    "notes": "Ancient city situated on the banks of Kshipra River, famous for the Mahakaleshwar Jyotirlinga and the Kumbh Mela.",
+    "notes": "Ancient city situated on the banks of Kshipra River, famous for the Mahakaleshwar Jyotirlinga, King Vikramaditya lore, and the Simhastha Kumbh Mela.",
+    "beforeYouGo": {
+      "official": "https://shrimahakaleshwar.com",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "book",
+          "text": "Bhasma Aarti passes should be booked in advance online on the official temple portal (shrimahakaleshwar.com). Limited same-day counter tokens are issued at 3:00 AM outside the temple.",
+          "source": "https://shrimahakaleshwar.com"
+        },
+        {
+          "kind": "dress",
+          "text": "Traditional dress is mandatory for Garbhagriha entry and Jalabhishek: traditional dhoti and sola/angavastram for men, and saree for women. Jeans and western wear are strictly prohibited in the inner sanctum.",
+          "source": "https://shrimahakaleshwar.com"
+        },
+        {
+          "kind": "rule",
+          "text": "Mobile phones, cameras, and large bags are prohibited inside the sanctum. Free digital cloakrooms and lockers are available near the temple entrances and the Mahakal Lok corridor.",
+          "source": "https://shrimahakaleshwar.com"
+        }
+      ]
+    },
     "aliases": [
       "Avantika",
       "Ujjayini"
@@ -17066,7 +17087,7 @@ window.KYT_CITIES = [
     "district": "Ujjain",
     "beats": [
       {
-        "title": "Mahakaleshwar Jyotirlinga",
+        "title": "Mahakaleshwar Jyotirlinga & Bhasma Aarti",
         "icon": "landmark",
         "where": "Jaisinghpura, Ujjain",
         "hour": 6,
@@ -17087,16 +17108,71 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "notes": "One of the twelve Jyotirlingas, dedicated to Lord Shiva. Famous for the Bhasma Aarti.",
+        "notes": "One of the twelve sacred Jyotirlingas, home to the south-facing Dakshinmurti Shiva. Renowned for its holy dawn Bhasma Aarti and three-tiered sanctum.",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahakaleshwar%20Jyotirlinga%2C%20Ujjain"
       },
       {
-        "title": "Kal Bhairav Temple",
+        "title": "Malwi Poha Jalebi breakfast trail",
+        "icon": "utensils",
+        "where": "Tower Chowk & Sarafa Bazaar, Ujjain",
+        "hour": 8,
+        "intent": [
+          "culinary",
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "diet": [
+          "veg",
+          "satvik",
+          "any"
+        ],
+        "notes": "Classic Malwa breakfast of steaming spiced poha sprinkled with crispy Ratlami sev and jeeravan, accompanied by hot jalebis and cutting chai.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tower%20Chowk%2C%20Ujjain"
+      },
+      {
+        "title": "Vedh Shala (Jantar Mantar observatory)",
         "icon": "landmark",
-        "where": "Bhairav Garh, Ujjain",
+        "where": "Chintaman Road, Jaisinghpura, Ujjain",
         "hour": 10,
         "intent": [
-          "spiritual"
+          "cultural",
+          "heritage"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "notes": "Built in 1719 by Maharaja Sawai Jai Singh II, this historic open-air observatory marks ancient India's prime meridian on the Tropic of Cancer with precision stone instruments.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vedh%20Shala%2C%20Ujjain"
+      },
+      {
+        "title": "Sandipani Ashram & Gomti Kund",
+        "icon": "landmark",
+        "where": "Mangalnath Road, Ujjain",
+        "hour": 11,
+        "intent": [
+          "spiritual",
+          "cultural",
+          "heritage"
         ],
         "faith": [
           "hindu",
@@ -17110,11 +17186,61 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "notes": "Ancient temple dedicated to Kal Bhairav, the guardian deity of Ujjain, known for unique offerings.",
+        "notes": "Ancient hermitage where Lord Krishna, Balarama, and Sudama were educated by Maharishi Sandipani in the 64 arts; features the holy Gomti Kund stepped reservoir.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sandipani%20Ashram%2C%20Ujjain"
+      },
+      {
+        "title": "Traditional Malwi Dal Bafla lunch",
+        "icon": "utensils",
+        "where": "Sarafa Bazaar & Freeganj, Ujjain",
+        "hour": 13,
+        "intent": [
+          "culinary"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "diet": [
+          "veg",
+          "any"
+        ],
+        "notes": "The quintessential Malwa culinary feast: crisp, golden boiled-and-roasted baflas drenched in pure desi ghee, served with spicy tuvar dal, churma, and kadhi.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dal%20Bafla%2C%20Ujjain"
+      },
+      {
+        "title": "Kal Bhairav Temple darshan",
+        "icon": "landmark",
+        "where": "Bhairav Garh, Ujjain",
+        "hour": 15,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "notes": "Ancient tantric shrine dedicated to the fiery guardian deity of Avantika, famous for centuries-old ritual offerings consumed miraculously by the deity.",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kal%20Bhairav%20Temple%2C%20Ujjain"
       },
       {
-        "title": "Ram Ghat",
+        "title": "Ram Ghat sunset & Shipra Aarti",
         "icon": "sunset",
         "where": "Kshipra River, Ujjain",
         "hour": 18,
@@ -17130,16 +17256,66 @@ window.KYT_CITIES = [
         ],
         "pace": [
           "short",
-          "standard"
+          "standard",
+          "deep"
         ],
         "mobility": "easy",
-        "notes": "The oldest bathing ghat in connection with the Kumbh Mela, mesmerizing during the evening aarti.",
+        "notes": "The oldest sacred bathing ghat associated with the Simhastha Kumbh Mela, where pilgrims gather at dusk for chanting, ringing bells, and floating lamps on the Shipra River.",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ram%20Ghat%2C%20Ujjain"
+      },
+      {
+        "title": "Shaktipeeth Maa Harsiddhi Temple deepstambha aarti",
+        "icon": "landmark",
+        "where": "Jaisinghpura, Ujjain",
+        "hour": 19,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "notes": "One of the 51 holy Shaktipeeths and Kuldevi of King Vikramaditya. At dusk, brave sevadars climb the twin 50-foot stone deepstambhas (lamp pillars) to illuminate hundreds of flickering oil lamps.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Harsiddhi%20Temple%2C%20Ujjain"
+      },
+      {
+        "title": "Shri Mahakal Lok Corridor evening walk",
+        "icon": "sparkles",
+        "where": "Mahakaleshwar Complex, Ujjain",
+        "hour": 20,
+        "intent": [
+          "cultural",
+          "spiritual"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "notes": "A magnificent 900-meter cultural plaza surrounding Rudrasagar Lake, spectacular under evening illumination with 108 ornate pillars depicting Shiv Tandav and monumental sculptures from Shiva Purana.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shri%20Mahakal%20Lok%2C%20Ujjain"
       }
     ],
     "setting": "plains",
     "vibes": [
-      "spiritual"
+      "spiritual",
+      "heritage"
     ],
     "effort": "easy",
     "code": "ujj"
