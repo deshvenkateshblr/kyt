@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+# Weather updater: raw NASA answers, rebuilt on demand
+tools/weather/.cache/
+__pycache__/
