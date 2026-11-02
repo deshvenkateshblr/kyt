@@ -1290,9 +1290,22 @@ KYT.virtualTrips = (function () {
   }
   function kmBetween(a, b) {
     const m = window.KYT_DISTANCE_MATRIX;
-    if (!m || !a || !b) return null;
-    const d = (m[a] && m[a][b]) != null ? m[a][b] : (m[b] && m[b][a]);
-    return d != null ? d : null;
+    if (!a || !b) return null;
+    if (m) {
+      const d = (m[a] && m[a][b]) != null ? m[a][b] : (m[b] && m[b][a]);
+      if (d != null) return d;
+    }
+    const c1 = cityById(a) || cityByName(a);
+    const c2 = cityById(b) || cityByName(b);
+    if (c1 && c2 && c1.lat && c2.lat) {
+      const R = 6371;
+      const dLat = (c2.lat - c1.lat) * Math.PI / 180;
+      const dLng = (c2.lng - c1.lng) * Math.PI / 180;
+      const x = Math.sin(dLat / 2) ** 2 + Math.cos(c1.lat * Math.PI / 180) * Math.cos(c2.lat * Math.PI / 180) * Math.sin(dLng / 2) ** 2;
+      const c = 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x));
+      return Math.round(R * c * 1.25);
+    }
+    return null;
   }
 
   function parseDurationMinutes(val) {
@@ -1322,17 +1335,7 @@ KYT.virtualTrips = (function () {
   }
 
   function estimatedDriveMinutes(fromIdOrName, toIdOrName) {
-    const fromCity = cityById(fromIdOrName) || cityByName(fromIdOrName);
-    const toCity = cityById(toIdOrName) || cityByName(toIdOrName);
-    let km = fromCity && toCity ? kmBetween(fromCity.id, toCity.id) : null;
-    if (km == null && fromCity && toCity && fromCity.lat && toCity.lat) {
-      const R = 6371;
-      const dLat = (toCity.lat - fromCity.lat) * Math.PI / 180;
-      const dLng = (toCity.lng - fromCity.lng) * Math.PI / 180;
-      const a = Math.sin(dLat / 2) ** 2 + Math.cos(fromCity.lat * Math.PI / 180) * Math.cos(toCity.lat * Math.PI / 180) * Math.sin(dLng / 2) ** 2;
-      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-      km = Math.round(R * c * 1.25);
-    }
+    const km = kmBetween(fromIdOrName, toIdOrName);
     if (!km) return 90;
     const mins = Math.round((km / 45) * 60) + 15;
     return Math.max(30, Math.round(mins / 15) * 15);
@@ -1834,7 +1837,7 @@ KYT.virtualTrips = (function () {
         mapsUrl: travelMapsUrl(fromVal, toVal, mode), icon: (MODE_META[mode] || MODE_META.other).icon
       };
       const toCityObj = cityByName(toVal);
-      if (toCityObj && !trip.cities.includes(toCityObj.id)) {
+      if (toCityObj && toCityObj.id !== trip.originCity && !trip.cities.includes(toCityObj.id)) {
         trip.cities.push(toCityObj.id);
       }
     } else {
@@ -1885,13 +1888,10 @@ KYT.virtualTrips = (function () {
     const prev = idx > 0 ? days[idx - 1] : null;
     const next = idx >= 0 && idx < days.length - 1 ? days[idx + 1] : null;
     const mine = stepsOfDay(trip, dayId);
-    const arrives = s => s.type === 'travel' && s.to === city.name;
-    const arrived = mine.some(arrives) || (prev && stepsOfDay(trip, prev.id).some(arrives));
-    
+    const dCities = citiesOfDay(trip, dayId);
+    const currentCity = dCities[dCities.length - 1] || city;
     const hasSteps = mine.length > 0;
-    const currentDayCity = mine.some(s => s.type === 'travel')
-      ? (cityByName(mine.filter(s => s.type === 'travel').slice(-1)[0].to) || city)
-      : city;
+    const isLast = idx === days.length - 1;
 
     let depHour = 17;
     if (hasSteps) {
@@ -1902,14 +1902,26 @@ KYT.virtualTrips = (function () {
       depHour = Math.floor(nextM / 60);
     }
 
-    if (arrived || (hasSteps && !mine.some(s => s.type === 'travel'))) {
-      const nc = next && next.cityId !== currentDayCity.id ? cityById(next.cityId) : null;
-      const nextUnvisited = (trip.cities || []).map(cityById).filter(Boolean).find(c => c.id !== currentDayCity.id && !mine.some(s => s.to === c.name));
-      const targetCity = nc || nextUnvisited;
-      const dur = targetCity ? formatDuration(estimatedDriveMinutes(currentDayCity.id, targetCity.id)) : '';
-      return { from: currentDayCity.name, to: targetCity ? targetCity.name : (idx === days.length - 1 ? origin : ''), hour: depHour, duration: dur };
+    if (hasSteps) {
+      const nc = next && next.cityId !== currentCity.id ? cityById(next.cityId) : null;
+      const nextUnvisited = (trip.cities || []).map(cityById).filter(Boolean).find(c => c.id !== currentCity.id && !mine.some(s => s.to === c.name));
+      const targetCity = !isLast ? (nc || nextUnvisited) : null;
+      const dur = targetCity ? formatDuration(estimatedDriveMinutes(currentCity.id, targetCity.id)) : '';
+      return { from: currentCity.name, to: targetCity ? targetCity.name : (isLast ? origin : ''), hour: depHour, duration: dur };
     }
-    const prevCity = prev ? cityById(prev.cityId) : null;
+
+    const arrives = s => s.type === 'travel' && s.to === city.name;
+    const prevSteps = prev ? stepsOfDay(trip, prev.id) : [];
+    const arrived = prevSteps.some(arrives);
+    if (arrived) {
+      const nc = next && next.cityId !== currentCity.id ? cityById(next.cityId) : null;
+      const nextUnvisited = (trip.cities || []).map(cityById).filter(Boolean).find(c => c.id !== currentCity.id);
+      const targetCity = !isLast ? (nc || nextUnvisited) : null;
+      const dur = targetCity ? formatDuration(estimatedDriveMinutes(currentCity.id, targetCity.id)) : '';
+      return { from: currentCity.name, to: targetCity ? targetCity.name : (isLast ? origin : ''), hour: depHour, duration: dur };
+    }
+    const prevCities = prev ? citiesOfDay(trip, prev.id) : [];
+    const prevCity = prevCities[prevCities.length - 1] || (prev ? cityById(prev.cityId) : null);
     const from = prevCity && prevCity.id !== city.id ? prevCity.name : (idx === 0 ? origin : '');
     return { from, to: city.name, hour: 9 };
   }
@@ -1923,7 +1935,9 @@ KYT.virtualTrips = (function () {
     const idx = days.findIndex(d => d.id === day.id);
     const mine = stepsOfDay(trip, day.id);
     const origin = trip.originCity && trip.originCity !== 'already_there' && trip.originCity !== '0' ? trip.originCity : '';
-    const fromId = idx > 0 ? days[idx - 1].cityId : origin;
+    const prevCities = idx > 0 ? citiesOfDay(trip, days[idx - 1].id) : [];
+    const prevEndCity = prevCities.length > 0 ? prevCities[prevCities.length - 1] : (idx > 0 ? cityById(days[idx - 1].cityId) : null);
+    const fromId = prevEndCity ? prevEndCity.id : origin;
     const prevSteps = idx > 0 ? stepsOfDay(trip, days[idx - 1].id) : [];
     const travelTo = (list, name) => list.some(s => s.type === 'travel' && s.to === name);
     const hasTravelIn = !mine.some(s => s.type === 'travel' && s.to === city.name) && !travelTo(prevSteps, city.name);
@@ -1944,27 +1958,27 @@ KYT.virtualTrips = (function () {
         data: hintData(placeName(fromId), city.name, km, 6) });
     }
     const isLast = idx === days.length - 1;
+    const dCities = citiesOfDay(trip, day.id);
+    const currentEndCity = dCities[dCities.length - 1] || city;
     const next = !isLast ? days[idx + 1] : null;
-    const nextCity = next && next.cityId && next.cityId !== city.id ? cityById(next.cityId) : null;
+    const nextCity = next && next.cityId && next.cityId !== currentEndCity.id ? cityById(next.cityId) : null;
     const leavesToday = nextCity && mine.some(s => s.type === 'travel' && s.to === nextCity.name);
     if (nextCity && !leavesToday) {
-      const km = kmBetween(city.id, nextCity.id);
-      const mins = estimatedDriveMinutes(city.id, nextCity.id);
+      const km = kmBetween(currentEndCity.id, nextCity.id);
+      const mins = estimatedDriveMinutes(currentEndCity.id, nextCity.id);
       const durStr = formatDuration(mins);
       hints.push({ key: 'travel-next', icon: 'route', text: `Travel to ${nextCity.name} for Day ${next.id}`, sub: km != null ? `about ${km} km${durStr ? ' · ~' + durStr : ''}` : '',
-        data: hintData(city.name, nextCity.name, km, depHour, durStr ? ` data-dur="${esc(durStr)}"` : '') });
+        data: hintData(currentEndCity.name, nextCity.name, km, depHour, durStr ? ` data-dur="${esc(durStr)}"` : '') });
       hints.push({ key: 'overnight', icon: 'moon', text: `Overnight travel to ${nextCity.name}`, sub: km != null ? `about ${km} km, sleep on the way` : 'sleep on the way',
-        data: hintData(city.name, nextCity.name, km, 21, ' data-overnight="1"') });
+        data: hintData(currentEndCity.name, nextCity.name, km, 21, ' data-overnight="1"') });
     }
-    if (isLast && origin && origin !== city.id && !mine.some(s => s.type === 'travel' && s.to === placeName(origin))) {
-      const km = kmBetween(city.id, origin);
+    if (isLast && origin && origin !== currentEndCity.id && !mine.some(s => s.type === 'travel' && s.to === placeName(origin))) {
+      const km = kmBetween(currentEndCity.id, origin);
       hints.push({ key: 'return', icon: 'route', text: `Travel back to ${placeName(origin)}`, sub: km != null ? `about ${km} km` : '',
-        data: hintData(city.name, placeName(origin), km, 18) });
+        data: hintData(currentEndCity.name, placeName(origin), km, depHour) });
     }
-    const lastTravel = mine.filter(s => s.type === 'travel').slice(-1)[0];
-    const endCity = lastTravel && lastTravel.to ? (cityByName(lastTravel.to) || city) : city;
     if (!isLast && !mine.some(s => s.type === 'stay') && !mine.some(s => s.type === 'travel' && s.overnight)) {
-      hints.push({ key: 'stay', icon: 'bed-double', text: `Stay in ${endCity.name} tonight`, sub: '', data: 'data-hint="stay"' });
+      hints.push({ key: 'stay', icon: 'bed-double', text: `Stay in ${currentEndCity.name} tonight`, sub: '', data: 'data-hint="stay"' });
     }
     return hints;
   }

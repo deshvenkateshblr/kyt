@@ -17444,7 +17444,6 @@ window.KYT_CITIES = [
   },
   {
     "id": "omkareshwar",
-    "placeId": "ChIJl6L7uV07YzkRj935vJ8d0lQ",
     "name": "Omkareshwar",
     "state": "Madhya Pradesh",
     "description": "A sacred island on the Narmada river, shaped like the holy 'Om', housing one of the 12 revered Jyotirlingas.",
