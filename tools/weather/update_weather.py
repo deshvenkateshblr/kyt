@@ -10,7 +10,8 @@ credit NASA POWER). Standard library only, so there is nothing to install.
     python tools/weather/update_weather.py --dry-run    # show what would change, write nothing
     python tools/weather/update_weather.py --limit 5    # a quick trial on the first 5 cities
 
-What it writes, one line per city so git diffs stay readable:
+What it writes, one line per city so git diffs stay readable (hi and lo are mean DAILY highs and lows, from NASA's
+T2M_MAX_AVG and T2M_MIN_AVG, not the T2M_MAX and T2M_MIN extremes):
 
     "agra": {"hi": [12 monthly mean daily highs, deg C], "lo": [12 mean daily lows, deg C],
              "rain": [12 monthly totals, mm], "src": "nasa-power"}
@@ -42,7 +43,16 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 API = "https://power.larc.nasa.gov/api/temporal/climatology/point"
-PARAMS = "T2M_MAX,T2M_MIN,PRECTOTCORR"          # mean daily max (C), mean daily min (C), rain (mm per day)
+# Mean daily high and low (C) and rain (mm per day). NOT T2M_MAX / T2M_MIN: those are the single hottest and coldest
+# hourly reading in the whole period, which gave Delhi a 48 C "high" in June and Leh a -39 C "low".
+HI_PARAM, LO_PARAM, RAIN_PARAM = "T2M_MAX_AVG", "T2M_MIN_AVG", "PRECTOTCORR"
+# Climates anyone can check, as (month index, lowest, highest) of the mean daily value. A run whose temperatures miss
+# these is refused rather than written, because that means the wrong parameter or a changed API, not a freak climate.
+ANCHORS = {
+    "delhi":   {"hi": [(0, 17, 25), (4, 36, 44)], "lo": [(0, 3, 11)]},
+    "mumbai":  {"hi": [(0, 28, 34)]},
+    "chennai": {"hi": [(0, 26, 32)]},
+}
 COMMUNITY = "AG"
 MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
 DAYS = [31, 28.25, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
@@ -96,9 +106,20 @@ def load_overrides(path: Path) -> dict:
 
 # ── NASA POWER ────────────────────────────────────────────────────────────────────────────────────────────────
 
-def request_url(lat: float, lng: float, community: str = COMMUNITY) -> str:
-    q = {"parameters": PARAMS, "community": community, "longitude": f"{lng:.4f}", "latitude": f"{lat:.4f}", "format": "JSON"}
+def request_url(lat: float, lng: float, community: str = COMMUNITY, names=(HI_PARAM, LO_PARAM, RAIN_PARAM)) -> str:
+    q = {"parameters": ",".join(names), "community": community, "longitude": f"{lng:.4f}", "latitude": f"{lat:.4f}", "format": "JSON"}
     return API + "?" + urllib.parse.urlencode(q, safe=",")
+
+
+def _api_message(e: urllib.error.HTTPError) -> str:
+    """NASA explains a rejected request in the body; show it, trimmed, so a wrong parameter name is obvious."""
+    try:
+        body = json.loads(e.read().decode("utf-8", "replace"))
+        msgs = body.get("messages") or body.get("message") or body
+        text = "; ".join(map(str, msgs)) if isinstance(msgs, list) else str(msgs)
+    except Exception:
+        return ""
+    return (": " + text[:300]) if text else ""
 
 
 def fetch_json(url: str, retries: int = 4, timeout: float = 60, sleep=time.sleep) -> dict:
@@ -111,7 +132,7 @@ def fetch_json(url: str, retries: int = 4, timeout: float = 60, sleep=time.sleep
                 return json.loads(resp.read().decode("utf-8"))
         except urllib.error.HTTPError as e:
             if e.code not in (429, 500, 502, 503, 504) or attempt == retries:
-                raise RuntimeError(f"HTTP {e.code} from NASA POWER") from None
+                raise RuntimeError(f"HTTP {e.code} from NASA POWER{_api_message(e)}") from None
             retry_after = e.headers.get("Retry-After") if e.headers else None
             sleep(float(retry_after) if retry_after and retry_after.isdigit() else wait)
         except (urllib.error.URLError, TimeoutError, ConnectionError) as e:
@@ -122,11 +143,11 @@ def fetch_json(url: str, retries: int = 4, timeout: float = 60, sleep=time.sleep
     raise RuntimeError("unreachable")
 
 
-def parse_response(data: dict) -> dict:
+def parse_response(data: dict, names=(HI_PARAM, LO_PARAM, RAIN_PARAM)) -> dict:
     """NASA's answer to {hi, lo, rain} lists. Raises ValueError, naming what is wrong, on anything unexpected."""
     try:
         params = data["properties"]["parameter"]
-        blocks = {"hi": params["T2M_MAX"], "lo": params["T2M_MIN"], "rain": params["PRECTOTCORR"]}
+        blocks = {"hi": params[names[0]], "lo": params[names[1]], "rain": params[names[2]]}
     except (KeyError, TypeError) as e:
         raise ValueError(f"unexpected response shape (missing {e}); is the API format still properties.parameter?") from None
     fill = (data.get("header") or {}).get("fill_value", -999)
@@ -140,7 +161,7 @@ def parse_response(data: dict) -> dict:
             vals.append(float(v))
         return vals
 
-    hi, lo, per_day = months(blocks["hi"], "T2M_MAX"), months(blocks["lo"], "T2M_MIN"), months(blocks["rain"], "PRECTOTCORR")
+    hi, lo, per_day = months(blocks["hi"], names[0]), months(blocks["lo"], names[1]), months(blocks["rain"], names[2])
     return {
         "hi": [round(v, 1) for v in hi],
         "lo": [round(v, 1) for v in lo],
@@ -160,6 +181,21 @@ def validate(entry: dict) -> None:
             raise ValueError(f"{MONTHS[i]}: {l} to {h} C is outside what India can have")
     if not all(0 <= r <= 4000 for r in entry["rain"]):
         raise ValueError("a monthly rainfall is outside 0 to 4000 mm")
+
+
+def sanity_problems(entries: dict) -> list[str]:
+    """Anchor cities whose temperatures fall outside what anyone knows them to be."""
+    out = []
+    for cid, checks in ANCHORS.items():
+        e = entries.get(cid)
+        if not e or e.get("src") != "nasa-power":
+            continue
+        for key, label in (("hi", "high"), ("lo", "low")):
+            for month, lo_ok, hi_ok in checks.get(key, []):
+                v = e[key][month]
+                if not (lo_ok <= v <= hi_ok):
+                    out.append(f"{cid}: mean {label} in {MONTHS[month]} is {v} C, expected {lo_ok} to {hi_ok} C")
+    return out
 
 
 # ── Writing data/weather.js ───────────────────────────────────────────────────────────────────────────────────
@@ -194,6 +230,12 @@ def run(args, fetch=None, sleep=time.sleep, today=None, out=print) -> int:
     existing = load_weather(args.weather_file)
     old = {k: v for k, v in existing["cities"].items() if k in by_id}
     overrides = load_overrides(args.overrides_file)
+    names = (args.hi_param, args.lo_param, RAIN_PARAM)
+    params_meta = {"hi": names[0], "lo": names[1], "rain": names[2]}
+    params_changed = bool(old) and existing["meta"].get("params") != params_meta
+    if params_changed:                                       # old numbers mean something else: never keep or mix them
+        out("The temperature parameters changed since the last run, so every city is fetched again.")
+        args.refresh, args.cities, args.limit = True, None, 0
     for cid in overrides:
         if cid not in by_id:
             out(f"warning: overrides has '{cid}', which is not a city in {args.cities_file.name}")
@@ -235,13 +277,13 @@ def run(args, fetch=None, sleep=time.sleep, today=None, out=print) -> int:
             continue
         n = todo.index(c) + 1
         cache_file = args.cache_dir / f"{cid}.json"
-        url = request_url(c["lat"], c["lng"], args.community)
+        url = request_url(c["lat"], c["lng"], args.community, names)
         entry = None
         if cache_file.exists() and not args.refresh:         # a cached answer is used only if it still parses
             try:
                 blob = json.loads(cache_file.read_text(encoding="utf-8"))
                 if blob.get("url") == url:
-                    entry = parse_response(blob["data"])
+                    entry = parse_response(blob["data"], names)
                     validate(entry)
                     cached += 1
             except (ValueError, KeyError):
@@ -253,7 +295,7 @@ def run(args, fetch=None, sleep=time.sleep, today=None, out=print) -> int:
                 raw = fetch(url)
                 last_network = True
                 fetched += 1
-                entry = parse_response(raw)
+                entry = parse_response(raw, names)
                 validate(entry)
                 cache_file.write_text(json.dumps({"url": url, "fetched": today, "data": raw}), encoding="utf-8")
             entries[cid] = {**entry, "src": "nasa-power"}
@@ -261,17 +303,23 @@ def run(args, fetch=None, sleep=time.sleep, today=None, out=print) -> int:
         except (RuntimeError, ValueError) as e:
             failed.append((cid, str(e)))
             out(f"[{n}/{len(todo)}] {cid}: FAILED, {e}")
-            if cid in old:
+            if cid in old and not params_changed:
                 entries[cid] = old[cid]                      # keep what we had rather than lose the city
+                # (but never across a parameter change: those numbers mean something else, so the city waits for the next run)
 
     changed = [cid for cid in order if cid in entries and old.get(cid) != entries[cid]]
     unchanged_set = set(entries) == set(existing["cities"]) and not changed   # also catches cities that left cities.js
-    meta = {"source": SOURCE_NAME, "period": args.period, "units": {"hi": "C", "lo": "C", "rain": "mm per month"},
+    meta = {"source": SOURCE_NAME, "period": args.period, "units": {"hi": "C", "lo": "C", "rain": "mm per month"}, "params": params_meta,
             "generated": today}
     same_meta = {k: v for k, v in existing["meta"].items() if k != "generated"} == {k: v for k, v in meta.items() if k != "generated"}
+    problems = [] if args.no_sanity_check else sanity_problems(entries)
     wrote = False
     if unchanged_set and same_meta:
         out("No changes: data/weather.js is already up to date.")
+    elif problems:
+        out("\nNOT WRITTEN: these temperatures look wrong, so the file was left alone:")
+        out("\n".join("  " + p for p in problems))
+        out("Likely a wrong parameter name or a changed API. If the numbers are right, run again with --no-sanity-check.")
     elif args.dry_run:
         out(f"Dry run: would write {len(entries)} cities ({len(changed)} new or changed).")
     else:
@@ -300,7 +348,7 @@ def run(args, fetch=None, sleep=time.sleep, today=None, out=print) -> int:
         out("\nFailed:")
         for cid, why in failed:
             out(f"  {cid}: {why}")
-    return 1 if failed else 0
+    return 1 if (failed or problems) else 0
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -314,6 +362,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--retries", type=int, default=4, help="retries per request for timeouts, 429 and 5xx")
     p.add_argument("--timeout", type=float, default=60, help="seconds before a request is given up on")
     p.add_argument("--community", default=COMMUNITY, help="NASA POWER community")
+    p.add_argument("--hi-param", default=HI_PARAM, help="NASA parameter for the mean daily high")
+    p.add_argument("--lo-param", default=LO_PARAM, help="NASA parameter for the mean daily low")
+    p.add_argument("--no-sanity-check", action="store_true", help="write even if the anchor cities look wrong")
     p.add_argument("--period", default=DEFAULT_PERIOD, help="climatology years to record in the file's meta")
     p.add_argument("--cities-file", type=Path, default=ROOT / "data" / "cities.js")
     p.add_argument("--weather-file", type=Path, default=ROOT / "data" / "weather.js")

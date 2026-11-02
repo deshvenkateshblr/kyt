@@ -23,14 +23,15 @@ CITIES = [
 ]
 
 
-def api_answer(hi=30.0, lo=18.0, per_day=2.0, **bad):
-    """The shape NASA POWER returns: properties.parameter.<NAME>.<JAN..DEC, ANN>."""
+def api_answer(hi=30.0, lo=18.0, per_day=2.0, names=(uw.HI_PARAM, uw.LO_PARAM, uw.RAIN_PARAM), **bad):
+    """The shape NASA POWER returns: properties.parameter.<NAME>.<JAN..DEC, ANN>. A value may be one number or 12."""
     def block(v):
-        d = {m: v for m in uw.MONTHS}
-        d["ANN"] = v
+        vals = v if isinstance(v, list) else [v] * 12
+        d = dict(zip(uw.MONTHS, vals))
+        d["ANN"] = vals[0]
         return d
-    params = {"T2M_MAX": block(hi), "T2M_MIN": block(lo), "PRECTOTCORR": block(per_day)}
-    for name, month_value in bad.items():                    # e.g. T2M_MAX=("JAN", -999.0)
+    params = {names[0]: block(hi), names[1]: block(lo), names[2]: block(per_day)}
+    for name, month_value in bad.items():                    # e.g. T2M_MAX_AVG=("JAN", -999.0)
         params[name][month_value[0]] = month_value[1]
     return {"type": "Feature", "geometry": {"type": "Point", "coordinates": [78.0, 27.2, 200.0]},
             "properties": {"parameter": params}, "header": {"fill_value": -999.0}}
@@ -54,7 +55,7 @@ class Base(unittest.TestCase):
         def fake(url):
             self.calls.append(url)
             for cid, ans in (answers or {}).items():
-                c = next(c for c in CITIES if c["id"] == cid)
+                c = next(c for c in uw.load_cities(self.tmp / "cities.js") if c["id"] == cid)
                 if f"latitude={c['lat']:.4f}" in url:
                     if isinstance(ans, Exception):
                         raise ans
@@ -75,8 +76,8 @@ class Parsing(Base):
         self.assertEqual(out["hi"], [30.0] * 12)
 
     def test_fill_value_and_missing_months_are_refused(self):
-        with self.assertRaisesRegex(ValueError, "T2M_MAX JAN"):
-            uw.parse_response(api_answer(T2M_MAX=("JAN", -999.0)))
+        with self.assertRaisesRegex(ValueError, "T2M_MAX_AVG JAN"):
+            uw.parse_response(api_answer(T2M_MAX_AVG=("JAN", -999.0)))
         data = api_answer()
         del data["properties"]["parameter"]["PRECTOTCORR"]["JUL"]
         with self.assertRaisesRegex(ValueError, "PRECTOTCORR JUL"):
@@ -97,7 +98,8 @@ class Parsing(Base):
     def test_the_request_url(self):
         url = uw.request_url(27.18, 78.02)
         self.assertIn("/api/temporal/climatology/point?", url)
-        self.assertIn("parameters=T2M_MAX,T2M_MIN,PRECTOTCORR", url)
+        self.assertIn("parameters=T2M_MAX_AVG,T2M_MIN_AVG,PRECTOTCORR", url)
+        self.assertNotIn("T2M_MAX,", url, "the extreme-value parameter must not be requested")
         self.assertIn("latitude=27.1800", url)
         self.assertIn("longitude=78.0200", url)
         self.assertIn("format=JSON", url)
@@ -129,7 +131,7 @@ class Running(Base):
         self.assertTrue(any("No changes" in line for line in self.log))
 
     def test_one_failure_does_not_lose_the_others_and_the_exit_code_says_so(self):
-        code = self.go(answers={"goa": api_answer(T2M_MIN=("MAR", -999.0))})
+        code = self.go(answers={"goa": api_answer(T2M_MIN_AVG=("MAR", -999.0))})
         self.assertEqual(code, 1)
         self.assertEqual(list(self.weather()["cities"]), ["agra", "leh", "manali"])
         self.assertTrue(any("goa" in line and "FAILED" in line for line in self.log))
@@ -218,6 +220,81 @@ class Running(Base):
         res = subprocess.run([node, "-e", js, str(self.tmp / "weather.js")], capture_output=True, text=True)
         self.assertEqual(res.returncode, 0, res.stderr)
         self.assertEqual(json.loads(res.stdout), [4, 12, 12, "NASA POWER climatology"])
+
+
+DELHI = {"hi": [21.3, 25.0, 31.0, 38.0, 41.0, 39.5, 35.0, 34.0, 34.5, 34.0, 28.5, 23.0],
+         "lo": [7.8, 10.5, 15.0, 21.0, 25.5, 27.5, 26.5, 26.0, 24.5, 19.5, 13.0, 8.5]}
+
+
+class Parameters(Base):
+    def setUp(self):
+        super().setUp()
+        data = [c for c in CITIES if c["id"] == "agra"] + [{"id": "delhi", "name": "Delhi", "lat": 28.61, "lng": 77.21, "setting": "plains"}]
+        (self.tmp / "cities.js").write_text("window.KYT_CITIES = " + json.dumps(data) + ";\n", encoding="utf-8")
+
+    def test_an_answer_with_only_the_extreme_value_parameters_is_refused(self):
+        old_style = api_answer(names=("T2M_MAX", "T2M_MIN", "PRECTOTCORR"))
+        with self.assertRaisesRegex(ValueError, "unexpected response shape"):
+            uw.parse_response(old_style)
+
+    def test_extreme_looking_temperatures_for_an_anchor_city_are_not_written(self):
+        extremes = {"hi": [31.3, 35.7, 42.7, 45.6, 48.1, 48.8, 46.8, 43.8, 40.2, 38.7, 37.7, 29.8],
+                    "lo": [-1.4, 1.2, 6.1, 14.1, 17.8, 24.0, 23.8, 22.6, 17.1, 12.5, 6.5, 0.5]}
+        code = self.go(answers={"delhi": api_answer(hi=extremes["hi"], lo=extremes["lo"])})
+        self.assertEqual(code, 1)
+        self.assertFalse((self.tmp / "weather.js").exists(), "nothing is written")
+        text = "\n".join(self.log)
+        self.assertIn("NOT WRITTEN", text)
+        self.assertRegex(text, r"delhi: mean high in JAN is 31\.3 C, expected 17 to 25")
+        self.assertRegex(text, r"delhi: mean low in JAN is -1\.4 C")
+
+    def test_plausible_temperatures_pass_and_the_escape_hatch_exists(self):
+        self.assertEqual(self.go(answers={"delhi": api_answer(hi=DELHI["hi"], lo=DELHI["lo"])}), 0)
+        self.assertIn("delhi", self.weather()["cities"])
+        # the same extremes are written when asked for explicitly
+        self.setUp()
+        bad = api_answer(hi=[40.0] * 12, lo=[30.0] * 12)
+        self.assertEqual(self.go("--no-sanity-check", answers={"delhi": bad}), 0)
+        self.assertIn("delhi", self.weather()["cities"])
+
+    def test_the_file_records_which_parameters_were_used(self):
+        self.go(answers={"delhi": api_answer(hi=DELHI["hi"], lo=DELHI["lo"])})
+        self.assertEqual(self.weather()["meta"]["params"], {"hi": "T2M_MAX_AVG", "lo": "T2M_MIN_AVG", "rain": "PRECTOTCORR"})
+
+    def test_data_from_other_parameters_is_never_kept_or_mixed(self):
+        """An old file (no params, or the extreme-value ones) is fetched again in full, even when only one city is asked for."""
+        old_style = api_answer(names=("T2M_MAX", "T2M_MIN", "PRECTOTCORR"))
+        self.go("--hi-param", "T2M_MAX", "--lo-param", "T2M_MIN", "--no-sanity-check", answers={"agra": old_style, "delhi": old_style})
+        self.assertEqual(self.weather()["meta"]["params"]["hi"], "T2M_MAX")
+        self.calls.clear()
+        self.go("--cities", "agra", answers={"delhi": api_answer(hi=DELHI["hi"], lo=DELHI["lo"])})
+        self.assertEqual(len(self.calls), 2, "every city again, not just the one named")
+        self.assertTrue(any("parameters changed" in line for line in self.log))
+        self.assertEqual(self.weather()["meta"]["params"]["hi"], "T2M_MAX_AVG")
+        self.assertEqual(self.weather()["cities"]["delhi"]["hi"][0], 21.3)
+
+    def test_a_city_that_fails_after_a_parameter_change_is_left_out_not_kept_with_old_numbers(self):
+        old_style = api_answer(names=("T2M_MAX", "T2M_MIN", "PRECTOTCORR"))
+        self.go("--hi-param", "T2M_MAX", "--lo-param", "T2M_MIN", "--no-sanity-check", answers={"agra": old_style, "delhi": old_style})
+        code = self.go(answers={"agra": RuntimeError("could not reach NASA POWER"), "delhi": api_answer(hi=DELHI["hi"], lo=DELHI["lo"])})
+        self.assertEqual(code, 1)
+        self.assertEqual(list(self.weather()["cities"]), ["delhi"], "agra waits for the next run")
+        self.assertEqual(self.go(), 0)
+        self.assertEqual(sorted(self.weather()["cities"]), ["agra", "delhi"])
+
+    def test_a_file_from_before_params_were_recorded_is_treated_as_stale(self):
+        legacy = ('window.KYT_WEATHER = {"meta": {"source": "NASA POWER climatology"}, "cities": '
+                  '{"agra": {"hi": [31.0] , "lo": [0.0], "rain": [1], "src": "nasa-power"}}};\n')
+        (self.tmp / "weather.js").write_text(legacy, encoding="utf-8")
+        self.go(answers={"delhi": api_answer(hi=DELHI["hi"], lo=DELHI["lo"])})
+        self.assertEqual(len(self.calls), 2)
+        self.assertEqual(len(self.weather()["cities"]["agra"]["hi"]), 12)
+
+    def test_nasas_explanation_of_a_rejected_request_is_shown(self):
+        err = urllib.error.HTTPError("u", 422, "x", {}, io.BytesIO(b'{"messages": ["T2M_MAX_AVG is not a valid parameter for climatology"]}'))
+        with mock.patch("urllib.request.urlopen", side_effect=[err]):
+            with self.assertRaisesRegex(RuntimeError, "HTTP 422 from NASA POWER: T2M_MAX_AVG is not a valid parameter"):
+                uw.fetch_json("https://x", sleep=lambda s: None)
 
 
 class Retrying(unittest.TestCase):
