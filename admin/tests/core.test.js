@@ -266,6 +266,25 @@ test('generic itinerary prompt asks for verify notes instead of Maps; catalog op
   var p = K.buildPrompt({ originCity: 'delhi', variant: 'generic', includeCatalog: false }, ctx);
   assert.ok(/cannot check live information/.test(p)); assert.ok(!/Use Google Maps to confirm/.test(p)); assert.ok(!/CITY IDS/.test(p));
 });
+test('direct itinerary prompt formats destination sequence, diet, pace and candidate beats', function () {
+  var p = K.buildPrompt({
+    originCity: 'bengaluru',
+    destinationCities: ['pune', 'nashik'],
+    days: 4,
+    diet: 'satvik',
+    pace: 'deep',
+    notes: 'Morning darshan priority'
+  }, ctx);
+  assert.ok(/Destinations to visit in sequence: Pune → Nashik/.test(p));
+  assert.ok(/Food \/ Diet preference: satvik/.test(p));
+  assert.ok(/Pace: deep/.test(p));
+  assert.ok(/Length: 4 days/.test(p));
+  assert.ok(/Morning darshan priority/.test(p));
+  if (catalog.length) {
+    assert.ok(/CANDIDATE ATTRACTIONS & CITY BEATS FROM KYT CATALOG:/.test(p));
+    assert.ok(/City: Pune/.test(p));
+  }
+});
 test('variation prompt includes the old trip and the requested change', function () {
   var t = K.validateTrip(goodTrip({ id: 'blr-hampi', ideaId: 'hampi' }), ctx).trip;
   var p = K.buildVariationPrompt(t, 'Jain friendly and slower', {}, ctx);

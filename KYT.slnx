@@ -25,6 +25,12 @@
   <Folder Name="/Solution Items/data/">
     <File Path="data/bucket-list.js" />
     <File Path="data/cities.js" />
+    <File Path="data/city_videos_data.js" />
+    <File Path="data/curated_trips.js" />
+    <File Path="data/distance_matrix.js" />
+    <File Path="data/india-map.js" />
+    <File Path="data/quests.js" />
+    <File Path="data/weather.js" />
   </Folder>
   <Folder Name="/Solution Items/docs/">
     <File Path="docs/build_city_details.md" />

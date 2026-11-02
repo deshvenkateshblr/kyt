@@ -10,10 +10,23 @@ Put the `admin/` folder in the KYT repo root, next to `data/` and `lib/`, then s
 It loads `../data/cities.js` for city ids. Without it the tool still works but cannot match cities.
 
 ## Workflow
-1. **Plan**: choose the starting city and, optionally, length, months, focus (spiritual shows a Faith choice) and free-text notes. *Step 1* asks the AI for about 12 tagged trip ideas, with no itineraries. *Step 2* develops only the ideas you like, one itinerary per answer, by copy-paste or by calling Gemini from the page. Dismiss ideas you do not want.
-2. **Bring in AI output**: paste an itinerary answer. Every import is a draft.
-3. **Review and edit**: fix places, times and links, check the "verify" notes, adjust tags (track, faiths, suits), then approve. "Make a variation" writes a prompt that changes an existing trip (slower, Jain friendly, budget, kids) and returns a new draft linked by `variantOf`.
-4. **Library and export**: download `curated_trips.js` (approved only by default). Load an existing file to keep editing. Download backups: the library lives in browser storage.
+1. **Curate Trip**:
+   - **Origin & Destination Circuit**: Choose your starting point (e.g. Bengaluru, Delhi, Mumbai) and select ordered destination cities from the 159-city KYT catalog (e.g. Pune → Bhimashankar → Aurangabad → Nashik) with quick reorder and remove buttons, or choose from popular preset circuits.
+   - **Trip Parameters**: Set duration (days), travel style/intent (Spiritual, Cultural, Nature/Adventure, Culinary, Mixed), food preference (Any, Vegetarian, Jain, Satvik/no onion-garlic), pace (Relaxed, Standard, Deep), and faith.
+   - **Curator Guidance**: Click verified quick twist chips (morning darshan timings, pure satvik food, senior-friendly, temple afternoon closures) or enter custom instructions.
+   - **Generate**: Click **"📋 Copy Prompt & Open Gemini ↗"** to 1-click copy the prompt (which embeds candidate beats and verified Google Maps links from KYT's catalog) and launch Gemini web, or click **"⚡ Generate with Gemini API"** to run directly in-page.
+   - **Ingest & Instant Preview**: Paste Gemini's response (or paste from clipboard) to view a live timeline preview showing day-by-day steps, verification issues, and Google Maps links, then click **"✓ Add to Curated Library"**.
+   - *(Optional Ideas Brainstorming)*: An expandable brainstorm section is available if you prefer Gemini to propose 12 destination ideas from scratch.
+2. **Review & Edit**:
+   - Inspect and edit every trip in your library: title, tagline, tags, transportation notes, Before You Go prerequisites, Special Days, and day-by-day activities.
+   - Click "Open Maps link" to spot-check locations.
+   - Make variations with Gemini (e.g. relaxed pace, Jain-friendly, monsoon edition).
+   - Click **"✓ Approve for Export"** when satisfied.
+3. **Curated Library & Export**:
+   - View library summary with approved/draft counters.
+   - Click **"📥 Download curated_trips.js"** to generate the production file for KYT, or copy the JS directly.
+   - Import existing `curated_trips.js` or backup JSON files to update the library.
+
 
 The admin applies no editorial limits (days, travel time, how packed a day is). It only blocks a missing title or no days, and it still strips HTML and allows only https Google Maps links, since AI text is untrusted. Editing an approved trip returns it to draft.
 

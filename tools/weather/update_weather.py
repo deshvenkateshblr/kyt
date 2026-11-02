@@ -178,7 +178,8 @@ def render(meta: dict, order: list[str], entries: dict) -> str:
 
 def write_atomic(path: Path, text: str) -> None:
     tmp = path.with_suffix(path.suffix + ".tmp")
-    tmp.write_text(text, encoding="utf-8", newline="\n")
+    with tmp.open("w", encoding="utf-8", newline="\n") as f:
+        f.write(text)
     os.replace(tmp, path)
 
 

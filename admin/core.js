@@ -623,17 +623,37 @@
     return { name: known ? idx.byId[b.originCity].name : (cleanTo(b.originName, 60) || 'the origin city'), id: known ? b.originCity : '' };
   }
 
-  function briefLines(b, origin) {
+  function briefLines(b, origin, idx) {
     var months = (b.months || []).map(function (m) { return MONTH_NAMES[m - 1]; }).filter(Boolean);
     var days = toInt(b.days, 1, 14);
     var L = ['BRIEF'];
     L.push('- Starting and ending in: ' + origin.name);
+    var destCities = Array.isArray(b.destinationCities) ? b.destinationCities : (Array.isArray(b.cities) ? b.cities : []);
+    if (destCities.length) {
+      var destNames = destCities.map(function (c) {
+        var id = typeof c === 'string' ? c : (c && (c.id || c.name));
+        var cityObj = idx && idx.byId ? idx.byId[id] : null;
+        return cityObj ? cityObj.name : id;
+      }).filter(Boolean);
+      if (destNames.length) {
+        L.push('- Destinations to visit in sequence: ' + destNames.join(' → '));
+      }
+    }
     L.push('- Length: ' + (days ? days + ' days' : 'a mix of 2-day weekend trips and 3 to 4 day long-weekend trips; state the days for each'));
     L.push('- Travelling in: ' + (months.length ? months.join(', ') : 'any month (give the best months for each)'));
     var intents = (b.intents || []).filter(function (i) { return INTENTS.indexOf(i) >= 0 && i !== 'mixed'; });
+    if (b.intent && intents.indexOf(b.intent) < 0 && INTENTS.indexOf(b.intent) >= 0 && b.intent !== 'mixed') {
+      intents.push(b.intent);
+    }
     var faiths = (b.faiths || []).filter(function (f) { return FAITHS.indexOf(f) >= 0; });
     if (intents.length || faiths.length) {
       L.push('- Interests: ' + (intents.length ? intents.join(', ') : 'open') + (faiths.length && intents.indexOf('spiritual') >= 0 ? '. For the spiritual trips focus on these faiths: ' + faiths.join(', ') : ''));
+    }
+    if (b.diet && b.diet !== 'any') {
+      L.push('- Food / Diet preference: ' + b.diet);
+    }
+    if (b.pace && b.pace !== 'standard') {
+      L.push('- Pace: ' + b.pace);
     }
     if (b.notes) L.push('- Notes: ' + cleanTo(b.notes, 600));
     return L;
@@ -662,7 +682,7 @@
     var count = toInt(b.ideaCount, 1, 40) || 12;
     var L = ['You are an editor at an Indian travel app that publishes a small set of hand-picked weekend and long-weekend trips from major cities.',
       'Propose ' + count + ' distinct trip IDEAS from ' + origin.name + '. Do not write itineraries yet; only the ideas.', ''];
-    L = L.concat(briefLines(b, origin));
+    L = L.concat(briefLines(b, origin, idx));
     L.push('');
     L.push('RULES');
     L.push('1. Make the set varied: different destinations, a spread of interests, travellers, paces and seasons, so the app can offer a real choice. Do not repeat a destination unless the experience is clearly different.');
@@ -747,9 +767,39 @@
       L.push('');
       return L.concat(itineraryRules(b, ctx, idx), outputBlock(days, idea.id), catalogLines(b, ctx, idx, origin.id)).join('\n');
     }
+    var destCities = Array.isArray(b.destinationCities) ? b.destinationCities : (Array.isArray(b.cities) ? b.cities : []);
+    var days = toInt(b.days, 1, 14) || (destCities.length ? Math.min(14, Math.max(1, destCities.length)) : 2);
     L.push('You are an editor at an Indian travel app. Create one curated trip, starting and ending in ' + origin.name + '.', '');
-    L = L.concat(briefLines(b, origin), ['']);
-    return L.concat(itineraryRules(b, ctx, idx), outputBlock(toInt(b.days, 1, 14) || 2, ''), catalogLines(b, ctx, idx, origin.id)).join('\n');
+    L = L.concat(briefLines(b, origin, idx), ['']);
+
+    if (destCities.length && idx && idx.byId) {
+      var beatsLines = [];
+      destCities.forEach(function (c) {
+        var id = typeof c === 'string' ? c : (c && (c.id || c.name));
+        var city = idx.byId[id];
+        if (city && ((city.beats && city.beats.length) || city.notes || city.desc)) {
+          beatsLines.push('City: ' + city.name + (city.state ? ' (' + city.state + ')' : ''));
+          if (city.notes || city.desc) beatsLines.push('Overview: ' + (city.notes || city.desc));
+          if (city.beats && city.beats.length) {
+            beatsLines.push('Key Candidate Attractions & Experiences:');
+            city.beats.forEach(function (bt) {
+              var timeHint = bt.hour != null ? ' ~ ' + pad(bt.hour) + ':00' : '';
+              var verifyHint = bt.verify && bt.verify.length ? ' [Rules/Timings: ' + bt.verify.join('; ') + ']' : '';
+              var mapHint = bt.mapsUrl ? ' [Map: ' + bt.mapsUrl + ']' : '';
+              beatsLines.push('  - ' + bt.title + ' (' + (bt.where || city.name) + ')' + timeHint + verifyHint + mapHint);
+              if (bt.notes) beatsLines.push('    Notes: ' + bt.notes);
+            });
+          }
+          beatsLines.push('');
+        }
+      });
+      if (beatsLines.length) {
+        L.push('CANDIDATE ATTRACTIONS & CITY BEATS FROM KYT CATALOG:');
+        L = L.concat(beatsLines);
+      }
+    }
+
+    return L.concat(itineraryRules(b, ctx, idx), outputBlock(days, ''), catalogLines(b, ctx, idx, origin.id)).join('\n');
   }
 
   /** Variation of an existing trip, for a different audience, pace, season or focus. */
