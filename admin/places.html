@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KYT Admin - Place ID Manager</title>
+  <link rel="stylesheet" href="./admin.css">
+  <style>
+    .places-wrap { max-width: 1200px; margin: 0 auto; padding: 24px 20px 80px; }
+    .top-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+    .top-bar-title h1 { margin: 0; font-size: 22px; font-weight: 700; color: var(--ink); display: flex; align-items: center; gap: 10px; }
+    .top-bar-title p { margin: 4px 0 0; color: var(--muted); font-size: 13.5px; }
+    
+    .progress-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .progress-info { flex: 1; min-width: 260px; }
+    .progress-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+    .progress-bar-bg { width: 100%; height: 8px; background: var(--line); border-radius: 99px; overflow: hidden; }
+    .progress-bar-fill { height: 100%; background: var(--ok); width: 0%; transition: width 0.3s ease; }
+    .action-group { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .controls-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 20px; display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .filter-group { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .search-input { padding: 8px 12px; border: 1px solid var(--line); border-radius: 6px; font-size: 13.5px; width: 240px; }
+    .select-input { padding: 8px 12px; border: 1px solid var(--line); border-radius: 6px; font-size: 13.5px; background: #fff; }
+    .badge-tab { padding: 6px 12px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--muted); font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.15s; }
+    .badge-tab:hover { background: var(--bg); color: var(--ink); }
+    .badge-tab.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+    .table-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.03); }
+    .places-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13.5px; }
+    .places-table th { background: #fafbfc; border-bottom: 1px solid var(--line); padding: 12px 16px; font-weight: 600; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.03em; }
+    .places-table td { padding: 10px 16px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+    .places-table tr:hover { background: #fbfcfd; }
+    .places-table tr.row-done { background: #fdfefe; }
+
+    .city-cell strong { display: block; color: var(--ink); font-size: 14px; }
+    .city-cell span { font-size: 12px; color: var(--muted); }
+    .pid-input { width: 100%; min-width: 250px; padding: 7px 10px; border: 1px solid var(--line); border-radius: 6px; font-family: monospace; font-size: 12.5px; transition: border-color 0.2s; }
+    .pid-input:focus { border-color: var(--accent); outline: none; }
+    .pid-input.valid { border-color: var(--ok); background: #f7fdf9; }
+    
+    .btn-sm { padding: 6px 12px; border-radius: 6px; font-size: 12.5px; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--line); background: #fff; color: var(--ink); transition: all 0.15s; }
+    .btn-sm:hover { background: var(--bg); }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-success { background: var(--ok); color: #fff; border-color: var(--ok); }
+    .btn-success:hover { background: #05603a; }
+    
+    .status-badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 99px; font-size: 11px; font-weight: 600; }
+    .status-badge.done { background: var(--ok-bg); color: var(--ok); }
+    .status-badge.pending { background: var(--warn-bg); color: var(--warn); }
+
+    /* Modal */
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.45); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 20px; }
+    .modal-box { background: #fff; border-radius: var(--radius); width: 100%; max-width: 600px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); overflow: hidden; }
+    .modal-head { padding: 16px 20px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+    .modal-head h3 { margin: 0; font-size: 16px; font-weight: 600; }
+    .modal-body { padding: 20px; }
+    .modal-foot { padding: 12px 20px; border-top: 1px solid var(--line); background: #fafbfc; display: flex; justify-content: flex-end; gap: 8px; }
+    .paste-area { width: 100%; height: 220px; border: 1px solid var(--line); border-radius: 6px; padding: 10px; font-family: monospace; font-size: 12.5px; line-height: 1.5; resize: vertical; box-sizing: border-box; }
+    
+    /* API Key Bar */
+    .api-strip { font-size: 12.5px; color: var(--muted); display: flex; align-items: center; gap: 8px; background: #fafbfc; border-top: 1px solid var(--line); padding: 8px 20px; }
+    .api-strip input { padding: 4px 8px; border: 1px solid var(--line); border-radius: 4px; font-size: 12px; width: 200px; }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <strong>KYT Admin</strong><span class="muted"> / Place ID Manager</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <a href="./index.html" class="muted" style="text-decoration:none; font-size:13px; font-weight:500;">← Curated Trips Generator</a>
+      <div id="status" class="muted" aria-live="polite"></div>
+    </div>
+  </header>
+
+  <div class="places-wrap">
+    <div class="top-bar">
+      <div class="top-bar-title">
+        <h1>📍 Google Place ID Manager</h1>
+        <p>Manage and populate official Google Place IDs for all 159 catalog destinations to guarantee zero-ambiguity Google Maps links.</p>
+      </div>
+      <div class="action-group">
+        <button type="button" class="btn-sm" id="btn-bulk-paste">📋 Bulk Paste / Import</button>
+        <button type="button" class="btn-sm" id="btn-copy-js">📋 Copy cities.js</button>
+        <button type="button" class="btn-sm btn-primary" id="btn-download-js">📥 Download cities.js</button>
+      </div>
+    </div>
+
+    <!-- Progress Card -->
+    <div class="progress-card">
+      <div class="progress-info">
+        <div class="progress-label">
+          <span>Overall Catalog Progress</span>
+          <span id="progress-text">0 / 159 Populated (0%)</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progress-bar"></div>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <span class="status-badge done" id="badge-done-count">8 Done</span>
+        <span class="status-badge pending" id="badge-pending-count">151 Missing</span>
+      </div>
+    </div>
+
+    <!-- Controls Card -->
+    <div class="controls-card">
+      <div class="filter-group">
+        <button type="button" class="badge-tab active" data-filter="all">All (<span id="count-all">159</span>)</button>
+        <button type="button" class="badge-tab" data-filter="missing">Missing (<span id="count-missing">151</span>)</button>
+        <button type="button" class="badge-tab" data-filter="done">Completed (<span id="count-done">8</span>)</button>
+        
+        <select id="select-quest" class="select-input" style="margin-left:8px;">
+          <option value="all">All Quests / Circuits</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <input type="text" id="search-input" class="search-input" placeholder="Search city or state...">
+      </div>
+    </div>
+
+    <!-- Cities Table -->
+    <div class="table-card">
+      <table class="places-table">
+        <thead>
+          <tr>
+            <th style="width:40px;">#</th>
+            <th style="width:190px;">City</th>
+            <th style="width:150px;">State / Region</th>
+            <th style="width:140px;">Coordinates</th>
+            <th>Google Place ID</th>
+            <th style="width:160px; text-align:right;">Lookup Tools</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <!-- Rendered dynamically -->
+        </tbody>
+      </table>
+
+      <!-- Optional API key helper strip for one-click fetch -->
+      <div class="api-strip">
+        <span>💡 Have an optional Google Maps API key?</span>
+        <input type="password" id="api-key-input" placeholder="Paste API Key here...">
+        <button type="button" class="btn-sm" id="btn-auto-fetch">⚡ Auto-Fetch Remaining</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bulk Paste Modal -->
+  <div id="paste-modal" class="modal-backdrop" style="display:none;">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3>Bulk Paste Place IDs</h3>
+        <button type="button" class="btn-sm" id="btn-close-modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="margin-top:0; font-size:13px; color:var(--muted);">
+          Paste lines in any of the following formats:
+          <br><code>City Name: ChIJ...</code> or <code>cityId, ChIJ...</code> or JSON object <code>{"somnath": "ChIJ..."}</code>
+        </p>
+        <textarea id="paste-input" class="paste-area" placeholder="Somnath: ChIJ...&#10;Dwarka: ChIJ...&#10;Haridwar: ChIJ..."></textarea>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn-sm" id="btn-cancel-paste">Cancel</button>
+        <button type="button" class="btn-sm btn-primary" id="btn-apply-paste">Apply to Cities</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <!-- Load Data Dependencies -->
+  <script src="../data/cities.js"></script>
+  <script src="../data/quests.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var cities = (window.KYT_CITIES || []).map(function (c) {
+        return Object.assign({}, c);
+      });
+      var quests = window.KYT_QUESTS || [];
+
+      var currentFilter = 'all'; // 'all' | 'missing' | 'done'
+      var currentQuest = 'all';
+      var searchQuery = '';
+      var unsavedCount = 0;
+
+      // DOM Elements
+      var tbody = document.getElementById('table-body');
+      var searchEl = document.getElementById('search-input');
+      var questSelect = document.getElementById('select-quest');
+      var progressBar = document.getElementById('progress-bar');
+      var progressText = document.getElementById('progress-text');
+      var badgeDone = document.getElementById('badge-done-count');
+      var badgePending = document.getElementById('badge-pending-count');
+      var countAll = document.getElementById('count-all');
+      var countMissing = document.getElementById('count-missing');
+      var countDone = document.getElementById('count-done');
+      var toastEl = document.getElementById('toast');
+
+      // Populate Quest Dropdown
+      if (quests && quests.length) {
+        quests.forEach(function (q) {
+          var opt = document.createElement('option');
+          opt.value = q.id;
+          opt.textContent = q.title + ' (' + (q.cityIds ? q.cityIds.length : 0) + ')';
+          questSelect.appendChild(opt);
+        });
+      }
+
+      function showToast(msg, isErr) {
+        toastEl.textContent = msg;
+        toastEl.style.background = isErr ? 'var(--err)' : 'var(--ink)';
+        toastEl.removeAttribute('hidden');
+        toastEl.classList.remove('hidden');
+        setTimeout(function () {
+          toastEl.setAttribute('hidden', '');
+        }, 3500);
+      }
+
+      function updateStats() {
+        var total = cities.length;
+        var done = cities.filter(function (c) { return Boolean(c.placeId && String(c.placeId).trim()); }).length;
+        var missing = total - done;
+        var pct = total ? Math.round((done / total) * 100) : 0;
+
+        progressBar.style.width = pct + '%';
+        progressText.textContent = done + ' / ' + total + ' Populated (' + pct + '%)';
+        badgeDone.textContent = done + ' Done';
+        badgePending.textContent = missing + ' Missing';
+        countAll.textContent = total;
+        countMissing.textContent = missing;
+        countDone.textContent = done;
+      }
+
+      function getVisibleCities() {
+        return cities.filter(function (c, idx) {
+          var hasPid = Boolean(c.placeId && String(c.placeId).trim());
+          if (currentFilter === 'missing' && hasPid) return false;
+          if (currentFilter === 'done' && !hasPid) return false;
+
+          if (currentQuest !== 'all') {
+            var q = quests.find(function (x) { return x.id === currentQuest; });
+            if (q && q.cityIds && !q.cityIds.includes(c.id)) return false;
+          }
+
+          if (searchQuery) {
+            var qStr = searchQuery.toLowerCase();
+            var matchesName = (c.name && c.name.toLowerCase().includes(qStr));
+            var matchesId = (c.id && c.id.toLowerCase().includes(qStr));
+            var matchesState = (c.state && c.state.toLowerCase().includes(qStr));
+            if (!matchesName && !matchesId && !matchesState) return false;
+          }
+
+          return true;
+        });
+      }
+
+      function renderTable() {
+        updateStats();
+        tbody.innerHTML = '';
+        var visible = getVisibleCities();
+
+        if (visible.length === 0) {
+          var emptyRow = document.createElement('tr');
+          emptyRow.innerHTML = '<td colspan="6" style="text-align:center; padding:32px; color:var(--muted); font-size:14px;">No cities match the current filter.</td>';
+          tbody.appendChild(emptyRow);
+          return;
+        }
+
+        visible.forEach(function (city, i) {
+          var tr = document.createElement('tr');
+          var isDone = Boolean(city.placeId && String(city.placeId).trim());
+          if (isDone) tr.className = 'row-done';
+
+          // Index
+          var tdIdx = document.createElement('td');
+          tdIdx.textContent = (cities.indexOf(city) + 1);
+          tdIdx.className = 'muted';
+          tr.appendChild(tdIdx);
+
+          // City
+          var tdCity = document.createElement('td');
+          tdCity.className = 'city-cell';
+          tdCity.innerHTML = '<strong>' + city.name + '</strong><span>id: ' + city.id + '</span>';
+          tr.appendChild(tdCity);
+
+          // State
+          var tdState = document.createElement('td');
+          tdState.innerHTML = '<span style="color:var(--ink); font-weight:500;">' + (city.state || '—') + '</span>' + 
+                              (city.district ? '<br><span style="font-size:12px; color:var(--muted);">' + city.district + '</span>' : '');
+          tr.appendChild(tdState);
+
+          // Coordinates
+          var tdCoords = document.createElement('td');
+          tdCoords.innerHTML = (city.lat != null && city.lng != null)
+            ? '<code style="font-size:11.5px; color:var(--muted);">' + Number(city.lat).toFixed(4) + ', ' + Number(city.lng).toFixed(4) + '</code>'
+            : '<span style="color:var(--err); font-size:12px;">Missing lat/lng</span>';
+          tr.appendChild(tdCoords);
+
+          // Place ID Input
+          var tdPid = document.createElement('td');
+          var input = document.createElement('input');
+          input.type = 'text';
+          input.className = 'pid-input' + (isDone ? ' valid' : '');
+          input.value = city.placeId || '';
+          input.placeholder = 'e.g. ChIJ...';
+          input.dataset.cityId = city.id;
+          input.addEventListener('change', function () {
+            var val = input.value.trim();
+            city.placeId = val;
+            unsavedCount++;
+            if (val) {
+              input.classList.add('valid');
+              tr.classList.add('row-done');
+            } else {
+              input.classList.remove('valid');
+              tr.classList.remove('row-done');
+            }
+            updateStats();
+          });
+          tdPid.appendChild(input);
+          tr.appendChild(tdPid);
+
+          // Action buttons
+          var tdActions = document.createElement('td');
+          tdActions.style.textAlign = 'right';
+
+          // Lookup Button: copies query and opens Google Place ID Finder
+          var btnLookup = document.createElement('button');
+          btnLookup.type = 'button';
+          btnLookup.className = 'btn-sm';
+          btnLookup.title = 'Copy query and open Google Place ID Finder';
+          btnLookup.innerHTML = '🔍 Lookup';
+          btnLookup.addEventListener('click', function () {
+            var q = city.name + (city.state ? ', ' + city.state : '') + ', India';
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(q).then(function () {
+                showToast('Copied "' + q + '" to clipboard! Paste it into Place ID Finder.');
+              });
+            } else {
+              showToast('Opening Place ID Finder for ' + city.name);
+            }
+            window.open('https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder', '_blank', 'noopener');
+            input.focus();
+          });
+
+          // Maps Link
+          var linkMaps = document.createElement('a');
+          linkMaps.className = 'btn-sm';
+          linkMaps.title = 'View in Google Maps';
+          linkMaps.href = city.lat && city.lng 
+            ? 'https://www.google.com/maps/search/?api=1&query=' + city.lat + ',' + city.lng 
+            : 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(city.name + ' India');
+          linkMaps.target = '_blank';
+          linkMaps.rel = 'noopener';
+          linkMaps.innerHTML = '🗺';
+
+          tdActions.appendChild(btnLookup);
+          tdActions.appendChild(linkMaps);
+          tr.appendChild(tdActions);
+
+          tbody.appendChild(tr);
+        });
+      }
+
+      // Filter Tab Handlers
+      document.querySelectorAll('.badge-tab').forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          document.querySelectorAll('.badge-tab').forEach(function (t) { t.classList.remove('active'); });
+          tab.classList.add('active');
+          currentFilter = tab.dataset.filter;
+          renderTable();
+        });
+      });
+
+      // Search & Quest Select
+      searchEl.addEventListener('input', function () {
+        searchQuery = searchEl.value.trim();
+        renderTable();
+      });
+
+      questSelect.addEventListener('change', function () {
+        currentQuest = questSelect.value;
+        renderTable();
+      });
+
+      // Bulk Paste Modal Logic
+      var modal = document.getElementById('paste-modal');
+      var pasteInput = document.getElementById('paste-input');
+      document.getElementById('btn-bulk-paste').addEventListener('click', function () {
+        modal.style.display = 'flex';
+        pasteInput.focus();
+      });
+      document.getElementById('btn-close-modal').addEventListener('click', function () { modal.style.display = 'none'; });
+      document.getElementById('btn-cancel-paste').addEventListener('click', function () { modal.style.display = 'none'; });
+
+      document.getElementById('btn-apply-paste').addEventListener('click', function () {
+        var text = pasteInput.value.trim();
+        if (!text) { modal.style.display = 'none'; return; }
+
+        var applied = 0;
+        // Check if JSON
+        if (text.startsWith('{')) {
+          try {
+            var obj = JSON.parse(text);
+            Object.keys(obj).forEach(function (k) {
+              var target = cities.find(function (c) { 
+                return c.id.toLowerCase() === k.toLowerCase() || c.name.toLowerCase() === k.toLowerCase(); 
+              });
+              if (target && obj[k]) { target.placeId = String(obj[k]).trim(); applied++; }
+            });
+          } catch (e) {}
+        }
+
+        // Line-by-line parsing
+        if (applied === 0) {
+          var lines = text.split('\n');
+          lines.forEach(function (line) {
+            var parts = line.split(/[:,\t]/);
+            if (parts.length >= 2) {
+              var nameOrId = parts[0].trim().toLowerCase();
+              var pid = parts[1].trim();
+              var target = cities.find(function (c) {
+                return c.id.toLowerCase() === nameOrId || c.name.toLowerCase() === nameOrId;
+              });
+              if (target && pid) { target.placeId = pid; applied++; }
+            }
+          });
+        }
+
+        modal.style.display = 'none';
+        pasteInput.value = '';
+        renderTable();
+        showToast('Successfully applied ' + applied + ' Place IDs!');
+      });
+
+      // Export cities.js formatting helper
+      function buildCitiesJs() {
+        var output = 'window.KYT_CITIES = [\n';
+        cities.forEach(function (c, idx) {
+          output += '  ' + JSON.stringify(c, null, 2).replace(/\n/g, '\n  ');
+          if (idx < cities.length - 1) output += ',\n';
+          else output += '\n';
+        });
+        output += '];\n';
+        return output;
+      }
+
+      // Copy JS
+      document.getElementById('btn-copy-js').addEventListener('click', function () {
+        var js = buildCitiesJs();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(js).then(function () {
+            showToast('cities.js code copied to clipboard!');
+          });
+        }
+      });
+
+      // Download JS
+      document.getElementById('btn-download-js').addEventListener('click', function () {
+        var js = buildCitiesJs();
+        var blob = new Blob([js], { type: 'text/javascript;charset=utf-8' });
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'cities.js';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        showToast('Downloaded updated cities.js');
+      });
+
+      // Optional Auto-Fetch with API Key
+      document.getElementById('btn-auto-fetch').addEventListener('click', async function () {
+        var key = document.getElementById('api-key-input').value.trim();
+        if (!key) {
+          alert('Please enter a Google Maps API Key first.');
+          return;
+        }
+
+        var missing = cities.filter(function (c) { return !c.placeId; });
+        if (missing.length === 0) {
+          showToast('All cities already have Place IDs!');
+          return;
+        }
+
+        if (!confirm('Fetch Place IDs for ' + missing.length + ' missing cities using Google Geocoding API?')) return;
+
+        var count = 0;
+        for (var i = 0; i < missing.length; i++) {
+          var city = missing[i];
+          var query = encodeURIComponent(city.name + (city.state ? ', ' + city.state : '') + ', India');
+          var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + query + '&key=' + encodeURIComponent(key);
+
+          try {
+            var res = await fetch(url);
+            var data = await res.json();
+            if (data.status === 'OK' && data.results && data.results.length > 0) {
+              city.placeId = data.results[0].place_id;
+              count++;
+              renderTable();
+            }
+          } catch (e) {
+            console.error('Failed to fetch for ' + city.name, e);
+          }
+          await new Promise(function (r) { setTimeout(r, 150); });
+        }
+
+        showToast('Auto-fetched ' + count + ' Place IDs!');
+      });
+
+      // Initial Render
+      renderTable();
+    })();
+  </script>
+</body>
+</html>
+

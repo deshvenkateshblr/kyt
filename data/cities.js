@@ -1,6 +1,7 @@
 window.KYT_CITIES = [
   {
     "id": "agra",
+    "placeId": "ChIJ2b6E6uR1DDkR3uA9Vf8a2-g",
     "name": "Agra",
     "icon": "landmark",
     "dayOffset": 0,
@@ -166,6 +167,7 @@ window.KYT_CITIES = [
   },
   {
     "id": "jaipur",
+    "placeId": "ChIJ13v8_w_1ZTkR9I-h1KuogCo",
     "name": "Jaipur",
     "icon": "landmark",
     "dayOffset": 0,
@@ -785,6 +787,7 @@ window.KYT_CITIES = [
   },
   {
     "id": "varanasi",
+    "placeId": "ChIJ7y-9hZ1unzkR059a42K6G0c",
     "name": "Varanasi",
     "icon": "landmark",
     "dayOffset": 0,
@@ -960,6 +963,7 @@ window.KYT_CITIES = [
   },
   {
     "id": "delhi",
+    "placeId": "ChIJL2kZkZcZDDkR23UzMYwB4bc",
     "name": "Delhi",
     "icon": "landmark",
     "dayOffset": 0,
@@ -1126,6 +1130,7 @@ window.KYT_CITIES = [
   },
   {
     "id": "mumbai",
+    "placeId": "ChIJwevUGhKT5zsRZIHsImkdqKE",
     "name": "Mumbai",
     "icon": "landmark",
     "dayOffset": 0,
@@ -6946,6 +6951,7 @@ window.KYT_CITIES = [
   },
   {
     "id": "indore",
+    "placeId": "ChIJo_yM09Z94ToR077Wxwo7owk",
     "name": "Indore",
     "icon": "landmark",
     "dayOffset": 0,
@@ -17051,6 +17057,7 @@ window.KYT_CITIES = [
   },
   {
     "id": "ujjain",
+    "placeId": "ChIJ1Tvx67hR5jkRzVqQ8v-uV80",
     "name": "Ujjain",
     "icon": "landmark",
     "dayOffset": 0,
@@ -17437,6 +17444,7 @@ window.KYT_CITIES = [
   },
   {
     "id": "omkareshwar",
+    "placeId": "ChIJl6L7uV07YzkRj935vJ8d0lQ",
     "name": "Omkareshwar",
     "state": "Madhya Pradesh",
     "description": "A sacred island on the Narmada river, shaped like the holy 'Om', housing one of the 12 revered Jyotirlingas.",

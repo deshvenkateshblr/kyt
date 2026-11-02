@@ -53,6 +53,7 @@ Clear. The contradictions in generated days and the explainer on every generated
 | P2.5 | **Free-flow search on curated trips.** Worth doing once P1.1 grows the list. | Finding the right trip among many. | Old backlog |
 | P2.6 | **Plan for elders, kids and fitness.** Party chips (family with elders, family with kids, friends, solo). Use each attraction's `mobility` (331 easy, 250 walk, 32 trek) and the city `effort` flag to leave out or warn on strenuous stops. The `party` tag cannot drive this: it is "any" on 609 of 615 attractions. | Pilgrimages with parents are a core use. Useful, but fewer travellers are blocked by its absence than by P0 and P1. | Data review |
 | P2.7 | **Duration nudge:** warn when the trip has fewer days than cities. Needs no distance data. | Stops people building overpacked plans. | Roadmap Phase 2 |
+| P2.8 | **Google Maps Place IDs for remaining 151 cities and core attraction beats.** 8 anchor cities are seeded (Delhi, Mumbai, Agra, Jaipur, Varanasi, Indore, Ujjain, Omkareshwar) with coordinate fallback in `travelMapsUrl`. Populate the remaining 151 cities using free batch lookups (via the Google Maps Place ID Finder) in batches by circuit (Quest hubs first: Somnath, Dwarka, Haridwar, Ayodhya, Puri, Tirupati, etc.) without requiring a paid API key. | Ensures Google Maps directions and search links open clean, branded Place Cards and eliminate local proximity ambiguity across all 159 destinations. | Owner request (Nov 2026). |
 
 ## P3: Convenience and delight
 

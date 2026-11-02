@@ -537,7 +537,7 @@ KYT.virtualTrips = (function () {
       const stops = (origin ? [origin] : []).concat(trip.cities.map(placeName)).filter(Boolean).slice(0, 10);
       routeLink.classList.toggle('hidden', trip.cities.length < 2);
       if (trip.cities.length >= 2 && stops.length >= 2) {
-        const q = n => encodeURIComponent(n + ' India');
+        const q = n => encodeURIComponent(mapPoint(n));
         routeLink.href = `https://www.google.com/maps/dir/?api=1&origin=${q(stops[0])}&destination=${q(stops[stops.length - 1])}` +
           (stops.length > 2 ? `&waypoints=${stops.slice(1, -1).map(q).join('%7C')}` : '') + '&travelmode=driving';
       }
@@ -807,7 +807,7 @@ KYT.virtualTrips = (function () {
 
     // ── Day 0: Travel & Arrival from origin city to first city ──
     if (!isAlreadyThere) {
-      const driveUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(originName + ' India')}&destination=${encodeURIComponent(firstCity.name + ' India')}&travelmode=driving`;
+      const driveUrl = travelMapsUrl(originName, firstCity.name, 'road');
 
       steps.push({
         id: Date.now().toString() + '_' + (++stepCounter),
@@ -929,7 +929,7 @@ KYT.virtualTrips = (function () {
           minute: 45
         });
       } else if (isExcursion) {
-        const driveUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(prevBaseName + ' India')}&destination=${encodeURIComponent(city.name + ' India')}&travelmode=driving`;
+        const driveUrl = travelMapsUrl(prevBaseName, city.name, 'road');
         daySteps.push({
           id: Date.now().toString() + '_' + (++stepCounter),
           dayId: dayId,
@@ -945,7 +945,7 @@ KYT.virtualTrips = (function () {
           minute: 30
         });
       } else if (isMorningTransfer) {
-        const driveUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(prevBaseName + ' India')}&destination=${encodeURIComponent(city.name + ' India')}&travelmode=driving`;
+        const driveUrl = travelMapsUrl(prevBaseName, city.name, 'road');
         daySteps.push({
           id: Date.now().toString() + '_' + (++stepCounter),
           dayId: dayId,
@@ -1081,7 +1081,7 @@ KYT.virtualTrips = (function () {
           title: `Overnight Travel to ${destTitle}`,
           notes: `Check out, head to your transit departure hub, and begin your overnight travel to ${destTitle}. Rest comfortably on the journey!`,
           where: `${city.name} to ${destTitle}`,
-          mapsUrl: `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(city.name + ' India')}&destination=${encodeURIComponent(destTitle + ' India')}`,
+          mapsUrl: travelMapsUrl(city.name, destTitle, 'road'),
           icon: 'moon',
           phase: 'Evening',
           suggestedTime: 'Night Travel (~21:30 PM)',
@@ -1090,7 +1090,7 @@ KYT.virtualTrips = (function () {
         });
 
       } else if (isExcursion) {
-        const returnDriveUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(city.name + ' India')}&destination=${encodeURIComponent(prevBaseName + ' India')}&travelmode=driving`;
+        const returnDriveUrl = travelMapsUrl(city.name, prevBaseName, 'road');
         daySteps.push({
           id: Date.now().toString() + '_' + (++stepCounter),
           dayId: dayId,
@@ -1124,7 +1124,7 @@ KYT.virtualTrips = (function () {
         });
 
       } else if (eveningTransfer) {
-        const transferUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(city.name + ' India')}&destination=${encodeURIComponent(stayCityName + ' India')}&travelmode=driving`;
+        const transferUrl = travelMapsUrl(city.name, stayCityName, 'road');
         daySteps.push({
           id: Date.now().toString() + '_' + (++stepCounter),
           dayId: dayId,
@@ -1189,7 +1189,7 @@ KYT.virtualTrips = (function () {
           title: `Return Journey to ${originName}`,
           notes: `Wrap up your trip from ${returnOriginCityName} and begin your journey back to ${originName}. Safe travels and pack your memories!`,
           where: `${returnOriginCityName} to ${originName}`,
-          mapsUrl: `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(returnOriginCityName + ' India')}&destination=${encodeURIComponent(originName + ' India')}&travelmode=driving`,
+          mapsUrl: travelMapsUrl(returnOriginCityName, originName, 'road'),
           icon: 'car',
           phase: 'Evening',
           suggestedTime: KYT.ui.formatSuggestedTime(rh.h, rh.m, 'Evening'),
@@ -1237,7 +1237,39 @@ KYT.virtualTrips = (function () {
   function cityById(id) { return (window.KYT_CITIES || []).find(c => c.id === id) || null; }
   function cityByName(name) {
     const n = String(name || '').trim().toLowerCase();
-    return n ? ((window.KYT_CITIES || []).find(c => c.name.toLowerCase() === n) || null) : null;
+    if (!n) return null;
+    const clean = n.replace(/ \(.*\)| \/ ncr/g, '').trim();
+    return (window.KYT_CITIES || []).find(c =>
+      c.name.toLowerCase() === n ||
+      c.id.toLowerCase() === n ||
+      c.name.toLowerCase() === clean ||
+      c.id.toLowerCase() === clean ||
+      (c.aliases && c.aliases.some(a => a.toLowerCase() === n || a.toLowerCase() === clean))
+    ) || null;
+  }
+  /** Resolve place string/object to exact lat,lng coordinates when known, preventing ambiguous Google Maps routing. */
+  function mapPoint(place) {
+    if (!place) return '';
+    if (typeof place === 'object' && place.lat != null && place.lng != null) {
+      return `${place.lat},${place.lng}`;
+    }
+    const s = String(place).trim();
+    if (/^-?\d+(\.\d+)?\s*,\s*-?\d+(\.\d+)?$/.test(s)) {
+      return s.replace(/\s+/g, '');
+    }
+    const clean = s.toLowerCase().replace(/ \(.*\)| \/ ncr/g, '').trim();
+    const city = cityByName(s) || (window.KYT_CITIES || []).find(c => c.id === clean || c.name.toLowerCase() === clean);
+    if (city && city.lat != null && city.lng != null) {
+      return `${city.lat},${city.lng}`;
+    }
+    const pop = POPULAR_ORIGINS.find(o => o.id === clean || o.name.toLowerCase().startsWith(clean));
+    if (pop) {
+      const popCity = cityById(pop.id);
+      if (popCity && popCity.lat != null && popCity.lng != null) {
+        return `${popCity.lat},${popCity.lng}`;
+      }
+    }
+    return /india/i.test(s) ? s : `${s}, India`;
   }
   function placeName(id) {
     const c = cityById(id);
@@ -1413,7 +1445,23 @@ KYT.virtualTrips = (function () {
   }
   function travelMapsUrl(from, to, mode) {
     const gm = (MODE_META[mode] || MODE_META.other).gm;
-    return `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(from)}&destination=${encodeURIComponent(to)}` + (gm ? `&travelmode=${gm}` : '');
+    const fromCity = typeof from === 'object' ? from : cityByName(from);
+    const toCity = typeof to === 'object' ? to : cityByName(to);
+
+    let originParam, destParam;
+    if (fromCity && fromCity.placeId) {
+      originParam = `origin=${encodeURIComponent(fromCity.name)}&origin_place_id=${encodeURIComponent(fromCity.placeId)}`;
+    } else {
+      originParam = `origin=${encodeURIComponent(mapPoint(from))}`;
+    }
+
+    if (toCity && toCity.placeId) {
+      destParam = `destination=${encodeURIComponent(toCity.name)}&destination_place_id=${encodeURIComponent(toCity.placeId)}`;
+    } else {
+      destParam = `destination=${encodeURIComponent(mapPoint(to))}`;
+    }
+
+    return `https://www.google.com/maps/dir/?api=1&${originParam}&${destParam}` + (gm ? `&travelmode=${gm}` : '');
   }
   /** No two steps of a day start at the same minute: nudge by a quarter hour. */
   function freeTime(trip, dayId, h, m) {

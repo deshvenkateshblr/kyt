@@ -61,8 +61,12 @@ Copy those two functions from `core.js` (they have no dependencies) rather than 
 
 **Important for KYT:** treat every string as text. Render with `textContent` or escape it. The admin strips HTML and restricts links to https Google Maps, but the file is data, not trusted markup.
 
+## Tools in this folder
+- **`index.html`**: Curated trips generator and library reviewer.
+- **`places.html`**: Place ID Manager. View progress, search and lookup Google Place IDs using the free Place ID Finder, bulk-import IDs, and download/update `data/cities.js`.
+
 ## Tests
-    node admin/tests/core.test.js     # 56 unit tests; try TZ=Asia/Kolkata and TZ=America/Los_Angeles
+    node admin/tests/core.test.js     # 57 unit tests; try TZ=Asia/Kolkata and TZ=America/Los_Angeles
 
 ## Known limits
 - Gemini call uses the Interactions endpoint and a model name you can edit. It was tested only against a mock, not the live API.

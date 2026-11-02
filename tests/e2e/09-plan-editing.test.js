@@ -175,7 +175,7 @@ test('travel is a step of its own: suggested between cities, with from, to, how 
   assert.equal(s.type, 'travel');
   assert.equal(s.from, 'Delhi'); assert.equal(s.to, 'Agra'); assert.equal(s.mode, 'train'); assert.equal(s.duration, '2 h');
   assert.match(s.title, /Travel: Delhi to Agra by train/);
-  assert.match(s.mapsUrl, /maps\/dir\/.*origin=Delhi.*destination=Agra.*travelmode=transit/);
+  assert.match(s.mapsUrl, /maps\/dir\/.*(origin=Delhi|origin=28\.).*(destination=Agra|destination=27\.).*travelmode=transit/);
   assert.match(await card(page, 'Travel: Delhi').innerText(), /TRAVEL/i);
   assert.equal(await page.locator('#vt-day-hints').innerText().then(t => /Travel from Delhi/.test(t)), false, 'the hint goes once it is added');
 
