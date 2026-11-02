@@ -17477,11 +17477,169 @@ window.KYT_CITIES = [
     },
     "beats": [
       {
-        "title": "Omkareshwar Jyotirlinga",
+        "title": "Omkareshwar Jyotirlinga darshan",
         "icon": "landmark",
-        "where": "Mandhata Island",
+        "where": "Mandhata Island, Omkareshwar",
         "hour": 6,
         "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "notes": "One of the twelve sacred Jyotirlingas, situated on the holy Om-shaped Mandhata Island in the Narmada River. Features a multi-tiered sanctum housing the swayambhu Shiva lingam, reached via the scenic suspension footbridge.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Omkareshwar%20Jyotirlinga%20Temple%2C%20Omkareshwar"
+      },
+      {
+        "title": "Ghatside Malwi Poha Jalebi breakfast trail",
+        "icon": "utensils",
+        "where": "Gomukh Ghat Bazaar, Omkareshwar",
+        "hour": 8,
+        "intent": [
+          "culinary",
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "diet": [
+          "veg",
+          "satvik",
+          "any"
+        ],
+        "notes": "Traditional morning breakfast along the river ghats: steaming turmeric poha garnished with fresh coriander and crispy sev, hot crisp jalebis, and spiced milk chai.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gomukh%20Ghat%2C%20Omkareshwar"
+      },
+      {
+        "title": "Mamleshwar Temple (Amareshwar) darshan",
+        "icon": "landmark",
+        "where": "South Bank of Narmada, Omkareshwar",
+        "hour": 9,
+        "intent": [
+          "spiritual",
+          "cultural",
+          "heritage"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "notes": "The revered twin temple to Omkareshwar on the southern mainland bank, traditionally considered an essential half of the Jyotirlinga pilgrimage. Features 10th-century Paramara stone architecture, intricate Mahimna Stotra inscriptions, and unbroken Lingarchan rituals.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mamleshwar%20Temple%2C%20Omkareshwar"
+      },
+      {
+        "title": "Adi Shankaracharya Guha (Cave of Initiation)",
+        "icon": "sparkles",
+        "where": "Below Omkareshwar Temple, Mandhata Island",
+        "hour": 11,
+        "intent": [
+          "spiritual",
+          "cultural",
+          "heritage"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "notes": "The serene subterranean cave where 8th-century philosopher-saint Adi Shankaracharya met his guru Govinda Bhagavatpada, received initiation, and studied Advaita Vedanta before his historic nationwide pilgrimage.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Adi%20Shankara%20Cave%2C%20Omkareshwar"
+      },
+      {
+        "title": "Traditional Malwi Dal Bafla lunch",
+        "icon": "utensils",
+        "where": "Temple Bazaar, Omkareshwar",
+        "hour": 13,
+        "intent": [
+          "culinary"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "diet": [
+          "veg",
+          "satvik",
+          "any"
+        ],
+        "notes": "Wholesome Malwa satvik feast: golden baked baflas dipped in pure desi ghee, served with slow-cooked tuvar dal, sweet churma laddu, kadhi, and roasted coriander chutney.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dal%20Bafla%2C%20Omkareshwar"
+      },
+      {
+        "title": "Ekatma Dham & 108ft Statue of Oneness",
+        "icon": "mountain",
+        "where": "Mandhata Hill, Omkareshwar",
+        "hour": 15,
+        "intent": [
+          "spiritual",
+          "cultural",
+          "heritage"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "notes": "A monumental 108-foot bronze statue of Adi Shankaracharya depicted as a 12-year-old walking monk atop Mandhata Hill. Includes expansive viewing decks with breathtaking panoramas of the Narmada River gorge, Omkareshwar Dam, and Advaita Lok cultural exhibits.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Statue%20of%20Oneness%2C%20Omkareshwar"
+      },
+      {
+        "title": "Siddhanath & Gauri Somnath Temples walk",
+        "icon": "landmark",
+        "where": "Mandhata Island Plateau, Omkareshwar",
+        "hour": 16,
+        "intent": [
+          "heritage",
+          "cultural",
           "spiritual"
         ],
         "faith": [
@@ -17496,53 +17654,56 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "notes": "A revered Jyotirlinga temple situated on an island shaped like 'Om'.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Omkareshwar%20Jyotirlinga%2C%20Mandhata"
+        "notes": "Historic 13th-century cliffside temple ruins along the island's sacred Parikrama trail. Siddhanath features an elevated stone podium flanked by massive carved elephant friezes, while star-shaped Gauri Somnath houses a colossal 6-foot black stone lingam.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Siddhnath%20Temple%2C%20Omkareshwar"
       },
       {
-        "title": "Mamleshwar Temple",
-        "icon": "landmark",
-        "where": "South Bank of Narmada",
-        "hour": 10,
+        "title": "Narmada & Kaveri Sangam boat ride",
+        "icon": "waves",
+        "where": "Narmada River, Omkareshwar",
+        "hour": 17,
+        "intent": [
+          "leisure",
+          "spiritual"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "notes": "Scenic boat journey along the tranquil Narmada River circling the island cliffs to Triveni/Sangam where the Kaveri tributary meets the Narmada. Offers close-up views of the river canyon, cantilever suspension bridges, and pilgrim ghats.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Narmada%20River%20Boating%2C%20Omkareshwar"
+      },
+      {
+        "title": "Nagar Ghat sunset & Narmada Maha Aarti",
+        "icon": "sunset",
+        "where": "Nagar Ghat & Gomukh Ghat, Omkareshwar",
+        "hour": 19,
         "intent": [
           "spiritual",
           "cultural"
         ],
         "faith": [
-          "hindu",
           "any"
         ],
         "party": [
           "any"
         ],
         "pace": [
-          "standard"
-        ],
-        "mobility": "walk",
-        "notes": "The sister temple to Omkareshwar, also considered part of the Jyotirlinga.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mamleshwar%20Temple%2C%20Omkareshwar"
-      },
-      {
-        "title": "Narmada Ghat",
-        "icon": "waves",
-        "where": "Banks of Narmada River",
-        "hour": 18,
-        "intent": [
-          "spiritual",
-          "leisure"
-        ],
-        "faith": [
-          "any"
-        ],
-        "party": [
-          "any"
-        ],
-        "pace": [
-          "short"
+          "short",
+          "standard",
+          "deep"
         ],
         "mobility": "easy",
-        "notes": "Peaceful ghats for evening aarti and holy dips.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Narmada%20Ghat%2C%20Omkareshwar"
+        "notes": "The vibrant evening spiritual culmination where priests perform synchronized Maha Aarti with tiered brass lamps and rhythmic conch blowing. Pilgrims release floating leaf diyas onto the holy Narmada as temple bells echo across the river valley.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nagar%20Ghat%2C%20Omkareshwar"
       }
     ],
     "setting": "plains",
