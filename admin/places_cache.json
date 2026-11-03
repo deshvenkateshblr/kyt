@@ -3002,5 +3002,1295 @@
     "lng": 91.909203,
     "distanceKm": 0.8,
     "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Balancing%20Rock%2C%20Mawlynnong&query_place_id=ChIJ8xLu4p1eUDcRJMGgQJSbP5s"
+  },
+  "beat::ziro::Apatani Tribal Villages (Hong & Hari)": {
+    "query": "Hong Village, Ziro",
+    "resolvedName": "Ziro 791120",
+    "placeId": "ChIJ03xRZChhQTcR6sQ8dzmG57k",
+    "ftid": "0x3741612864517cd3:0xb9e78639773cc4ea",
+    "lat": 27.544912,
+    "lng": 93.8196686,
+    "distanceKm": 0.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Hong%20Village%2C%20Ziro&query_place_id=ChIJ03xRZChhQTcR6sQ8dzmG57k"
+  },
+  "beat::ziro::Paddy-cum-Pisciculture terraced farm walk": {
+    "query": "Ziro Valley",
+    "resolvedName": "Ziro 791120",
+    "placeId": "ChIJ03xRZChhQTcR6sQ8dzmG57k",
+    "ftid": "0x3741612864517cd3:0xb9e78639773cc4ea",
+    "lat": 27.544912,
+    "lng": 93.8196686,
+    "distanceKm": 0.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Ziro%20Valley&query_place_id=ChIJ03xRZChhQTcR6sQ8dzmG57k"
+  },
+  "beat::ziro::Kardo Shiva Lingam (Siddheshwar Nath)": {
+    "query": "Kardo Shiva Lingam, Ziro",
+    "resolvedName": "Kardo Sivalinga, Ziro",
+    "placeId": "ChIJ9Rtl5_xRQDcRO9bcfHFxVgQ",
+    "ftid": "0x374051fce7651bf5:0x45671717cdcd63b",
+    "lat": 27.974649,
+    "lng": 94.538078,
+    "distanceKm": 86.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kardo%20Shiva%20Lingam%2C%20Ziro&query_place_id=ChIJ9Rtl5_xRQDcRO9bcfHFxVgQ"
+  },
+  "beat::ziro::Tarin Fish Farm & Pine Groves": {
+    "query": "Tarin Fish Farm, Ziro",
+    "resolvedName": "Tarin Fish Ponds",
+    "placeId": "ChIJAQBASkpnQTcRdyr3CsUHc9o",
+    "ftid": "0x3741674a4a400001:0xda7307c50af72a77",
+    "lat": 27.5179182,
+    "lng": 93.8285594,
+    "distanceKm": 2.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Tarin%20Fish%20Farm%2C%20Ziro&query_place_id=ChIJAQBASkpnQTcRdyr3CsUHc9o"
+  },
+  "beat::majuli::Kamalabari & Auniati Satra monastic visit": {
+    "query": "Auniati Satra, Majuli",
+    "resolvedName": "Sri Sri Auniati Satra",
+    "placeId": "ChIJd7WSApHIRjcRKCVEo-hQjEI",
+    "ftid": "0x3746c8910292b577:0x428c50e8a3442528",
+    "lat": 26.9400042,
+    "lng": 94.1237631,
+    "distanceKm": 22.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Auniati%20Satra%2C%20Majuli&query_place_id=ChIJd7WSApHIRjcRKCVEo-hQjEI"
+  },
+  "beat::majuli::Samaguri Satra traditional mask making": {
+    "query": "Samaguri Satra, Majuli",
+    "resolvedName": "Sri Sri Samaguri Satra(Majuli)",
+    "placeId": "ChIJ4cds41HQRjcRnm21oyBY8FQ",
+    "ftid": "0x3746d051e36cc7e1:0x54f05820a3b56d9e",
+    "lat": 26.9613356,
+    "lng": 94.2642826,
+    "distanceKm": 9.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Samaguri%20Satra%2C%20Majuli&query_place_id=ChIJ4cds41HQRjcRnm21oyBY8FQ"
+  },
+  "beat::majuli::Brahmaputra river sunset & pottery village (Salmora)": {
+    "query": "Salmora, Majuli",
+    "resolvedName": "Salmora Gaon,Majuli",
+    "placeId": "ChIJUSLc9MPQRjcRnF16HzCzbWE",
+    "ftid": "0x3746d0c3f4dc2251:0x616db3301f7a5d9c",
+    "lat": 26.9372541,
+    "lng": 94.2957472,
+    "distanceKm": 9.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Salmora%2C%20Majuli&query_place_id=ChIJUSLc9MPQRjcRnF16HzCzbWE"
+  },
+  "beat::havelock-island::Radhanagar Beach (Beach No. 7) sunset": {
+    "query": "Radhanagar Beach, Havelock",
+    "resolvedName": "Radhanagar Beach",
+    "placeId": "ChIJc7dLFhLSiDARs2Vymn1jFZc",
+    "ftid": "0x3088d212164bb773:0x9715637d9a7265b3",
+    "lat": 11.9844552,
+    "lng": 92.9508454,
+    "distanceKm": 5.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Radhanagar%20Beach%2C%20Havelock&query_place_id=ChIJc7dLFhLSiDARs2Vymn1jFZc"
+  },
+  "beat::havelock-island::Kalapathar Beach turquoise lagoon walk": {
+    "query": "Kalapathar Beach, Havelock",
+    "resolvedName": "Kala Pathar Beach",
+    "placeId": "ChIJk6pG0prTiDARvRqcSV6kYqU",
+    "ftid": "0x3088d39ad246aa93:0xa562a45e499c1abd",
+    "lat": 12.0006111,
+    "lng": 93.0070952,
+    "distanceKm": 4.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kalapathar%20Beach%2C%20Havelock&query_place_id=ChIJk6pG0prTiDARvRqcSV6kYqU"
+  },
+  "beat::neil-island::Natural Rock Bridge (Howrah Bridge)": {
+    "query": "Natural Bridge, Neil Island",
+    "resolvedName": "Natural Bridge 2",
+    "placeId": "ChIJxaP-SADbiDAR0KWo4oD3ld0",
+    "ftid": "0x3088db0048fea3c5:0xdd95f780e2a8a5d0",
+    "lat": 11.8286886,
+    "lng": 93.0151416,
+    "distanceKm": 2.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Natural%20Bridge%2C%20Neil%20Island&query_place_id=ChIJxaP-SADbiDAR0KWo4oD3ld0"
+  },
+  "beat::neil-island::Laxmanpur Beach sunset & seashell walk": {
+    "query": "Laxmanpur Beach, Neil Island",
+    "resolvedName": "Laxmanpur Beach No 1",
+    "placeId": "ChIJYYqPoSDaiDARU4ScV-oV1aA",
+    "ftid": "0x3088da20a18f8a61:0xa0d515ea579c8453",
+    "lat": 11.847006,
+    "lng": 93.0156096,
+    "distanceKm": 3.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Laxmanpur%20Beach%2C%20Neil%20Island&query_place_id=ChIJYYqPoSDaiDARU4ScV-oV1aA"
+  },
+  "beat::neil-island::Sitapur Beach sunrise point": {
+    "query": "Sitapur Beach, Neil Island",
+    "resolvedName": "Sitapur Beach",
+    "placeId": "ChIJMWG4Y_jYiDARSTW_deQBe20",
+    "ftid": "0x3088d8f863b86131:0x6d7b01e475bf3549",
+    "lat": 11.8261573,
+    "lng": 93.0650936,
+    "distanceKm": 2.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sitapur%20Beach%2C%20Neil%20Island&query_place_id=ChIJMWG4Y_jYiDARSTW_deQBe20"
+  },
+  "beat::lakshadweep::Kavaratti Marine Aquarium & glass-bottom boat": {
+    "query": "Kavaratti, Lakshadweep",
+    "resolvedName": "Kavaratti, Lakshadweep",
+    "placeId": "ChIJ8dBDb_xLnjsRjKq_OOnIKkk",
+    "ftid": "0x3b9e4bfc6f43d0f1:0x492ac8e938bfaa8c",
+    "lat": 10.5593204,
+    "lng": 72.6358134,
+    "distanceKm": 40,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kavaratti%2C%20Lakshadweep&query_place_id=ChIJ8dBDb_xLnjsRjKq_OOnIKkk"
+  },
+  "beat::lakshadweep::Minicoy Island 1885 British lighthouse & culture": {
+    "query": "Minicoy Island, Lakshadweep",
+    "resolvedName": "Minicoy Island",
+    "placeId": "ChIJJen4O4QXczsRViG6N5zfW5k",
+    "ftid": "0x3b7317843bf8e925:0x995bdf9c37ba2156",
+    "lat": 8.273962,
+    "lng": 73.049586,
+    "distanceKm": 229.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Minicoy%20Island%2C%20Lakshadweep&query_place_id=ChIJJen4O4QXczsRViG6N5zfW5k"
+  },
+  "beat::chopta::Tungnath Temple trek (Highest Shiva Temple)": {
+    "query": "Tungnath Temple, Chopta",
+    "resolvedName": "Shri Tungnath Temple, Panch Kedar",
+    "placeId": "ChIJN-ROqXYtCDkRChKUib2V1sk",
+    "ftid": "0x39082d76a94ee437:0xc9d695bd8994120a",
+    "lat": 30.4883953,
+    "lng": 79.2169106,
+    "distanceKm": 37.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Tungnath%20Temple%2C%20Chopta&query_place_id=ChIJN-ROqXYtCDkRChKUib2V1sk"
+  },
+  "beat::chopta::Chandrashila Peak summit sunrise (13,100 ft)": {
+    "query": "Chandrashila Peak, Chopta",
+    "resolvedName": "Chandrashila",
+    "placeId": "ChIJaQPzGAstCDkRLoWJyQSoXVE",
+    "ftid": "0x39082d0b18f30369:0x515da804c989852e",
+    "lat": 30.4862688,
+    "lng": 79.2212453,
+    "distanceKm": 36.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Chandrashila%20Peak%2C%20Chopta&query_place_id=ChIJaQPzGAstCDkRLoWJyQSoXVE"
+  },
+  "beat::chopta::Deoria Tal emerald lake trek": {
+    "query": "Deoria Tal, Chopta",
+    "resolvedName": "Chopta Deoria Tal Cafe",
+    "placeId": "ChIJtyNa8n0tCDkRPVaz5EUhs8k",
+    "ftid": "0x39082d7df25a23b7:0xc9b32145e4b3563d",
+    "lat": 30.4852273,
+    "lng": 79.2005742,
+    "distanceKm": 37.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Deoria%20Tal%2C%20Chopta&query_place_id=ChIJtyNa8n0tCDkRPVaz5EUhs8k"
+  },
+  "beat::chopta::Chopta alpine meadow camping & stargazing": {
+    "query": "Chopta Meadows",
+    "resolvedName": "Chopta Meadows Heritage Camps",
+    "placeId": "ChIJ94xW_4EyCDkRVfEMpHRkrwU",
+    "ftid": "0x39083281ff568cf7:0x5af6474a40cf155",
+    "lat": 30.4831784,
+    "lng": 79.1750548,
+    "distanceKm": 38.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Chopta%20Meadows&query_place_id=ChIJ94xW_4EyCDkRVfEMpHRkrwU"
+  },
+  "beat::mount-abu::Dilwara Jain Temples marble architecture": {
+    "query": "Dilwara Temples, Mount Abu",
+    "resolvedName": "Delwara Jain Temple",
+    "placeId": "ChIJ_bBQ7o8qXTkRaBIG9e6rVwQ",
+    "ftid": "0x395d2a8fee50b0fd:0x457abeef5061268",
+    "lat": 24.609382,
+    "lng": 72.7229797,
+    "distanceKm": 2.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Dilwara%20Temples%2C%20Mount%20Abu&query_place_id=ChIJ_bBQ7o8qXTkRaBIG9e6rVwQ"
+  },
+  "beat::mount-abu::Guru Shikhar (Highest Peak of Aravallis)": {
+    "query": "Guru Shikhar, Mount Abu",
+    "resolvedName": "Guru Shikhar Mount Abu",
+    "placeId": "ChIJCwQB7cHVQjkR2PweuvxIWwQ",
+    "ftid": "0x3942d5c1ed01040b:0x45b48fcba1efcd8",
+    "lat": 24.6499246,
+    "lng": 72.7770695,
+    "distanceKm": 9.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Guru%20Shikhar%2C%20Mount%20Abu&query_place_id=ChIJCwQB7cHVQjkR2PweuvxIWwQ"
+  },
+  "beat::mount-abu::Sunset Point & Honeymoon Point": {
+    "query": "Sunset Point, Mount Abu",
+    "resolvedName": "Sunset Point (Aburaj)",
+    "placeId": "ChIJP05wAIfVXDkRg2I_XQGEk7w",
+    "ftid": "0x395cd58700704e3f:0xbc9384015d3f6283",
+    "lat": 24.585347,
+    "lng": 72.6949839,
+    "distanceKm": 1.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sunset%20Point%2C%20Mount%20Abu&query_place_id=ChIJP05wAIfVXDkRg2I_XQGEk7w"
+  },
+  "beat::bikaner::Junagarh Fort & Karan Mahal": {
+    "query": "Junagarh Fort, Bikaner",
+    "resolvedName": "Junagarh Fort",
+    "placeId": "ChIJH4TRinndPzkR1rmo_T4WVpM",
+    "ftid": "0x393fdd798ad1841f:0x9356163efda8b9d6",
+    "lat": 28.0219586,
+    "lng": 73.3179962,
+    "distanceKm": 0.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Junagarh%20Fort%2C%20Bikaner&query_place_id=ChIJH4TRinndPzkR1rmo_T4WVpM"
+  },
+  "beat::bikaner::Karni Mata Temple (Deshnoke Rat Temple)": {
+    "query": "Karni Mata Temple, Deshnoke",
+    "resolvedName": "Karni Mata Temple",
+    "placeId": "ChIJObZheAn7PzkRrOaVrZzz1jM",
+    "ftid": "0x393ffb097861b639:0x33d6f39cad95e6ac",
+    "lat": 27.7909966,
+    "lng": 73.3408206,
+    "distanceKm": 25.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Karni%20Mata%20Temple%2C%20Deshnoke&query_place_id=ChIJObZheAn7PzkRrOaVrZzz1jM"
+  },
+  "beat::chittorgarh::Chittorgarh Fort (UNESCO World Heritage)": {
+    "query": "Chittorgarh Fort",
+    "resolvedName": "Chittorgarh Fort",
+    "placeId": "ChIJDeozEPSgaDkRgmNyjQgj-U4",
+    "ftid": "0x3968a0f41033ea0d:0x4ef923088d726382",
+    "lat": 24.8839686,
+    "lng": 74.6473548,
+    "distanceKm": 25.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Chittorgarh%20Fort&query_place_id=ChIJDeozEPSgaDkRgmNyjQgj-U4"
+  },
+  "beat::chittorgarh::Vijay Stambh (Tower of Victory) climb": {
+    "query": "Vijay Stambh, Chittorgarh",
+    "resolvedName": "Vijay Stambh, Chittorgarh Fort Village, Chittorgarh, Rajasthan 312025",
+    "placeId": "ChIJ-fzUHPSgaDkR5nYOS_Tm39Y",
+    "ftid": "0x3968a0f41cd4fcf9:0xd6dfe6f44b0e76e6",
+    "lat": 24.8878701,
+    "lng": 74.6451575,
+    "distanceKm": 25.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Vijay%20Stambh%2C%20Chittorgarh&query_place_id=ChIJ-fzUHPSgaDkR5nYOS_Tm39Y"
+  },
+  "beat::chittorgarh::Kirti Stambh & Meera Bai Temple": {
+    "query": "Meera Temple, Chittorgarh",
+    "resolvedName": "Meera Temple Chittorgarh Fort Rajasthan",
+    "placeId": "ChIJiarz2fagaDkRy8H-3EZEmnM",
+    "ftid": "0x3968a0f6d9f3aa89:0x739a4446dcfec1cb",
+    "lat": 24.8903313,
+    "lng": 74.6449405,
+    "distanceKm": 26,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Meera%20Temple%2C%20Chittorgarh&query_place_id=ChIJiarz2fagaDkRy8H-3EZEmnM"
+  },
+  "beat::chittorgarh::Rani Padmini Palace & Gaumukh Reservoir": {
+    "query": "Padmini Palace, Chittorgarh",
+    "resolvedName": "Maharani Padmini Palace",
+    "placeId": "ChIJf-vlg4ugaDkRGHloBxsZ_1A",
+    "ftid": "0x3968a08b83e5eb7f:0x50ff191b07687918",
+    "lat": 24.8792348,
+    "lng": 74.645783,
+    "distanceKm": 25.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Padmini%20Palace%2C%20Chittorgarh&query_place_id=ChIJf-vlg4ugaDkRGHloBxsZ_1A"
+  },
+  "beat::kumarakom::Kumarakom Bird Sanctuary early morning walk": {
+    "query": "Kumarakom Bird Sanctuary",
+    "resolvedName": "Kumarakom Bird Sanctuary",
+    "placeId": "ChIJG4td2neACDsRguUR1HU505M",
+    "ftid": "0x3b088077da5d8b1b:0x93d33975d411e582",
+    "lat": 9.6274375,
+    "lng": 76.4285625,
+    "distanceKm": 3.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kumarakom%20Bird%20Sanctuary&query_place_id=ChIJG4td2neACDsRguUR1HU505M"
+  },
+  "beat::kumarakom::Vembanad Lake country canoe & shikkara cruise": {
+    "query": "Vembanad Lake, Kumarakom",
+    "resolvedName": "Kumarakom, Keralam",
+    "placeId": "ChIJ96jwrsqBCDsRIekpNVwHIww",
+    "ftid": "0x3b0881caaef0a8f7:0xc23075c3529e921",
+    "lat": 9.6175449,
+    "lng": 76.430095,
+    "distanceKm": 2.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Vembanad%20Lake%2C%20Kumarakom&query_place_id=ChIJ96jwrsqBCDsRIekpNVwHIww"
+  },
+  "beat::kumarakom::Bay Island Driftwood Museum": {
+    "query": "Driftwood Museum, Kumarakom",
+    "resolvedName": "Bay Island Driftwood Museum",
+    "placeId": "ChIJmyST2GyACDsRq9RknA7jrrw",
+    "ftid": "0x3b08806cd893249b:0xbcaee30e9c64d4ab",
+    "lat": 9.6171229,
+    "lng": 76.4322301,
+    "distanceKm": 2.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Driftwood%20Museum%2C%20Kumarakom&query_place_id=ChIJmyST2GyACDsRq9RknA7jrrw"
+  },
+  "beat::kovalam::Lighthouse Beach & red-and-white tower climb": {
+    "query": "Lighthouse Beach, Kovalam",
+    "resolvedName": "CX2H+6FV Lighthouse Beach, Vizhinjam, Kovalam, Thiruvananthapuram, Keralam 695527",
+    "placeId": "ChIJdwnoAQmlBTsRHUUJonoiPEI",
+    "ftid": "0x3b05a50901e80977:0x423c227aa209451d",
+    "lat": 8.4006296,
+    "lng": 76.9787301,
+    "distanceKm": 1.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Lighthouse%20Beach%2C%20Kovalam&query_place_id=ChIJdwnoAQmlBTsRHUUJonoiPEI"
+  },
+  "beat::kovalam::Hawah Beach & surfing lessons": {
+    "query": "Hawah Beach, Kovalam",
+    "resolvedName": "Sea Star Beach Resort",
+    "placeId": "ChIJl89qBlqlBTsRvLZQGVq3Afg",
+    "ftid": "0x3b05a55a066acf97:0xf801b75a1950b6bc",
+    "lat": 8.3868103,
+    "lng": 76.9773418,
+    "distanceKm": 0.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Hawah%20Beach%2C%20Kovalam&query_place_id=ChIJl89qBlqlBTsRvLZQGVq3Afg"
+  },
+  "beat::kovalam::Samudra Beach sunset & Vizhinjam Marine Aquarium": {
+    "query": "Samudra Beach, Kovalam",
+    "resolvedName": "Samudra Beach, VP 1, GV Raja Rd, Kovalam, Keralam 695527",
+    "placeId": "ChIJ6_ut9AalBTsRoBd7EQbKSsw",
+    "ftid": "0x3b05a506f4adfbeb:0xcc4aca06117b17a0",
+    "lat": 8.4015749,
+    "lng": 76.97263,
+    "distanceKm": 1.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Samudra%20Beach%2C%20Kovalam&query_place_id=ChIJ6_ut9AalBTsRoBd7EQbKSsw"
+  },
+  "beat::varkala::Papanasam Beach & natural mineral springs": {
+    "query": "Papanasam Beach, Varkala",
+    "resolvedName": "Varkala Beach",
+    "placeId": "ChIJ2TVuNRzvBTsRmTZF4PcgmlI",
+    "ftid": "0x3b05ef1c356e35d9:0x529a20f7e0453699",
+    "lat": 8.7355515,
+    "lng": 76.7031667,
+    "distanceKm": 2.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Papanasam%20Beach%2C%20Varkala&query_place_id=ChIJ2TVuNRzvBTsRmTZF4PcgmlI"
+  },
+  "beat::varkala::Janardhana Swami Temple (2,000-year-old shrine)": {
+    "query": "Janardhana Swami Temple, Varkala",
+    "resolvedName": "Varkala Sree Janardhana Swamy Temple",
+    "placeId": "ChIJ5anhBODuBTsRj_LOMecC_jg",
+    "ftid": "0x3b05eee004e1a9e5:0x38fe02e731cef28f",
+    "lat": 8.7319232,
+    "lng": 76.709881,
+    "distanceKm": 1.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Janardhana%20Swami%20Temple%2C%20Varkala&query_place_id=ChIJ5anhBODuBTsRj_LOMecC_jg"
+  },
+  "beat::thrissur::Vadakkunnathan Temple & Thekkinkadu Maidan": {
+    "query": "Vadakkunnathan Temple, Thrissur",
+    "resolvedName": "Sree Vadakkumnathan Temple",
+    "placeId": "ChIJaT5YQE_upzsRdyec8RIqNQI",
+    "ftid": "0x3ba7ee4f40583e69:0x2352a12f19c2777",
+    "lat": 10.524494,
+    "lng": 76.2145126,
+    "distanceKm": 0.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Vadakkunnathan%20Temple%2C%20Thrissur&query_place_id=ChIJaT5YQE_upzsRdyec8RIqNQI"
+  },
+  "beat::thrissur::Shakthan Thampuran Palace (Kerala Museum)": {
+    "query": "Shakthan Thampuran Palace, Thrissur",
+    "resolvedName": "Sakthan Thampuran Palace",
+    "placeId": "ChIJl6B1U1DupzsRJxoAS9xZw0Y",
+    "ftid": "0x3ba7ee505375a097:0x46c359dc4b001a27",
+    "lat": 10.5311535,
+    "lng": 76.2163622,
+    "distanceKm": 0.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Shakthan%20Thampuran%20Palace%2C%20Thrissur&query_place_id=ChIJl6B1U1DupzsRJxoAS9xZw0Y"
+  },
+  "beat::thrissur::Athirappilly & Vazhachal Waterfalls excursion": {
+    "query": "Athirappilly Waterfalls, Thrissur",
+    "resolvedName": "Athirappilly Water Falls",
+    "placeId": "ChIJ0bCrwiP5BzsReK8TqnWv5wE",
+    "ftid": "0x3b07f923c2abb0d1:0x1e7af75aa13af78",
+    "lat": 10.2851072,
+    "lng": 76.5697643,
+    "distanceKm": 47.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Athirappilly%20Waterfalls%2C%20Thrissur&query_place_id=ChIJ0bCrwiP5BzsReK8TqnWv5wE"
+  },
+  "beat::belur::Chennakeshava Temple (Hoysala UNESCO masterpiece)": {
+    "query": "Chennakeshava Temple, Belur",
+    "resolvedName": "Beluru Shri Chennakeshava Swamy Temple",
+    "placeId": "ChIJ2U99dwDTujsRDCv4xN5WtGo",
+    "ftid": "0x3bbad300777d4fd9:0x6ab456dec4f82b0c",
+    "lat": 13.1629637,
+    "lng": 75.860315,
+    "distanceKm": 0.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Chennakeshava%20Temple%2C%20Belur&query_place_id=ChIJ2U99dwDTujsRDCv4xN5WtGo"
+  },
+  "beat::belur::Kappe Chennigraya Shrine & gravity pillar": {
+    "query": "Kappe Chennigraya, Belur",
+    "resolvedName": "Kappe Chennigaraya temple",
+    "placeId": "ChIJCfDtH2TTujsR8gFg3OEWFQU",
+    "ftid": "0x3bbad3641fedf009:0x51516e1dc6001f2",
+    "lat": 13.1624635,
+    "lng": 75.8604267,
+    "distanceKm": 0.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kappe%20Chennigraya%2C%20Belur&query_place_id=ChIJCfDtH2TTujsR8gFg3OEWFQU"
+  },
+  "beat::belur::Vishnu Samudra stepped water tank": {
+    "query": "Vishnu Samudra, Belur",
+    "resolvedName": "Vishnu Samudra Lake",
+    "placeId": "ChIJT9uMTNDSujsRa3fufdGpYA8",
+    "ftid": "0x3bbad2d04c8cdb4f:0xf60a9d17dee776b",
+    "lat": 13.1565657,
+    "lng": 75.8631126,
+    "distanceKm": 0.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Vishnu%20Samudra%2C%20Belur&query_place_id=ChIJT9uMTNDSujsRa3fufdGpYA8"
+  },
+  "beat::belur::Yagachi River water sports & dam": {
+    "query": "Yagachi Dam, Belur",
+    "resolvedName": "Yagachi Dam Belur",
+    "placeId": "ChIJc7CSPe7SujsR4Jgcoid8lsQ",
+    "ftid": "0x3bbad2ee3d92b073:0xc4967c27a21c98e0",
+    "lat": 13.1808902,
+    "lng": 75.8687654,
+    "distanceKm": 1.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Yagachi%20Dam%2C%20Belur&query_place_id=ChIJc7CSPe7SujsR4Jgcoid8lsQ"
+  },
+  "beat::halebidu::Hoysaleswara Temple twin shrines": {
+    "query": "Hoysaleswara Temple, Halebidu",
+    "resolvedName": "Shri Hoysaleswara Temple",
+    "placeId": "ChIJb3cNQ4jLujsR5aXLj2wW5XI",
+    "ftid": "0x3bbacb88430d776f:0x72e5166c8fcba5e5",
+    "lat": 13.212499,
+    "lng": 75.9940618,
+    "distanceKm": 102.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Hoysaleswara%20Temple%2C%20Halebidu&query_place_id=ChIJb3cNQ4jLujsR5aXLj2wW5XI"
+  },
+  "beat::halebidu::Monolithic Nandi Mantapas": {
+    "query": "Halebidu Nandi",
+    "resolvedName": "Nandi Temple",
+    "placeId": "ChIJ2VYPT6rLujsRKnucP5oR7BU",
+    "ftid": "0x3bbacbaa4f0f56d9:0x15ec119a3f9c7b2a",
+    "lat": 13.2127275,
+    "lng": 75.9943544,
+    "distanceKm": 102.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Halebidu%20Nandi&query_place_id=ChIJ2VYPT6rLujsRKnucP5oR7BU"
+  },
+  "beat::halebidu::Kedareshwara Temple & Basadi Halli Jain Basadis": {
+    "query": "Basadi Halli, Halebidu",
+    "resolvedName": "Ancient Shri 1008 Shantinatha Digambara Jaina Basadi",
+    "placeId": "ChIJ1QTBqYfLujsR6DE9-0r8f-g",
+    "ftid": "0x3bbacb87a9c104d5:0xe87ffc4afb3d31e8",
+    "lat": 13.208636,
+    "lng": 75.9952154,
+    "distanceKm": 101.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Basadi%20Halli%2C%20Halebidu&query_place_id=ChIJ1QTBqYfLujsR6DE9-0r8f-g"
+  },
+  "beat::halebidu::Halebidu Archaeological Museum": {
+    "query": "Halebidu Museum",
+    "resolvedName": "Halebidu Archaelogical Site",
+    "placeId": "ChIJ_cwj7XfMujsRyQNkxYNtP-8",
+    "ftid": "0x3bbacc77ed23ccfd:0xef3f6d83c56403c9",
+    "lat": 13.2128372,
+    "lng": 75.9941118,
+    "distanceKm": 102.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Halebidu%20Museum&query_place_id=ChIJ_cwj7XfMujsRyQNkxYNtP-8"
+  },
+  "beat::badami::Badami Rock-Cut Cave Temples (Caves 1-4)": {
+    "query": "Badami Cave Temples",
+    "resolvedName": "Badami Cave Temples",
+    "placeId": "ChIJ27yQng6HuDsR5APGS80Bv_k",
+    "ftid": "0x3bb8870e9e90bcdb:0xf9bf01cd4bc603e4",
+    "lat": 15.9182858,
+    "lng": 75.6841104,
+    "distanceKm": 0.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Badami%20Cave%20Temples&query_place_id=ChIJ27yQng6HuDsR5APGS80Bv_k"
+  },
+  "beat::badami::Agastya Lake & Bhutanatha Temples": {
+    "query": "Bhutanatha Temple, Badami",
+    "resolvedName": "Sri Bhootanatha Gudi, Badami",
+    "placeId": "ChIJOb_1nw2HuDsRtTJaRxz7ZFY",
+    "ftid": "0x3bb8870d9ff5bf39:0x5664fb1c475a32b5",
+    "lat": 15.9207886,
+    "lng": 75.6876704,
+    "distanceKm": 0.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhutanatha%20Temple%2C%20Badami&query_place_id=ChIJOb_1nw2HuDsRtTJaRxz7ZFY"
+  },
+  "beat::badami::North Fort & Malegitti Shivalaya trek": {
+    "query": "Badami North Fort",
+    "resolvedName": "Badami Fort",
+    "placeId": "ChIJj_0TyRGHuDsRmpzYmK5QvRU",
+    "ftid": "0x3bb88711c913fd8f:0x15bd50ae98d89c9a",
+    "lat": 15.9211879,
+    "lng": 75.6845821,
+    "distanceKm": 0.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Badami%20North%20Fort&query_place_id=ChIJj_0TyRGHuDsRmpzYmK5QvRU"
+  },
+  "beat::badami::Badami red sandstone rock climbing": {
+    "query": "Badami Cliffs, Karnataka, Badami",
+    "resolvedName": "Badami Cave Temples",
+    "placeId": "ChIJ27yQng6HuDsR5APGS80Bv_k",
+    "ftid": "0x3bb8870e9e90bcdb:0xf9bf01cd4bc603e4",
+    "lat": 15.9182858,
+    "lng": 75.6841104,
+    "distanceKm": 0.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Badami%20Cliffs%2C%20Karnataka%2C%20Badami&query_place_id=ChIJ27yQng6HuDsR5APGS80Bv_k"
+  },
+  "beat::pattadakal::Virupaksha & Mallikarjuna Temples": {
+    "query": "Virupaksha Temple, Pattadakal",
+    "resolvedName": "Shri Virupaksha Temple (Pattadakallu)",
+    "placeId": "ChIJuQHhmfF7uDsRlfmzdS7xjDw",
+    "ftid": "0x3bb87bf199e101b9:0x3c8cf12e75b3f995",
+    "lat": 15.9492722,
+    "lng": 75.816186,
+    "distanceKm": 0.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Virupaksha%20Temple%2C%20Pattadakal&query_place_id=ChIJuQHhmfF7uDsRlfmzdS7xjDw"
+  },
+  "beat::pattadakal::Sangameshwara Temple (Oldest Shrine)": {
+    "query": "Sangameshwara Temple, Pattadakal",
+    "resolvedName": "WRX8+Q8Q Sangameshwara Temple, SH 14, Pattadakal, Karnataka 587201",
+    "placeId": "ChIJZY5Pn_F7uDsRpGphezXROP8",
+    "ftid": "0x3bb87bf19f4f8e65:0xff38d1357b616aa4",
+    "lat": 15.9494571,
+    "lng": 75.8158527,
+    "distanceKm": 0.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sangameshwara%20Temple%2C%20Pattadakal&query_place_id=ChIJZY5Pn_F7uDsRpGphezXROP8"
+  },
+  "beat::pattadakal::Papanatha Temple & Nagara Shikhara styles": {
+    "query": "Papanatha Temple, Pattadakal",
+    "resolvedName": "Shri Papanaatha Temple",
+    "placeId": "ChIJiZ-sJfJ7uDsR1l4nHb-VONE",
+    "ftid": "0x3bb87bf225ac9f89:0xd13895bf1d275ed6",
+    "lat": 15.947593,
+    "lng": 75.8164306,
+    "distanceKm": 0.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Papanatha%20Temple%2C%20Pattadakal&query_place_id=ChIJiZ-sJfJ7uDsR1l4nHb-VONE"
+  },
+  "beat::pattadakal::Malaprabha River bank & Jain Narayana Temple": {
+    "query": "Jain Narayana Temple, Pattadakal",
+    "resolvedName": "〒587201 Karnataka, Bagalkot, WRX5+V6CJain Narayana Temple",
+    "placeId": "ChIJQe38OfZ7uDsRzsvi5d-PXWM",
+    "ftid": "0x3bb87bf639fced41:0x635d8fdfe5e2cbce",
+    "lat": 15.94979,
+    "lng": 75.8080887,
+    "distanceKm": 0.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Jain%20Narayana%20Temple%2C%20Pattadakal&query_place_id=ChIJQe38OfZ7uDsRzsvi5d-PXWM"
+  },
+  "beat::vijayawada::Kanaka Durga Temple atop Indrakeeladri Hill": {
+    "query": "Kanaka Durga Temple, Vijayawada",
+    "resolvedName": "Sri Durga Malleswara Swamy Varla Devasthanam",
+    "placeId": "ChIJK6xFi97vNToRqadDGSDHq6k",
+    "ftid": "0x3a35efde8b45ac2b:0xa9abc7201943a7a9",
+    "lat": 16.5154055,
+    "lng": 80.605864,
+    "distanceKm": 1.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kanaka%20Durga%20Temple%2C%20Vijayawada&query_place_id=ChIJK6xFi97vNToRqadDGSDHq6k"
+  },
+  "beat::vijayawada::Undavalli Rock-Cut Caves & Anantasayana Vishnu": {
+    "query": "Undavalli Caves, Vijayawada",
+    "resolvedName": "Undavalli caves Hindu temple",
+    "placeId": "ChIJ7dGvhOXxNToRjcpPel85QY4",
+    "ftid": "0x3a35f1e584afd1ed:0x8e41395f7a4fca8d",
+    "lat": 16.4967247,
+    "lng": 80.5817217,
+    "distanceKm": 4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Undavalli%20Caves%2C%20Vijayawada&query_place_id=ChIJ7dGvhOXxNToRjcpPel85QY4"
+  },
+  "beat::vijayawada::Prakasam Barrage & Krishna river walk": {
+    "query": "Prakasam Barrage, Vijayawada",
+    "resolvedName": "Prakasam Barrage",
+    "placeId": "ChIJiW_-sibwNToR3vlaISZz_CI",
+    "ftid": "0x3a35f026b2fe6f89:0x22fc7326215af9de",
+    "lat": 16.5020777,
+    "lng": 80.603335,
+    "distanceKm": 1.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Prakasam%20Barrage%2C%20Vijayawada&query_place_id=ChIJiW_-sibwNToR3vlaISZz_CI"
+  },
+  "beat::vijayawada::Bhavani Island leisure boat cruise": {
+    "query": "Bhavani Island, Vijayawada",
+    "resolvedName": "Bhavani Island",
+    "placeId": "ChIJNeFvFzDuNToRWebOHLA5ib0",
+    "ftid": "0x3a35ee30176fe135:0xbd8939b01ccee659",
+    "lat": 16.523107,
+    "lng": 80.5730084,
+    "distanceKm": 4.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhavani%20Island%2C%20Vijayawada&query_place_id=ChIJNeFvFzDuNToRWebOHLA5ib0"
+  },
+  "beat::tirupati::Tirumala Venkateswara Temple darshan & laddu": {
+    "query": "Tirumala Venkateswara Temple, Tirupati",
+    "resolvedName": "Sri Venkateswara Swamy Temple (Tirumala Tirupati Devasthanams)",
+    "placeId": "ChIJm3DMpWK1sjsRMn1YUr0AekA",
+    "ftid": "0x3bb2b562a5cc709b:0x407a00bd52587d32",
+    "lat": 13.6832597,
+    "lng": 79.3472794,
+    "distanceKm": 10,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Tirumala%20Venkateswara%20Temple%2C%20Tirupati&query_place_id=ChIJm3DMpWK1sjsRMn1YUr0AekA"
+  },
+  "beat::tirupati::Sri Padmavathi Ammavari Temple, Tiruchanur": {
+    "query": "Padmavathi Temple, Tiruchanur",
+    "resolvedName": "Sri Padmavathi Ammavari Temple",
+    "placeId": "ChIJkyRzp-hLTToR09iEd8GEjuo",
+    "ftid": "0x3a4d4be8a7732493:0xea8e84c17784d8d3",
+    "lat": 13.607796,
+    "lng": 79.4503265,
+    "distanceKm": 4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Padmavathi%20Temple%2C%20Tiruchanur&query_place_id=ChIJkyRzp-hLTToR09iEd8GEjuo"
+  },
+  "beat::tirupati::Kapila Theertham sacred waterfall & Shiva shrine": {
+    "query": "Kapila Theertham, Tirupati",
+    "resolvedName": "Kapila Tirtham",
+    "placeId": "ChIJ_f6RwfZKTToR5ckcQKRUSeI",
+    "ftid": "0x3a4d4af6c191fefd:0xe24954a4401cc9e5",
+    "lat": 13.6564184,
+    "lng": 79.4209952,
+    "distanceKm": 2.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kapila%20Theertham%2C%20Tirupati&query_place_id=ChIJ_f6RwfZKTToR5ckcQKRUSeI"
+  },
+  "beat::tirupati::Chandragiri Fort & Vijayanagara Raja Mahal": {
+    "query": "Chandragiri Fort, Tirupati",
+    "resolvedName": "Chandragiri Fort",
+    "placeId": "ChIJPyOaXPezsjsRrAfkVmEnOa4",
+    "ftid": "0x3bb2b3f75c9a233f:0xae39276156e407ac",
+    "lat": 13.582824,
+    "lng": 79.3047735,
+    "distanceKm": 13.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Chandragiri%20Fort%2C%20Tirupati&query_place_id=ChIJPyOaXPezsjsRrAfkVmEnOa4"
+  },
+  "beat::visakhapatnam::INS Kursura Submarine Museum, RK Beach": {
+    "query": "INS Kursura Submarine Museum",
+    "resolvedName": "VMRDA INS Kursura Submarine Museum",
+    "placeId": "ChIJ63BMv2ZDOToR8gld_7GYQ5U",
+    "ftid": "0x3a394366bf4c70eb:0x954398b1ff5d09f2",
+    "lat": 17.7172432,
+    "lng": 83.3300912,
+    "distanceKm": 4.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=INS%20Kursura%20Submarine%20Museum&query_place_id=ChIJ63BMv2ZDOToR8gld_7GYQ5U"
+  },
+  "beat::visakhapatnam::Kailasagiri Hilltop Park & ropeway cable car": {
+    "query": "Kailasagiri, Visakhapatnam",
+    "resolvedName": "Kailasagiri, Visakhapatnam, Andhra Pradesh",
+    "placeId": "ChIJCWm6flRbOToROwhNJShvVJk",
+    "ftid": "0x3a395b547eba6909:0x99546f28254d083b",
+    "lat": 17.7492105,
+    "lng": 83.3418016,
+    "distanceKm": 8.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kailasagiri%2C%20Visakhapatnam&query_place_id=ChIJCWm6flRbOToROwhNJShvVJk"
+  },
+  "beat::visakhapatnam::Rushikonda Beach surfing & water sports": {
+    "query": "Rushikonda Beach, Visakhapatnam",
+    "resolvedName": "Rushikonda Beach",
+    "placeId": "ChIJl-xcN_taOToR7fFFHiVad8A",
+    "ftid": "0x3a395afb375cec97:0xc0775a251e45f1ed",
+    "lat": 17.7825201,
+    "lng": 83.3851154,
+    "distanceKm": 14,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Rushikonda%20Beach%2C%20Visakhapatnam&query_place_id=ChIJl-xcN_taOToR7fFFHiVad8A"
+  },
+  "beat::visakhapatnam::Borra Caves & Araku Valley excursion": {
+    "query": "Borra Caves",
+    "resolvedName": "Borra Caves",
+    "placeId": "ChIJecYrUDTIOzoRN3GamvJ6Cy8",
+    "ftid": "0x3a3bc834502bc679:0x2f0b7af29a9a7137",
+    "lat": 18.2806929,
+    "lng": 83.0396992,
+    "distanceKm": 70.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Borra%20Caves&query_place_id=ChIJecYrUDTIOzoRN3GamvJ6Cy8"
+  },
+  "beat::ranchi::Dassam Falls & Kanchi River": {
+    "query": "Dassam Falls, Ranchi",
+    "resolvedName": "Dassam Falls",
+    "placeId": "ChIJo-S5Z24F9TkR7jZYKk0OVyU",
+    "ftid": "0x39f5056e67b9e4a3:0x25570e4d2a5836ee",
+    "lat": 23.1462515,
+    "lng": 85.4672203,
+    "distanceKm": 28.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Dassam%20Falls%2C%20Ranchi&query_place_id=ChIJo-S5Z24F9TkR7jZYKk0OVyU"
+  },
+  "beat::ranchi::Hundru Falls & Jonha Falls": {
+    "query": "Hundru Falls, Ranchi",
+    "resolvedName": "Hundru Waterfall",
+    "placeId": "ChIJ97LfAMNW9DkRo43bLCvTDO0",
+    "ftid": "0x39f456c300dfb2f7:0xed0cd32b2cdb8da3",
+    "lat": 23.4497246,
+    "lng": 85.6666868,
+    "distanceKm": 36,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Hundru%20Falls%2C%20Ranchi&query_place_id=ChIJ97LfAMNW9DkRo43bLCvTDO0"
+  },
+  "beat::ranchi::Jagannath Temple Ranchi & Dhurwa Dam": {
+    "query": "Jagannath Temple, Ranchi",
+    "resolvedName": "Jagannath Mandir",
+    "placeId": "ChIJc27OWgPg9DkRRkRnbZrl9EE",
+    "ftid": "0x39f4e0035ace6e73:0x41f4e59a6d674446",
+    "lat": 23.3170279,
+    "lng": 85.2815913,
+    "distanceKm": 7.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Jagannath%20Temple%2C%20Ranchi&query_place_id=ChIJc27OWgPg9DkRRkRnbZrl9EE"
+  },
+  "beat::patna::Takht Sri Patna Sahib (Birthplace of Guru Gobind Singh)": {
+    "query": "Takht Sri Patna Sahib",
+    "resolvedName": "Takhat Shri Harimandir Ji Patna Sahib",
+    "placeId": "ChIJ_____29Y7TkRPUAZh8WO50w",
+    "ftid": "0x39ed586fffffffff:0x4ce78ec58719403d",
+    "lat": 25.5960503,
+    "lng": 85.2299561,
+    "distanceKm": 10.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Takht%20Sri%20Patna%20Sahib&query_place_id=ChIJ_____29Y7TkRPUAZh8WO50w"
+  },
+  "beat::patna::Golghar granary & Gandhi Maidan": {
+    "query": "Golghar, Patna",
+    "resolvedName": "Golghar",
+    "placeId": "ChIJ8-h4SVBY7TkRzebQ51rRjAE",
+    "ftid": "0x39ed58504978e8f3:0x18cd15ae7d0e6cd",
+    "lat": 25.620337,
+    "lng": 85.139448,
+    "distanceKm": 2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Golghar%2C%20Patna&query_place_id=ChIJ8-h4SVBY7TkRzebQ51rRjAE"
+  },
+  "beat::patna::Bihar Museum (World-Class Heritage)": {
+    "query": "Bihar Museum, Patna",
+    "resolvedName": "Bihar Museum",
+    "placeId": "ChIJwdyPyz1Y7TkROpvzzSOHi30",
+    "ftid": "0x39ed583dcb8fdcc1:0x7d8b8723cdf39b3a",
+    "lat": 25.6095066,
+    "lng": 85.1215752,
+    "distanceKm": 0.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Bihar%20Museum%2C%20Patna&query_place_id=ChIJwdyPyz1Y7TkROpvzzSOHi30"
+  },
+  "beat::bodh-gaya::Mahabodhi Temple & Sacred Bodhi Tree": {
+    "query": "Mahabodhi Temple, Bodh Gaya",
+    "resolvedName": "Mahabodhi Temple",
+    "placeId": "ChIJdwjYS1ss8zkRlwyobygu3fg",
+    "ftid": "0x39f32c5b4bd80877:0xf8dd2e286fa80c97",
+    "lat": 24.6959222,
+    "lng": 84.9914193,
+    "distanceKm": 2.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahabodhi%20Temple%2C%20Bodh%20Gaya&query_place_id=ChIJdwjYS1ss8zkRlwyobygu3fg"
+  },
+  "beat::bodh-gaya::Great Buddha Statue (80-foot Daibutsu)": {
+    "query": "Great Buddha Statue, Bodh Gaya",
+    "resolvedName": "The Great Lord Buddha statue",
+    "placeId": "ChIJhwmDWVgs8zkR5Xh4pcDJ0fI",
+    "ftid": "0x39f32c5859830987:0xf2d1c9c0a57878e5",
+    "lat": 24.6903883,
+    "lng": 84.9819433,
+    "distanceKm": 1.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Great%20Buddha%20Statue%2C%20Bodh%20Gaya&query_place_id=ChIJhwmDWVgs8zkR5Xh4pcDJ0fI"
+  },
+  "beat::bodh-gaya::International Monasteries trail (Thai, Bhutanese, Tibetan)": {
+    "query": "Thai Monastery, Bodh Gaya",
+    "resolvedName": "Wat Thai Buddhagaya Temple",
+    "placeId": "ChIJf0R8Glks8zkRo41RraTxUOQ",
+    "ftid": "0x39f32c591a7c447f:0xe450f1a4ad518da3",
+    "lat": 24.6941537,
+    "lng": 84.9849578,
+    "distanceKm": 2.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Thai%20Monastery%2C%20Bodh%20Gaya&query_place_id=ChIJf0R8Glks8zkRo41RraTxUOQ"
+  },
+  "beat::bodh-gaya::Sujata Kuti & Niranjana River walk": {
+    "query": "Sujata Kuti, Bodh Gaya",
+    "resolvedName": "Sujata Kuti",
+    "placeId": "ChIJ8446FQAt8zkRrCkxsoXhx9s",
+    "ftid": "0x39f32d00153a8ef3:0xdbc7e185b23129ac",
+    "lat": 24.697994,
+    "lng": 85.00371,
+    "distanceKm": 4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sujata%20Kuti%2C%20Bodh%20Gaya&query_place_id=ChIJ8446FQAt8zkRrCkxsoXhx9s"
+  },
+  "beat::surat::Surat Castle (Old Fort on Tapi River)": {
+    "query": "Surat Castle",
+    "resolvedName": "Surat Castle",
+    "placeId": "ChIJs4sS52JO4DsRbEnZ0BFTspU",
+    "ftid": "0x3be04e62e7128bb3:0x95b25311d0d9496c",
+    "lat": 21.1960961,
+    "lng": 72.8177121,
+    "distanceKm": 2.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Surat%20Castle&query_place_id=ChIJs4sS52JO4DsRbEnZ0BFTspU"
+  },
+  "beat::surat::Dumas Beach & black sand walk": {
+    "query": "Dumas Beach, Surat",
+    "resolvedName": "Dumas Beach",
+    "placeId": "ChIJfzqmAjNT4DsRQrWL-Sfjhm0",
+    "ftid": "0x3be0533302a63a7f:0x6d86e327f98bb542",
+    "lat": 21.0837964,
+    "lng": 72.7093466,
+    "distanceKm": 18.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Dumas%20Beach%2C%20Surat&query_place_id=ChIJfzqmAjNT4DsRQrWL-Sfjhm0"
+  },
+  "beat::surat::Dutch and Armenian Colonial Gardens": {
+    "query": "Dutch Garden, Surat",
+    "resolvedName": "Dayalji Garden",
+    "placeId": "ChIJZx3pdntO4DsRrJ3HtUYQANg",
+    "ftid": "0x3be04e7b76e91d67:0xd8001046b5c79dac",
+    "lat": 21.1913545,
+    "lng": 72.813374,
+    "distanceKm": 2.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Dutch%20Garden%2C%20Surat&query_place_id=ChIJZx3pdntO4DsRrJ3HtUYQANg"
+  },
+  "beat::vadodara::Laxmi Vilas Palace & audio tour": {
+    "query": "Laxmi Vilas Palace, Vadodara",
+    "resolvedName": "Laxmi Vilas Palace",
+    "placeId": "ChIJ91Mmr_DFXzkRCwswfBectiE",
+    "ftid": "0x395fc5f0af2653f7:0x21b69c177c300b0b",
+    "lat": 22.2939855,
+    "lng": 73.1917008,
+    "distanceKm": 0.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Laxmi%20Vilas%20Palace%2C%20Vadodara&query_place_id=ChIJ91Mmr_DFXzkRCwswfBectiE"
+  },
+  "beat::vadodara::Sayaji Baug & Baroda Museum (Raja Ravi Varma gallery)": {
+    "query": "Baroda Museum, Vadodara",
+    "resolvedName": "Baroda Museum & Picture Gallery",
+    "placeId": "ChIJDzqj0E3PXzkRH4zCjOpqCEk",
+    "ftid": "0x395fcf4dd0a33a0f:0x49086aea8cc28c1f",
+    "lat": 22.3117697,
+    "lng": 73.1887449,
+    "distanceKm": 1.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Baroda%20Museum%2C%20Vadodara&query_place_id=ChIJDzqj0E3PXzkRH4zCjOpqCEk"
+  },
+  "beat::vadodara::Champaner-Pavagadh UNESCO World Heritage excursion": {
+    "query": "Champaner-Pavagadh",
+    "resolvedName": "Champaner-Pavagadh Archaeological Park Gujarat",
+    "placeId": "ChIJ6SlKB11-YDkRm7z2Y380WYc",
+    "ftid": "0x39607e5d074a29e9:0x8759347f63f6bc9b",
+    "lat": 22.4858293,
+    "lng": 73.5372445,
+    "distanceKm": 41,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Champaner-Pavagadh&query_place_id=ChIJ6SlKB11-YDkRm7z2Y380WYc"
+  },
+  "beat::rajkot::Kaba Gandhi No Delo (Mahatma Gandhi's Childhood Home)": {
+    "query": "Kaba Gandhi No Delo, Rajkot",
+    "resolvedName": "Kaba GandhiNo Delo (Kaba Gandhi's Residence), Rajkot",
+    "placeId": "ChIJN2n2uufLWTkRHSftc0ofWFc",
+    "ftid": "0x3959cbe7baf66937:0x57581f4a73ed271d",
+    "lat": 22.2972019,
+    "lng": 70.8050213,
+    "distanceKm": 0.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kaba%20Gandhi%20No%20Delo%2C%20Rajkot&query_place_id=ChIJN2n2uufLWTkRHSftc0ofWFc"
+  },
+  "beat::rajkot::Watson Museum & Jubilee Garden": {
+    "query": "Watson Museum, Rajkot",
+    "resolvedName": "Watson Museum",
+    "placeId": "ChIJQQTX4ALKWTkREaYqGdrenW8",
+    "ftid": "0x3959ca02e0d70441:0x6f9ddeda192aa611",
+    "lat": 22.3004815,
+    "lng": 70.8018459,
+    "distanceKm": 0.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Watson%20Museum%2C%20Rajkot&query_place_id=ChIJQQTX4ALKWTkREaYqGdrenW8"
+  },
+  "beat::rajkot::Rotary Dolls Museum (Global Dolls Collection)": {
+    "query": "Rotary Dolls Museum, Rajkot",
+    "resolvedName": "Rotary International Dolls Museum",
+    "placeId": "ChIJFaxCuRnKWTkRtkN9mC3PsMk",
+    "ftid": "0x3959ca19b942ac15:0xc9b0cf2d987d43b6",
+    "lat": 22.2938875,
+    "lng": 70.7911889,
+    "distanceKm": 1.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Rotary%20Dolls%20Museum%2C%20Rajkot&query_place_id=ChIJFaxCuRnKWTkRtkN9mC3PsMk"
+  },
+  "beat::gandhinagar::Akshardham Temple & Sat-Chit-Anand water show": {
+    "query": "Akshardham Temple, Gandhinagar",
+    "resolvedName": "BAPS Shri Swaminarayan Akshardham, Gandhinagar",
+    "placeId": "ChIJ6dhnAQ4rXDkRJmHw0T2Wd5c",
+    "ftid": "0x395c2b0e0167d8e9:0x9777963dd1f06126",
+    "lat": 23.2293681,
+    "lng": 72.6740587,
+    "distanceKm": 2.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Akshardham%20Temple%2C%20Gandhinagar&query_place_id=ChIJ6dhnAQ4rXDkRJmHw0T2Wd5c"
+  },
+  "beat::gandhinagar::Indroda Dinosaur and Fossil Park (India's Jurassic Park)": {
+    "query": "Indroda Dinosaur Park",
+    "resolvedName": "Dinosaur & Fossil Park Gandhinagar",
+    "placeId": "ChIJm1AccUQqXDkRJ-J9FZHhL2Y",
+    "ftid": "0x395c2a44711c509b:0x662fe191157de227",
+    "lat": 23.1902271,
+    "lng": 72.6483976,
+    "distanceKm": 3.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Indroda%20Dinosaur%20Park&query_place_id=ChIJm1AccUQqXDkRJ-J9FZHhL2Y"
+  },
+  "beat::gandhinagar::Mahatma Mandir & Dandi Kutir (Salt Mound)": {
+    "query": "Dandi Kutir, Gandhinagar",
+    "resolvedName": "DANDI KUTIR, MAHATMA MANDIR EXHIBITION HALL, Mahatma Mandir, KH Rd, Sector 13C, Sector 13, Gandhinagar, Gujarat 382016",
+    "placeId": "ChIJj0zOpukrXDkR2Zg-JIiLdSQ",
+    "ftid": "0x395c2be9a6ce4c8f:0x24758b88243e98d9",
+    "lat": 23.2328758,
+    "lng": 72.6311938,
+    "distanceKm": 2.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Dandi%20Kutir%2C%20Gandhinagar&query_place_id=ChIJj0zOpukrXDkR2Zg-JIiLdSQ"
+  },
+  "beat::gandhinagar::Sarita Udyan riverside deer park walk": {
+    "query": "Sarita Udyan, Gandhinagar",
+    "resolvedName": "Sarita Udhyan",
+    "placeId": "ChIJUUKhvskrXDkRHpaLuV3TwrQ",
+    "ftid": "0x395c2bc9bea14251:0xb4c2d35db98b961e",
+    "lat": 23.2031524,
+    "lng": 72.6589384,
+    "distanceKm": 2.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sarita%20Udyan%2C%20Gandhinagar&query_place_id=ChIJUUKhvskrXDkRHpaLuV3TwrQ"
+  },
+  "beat::chandigarh::Nek Chand's Rock Garden (Recycled Art Wonder)": {
+    "query": "Rock Garden, Chandigarh",
+    "resolvedName": "Rock Garden of Chandigarh, Sector 1, Chandigarh, 160001",
+    "placeId": "ChIJHd27EkTtDzkRpTq5mNfGk2M",
+    "ftid": "0x390fed4412bbdd1d:0x6393c6d798b93aa5",
+    "lat": 30.752535,
+    "lng": 76.8101038,
+    "distanceKm": 3.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Rock%20Garden%2C%20Chandigarh&query_place_id=ChIJHd27EkTtDzkRpTq5mNfGk2M"
+  },
+  "beat::chandigarh::Zakir Hussain Rose Garden & Capitol Complex": {
+    "query": "Rose Garden, Chandigarh",
+    "resolvedName": "Zakir Hussain Rose Garden",
+    "placeId": "ChIJr1AOpHXtDzkRiHELjgSGk3U",
+    "ftid": "0x390fed75a40e50af:0x759386048e0b7188",
+    "lat": 30.7470353,
+    "lng": 76.782881,
+    "distanceKm": 1.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Rose%20Garden%2C%20Chandigarh&query_place_id=ChIJr1AOpHXtDzkRiHELjgSGk3U"
+  },
+  "beat::ludhiana::Lodhi Fort (Purana Qila) & Sutlej banks": {
+    "query": "Lodhi Fort, Ludhiana",
+    "resolvedName": "Lodhi fort",
+    "placeId": "ChIJWyodN52DGjkRfBP5fG2gWxI",
+    "ftid": "0x391a839d371d2a5b:0x125ba06d7cf9137c",
+    "lat": 30.9241352,
+    "lng": 75.8515798,
+    "distanceKm": 1.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Lodhi%20Fort%2C%20Ludhiana&query_place_id=ChIJWyodN52DGjkRfBP5fG2gWxI"
+  },
+  "beat::ludhiana::Maharaja Ranjit Singh War Museum": {
+    "query": "War Museum, Ludhiana",
+    "resolvedName": "Maharaja Ranjit Singh War Museum",
+    "placeId": "ChIJ4cEFIsUbEDkRCcIpvDs9iNQ",
+    "ftid": "0x39101bc52205c1e1:0xd4883d3bbc29c209",
+    "lat": 30.9576215,
+    "lng": 75.8230113,
+    "distanceKm": 6.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=War%20Museum%2C%20Ludhiana&query_place_id=ChIJ4cEFIsUbEDkRCcIpvDs9iNQ"
+  },
+  "beat::ludhiana::PAU Museum of Rural Life of Punjab": {
+    "query": "PAU Museum, Ludhiana",
+    "resolvedName": "PAU Museum",
+    "placeId": "ChIJWbG-d9mDGjkR3R7JqmFldSk",
+    "ftid": "0x391a83d977beb159:0x29756561aac91edd",
+    "lat": 30.900488,
+    "lng": 75.813344,
+    "distanceKm": 3.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=PAU%20Museum%2C%20Ludhiana&query_place_id=ChIJWbG-d9mDGjkR3R7JqmFldSk"
+  },
+  "beat::jalandhar::Devi Talab Mandir & sacred water tank": {
+    "query": "Devi Talab Mandir, Jalandhar",
+    "resolvedName": "Devi Talab Mandir",
+    "placeId": "ChIJd5DOD2VaGjkRD39HBQGe9wM",
+    "ftid": "0x391a5a650fce9077:0x3f79e0105477f0f",
+    "lat": 31.3435472,
+    "lng": 75.5827769,
+    "distanceKm": 5.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Devi%20Talab%20Mandir%2C%20Jalandhar&query_place_id=ChIJd5DOD2VaGjkRD39HBQGe9wM"
+  },
+  "beat::jalandhar::Pushpa Gujral Science City": {
+    "query": "Science City, Jalandhar",
+    "resolvedName": "Science City Jalandhar Kapurthala",
+    "placeId": "ChIJQ4Keu31PGjkR8xuaeg3UnMk",
+    "ftid": "0x391a4f7dbb9e8243:0xc99cd40d7a9a1bf3",
+    "lat": 31.3571464,
+    "lng": 75.440275,
+    "distanceKm": 14.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Science%20City%2C%20Jalandhar&query_place_id=ChIJQ4Keu31PGjkR8xuaeg3UnMk"
+  },
+  "beat::patiala::Qila Mubarak & Ran Baas palace": {
+    "query": "Qila Mubarak, Patiala",
+    "resolvedName": "Qila Mubarak",
+    "placeId": "ChIJfbguD_woEDkRrtNaWqgbywc",
+    "ftid": "0x391028fc0f2eb87d:0x7cb1ba85a5ad3ae",
+    "lat": 30.3248034,
+    "lng": 76.4039871,
+    "distanceKm": 14.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Qila%20Mubarak%2C%20Patiala&query_place_id=ChIJfbguD_woEDkRrtNaWqgbywc"
+  },
+  "beat::patiala::Sheesh Mahal (Palace of Mirrors) & lake": {
+    "query": "Sheesh Mahal, Patiala",
+    "resolvedName": "895V+3QQ Sheesh Mahal, Sheesh Mahal Grounds, colony, Old Moti Bagh, Moti Bagh, Patiala, Punjab 147001",
+    "placeId": "ChIJLwqEeRApEDkRWV1cpPxSCkk",
+    "ftid": "0x3910291079840a2f:0x490a52fca45c5d59",
+    "lat": 30.3065154,
+    "lng": 76.396148,
+    "distanceKm": 12.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sheesh%20Mahal%2C%20Patiala&query_place_id=ChIJLwqEeRApEDkRWV1cpPxSCkk"
+  },
+  "beat::patiala::Baradari Gardens & royal pavilion": {
+    "query": "Baradari Gardens, Patiala",
+    "resolvedName": "Barandari Bagh",
+    "placeId": "ChIJ-Z8rMeooEDkRb5dXDvykTfM",
+    "ftid": "0x391028ea312b9ff9:0xf34da4fc0e57976f",
+    "lat": 30.3342042,
+    "lng": 76.3921802,
+    "distanceKm": 14.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Baradari%20Gardens%2C%20Patiala&query_place_id=ChIJ-Z8rMeooEDkRb5dXDvykTfM"
+  },
+  "beat::raipur::Swami Vivekanand Sarovar (Budha Talab)": {
+    "query": "Swami Vivekanand Sarovar, Raipur",
+    "resolvedName": "Vivekananda Sarovar [Budha Talab]",
+    "placeId": "ChIJAUY9kLrdKDoRtCOLbDGbVug",
+    "ftid": "0x3a28ddba903d4601:0xe8569b316c8b23b4",
+    "lat": 21.2325406,
+    "lng": 81.6343323,
+    "distanceKm": 0.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Swami%20Vivekanand%20Sarovar%2C%20Raipur&query_place_id=ChIJAUY9kLrdKDoRtCOLbDGbVug"
+  },
+  "beat::raipur::Mahant Ghasidas Memorial Museum": {
+    "query": "Mahant Ghasidas Museum, Raipur",
+    "resolvedName": "Mahant Ghasidas Memorial Museum, Raipur",
+    "placeId": "ChIJE2z_K6DdKDoR6KJMwsi5z5g",
+    "ftid": "0x3a28dda02bff6c13:0x98cfb9c8c24ca2e8",
+    "lat": 21.2438866,
+    "lng": 81.6449179,
+    "distanceKm": 1.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahant%20Ghasidas%20Museum%2C%20Raipur&query_place_id=ChIJE2z_K6DdKDoR6KJMwsi5z5g"
+  },
+  "beat::raipur::Purkhouti Muktangan tribal cultural park": {
+    "query": "Purkhouti Muktangan, Raipur",
+    "resolvedName": "Purkhouti Muktangan",
+    "placeId": "ChIJXxKOBTXEKDoRWrUwI1Ve9Pc",
+    "ftid": "0x3a28c435058e125f:0xf7f45e552330b55a",
+    "lat": 21.1340706,
+    "lng": 81.7588497,
+    "distanceKm": 17.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Purkhouti%20Muktangan%2C%20Raipur&query_place_id=ChIJXxKOBTXEKDoRWrUwI1Ve9Pc"
+  },
+  "beat::bhilai::Maitri Bagh (Friendship Garden & Zoo)": {
+    "query": "Maitri Bagh, Bhilai",
+    "resolvedName": "Maitri Baag Zoo",
+    "placeId": "ChIJm6tKsEUjKToRAo_Xjf3ZR_0",
+    "ftid": "0x3a292345b04aab9b:0xfd47d9fd8dd78f02",
+    "lat": 21.1680853,
+    "lng": 81.3503741,
+    "distanceKm": 5.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Maitri%20Bagh%2C%20Bhilai&query_place_id=ChIJm6tKsEUjKToRAo_Xjf3ZR_0"
+  },
+  "beat::bhilai::Deobalod Shiva Temple (Kalachuri 5th-century)": {
+    "query": "Deobalod Temple, Bhilai",
+    "resolvedName": "Shiva Mandir Deobaloda",
+    "placeId": "ChIJuxd7aVMgKToRVZ7Fq2S6E2Q",
+    "ftid": "0x3a292053697b17bb:0x6413ba64abc59e55",
+    "lat": 21.2187887,
+    "lng": 81.4734803,
+    "distanceKm": 10.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Deobalod%20Temple%2C%20Bhilai&query_place_id=ChIJuxd7aVMgKToRVZ7Fq2S6E2Q"
+  },
+  "beat::bhilai::Bhilai Steel Plant viewpoint & Civic Center": {
+    "query": "Civic Center, Bhilai",
+    "resolvedName": "Civic Center Bhilai Cg",
+    "placeId": "ChIJ_____0ojKToRBO01wGz2LUg",
+    "ftid": "0x3a29234affffffff:0x482df66cc035ed04",
+    "lat": 21.1861215,
+    "lng": 81.3428673,
+    "distanceKm": 4.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Civic%20Center%2C%20Bhilai&query_place_id=ChIJ_____0ojKToRBO01wGz2LUg"
+  },
+  "beat::bhilai::Tandula Dam scenic picnic excursion": {
+    "query": "Tandula Dam",
+    "resolvedName": "Main Gate Tandula Dam Balod",
+    "placeId": "ChIJeyHUMZPILjoRP6GpGRMNYYY",
+    "ftid": "0x3a2ec89331d4217b:0x86610d1319a9a13f",
+    "lat": 20.7022554,
+    "lng": 81.2223941,
+    "distanceKm": 58.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Tandula%20Dam&query_place_id=ChIJeyHUMZPILjoRP6GpGRMNYYY"
+  },
+  "beat::jamshedpur::Jubilee Park & Rose Garden (Mughal-style layout)": {
+    "query": "Jubilee Park, Jamshedpur",
+    "resolvedName": "Jubilee Amusement Park",
+    "placeId": "ChIJOYJamPTj9TkRwpVVhpX4cmM",
+    "ftid": "0x39f5e3f4985a8239:0x6372f895865595c2",
+    "lat": 22.8087472,
+    "lng": 86.1976824,
+    "distanceKm": 1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Jubilee%20Park%2C%20Jamshedpur&query_place_id=ChIJOYJamPTj9TkRwpVVhpX4cmM"
+  },
+  "beat::jamshedpur::Dimna Lake & Dalma Wildlife Sanctuary": {
+    "query": "Dimna Lake, Jamshedpur",
+    "resolvedName": "Dimna Lake, Jamshedpur",
+    "placeId": "ChIJ-6RUfQHi9TkRaLFFS6Hudhc",
+    "ftid": "0x39f5e2017d54a4fb:0x1776eea14b45b168",
+    "lat": 22.858203,
+    "lng": 86.25143,
+    "distanceKm": 8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Dimna%20Lake%2C%20Jamshedpur&query_place_id=ChIJ-6RUfQHi9TkRaLFFS6Hudhc"
+  },
+  "beat::jamshedpur::Bhuvaneshwari Temple hilltop sunset": {
+    "query": "Bhuvaneshwari Temple, Jamshedpur",
+    "resolvedName": "Bhubaneshwari Temple",
+    "placeId": "ChIJa491JwMI9jkRIP6FmIXqWA0",
+    "ftid": "0x39f6080327758f6b:0xd58ea859885fe20",
+    "lat": 22.7783348,
+    "lng": 86.2592425,
+    "distanceKm": 6.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhuvaneshwari%20Temple%2C%20Jamshedpur&query_place_id=ChIJa491JwMI9jkRIP6FmIXqWA0"
+  },
+  "beat::dhanbad::Kalyaneshwari Temple (500-year-old Shakti shrine)": {
+    "query": "Kalyaneshwari Temple, Dhanbad",
+    "resolvedName": "Maa Kalyaneswari Mandir",
+    "placeId": "ChIJpaJ0SAWX9jkRbsfAfpQqbi0",
+    "ftid": "0x39f697054874a2a5:0x2d6e2a947ec0c76e",
+    "lat": 23.6641437,
+    "lng": 86.450143,
+    "distanceKm": 14.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kalyaneshwari%20Temple%2C%20Dhanbad&query_place_id=ChIJpaJ0SAWX9jkRbsfAfpQqbi0"
+  },
+  "beat::dhanbad::Topchanchi Lake & Parasnath hill views": {
+    "query": "Topchanchi Lake, Dhanbad",
+    "resolvedName": "Topchanchi Lake",
+    "placeId": "ChIJr8GGnlsD9DkR_wyraFRb9J0",
+    "ftid": "0x39f4035b9e86c1af:0x9df45b5468ab0cff",
+    "lat": 23.9220417,
+    "lng": 86.182169,
+    "distanceKm": 29,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Topchanchi%20Lake%2C%20Dhanbad&query_place_id=ChIJr8GGnlsD9DkR_wyraFRb9J0"
+  },
+  "beat::dhanbad::Bhatinda Falls rock cascade": {
+    "query": "Bhatinda Falls, Dhanbad",
+    "resolvedName": "Bhatinda water falls",
+    "placeId": "ChIJLdBbIGqj9jkRXanup6S36Rc",
+    "ftid": "0x39f6a36a205bd02d:0x17e9b7a4a7eea95d",
+    "lat": 23.7107875,
+    "lng": 86.3317344,
+    "distanceKm": 13.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhatinda%20Falls%2C%20Dhanbad&query_place_id=ChIJLdBbIGqj9jkRXanup6S36Rc"
+  },
+  "beat::dehradun::Robber's Cave (Guchhupani) stream walk": {
+    "query": "Robbers Cave, Dehradun",
+    "resolvedName": "Gucchupani Robbers' Cave",
+    "placeId": "ChIJB0--uF7XCDkRFJ5yUFAIXMI",
+    "ftid": "0x3908d75eb8be4f07:0xc25c085050729e14",
+    "lat": 30.3753952,
+    "lng": 78.0598569,
+    "distanceKm": 5.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Robbers%20Cave%2C%20Dehradun&query_place_id=ChIJB0--uF7XCDkRFJ5yUFAIXMI"
+  },
+  "beat::dehradun::Forest Research Institute (FRI) Greco-Roman campus": {
+    "query": "Forest Research Institute, Dehradun",
+    "resolvedName": "FRI Dehradun",
+    "placeId": "ChIJt2uNxPTVCDkRVNVscavlz24",
+    "ftid": "0x3908d5f4c48d6bb7:0x6ecfe5ab716cd554",
+    "lat": 30.3438262,
+    "lng": 77.9978107,
+    "distanceKm": 4.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Forest%20Research%20Institute%2C%20Dehradun&query_place_id=ChIJt2uNxPTVCDkRVNVscavlz24"
+  },
+  "beat::dehradun::Mindrolling Monastery & Great Stupa (Clement Town)": {
+    "query": "Mindrolling Monastery, Dehradun",
+    "resolvedName": "Mindrolling Monastery",
+    "placeId": "ChIJsV34wfgrCTkRRt2l6yUDSmw",
+    "ftid": "0x39092bf8c1f85db1:0x6c4a0325eba5dd46",
+    "lat": 30.2615418,
+    "lng": 77.99771,
+    "distanceKm": 8.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mindrolling%20Monastery%2C%20Dehradun&query_place_id=ChIJsV34wfgrCTkRRt2l6yUDSmw"
+  },
+  "beat::dehradun::Sahastradhara (Thousandfold Spring) sulfur bath": {
+    "query": "Sahastradhara, Dehradun",
+    "resolvedName": "Sahastradhara, Timilimansingh, Uttarakhand 248013",
+    "placeId": "ChIJlyGkYDfYCDkRxogOODUfJfU",
+    "ftid": "0x3908d83760a42197:0xf5251f35380e88c6",
+    "lat": 30.3871786,
+    "lng": 78.1311611,
+    "distanceKm": 10.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sahastradhara%2C%20Dehradun&query_place_id=ChIJlyGkYDfYCDkRxogOODUfJfU"
+  },
+  "beat::jammu::Raghunath Temple & Sanskrit library": {
+    "query": "Raghunath Temple, Jammu",
+    "resolvedName": "Shri Raghunath Ji Mandir",
+    "placeId": "ChIJc6wtim-FHjkRwBxbB2-Hjuk",
+    "ftid": "0x391e856f8a2dac73:0xe98e876f075b1cc0",
+    "lat": 32.7305119,
+    "lng": 74.8619781,
+    "distanceKm": 1.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Raghunath%20Temple%2C%20Jammu&query_place_id=ChIJc6wtim-FHjkRwBxbB2-Hjuk"
+  },
+  "beat::jammu::Bahu Fort & Bawe Wali Mata Temple": {
+    "query": "Bahu Fort, Jammu",
+    "resolvedName": "Bahu Fort, Gorkha Nagar, Jammu, 180006",
+    "placeId": "ChIJuxDiq2SDHjkRCYRVXviRXGw",
+    "ftid": "0x391e8364abe210bb:0x6c5c91f85e558409",
+    "lat": 32.7263032,
+    "lng": 74.8801567,
+    "distanceKm": 2.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Bahu%20Fort%2C%20Jammu&query_place_id=ChIJuxDiq2SDHjkRCYRVXviRXGw"
+  },
+  "beat::jammu::Amar Mahal Palace Museum (Golden Throne)": {
+    "query": "Amar Mahal Museum, Jammu",
+    "resolvedName": "Amar Mahal Museum and Library",
+    "placeId": "ChIJDwO0i3eEHjkRvKQdnhrl67I",
+    "ftid": "0x391e84778bb4030f:0xb2ebe51a9e1da4bc",
+    "lat": 32.7477098,
+    "lng": 74.8722927,
+    "distanceKm": 3.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Amar%20Mahal%20Museum%2C%20Jammu&query_place_id=ChIJDwO0i3eEHjkRvKQdnhrl67I"
+  },
+  "beat::gulmarg::Gulmarg Gondola (Phase 1 & Phase 2 to Apharwat Peak)": {
+    "query": "Gulmarg Gondola",
+    "resolvedName": "Gulmarg Gondola",
+    "placeId": "ChIJMX6PWuiv4TgRsiWtAAuEpDo",
+    "ftid": "0x38e1afe85a8f7e31:0x3aa4840b00ad25b2",
+    "lat": 34.0458045,
+    "lng": 74.3846304,
+    "distanceKm": 0.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Gulmarg%20Gondola&query_place_id=ChIJMX6PWuiv4TgRsiWtAAuEpDo"
+  },
+  "beat::gulmarg::St. Mary's Church & Gulmarg Golf Course": {
+    "query": "St Marys Church, Gulmarg",
+    "resolvedName": "St. Mary’s Church, Gulmarg",
+    "placeId": "ChIJIbIrwOyv4TgRlgMXDpM6aPw",
+    "ftid": "0x38e1afecc02bb221:0xfc683a930e170396",
+    "lat": 34.0536653,
+    "lng": 74.3898566,
+    "distanceKm": 0.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=St%20Marys%20Church%2C%20Gulmarg&query_place_id=ChIJIbIrwOyv4TgRlgMXDpM6aPw"
+  },
+  "beat::gulmarg::Strawberry Valley horse trail ride": {
+    "query": "Strawberry Valley, Gulmarg",
+    "resolvedName": "Strawberry Valley",
+    "placeId": "ChIJ72mquC2v4TgR-s-udnub1jI",
+    "ftid": "0x38e1af2db8aa69ef:0x32d69b7b76aecffa",
+    "lat": 34.0689216,
+    "lng": 74.3734221,
+    "distanceKm": 2.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Strawberry%20Valley%2C%20Gulmarg&query_place_id=ChIJ72mquC2v4TgR-s-udnub1jI"
+  },
+  "beat::pahalgam::Betaab Valley (Hajan Valley) nature walk": {
+    "query": "Betaab Valley, Pahalgam",
+    "resolvedName": "Hajan Valley",
+    "placeId": "ChIJOWGBiLhA4jgRhpm8fu7gBvU",
+    "ftid": "0x38e240b888816139:0xf506e0ee7ebc9986",
+    "lat": 34.0545035,
+    "lng": 75.3637922,
+    "distanceKm": 4.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Betaab%20Valley%2C%20Pahalgam&query_place_id=ChIJOWGBiLhA4jgRhpm8fu7gBvU"
+  },
+  "beat::pahalgam::Aru Valley village & Kolahoi Glacier trail": {
+    "query": "Aru Valley, Pahalgam",
+    "resolvedName": "Aru Valley",
+    "placeId": "ChIJr0VC6DY54jgRyHkcHbxJOhM",
+    "ftid": "0x38e23936e84245af:0x133a49bc1d1c79c8",
+    "lat": 34.0921137,
+    "lng": 75.2632113,
+    "distanceKm": 8.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Aru%20Valley%2C%20Pahalgam&query_place_id=ChIJr0VC6DY54jgRyHkcHbxJOhM"
+  },
+  "beat::pahalgam::Chandanwari & Sheshnag River": {
+    "query": "Chandanwari, Pahalgam",
+    "resolvedName": "Chandanwari, Pahalgam 192126",
+    "placeId": "ChIJi1kBRJ8_4jgR8Dx_uUIQpRU",
+    "ftid": "0x38e23f9f4401598b:0x15a51042b97f3cf0",
+    "lat": 34.0144741,
+    "lng": 75.3186241,
+    "distanceKm": 2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Chandanwari%2C%20Pahalgam&query_place_id=ChIJi1kBRJ8_4jgR8Dx_uUIQpRU"
+  },
+  "beat::pahalgam::Baisaran (Mini Switzerland of Kashmir) pony trek": {
+    "query": "Baisaran, Pahalgam",
+    "resolvedName": "Baisaran Rd, 192126",
+    "placeId": "ChIJ184GYJA_4jgR_gQiwJYVvV0",
+    "ftid": "0x38e23f906006ced7:0x5dbd1596c02204fe",
+    "lat": 34.0155915,
+    "lng": 75.3271365,
+    "distanceKm": 1.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Baisaran%2C%20Pahalgam&query_place_id=ChIJ184GYJA_4jgR_gQiwJYVvV0"
+  },
+  "beat::sonamarg::Thajiwas Glacier pony trek & snow activities": {
+    "query": "Thajiwas Glacier, Sonamarg",
+    "resolvedName": "Thajiwas Glacier",
+    "placeId": "ChIJIduDfRc14jgRI958gsvUxl4",
+    "ftid": "0x38e235177d83db21:0x5ec6d4cb827cde23",
+    "lat": 34.3031616,
+    "lng": 75.293111,
+    "distanceKm": 0.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Thajiwas%20Glacier%2C%20Sonamarg&query_place_id=ChIJIduDfRc14jgRI958gsvUxl4"
+  },
+  "beat::sonamarg::Zoji La Pass & Zero Point excursion": {
+    "query": "Zoji La Pass",
+    "resolvedName": "Zoji La",
+    "placeId": "ChIJxWmHaEhM4jgRf_BhYLA-cR8",
+    "ftid": "0x38e24c48688769c5:0x1f713eb06061f07f",
+    "lat": 34.2792403,
+    "lng": 75.4707691,
+    "distanceKm": 16.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Zoji%20La%20Pass&query_place_id=ChIJxWmHaEhM4jgRf_BhYLA-cR8"
+  },
+  "beat::sonamarg::Baltal Valley scenic view": {
+    "query": "Baltal Valley, Sonamarg",
+    "resolvedName": "Baltal Valley Sonmarg",
+    "placeId": "ChIJP5FuDQA14jgRGIFtgav9AaQ",
+    "ftid": "0x38e235000d6e913f:0xa401fdab816d8118",
+    "lat": 34.3031616,
+    "lng": 75.293111,
+    "distanceKm": 0.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Baltal%20Valley%2C%20Sonamarg&query_place_id=ChIJP5FuDQA14jgRGIFtgav9AaQ"
   }
 }
