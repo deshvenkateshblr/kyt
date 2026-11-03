@@ -195,26 +195,106 @@ async function main() {
   };
   const hasFlag = flag => args.includes(flag);
 
-  const targetCityId = getArg('--city');
-  const limit = getArg('--limit') ? parseInt(getArg('--limit'), 10) : null;
-  const skipBeats = hasFlag('--skip-beats');
-  const inPlace = hasFlag('--in-place');
-  const delaySec = getArg('--delay') ? parseFloat(getArg('--delay')) : 1.0;
-
   console.log(`Loading catalog from: ${INPUT_JS_PATH}`);
   const { cities, prefix, suffix } = loadCities(INPUT_JS_PATH);
   console.log(`Loaded ${cities.length} cities.`);
 
+  const batchSize = parseInt(getArg('--batch-size') || '10', 10);
+  const batchArg = getArg('--batch');
+  const targetCityId = getArg('--city');
+  const limitArg = getArg('--limit') ? parseInt(getArg('--limit'), 10) : null;
+  const offsetArg = getArg('--offset') ? parseInt(getArg('--offset'), 10) : 0;
+  const skipBeats = hasFlag('--skip-beats');
+  const skipCity = hasFlag('--skip-city');
+  const force = hasFlag('--force');
+  const inPlace = hasFlag('--in-place');
+  const delaySec = getArg('--delay') ? parseFloat(getArg('--delay')) : 1.0;
+
+  // --status: display statistics and exit
+  if (hasFlag('--status')) {
+    let totalPlaces = 0;
+    let resolvedPlaces = 0;
+    let totalActivities = 0;
+    let resolvedCities = cities.filter(c => c.placeId).length;
+
+    cities.forEach(c => {
+      (c.beats || []).forEach(b => {
+        if (b.kind === 'activity') {
+          totalActivities++;
+        } else {
+          totalPlaces++;
+          if (b.placeId) resolvedPlaces++;
+        }
+      });
+    });
+
+    const missingPlaces = totalPlaces - resolvedPlaces;
+    const totalBatches = Math.ceil(cities.length / batchSize);
+
+    console.log('\n================ KYT PLACES CATALOG STATUS ================');
+    console.log(`Total Cities:           ${cities.length} (${resolvedCities} have city.placeId)`);
+    console.log(`Total Attractions:      ${totalPlaces + totalActivities}`);
+    console.log(`  - Places:             ${totalPlaces} (${resolvedPlaces} resolved, ${missingPlaces} missing Place ID)`);
+    console.log(`  - Activities:         ${totalActivities} (exempt from Place ID)`);
+    console.log(`Total Batches:          ${totalBatches} (batch size: ${batchSize} cities/batch)`);
+    console.log('-----------------------------------------------------------');
+
+    for (let b = 1; b <= totalBatches; b++) {
+      const bStart = (b - 1) * batchSize;
+      const bCities = cities.slice(bStart, bStart + batchSize);
+      let bPlaces = 0;
+      let bMissing = 0;
+      bCities.forEach(c => {
+        (c.beats || []).forEach(beat => {
+          if (beat.kind !== 'activity') {
+            bPlaces++;
+            if (!beat.placeId) bMissing++;
+          }
+        });
+      });
+      const tag = bMissing === 0 ? '✓ COMPLETE' : `${bMissing} missing`;
+      console.log(`  Batch ${String(b).padStart(2)}: cities ${String(bStart + 1).padStart(3)}-${String(bStart + bCities.length).padStart(3)} | ${String(bPlaces).padStart(2)} places | ${tag} | ${bCities.map(c => c.name).join(', ').slice(0, 50)}...`);
+    }
+    console.log('===========================================================\n');
+    console.log(`Run a batch with: node admin/enrich_kyt_places.js --batch 1 --in-place`);
+    return;
+  }
+
   let targetCities = cities;
+  let runDescription = 'all cities';
+
   if (targetCityId) {
     targetCities = cities.filter(c => c.id === targetCityId);
     if (!targetCities.length) {
       console.error(`City '${targetCityId}' not found.`);
       process.exit(1);
     }
-  } else if (limit) {
-    targetCities = cities.slice(0, limit);
+    runDescription = `city ${targetCityId}`;
+  } else if (batchArg) {
+    // Supports single batch e.g. "1" or range "1-3" or list "1,2"
+    let batchIndices = [];
+    if (batchArg.includes('-')) {
+      const [startB, endB] = batchArg.split('-').map(n => parseInt(n.trim(), 10));
+      for (let b = startB; b <= endB; b++) batchIndices.push(b);
+    } else if (batchArg.includes(',')) {
+      batchIndices = batchArg.split(',').map(n => parseInt(n.trim(), 10));
+    } else {
+      batchIndices = [parseInt(batchArg, 10)];
+    }
+
+    targetCities = [];
+    for (const b of batchIndices) {
+      const bStart = (b - 1) * batchSize;
+      const bSlice = cities.slice(bStart, bStart + batchSize);
+      targetCities.push(...bSlice);
+    }
+    runDescription = `batch(es) ${batchArg} (${targetCities.length} cities)`;
+  } else if (limitArg) {
+    targetCities = cities.slice(offsetArg, offsetArg + limitArg);
+    runDescription = `offset ${offsetArg}, limit ${limitArg} (${targetCities.length} cities)`;
   }
+
+  console.log(`Targeting: ${runDescription}`);
 
   let cache = {};
   if (fs.existsSync(CACHE_PATH)) {
@@ -234,71 +314,92 @@ async function main() {
   });
   const page = await context.newPage();
 
+  const outPath = inPlace ? INPUT_JS_PATH : OUTPUT_JS_PATH;
+
   for (let cIdx = 0; cIdx < targetCities.length; cIdx++) {
     const city = targetCities[cIdx];
     const cityId = city.id;
     const cityQuery = `${city.name}, ${city.state || ''}, India`;
     const cacheKey = `city::${cityId}`;
 
-    let res;
-    if (!cache[cacheKey]) {
-      console.log(`[${cIdx + 1}/${targetCities.length}] Resolving City: ${cityQuery}...`);
-      res = await resolvePlace(page, cityQuery, city.lat, city.lng);
-      cache[cacheKey] = res;
-      fs.writeFileSync(CACHE_PATH, JSON.stringify(cache, null, 2), 'utf8');
-      await new Promise(r => setTimeout(r, delaySec * 1000));
-    } else {
-      res = cache[cacheKey];
-    }
-
-    if (res.placeId && !EXCLUDED_CITY_PLACE_IDS.has(cityId)) city.placeId = res.placeId;
-    if (res.ftid) city.ftid = res.ftid;
-    if (res.canonicalMapsUrl && !EXCLUDED_CITY_PLACE_IDS.has(cityId)) city.mapsUrl = res.canonicalMapsUrl;
-
-    if (skipBeats) continue;
-
     const beats = city.beats || [];
-    for (let bIdx = 0; bIdx < beats.length; bIdx++) {
-      const beat = beats[bIdx];
-      const beatQuery = getCleanSearchQuery(beat, city.name);
+    const placeBeats = beats.filter(b => b.kind !== 'activity');
+    const missingInCity = placeBeats.filter(b => !b.placeId).length;
 
-      // If this attraction is an activity (food, breakfast, lunch, trail), do NOT map via Place ID
-      if (beat.kind === 'activity') {
-        delete beat.placeId;
-        delete beat.ftid;
-        beat.mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(beatQuery)}`;
-        console.log(`   -> Beat ${bIdx + 1}/${beats.length} [ACTIVITY]: ${beat.title} (skipped Place ID)`);
-        continue;
-      }
+    console.log(`\n[City ${cIdx + 1}/${targetCities.length}] ${city.name} (${placeBeats.length} places, ${missingInCity} missing, ${beats.length - placeBeats.length} activities)`);
 
-      const bCacheKey = `beat::${cityId}::${beat.title}`;
-
-      let bRes;
-      if (!cache[bCacheKey]) {
-        console.log(`   -> Beat ${bIdx + 1}/${beats.length}: ${beatQuery}`);
-        bRes = await resolvePlace(page, beatQuery, city.lat, city.lng);
-        if (bRes.distanceKm && bRes.distanceKm > 150) {
-          console.log(`      [!] WARNING: ${beat.title} resolved ${bRes.distanceKm} km from ${city.name} (${bRes.resolvedName})`);
-        }
-        cache[bCacheKey] = bRes;
-        fs.writeFileSync(CACHE_PATH, JSON.stringify(cache, null, 2), 'utf8');
-        await new Promise(r => setTimeout(r, delaySec * 1000));
+    // Only resolve city place ID if not excluded, not skipping city, and not already resolved (unless force)
+    if (!skipCity && !EXCLUDED_CITY_PLACE_IDS.has(cityId)) {
+      if (city.placeId && !force) {
+        // already has placeId
       } else {
-        bRes = cache[bCacheKey];
-      }
+        let res;
+        if (!cache[cacheKey] || force) {
+          console.log(`  Resolving City: ${cityQuery}...`);
+          res = await resolvePlace(page, cityQuery, city.lat, city.lng);
+          cache[cacheKey] = res;
+          fs.writeFileSync(CACHE_PATH, JSON.stringify(cache, null, 2), 'utf8');
+          await new Promise(r => setTimeout(r, delaySec * 1000));
+        } else {
+          res = cache[cacheKey];
+        }
 
-      if (bRes.placeId) beat.placeId = bRes.placeId;
-      if (bRes.ftid) beat.ftid = bRes.ftid;
-      if (bRes.lat && bRes.lng) { beat.lat = bRes.lat; beat.lng = bRes.lng; }
-      if (bRes.canonicalMapsUrl) beat.mapsUrl = bRes.canonicalMapsUrl;
+        if (res.placeId && !EXCLUDED_CITY_PLACE_IDS.has(cityId)) city.placeId = res.placeId;
+        if (res.ftid) city.ftid = res.ftid;
+        if (res.canonicalMapsUrl && !EXCLUDED_CITY_PLACE_IDS.has(cityId)) city.mapsUrl = res.canonicalMapsUrl;
+      }
     }
+
+    if (!skipBeats) {
+      for (let bIdx = 0; bIdx < beats.length; bIdx++) {
+        const beat = beats[bIdx];
+        const beatQuery = getCleanSearchQuery(beat, city.name);
+
+        // If this attraction is an activity (food, breakfast, lunch, trail), do NOT map via Place ID
+        if (beat.kind === 'activity') {
+          delete beat.placeId;
+          delete beat.ftid;
+          beat.mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(beatQuery)}`;
+          console.log(`   -> Beat ${bIdx + 1}/${beats.length} [ACTIVITY]: ${beat.title} (skipped)`);
+          continue;
+        }
+
+        // If already has placeId and not force, skip
+        if (beat.placeId && !force) {
+          console.log(`   -> Beat ${bIdx + 1}/${beats.length} [PLACE]: ${beat.title} (already has ${beat.placeId})`);
+          continue;
+        }
+
+        const bCacheKey = `beat::${cityId}::${beat.title}`;
+
+        let bRes;
+        if (!cache[bCacheKey] || force) {
+          console.log(`   -> Beat ${bIdx + 1}/${beats.length} [PLACE]: Resolving ${beatQuery}...`);
+          bRes = await resolvePlace(page, beatQuery, city.lat, city.lng);
+          if (bRes.distanceKm && bRes.distanceKm > 150) {
+            console.log(`      [!] WARNING: ${beat.title} resolved ${bRes.distanceKm} km from ${city.name} (${bRes.resolvedName})`);
+          }
+          cache[bCacheKey] = bRes;
+          fs.writeFileSync(CACHE_PATH, JSON.stringify(cache, null, 2), 'utf8');
+          await new Promise(r => setTimeout(r, delaySec * 1000));
+        } else {
+          bRes = cache[bCacheKey];
+        }
+
+        if (bRes.placeId) beat.placeId = bRes.placeId;
+        if (bRes.ftid) beat.ftid = bRes.ftid;
+        if (bRes.lat && bRes.lng) { beat.lat = bRes.lat; beat.lng = bRes.lng; }
+        if (bRes.canonicalMapsUrl) beat.mapsUrl = bRes.canonicalMapsUrl;
+        console.log(`      ✓ ${beat.title} -> ${beat.placeId || '(no placeId)'}`);
+      }
+    }
+
+    // Save incrementally after each city completes
+    saveCities(cities, outPath, prefix, suffix);
   }
 
   await browser.close();
-
-  const outPath = inPlace ? INPUT_JS_PATH : OUTPUT_JS_PATH;
-  saveCities(cities, outPath, prefix, suffix);
-  console.log(`\n✓ Done! Output written to: ${outPath}`);
+  console.log(`\n✓ Batch complete! Updated catalog saved to: ${outPath}`);
 }
 
 main().catch(err => {
