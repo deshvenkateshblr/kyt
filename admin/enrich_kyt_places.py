@@ -292,6 +292,15 @@ def main():
             # Process each beat inside the city
             for b_idx, beat in enumerate(city.get("beats", []), 1):
                 beat_query = get_clean_search_query(beat, city["name"])
+
+                # If this attraction is an activity (food, breakfast, lunch, trail), do NOT map via Place ID
+                if beat.get("kind") == "activity":
+                    beat.pop("placeId", None)
+                    beat.pop("ftid", None)
+                    beat["mapsUrl"] = f"https://www.google.com/maps/search/?api=1&query={quote_plus(beat_query)}"
+                    print(f"   -> Beat {b_idx}/{len(city.get('beats', []))} [ACTIVITY]: {beat['title']} (skipped Place ID)")
+                    continue
+
                 b_cache_key = f"beat::{city_id}::{beat['title']}"
 
                 if b_cache_key not in cache:

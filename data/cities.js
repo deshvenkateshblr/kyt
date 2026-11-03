@@ -51,7 +51,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Taj%20Mahal%2C%20Agra",
-        "notes": "Mughal ivory-white marble mausoleum on the Yamuna river, UNESCO World Heritage site and Wonder of the World. Best experienced at sunrise."
+        "notes": "Mughal ivory-white marble mausoleum on the Yamuna river, UNESCO World Heritage site and Wonder of the World. Best experienced at sunrise.",
+        "kind": "place"
       },
       {
         "title": "Agra Fort",
@@ -73,7 +74,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Agra%20Fort%2C%20Agra",
-        "notes": "Red sandstone fortress and former imperial residence of Mughal emperors, featuring Sheesh Mahal, Diwan-i-Khas, and Jahangiri Mahal."
+        "notes": "Red sandstone fortress and former imperial residence of Mughal emperors, featuring Sheesh Mahal, Diwan-i-Khas, and Jahangiri Mahal.",
+        "kind": "place"
       },
       {
         "title": "Petha & chaat at Kinari Bazaar",
@@ -101,7 +103,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kinari%20Bazaar%2C%20Agra",
-        "notes": "Sample world-famous Agra petha (candied ash gourd), spicy dal moth, and tangy bedmi puri chaat in the historic old walled city."
+        "notes": "Sample world-famous Agra petha (candied ash gourd), spicy dal moth, and tangy bedmi puri chaat in the historic old walled city.",
+        "kind": "activity"
       },
       {
         "title": "Mehtab Bagh sunset",
@@ -124,7 +127,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mehtab%20Bagh%2C%20Agra",
-        "notes": "Charbagh garden complex offering pristine sunset reflection views of the Taj Mahal across the calm waters of the Yamuna."
+        "notes": "Charbagh garden complex offering pristine sunset reflection views of the Taj Mahal across the calm waters of the Yamuna.",
+        "kind": "place"
       },
       {
         "title": "Fatehpur Sikri excursion",
@@ -147,7 +151,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Fatehpur%20Sikri%2C%20Agra",
-        "notes": "The majestic 16th-century Mughal red sandstone city founded by Emperor Akbar, home to the towering Buland Darwaza and Salim Chishti Dargah."
+        "notes": "The majestic 16th-century Mughal red sandstone city founded by Emperor Akbar, home to the towering Buland Darwaza and Salim Chishti Dargah.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -194,7 +199,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hawa%20Mahal%2C%20Jaipur",
-        "notes": "Iconic honeycomb pink sandstone facade with 953 jharokhas built for royal women to observe street festivities without being seen."
+        "notes": "Iconic honeycomb pink sandstone facade with 953 jharokhas built for royal women to observe street festivities without being seen.",
+        "kind": "place"
       },
       {
         "title": "Amber Fort & Sheesh Mahal",
@@ -217,7 +223,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Amber%20Fort%2C%20Jaipur",
-        "notes": "Majestic hilltop fortress featuring artistic Hindu elements, glittering Sheesh Mahal (mirror palace), and Maota Lake panoramic views."
+        "notes": "Majestic hilltop fortress featuring artistic Hindu elements, glittering Sheesh Mahal (mirror palace), and Maota Lake panoramic views.",
+        "kind": "place"
       },
       {
         "title": "City Palace & Jantar Mantar",
@@ -240,7 +247,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=City%20Palace%2C%20Jaipur",
-        "notes": "Grand royal palace complex blending Rajput and Mughal architecture, alongside the UNESCO-listed Jantar Mantar astronomical observatory."
+        "notes": "Grand royal palace complex blending Rajput and Mughal architecture, alongside the UNESCO-listed Jantar Mantar astronomical observatory.",
+        "kind": "place"
       },
       {
         "title": "Johari Bazaar & Bapu Bazaar shopping",
@@ -262,7 +270,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Johari%20Bazaar%2C%20Jaipur",
-        "notes": "Explore colorful bustling bazaars famous for precious gemstones, silver jewelry, block-printed quilts, and Mojari leather footwear."
+        "notes": "Explore colorful bustling bazaars famous for precious gemstones, silver jewelry, block-printed quilts, and Mojari leather footwear.",
+        "kind": "activity"
       },
       {
         "title": "Nahargarh Fort sunset",
@@ -285,7 +294,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nahargarh%2C%20Jaipur",
-        "notes": "Perched high on the rugged Aravalli hills, offering legendary twilight panoramas and glittering city-light views of the Pink City below."
+        "notes": "Perched high on the rugged Aravalli hills, offering legendary twilight panoramas and glittering city-light views of the Pink City below.",
+        "kind": "place"
       },
       {
         "title": "Dal baati churma royal dinner",
@@ -313,7 +323,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=MI%20Road%2C%20Jaipur",
-        "notes": "Authentic Rajasthani feast of baked wheat balls dipped in ghee, panchmel dal, sweet churma, and fiery gatte ki sabzi."
+        "notes": "Authentic Rajasthani feast of baked wheat balls dipped in ghee, panchmel dal, sweet churma, and fiery gatte ki sabzi.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -367,7 +378,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Baga%20Beach%2C%20Goa",
-        "notes": "Golden sands and sea breeze along North Goa's famous coastline, with water sports like parasailing and jet-skiing starting early."
+        "notes": "Golden sands and sea breeze along North Goa's famous coastline, with water sports like parasailing and jet-skiing starting early.",
+        "kind": "place"
       },
       {
         "title": "Basilica of Bom Jesus & Old Goa",
@@ -390,7 +402,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Basilica%20of%20Bom%20Jesus%2C%20Goa",
-        "notes": "UNESCO World Heritage 16th-century baroque basilica housing the mortal remains of Saint Francis Xavier, and the adjacent Se Cathedral."
+        "notes": "UNESCO World Heritage 16th-century baroque basilica housing the mortal remains of Saint Francis Xavier, and the adjacent Se Cathedral.",
+        "kind": "place"
       },
       {
         "title": "Goan seafood & curry shack lunch",
@@ -416,7 +429,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Candolim%2C%20Goa",
-        "notes": "Savor Goan fish curry rice, butter-garlic tiger prawns, rava-fried kingfish, and refreshing Sol Kadhi at a beachfront shack."
+        "notes": "Savor Goan fish curry rice, butter-garlic tiger prawns, rava-fried kingfish, and refreshing Sol Kadhi at a beachfront shack.",
+        "kind": "activity"
       },
       {
         "title": "Dudhsagar Falls & spice plantation",
@@ -438,7 +452,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dudhsagar%20Falls%2C%20Goa",
-        "notes": "Four-tiered majestic 'Sea of Milk' cascade inside Bhagwan Mahaveer Sanctuary, followed by an aromatic organic spice farm tour."
+        "notes": "Four-tiered majestic 'Sea of Milk' cascade inside Bhagwan Mahaveer Sanctuary, followed by an aromatic organic spice farm tour.",
+        "kind": "place"
       },
       {
         "title": "Anjuna sunset & flea market",
@@ -461,7 +476,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Anjuna%2C%20Goa",
-        "notes": "Vibrant coastal hippie market with live acoustic music, handcrafted jewelry, bohemian clothing, and sunset cocktails over the rocky cove."
+        "notes": "Vibrant coastal hippie market with live acoustic music, handcrafted jewelry, bohemian clothing, and sunset cocktails over the rocky cove.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -502,7 +518,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Eravikulam%20National%20Park%2C%20Munnar",
-        "notes": "Home to the endangered Nilgiri Tahr mountain goat and rolling shola grasslands, offering panoramic misty trails near Anamudi peak."
+        "notes": "Home to the endangered Nilgiri Tahr mountain goat and rolling shola grasslands, offering panoramic misty trails near Anamudi peak.",
+        "kind": "place"
       },
       {
         "title": "Tea Garden walk & photo point",
@@ -526,7 +543,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rajamala%2C%20Munnar",
-        "notes": "Morning stroll through emerald manicured tea plantations and rolling green terraces with crisp mountain air."
+        "notes": "Morning stroll through emerald manicured tea plantations and rolling green terraces with crisp mountain air.",
+        "kind": "place"
       },
       {
         "title": "Tata Tea Museum & tasting",
@@ -548,7 +566,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tea%20Museum%2C%20Munnar",
-        "notes": "Exhibits detailing the evolution of Munnar's century-old tea estates, antique CTC rollers, and an informative tea-tasting demonstration."
+        "notes": "Exhibits detailing the evolution of Munnar's century-old tea estates, antique CTC rollers, and an informative tea-tasting demonstration.",
+        "kind": "activity"
       },
       {
         "title": "Kerala sadya lunch",
@@ -576,7 +595,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Munnar%20town",
-        "notes": "Traditional banana-leaf banquet with parippu, sambar, avial, thoran, payasam, banana chips, and Kerala red matta rice."
+        "notes": "Traditional banana-leaf banquet with parippu, sambar, avial, thoran, payasam, banana chips, and Kerala red matta rice.",
+        "kind": "activity"
       },
       {
         "title": "Mattupetty Dam & boating",
@@ -599,7 +619,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mattupetty%20Dam%2C%20Munnar",
-        "notes": "Scenic reservoir framed by tea gardens and eucalyptus forests; enjoy speed boating and occasional wild elephant sightings on the banks."
+        "notes": "Scenic reservoir framed by tea gardens and eucalyptus forests; enjoy speed boating and occasional wild elephant sightings on the banks.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -646,7 +667,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jagdish%20Temple%2C%20Udaipur",
-        "notes": "Exquisitely carved 1651 Indo-Aryan temple dedicated to Lord Vishnu, featuring continuous morning chants and sculpted pillars."
+        "notes": "Exquisitely carved 1651 Indo-Aryan temple dedicated to Lord Vishnu, featuring continuous morning chants and sculpted pillars.",
+        "kind": "place"
       },
       {
         "title": "City Palace complex",
@@ -669,7 +691,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=City%20Palace%2C%20Udaipur",
-        "notes": "Rajasthan's largest royal palace complex with mirrored corridors, peacock courtyards, Zenana Mahal, and Lake Pichola views."
+        "notes": "Rajasthan's largest royal palace complex with mirrored corridors, peacock courtyards, Zenana Mahal, and Lake Pichola views.",
+        "kind": "place"
       },
       {
         "title": "Saheliyon-ki-Bari gardens",
@@ -691,7 +714,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Saheliyon%20ki%20Bari%2C%20Udaipur",
-        "notes": "Historic garden of royal maids with marble elephant fountains, lotus pools, and lush shaded pavilions."
+        "notes": "Historic garden of royal maids with marble elephant fountains, lotus pools, and lush shaded pavilions.",
+        "kind": "place"
       },
       {
         "title": "Sajjangarh Monsoon Palace sunset",
@@ -714,7 +738,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sajjangarh%2C%20Udaipur",
-        "notes": "Hilltop palace perched high atop Bansdara mountain offering legendary sunset views across Fateh Sagar and the Aravalli valley."
+        "notes": "Hilltop palace perched high atop Bansdara mountain offering legendary sunset views across Fateh Sagar and the Aravalli valley.",
+        "kind": "place"
       },
       {
         "title": "Lake Pichola sunset boat ride",
@@ -738,7 +763,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lake%20Pichola%2C%20Udaipur",
-        "notes": "Magical cruise gliding past Jag Mandir Island and the illuminated Taj Lake Palace as twilight reflects on the water."
+        "notes": "Magical cruise gliding past Jag Mandir Island and the illuminated Taj Lake Palace as twilight reflects on the water.",
+        "kind": "activity"
       },
       {
         "title": "Dal baati churma rooftop dinner",
@@ -766,7 +792,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Old%20City%2C%20Udaipur",
-        "notes": "Authentic Mewari dinner of ghee-soaked dal baati, ker sangri, and churma while admiring lighted ghats from a rooftop terrace."
+        "notes": "Authentic Mewari dinner of ghee-soaked dal baati, ker sangri, and churma while admiring lighted ghats from a rooftop terrace.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -842,7 +869,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Assi%20Ghat%2C%20Varanasi",
-        "notes": "Gliding quietly past 84 ghats at daybreak as pilgrims perform morning surya namaskar and temple bells echo along the sacred river."
+        "notes": "Gliding quietly past 84 ghats at daybreak as pilgrims perform morning surya namaskar and temple bells echo along the sacred river.",
+        "kind": "activity"
       },
       {
         "title": "Kashi Vishwanath Temple corridor",
@@ -865,7 +893,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kashi%20Vishwanath%20Temple%2C%20Varanasi",
-        "notes": "One of the twelve sacred Jyotirlingas of Lord Shiva; darshan through the grand Kashi Vishwanath corridor connecting the river to the sanctum."
+        "notes": "One of the twelve sacred Jyotirlingas of Lord Shiva; darshan through the grand Kashi Vishwanath corridor connecting the river to the sanctum.",
+        "kind": "place"
       },
       {
         "title": "Sarnath Buddhist deer park excursion",
@@ -888,7 +917,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sarnath%2C%20Varanasi",
-        "notes": "Where Gautama Buddha gave his first sermon after enlightenment; explore the Dhamek Stupa, Ashoka Pillar ruins, and museum."
+        "notes": "Where Gautama Buddha gave his first sermon after enlightenment; explore the Dhamek Stupa, Ashoka Pillar ruins, and museum.",
+        "kind": "place"
       },
       {
         "title": "Banarasi thandai & kachori chaat",
@@ -916,7 +946,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Godowlia%2C%20Varanasi",
-        "notes": "Taste rich saffron Banarasi thandai, Tamatar chaat, crispy kachori jalebi, and melt-in-mouth Malaiyo in the old alleys."
+        "notes": "Taste rich saffron Banarasi thandai, Tamatar chaat, crispy kachori jalebi, and melt-in-mouth Malaiyo in the old alleys.",
+        "kind": "activity"
       },
       {
         "title": "Grand Ganga Aarti at dusk",
@@ -940,7 +971,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dashashwamedh%20Ghat%2C%20Varanasi",
-        "notes": "Mesmerizing evening prayer ceremony where young priests wield massive brass oil lamps in sync with conch shells and sacred chants."
+        "notes": "Mesmerizing evening prayer ceremony where young priests wield massive brass oil lamps in sync with conch shells and sacred chants.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -995,7 +1027,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chandni%20Chowk%2C%20Delhi",
-        "notes": "Visit India's largest mosque followed by breakfast at Paranthe Wali Gali, Daulat ki Chaat, and historic Jalebi Wala."
+        "notes": "Visit India's largest mosque followed by breakfast at Paranthe Wali Gali, Daulat ki Chaat, and historic Jalebi Wala.",
+        "kind": "activity"
       },
       {
         "title": "Red Fort (Lal Qila)",
@@ -1018,7 +1051,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Red%20Fort%2C%20Delhi",
-        "notes": "Colossal 17th-century red sandstone fortress of Mughal Emperor Shah Jahan, UNESCO World Heritage site and seat of imperial power."
+        "notes": "Colossal 17th-century red sandstone fortress of Mughal Emperor Shah Jahan, UNESCO World Heritage site and seat of imperial power.",
+        "kind": "place"
       },
       {
         "title": "Humayun's Tomb gardens",
@@ -1040,7 +1074,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Humayun's%20Tomb%2C%20Delhi",
-        "notes": "Magnificent precursor to the Taj Mahal with symmetrical Persian Charbagh water gardens and intricate red sandstone architecture."
+        "notes": "Magnificent precursor to the Taj Mahal with symmetrical Persian Charbagh water gardens and intricate red sandstone architecture.",
+        "kind": "place"
       },
       {
         "title": "Qutub Minar complex",
@@ -1062,7 +1097,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Qutub%20Minar%2C%20Delhi",
-        "notes": "World's tallest brick minaret (72.5m) built in 1192, featuring intricately carved Quranic inscriptions and the famous rustless Iron Pillar."
+        "notes": "World's tallest brick minaret (72.5m) built in 1192, featuring intricately carved Quranic inscriptions and the famous rustless Iron Pillar.",
+        "kind": "place"
       },
       {
         "title": "India Gate & Kartavya Path sunset",
@@ -1084,7 +1120,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=India%20Gate%2C%20Delhi",
-        "notes": "Imposing war memorial arch honoring Indian soldiers, flanked by the lush lawns of Central Vista, canopy, and Rashtrapati Bhavan views."
+        "notes": "Imposing war memorial arch honoring Indian soldiers, flanked by the lush lawns of Central Vista, canopy, and Rashtrapati Bhavan views.",
+        "kind": "place"
       },
       {
         "title": "Akshardham Temple light & water show",
@@ -1108,7 +1145,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Akshardham%20Temple%2C%20Delhi",
-        "notes": "Sprawling pink sandstone and Italian Carrara marble temple with 20,000 murtis, boat ride exhibition, and evening musical fountain."
+        "notes": "Sprawling pink sandstone and Italian Carrara marble temple with 20,000 murtis, boat ride exhibition, and evening musical fountain.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -1157,7 +1195,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gateway%20of%20India%2C%20Mumbai",
-        "notes": "Indo-Saracenic triumphal arch overlooking the Arabian Sea, standing opposite the legendary heritage Taj Mahal Palace Hotel."
+        "notes": "Indo-Saracenic triumphal arch overlooking the Arabian Sea, standing opposite the legendary heritage Taj Mahal Palace Hotel.",
+        "kind": "place"
       },
       {
         "title": "Elephanta Caves island ferry",
@@ -1180,7 +1219,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Elephanta%20Caves%2C%20Mumbai",
-        "notes": "UNESCO World Heritage rock-cut cave temples dating to the 6th century, dominated by the colossal three-headed Maheshmurti Shiva."
+        "notes": "UNESCO World Heritage rock-cut cave temples dating to the 6th century, dominated by the colossal three-headed Maheshmurti Shiva.",
+        "kind": "place"
       },
       {
         "title": "Vada pav & street food in Dadar",
@@ -1207,7 +1247,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dadar%2C%20Mumbai",
-        "notes": "The quintessential Mumbai experience: spicy piping-hot vada pav with garlic chutney, pav bhaji, kanda poha, and cutting chai."
+        "notes": "The quintessential Mumbai experience: spicy piping-hot vada pav with garlic chutney, pav bhaji, kanda poha, and cutting chai.",
+        "kind": "activity"
       },
       {
         "title": "Haji Ali Dargah & Mahalaxmi Temple",
@@ -1230,7 +1271,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Haji%20Ali%20Dargah%2C%20Mumbai",
-        "notes": "Iconic 15th-century Indo-Islamic shrine resting on an islet connected by a narrow pedestrian causeway accessible during low tide."
+        "notes": "Iconic 15th-century Indo-Islamic shrine resting on an islet connected by a narrow pedestrian causeway accessible during low tide.",
+        "kind": "place"
       },
       {
         "title": "Siddhivinayak Temple darshan",
@@ -1254,7 +1296,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shree%20Siddhivinayak%20Temple%2C%20Prabhadevi%2C%20Mumbai",
-        "notes": "Mumbai's most visited Ganesha temple, built in 1801. Tuesdays draw very long queues, so go early on any other day."
+        "notes": "Mumbai's most visited Ganesha temple, built in 1801. Tuesdays draw very long queues, so go early on any other day.",
+        "kind": "place"
       },
       {
         "title": "Mumbadevi Temple & Zaveri Bazaar",
@@ -1278,7 +1321,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mumbadevi%20Temple%2C%20Bhuleshwar%2C%20Mumbai",
-        "notes": "Shrine of Mumba Devi, the goddess the city is named after, set in the lanes of Bhuleshwar beside the old Zaveri jewellery bazaar."
+        "notes": "Shrine of Mumba Devi, the goddess the city is named after, set in the lanes of Bhuleshwar beside the old Zaveri jewellery bazaar.",
+        "kind": "place"
       },
       {
         "title": "Babulnath Temple Shiva darshan",
@@ -1301,7 +1345,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Babulnath%20Temple%2C%20Girgaon%2C%20Mumbai",
-        "notes": "Hilltop Shiva temple above Girgaon Chowpatty, reached by a long flight of steps, with views over the bay."
+        "notes": "Hilltop Shiva temple above Girgaon Chowpatty, reached by a long flight of steps, with views over the bay.",
+        "kind": "place"
       },
       {
         "title": "Walkeshwar Temple & Banganga Tank",
@@ -1325,7 +1370,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Walkeshwar%20Temple%2C%20Malabar%20Hill%2C%20Mumbai",
-        "notes": "Ancient Shiva temple on Malabar Hill beside the stepped Banganga Tank, a quiet pocket in the middle of the city."
+        "notes": "Ancient Shiva temple on Malabar Hill beside the stepped Banganga Tank, a quiet pocket in the middle of the city.",
+        "kind": "place"
       },
       {
         "title": "ISKCON Juhu evening aarti",
@@ -1348,7 +1394,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=ISKCON%20Temple%20Juhu%2C%20Mumbai",
-        "notes": "White-marble Radha Rasabihari temple with kirtan and evening aarti; vegetarian prasad and a restaurant on site."
+        "notes": "White-marble Radha Rasabihari temple with kirtan and evening aarti; vegetarian prasad and a restaurant on site.",
+        "kind": "place"
       },
       {
         "title": "Radha Gopinath Temple at Chowpatty",
@@ -1372,7 +1419,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sri%20Sri%20Radha%20Gopinath%20Temple%2C%20Chowpatty%2C%20Mumbai",
-        "notes": "Krishna temple facing Girgaon Chowpatty beach; arrive for the evening aarti, then walk the beach."
+        "notes": "Krishna temple facing Girgaon Chowpatty beach; arrive for the evening aarti, then walk the beach.",
+        "kind": "place"
       },
       {
         "title": "Marine Drive Queen's Necklace sunset walk",
@@ -1396,7 +1444,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Marine%20Drive%2C%20Mumbai",
-        "notes": "Stroll along the 3.6-km crescent seaside promenade watching the Arabian Sea sunset and illuminated curve of the 'Queen's Necklace'."
+        "notes": "Stroll along the 3.6-km crescent seaside promenade watching the Arabian Sea sunset and illuminated curve of the 'Queen's Necklace'.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -1443,7 +1492,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chinese%20Fishing%20Nets%2C%20Kochi",
-        "notes": "Iconic shore-operated cantilevered fishing nets introduced by 14th-century Chinese traders, set against cargo ships and fishermen."
+        "notes": "Iconic shore-operated cantilevered fishing nets introduced by 14th-century Chinese traders, set against cargo ships and fishermen.",
+        "kind": "place"
       },
       {
         "title": "Mattancherry Palace (Dutch Palace)",
@@ -1465,7 +1515,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mattancherry%20Palace%2C%20Kochi",
-        "notes": "Portuguese-built palace gifted to the Raja of Kochi, famed for intricate Hindu mythological murals depicting the Ramayana and Mahabharata."
+        "notes": "Portuguese-built palace gifted to the Raja of Kochi, famed for intricate Hindu mythological murals depicting the Ramayana and Mahabharata.",
+        "kind": "place"
       },
       {
         "title": "Jew Town & Paradesi Synagogue",
@@ -1487,7 +1538,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Paradesi%20Synagogue%2C%20Kochi",
-        "notes": "The oldest active synagogue in the Commonwealth (1568) with hand-painted Chinese porcelain tiles, flanked by antique shops and spice warehouses."
+        "notes": "The oldest active synagogue in the Commonwealth (1568) with hand-painted Chinese porcelain tiles, flanked by antique shops and spice warehouses.",
+        "kind": "place"
       },
       {
         "title": "Kerala seafood thali & appam lunch",
@@ -1513,7 +1565,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Fort%20Kochi%2C%20Kochi",
-        "notes": "Taste Malabar fish curry cooked in earthen pots with kudampuli (pot tamarind), freshly made appams, squid roast, and tender coconut pudding."
+        "notes": "Taste Malabar fish curry cooked in earthen pots with kudampuli (pot tamarind), freshly made appams, squid roast, and tender coconut pudding.",
+        "kind": "activity"
       },
       {
         "title": "Kathakali dance performance & makeup",
@@ -1536,7 +1589,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kathakali%2C%20Kochi",
-        "notes": "Watch the elaborate face-painting makeup ritual followed by classical classical Kerala dance-drama with stylized facial expressions and hand mudras."
+        "notes": "Watch the elaborate face-painting makeup ritual followed by classical classical Kerala dance-drama with stylized facial expressions and hand mudras.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -1584,7 +1638,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Swarg%20Ashram%2C%20Rishikesh",
-        "notes": "Guided pranayama and Hatha yoga session on the serene banks of the emerald Ganges, surrounded by forested Himalayan foothills."
+        "notes": "Guided pranayama and Hatha yoga session on the serene banks of the emerald Ganges, surrounded by forested Himalayan foothills.",
+        "kind": "activity"
       },
       {
         "title": "White water river rafting",
@@ -1606,7 +1661,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shivpuri%2C%20Rishikesh",
-        "notes": "Exhilarating Grade III and IV rapids along the roaring Ganges, tackling famous rapids like Roller Coaster, Golf Course, and Club House."
+        "notes": "Exhilarating Grade III and IV rapids along the roaring Ganges, tackling famous rapids like Roller Coaster, Golf Course, and Club House.",
+        "kind": "activity"
       },
       {
         "title": "Beatles Ashram (Chaurasi Kutia)",
@@ -1629,7 +1685,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Beatles%20Ashram%2C%20Rishikesh",
-        "notes": "The forested ashram where The Beatles stayed in 1968 to study meditation; explore stone meditation domes, murals, and forest trails."
+        "notes": "The forested ashram where The Beatles stayed in 1968 to study meditation; explore stone meditation domes, murals, and forest trails.",
+        "kind": "place"
       },
       {
         "title": "Ram Jhula & Lakshman Jhula suspension bridges",
@@ -1653,7 +1710,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ram%20Jhula%2C%20Rishikesh",
-        "notes": "Iconic iron suspension bridges connecting bustling riverside ashrams, organic vegan cafes, and spiritual bookstores."
+        "notes": "Iconic iron suspension bridges connecting bustling riverside ashrams, organic vegan cafes, and spiritual bookstores.",
+        "kind": "place"
       },
       {
         "title": "Triveni Ghat Maha Aarti at sunset",
@@ -1677,7 +1735,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Triveni%20Ghat%2C%20Rishikesh",
-        "notes": "Sacred confluence of three holy rivers where priests conduct rhythmic Ganga Aarti while devotees float glowing oil leaf lamps down the river."
+        "notes": "Sacred confluence of three holy rivers where priests conduct rhythmic Ganga Aarti while devotees float glowing oil leaf lamps down the river.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -1727,7 +1786,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hadimba%20Temple%2C%20Manali",
-        "notes": "Unique 1553 pagoda-style wooden temple with carved antlers, set amidst towering centuries-old deodar cedar groves."
+        "notes": "Unique 1553 pagoda-style wooden temple with carved antlers, set amidst towering centuries-old deodar cedar groves.",
+        "kind": "place"
       },
       {
         "title": "Solang Valley adventure sports",
@@ -1749,7 +1809,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Solang%20Valley%2C%20Manali",
-        "notes": "Epic alpine valley famous for paragliding, zorbing, ATV quad biking, and skiing slopes against towering snow peaks."
+        "notes": "Epic alpine valley famous for paragliding, zorbing, ATV quad biking, and skiing slopes against towering snow peaks.",
+        "kind": "place"
       },
       {
         "title": "Atal Tunnel & Sissu waterfall excursion",
@@ -1771,7 +1832,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Atal%20Tunnel%2C%20Manali",
-        "notes": "Pass through the world's longest highway tunnel above 10,000 feet into the stark, breathtaking landscapes of Lahaul valley and Sissu waterfall."
+        "notes": "Pass through the world's longest highway tunnel above 10,000 feet into the stark, breathtaking landscapes of Lahaul valley and Sissu waterfall.",
+        "kind": "place"
       },
       {
         "title": "Vashisht hot sulfur springs & temple",
@@ -1794,7 +1856,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vashisht%20Village%2C%20Manali",
-        "notes": "Natural therapeutic hot sulfur spring baths and wooden temple of sage Vashistha in an authentic stone-and-timber mountain village."
+        "notes": "Natural therapeutic hot sulfur spring baths and wooden temple of sage Vashistha in an authentic stone-and-timber mountain village.",
+        "kind": "place"
       },
       {
         "title": "Old Manali cafes & trout dinner",
@@ -1820,7 +1883,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Old%20Manali",
-        "notes": "Bohemian quarter filled with live acoustic music, wood-fired thin-crust pizza, fresh Himalayan river trout, and Himachali siddu."
+        "notes": "Bohemian quarter filled with live acoustic music, wood-fired thin-crust pizza, fresh Himalayan river trout, and Himachali siddu.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -1866,7 +1930,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Ridge%2C%20Shimla",
-        "notes": "Open pedestrian promenade with the famous Neo-Gothic yellow church built in 1857, offering unobstructed views of snow-dusted ranges."
+        "notes": "Open pedestrian promenade with the famous Neo-Gothic yellow church built in 1857, offering unobstructed views of snow-dusted ranges.",
+        "kind": "place"
       },
       {
         "title": "Jakhoo Temple & ropeway",
@@ -1890,7 +1955,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jakhoo%20Temple%2C%20Shimla",
-        "notes": "Highest peak in Shimla (8,050 ft); take the scenic cable car up to the ancient Hanuman temple with a giant 108-foot orange statue."
+        "notes": "Highest peak in Shimla (8,050 ft); take the scenic cable car up to the ancient Hanuman temple with a giant 108-foot orange statue.",
+        "kind": "place"
       },
       {
         "title": "Viceregal Lodge (Rashtrapati Niwas)",
@@ -1912,7 +1978,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Viceregal%20Lodge%2C%20Shimla",
-        "notes": "Grand Scottish-baronial palace surrounded by English gardens that served as the Viceroy's summer residence and host to the historic Shimla Conference."
+        "notes": "Grand Scottish-baronial palace surrounded by English gardens that served as the Viceroy's summer residence and host to the historic Shimla Conference.",
+        "kind": "place"
       },
       {
         "title": "Mall Road & Lakkar Bazaar walk",
@@ -1940,7 +2007,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mall%20Road%2C%20Shimla",
-        "notes": "Lively car-free pedestrian street with heritage shops, colonial post offices, steamed Himachali siddu, and carved wooden handicrafts."
+        "notes": "Lively car-free pedestrian street with heritage shops, colonial post offices, steamed Himachali siddu, and carved wooden handicrafts.",
+        "kind": "activity"
       },
       {
         "title": "Kalka-Shimla Toy Train ride",
@@ -1963,7 +2031,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shimla%20Railway%20Station",
-        "notes": "UNESCO World Heritage mountain railway chugging gently past deep pine valleys, arched stone bridges, and historic British-era stations."
+        "notes": "UNESCO World Heritage mountain railway chugging gently past deep pine valleys, arched stone bridges, and historic British-era stations.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -2010,7 +2079,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tiger%20Hill%2C%20Darjeeling",
-        "notes": "Watch dawn break over the snow-clad peaks of Kanchenjunga, lighting them up in brilliant hues of gold, pink, and pure white."
+        "notes": "Watch dawn break over the snow-clad peaks of Kanchenjunga, lighting them up in brilliant hues of gold, pink, and pure white.",
+        "kind": "place"
       },
       {
         "title": "Batasia Loop & War Memorial",
@@ -2033,7 +2103,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Batasia%20Loop%2C%20Darjeeling",
-        "notes": "Ingenious 360-degree engineering loop of the Toy Train with landscaped gardens and commanding views of Darjeeling town and mountain peaks."
+        "notes": "Ingenious 360-degree engineering loop of the Toy Train with landscaped gardens and commanding views of Darjeeling town and mountain peaks.",
+        "kind": "place"
       },
       {
         "title": "Darjeeling Himalayan Railway steam joyride",
@@ -2056,7 +2127,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Darjeeling%20Railway%20Station",
-        "notes": "Ride the legendary UNESCO World Heritage narrow-gauge steam engine train puffing along mountain ledges to Ghum station."
+        "notes": "Ride the legendary UNESCO World Heritage narrow-gauge steam engine train puffing along mountain ledges to Ghum station.",
+        "kind": "place"
       },
       {
         "title": "Happy Valley Tea Estate tour & tasting",
@@ -2084,7 +2156,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Happy%20Valley%20Tea%20Estate%2C%20Darjeeling",
-        "notes": "Walk through manicured tea bushes on steep slopes, watch tea plucking and processing, and sip world-famous first-flush Darjeeling tea."
+        "notes": "Walk through manicured tea bushes on steep slopes, watch tea plucking and processing, and sip world-famous first-flush Darjeeling tea.",
+        "kind": "activity"
       },
       {
         "title": "Himalayan Mountaineering Institute & Zoo",
@@ -2107,7 +2180,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Himalayan%20Mountaineering%20Institute%2C%20Darjeeling",
-        "notes": "Historic climbing institute founded by Tenzing Norgay alongside Padmaja Naidu Zoo dedicated to breeding rare red pandas and snow leopards."
+        "notes": "Historic climbing institute founded by Tenzing Norgay alongside Padmaja Naidu Zoo dedicated to breeding rare red pandas and snow leopards.",
+        "kind": "place"
       },
       {
         "title": "Chowrasta Mall momos & tea",
@@ -2134,7 +2208,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chowrasta%2C%20Darjeeling",
-        "notes": "Relax on public benches at the social heart of the town enjoying steaming Darjeeling momos, thukpa, and pastries from heritage bakeries."
+        "notes": "Relax on public benches at the social heart of the town enjoying steaming Darjeeling momos, thukpa, and pastries from heritage bakeries.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -2181,7 +2256,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ooty%20Railway%20Station",
-        "notes": "UNESCO-listed blue vintage rack-and-pinion mountain train passing through dramatic tunnels, ravines, and tea terraces."
+        "notes": "UNESCO-listed blue vintage rack-and-pinion mountain train passing through dramatic tunnels, ravines, and tea terraces.",
+        "kind": "place"
       },
       {
         "title": "Government Botanical Garden",
@@ -2204,7 +2280,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Botanical%20Garden%2C%20Ooty",
-        "notes": "55-acre terraced botanical garden established in 1848 with a 20-million-year-old fossil tree trunk, exotic ferns, and colorful rose beds."
+        "notes": "55-acre terraced botanical garden established in 1848 with a 20-million-year-old fossil tree trunk, exotic ferns, and colorful rose beds.",
+        "kind": "place"
       },
       {
         "title": "Doddabetta Peak & telescope house",
@@ -2226,7 +2303,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Doddabetta%20Peak%2C%20Ooty",
-        "notes": "Highest mountain peak in the Nilgiris (8,652 ft) offering sweeping 360-degree vistas across Tamil Nadu and Kerala valleys."
+        "notes": "Highest mountain peak in the Nilgiris (8,652 ft) offering sweeping 360-degree vistas across Tamil Nadu and Kerala valleys.",
+        "kind": "place"
       },
       {
         "title": "Ooty Lake & boat ride",
@@ -2248,7 +2326,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ooty%20Lake%2C%20Ooty",
-        "notes": "Historic 65-acre artificial lake built by John Sullivan in 1824, offering pedal boating against eucalyptus trees and misty hills."
+        "notes": "Historic 65-acre artificial lake built by John Sullivan in 1824, offering pedal boating against eucalyptus trees and misty hills.",
+        "kind": "activity"
       },
       {
         "title": "Homemade chocolates & Tea Factory tour",
@@ -2275,7 +2354,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tea%20Factory%2C%20Ooty",
-        "notes": "Watch tea leaf processing and sample fresh Nilgiri orthodox black tea alongside Ooty's legendary homemade fudge and dark chocolates."
+        "notes": "Watch tea leaf processing and sample fresh Nilgiri orthodox black tea alongside Ooty's legendary homemade fudge and dark chocolates.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -2323,7 +2403,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chamundeshwari%20Temple%2C%20Mysore",
-        "notes": "Dravidian temple of Goddess Chamundeshwari who defeated the demon Mahishasura; visit the monolithic 16-foot Nandi statue on the descent."
+        "notes": "Dravidian temple of Goddess Chamundeshwari who defeated the demon Mahishasura; visit the monolithic 16-foot Nandi statue on the descent.",
+        "kind": "place"
       },
       {
         "title": "Mysore Palace (Amba Vilas)",
@@ -2346,7 +2427,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mysore%20Palace%2C%20Mysore",
-        "notes": "Indo-Saracenic royal seat of the Wodeyars, with stained glass ceilings, peacock courtyards, solid silver doors, and royal thrones."
+        "notes": "Indo-Saracenic royal seat of the Wodeyars, with stained glass ceilings, peacock courtyards, solid silver doors, and royal thrones.",
+        "kind": "place"
       },
       {
         "title": "Devaraja Market sensory walk",
@@ -2368,7 +2450,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Devaraja%20Market%2C%20Mysore",
-        "notes": "Vibrant century-old bazaar overflowing with heaps of colorful kumkum powder, jasmine flower garlands, betel leaves, and sandalwood oils."
+        "notes": "Vibrant century-old bazaar overflowing with heaps of colorful kumkum powder, jasmine flower garlands, betel leaves, and sandalwood oils.",
+        "kind": "activity"
       },
       {
         "title": "Mylari masala dosa & Mysore pak lunch",
@@ -2396,7 +2479,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mylari%20Dosa%2C%20Mysore",
-        "notes": "Savor the legendary pillow-soft butter masala dosa with coconut chutney at Hotel Original Mylari, followed by melt-in-mouth ghee Mysore pak."
+        "notes": "Savor the legendary pillow-soft butter masala dosa with coconut chutney at Hotel Original Mylari, followed by melt-in-mouth ghee Mysore pak.",
+        "kind": "activity"
       },
       {
         "title": "Brindavan Gardens & musical fountain",
@@ -2419,7 +2503,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Brindavan%20Gardens%2C%20Mysore",
-        "notes": "Terraced illuminated gardens built adjoining the Krishnaraja Sagara Dam, featuring synchronized musical water fountains."
+        "notes": "Terraced illuminated gardens built adjoining the Krishnaraja Sagara Dam, featuring synchronized musical water fountains.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -2464,7 +2549,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Charminar%2C%20Hyderabad",
-        "notes": "Four-columned 1591 triumphal monument surrounded by Laad Bazaar, renowned for lac bangles, pearls, attar, and Irani chai with Osmania biscuits."
+        "notes": "Four-columned 1591 triumphal monument surrounded by Laad Bazaar, renowned for lac bangles, pearls, attar, and Irani chai with Osmania biscuits.",
+        "kind": "place"
       },
       {
         "title": "Golconda Fort & acoustics",
@@ -2487,7 +2573,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Golconda%20Fort%2C%20Hyderabad",
-        "notes": "Colossal citadel fortress of the Qutb Shahi sultans famous for its acoustic clapping portico, diamond vaults (Koh-i-Noor), and city views."
+        "notes": "Colossal citadel fortress of the Qutb Shahi sultans famous for its acoustic clapping portico, diamond vaults (Koh-i-Noor), and city views.",
+        "kind": "place"
       },
       {
         "title": "Hyderabadi dum biryani lunch",
@@ -2513,7 +2600,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hyderabad%20Biryani",
-        "notes": "Legendary fragrant basmati rice slow-cooked on dum with marinated meat, saffron, caramelized onions, served with mirchi ka salan and dahi chutney."
+        "notes": "Legendary fragrant basmati rice slow-cooked on dum with marinated meat, saffron, caramelized onions, served with mirchi ka salan and dahi chutney.",
+        "kind": "activity"
       },
       {
         "title": "Chowmahalla Palace",
@@ -2535,7 +2623,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chowmahalla%20Palace%2C%20Hyderabad",
-        "notes": "Opulent palace of the Nizams featuring neoclassical courtyards, grand chandelier-lit Durbar Hall, and vintage royal Rolls-Royces."
+        "notes": "Opulent palace of the Nizams featuring neoclassical courtyards, grand chandelier-lit Durbar Hall, and vintage royal Rolls-Royces.",
+        "kind": "place"
       },
       {
         "title": "Hussain Sagar Lake & Buddha statue boat ride",
@@ -2558,7 +2647,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hussain%20Sagar%2C%20Hyderabad",
-        "notes": "Ferry across the heart-shaped lake to the world's tallest monolithic stone statue of Gautama Buddha at Gibraltar Rock during sunset."
+        "notes": "Ferry across the heart-shaped lake to the world's tallest monolithic stone statue of Gautama Buddha at Gibraltar Rock during sunset.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -2607,7 +2697,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Howrah%20Bridge%2C%20Kolkata",
-        "notes": "Iconic cantilever bridge spanning the Hooghly river, combined with the sensory explosion of Asia's largest wholesale flower market."
+        "notes": "Iconic cantilever bridge spanning the Hooghly river, combined with the sensory explosion of Asia's largest wholesale flower market.",
+        "kind": "activity"
       },
       {
         "title": "Victoria Memorial & Maidan",
@@ -2630,7 +2721,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Victoria%20Memorial%2C%20Kolkata",
-        "notes": "Colossal white Makrana marble monument dedicated to Queen Victoria, surrounded by sprawling gardens, reflecting ponds, and royal art galleries."
+        "notes": "Colossal white Makrana marble monument dedicated to Queen Victoria, surrounded by sprawling gardens, reflecting ponds, and royal art galleries.",
+        "kind": "place"
       },
       {
         "title": "Dakshineswar Kali Temple & Belur Math",
@@ -2654,7 +2746,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dakshineswar%20Kali%20Temple%2C%20Kolkata",
-        "notes": "Navaratna 1855 Kali temple associated with Ramakrishna Paramahamsa; cross by river ferry to Belur Math, headquarters of Ramakrishna Mission."
+        "notes": "Navaratna 1855 Kali temple associated with Ramakrishna Paramahamsa; cross by river ferry to Belur Math, headquarters of Ramakrishna Mission.",
+        "kind": "place"
       },
       {
         "title": "Kati roll & mishti doi culinary trail",
@@ -2681,7 +2774,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Park%20Street%2C%20Kolkata",
-        "notes": "Original Nizam's flaky paratha kati roll, followed by earthen pot mishti doi (sweet curd), sandesh, and spongy rasgulla."
+        "notes": "Original Nizam's flaky paratha kati roll, followed by earthen pot mishti doi (sweet curd), sandesh, and spongy rasgulla.",
+        "kind": "activity"
       },
       {
         "title": "College Street Boi Para & Indian Coffee House",
@@ -2703,7 +2797,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=College%20Street%2C%20Kolkata",
-        "notes": "World's largest secondhand book market stretching 1.5 km, topped with an intellectual 'adda' session and cold coffee at the 1942 Coffee House."
+        "notes": "World's largest secondhand book market stretching 1.5 km, topped with an intellectual 'adda' session and cold coffee at the 1942 Coffee House.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -2752,7 +2847,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kapaleeshwarar%20Temple%2C%20Chennai",
-        "notes": "Ancient 7th-century Dravidian temple dedicated to Lord Shiva with a vibrant 37-meter rainbow gopuram, tank, and temple peacock courtyard."
+        "notes": "Ancient 7th-century Dravidian temple dedicated to Lord Shiva with a vibrant 37-meter rainbow gopuram, tank, and temple peacock courtyard.",
+        "kind": "place"
       },
       {
         "title": "San Thome Basilica & Fort St. George",
@@ -2775,7 +2871,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=San%20Thome%20Basilica%2C%20Chennai",
-        "notes": "Neo-Gothic Catholic cathedral built over the tomb of Apostle St. Thomas, followed by Fort St. George, Britain's first fortress in India (1644)."
+        "notes": "Neo-Gothic Catholic cathedral built over the tomb of Apostle St. Thomas, followed by Fort St. George, Britain's first fortress in India (1644).",
+        "kind": "place"
       },
       {
         "title": "Murugan Idli & filter coffee lunch",
@@ -2803,7 +2900,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mylapore%2C%20Chennai",
-        "notes": "Authentic Tamil lunch: piping hot soft idlis, crispy ghee roast dosas, four types of chutneys, and frothy Kumbakonam degree filter coffee."
+        "notes": "Authentic Tamil lunch: piping hot soft idlis, crispy ghee roast dosas, four types of chutneys, and frothy Kumbakonam degree filter coffee.",
+        "kind": "activity"
       },
       {
         "title": "Government Museum & Bronze Gallery",
@@ -2825,7 +2923,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Government%20Museum%2C%20Chennai",
-        "notes": "One of Asia's finest museums, showcasing priceless Chola bronzes including the celebrated Nataraja cosmic dance sculpture."
+        "notes": "One of Asia's finest museums, showcasing priceless Chola bronzes including the celebrated Nataraja cosmic dance sculpture.",
+        "kind": "place"
       },
       {
         "title": "Marina Beach & Lighthouse sunset",
@@ -2848,7 +2947,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Marina%20Beach%2C%20Chennai",
-        "notes": "World's second longest natural urban beach; enjoy sea breeze, crispy sundal snack, horse rides, and bird's-eye views from the lighthouse."
+        "notes": "World's second longest natural urban beach; enjoy sea breeze, crispy sundal snack, horse rides, and bird's-eye views from the lighthouse.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -2895,7 +2995,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=White%20Town%2C%20Pondicherry",
-        "notes": "Stroll picturesque mustard-yellow colonial villas with arched gates, bougainvillea canopies, and vintage French street name plaques."
+        "notes": "Stroll picturesque mustard-yellow colonial villas with arched gates, bougainvillea canopies, and vintage French street name plaques.",
+        "kind": "place"
       },
       {
         "title": "Sri Aurobindo Ashram",
@@ -2917,7 +3018,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sri%20Aurobindo%20Ashram%2C%20Pondicherry",
-        "notes": "Serene spiritual sanctuary housing the flower-adorned marble Samadhi of Sri Aurobindo and The Mother in a quiet tree-shaded courtyard."
+        "notes": "Serene spiritual sanctuary housing the flower-adorned marble Samadhi of Sri Aurobindo and The Mother in a quiet tree-shaded courtyard.",
+        "kind": "place"
       },
       {
         "title": "French cafe brunch & croissants",
@@ -2943,7 +3045,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=White%20Town%2C%20Pondicherry",
-        "notes": "Savor artisanal butter croissants, French baguettes, quiches, and espresso at a charming French colonial courtyard cafe."
+        "notes": "Savor artisanal butter croissants, French baguettes, quiches, and espresso at a charming French colonial courtyard cafe.",
+        "kind": "activity"
       },
       {
         "title": "Auroville & Matrimandir meditation dome",
@@ -2966,7 +3069,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Matrimandir%2C%20Auroville",
-        "notes": "Universal experimental township; walk through lush peace gardens to view the golden geodesic sphere of Matrimandir."
+        "notes": "Universal experimental township; walk through lush peace gardens to view the golden geodesic sphere of Matrimandir.",
+        "kind": "place"
       },
       {
         "title": "Promenade Beach & Gandhi statue sunset",
@@ -2989,7 +3093,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Promenade%20Beach%2C%20Pondicherry",
-        "notes": "Vehicle-free ocean promenade along rocky wave breakers, War Memorial, 19th-century lighthouse, and seafront restaurants."
+        "notes": "Vehicle-free ocean promenade along rocky wave breakers, War Memorial, 19th-century lighthouse, and seafront restaurants.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -3043,7 +3148,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Matanga%20Hill%2C%20Hampi",
-        "notes": "Hike up the highest point in Hampi for an unforgettable 360-degree sunrise over rocky boulder hills, palm groves, and temple ruins."
+        "notes": "Hike up the highest point in Hampi for an unforgettable 360-degree sunrise over rocky boulder hills, palm groves, and temple ruins.",
+        "kind": "place"
       },
       {
         "title": "Virupaksha Temple darshan",
@@ -3068,7 +3174,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Virupaksha%20Temple%2C%20Hampi",
-        "notes": "Active 7th-century Dravidian Shiva shrine with a 50-meter gopuram, carved mandapas, pinhole inverted shadow projection, and Lakshmi the elephant."
+        "notes": "Active 7th-century Dravidian Shiva shrine with a 50-meter gopuram, carved mandapas, pinhole inverted shadow projection, and Lakshmi the elephant.",
+        "kind": "place"
       },
       {
         "title": "Vittala Temple & iconic Stone Chariot",
@@ -3090,7 +3197,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vittala%20Temple%2C%20Hampi",
-        "notes": "Masterpiece of Vijayanagara architecture featuring the world-famous carved stone chariot and the musical pillared Ranga Mandapa."
+        "notes": "Masterpiece of Vijayanagara architecture featuring the world-famous carved stone chariot and the musical pillared Ranga Mandapa.",
+        "kind": "place"
       },
       {
         "title": "Royal Enclosure & Lotus Mahal",
@@ -3112,7 +3220,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lotus%20Mahal%2C%20Hampi",
-        "notes": "Explore the Indo-Islamic two-storeyed Lotus Mahal, Elephant Stables with eleven domed chambers, and the stepped Pushkarani bath tank."
+        "notes": "Explore the Indo-Islamic two-storeyed Lotus Mahal, Elephant Stables with eleven domed chambers, and the stepped Pushkarani bath tank.",
+        "kind": "place"
       },
       {
         "title": "Coracle boat ride on Tungabhadra River",
@@ -3134,7 +3243,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tungabhadra%20River%2C%20Hampi",
-        "notes": "Spin across the calm granite river gorge in a traditional round reed coracle boat beneath massive balancing boulder cliffs."
+        "notes": "Spin across the calm granite river gorge in a traditional round reed coracle boat beneath massive balancing boulder cliffs.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -3200,7 +3310,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cellular%20Jail%2C%20Port%20Blair",
-        "notes": "Historical British colonial prison where Indian freedom fighters were interned; tour the solitary wings and museum, with evening Light & Sound show."
+        "notes": "Historical British colonial prison where Indian freedom fighters were interned; tour the solitary wings and museum, with evening Light & Sound show.",
+        "kind": "place"
       },
       {
         "title": "Ross Island (Netaji Subhash Chandra Bose Dweep)",
@@ -3223,7 +3334,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ross%20Island%2C%20Andaman",
-        "notes": "Fascinating ghost island of British colonial ruins wrapped by massive banyan tree roots, inhabited by free-roaming spotted deer and peacocks."
+        "notes": "Fascinating ghost island of British colonial ruins wrapped by massive banyan tree roots, inhabited by free-roaming spotted deer and peacocks.",
+        "kind": "place"
       },
       {
         "title": "North Bay Island coral reef snorkeling",
@@ -3245,7 +3357,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=North%20Bay%20Island%2C%20Andaman",
-        "notes": "Rich coral reef featured on India's 20-rupee currency note; experience sea walking, glass-bottom boat rides, and snorkeling."
+        "notes": "Rich coral reef featured on India's 20-rupee currency note; experience sea walking, glass-bottom boat rides, and snorkeling.",
+        "kind": "activity"
       },
       {
         "title": "Chidiya Tapu sunset point",
@@ -3267,7 +3380,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chidiya%20Tapu%2C%20Andaman",
-        "notes": "Bird Island with dense mangrove trails and secluded pebble beaches, famous as the finest sunset point on South Andaman."
+        "notes": "Bird Island with dense mangrove trails and secluded pebble beaches, famous as the finest sunset point on South Andaman.",
+        "kind": "place"
       },
       {
         "title": "Fresh seafood dinner in Port Blair",
@@ -3292,7 +3406,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Port%20Blair",
-        "notes": "Taste island-caught grilled red snapper, butter-garlic crab, tiger prawns, and coconut-based curries in Aberdeen Bazaar."
+        "notes": "Taste island-caught grilled red snapper, butter-garlic crab, tiger prawns, and coconut-based curries in Aberdeen Bazaar.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -3342,7 +3457,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dal%20Lake%2C%20Srinagar",
-        "notes": "Glide past floating lotus gardens, houseboats, and water channels at dawn to witness traditional boat-to-boat barter vegetable trading."
+        "notes": "Glide past floating lotus gardens, houseboats, and water channels at dawn to witness traditional boat-to-boat barter vegetable trading.",
+        "kind": "activity"
       },
       {
         "title": "Shalimar Bagh & Nishat Bagh Mughal gardens",
@@ -3364,7 +3480,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nishat%20Bagh%2C%20Srinagar",
-        "notes": "Terraced Mughal pleasure gardens built by Jahangir and Asif Khan with cascading water channels, fountains, and towering chinar trees."
+        "notes": "Terraced Mughal pleasure gardens built by Jahangir and Asif Khan with cascading water channels, fountains, and towering chinar trees.",
+        "kind": "place"
       },
       {
         "title": "Hazratbal Shrine & Jamia Masjid",
@@ -3387,7 +3504,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hazratbal%20Shrine%2C%20Srinagar",
-        "notes": "White marble shrine housing a sacred relic of Prophet Muhammad on Dal Lake's northern bank, alongside the 378-pillared deodar Jamia Masjid."
+        "notes": "White marble shrine housing a sacred relic of Prophet Muhammad on Dal Lake's northern bank, alongside the 378-pillared deodar Jamia Masjid.",
+        "kind": "place"
       },
       {
         "title": "Traditional Kashmiri Wazwan feast",
@@ -3413,7 +3531,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Residency%20Road%2C%20Srinagar",
-        "notes": "Elaborate multi-course royal feast featuring Rogan Josh, Gushtaba, Rista, Tabak Maaz, Kahwa green tea, and fragrant saffron rice."
+        "notes": "Elaborate multi-course royal feast featuring Rogan Josh, Gushtaba, Rista, Tabak Maaz, Kahwa green tea, and fragrant saffron rice.",
+        "kind": "activity"
       },
       {
         "title": "Shankaracharya Hill Temple sunset",
@@ -3437,7 +3556,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shankaracharya%20Temple%2C%20Srinagar",
-        "notes": "Ancient 9th-century Shiva temple perched 1,100 feet above the valley floor, offering bird's-eye sunset panoramas over Dal Lake and the city."
+        "notes": "Ancient 9th-century Shiva temple perched 1,100 feet above the valley floor, offering bird's-eye sunset panoramas over Dal Lake and the city.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -3490,7 +3610,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shanti%20Stupa%2C%20Leh",
-        "notes": "White-domed Buddhist stupa inaugurated by the Dalai Lama, offering dramatic morning panoramas over Leh town and the Stok Kangri range."
+        "notes": "White-domed Buddhist stupa inaugurated by the Dalai Lama, offering dramatic morning panoramas over Leh town and the Stok Kangri range.",
+        "kind": "place"
       },
       {
         "title": "Thiksey Monastery morning prayers",
@@ -3513,7 +3634,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thiksey%20Monastery%2C%20Leh",
-        "notes": "Twelve-story Tibetan monastery resembling the Potala Palace of Lhasa, famous for its 49-foot Maitreya Buddha statue and chanting monks."
+        "notes": "Twelve-story Tibetan monastery resembling the Potala Palace of Lhasa, famous for its 49-foot Maitreya Buddha statue and chanting monks.",
+        "kind": "place"
       },
       {
         "title": "Magnetic Hill & Indus-Zanskar Sangam",
@@ -3535,7 +3657,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sangam%20Indus%20Zanskar%2C%20Leh",
-        "notes": "Test the optical gravity illusion on Magnetic Hill, followed by viewing the striking turquoise and muddy confluence of the Indus and Zanskar rivers."
+        "notes": "Test the optical gravity illusion on Magnetic Hill, followed by viewing the striking turquoise and muddy confluence of the Indus and Zanskar rivers.",
+        "kind": "place"
       },
       {
         "title": "Tibetan thukpa & butter tea in Leh Main Bazaar",
@@ -3561,7 +3684,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Main%20Bazaar%2C%20Leh",
-        "notes": "Sip salty Ladakhi butter tea (Gur Gur chai) with steamed momos, hearty thukpa noodle soup, and browse Pashmina shawls and prayer wheels."
+        "notes": "Sip salty Ladakhi butter tea (Gur Gur chai) with steamed momos, hearty thukpa noodle soup, and browse Pashmina shawls and prayer wheels.",
+        "kind": "activity"
       },
       {
         "title": "Pangong Lake day excursion",
@@ -3582,7 +3706,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pangong%20Lake%2C%20Ladakh",
-        "notes": "Drive across Chang La pass (17,688 ft) to the world's highest saltwater lake at 14,270 ft, shifting colors from deep blue to turquoise."
+        "notes": "Drive across Chang La pass (17,688 ft) to the world's highest saltwater lake at 14,270 ft, shifting colors from deep blue to turquoise.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -3631,7 +3756,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Golden%20Temple%2C%20Amritsar",
-        "notes": "Holiest Sikh gurdwara, covered in 500 kg of pure gold leaf surrounded by the sacred Amrit Sarovar pool with continuous soulful Gurbani kirtan."
+        "notes": "Holiest Sikh gurdwara, covered in 500 kg of pure gold leaf surrounded by the sacred Amrit Sarovar pool with continuous soulful Gurbani kirtan.",
+        "kind": "place"
       },
       {
         "title": "Guru Ka Langar community meal",
@@ -3660,7 +3786,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Guru%20Ka%20Langar%2C%20Amritsar",
-        "notes": "Partake in the world's largest free community kitchen serving up to 100,000 pilgrims daily regardless of religion, caste, or wealth."
+        "notes": "Partake in the world's largest free community kitchen serving up to 100,000 pilgrims daily regardless of religion, caste, or wealth.",
+        "kind": "activity"
       },
       {
         "title": "Jallianwala Bagh Memorial & Partition Museum",
@@ -3682,7 +3809,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jallianwala%20Bagh%2C%20Amritsar",
-        "notes": "National memorial commemorating the 1919 massacre preserving bullet-marked walls and the Martyrs' Well, paired with the poignant Partition Museum."
+        "notes": "National memorial commemorating the 1919 massacre preserving bullet-marked walls and the Martyrs' Well, paired with the poignant Partition Museum.",
+        "kind": "place"
       },
       {
         "title": "Amritsari kulcha & lassi lunch",
@@ -3710,7 +3838,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Amritsari%20Kulcha%2C%20Amritsar",
-        "notes": "Crispy tandoori layered potato-paneer kulcha crushed with butter, served with spicy chole, tangy onion chutney, and a tall glass of sweet creamy lassi."
+        "notes": "Crispy tandoori layered potato-paneer kulcha crushed with butter, served with spicy chole, tangy onion chutney, and a tall glass of sweet creamy lassi.",
+        "kind": "activity"
       },
       {
         "title": "Attari-Wagah Border retreat ceremony",
@@ -3733,7 +3862,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Wagah%20Border%2C%20Amritsar",
-        "notes": "Electrifying daily military parade with coordinated high-kicks and flag-lowering drill between Indian BSF and Pakistan Rangers."
+        "notes": "Electrifying daily military parade with coordinated high-kicks and flag-lowering drill between Indian BSF and Pakistan Rangers.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -3782,7 +3912,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jaisalmer%20Fort%2C%20Jaisalmer",
-        "notes": "UNESCO World Heritage 12th-century living fortress where a quarter of the city's population resides amidst palaces, temples, and winding alleys."
+        "notes": "UNESCO World Heritage 12th-century living fortress where a quarter of the city's population resides amidst palaces, temples, and winding alleys.",
+        "kind": "place"
       },
       {
         "title": "Patwon Ki Haveli & Salim Singh Haveli",
@@ -3804,7 +3935,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Patwon%20Ki%20Haveli%2C%20Jaisalmer",
-        "notes": "Cluster of five ornate merchant mansions celebrated for intricate sandstone jharokhas, lattice stonework, and gold leaf murals."
+        "notes": "Cluster of five ornate merchant mansions celebrated for intricate sandstone jharokhas, lattice stonework, and gold leaf murals.",
+        "kind": "place"
       },
       {
         "title": "Gadisar Lake & Tilon Ki Pol gateway",
@@ -3827,7 +3959,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gadisar%20Lake%2C%20Jaisalmer",
-        "notes": "14th-century rainwater reservoir surrounded by carved chhatris, shrines, ghats, and migrating birds in the desert."
+        "notes": "14th-century rainwater reservoir surrounded by carved chhatris, shrines, ghats, and migrating birds in the desert.",
+        "kind": "place"
       },
       {
         "title": "Sam Sand Dunes camel safari & sunset",
@@ -3849,7 +3982,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sam%20Sand%20Dunes%2C%20Jaisalmer",
-        "notes": "Ride camels across undulating golden sand dunes of the Thar Desert, watch a crimson sunset, and enjoy dune-bashing jeeps."
+        "notes": "Ride camels across undulating golden sand dunes of the Thar Desert, watch a crimson sunset, and enjoy dune-bashing jeeps.",
+        "kind": "activity"
       },
       {
         "title": "Desert camp folk dance & Rajasthani dinner",
@@ -3878,7 +4012,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sam%20Sand%20Dunes%2C%20Jaisalmer",
-        "notes": "Campfire night under desert stars featuring Kalbelia folk dancers, Manganiyar musicians, and authentic Rajasthani ker sangri and dal baati."
+        "notes": "Campfire night under desert stars featuring Kalbelia folk dancers, Manganiyar musicians, and authentic Rajasthani ker sangri and dal baati.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -3926,7 +4061,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mehrangarh%20Fort%2C%20Jodhpur",
-        "notes": "Massive 15th-century fortress on a 400-foot cliff with courtyards, palanquins, weaponry, and thrilling ziplines across battlements and moats."
+        "notes": "Massive 15th-century fortress on a 400-foot cliff with courtyards, palanquins, weaponry, and thrilling ziplines across battlements and moats.",
+        "kind": "place"
       },
       {
         "title": "Jaswant Thada marble cenotaph",
@@ -3948,7 +4084,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jaswant%20Thada%2C%20Jodhpur",
-        "notes": "Milky white polished marble royal cenotaph built in 1899, featuring carved gazebos, tiered gardens, and serene lakeside views."
+        "notes": "Milky white polished marble royal cenotaph built in 1899, featuring carved gazebos, tiered gardens, and serene lakeside views.",
+        "kind": "place"
       },
       {
         "title": "Shahi Samosa, mirchi vada & Makhaniya lassi",
@@ -3977,7 +4114,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Clock%20Tower%2C%20Jodhpur",
-        "notes": "Indulge in iconic Jodhpur street snacks: giant spicy mirchi vada, pyaz kachori, and thick saffron-infused curd lassi at Sardar Market."
+        "notes": "Indulge in iconic Jodhpur street snacks: giant spicy mirchi vada, pyaz kachori, and thick saffron-infused curd lassi at Sardar Market.",
+        "kind": "activity"
       },
       {
         "title": "Blue City old quarter heritage walking tour",
@@ -4000,7 +4138,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Navchokiya%2C%20Jodhpur",
-        "notes": "Navigate the photogenic labyrinth of vibrant indigo-painted Brahmin houses, stepped alleyways, and carved wooden doorways."
+        "notes": "Navigate the photogenic labyrinth of vibrant indigo-painted Brahmin houses, stepped alleyways, and carved wooden doorways.",
+        "kind": "place"
       },
       {
         "title": "Umaid Bhawan Palace museum",
@@ -4022,7 +4161,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Umaid%20Bhawan%20Palace%2C%20Jodhpur",
-        "notes": "One of the world's largest private royal residences, showcasing art deco architecture, museum of royal clocks, and vintage motorcars."
+        "notes": "One of the world's largest private royal residences, showcasing art deco architecture, museum of royal clocks, and vintage motorcars.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -4070,7 +4210,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Brahma%20Temple%2C%20Pushkar",
-        "notes": "One of the world's very few temples dedicated to Creator God Lord Brahma, marked by a red spire and swan emblem."
+        "notes": "One of the world's very few temples dedicated to Creator God Lord Brahma, marked by a red spire and swan emblem.",
+        "kind": "place"
       },
       {
         "title": "Pushkar Sarovar holy ghats & parikrama",
@@ -4095,7 +4236,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pushkar%20Lake%2C%20Pushkar",
-        "notes": "Circumambulate the sacred crescent-shaped lake fringed by 52 bathing ghats and 500 whitewashed temples."
+        "notes": "Circumambulate the sacred crescent-shaped lake fringed by 52 bathing ghats and 500 whitewashed temples.",
+        "kind": "place"
       },
       {
         "title": "Malpua & rabdi at Halwai Gali",
@@ -4123,7 +4265,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pushkar%20Market",
-        "notes": "Taste Pushkar's legendary sweet treat: deep-fried syrupy malpuas served warm with condensed milk rabdi, and falafel rolls."
+        "notes": "Taste Pushkar's legendary sweet treat: deep-fried syrupy malpuas served warm with condensed milk rabdi, and falafel rolls.",
+        "kind": "activity"
       },
       {
         "title": "Savitri Mata Temple hill trek at sunset",
@@ -4146,7 +4289,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Savitri%20Temple%2C%20Pushkar",
-        "notes": "Ascend Ratnagiri hill by ropeway or steps to view Goddess Savitri temple with panoramic vistas of the holy lake and Thar desert sands."
+        "notes": "Ascend Ratnagiri hill by ropeway or steps to view Goddess Savitri temple with panoramic vistas of the holy lake and Thar desert sands.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -4193,7 +4337,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kandariya%20Mahadeva%20Temple%2C%20Khajuraho",
-        "notes": "UNESCO World Heritage marvel with 800+ breathtaking sculptures depicting daily life, musicians, and celebrated erotic sculptures."
+        "notes": "UNESCO World Heritage marvel with 800+ breathtaking sculptures depicting daily life, musicians, and celebrated erotic sculptures.",
+        "kind": "place"
       },
       {
         "title": "Eastern Group Jain Temples (Parsvanatha)",
@@ -4216,7 +4361,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Parsvanatha%20Temple%2C%20Khajuraho",
-        "notes": "Remarkably preserved Chandela-era Jain temples renowned for exquisite sculptures of apsaras applying kohl, tying anklets, and plucking thorns."
+        "notes": "Remarkably preserved Chandela-era Jain temples renowned for exquisite sculptures of apsaras applying kohl, tying anklets, and plucking thorns.",
+        "kind": "place"
       },
       {
         "title": "Raneh Falls & Ken River Canyon",
@@ -4238,7 +4384,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Raneh%20Falls%2C%20Khajuraho",
-        "notes": "Deep canyon formed of crystalline granite in stunning shades of pink, green, and red carved by the pristine Ken River."
+        "notes": "Deep canyon formed of crystalline granite in stunning shades of pink, green, and red carved by the pristine Ken River.",
+        "kind": "place"
       },
       {
         "title": "Khajuraho Light & Sound Show",
@@ -4260,7 +4407,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Khajuraho%20Light%20and%20Sound",
-        "notes": "Open-air evening narrative with Amitabh Bachchan's voiceover set against the illuminated western temples recounting the Chandela dynasty."
+        "notes": "Open-air evening narrative with Amitabh Bachchan's voiceover set against the illuminated western temples recounting the Chandela dynasty.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -4306,7 +4454,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Alleppey%20Houseboat",
-        "notes": "Drift leisurely in a traditional thatched kettuvallam through coconut lagoons, duck farms, and paddy fields below sea level."
+        "notes": "Drift leisurely in a traditional thatched kettuvallam through coconut lagoons, duck farms, and paddy fields below sea level.",
+        "kind": "place"
       },
       {
         "title": "Karimeen Pollichathu & toddy shop lunch",
@@ -4332,7 +4481,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kuttanad%2C%20Alleppey",
-        "notes": "Savor spicy pearl spot fish (Karimeen) wrapped in banana leaves and roasted in coconut oil, served with tapioca and fresh toddy."
+        "notes": "Savor spicy pearl spot fish (Karimeen) wrapped in banana leaves and roasted in coconut oil, served with tapioca and fresh toddy.",
+        "kind": "activity"
       },
       {
         "title": "Alappuzha Beach & 1862 striped lighthouse",
@@ -4355,7 +4505,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Alappuzha%20Beach%2C%20Alleppey",
-        "notes": "Stroll along historic wooden sea bridge ruins jutting into the Arabian Sea and climb the red-and-white lighthouse for coastal views."
+        "notes": "Stroll along historic wooden sea bridge ruins jutting into the Arabian Sea and climb the red-and-white lighthouse for coastal views.",
+        "kind": "place"
       },
       {
         "title": "Marari Beach sunset & village walk",
@@ -4377,7 +4528,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Marari%20Beach%2C%20Alleppey",
-        "notes": "Serene, uncrowded fishing village beach with swaying coconut palms, soft golden sands, and traditional wooden catamarans."
+        "notes": "Serene, uncrowded fishing village beach with swaying coconut palms, soft golden sands, and traditional wooden catamarans.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -4431,7 +4583,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahabaleshwar%20Temple%2C%20Gokarna",
-        "notes": "Revered 4th-century coastal Dravidian temple enshrining the sacred Atmalinga of Lord Shiva placed by Ravana, holy to pilgrims."
+        "notes": "Revered 4th-century coastal Dravidian temple enshrining the sacred Atmalinga of Lord Shiva placed by Ravana, holy to pilgrims.",
+        "kind": "place"
       },
       {
         "title": "Kudle Beach morning walk & yoga",
@@ -4454,7 +4607,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kudle%20Beach%2C%20Gokarna",
-        "notes": "Wide crescent golden sand beach framed by rocky green hills, popular for peaceful morning swims, surfing, and beachfront yoga."
+        "notes": "Wide crescent golden sand beach framed by rocky green hills, popular for peaceful morning swims, surfing, and beachfront yoga.",
+        "kind": "place"
       },
       {
         "title": "Om Beach water sports",
@@ -4476,7 +4630,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Om%20Beach%2C%20Gokarna",
-        "notes": "Naturally shaped like the auspicious Hindu symbol 'Om', offering jet ski rides, banana boats, and Namaste Cafe overlooking the surf."
+        "notes": "Naturally shaped like the auspicious Hindu symbol 'Om', offering jet ski rides, banana boats, and Namaste Cafe overlooking the surf.",
+        "kind": "place"
       },
       {
         "title": "Half Moon & Paradise Beach cliff trek",
@@ -4498,7 +4653,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Paradise%20Beach%2C%20Gokarna",
-        "notes": "Scenic cliffside coastal trek connecting isolated coves only accessible on foot or by local fishing boat, with breathtaking sea views."
+        "notes": "Scenic cliffside coastal trek connecting isolated coves only accessible on foot or by local fishing boat, with breathtaking sea views.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -4540,7 +4696,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Meenakshi%20Amman%20Temple%2C%20Madurai",
-        "notes": "Iconic Dravidian architectural marvel with 14 towering gopurams carved with 33,000 colorful sculptures, and the Hall of Thousand Pillars."
+        "notes": "Iconic Dravidian architectural marvel with 14 towering gopurams carved with 33,000 colorful sculptures, and the Hall of Thousand Pillars.",
+        "kind": "place"
       },
       {
         "title": "Thirumalai Nayakar Palace",
@@ -4562,7 +4719,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thirumalai%20Nayakar%20Palace%2C%20Madurai",
-        "notes": "17th-century palace built by King Thirumalai Nayak blending Dravidian and Islamic styles, featuring colossal white stucco pillars."
+        "notes": "17th-century palace built by King Thirumalai Nayak blending Dravidian and Islamic styles, featuring colossal white stucco pillars.",
+        "kind": "place"
       },
       {
         "title": "Gandhi Memorial Museum",
@@ -4584,7 +4742,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gandhi%20Memorial%20Museum%2C%20Madurai",
-        "notes": "Housed in the historic Rani Mangammal Palace, preserving the bloodstained dhoti worn by Mahatma Gandhi when he was assassinated."
+        "notes": "Housed in the historic Rani Mangammal Palace, preserving the bloodstained dhoti worn by Mahatma Gandhi when he was assassinated.",
+        "kind": "place"
       },
       {
         "title": "Jigarthanda & Madurai bun parotta dinner",
@@ -4610,7 +4769,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Town%20Hall%20Rd%2C%20Madurai",
-        "notes": "Taste Madurai's iconic chilled dessert Jigarthanda (almond gum, nannari syrup, ice cream) and famous flaky bun parotta with spicy salna."
+        "notes": "Taste Madurai's iconic chilled dessert Jigarthanda (almond gum, nannari syrup, ice cream) and famous flaky bun parotta with spicy salna.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -4661,7 +4821,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Triveni%20Sangam%2C%20Kanyakumari",
-        "notes": "Sacred meeting point of three oceans; witness sunrise and visit the 3,000-year-old temple of Goddess Kanya with her sparkling diamond nose ring."
+        "notes": "Sacred meeting point of three oceans; witness sunrise and visit the 3,000-year-old temple of Goddess Kanya with her sparkling diamond nose ring.",
+        "kind": "place"
       },
       {
         "title": "Vivekananda Rock Memorial ferry",
@@ -4685,7 +4846,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vivekananda%20Rock%20Memorial%2C%20Kanyakumari",
-        "notes": "Take the short ferry to the offshore granite rock where Swami Vivekananda attained enlightenment in 1892, housing the meditation hall."
+        "notes": "Take the short ferry to the offshore granite rock where Swami Vivekananda attained enlightenment in 1892, housing the meditation hall.",
+        "kind": "place"
       },
       {
         "title": "Thiruvalluvar Statue",
@@ -4707,7 +4869,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thiruvalluvar%20Statue%2C%20Kanyakumari",
-        "notes": "Colossal 133-foot stone statue honoring the celebrated Tamil saint and poet Thiruvalluvar, representing the 133 chapters of the Tirukkural."
+        "notes": "Colossal 133-foot stone statue honoring the celebrated Tamil saint and poet Thiruvalluvar, representing the 133 chapters of the Tirukkural.",
+        "kind": "place"
       },
       {
         "title": "Padmanabhapuram Palace excursion",
@@ -4729,7 +4892,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Padmanabhapuram%20Palace%2C%20Kanyakumari",
-        "notes": "Magnificent 16th-century wooden palace of Travancore kings featuring intricate rosewood ceilings, secret underground passageways, and mica windows."
+        "notes": "Magnificent 16th-century wooden palace of Travancore kings featuring intricate rosewood ceilings, secret underground passageways, and mica windows.",
+        "kind": "place"
       },
       {
         "title": "Sunset View Point",
@@ -4751,7 +4915,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sunset%20Point%2C%20Kanyakumari",
-        "notes": "Spectacular ocean vantage point where visitors gather to watch the sun dip beneath the vast meeting of three seas."
+        "notes": "Spectacular ocean vantage point where visitors gather to watch the sun dip beneath the vast meeting of three seas.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -4797,7 +4962,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ranthambore%20National%20Park",
-        "notes": "Open-top jeep safari through dry deciduous forests in search of Royal Bengal tigers, leopards, marsh crocodiles, and sambar deer."
+        "notes": "Open-top jeep safari through dry deciduous forests in search of Royal Bengal tigers, leopards, marsh crocodiles, and sambar deer.",
+        "kind": "activity"
       },
       {
         "title": "Ranthambore Fort & Trinetra Ganesh Temple",
@@ -4821,7 +4987,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ranthambore%20Fort",
-        "notes": "UNESCO World Heritage 10th-century hill fort overlooking the jungle, home to the revered three-eyed Ganesha temple receiving thousands of mail letters."
+        "notes": "UNESCO World Heritage 10th-century hill fort overlooking the jungle, home to the revered three-eyed Ganesha temple receiving thousands of mail letters.",
+        "kind": "place"
       },
       {
         "title": "Padam Talao & Jogi Mahal",
@@ -4844,7 +5011,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Padam%20Talao%2C%20Ranthambore",
-        "notes": "The park's largest water lily lake flanked by the historic royal hunting lodge Jogi Mahal and India's second largest banyan tree."
+        "notes": "The park's largest water lily lake flanked by the historic royal hunting lodge Jogi Mahal and India's second largest banyan tree.",
+        "kind": "place"
       },
       {
         "title": "Rajiv Gandhi Regional Museum of Natural History",
@@ -4866,7 +5034,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sawai%20Madhopur",
-        "notes": "Modern interactive museum educating visitors on Thar flora, wildlife conservation, and regional Rajasthani biodiversity."
+        "notes": "Modern interactive museum educating visitors on Thar flora, wildlife conservation, and regional Rajasthani biodiversity.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -4912,7 +5081,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jim%20Corbett%20National%20Park",
-        "notes": "Thrilling early morning safari tracking tigers, wild Asian elephants, gharials, and spotted deer through dense sal forests and riverbeds."
+        "notes": "Thrilling early morning safari tracking tigers, wild Asian elephants, gharials, and spotted deer through dense sal forests and riverbeds.",
+        "kind": "activity"
       },
       {
         "title": "Corbett Falls & nature walk",
@@ -4934,7 +5104,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Corbett%20Falls",
-        "notes": "Picturesque 66-foot waterfall tucked inside teak woods, offering peaceful forested nature trails and birdsong."
+        "notes": "Picturesque 66-foot waterfall tucked inside teak woods, offering peaceful forested nature trails and birdsong.",
+        "kind": "place"
       },
       {
         "title": "Garjiya Devi Temple on the Kosi River",
@@ -4957,7 +5128,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Garjiya%20Devi%20Temple%2C%20Ramnagar",
-        "notes": "Sacred Shakti shrine dramatically perched atop a huge boulder surrounded by the roaring currents of the Kosi River."
+        "notes": "Sacred Shakti shrine dramatically perched atop a huge boulder surrounded by the roaring currents of the Kosi River.",
+        "kind": "place"
       },
       {
         "title": "Jim Corbett Museum (Choti Haldwani)",
@@ -4979,7 +5151,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Corbett%20Museum%2C%20Kaladhungi",
-        "notes": "Heritage stone cottage that was the winter residence of hunter-turned-conservationist Jim Corbett, preserving memorabilia, letters, and rifles."
+        "notes": "Heritage stone cottage that was the winter residence of hunter-turned-conservationist Jim Corbett, preserving memorabilia, letters, and rifles.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -5027,7 +5200,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Naini%20Lake%2C%20Nainital",
-        "notes": "Paddle or row across the pear-shaped emerald mountain lake, followed by a stroll along the vibrant lakeside Mall Road."
+        "notes": "Paddle or row across the pear-shaped emerald mountain lake, followed by a stroll along the vibrant lakeside Mall Road.",
+        "kind": "activity"
       },
       {
         "title": "Naina Devi Temple",
@@ -5050,7 +5224,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Naina%20Devi%20Temple%2C%20Nainital",
-        "notes": "Revered Shakti Peetha located on the northern shore of Naini Lake where Goddess Sati's eyes (nayan) are believed to have fallen."
+        "notes": "Revered Shakti Peetha located on the northern shore of Naini Lake where Goddess Sati's eyes (nayan) are believed to have fallen.",
+        "kind": "place"
       },
       {
         "title": "Snow View Point & aerial ropeway",
@@ -5072,7 +5247,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Snow%20View%20Point%2C%20Nainital",
-        "notes": "Cable car ride to 7,450 feet offering clear views of the majestic Himalayan peaks including Nanda Devi, Trishul, and Nanda Kot."
+        "notes": "Cable car ride to 7,450 feet offering clear views of the majestic Himalayan peaks including Nanda Devi, Trishul, and Nanda Kot.",
+        "kind": "place"
       },
       {
         "title": "Tiffin Top (Dorothy's Seat) trek",
@@ -5094,7 +5270,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tiffin%20Top%2C%20Nainital",
-        "notes": "Scenic 4-km trek through oak, pine, and deodar woods up to Dorothy's Seat with panoramic views over the town and Kumaon hills."
+        "notes": "Scenic 4-km trek through oak, pine, and deodar woods up to Dorothy's Seat with panoramic views over the town and Kumaon hills.",
+        "kind": "place"
       },
       {
         "title": "Tibetan Market momos & thukpa",
@@ -5120,7 +5297,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tibetan%20Market%2C%20Nainital",
-        "notes": "Shop for handcrafted woolens and enjoy steaming chicken and vegetable momos, thukpa, and hot chocolate near the lake."
+        "notes": "Shop for handcrafted woolens and enjoy steaming chicken and vegetable momos, thukpa, and hot chocolate near the lake.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -5165,7 +5343,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kempty%20Falls%2C%20Mussoorie",
-        "notes": "Cascading mountain waterfall developed as a picnic spot during the British Raj; enjoy swimming in natural pools and ropeway views."
+        "notes": "Cascading mountain waterfall developed as a picnic spot during the British Raj; enjoy swimming in natural pools and ropeway views.",
+        "kind": "place"
       },
       {
         "title": "Gun Hill ropeway & viewpoint",
@@ -5188,7 +5367,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gun%20Hill%2C%20Mussoorie",
-        "notes": "Ride the cable car to Mussoorie's second highest peak for 360-degree panoramas of the snow-clad Bunderpunch range and Doon Valley."
+        "notes": "Ride the cable car to Mussoorie's second highest peak for 360-degree panoramas of the snow-clad Bunderpunch range and Doon Valley.",
+        "kind": "place"
       },
       {
         "title": "Camel's Back Road & Lal Tibba scenic walk",
@@ -5210,7 +5390,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lal%20Tibba%2C%20Mussoorie",
-        "notes": "Peaceful 3-km cliffside walk shaped like a camel's hump, leading up into pine-scented Landour to Lal Tibba viewpoint."
+        "notes": "Peaceful 3-km cliffside walk shaped like a camel's hump, leading up into pine-scented Landour to Lal Tibba viewpoint.",
+        "kind": "place"
       },
       {
         "title": "Landour Bakehouse & Char Dukan treats",
@@ -5236,7 +5417,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Char%20Dukan%2C%20Landour",
-        "notes": "Sample apple pie, lemon curd tarts, and ginger tea at Landour Bakehouse, and bun omelette and Maggie at iconic Char Dukan."
+        "notes": "Sample apple pie, lemon curd tarts, and ginger tea at Landour Bakehouse, and bun omelette and Maggie at iconic Char Dukan.",
+        "kind": "activity"
       },
       {
         "title": "Mall Road evening stroll & sunset",
@@ -5258,7 +5440,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mall%20Road%2C%20Mussoorie",
-        "notes": "Bustling ridge-top promenade lined with vintage street lamps, wooden handicrafts, woolen shawls, and twinkling Doon valley night views."
+        "notes": "Bustling ridge-top promenade lined with vintage street lamps, wooden handicrafts, woolen shawls, and twinkling Doon valley night views.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -5304,7 +5487,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Abbey%20Falls%2C%20Coorg",
-        "notes": "Roaring waterfall cascading down boulders surrounded by private coffee plantations, pepper vines, and a hanging bridge."
+        "notes": "Roaring waterfall cascading down boulders surrounded by private coffee plantations, pepper vines, and a hanging bridge.",
+        "kind": "place"
       },
       {
         "title": "Dubare Elephant Camp",
@@ -5326,7 +5510,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dubare%20Elephant%20Camp%2C%20Coorg",
-        "notes": "River camp on the banks of the Kaveri River where visitors can participate in elephant bathing, feeding, and river rafting."
+        "notes": "River camp on the banks of the Kaveri River where visitors can participate in elephant bathing, feeding, and river rafting.",
+        "kind": "place"
       },
       {
         "title": "Namdroling Monastery (Golden Temple), Bylakuppe",
@@ -5349,7 +5534,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Namdroling%20Monastery%2C%20Bylakuppe",
-        "notes": "Second largest Tibetan settlement in India, featuring three colossal 40-foot gold statues of Buddha, Padmasambhava, and Amitayus."
+        "notes": "Second largest Tibetan settlement in India, featuring three colossal 40-foot gold statues of Buddha, Padmasambhava, and Amitayus.",
+        "kind": "place"
       },
       {
         "title": "Raja's Seat sunset & Madikeri Fort",
@@ -5372,7 +5558,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Raja's%20Seat%2C%20Madikeri",
-        "notes": "Scenic seasonal garden pavilion where the Kings of Kodagu once watched sunsets over layered misty hills and valleys."
+        "notes": "Scenic seasonal garden pavilion where the Kings of Kodagu once watched sunsets over layered misty hills and valleys.",
+        "kind": "place"
       },
       {
         "title": "Authentic Kodava pandi curry & akki roti dinner",
@@ -5397,7 +5584,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Madikeri%2C%20Coorg",
-        "notes": "Taste world-renowned Kodava cuisine: spicy pork curry (pandi curry) flavored with wild kachampuli vinegar, soft rice rotis, and fresh filter coffee."
+        "notes": "Taste world-renowned Kodava cuisine: spicy pork curry (pandi curry) flavored with wild kachampuli vinegar, soft rice rotis, and fresh filter coffee.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -5445,7 +5633,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Edakkal%20Caves%2C%20Wayanad",
-        "notes": "Two natural rock shelters perched at 3,900 ft on Ambukuthi Mala featuring rare Neolithic rock engravings dating to 6,000 BCE."
+        "notes": "Two natural rock shelters perched at 3,900 ft on Ambukuthi Mala featuring rare Neolithic rock engravings dating to 6,000 BCE.",
+        "kind": "place"
       },
       {
         "title": "Banasura Sagar Dam & speed boating",
@@ -5467,7 +5656,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Banasura%20Sagar%20Dam%2C%20Wayanad",
-        "notes": "Largest earth dam in India and second largest in Asia, set against the Banasura hills with speed boating across scenic green islands."
+        "notes": "Largest earth dam in India and second largest in Asia, set against the Banasura hills with speed boating across scenic green islands.",
+        "kind": "activity"
       },
       {
         "title": "Soochipara Waterfalls (Sentinel Rock)",
@@ -5489,7 +5679,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Soochipara%20Falls%2C%20Wayanad",
-        "notes": "Three-tiered 200-meter waterfall roaring through dense montane forests, offering natural pool bathing and rock-climbing terrain."
+        "notes": "Three-tiered 200-meter waterfall roaring through dense montane forests, offering natural pool bathing and rock-climbing terrain.",
+        "kind": "place"
       },
       {
         "title": "Pookode Lake freshwater cruise & spices",
@@ -5512,7 +5703,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pookode%20Lake%2C%20Wayanad",
-        "notes": "Scenic natural freshwater lake in the shape of India's map surrounded by evergreen forests, blue water lilies, and bamboo handicrafts."
+        "notes": "Scenic natural freshwater lake in the shape of India's map surrounded by evergreen forests, blue water lilies, and bamboo handicrafts.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -5559,7 +5751,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Arthur's%20Seat%2C%20Mahabaleshwar",
-        "notes": "Dramatic 1,470-meter cliff viewpoint overlooking the deep Savitri River valley and dense Tiger Spring canyon, known for aero-currents."
+        "notes": "Dramatic 1,470-meter cliff viewpoint overlooking the deep Savitri River valley and dense Tiger Spring canyon, known for aero-currents.",
+        "kind": "place"
       },
       {
         "title": "Pratapgad Fort excursion",
@@ -5582,7 +5775,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pratapgad%20Fort%2C%20Mahabaleshwar",
-        "notes": "Historic 1656 mountain fortress of Chhatrapati Shivaji Maharaj where he defeated Afzal Khan; features Bhavani temple and double-walled ramparts."
+        "notes": "Historic 1656 mountain fortress of Chhatrapati Shivaji Maharaj where he defeated Afzal Khan; features Bhavani temple and double-walled ramparts.",
+        "kind": "place"
       },
       {
         "title": "Mapro Garden strawberry feast",
@@ -5609,7 +5803,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mapro%20Garden%2C%20Mahabaleshwar",
-        "notes": "Sample fresh strawberries with clotted cream, wood-fired thin-crust cheese pizza, fruit preserves, and strawberry ice cream."
+        "notes": "Sample fresh strawberries with clotted cream, wood-fired thin-crust cheese pizza, fruit preserves, and strawberry ice cream.",
+        "kind": "activity"
       },
       {
         "title": "Venna Lake boating & horse riding",
@@ -5631,7 +5826,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Venna%20Lake%2C%20Mahabaleshwar",
-        "notes": "Serene 28-acre lake framed by pine trees; enjoy pedal and row boating followed by hot roasted corn on the cob (bhutta)."
+        "notes": "Serene 28-acre lake framed by pine trees; enjoy pedal and row boating followed by hot roasted corn on the cob (bhutta).",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -5677,7 +5873,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Karla%20Caves%2C%20Lonavala",
-        "notes": "Ancient 2nd-century BCE rock-cut Buddhist chaitya hall with grand vaulted teakwood ribs, Ashokan lion pillar, and 37 carved columns."
+        "notes": "Ancient 2nd-century BCE rock-cut Buddhist chaitya hall with grand vaulted teakwood ribs, Ashokan lion pillar, and 37 carved columns.",
+        "kind": "place"
       },
       {
         "title": "Tiger's Leap (Vaghdari) & Lion's Point",
@@ -5699,7 +5896,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tiger's%20Leap%2C%20Lonavala",
-        "notes": "Cliff-edge viewpoint resembling a leaping tiger, dropping sheer 650 meters into the valley with mist rolls, waterfalls, and tea stalls."
+        "notes": "Cliff-edge viewpoint resembling a leaping tiger, dropping sheer 650 meters into the valley with mist rolls, waterfalls, and tea stalls.",
+        "kind": "place"
       },
       {
         "title": "Bhushi Dam & waterfalls",
@@ -5721,7 +5919,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhushi%20Dam%2C%20Lonavala",
-        "notes": "Popular masonry dam on the Indrayani river where overflowing monsoon waters rush over stepped stone tiers."
+        "notes": "Popular masonry dam on the Indrayani river where overflowing monsoon waters rush over stepped stone tiers.",
+        "kind": "place"
       },
       {
         "title": "Lohanad Fort trek & chikki shopping",
@@ -5750,7 +5949,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lonavala%20Chikki",
-        "notes": "Browse famous Maganlal chikki shops for peanut, crushed cashew, sesame, and dry fruit brittle, paired with hot ginger chai."
+        "notes": "Browse famous Maganlal chikki shops for peanut, crushed cashew, sesame, and dry fruit brittle, paired with hot ginger chai.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -5796,7 +5996,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shaniwar%20Wada%2C%20Pune",
-        "notes": "Historic 1732 seat of the Peshwa rulers of the Maratha Empire, famed for its massive spiked Dilli Darwaza gates and fountain court."
+        "notes": "Historic 1732 seat of the Peshwa rulers of the Maratha Empire, famed for its massive spiked Dilli Darwaza gates and fountain court.",
+        "kind": "place"
       },
       {
         "title": "Shreemant Dagdusheth Halwai Ganpati Temple",
@@ -5819,7 +6020,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dagdusheth%20Halwai%20Ganpati%2C%20Pune",
-        "notes": "One of Maharashtra's most revered Ganesha temples, adorned with 8 kg of gold embellishments and visited by thousands daily."
+        "notes": "One of Maharashtra's most revered Ganesha temples, adorned with 8 kg of gold embellishments and visited by thousands daily.",
+        "kind": "place"
       },
       {
         "title": "Aga Khan Palace & Gandhi Memorial",
@@ -5841,7 +6043,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Aga%20Khan%20Palace%2C%20Pune",
-        "notes": "Italian-arched 1892 palace where Mahatma Gandhi, Kasturba Gandhi, and Mahadev Desai were interned following the Quit India movement."
+        "notes": "Italian-arched 1892 palace where Mahatma Gandhi, Kasturba Gandhi, and Mahadev Desai were interned following the Quit India movement.",
+        "kind": "place"
       },
       {
         "title": "FC Road food walk & Puneri misal pav",
@@ -5868,7 +6071,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Fergusson%20College%20Rd%2C%20Pune",
-        "notes": "Taste fiery Puneri misal pav topped with farsan, legendary bun muska and chai at Cafe Goodluck (est. 1935), and Vaishali filter coffee."
+        "notes": "Taste fiery Puneri misal pav topped with farsan, legendary bun muska and chai at Cafe Goodluck (est. 1935), and Vaishali filter coffee.",
+        "kind": "activity"
       },
       {
         "title": "Sinhagad Fort sunset excursion",
@@ -5891,7 +6095,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sinhagad%20Fort%2C%20Pune",
-        "notes": "Climb the historic 'Lion's Fort' captured by Tanaji Malusare in 1670; enjoy pithla bhakri, kanda bhaji, and valley breezes."
+        "notes": "Climb the historic 'Lion's Fort' captured by Tanaji Malusare in 1670; enjoy pithla bhakri, kanda bhaji, and valley breezes.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -5939,7 +6144,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ellora%20Caves%2C%20Aurangabad",
-        "notes": "UNESCO World Heritage marvel with 34 monasteries and temples, headlined by the colossal monolithic Kailasa temple carved top-down from a single rock."
+        "notes": "UNESCO World Heritage marvel with 34 monasteries and temples, headlined by the colossal monolithic Kailasa temple carved top-down from a single rock.",
+        "kind": "place"
       },
       {
         "title": "Grishneshwar Jyotirlinga Temple",
@@ -5962,7 +6168,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Grishneshwar%20Jyotirlinga%2C%20Aurangabad",
-        "notes": "The 12th and final Jyotirlinga shrine of Lord Shiva, built of red volcanic rock with ornate 5-tier shikhara, adjacent to Ellora."
+        "notes": "The 12th and final Jyotirlinga shrine of Lord Shiva, built of red volcanic rock with ornate 5-tier shikhara, adjacent to Ellora.",
+        "kind": "place"
       },
       {
         "title": "Daulatabad (Devagiri) Fort",
@@ -5985,7 +6192,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Daulatabad%20Fort%2C%20Aurangabad",
-        "notes": "Impregnable 12th-century hill citadel featuring a crocodile-infested moat, dark subterranean maze (Andhari), and the 110-foot Chand Minar."
+        "notes": "Impregnable 12th-century hill citadel featuring a crocodile-infested moat, dark subterranean maze (Andhari), and the 110-foot Chand Minar.",
+        "kind": "place"
       },
       {
         "title": "Bibi Ka Maqbara (Taj of the Deccan)",
@@ -6007,7 +6215,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bibi%20Ka%20Maqbara%2C%20Aurangabad",
-        "notes": "17th-century marble mausoleum built by Prince Azam Shah for his mother Dilras Banu Begum, closely resembling the iconic Taj Mahal."
+        "notes": "17th-century marble mausoleum built by Prince Azam Shah for his mother Dilras Banu Begum, closely resembling the iconic Taj Mahal.",
+        "kind": "place"
       },
       {
         "title": "Naan Qalia & Himroo shawl shopping",
@@ -6033,7 +6242,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Aurangabad%20Naan%20Qalia",
-        "notes": "Taste Aurangabad's historic royal dish: tandoor-baked naan served with aromatic mutton qalia curry, and browse Persian-influenced Himroo weaves."
+        "notes": "Taste Aurangabad's historic royal dish: tandoor-baked naan served with aromatic mutton qalia curry, and browse Persian-influenced Himroo weaves.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -6082,7 +6292,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sabarmati%20Ashram%2C%20Ahmedabad",
-        "notes": "The headquarters of Mahatma Gandhi during India's independence movement; tour Hriday Kunj cottage, charkha exhibits, and tranquil riverfront gardens."
+        "notes": "The headquarters of Mahatma Gandhi during India's independence movement; tour Hriday Kunj cottage, charkha exhibits, and tranquil riverfront gardens.",
+        "kind": "place"
       },
       {
         "title": "Adalaj Stepwell (Rudabai Stepwell)",
@@ -6105,7 +6316,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Adalaj%20Stepwell%2C%20Ahmedabad",
-        "notes": "Spectacular five-storey underground Solanki stepwell built in 1498 with octagonal landings, carved stone friezes, and cooling subterranean shafts."
+        "notes": "Spectacular five-storey underground Solanki stepwell built in 1498 with octagonal landings, carved stone friezes, and cooling subterranean shafts.",
+        "kind": "place"
       },
       {
         "title": "Sidi Saiyyed Mosque & Tree of Life lattice",
@@ -6127,7 +6339,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sidi%20Saiyyed%20Mosque%2C%20Ahmedabad",
-        "notes": "1573 mosque celebrated worldwide for its ten semi-circular arched stone windows carved with delicate intertwined 'Tree of Life' jali screens."
+        "notes": "1573 mosque celebrated worldwide for its ten semi-circular arched stone windows carved with delicate intertwined 'Tree of Life' jali screens.",
+        "kind": "place"
       },
       {
         "title": "Gujarati thali lunch at Agashiye",
@@ -6156,7 +6369,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Agashiye%2C%20Ahmedabad",
-        "notes": "Lavish traditional Gujarati banquet served in bronze kansa thalis: dhokla, khandvi, undhiyu, kadhi, rotlis with pure ghee, and mango aamras."
+        "notes": "Lavish traditional Gujarati banquet served in bronze kansa thalis: dhokla, khandvi, undhiyu, kadhi, rotlis with pure ghee, and mango aamras.",
+        "kind": "activity"
       },
       {
         "title": "Manek Chowk night street food market",
@@ -6186,7 +6400,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Manek%20Chowk%2C%20Ahmedabad",
-        "notes": "Historic square that transforms into an open-air food carnival at dusk: chocolate cheese sandwiches, pav bhaji, kulfi, and jalebi fafda."
+        "notes": "Historic square that transforms into an open-air food carnival at dusk: chocolate cheese sandwiches, pav bhaji, kulfi, and jalebi fafda.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -6256,7 +6471,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Great%20Rann%20of%20Kutch",
-        "notes": "Endless crystalline white salt flats glowing violet and crimson under the desert sunset, magical during Rann Utsav full moon nights."
+        "notes": "Endless crystalline white salt flats glowing violet and crimson under the desert sunset, magical during Rann Utsav full moon nights.",
+        "kind": "place"
       },
       {
         "title": "Kalo Dungar (Black Hill) & Dattatreya Temple",
@@ -6279,7 +6495,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kalo%20Dungar%2C%20Kutch",
-        "notes": "Highest point in Kutch (462 m) offering panoramic vistas over the border and salt marsh, with daily jackal feeding at the 400-year-old temple."
+        "notes": "Highest point in Kutch (462 m) offering panoramic vistas over the border and salt marsh, with daily jackal feeding at the 400-year-old temple.",
+        "kind": "place"
       },
       {
         "title": "Bhujodi artisan craft village",
@@ -6301,7 +6518,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhujodi%2C%20Kutch",
-        "notes": "Meet national award-winning weavers, bandhani tie-dye artisans, Rogan art painters, and bell-makers in their traditional workshops."
+        "notes": "Meet national award-winning weavers, bandhani tie-dye artisans, Rogan art painters, and bell-makers in their traditional workshops.",
+        "kind": "activity"
       },
       {
         "title": "Aina Mahal & Prag Mahal palaces, Bhuj",
@@ -6323,7 +6541,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Aina%20Mahal%2C%20Bhuj",
-        "notes": "18th-century Palace of Mirrors crafted with Venetian glass chandeliers and Dutch Delft tiles alongside Gothic Prag Mahal's 45-meter clock tower."
+        "notes": "18th-century Palace of Mirrors crafted with Venetian glass chandeliers and Dutch Delft tiles alongside Gothic Prag Mahal's 45-meter clock tower.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -6373,7 +6592,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dwarkadhish%20Temple%2C%20Dwarka",
-        "notes": "2,200-year-old 5-storey sandstone shrine supported by 72 carved pillars, hoisting the grand 52-yard sacred flag changing five times daily."
+        "notes": "2,200-year-old 5-storey sandstone shrine supported by 72 carved pillars, hoisting the grand 52-yard sacred flag changing five times daily.",
+        "kind": "place"
       },
       {
         "title": "Bet Dwarka island ferry",
@@ -6397,7 +6617,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bet%20Dwarka",
-        "notes": "Take a scenic boat ride across the gulf to the island where Lord Krishna is believed to have lived and met his friend Sudama."
+        "notes": "Take a scenic boat ride across the gulf to the island where Lord Krishna is believed to have lived and met his friend Sudama.",
+        "kind": "place"
       },
       {
         "title": "Nageshwar Jyotirlinga Temple",
@@ -6420,7 +6641,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nageshwar%20Jyotirlinga%2C%20Dwarka",
-        "notes": "One of the 12 sacred Jyotirlingas, featuring a revered underground sanctum and an imposing 80-foot seated statue of Lord Shiva."
+        "notes": "One of the 12 sacred Jyotirlingas, featuring a revered underground sanctum and an imposing 80-foot seated statue of Lord Shiva.",
+        "kind": "place"
       },
       {
         "title": "Gomti Ghat sunset & Sudama Setu walk",
@@ -6443,7 +6665,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gomti%20Ghat%2C%20Dwarka",
-        "notes": "Sacred river confluence where the Gomti meets the Arabian Sea; stroll across Sudama Setu bridge as temple evening bells ring out."
+        "notes": "Sacred river confluence where the Gomti meets the Arabian Sea; stroll across Sudama Setu bridge as temple evening bells ring out.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -6512,7 +6735,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Somnath%20Temple",
-        "notes": "Majestic seaside temple rebuilt in Chalukyan style, celebrated in Hindu scripture as the Eternal Shrine surviving repeated invasions."
+        "notes": "Majestic seaside temple rebuilt in Chalukyan style, celebrated in Hindu scripture as the Eternal Shrine surviving repeated invasions.",
+        "kind": "place"
       },
       {
         "title": "Bhalka Tirth & Dehotsarg Tirth",
@@ -6536,7 +6760,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhalka%20Tirth%2C%20Somnath",
-        "notes": "Sacred spot where Lord Krishna was wounded by an arrow, and Triveni Ghat confluence where he concluded his earthly avatar."
+        "notes": "Sacred spot where Lord Krishna was wounded by an arrow, and Triveni Ghat confluence where he concluded his earthly avatar.",
+        "kind": "place"
       },
       {
         "title": "Triveni Sangam & Somnath Beach walk",
@@ -6559,7 +6784,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Somnath%20Beach",
-        "notes": "Confluence of three holy rivers Hiran, Kapila, and Saraswati into the ocean, marked by the ancient Banastambha arrow pillar."
+        "notes": "Confluence of three holy rivers Hiran, Kapila, and Saraswati into the ocean, marked by the ancient Banastambha arrow pillar.",
+        "kind": "place"
       },
       {
         "title": "Somnath Temple Sound & Light show (Jay Somnath)",
@@ -6582,7 +6808,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Somnath%20Light%20and%20Sound",
-        "notes": "Spectacular laser and voiceover show against illuminated temple towers narrating the destruction and glorious rebirth of the shrine."
+        "notes": "Spectacular laser and voiceover show against illuminated temple towers narrating the destruction and glorious rebirth of the shrine.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -6627,7 +6854,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gwalior%20Fort",
-        "notes": "The 'Pearl of Indian Fortresses' with turquoise-and-yellow glazed tilework, carved courtyards, and deep circular baolis."
+        "notes": "The 'Pearl of Indian Fortresses' with turquoise-and-yellow glazed tilework, carved courtyards, and deep circular baolis.",
+        "kind": "place"
       },
       {
         "title": "Saas Bahu Temples & Teli Ka Mandir",
@@ -6651,7 +6879,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Saas%20Bahu%20Temples%2C%20Gwalior",
-        "notes": "11th-century twin temples dedicated to Vishnu with intricate stone carvings, beside the 100-foot tall Dravidian-shikhara Teli Ka Mandir."
+        "notes": "11th-century twin temples dedicated to Vishnu with intricate stone carvings, beside the 100-foot tall Dravidian-shikhara Teli Ka Mandir.",
+        "kind": "place"
       },
       {
         "title": "Jai Vilas Palace & Scindia Museum",
@@ -6673,7 +6902,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jai%20Vilas%20Palace%2C%20Gwalior",
-        "notes": "Grand European-style palace featuring the world's largest crystal chandeliers in the Durbar Hall and a silver banquet train serving cigars and wine."
+        "notes": "Grand European-style palace featuring the world's largest crystal chandeliers in the Durbar Hall and a silver banquet train serving cigars and wine.",
+        "kind": "place"
       },
       {
         "title": "Tomb of Tansen & Gwalior namkeen",
@@ -6701,7 +6931,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tomb%20of%20Tansen%2C%20Gwalior",
-        "notes": "Pay homage to Mughal court music legend Mian Tansen under the sacred tamarind tree, followed by crispy bedai kachori and poha."
+        "notes": "Pay homage to Mughal court music legend Mian Tansen under the sacred tamarind tree, followed by crispy bedai kachori and poha.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -6746,7 +6977,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Orchha%20Fort",
-        "notes": "Grand citadel on an island in the Betwa River; explore Jahangir Mahal with tiered balconies, Raja Mahal murals, and Sheesh Mahal."
+        "notes": "Grand citadel on an island in the Betwa River; explore Jahangir Mahal with tiered balconies, Raja Mahal murals, and Sheesh Mahal.",
+        "kind": "place"
       },
       {
         "title": "Ram Raja Temple darshan & guard of honour",
@@ -6770,7 +7002,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ram%20Raja%20Temple%2C%20Orchha",
-        "notes": "The only temple in India where Lord Rama is worshipped as a reigning monarch, complete with daily police rifle gun salutes."
+        "notes": "The only temple in India where Lord Rama is worshipped as a reigning monarch, complete with daily police rifle gun salutes.",
+        "kind": "place"
       },
       {
         "title": "Chaturbhuj Temple & spire climb",
@@ -6793,7 +7026,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chaturbhuj%20Temple%2C%20Orchha",
-        "notes": "Colossal multi-storey cathedral-like stone temple with soaring conical spires; climb narrow dark stairs for panoramic roof views."
+        "notes": "Colossal multi-storey cathedral-like stone temple with soaring conical spires; climb narrow dark stairs for panoramic roof views.",
+        "kind": "place"
       },
       {
         "title": "Chhatris (Royal Cenotaphs) on Betwa River sunset",
@@ -6816,7 +7050,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chhatris%2C%20Orchha",
-        "notes": "Fourteen grand stone cenotaphs of Bundela kings reflected in the calm waters of the Betwa River at sunset, popular for vulture nesting."
+        "notes": "Fourteen grand stone cenotaphs of Bundela kings reflected in the calm waters of the Betwa River at sunset, popular for vulture nesting.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -6863,7 +7098,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhimbetka%2C%20Bhopal",
-        "notes": "UNESCO World Heritage site with 750+ prehistoric sandstone rock shelters exhibiting 30,000-year-old Paleolithic hunting paintings."
+        "notes": "UNESCO World Heritage site with 750+ prehistoric sandstone rock shelters exhibiting 30,000-year-old Paleolithic hunting paintings.",
+        "kind": "place"
       },
       {
         "title": "Taj-ul-Masajid (Crown Among Mosques)",
@@ -6886,7 +7122,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Taj%20ul%20Masajid%2C%20Bhopal",
-        "notes": "One of Asia's largest mosques, featuring pink facade, three bulbous marble domes, 18-storey minarets, and an enormous courtyard."
+        "notes": "One of Asia's largest mosques, featuring pink facade, three bulbous marble domes, 18-storey minarets, and an enormous courtyard.",
+        "kind": "place"
       },
       {
         "title": "Tribal Museum & Bharat Bhavan",
@@ -6908,7 +7145,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tribal%20Museum%2C%20Bhopal",
-        "notes": "Visionary museum recreating the indigenous life, myths, and thatched bamboo dwellings of Gond, Bhil, and Baiga tribal communities."
+        "notes": "Visionary museum recreating the indigenous life, myths, and thatched bamboo dwellings of Gond, Bhil, and Baiga tribal communities.",
+        "kind": "place"
       },
       {
         "title": "Upper Lake (Bhojtal) cruise & VIP road sunset",
@@ -6930,7 +7168,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Upper%20Lake%2C%20Bhopal",
-        "notes": "Asia's oldest man-made lake built by Raja Bhoj in the 11th century; enjoy motorboat rides and evening tea with poha jalebi."
+        "notes": "Asia's oldest man-made lake built by Raja Bhoj in the 11th century; enjoy motorboat rides and evening tea with poha jalebi.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -6980,7 +7219,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rajwada%20Palace%2C%20Indore",
-        "notes": "Seven-storey historic Holkar palace blending Maratha, Mughal, and French styles, followed by blessings at the wish-fulfilling Khajrana temple."
+        "notes": "Seven-storey historic Holkar palace blending Maratha, Mughal, and French styles, followed by blessings at the wish-fulfilling Khajrana temple.",
+        "kind": "place"
       },
       {
         "title": "Lal Bagh Palace & French gardens",
@@ -7002,7 +7242,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lal%20Bagh%20Palace%2C%20Indore",
-        "notes": "Opulent 19th-century royal palace with gates modeled on Buckingham Palace, Italian marble columns, and Belgian stained glass."
+        "notes": "Opulent 19th-century royal palace with gates modeled on Buckingham Palace, Italian marble columns, and Belgian stained glass.",
+        "kind": "place"
       },
       {
         "title": "Chappan Dukan street food trail",
@@ -7031,7 +7272,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chappan%20Dukan%2C%20Indore",
-        "notes": "Famous 56-shop clean food street: Indori poha with sev & jeeravan, crispy khopra patties, hot bhutte ka kees, and shikanji."
+        "notes": "Famous 56-shop clean food street: Indori poha with sev & jeeravan, crispy khopra patties, hot bhutte ka kees, and shikanji.",
+        "kind": "activity"
       },
       {
         "title": "Sarafa Bazaar midnight jewelry market feast",
@@ -7061,7 +7303,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sarafa%20Bazaar%2C%20Indore",
-        "notes": "Daytime jewelry market that transforms into a legendary midnight street food festival serving dahi vada, garadu, jaleba, and rabdi."
+        "notes": "Daytime jewelry market that transforms into a legendary midnight street food festival serving dahi vada, garadu, jaleba, and rabdi.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -7131,7 +7374,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jagannath%20Temple%2C%20Puri",
-        "notes": "Revered 12th-century Kalinga-style temple of Lord Jagannath, Balabhadra, and Subhadra; taste sacred earthen-pot cooked Chhapan Bhog."
+        "notes": "Revered 12th-century Kalinga-style temple of Lord Jagannath, Balabhadra, and Subhadra; taste sacred earthen-pot cooked Chhapan Bhog.",
+        "kind": "place"
       },
       {
         "title": "Golden Beach (Puri Beach) sunrise & sand art",
@@ -7154,7 +7398,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Puri%20Beach",
-        "notes": "Blue Flag certified beach with golden sands and rolling Bay of Bengal surf, featuring Sudarsan Pattnaik sand art sculptures."
+        "notes": "Blue Flag certified beach with golden sands and rolling Bay of Bengal surf, featuring Sudarsan Pattnaik sand art sculptures.",
+        "kind": "place"
       },
       {
         "title": "Raghurajpur Heritage Craft Village excursion",
@@ -7176,7 +7421,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Raghurajpur%2C%20Puri",
-        "notes": "Artisanal village where every household creates exquisite Pattachitra palm-leaf scroll paintings, tusser silk art, and Gotipua dancers."
+        "notes": "Artisanal village where every household creates exquisite Pattachitra palm-leaf scroll paintings, tusser silk art, and Gotipua dancers.",
+        "kind": "activity"
       },
       {
         "title": "Chilika Lake (Satapada) dolphin boat safari",
@@ -7198,7 +7444,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Satapada%2C%20Chilika",
-        "notes": "Boat cruise on Asia's largest brackish lagoon to spot rare playful Irrawaddy dolphins and migratory water birds."
+        "notes": "Boat cruise on Asia's largest brackish lagoon to spot rare playful Irrawaddy dolphins and migratory water birds.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -7249,7 +7496,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lingaraja%20Temple%2C%20Bhubaneswar",
-        "notes": "Majestic 11th-century Kalinga-style sandstone temple dedicated to Harihara (Shiva and Vishnu), rising 180 feet in Old Town."
+        "notes": "Majestic 11th-century Kalinga-style sandstone temple dedicated to Harihara (Shiva and Vishnu), rising 180 feet in Old Town.",
+        "kind": "place"
       },
       {
         "title": "Mukteshwar & Rajarani Temples",
@@ -7273,7 +7521,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mukteshwar%20Temple%2C%20Bhubaneswar",
-        "notes": "The 'Gem of Odisha Architecture' celebrated for its arched torana gateway, beside the warm-toned Rajarani 'love temple'."
+        "notes": "The 'Gem of Odisha Architecture' celebrated for its arched torana gateway, beside the warm-toned Rajarani 'love temple'.",
+        "kind": "place"
       },
       {
         "title": "Udayagiri & Khandagiri rock-cut caves",
@@ -7296,7 +7545,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Udayagiri%20Caves%2C%20Bhubaneswar",
-        "notes": "Ancient 2nd-century BCE Jain cave dwellings with Hathigumpha Brahmi inscriptions, Rani Gumpha double-decked carvings, and hilltop views."
+        "notes": "Ancient 2nd-century BCE Jain cave dwellings with Hathigumpha Brahmi inscriptions, Rani Gumpha double-decked carvings, and hilltop views.",
+        "kind": "place"
       },
       {
         "title": "Dhauli Shanti Stupa & Ashokan edicts",
@@ -7319,7 +7569,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dhauli%20Shanti%20Stupa%2C%20Bhubaneswar",
-        "notes": "White Peace Pagoda built atop the Daya river hills where Emperor Ashoka renounced warfare after the historic Kalinga War."
+        "notes": "White Peace Pagoda built atop the Daya river hills where Emperor Ashoka renounced warfare after the historic Kalinga War.",
+        "kind": "place"
       },
       {
         "title": "Odia thali & chhena poda feast",
@@ -7346,7 +7597,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhubaneswar%20Odia%20Thali",
-        "notes": "Traditional Odia meal with dalma (lentil-vegetable stew), besara, machha besara, followed by caramelized roasted cottage cheese Chhena Poda."
+        "notes": "Traditional Odia meal with dalma (lentil-vegetable stew), besara, machha besara, followed by caramelized roasted cottage cheese Chhena Poda.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -7394,7 +7646,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Konark%20Sun%20Temple",
-        "notes": "Colossal 13th-century chariot of Surya with 24 intricately sculpted sundial wheels pulled by seven horses, a pinnacle of Kalinga sculpture."
+        "notes": "Colossal 13th-century chariot of Surya with 24 intricately sculpted sundial wheels pulled by seven horses, a pinnacle of Kalinga sculpture.",
+        "kind": "place"
       },
       {
         "title": "Konark Archaeological Museum & Natya Mandap",
@@ -7416,7 +7669,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Konark%20Museum",
-        "notes": "Exhibits of fallen master sculptures, musicians, celestial dancers, and historical reconstruction models of the grand original shikhara."
+        "notes": "Exhibits of fallen master sculptures, musicians, celestial dancers, and historical reconstruction models of the grand original shikhara.",
+        "kind": "place"
       },
       {
         "title": "Chandrabhaga Beach sunset & water sports",
@@ -7438,7 +7692,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chandrabhaga%20Beach%2C%20Konark",
-        "notes": "Pristine Blue Flag golden beach where myth says Sambha was cured by praying to the Sun God; enjoy coastal winds and fresh coconut water."
+        "notes": "Pristine Blue Flag golden beach where myth says Sambha was cured by praying to the Sun God; enjoy coastal winds and fresh coconut water.",
+        "kind": "place"
       },
       {
         "title": "Konark Light & Sound Show",
@@ -7460,7 +7715,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Konark%20Light%20and%20Sound",
-        "notes": "Illuminated nighttime show narrating King Narasimhadeva's vision and the courageous sacrifice of young artisan Dharmapada."
+        "notes": "Illuminated nighttime show narrating King Narasimhadeva's vision and the courageous sacrifice of young artisan Dharmapada.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -7508,7 +7764,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kamakhya%20Temple%2C%20Guwahati",
-        "notes": "One of the oldest and most revered 51 Shakti Peethas in India, celebrating feminine divinity and the Tantric Ambubachi Mela."
+        "notes": "One of the oldest and most revered 51 Shakti Peethas in India, celebrating feminine divinity and the Tantric Ambubachi Mela.",
+        "kind": "place"
       },
       {
         "title": "Umananda Island Temple & Peacock Island",
@@ -7531,7 +7788,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Umananda%20Temple%2C%20Guwahati",
-        "notes": "Ferry across to the world's smallest inhabited river island in the Brahmaputra, housing a 17th-century Shiva shrine and golden langurs."
+        "notes": "Ferry across to the world's smallest inhabited river island in the Brahmaputra, housing a 17th-century Shiva shrine and golden langurs.",
+        "kind": "place"
       },
       {
         "title": "Assam State Museum & Srimanta Sankaradev Kalakshetra",
@@ -7553,7 +7811,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sankaradev%20Kalakshetra%2C%20Guwahati",
-        "notes": "Expansive cultural complex showcasing tribal ethnic dance, bamboo crafts, Ahom weaponry, and traditional Assamese handlooms."
+        "notes": "Expansive cultural complex showcasing tribal ethnic dance, bamboo crafts, Ahom weaponry, and traditional Assamese handlooms.",
+        "kind": "place"
       },
       {
         "title": "Assamese thali with masor tenga lunch",
@@ -7578,7 +7837,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Guwahati%20Assamese%20Thali",
-        "notes": "Authentic Khaar, tangy river fish curry (Masor Tenga) with elephant apple, pitika mashed potatoes, black rice kheer, and Assam orthodox tea."
+        "notes": "Authentic Khaar, tangy river fish curry (Masor Tenga) with elephant apple, pitika mashed potatoes, black rice kheer, and Assam orthodox tea.",
+        "kind": "activity"
       },
       {
         "title": "Brahmaputra Sunset River Cruise",
@@ -7601,7 +7861,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Brahmaputra%20Cruise%2C%20Guwahati",
-        "notes": "Scenic cruise aboard river steamer on the mighty Brahmaputra with folk Bihu music and breathtaking sunset reflections."
+        "notes": "Scenic cruise aboard river steamer on the mighty Brahmaputra with folk Bihu music and breathtaking sunset reflections.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -7648,7 +7909,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Umiam%20Lake%2C%20Shillong",
-        "notes": "Expansive reservoir surrounded by lush Khasi pine hills, offering kayaking, speed boating, and serene morning panoramas."
+        "notes": "Expansive reservoir surrounded by lush Khasi pine hills, offering kayaking, speed boating, and serene morning panoramas.",
+        "kind": "place"
       },
       {
         "title": "Elephant Falls tiered cascades",
@@ -7670,7 +7932,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Elephant%20Falls%2C%20Shillong",
-        "notes": "Three-tiered mountain waterfall named after an elephant-shaped rock, set inside lush fern and moss-covered rainforest ravines."
+        "notes": "Three-tiered mountain waterfall named after an elephant-shaped rock, set inside lush fern and moss-covered rainforest ravines.",
+        "kind": "place"
       },
       {
         "title": "Don Bosco Centre for Indigenous Cultures",
@@ -7692,7 +7955,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Don%20Bosco%20Museum%2C%20Shillong",
-        "notes": "Seven-storey hexagonal museum dedicated to Northeast India's diverse tribal heritage, weapons, costumes, with a panoramic rooftop skywalk."
+        "notes": "Seven-storey hexagonal museum dedicated to Northeast India's diverse tribal heritage, weapons, costumes, with a panoramic rooftop skywalk.",
+        "kind": "place"
       },
       {
         "title": "Ward's Lake & Police Bazar street food",
@@ -7719,7 +7983,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Police%20Bazar%2C%20Shillong",
-        "notes": "Feed ducks around colonial horseshoe-shaped Ward's Lake, then browse lively Police Bazar for Khasi Jadoh, momos, and boutique cafes."
+        "notes": "Feed ducks around colonial horseshoe-shaped Ward's Lake, then browse lively Police Bazar for Khasi Jadoh, momos, and boutique cafes.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -7763,7 +8028,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Double%20Decker%20Living%20Root%20Bridge",
-        "notes": "Hike down 3,500 stone steps into subtropical river canyons to cross bio-engineered living rubber-tree root bridges that have stood for centuries."
+        "notes": "Hike down 3,500 stone steps into subtropical river canyons to cross bio-engineered living rubber-tree root bridges that have stood for centuries.",
+        "kind": "place"
       },
       {
         "title": "Nohkalikai Falls viewpoint",
@@ -7785,7 +8051,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nohkalikai%20Falls%2C%20Cherrapunji",
-        "notes": "India's tallest plunge waterfall (1,115 ft), dropping dramatically over sheer red cliffs into an emerald pool amid mist-shrouded gorges."
+        "notes": "India's tallest plunge waterfall (1,115 ft), dropping dramatically over sheer red cliffs into an emerald pool amid mist-shrouded gorges.",
+        "kind": "place"
       },
       {
         "title": "Mawsmai Cave limestone exploration",
@@ -7807,7 +8074,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mawsmai%20Cave%2C%20Cherrapunji",
-        "notes": "Lit subterranean natural limestone cave featuring stalactite and stalagmite formations, narrow crawl passages, and fossilized sea life."
+        "notes": "Lit subterranean natural limestone cave featuring stalactite and stalagmite formations, narrow crawl passages, and fossilized sea life.",
+        "kind": "place"
       },
       {
         "title": "Seven Sisters Falls & Wei Sawdong Falls",
@@ -7829,7 +8097,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Seven%20Sisters%20Falls%2C%20Cherrapunji",
-        "notes": "Seven segmented waterfall plunging down limestone cliffs across the Bangladesh plains, and three-tiered emerald pools of Wei Sawdong."
+        "notes": "Seven segmented waterfall plunging down limestone cliffs across the Bangladesh plains, and three-tiered emerald pools of Wei Sawdong.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -7903,7 +8172,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tawang%20Monastery",
-        "notes": "The largest monastery in India founded in 1680, perched at 10,000 ft with a 28-foot gilded Buddha, scripture library, and chanting lamas."
+        "notes": "The largest monastery in India founded in 1680, perched at 10,000 ft with a 28-foot gilded Buddha, scripture library, and chanting lamas.",
+        "kind": "place"
       },
       {
         "title": "Sela Pass & frozen Sela Lake",
@@ -7925,7 +8195,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sela%20Pass%2C%20Tawang",
-        "notes": "High mountain pass at 13,700 ft adorned with colorful prayer flags, flanked by the pristine sacred Sela Lake surrounded by snow."
+        "notes": "High mountain pass at 13,700 ft adorned with colorful prayer flags, flanked by the pristine sacred Sela Lake surrounded by snow.",
+        "kind": "place"
       },
       {
         "title": "Madhuri (Sangetsar) Lake & Bum La Pass excursion",
@@ -7947,7 +8218,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Madhuri%20Lake%2C%20Tawang",
-        "notes": "High-altitude lake created by an earthquake, famous for dead tree trunks rising from turquoise waters framed by snowy Himalayan peaks."
+        "notes": "High-altitude lake created by an earthquake, famous for dead tree trunks rising from turquoise waters framed by snowy Himalayan peaks.",
+        "kind": "place"
       },
       {
         "title": "Tawang War Memorial light ceremony",
@@ -7969,7 +8241,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tawang%20War%20Memorial",
-        "notes": "Stupa-shaped memorial honoring Indian Army martyrs of the 1962 Sino-Indian War, with evening patriotic audio-visual presentation."
+        "notes": "Stupa-shaped memorial honoring Indian Army martyrs of the 1962 Sino-Indian War, with evening patriotic audio-visual presentation.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -8042,7 +8315,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rumtek%20Monastery%2C%20Gangtok",
-        "notes": "The seat of the Karmapa of the Black Hat sect, housing priceless Tibetan golden stupas, thangka paintings, and monastic ritual courtyards."
+        "notes": "The seat of the Karmapa of the Black Hat sect, housing priceless Tibetan golden stupas, thangka paintings, and monastic ritual courtyards.",
+        "kind": "place"
       },
       {
         "title": "Tsomgo (Changu) Lake & Baba Mandir excursion",
@@ -8065,7 +8339,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tsomgo%20Lake%2C%20Sikkim",
-        "notes": "Glacial alpine lake at 12,310 ft changing color with the seasons; ride adorned yaks and visit the shrine of soldier Baba Harbhajan Singh."
+        "notes": "Glacial alpine lake at 12,310 ft changing color with the seasons; ride adorned yaks and visit the shrine of soldier Baba Harbhajan Singh.",
+        "kind": "place"
       },
       {
         "title": "Namgyal Institute of Tibetology & Do Drul Chorten",
@@ -8087,7 +8362,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Namgyal%20Institute%20of%20Tibetology%2C%20Gangtok",
-        "notes": "Leading Tibetan research museum displaying 11th-century palm-leaf manuscripts and sandalwood figurines, beside the 108 prayer-wheel stupa."
+        "notes": "Leading Tibetan research museum displaying 11th-century palm-leaf manuscripts and sandalwood figurines, beside the 108 prayer-wheel stupa.",
+        "kind": "place"
       },
       {
         "title": "MG Marg pedestrian promenade & Sikkimese dinner",
@@ -8115,7 +8391,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=MG%20Marg%2C%20Gangtok",
-        "notes": "Litter-free, vehicle-free paved boulevard with flower gardens, statues, cafes, hot pork or cheese momos, thukpa, and fermented millet tongba."
+        "notes": "Litter-free, vehicle-free paved boulevard with flower gardens, statues, cafes, hot pork or cheese momos, thukpa, and fermented millet tongba.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -8163,7 +8440,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pemayangtse%20Monastery%2C%20Pelling",
-        "notes": "One of Sikkim's oldest Nyingma Buddhist monasteries (1705), housing the famed seven-tiered hand-carved wooden model of Sangtokpalri."
+        "notes": "One of Sikkim's oldest Nyingma Buddhist monasteries (1705), housing the famed seven-tiered hand-carved wooden model of Sangtokpalri.",
+        "kind": "place"
       },
       {
         "title": "Rabdentse Ruins & Bird Sanctuary",
@@ -8186,7 +8464,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rabdentse%20Ruins%2C%20Pelling",
-        "notes": "Walk through mossy chestnut forests to the dramatic stone ruins of the 17th-century second capital of the Kingdom of Sikkim overlooking valleys."
+        "notes": "Walk through mossy chestnut forests to the dramatic stone ruins of the 17th-century second capital of the Kingdom of Sikkim overlooking valleys.",
+        "kind": "place"
       },
       {
         "title": "Pelling Glass Skywalk & Chenrezig Colossus",
@@ -8209,7 +8488,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pelling%20Skywalk",
-        "notes": "India's first glass skywalk perched on a mountain ridge offering thrilling valley drop views below and the 137-foot golden Chenrezig statue."
+        "notes": "India's first glass skywalk perched on a mountain ridge offering thrilling valley drop views below and the 137-foot golden Chenrezig statue.",
+        "kind": "place"
       },
       {
         "title": "Khecheopalri Lake (Wish-Fulfilling Sacred Lake)",
@@ -8232,7 +8512,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Khecheopalri%20Lake%2C%20Pelling",
-        "notes": "Sacred lake holy to both Buddhists and Hindus, nestled in dense forests where legend holds that birds swiftly pick any leaf that drops in the water."
+        "notes": "Sacred lake holy to both Buddhists and Hindus, nestled in dense forests where legend holds that birds swiftly pick any leaf that drops in the water.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -8278,7 +8559,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kaziranga%20Elephant%20Safari",
-        "notes": "Ride through early mist in tall elephant grass to view armor-plated Indian rhinos grazing peacefully alongside wild water buffalo."
+        "notes": "Ride through early mist in tall elephant grass to view armor-plated Indian rhinos grazing peacefully alongside wild water buffalo.",
+        "kind": "activity"
       },
       {
         "title": "Jeep Safari in Western (Bagori) Range",
@@ -8300,7 +8582,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kaziranga%20Jeep%20Safari",
-        "notes": "Open jeep safari tracking Royal Bengal tigers, swamp deer (barasingha), herds of wild Asian elephants, and thousands of migratory pelicans."
+        "notes": "Open jeep safari tracking Royal Bengal tigers, swamp deer (barasingha), herds of wild Asian elephants, and thousands of migratory pelicans.",
+        "kind": "activity"
       },
       {
         "title": "Kaziranga National Orchid and Biodiversity Park",
@@ -8323,7 +8606,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kaziranga%20Orchid%20Park",
-        "notes": "Vast greenhouse showcasing 500+ wild indigenous Himalayan orchid species, ethnic rice varieties, medicinal herbs, and Bihu dance."
+        "notes": "Vast greenhouse showcasing 500+ wild indigenous Himalayan orchid species, ethnic rice varieties, medicinal herbs, and Bihu dance.",
+        "kind": "place"
       },
       {
         "title": "Hathikuli Tea Estate stroll & Assam tea tasting",
@@ -8351,7 +8635,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hathikuli%20Tea%20Estate%2C%20Kaziranga",
-        "notes": "Visit the certified organic tea plantation bordering the park and taste strong, malty orthodox Assam black and green tea."
+        "notes": "Visit the certified organic tea plantation bordering the park and taste strong, malty orthodox Assam black and green tea.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -8399,7 +8684,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tsuglagkhang%20Complex%2C%20McLeod%20Ganj",
-        "notes": "The spiritual heart of Little Lhasa; spin the brass prayer wheels, observe monks in philosophical debate, and visit the Tibet Museum."
+        "notes": "The spiritual heart of Little Lhasa; spin the brass prayer wheels, observe monks in philosophical debate, and visit the Tibet Museum.",
+        "kind": "place"
       },
       {
         "title": "Bhagsunag Temple & Bhagsu Waterfall hike",
@@ -8422,7 +8708,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhagsu%20Waterfall%2C%20Dharamshala",
-        "notes": "Ancient Shiva temple with holy freshwater pools, leading up a stepped trail to a roaring 20-meter mountain waterfall and Shiva Cafe."
+        "notes": "Ancient Shiva temple with holy freshwater pools, leading up a stepped trail to a roaring 20-meter mountain waterfall and Shiva Cafe.",
+        "kind": "place"
       },
       {
         "title": "HPCA Cricket Stadium, Dharamshala",
@@ -8444,7 +8731,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=HPCA%20Stadium%2C%20Dharamshala",
-        "notes": "One of the world's most scenic cricket stadiums at 4,780 ft with traditional Tibetan architectural roofs set against snowy Dhauladhar peaks."
+        "notes": "One of the world's most scenic cricket stadiums at 4,780 ft with traditional Tibetan architectural roofs set against snowy Dhauladhar peaks.",
+        "kind": "place"
       },
       {
         "title": "Norbulingka Institute Tibetan crafts",
@@ -8466,7 +8754,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Norbulingka%20Institute%2C%20Dharamshala",
-        "notes": "Tranquil oasis dedicated to preserving Tibetan literary and artistic forms: thangka painting, woodcarving, and statue making amidst Japanese water gardens."
+        "notes": "Tranquil oasis dedicated to preserving Tibetan literary and artistic forms: thangka painting, woodcarving, and statue making amidst Japanese water gardens.",
+        "kind": "place"
       },
       {
         "title": "Tibetan momos & Bhagsu cake at McLeod Ganj",
@@ -8492,7 +8781,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=McLeod%20Ganj",
-        "notes": "Indulge in steaming tingmo bread, shapta, thenthuk noodle soup, and the famous local crumbly caramel Bhagsu Cake in bohemian cafes."
+        "notes": "Indulge in steaming tingmo bread, shapta, thenthuk noodle soup, and the famous local crumbly caramel Bhagsu Cake in bohemian cafes.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -8541,7 +8831,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Khajjiar%2C%20Dalhousie",
-        "notes": "Lush saucer-shaped alpine meadow surrounded by dense deodar pine forests, centered around a small lake with zorbing and horse rides."
+        "notes": "Lush saucer-shaped alpine meadow surrounded by dense deodar pine forests, centered around a small lake with zorbing and horse rides.",
+        "kind": "place"
       },
       {
         "title": "Dainkund Peak (Singing Hill) trek",
@@ -8564,7 +8855,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dainkund%20Peak%2C%20Dalhousie",
-        "notes": "Highest point in Dalhousie (9,000 ft) offering breathtaking 360-degree views of the Chenab, Ravi, and Beas river valleys and Pholani Devi temple."
+        "notes": "Highest point in Dalhousie (9,000 ft) offering breathtaking 360-degree views of the Chenab, Ravi, and Beas river valleys and Pholani Devi temple.",
+        "kind": "place"
       },
       {
         "title": "Panchpula waterfall & Sardar Ajit Singh Memorial",
@@ -8587,7 +8879,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Panchpula%2C%20Dalhousie",
-        "notes": "Picturesque spot where five mountain streams unite beneath cascading waterfalls, housing the samadhi of freedom fighter Sardar Ajit Singh."
+        "notes": "Picturesque spot where five mountain streams unite beneath cascading waterfalls, housing the samadhi of freedom fighter Sardar Ajit Singh.",
+        "kind": "place"
       },
       {
         "title": "St. John's & St. Francis Church walk, Gandhi Chowk",
@@ -8609,7 +8902,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gandhi%20Chowk%2C%20Dalhousie",
-        "notes": "Historic 1863 Protestant church with Victorian stained-glass panels, followed by shopping for Kullu shawls and Tibetan prayer flags at Gandhi Chowk."
+        "notes": "Historic 1863 Protestant church with Victorian stained-glass panels, followed by shopping for Kullu shawls and Tibetan prayer flags at Gandhi Chowk.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -8686,7 +8980,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Key%20Monastery%2C%20Spiti",
-        "notes": "Fortress-like 1,000-year-old Gelug monastery perched at 13,668 ft with rare murals, thankas, trumpeting lamas, and Spiti River views."
+        "notes": "Fortress-like 1,000-year-old Gelug monastery perched at 13,668 ft with rare murals, thankas, trumpeting lamas, and Spiti River views.",
+        "kind": "place"
       },
       {
         "title": "Chicham Bridge & Kibber village",
@@ -8708,7 +9003,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chicham%20Bridge%2C%20Spiti",
-        "notes": "Drive across Asia's highest suspension bridge spanning a dizzying 500-foot deep gorge into Kibber, home to snow leopards and ibex."
+        "notes": "Drive across Asia's highest suspension bridge spanning a dizzying 500-foot deep gorge into Kibber, home to snow leopards and ibex.",
+        "kind": "place"
       },
       {
         "title": "Hikkim (World's Highest Post Office) & Komic",
@@ -8731,7 +9027,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hikkim%20Post%20Office%2C%20Spiti",
-        "notes": "Post a postcard home from 14,567 ft at the highest functioning post office in the world, then visit Komic (highest motorable village)."
+        "notes": "Post a postcard home from 14,567 ft at the highest functioning post office in the world, then visit Komic (highest motorable village).",
+        "kind": "place"
       },
       {
         "title": "Dhankar Monastery & cliff-edge fortress",
@@ -8754,7 +9051,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dhankar%20Monastery%2C%20Spiti",
-        "notes": "Ancient capital of Spiti kingdom dramatically balancing on a precarious cliff pinnacle above the confluence of Spiti and Pin rivers."
+        "notes": "Ancient capital of Spiti kingdom dramatically balancing on a precarious cliff pinnacle above the confluence of Spiti and Pin rivers.",
+        "kind": "place"
       },
       {
         "title": "Chandratal Lake (Lake of the Moon) camping",
@@ -8775,7 +9073,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chandratal%20Lake%2C%20Spiti",
-        "notes": "Crescent-shaped high-altitude lake at 14,100 ft reflecting towering brown peaks in shimmering blue and green glacial water."
+        "notes": "Crescent-shaped high-altitude lake at 14,100 ft reflecting towering brown peaks in shimmering blue and green glacial water.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -8825,7 +9124,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ramanathaswamy%20Temple%2C%20Rameswaram",
-        "notes": "Take holy baths in the 22 temple theertham wells before darshan of the Jyotirlinga, admiring the world's longest pillared corridors (1,212 pillars)."
+        "notes": "Take holy baths in the 22 temple theertham wells before darshan of the Jyotirlinga, admiring the world's longest pillared corridors (1,212 pillars).",
+        "kind": "place"
       },
       {
         "title": "Agni Theertham morning holy dip",
@@ -8848,7 +9148,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Agni%20Theertham%2C%20Rameswaram",
-        "notes": "The sacred shoreline of the Bay of Bengal facing the temple where pilgrims take a ceremonial dip to cleanse sins."
+        "notes": "The sacred shoreline of the Bay of Bengal facing the temple where pilgrims take a ceremonial dip to cleanse sins.",
+        "kind": "activity"
       },
       {
         "title": "Dhanushkodi ghost town & Arichal Munai (Ram Setu point)",
@@ -8871,7 +9172,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dhanushkodi",
-        "notes": "Ruins of the church, railway station, and post office destroyed in the 1964 cyclone; stand at India's tip where Bay of Bengal meets the Indian Ocean."
+        "notes": "Ruins of the church, railway station, and post office destroyed in the 1964 cyclone; stand at India's tip where Bay of Bengal meets the Indian Ocean.",
+        "kind": "place"
       },
       {
         "title": "Dr. A.P.J. Abdul Kalam National Memorial",
@@ -8893,7 +9195,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Abdul%20Kalam%20Memorial%2C%20Rameswaram",
-        "notes": "Grand memorial honoring India's 'Missile Man' and President Dr. Kalam, displaying replicas of rockets, missiles, and personal effects."
+        "notes": "Grand memorial honoring India's 'Missile Man' and President Dr. Kalam, displaying replicas of rockets, missiles, and personal effects.",
+        "kind": "place"
       },
       {
         "title": "Pamban Sea Bridge view at sunset",
@@ -8916,7 +9219,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pamban%20Bridge",
-        "notes": "Historic 2-km railway cantilever bridge over the turbulent Palk Strait, where trains seemingly ride on top of the open turquoise sea."
+        "notes": "Historic 2-km railway cantilever bridge over the turbulent Palk Strait, where trains seemingly ride on top of the open turquoise sea.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -8964,7 +9268,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Brihadeeswara%20Temple%2C%20Thanjavur",
-        "notes": "1,000-year-old UNESCO World Heritage Chola granite masterpiece with a 216-foot vimana, single-stone 80-tonne kumbam dome, and monolithic Nandi."
+        "notes": "1,000-year-old UNESCO World Heritage Chola granite masterpiece with a 216-foot vimana, single-stone 80-tonne kumbam dome, and monolithic Nandi.",
+        "kind": "place"
       },
       {
         "title": "Thanjavur Maratha Palace & Bell Tower",
@@ -8986,7 +9291,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thanjavur%20Palace",
-        "notes": "Vast royal palace of Nayak and Maratha rulers featuring the 7-storey arsenal tower, Durbar Hall murals, and the Royal Museum."
+        "notes": "Vast royal palace of Nayak and Maratha rulers featuring the 7-storey arsenal tower, Durbar Hall murals, and the Royal Museum.",
+        "kind": "place"
       },
       {
         "title": "Saraswathi Mahal Library & Art Gallery",
@@ -9008,7 +9314,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Saraswathi%20Mahal%20Library%2C%20Thanjavur",
-        "notes": "One of the oldest libraries in Asia housing 60,000 rare palm-leaf and paper manuscripts, alongside an unparalleled collection of Chola bronzes."
+        "notes": "One of the oldest libraries in Asia housing 60,000 rare palm-leaf and paper manuscripts, alongside an unparalleled collection of Chola bronzes.",
+        "kind": "place"
       },
       {
         "title": "Thanjavur painting & dancing doll workshop",
@@ -9030,7 +9337,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thanjavur%20Painting",
-        "notes": "Watch traditional artisans applying 22-carat gold foil and semi-precious stones to religious paintings, and balancing bobblehead dolls."
+        "notes": "Watch traditional artisans applying 22-carat gold foil and semi-precious stones to religious paintings, and balancing bobblehead dolls.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -9076,7 +9384,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kodaikanal%20Lake",
-        "notes": "Man-made 60-acre star-shaped lake created in 1863; rent bicycles or tandem bikes along the 5-km lake perimeter, or paddle boat."
+        "notes": "Man-made 60-acre star-shaped lake created in 1863; rent bicycles or tandem bikes along the 5-km lake perimeter, or paddle boat.",
+        "kind": "activity"
       },
       {
         "title": "Coaker's Walk & Bryant Park",
@@ -9099,7 +9408,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Coaker's%20Walk%2C%20Kodaikanal",
-        "notes": "One-kilometer paved pedestrian ridge walk carved along steep mountain slopes offering misty vistas of the plains and the Brocken Spectre phenomenon."
+        "notes": "One-kilometer paved pedestrian ridge walk carved along steep mountain slopes offering misty vistas of the plains and the Brocken Spectre phenomenon.",
+        "kind": "place"
       },
       {
         "title": "Pillar Rocks & Guna Caves (Devil's Kitchen)",
@@ -9121,7 +9431,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pillar%20Rocks%2C%20Kodaikanal",
-        "notes": "Three vertical granite rock boulders rising 400 feet sheer out of the mist, alongside the mysterious deep caverns of Guna Caves."
+        "notes": "Three vertical granite rock boulders rising 400 feet sheer out of the mist, alongside the mysterious deep caverns of Guna Caves.",
+        "kind": "place"
       },
       {
         "title": "Pine Forest & Silver Cascade Falls",
@@ -9143,7 +9454,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pine%20Forest%2C%20Kodaikanal",
-        "notes": "Towering pine tree groves planted by Mr. Bryant in 1906, followed by the sparkling 180-foot Silver Cascade waterfall."
+        "notes": "Towering pine tree groves planted by Mr. Bryant in 1906, followed by the sparkling 180-foot Silver Cascade waterfall.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -9190,7 +9502,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Matheran%20Toy%20Train",
-        "notes": "Narrow-gauge toy train winding up through dense green slopes, entering the serene red dirt paths completely free of automobiles and pollution."
+        "notes": "Narrow-gauge toy train winding up through dense green slopes, entering the serene red dirt paths completely free of automobiles and pollution.",
+        "kind": "place"
       },
       {
         "title": "Panorama Point (Sunrise & 360-degree view)",
@@ -9212,7 +9525,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Panorama%20Point%2C%20Matheran",
-        "notes": "Known as the 'Sunburst Point', offering sweeping 360-degree views of the Western Ghats, Chanderi peak, and Prabalgad fort."
+        "notes": "Known as the 'Sunburst Point', offering sweeping 360-degree views of the Western Ghats, Chanderi peak, and Prabalgad fort.",
+        "kind": "place"
       },
       {
         "title": "Charlotte Lake & Louisa Point",
@@ -9234,7 +9548,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Charlotte%20Lake%2C%20Matheran",
-        "notes": "The prime freshwater source of Matheran fringed by dense forests and Pisarnath Temple, leading to Louisa Point's sheer precipice."
+        "notes": "The prime freshwater source of Matheran fringed by dense forests and Pisarnath Temple, leading to Louisa Point's sheer precipice.",
+        "kind": "place"
       },
       {
         "title": "Echo Point & leather footwear shopping",
@@ -9262,7 +9577,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Matheran%20Market",
-        "notes": "Test your voice at Echo Point and browse handcrafted Kolhapuri leather chappals, honey, and fresh chikki along the bazaar."
+        "notes": "Test your voice at Echo Point and browse handcrafted Kolhapuri leather chappals, honey, and fresh chikki along the bazaar.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -9307,7 +9623,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Auli%20Ropeway",
-        "notes": "Ride Asia's longest and highest ropeway (4 km) ascending from Joshimath to 10,000 ft, gliding past oak forests and snowy peaks."
+        "notes": "Ride Asia's longest and highest ropeway (4 km) ascending from Joshimath to 10,000 ft, gliding past oak forests and snowy peaks.",
+        "kind": "place"
       },
       {
         "title": "Auli Artificial Lake & ski slopes",
@@ -9329,7 +9646,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Auli%20Artificial%20Lake",
-        "notes": "Highest man-made lake in the world, providing artificial snow for skiing slopes and offering glassy reflections of Nanda Devi."
+        "notes": "Highest man-made lake in the world, providing artificial snow for skiing slopes and offering glassy reflections of Nanda Devi.",
+        "kind": "place"
       },
       {
         "title": "Gorson Bugyal (Meadow) trek",
@@ -9351,7 +9669,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gorson%20Bugyal%2C%20Auli",
-        "notes": "Easy 3-km alpine trek through rhododendron and conifer forests opening into expansive rolling green meadows at 10,500 ft."
+        "notes": "Easy 3-km alpine trek through rhododendron and conifer forests opening into expansive rolling green meadows at 10,500 ft.",
+        "kind": "place"
       },
       {
         "title": "Nanda Devi & Trishul sunset viewpoint",
@@ -9373,7 +9692,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Auli%20Uttarakhand",
-        "notes": "Breathtaking sunset illuminating India's second highest mountain Nanda Devi (7,816 m), Trishul, Kamet, and Dunagiri in flaming gold."
+        "notes": "Breathtaking sunset illuminating India's second highest mountain Nanda Devi (7,816 m), Trishul, Kamet, and Dunagiri in flaming gold.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -9451,7 +9771,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kedarnath%20Temple",
-        "notes": "Ancient 8th-century stone temple built by Adi Shankaracharya at 11,755 ft against the backdrop of the Kedarnath peak and Mandakini River."
+        "notes": "Ancient 8th-century stone temple built by Adi Shankaracharya at 11,755 ft against the backdrop of the Kedarnath peak and Mandakini River.",
+        "kind": "place"
       },
       {
         "title": "Bhairavnath Temple cliff trek",
@@ -9475,7 +9796,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhairavnath%20Temple%2C%20Kedarnath",
-        "notes": "Short uphill trek to the shrine of Kshetrapal Bhairavnath, guardian deity of Kedarnath valley, offering spectacular views of the main temple."
+        "notes": "Short uphill trek to the shrine of Kshetrapal Bhairavnath, guardian deity of Kedarnath valley, offering spectacular views of the main temple.",
+        "kind": "place"
       },
       {
         "title": "Gandhi Sarovar (Chorabari Tal) glacier walk",
@@ -9497,7 +9819,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gandhi%20Sarovar%2C%20Kedarnath",
-        "notes": "Glacial lake at 12,800 ft where Mahatma Gandhi's ashes were immersed, situated at the snout of the Chorabari Glacier."
+        "notes": "Glacial lake at 12,800 ft where Mahatma Gandhi's ashes were immersed, situated at the snout of the Chorabari Glacier.",
+        "kind": "place"
       },
       {
         "title": "Gauri Kund sacred thermal springs & trek route",
@@ -9521,7 +9844,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gaurikund%2C%20Uttarakhand",
-        "notes": "Base camp of the 16-km trek to Kedarnath, marked by natural hot springs where Goddess Parvati is believed to have performed penance."
+        "notes": "Base camp of the 16-km trek to Kedarnath, marked by natural hot springs where Goddess Parvati is believed to have performed penance.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -9594,7 +9918,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Badrinath%20Temple",
-        "notes": "Bathe in the natural hot sulfur Tapt Kund before entering the brightly painted temple of Badri Vishal seated in padmasana."
+        "notes": "Bathe in the natural hot sulfur Tapt Kund before entering the brightly painted temple of Badri Vishal seated in padmasana.",
+        "kind": "place"
       },
       {
         "title": "Mana Village (First Indian Village) exploration",
@@ -9617,7 +9942,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mana%20Village%2C%20Badrinath",
-        "notes": "Explore the last inhabited Indian village before the Tibetan border, inhabited by indigenous Bhotia tribes producing woolens."
+        "notes": "Explore the last inhabited Indian village before the Tibetan border, inhabited by indigenous Bhotia tribes producing woolens.",
+        "kind": "place"
       },
       {
         "title": "Vyas Gufa, Ganesh Gufa & Saraswati River",
@@ -9641,7 +9967,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vyas%20Gufa%2C%20Mana",
-        "notes": "Ancient caves where Sage Vyasa dictated the Mahabharata to Lord Ganesha, and view the roaring underground resurgence of Saraswati river."
+        "notes": "Ancient caves where Sage Vyasa dictated the Mahabharata to Lord Ganesha, and view the roaring underground resurgence of Saraswati river.",
+        "kind": "place"
       },
       {
         "title": "Vasudhara Falls high mountain trek",
@@ -9662,7 +9989,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vasudhara%20Falls%2C%20Badrinath",
-        "notes": "Spectacular 400-foot waterfall tumbling down glacial cliffs at 12,200 ft, said to turn away from those not pure in heart."
+        "notes": "Spectacular 400-foot waterfall tumbling down glacial cliffs at 12,200 ft, said to turn away from those not pure in heart.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -9709,7 +10037,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Har%20Ki%20Pauri%2C%20Haridwar",
-        "notes": "The holiest bathing ghat bearing the footprint of Lord Vishnu; bathe in the crystal-clear swift waters of the mountain Ganges."
+        "notes": "The holiest bathing ghat bearing the footprint of Lord Vishnu; bathe in the crystal-clear swift waters of the mountain Ganges.",
+        "kind": "activity"
       },
       {
         "title": "Mansa Devi & Chandi Devi hill ropeway",
@@ -9733,7 +10062,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mansa%20Devi%20Temple%2C%20Haridwar",
-        "notes": "Ride the cable car (Udan Khatola) to hilltop shrines of Goddess Mansa Devi and Chandi Devi commanding expansive valley vistas."
+        "notes": "Ride the cable car (Udan Khatola) to hilltop shrines of Goddess Mansa Devi and Chandi Devi commanding expansive valley vistas.",
+        "kind": "place"
       },
       {
         "title": "Kachori & rabdi jalebi at Moti Bazaar",
@@ -9760,7 +10090,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Moti%20Bazaar%2C%20Haridwar",
-        "notes": "Famous vegetarian street food: hot hing-stuffed urad dal kachoris with aloo subzi, kulhad lassi, and giant crispy jalebis."
+        "notes": "Famous vegetarian street food: hot hing-stuffed urad dal kachoris with aloo subzi, kulhad lassi, and giant crispy jalebis.",
+        "kind": "activity"
       },
       {
         "title": "Grand Ganga Aarti at Har Ki Pauri dusk",
@@ -9784,7 +10115,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Har%20Ki%20Pauri%2C%20Haridwar",
-        "notes": "Thousands gather as priests circle blazing tiered multi-wick brass lamps to chanting hymns, while glowing leaf diyas drift down the river."
+        "notes": "Thousands gather as priests circle blazing tiered multi-wick brass lamps to chanting hymns, while glowing leaf diyas drift down the river.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -9833,7 +10165,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Krishna%20Janmabhoomi%2C%20Mathura",
-        "notes": "The prison cell (Garbha Griha) where Lord Krishna was born to Devaki and Vasudeva, surrounded by magnificent marble pavilions."
+        "notes": "The prison cell (Garbha Griha) where Lord Krishna was born to Devaki and Vasudeva, surrounded by magnificent marble pavilions.",
+        "kind": "place"
       },
       {
         "title": "Dwarkadhish Temple Mathura",
@@ -9857,7 +10190,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dwarkadhish%20Temple%2C%20Mathura",
-        "notes": "Grand 1814 Rajasthani-carved temple famous for Holi celebrations, swinging Hindola festivals, and delicate painted murals of Krishna's life."
+        "notes": "Grand 1814 Rajasthani-carved temple famous for Holi celebrations, swinging Hindola festivals, and delicate painted murals of Krishna's life.",
+        "kind": "place"
       },
       {
         "title": "Mathura peda & kachori at Holi Gate",
@@ -9885,7 +10219,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Holi%20Gate%2C%20Mathura",
-        "notes": "Indulge in authentic caramel-brown Mathura pedas made from slow-roasted mawa, paired with bedmi puri and spicy aloo sabzi."
+        "notes": "Indulge in authentic caramel-brown Mathura pedas made from slow-roasted mawa, paired with bedmi puri and spicy aloo sabzi.",
+        "kind": "activity"
       },
       {
         "title": "Vishram Ghat evening Yamuna aarti & boat ride",
@@ -9908,7 +10243,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vishram%20Ghat%2C%20Mathura",
-        "notes": "The central ghat where Lord Krishna rested after slaying tyrant Kansa; take a gentle evening boat cruise and witness the Yamuna Aarti."
+        "notes": "The central ghat where Lord Krishna rested after slaying tyrant Kansa; take a gentle evening boat cruise and witness the Yamuna Aarti.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -9957,7 +10293,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Banke%20Bihari%20Temple%2C%20Vrindavan",
-        "notes": "The most beloved shrine of Vrindavan with its unique curtain darshan rhythm, where devotees sing bhajans before the child-form of Krishna."
+        "notes": "The most beloved shrine of Vrindavan with its unique curtain darshan rhythm, where devotees sing bhajans before the child-form of Krishna.",
+        "kind": "place"
       },
       {
         "title": "ISKCON Krishna-Balaram Mandir",
@@ -9981,7 +10318,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=ISKCON%2C%20Vrindavan",
-        "notes": "Exquisite white marble temple founded by Srila Prabhupada with non-stop Hare Krishna maha-mantra kirtans and international devotees."
+        "notes": "Exquisite white marble temple founded by Srila Prabhupada with non-stop Hare Krishna maha-mantra kirtans and international devotees.",
+        "kind": "place"
       },
       {
         "title": "Nidhivan sacred tulsi forest",
@@ -10004,7 +10342,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nidhivan%2C%20Vrindavan",
-        "notes": "Mystical holy grove of intertwined holy basil trees where Krishna and the Gopis are believed to perform divine Raas Leela each night."
+        "notes": "Mystical holy grove of intertwined holy basil trees where Krishna and the Gopis are believed to perform divine Raas Leela each night.",
+        "kind": "place"
       },
       {
         "title": "Prem Mandir light show & musical fountain",
@@ -10028,7 +10367,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Prem%20Mandir%2C%20Vrindavan",
-        "notes": "Opulent Italian Carrara marble temple with intricate life-size depictions of Krishna's miracles, illuminated in shifting rainbow lights at dusk."
+        "notes": "Opulent Italian Carrara marble temple with intricate life-size depictions of Krishna's miracles, illuminated in shifting rainbow lights at dusk.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -10097,7 +10437,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ram%20Janmabhoomi%2C%20Ayodhya",
-        "notes": "The monumental Nagara-style pink Bansi Paharpur sandstone temple enshrining the five-year-old child form of Ram Lalla."
+        "notes": "The monumental Nagara-style pink Bansi Paharpur sandstone temple enshrining the five-year-old child form of Ram Lalla.",
+        "kind": "place"
       },
       {
         "title": "Hanuman Garhi fortress temple",
@@ -10120,7 +10461,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hanuman%20Garhi%2C%20Ayodhya",
-        "notes": "Climb 76 stone steps to this 10th-century fortified temple where Lord Hanuman is said to have guarded Ayodhya from a hilltop cave."
+        "notes": "Climb 76 stone steps to this 10th-century fortified temple where Lord Hanuman is said to have guarded Ayodhya from a hilltop cave.",
+        "kind": "place"
       },
       {
         "title": "Kanak Bhawan (Golden Palace)",
@@ -10144,7 +10486,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kanak%20Bhawan%2C%20Ayodhya",
-        "notes": "Splendid palace gifted to Sita by Kaikeyi after her marriage, housing gold-crowned idols of Rama and Sita in ornate silver shrines."
+        "notes": "Splendid palace gifted to Sita by Kaikeyi after her marriage, housing gold-crowned idols of Rama and Sita in ornate silver shrines.",
+        "kind": "place"
       },
       {
         "title": "Saryu River Ghats & evening Maha Aarti",
@@ -10168,7 +10511,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ram%20Ki%20Paidi%2C%20Ayodhya",
-        "notes": "Take a peaceful holy dip and boat ride along Saryu Ghats, then watch the synchronized musical evening Saryu Aarti at Ram Ki Paidi."
+        "notes": "Take a peaceful holy dip and boat ride along Saryu Ghats, then watch the synchronized musical evening Saryu Aarti at Ram Ki Paidi.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -10217,7 +10561,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Triveni%20Sangam%2C%20Prayagraj",
-        "notes": "Take a wooden boat to the visible confluence where the pale green waters of the Yamuna merge with the murky sacred Ganga."
+        "notes": "Take a wooden boat to the visible confluence where the pale green waters of the Yamuna merge with the murky sacred Ganga.",
+        "kind": "activity"
       },
       {
         "title": "Allahabad Fort & Akshayavat sacred banyan tree",
@@ -10240,7 +10585,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Allahabad%20Fort%2C%20Prayagraj",
-        "notes": "Imposing 1583 sandstone fort built by Mughal Emperor Akbar, housing the subterranean Patalpuri temple and the immortal Akshayavat tree."
+        "notes": "Imposing 1583 sandstone fort built by Mughal Emperor Akbar, housing the subterranean Patalpuri temple and the immortal Akshayavat tree.",
+        "kind": "place"
       },
       {
         "title": "Anand Bhavan & Swaraj Bhavan",
@@ -10262,7 +10608,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Anand%20Bhavan%2C%20Prayagraj",
-        "notes": "Historic ancestral mansion of the Nehru family and epicenter of the freedom movement, now an educational museum and planetarium."
+        "notes": "Historic ancestral mansion of the Nehru family and epicenter of the freedom movement, now an educational museum and planetarium.",
+        "kind": "place"
       },
       {
         "title": "Netram kachori & Civil Lines chaat",
@@ -10289,7 +10636,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Civil%20Lines%2C%20Prayagraj",
-        "notes": "Taste Netram's pure desi ghee dal kachoris with dum aloo, followed by Loknath street gulab jamuns and chaat in the old city."
+        "notes": "Taste Netram's pure desi ghee dal kachoris with dum aloo, followed by Loknath street gulab jamuns and chaat in the old city.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -10339,7 +10687,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vishnupad%20Temple%2C%20Gaya",
-        "notes": "Revered temple built by Queen Ahilyabai Holkar in 1787, enshrining a 40-cm footprint of Lord Vishnu stamped into solid basalt rock."
+        "notes": "Revered temple built by Queen Ahilyabai Holkar in 1787, enshrining a 40-cm footprint of Lord Vishnu stamped into solid basalt rock.",
+        "kind": "place"
       },
       {
         "title": "Falgu River Ghats & Pind Daan rituals",
@@ -10363,7 +10712,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Falgu%20River%2C%20Gaya",
-        "notes": "Sacred subterranean riverbed where pilgrims from across the globe perform memorial rituals for the salvation of ancestors."
+        "notes": "Sacred subterranean riverbed where pilgrims from across the globe perform memorial rituals for the salvation of ancestors.",
+        "kind": "place"
       },
       {
         "title": "Mangala Gauri Shakti Peetha",
@@ -10386,7 +10736,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mangala%20Gauri%20Temple%2C%20Gaya",
-        "notes": "One of the 18 Maha Shakti Peethas dedicated to Goddess Parvati, perched on a hillock approached by historic stone stairways."
+        "notes": "One of the 18 Maha Shakti Peethas dedicated to Goddess Parvati, perched on a hillock approached by historic stone stairways.",
+        "kind": "place"
       },
       {
         "title": "Dungeshwari (Pragbodhi) Cave Temples",
@@ -10409,7 +10760,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dungeshwari%20Caves%2C%20Gaya",
-        "notes": "Atmospheric hill caves where Prince Siddhartha underwent six years of extreme ascetic meditation before moving to Bodh Gaya."
+        "notes": "Atmospheric hill caves where Prince Siddhartha underwent six years of extreme ascetic meditation before moving to Bodh Gaya.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -10455,7 +10807,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nalanda%20Ruins",
-        "notes": "UNESCO World Heritage 5th-century university that once hosted 10,000 scholars; explore red-brick monasteries, classrooms, and Sariputta Stupa."
+        "notes": "UNESCO World Heritage 5th-century university that once hosted 10,000 scholars; explore red-brick monasteries, classrooms, and Sariputta Stupa.",
+        "kind": "place"
       },
       {
         "title": "Nalanda Archaeological Museum",
@@ -10477,7 +10830,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nalanda%20Archaeological%20Museum",
-        "notes": "Houses stone sculptures, bronze Buddhist images, terracotta seals, and coins excavated from the ruins of ancient Nalanda and Rajgir."
+        "notes": "Houses stone sculptures, bronze Buddhist images, terracotta seals, and coins excavated from the ruins of ancient Nalanda and Rajgir.",
+        "kind": "place"
       },
       {
         "title": "Hiuen Tsang (Xuanzang) Memorial Hall",
@@ -10499,7 +10853,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hiuen%20Tsang%20Memorial%20Hall%2C%20Nalanda",
-        "notes": "Grand Sino-Indian pagoda memorial commemorating Chinese pilgrim Xuanzang who studied and taught at Nalanda for five years."
+        "notes": "Grand Sino-Indian pagoda memorial commemorating Chinese pilgrim Xuanzang who studied and taught at Nalanda for five years.",
+        "kind": "place"
       },
       {
         "title": "Kundalpur Digambar Jain Temple",
@@ -10522,7 +10877,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kundalpur%2C%20Nalanda",
-        "notes": "Major Jain pilgrimage shrine believed by Digambara Jains to be the birthplace of the 24th Tirthankara, Lord Mahavira."
+        "notes": "Major Jain pilgrimage shrine believed by Digambara Jains to be the birthplace of the 24th Tirthankara, Lord Mahavira.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -10569,7 +10925,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vishwa%20Shanti%20Stupa%2C%20Rajgir",
-        "notes": "Ride the single-seater ropeway chairlift to the brilliant white Peace Pagoda atop Ratnagiri hill housing four golden Buddha statues."
+        "notes": "Ride the single-seater ropeway chairlift to the brilliant white Peace Pagoda atop Ratnagiri hill housing four golden Buddha statues.",
+        "kind": "place"
       },
       {
         "title": "Griddhakuta (Vulture's Peak)",
@@ -10592,7 +10949,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Griddhakuta%2C%20Rajgir",
-        "notes": "Natural rock formation resembling a vulture where Lord Buddha delivered profound sermons including the Lotus Sutra to his disciples."
+        "notes": "Natural rock formation resembling a vulture where Lord Buddha delivered profound sermons including the Lotus Sutra to his disciples.",
+        "kind": "place"
       },
       {
         "title": "Venu Vana (Bamboo Grove) & Japanese Temple",
@@ -10615,7 +10973,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Venu%20Vana%2C%20Rajgir",
-        "notes": "The first Buddhist monastery site gifted to Lord Buddha by Magadhan King Bimbisara, featuring tranquil bamboo groves and a lotus pond."
+        "notes": "The first Buddhist monastery site gifted to Lord Buddha by Magadhan King Bimbisara, featuring tranquil bamboo groves and a lotus pond.",
+        "kind": "place"
       },
       {
         "title": "Brahmakund natural hot sulfur springs",
@@ -10638,7 +10997,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Brahma%20Kund%2C%20Rajgir",
-        "notes": "Therapeutic hot mineral water springs flowing out of seven spouts (Saptarshi) at the foot of Vaibhava Hill."
+        "notes": "Therapeutic hot mineral water springs flowing out of seven spouts (Saptarshi) at the foot of Vaibhava Hill.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -10686,7 +11046,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dhamek%20Stupa%2C%20Sarnath",
-        "notes": "Massive 43.6-meter cylindrical Mauryan stupa marking the exact spot where Buddha set the Wheel of Law in motion."
+        "notes": "Massive 43.6-meter cylindrical Mauryan stupa marking the exact spot where Buddha set the Wheel of Law in motion.",
+        "kind": "place"
       },
       {
         "title": "Sarnath Archaeological Museum (Lion Capital of Ashoka)",
@@ -10708,7 +11069,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sarnath%20Museum",
-        "notes": "Exhibits India's official National Emblem: the magnificent 3rd-century BCE polished sandstone Lion Capital of Ashoka and Dharmachakra."
+        "notes": "Exhibits India's official National Emblem: the magnificent 3rd-century BCE polished sandstone Lion Capital of Ashoka and Dharmachakra.",
+        "kind": "place"
       },
       {
         "title": "Chaukhandi Stupa",
@@ -10730,7 +11092,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chaukhandi%20Stupa%2C%20Sarnath",
-        "notes": "Terraced brick stupa commemorating where Buddha met his first five disciples, topped with an octagonal tower built by Emperor Akbar."
+        "notes": "Terraced brick stupa commemorating where Buddha met his first five disciples, topped with an octagonal tower built by Emperor Akbar.",
+        "kind": "place"
       },
       {
         "title": "Wat Thai Temple & 80-foot Standing Buddha",
@@ -10753,7 +11116,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thai%20Temple%2C%20Sarnath",
-        "notes": "Serene monastery built in traditional Thai pagoda architecture featuring landscaped gardens and India's tallest standing Buddha statue."
+        "notes": "Serene monastery built in traditional Thai pagoda architecture featuring landscaped gardens and India's tallest standing Buddha statue.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -10801,7 +11165,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Riwai%20Root%20Bridge%2C%20Mawlynnong",
-        "notes": "Ancient bio-engineered living suspension bridge woven from the aerial roots of Ficus elastica trees across a boulder stream."
+        "notes": "Ancient bio-engineered living suspension bridge woven from the aerial roots of Ficus elastica trees across a boulder stream.",
+        "kind": "place"
       },
       {
         "title": "Cleanest Village walking tour & bamboo dustbins",
@@ -10823,7 +11188,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mawlynnong%20Village",
-        "notes": "Stroll spotless cobblestone pathways flanked by manicured flowerbeds, pitcher plants, and conical handmade bamboo 'khoh' dustbins."
+        "notes": "Stroll spotless cobblestone pathways flanked by manicured flowerbeds, pitcher plants, and conical handmade bamboo 'khoh' dustbins.",
+        "kind": "place"
       },
       {
         "title": "Sky View Bamboo Treehouse (Bangladesh view)",
@@ -10845,7 +11211,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sky%20Walk%2C%20Mawlynnong",
-        "notes": "Climb an 85-foot high bamboo and cane lookout platform above tree canopies for a bird's-eye view across the plains of Bangladesh."
+        "notes": "Climb an 85-foot high bamboo and cane lookout platform above tree canopies for a bird's-eye view across the plains of Bangladesh.",
+        "kind": "place"
       },
       {
         "title": "Balancing Rock geological wonder",
@@ -10867,7 +11234,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Balancing%20Rock%2C%20Mawlynnong",
-        "notes": "Mysterious massive boulder balancing precariously on a tiny circular stone base for centuries without falling."
+        "notes": "Mysterious massive boulder balancing precariously on a tiny circular stone base for centuries without falling.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -10938,7 +11306,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hong%20Village%2C%20Ziro",
-        "notes": "Discover traditional bamboo stilt-house villages of the indigenous Apatani people, famed for elder women's facial tattoos and nose plugs."
+        "notes": "Discover traditional bamboo stilt-house villages of the indigenous Apatani people, famed for elder women's facial tattoos and nose plugs.",
+        "kind": "place"
       },
       {
         "title": "Paddy-cum-Pisciculture terraced farm walk",
@@ -10961,7 +11330,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ziro%20Valley",
-        "notes": "Walk along unique heritage irrigation channels where rice paddy cultivation and fish rearing take place simultaneously without modern machines."
+        "notes": "Walk along unique heritage irrigation channels where rice paddy cultivation and fish rearing take place simultaneously without modern machines.",
+        "kind": "place"
       },
       {
         "title": "Kardo Shiva Lingam (Siddheshwar Nath)",
@@ -10985,7 +11355,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kardo%20Shiva%20Lingam%2C%20Ziro",
-        "notes": "Massive natural rock Shiva Lingam measuring 25 feet high and 22 feet wide, discovered naturally nestled in dense pine woods."
+        "notes": "Massive natural rock Shiva Lingam measuring 25 feet high and 22 feet wide, discovered naturally nestled in dense pine woods.",
+        "kind": "place"
       },
       {
         "title": "Tarin Fish Farm & Pine Groves",
@@ -11007,7 +11378,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tarin%20Fish%20Farm%2C%20Ziro",
-        "notes": "Scenic fishery surrounded by Blue Pine and bamboo groves, showing conservation breeding of high-altitude carps."
+        "notes": "Scenic fishery surrounded by Blue Pine and bamboo groves, showing conservation breeding of high-altitude carps.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -11054,7 +11426,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Auniati%20Satra%2C%20Majuli",
-        "notes": "500-year-old monastery founded by saint Srimanta Sankaradev, famous for monk-devotees performing classical Sattriya dance and drum rituals."
+        "notes": "500-year-old monastery founded by saint Srimanta Sankaradev, famous for monk-devotees performing classical Sattriya dance and drum rituals.",
+        "kind": "place"
       },
       {
         "title": "Samaguri Satra traditional mask making",
@@ -11076,7 +11449,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Samaguri%20Satra%2C%20Majuli",
-        "notes": "Watch master craftsmen sculpt expressive mythological theatrical masks (mukha) using bamboo, cane, clay, cow dung, and vegetable dyes."
+        "notes": "Watch master craftsmen sculpt expressive mythological theatrical masks (mukha) using bamboo, cane, clay, cow dung, and vegetable dyes.",
+        "kind": "place"
       },
       {
         "title": "Mishing tribal village & bamboo stilt house lunch",
@@ -11102,7 +11476,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Majuli%20Mishing%20Village",
-        "notes": "Experience indigenous Mishing hospitality: traditional lunch cooked inside bamboo hollows (pitha), local herb curries, and handloom weaving."
+        "notes": "Experience indigenous Mishing hospitality: traditional lunch cooked inside bamboo hollows (pitha), local herb curries, and handloom weaving.",
+        "kind": "activity"
       },
       {
         "title": "Brahmaputra river sunset & pottery village (Salmora)",
@@ -11125,7 +11500,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Salmora%2C%20Majuli",
-        "notes": "Ancient craft village practicing beaten pottery without a potter's wheel, followed by a serene riverbank sunset over the Brahmaputra."
+        "notes": "Ancient craft village practicing beaten pottery without a potter's wheel, followed by a serene riverbank sunset over the Brahmaputra.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -11172,7 +11548,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Radhanagar%20Beach%2C%20Havelock",
-        "notes": "Ranked among the world's top beaches; famed for soft powdery white sand, turquoise waters, lush mahua trees, and unforgettable sunsets."
+        "notes": "Ranked among the world's top beaches; famed for soft powdery white sand, turquoise waters, lush mahua trees, and unforgettable sunsets.",
+        "kind": "place"
       },
       {
         "title": "Elephant Beach water sports & scuba diving",
@@ -11194,7 +11571,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Elephant%20Beach%2C%20Havelock",
-        "notes": "Vibrant coral reefs ideal for beginner scuba diving, sea walking, glass-bottom boats, and snorkeling amongst clownfish and sea turtles."
+        "notes": "Vibrant coral reefs ideal for beginner scuba diving, sea walking, glass-bottom boats, and snorkeling amongst clownfish and sea turtles.",
+        "kind": "activity"
       },
       {
         "title": "Kalapathar Beach turquoise lagoon walk",
@@ -11216,7 +11594,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kalapathar%20Beach%2C%20Havelock",
-        "notes": "Stunning contrast of black volcanic rocks against brilliant aqua-blue water and golden sands, lined with coconut shacks."
+        "notes": "Stunning contrast of black volcanic rocks against brilliant aqua-blue water and golden sands, lined with coconut shacks.",
+        "kind": "place"
       },
       {
         "title": "Night kayaking through bioluminescent waters",
@@ -11238,7 +11617,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Havelock%20Bioluminescence",
-        "notes": "Paddle silently through calm mangrove lagoons watching glowing blue phytoplankton light up in the water with every paddle stroke."
+        "notes": "Paddle silently through calm mangrove lagoons watching glowing blue phytoplankton light up in the water with every paddle stroke.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -11286,7 +11666,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bharatpur%20Beach%2C%20Neil%20Island",
-        "notes": "The primary water sports beach with shallow, gentle turquoise waters teeming with colorful live corals and tropical fish."
+        "notes": "The primary water sports beach with shallow, gentle turquoise waters teeming with colorful live corals and tropical fish.",
+        "kind": "activity"
       },
       {
         "title": "Natural Rock Bridge (Howrah Bridge)",
@@ -11309,7 +11690,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Natural%20Bridge%2C%20Neil%20Island",
-        "notes": "Magnificent natural bridge formed of living rock and coral jutting out into the sea, accessible during low tide along sea urchin tide pools."
+        "notes": "Magnificent natural bridge formed of living rock and coral jutting out into the sea, accessible during low tide along sea urchin tide pools.",
+        "kind": "place"
       },
       {
         "title": "Laxmanpur Beach sunset & seashell walk",
@@ -11331,7 +11713,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Laxmanpur%20Beach%2C%20Neil%20Island",
-        "notes": "Broad triangular white-sand spit meeting the sea, renowned as the finest sunset viewpoint on Neil Island."
+        "notes": "Broad triangular white-sand spit meeting the sea, renowned as the finest sunset viewpoint on Neil Island.",
+        "kind": "place"
       },
       {
         "title": "Sitapur Beach sunrise point",
@@ -11353,7 +11736,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sitapur%20Beach%2C%20Neil%20Island",
-        "notes": "Serene sunrise beach exposed to the open sea with limestone cliffs, lush palm greenery, and crashing rolling waves."
+        "notes": "Serene sunrise beach exposed to the open sea with limestone cliffs, lush palm greenery, and crashing rolling waves.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -11425,7 +11809,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Agatti%20Island%2C%20Lakshadweep",
-        "notes": "Touch down on the world's most scenic island airstrip and snorkel in clear emerald lagoons amongst sea turtles and butterfly fish."
+        "notes": "Touch down on the world's most scenic island airstrip and snorkel in clear emerald lagoons amongst sea turtles and butterfly fish.",
+        "kind": "activity"
       },
       {
         "title": "Bangaram Island sandbar & scuba diving",
@@ -11447,7 +11832,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bangaram%20Island%2C%20Lakshadweep",
-        "notes": "Tear-drop shaped uninhabited paradise surrounded by a shallow lagoon, shipwrecks for scuba diving, and glowing bioluminescence."
+        "notes": "Tear-drop shaped uninhabited paradise surrounded by a shallow lagoon, shipwrecks for scuba diving, and glowing bioluminescence.",
+        "kind": "activity"
       },
       {
         "title": "Kavaratti Marine Aquarium & glass-bottom boat",
@@ -11470,7 +11856,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kavaratti%2C%20Lakshadweep",
-        "notes": "Administrative capital featuring an aquarium of exotic sea cucumbers and corals, traditional carved wooden Ujra Mosque, and water sports."
+        "notes": "Administrative capital featuring an aquarium of exotic sea cucumbers and corals, traditional carved wooden Ujra Mosque, and water sports.",
+        "kind": "place"
       },
       {
         "title": "Minicoy Island 1885 British lighthouse & culture",
@@ -11493,7 +11880,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Minicoy%20Island%2C%20Lakshadweep",
-        "notes": "Climb the 300-foot historic brick lighthouse for 360-degree atoll views and explore unique Mahl culture and traditional tuna fish cooking."
+        "notes": "Climb the 300-foot historic brick lighthouse for 360-degree atoll views and explore unique Mahl culture and traditional tuna fish cooking.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -11551,7 +11939,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tungnath%20Temple%2C%20Chopta",
-        "notes": "Climb 3.5 km through rhododendron and pine woods to 12,073 ft to worship at the highest of the five Panch Kedar shrines."
+        "notes": "Climb 3.5 km through rhododendron and pine woods to 12,073 ft to worship at the highest of the five Panch Kedar shrines.",
+        "kind": "place"
       },
       {
         "title": "Chandrashila Peak summit sunrise (13,100 ft)",
@@ -11574,7 +11963,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chandrashila%20Peak%2C%20Chopta",
-        "notes": "Scramble 1 km beyond Tungnath to the summit for an awe-inspiring 360-degree panorama of Chaukhamba, Nanda Devi, and Trishul peaks."
+        "notes": "Scramble 1 km beyond Tungnath to the summit for an awe-inspiring 360-degree panorama of Chaukhamba, Nanda Devi, and Trishul peaks.",
+        "kind": "place"
       },
       {
         "title": "Deoria Tal emerald lake trek",
@@ -11596,7 +11986,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Deoria%20Tal%2C%20Chopta",
-        "notes": "Tranquil mountain lake at 8,000 ft famously capturing the crisp mirror reflection of Chaukhamba peaks in its crystal waters."
+        "notes": "Tranquil mountain lake at 8,000 ft famously capturing the crisp mirror reflection of Chaukhamba peaks in its crystal waters.",
+        "kind": "place"
       },
       {
         "title": "Chopta alpine meadow camping & stargazing",
@@ -11618,7 +12009,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chopta%20Meadows",
-        "notes": "Relax in sprawling high-altitude bugyals listening to Himalayan Monal birds, followed by spectacular dark-sky Milky Way stargazing."
+        "notes": "Relax in sprawling high-altitude bugyals listening to Himalayan Monal birds, followed by spectacular dark-sky Milky Way stargazing.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -11666,7 +12058,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dilwara%20Temples%2C%20Mount%20Abu",
-        "notes": "World-renowned 11th-13th century marble temples with unimaginably delicate, translucent ceiling carvings, lotus pendants, and jali screens."
+        "notes": "World-renowned 11th-13th century marble temples with unimaginably delicate, translucent ceiling carvings, lotus pendants, and jali screens.",
+        "kind": "place"
       },
       {
         "title": "Nakki Lake boat ride & Toad Rock",
@@ -11688,7 +12081,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nakki%20Lake%2C%20Mount%20Abu",
-        "notes": "Sacred lake legendarily scooped out by gods using their fingernails (nakh); enjoy pedal boating and climb nearby Toad Rock formation."
+        "notes": "Sacred lake legendarily scooped out by gods using their fingernails (nakh); enjoy pedal boating and climb nearby Toad Rock formation.",
+        "kind": "activity"
       },
       {
         "title": "Guru Shikhar (Highest Peak of Aravallis)",
@@ -11711,7 +12105,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Guru%20Shikhar%2C%20Mount%20Abu",
-        "notes": "The apex summit of Rajasthan at 5,650 ft housing the cave temple of Guru Dattatreya and a massive bronze bell overlooking valleys."
+        "notes": "The apex summit of Rajasthan at 5,650 ft housing the cave temple of Guru Dattatreya and a massive bronze bell overlooking valleys.",
+        "kind": "place"
       },
       {
         "title": "Sunset Point & Honeymoon Point",
@@ -11733,7 +12128,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sunset%20Point%2C%20Mount%20Abu",
-        "notes": "Popular rocky cliff gathering spot where crowds cheer the crimson sunset setting over the green Aravalli hills, paired with hot sweet corn."
+        "notes": "Popular rocky cliff gathering spot where crowds cheer the crimson sunset setting over the green Aravalli hills, paired with hot sweet corn.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -11779,7 +12175,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Junagarh%20Fort%2C%20Bikaner",
-        "notes": "Unconquered 1589 desert fortress with red sandstone and Italian marble palaces, gold leaf Anup Mahal, and vintage WW1 de Havilland plane."
+        "notes": "Unconquered 1589 desert fortress with red sandstone and Italian marble palaces, gold leaf Anup Mahal, and vintage WW1 de Havilland plane.",
+        "kind": "place"
       },
       {
         "title": "Karni Mata Temple (Deshnoke Rat Temple)",
@@ -11803,7 +12200,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Karni%20Mata%20Temple%2C%20Deshnoke",
-        "notes": "Fascinating 600-year-old temple home to 25,000 revered black rats (kabbas) that roam freely; spotting a rare white rat is considered deeply auspicious."
+        "notes": "Fascinating 600-year-old temple home to 25,000 revered black rats (kabbas) that roam freely; spotting a rare white rat is considered deeply auspicious.",
+        "kind": "place"
       },
       {
         "title": "National Research Centre on Camel (Camel Farm)",
@@ -11830,7 +12228,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Camel%20Breeding%20Farm%2C%20Bikaner",
-        "notes": "Asia's only camel breeding facility; learn about desert camel breeds, ride camels, and sample fresh camel milk ice cream and tea."
+        "notes": "Asia's only camel breeding facility; learn about desert camel breeds, ride camels, and sample fresh camel milk ice cream and tea.",
+        "kind": "activity"
       },
       {
         "title": "Bikaneri bhujia, rasgulla & old havelis walk",
@@ -11859,7 +12258,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rampuria%20Havelis%2C%20Bikaner",
-        "notes": "Admire the red Dulmera sandstone Rampuria merchant havelis and taste crispy authentic moth-bean Bikaneri bhujia and spongy rasgullas."
+        "notes": "Admire the red Dulmera sandstone Rampuria merchant havelis and taste crispy authentic moth-bean Bikaneri bhujia and spongy rasgullas.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -11905,7 +12305,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chittorgarh%20Fort",
-        "notes": "Sprawling 700-acre hilltop fortress entered through seven massive fortified gates, embodying the apex of Rajput courage and chivalry."
+        "notes": "Sprawling 700-acre hilltop fortress entered through seven massive fortified gates, embodying the apex of Rajput courage and chivalry.",
+        "kind": "place"
       },
       {
         "title": "Vijay Stambh (Tower of Victory) climb",
@@ -11928,7 +12329,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vijay%20Stambh%2C%20Chittorgarh",
-        "notes": "Nine-storey, 122-foot monumental tower built by Maharana Kumbha in 1448, adorned with carvings of Hindu deities and 157 narrow steps."
+        "notes": "Nine-storey, 122-foot monumental tower built by Maharana Kumbha in 1448, adorned with carvings of Hindu deities and 157 narrow steps.",
+        "kind": "place"
       },
       {
         "title": "Kirti Stambh & Meera Bai Temple",
@@ -11952,7 +12354,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Meera%20Temple%2C%20Chittorgarh",
-        "notes": "12th-century Tower of Fame dedicated to Jain Tirthankara Adinatha, beside the temple where mystic poet-queen Meerabai sang bhajans to Krishna."
+        "notes": "12th-century Tower of Fame dedicated to Jain Tirthankara Adinatha, beside the temple where mystic poet-queen Meerabai sang bhajans to Krishna.",
+        "kind": "place"
       },
       {
         "title": "Rani Padmini Palace & Gaumukh Reservoir",
@@ -11974,7 +12377,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Padmini%20Palace%2C%20Chittorgarh",
-        "notes": "Water-surrounded palace where Alauddin Khilji was permitted to glimpse Queen Padmini's reflection in a mirror, and the sacred cow-mouth spring."
+        "notes": "Water-surrounded palace where Alauddin Khilji was permitted to glimpse Queen Padmini's reflection in a mirror, and the sacred cow-mouth spring.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -12019,7 +12423,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kumarakom%20Bird%20Sanctuary",
-        "notes": "14-acre mangrove forest on the shores of Vembanad Lake; spot Siberian storks, herons, egrets, kingfishers, and darter birds from watchtowers."
+        "notes": "14-acre mangrove forest on the shores of Vembanad Lake; spot Siberian storks, herons, egrets, kingfishers, and darter birds from watchtowers.",
+        "kind": "place"
       },
       {
         "title": "Vembanad Lake country canoe & shikkara cruise",
@@ -12042,7 +12447,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vembanad%20Lake%2C%20Kumarakom",
-        "notes": "Drift through shallow palm-lined village canals in a country canoe, observing coir spinning, toddy tapping, and water lily harvesting."
+        "notes": "Drift through shallow palm-lined village canals in a country canoe, observing coir spinning, toddy tapping, and water lily harvesting.",
+        "kind": "place"
       },
       {
         "title": "Kerala duck roast & appam lunch",
@@ -12067,7 +12473,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kumarakom",
-        "notes": "Taste Kuttanad's culinary signature: slow-roasted duck (Tharavu roast) with black pepper and coconut slices, paired with hot lacy appams."
+        "notes": "Taste Kuttanad's culinary signature: slow-roasted duck (Tharavu roast) with black pepper and coconut slices, paired with hot lacy appams.",
+        "kind": "activity"
       },
       {
         "title": "Bay Island Driftwood Museum",
@@ -12089,7 +12496,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Driftwood%20Museum%2C%20Kumarakom",
-        "notes": "Unique museum housing an artistic collection of natural root sculptures and twisted driftwood salvaged from Andaman Island seas."
+        "notes": "Unique museum housing an artistic collection of natural root sculptures and twisted driftwood salvaged from Andaman Island seas.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -12134,7 +12542,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lighthouse%20Beach%2C%20Kovalam",
-        "notes": "Climb the 118-foot 1972 Vizhinjam Lighthouse for sweeping views of the Arabian Sea, rocky headlands, and coconut palm fringes."
+        "notes": "Climb the 118-foot 1972 Vizhinjam Lighthouse for sweeping views of the Arabian Sea, rocky headlands, and coconut palm fringes.",
+        "kind": "place"
       },
       {
         "title": "Hawah Beach & surfing lessons",
@@ -12156,7 +12565,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hawah%20Beach%2C%20Kovalam",
-        "notes": "Also known as Eve's Beach, famous for wooden catamarans, gentle rolling surf breaks, beginner surf schools, and sunbathing."
+        "notes": "Also known as Eve's Beach, famous for wooden catamarans, gentle rolling surf breaks, beginner surf schools, and sunbathing.",
+        "kind": "place"
       },
       {
         "title": "Ayurvedic massage & coastal shack lunch",
@@ -12181,7 +12591,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kovalam%20Beach",
-        "notes": "Experience rejuvenating traditional Ayurvedic herbal oil massage, followed by grilled kingfish and fresh pineapple juice by the sea."
+        "notes": "Experience rejuvenating traditional Ayurvedic herbal oil massage, followed by grilled kingfish and fresh pineapple juice by the sea.",
+        "kind": "activity"
       },
       {
         "title": "Samudra Beach sunset & Vizhinjam Marine Aquarium",
@@ -12204,7 +12615,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Samudra%20Beach%2C%20Kovalam",
-        "notes": "Quiet, uncrowded northern cove where local fishermen mend nets, offering tranquil sunset walks and a nearby pearl-culture aquarium."
+        "notes": "Quiet, uncrowded northern cove where local fishermen mend nets, offering tranquil sunset walks and a nearby pearl-culture aquarium.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -12255,7 +12667,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=North%20Cliff%2C%20Varkala",
-        "notes": "Stroll along the cliff-edge boardwalk lined with bohemian cafes, yoga studios, Tibetan craft stalls, and breakfast smoothie bowls."
+        "notes": "Stroll along the cliff-edge boardwalk lined with bohemian cafes, yoga studios, Tibetan craft stalls, and breakfast smoothie bowls.",
+        "kind": "activity"
       },
       {
         "title": "Papanasam Beach & natural mineral springs",
@@ -12279,7 +12692,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Papanasam%20Beach%2C%20Varkala",
-        "notes": "Believed to wash away all sins (papanasam); bathe in the sacred ocean surf and natural healing mineral springs flowing from the cliff."
+        "notes": "Believed to wash away all sins (papanasam); bathe in the sacred ocean surf and natural healing mineral springs flowing from the cliff.",
+        "kind": "place"
       },
       {
         "title": "Janardhana Swami Temple (2,000-year-old shrine)",
@@ -12303,7 +12717,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Janardhana%20Swami%20Temple%2C%20Varkala",
-        "notes": "Ancient temple of Lord Vishnu, known as the 'Dakshina Kashi', featuring a massive Dutch brass bell donated by a shipwrecked sea captain."
+        "notes": "Ancient temple of Lord Vishnu, known as the 'Dakshina Kashi', featuring a massive Dutch brass bell donated by a shipwrecked sea captain.",
+        "kind": "place"
       },
       {
         "title": "Kappil Beach & estuary boat ride at sunset",
@@ -12325,7 +12740,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kappil%20Beach%2C%20Varkala",
-        "notes": "Picturesque spot 7 km north where the serene Edava-Nadayara backwaters meet the roaring Arabian Sea, separated by a thin road."
+        "notes": "Picturesque spot 7 km north where the serene Edava-Nadayara backwaters meet the roaring Arabian Sea, separated by a thin road.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -12374,7 +12790,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vadakkunnathan%20Temple%2C%20Thrissur",
-        "notes": "UNESCO Asia-Pacific Heritage winning 1,000-year-old Shiva temple with a massive ghee-covered lingam, Kerala murals, and Pooram festival grounds."
+        "notes": "UNESCO Asia-Pacific Heritage winning 1,000-year-old Shiva temple with a massive ghee-covered lingam, Kerala murals, and Pooram festival grounds.",
+        "kind": "place"
       },
       {
         "title": "Shakthan Thampuran Palace (Kerala Museum)",
@@ -12396,7 +12813,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shakthan%20Thampuran%20Palace%2C%20Thrissur",
-        "notes": "Reconstructed Dutch-style palace of the modern architect of Thrissur, King Rama Varma, preserving Bronze gallery and megalithic relics."
+        "notes": "Reconstructed Dutch-style palace of the modern architect of Thrissur, King Rama Varma, preserving Bronze gallery and megalithic relics.",
+        "kind": "place"
       },
       {
         "title": "Athirappilly & Vazhachal Waterfalls excursion",
@@ -12418,7 +12836,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Athirappilly%20Waterfalls%2C%20Thrissur",
-        "notes": "The 80-foot high 'Niagara of South India' on the Chalakudy River, plunging dramatically through lush Western Ghats rainforests."
+        "notes": "The 80-foot high 'Niagara of South India' on the Chalakudy River, plunging dramatically through lush Western Ghats rainforests.",
+        "kind": "place"
       },
       {
         "title": "Thrissur halwa & Kerala gold market walk",
@@ -12445,7 +12864,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thrissur%20Round",
-        "notes": "Stroll the circular Swaraj Round shopping for banana chips, soft black halwa cooked in pure ghee, and traditional kasavu handloom sarees."
+        "notes": "Stroll the circular Swaraj Round shopping for banana chips, soft black halwa cooked in pure ghee, and traditional kasavu handloom sarees.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -12493,7 +12913,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chennakeshava%20Temple%2C%20Belur",
-        "notes": "Took 103 years to build in chloritic schist soapstone; celebrated for its 42 bracket figures (Madanikas) depicting dancers, musicians, and hunters."
+        "notes": "Took 103 years to build in chloritic schist soapstone; celebrated for its 42 bracket figures (Madanikas) depicting dancers, musicians, and hunters.",
+        "kind": "place"
       },
       {
         "title": "Kappe Chennigraya Shrine & gravity pillar",
@@ -12515,7 +12936,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kappe%20Chennigraya%2C%20Belur",
-        "notes": "Secondary shrine commissioned by Queen Shantala Devi and the freestanding 42-foot lamp pillar (Deepasthambha) balanced without a foundation."
+        "notes": "Secondary shrine commissioned by Queen Shantala Devi and the freestanding 42-foot lamp pillar (Deepasthambha) balanced without a foundation.",
+        "kind": "place"
       },
       {
         "title": "Vishnu Samudra stepped water tank",
@@ -12537,7 +12959,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vishnu%20Samudra%2C%20Belur",
-        "notes": "Beautiful stepped sacred tank built during the Hoysala era for ritual ablutions and temple teppotsavam boat festivals."
+        "notes": "Beautiful stepped sacred tank built during the Hoysala era for ritual ablutions and temple teppotsavam boat festivals.",
+        "kind": "place"
       },
       {
         "title": "Yagachi River water sports & dam",
@@ -12559,7 +12982,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Yagachi%20Dam%2C%20Belur",
-        "notes": "Scenic reservoir 3 km from the temple town offering speed boating, jet skiing, banana rides, and sunset relaxation."
+        "notes": "Scenic reservoir 3 km from the temple town offering speed boating, jet skiing, banana rides, and sunset relaxation.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -12607,7 +13031,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hoysaleswara%20Temple%2C%20Halebidu",
-        "notes": "Twin star-shaped temples dedicated to Hoysaleswara and Shantaleswara with friezes of 1,248 carved elephants, lions, horses, and celestial dancers."
+        "notes": "Twin star-shaped temples dedicated to Hoysaleswara and Shantaleswara with friezes of 1,248 carved elephants, lions, horses, and celestial dancers.",
+        "kind": "place"
       },
       {
         "title": "Monolithic Nandi Mantapas",
@@ -12629,7 +13054,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Halebidu%20Nandi",
-        "notes": "Two colossal, polished monolithic soapstone bull statues of Nandi adorned with bells, garlands, and jewelry overlooking the sanctums."
+        "notes": "Two colossal, polished monolithic soapstone bull statues of Nandi adorned with bells, garlands, and jewelry overlooking the sanctums.",
+        "kind": "place"
       },
       {
         "title": "Kedareshwara Temple & Basadi Halli Jain Basadis",
@@ -12652,7 +13078,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Basadi%20Halli%2C%20Halebidu",
-        "notes": "12th-century Jain complex featuring Parshvanatha Basadi with mirror-polished soapstone pillars reflecting distorted light images."
+        "notes": "12th-century Jain complex featuring Parshvanatha Basadi with mirror-polished soapstone pillars reflecting distorted light images.",
+        "kind": "place"
       },
       {
         "title": "Halebidu Archaeological Museum",
@@ -12674,7 +13101,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Halebidu%20Museum",
-        "notes": "Open-air sculpture gallery preserving 1,500+ salvaged Hoysala stone sculptures, Tirthankara icons, hero stones, and inscriptions."
+        "notes": "Open-air sculpture gallery preserving 1,500+ salvaged Hoysala stone sculptures, Tirthankara icons, hero stones, and inscriptions.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -12721,7 +13149,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Badami%20Cave%20Temples",
-        "notes": "Four 6th-century rock-cut shrines: 18-armed dancing Shiva Nataraja in Cave 1, Vishnu avatar carvings in Caves 2 & 3, and Jain Tirthankaras in Cave 4."
+        "notes": "Four 6th-century rock-cut shrines: 18-armed dancing Shiva Nataraja in Cave 1, Vishnu avatar carvings in Caves 2 & 3, and Jain Tirthankaras in Cave 4.",
+        "kind": "place"
       },
       {
         "title": "Agastya Lake & Bhutanatha Temples",
@@ -12745,7 +13174,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhutanatha%20Temple%2C%20Badami",
-        "notes": "Picturesque 7th-century sandstone temple projecting into the calm green waters of Agastya Lake beneath towering red sandstone bluffs."
+        "notes": "Picturesque 7th-century sandstone temple projecting into the calm green waters of Agastya Lake beneath towering red sandstone bluffs.",
+        "kind": "place"
       },
       {
         "title": "North Fort & Malegitti Shivalaya trek",
@@ -12768,7 +13198,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Badami%20North%20Fort",
-        "notes": "Climb through steep sandstone clefts past ancient granaries, watchtowers, and cannon to the hill-top Malegitti Shivalaya temple."
+        "notes": "Climb through steep sandstone clefts past ancient granaries, watchtowers, and cannon to the hill-top Malegitti Shivalaya temple.",
+        "kind": "place"
       },
       {
         "title": "Badami red sandstone rock climbing",
@@ -12790,7 +13221,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Badami%20Rock%20Climbing",
-        "notes": "Internationally renowned rock-climbing mecca with hundreds of bolted sport routes across steep red sandstone crags."
+        "notes": "Internationally renowned rock-climbing mecca with hundreds of bolted sport routes across steep red sandstone crags.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -12837,7 +13269,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Virupaksha%20Temple%2C%20Pattadakal",
-        "notes": "8th-century Dravidian masterpiece built by Queen Lokamahadevi celebrating victory over the Pallavas, with narrative Ramayana stone panels."
+        "notes": "8th-century Dravidian masterpiece built by Queen Lokamahadevi celebrating victory over the Pallavas, with narrative Ramayana stone panels.",
+        "kind": "place"
       },
       {
         "title": "Sangameshwara Temple (Oldest Shrine)",
@@ -12859,7 +13292,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sangameshwara%20Temple%2C%20Pattadakal",
-        "notes": "Erected by Chalukya King Vijayaditya in 733 CE, an early Dravidian temple featuring pristine vimana architecture and cloistered ambulatories."
+        "notes": "Erected by Chalukya King Vijayaditya in 733 CE, an early Dravidian temple featuring pristine vimana architecture and cloistered ambulatories.",
+        "kind": "place"
       },
       {
         "title": "Papanatha Temple & Nagara Shikhara styles",
@@ -12881,7 +13315,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Papanatha%20Temple%2C%20Pattadakal",
-        "notes": "Curvilinear northern Nagara shikhara temple with 16 stone pillars and panels narrating the Kiratarjuniya battle between Shiva and Arjuna."
+        "notes": "Curvilinear northern Nagara shikhara temple with 16 stone pillars and panels narrating the Kiratarjuniya battle between Shiva and Arjuna.",
+        "kind": "place"
       },
       {
         "title": "Malaprabha River bank & Jain Narayana Temple",
@@ -12904,7 +13339,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jain%20Narayana%20Temple%2C%20Pattadakal",
-        "notes": "9th-century Rashtrakuta-era temple with life-sized stone elephant sentinels along the sacred banks of the Malaprabha River."
+        "notes": "9th-century Rashtrakuta-era temple with life-sized stone elephant sentinels along the sacred banks of the Malaprabha River.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -12952,7 +13388,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kanaka%20Durga%20Temple%2C%20Vijayawada",
-        "notes": "Revered Swayambhu temple of Goddess Durga who defeated Mahishasura, offering panoramic views of the city and Krishna River."
+        "notes": "Revered Swayambhu temple of Goddess Durga who defeated Mahishasura, offering panoramic views of the city and Krishna River.",
+        "kind": "place"
       },
       {
         "title": "Undavalli Rock-Cut Caves & Anantasayana Vishnu",
@@ -12975,7 +13412,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Undavalli%20Caves%2C%20Vijayawada",
-        "notes": "Four-storey monolithic 7th-century sandstone cave complex featuring a colossal reclining statue of Lord Vishnu carved from single granite."
+        "notes": "Four-storey monolithic 7th-century sandstone cave complex featuring a colossal reclining statue of Lord Vishnu carved from single granite.",
+        "kind": "place"
       },
       {
         "title": "Prakasam Barrage & Krishna river walk",
@@ -12998,7 +13436,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Prakasam%20Barrage%2C%20Vijayawada",
-        "notes": "1,223-meter road-cum-regulator bridge spanning the Krishna river with 70 crest gates creating an expansive lake; lit up at night."
+        "notes": "1,223-meter road-cum-regulator bridge spanning the Krishna river with 70 crest gates creating an expansive lake; lit up at night.",
+        "kind": "place"
       },
       {
         "title": "Bhavani Island leisure boat cruise",
@@ -13020,7 +13459,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhavani%20Island%2C%20Vijayawada",
-        "notes": "133-acre river island on the Krishna river offering boat rides, water roller activities, canopy walks, and waterfront dining."
+        "notes": "133-acre river island on the Krishna river offering boat rides, water roller activities, canopy walks, and waterfront dining.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -13094,7 +13534,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tirumala%20Venkateswara%20Temple%2C%20Tirupati",
-        "notes": "Venerated shrine of Lord Balaji under the Ananda Nilayam gold dome; receive the GI-tagged sacred Tirupati Laddu prasadam."
+        "notes": "Venerated shrine of Lord Balaji under the Ananda Nilayam gold dome; receive the GI-tagged sacred Tirupati Laddu prasadam.",
+        "kind": "place"
       },
       {
         "title": "Sri Padmavathi Ammavari Temple, Tiruchanur",
@@ -13117,7 +13558,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Padmavathi%20Temple%2C%20Tiruchanur",
-        "notes": "Temple of Goddess Padmavathi, divine consort of Venkateswara, situated by Padma Sarovaram lotus tank; essential stop of the pilgrimage."
+        "notes": "Temple of Goddess Padmavathi, divine consort of Venkateswara, situated by Padma Sarovaram lotus tank; essential stop of the pilgrimage.",
+        "kind": "place"
       },
       {
         "title": "Kapila Theertham sacred waterfall & Shiva shrine",
@@ -13141,7 +13583,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kapila%20Theertham%2C%20Tirupati",
-        "notes": "Ancient temple of Lord Kapileswara situated directly at the base of a roaring natural mountain waterfall flowing from Tirumala hills."
+        "notes": "Ancient temple of Lord Kapileswara situated directly at the base of a roaring natural mountain waterfall flowing from Tirumala hills.",
+        "kind": "place"
       },
       {
         "title": "Chandragiri Fort & Vijayanagara Raja Mahal",
@@ -13163,7 +13606,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chandragiri%20Fort%2C%20Tirupati",
-        "notes": "11th-century fort built by Yadava Naidus that was the final capital of the Vijayanagara Empire, featuring Raja Mahal palace museum."
+        "notes": "11th-century fort built by Yadava Naidus that was the final capital of the Vijayanagara Empire, featuring Raja Mahal palace museum.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -13210,7 +13654,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=INS%20Kursura%20Submarine%20Museum",
-        "notes": "The only submarine museum in South Asia; walk inside a decommissioned Soviet-built submarine that served during the 1971 Indo-Pak war."
+        "notes": "The only submarine museum in South Asia; walk inside a decommissioned Soviet-built submarine that served during the 1971 Indo-Pak war.",
+        "kind": "place"
       },
       {
         "title": "Kailasagiri Hilltop Park & ropeway cable car",
@@ -13233,7 +13678,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kailasagiri%2C%20Visakhapatnam",
-        "notes": "Ride the cable car to a 360-foot hilltop park featuring 40-foot statues of Shiva and Parvati, toy train, and sweeping coast-line vistas."
+        "notes": "Ride the cable car to a 360-foot hilltop park featuring 40-foot statues of Shiva and Parvati, toy train, and sweeping coast-line vistas.",
+        "kind": "place"
       },
       {
         "title": "Rushikonda Beach surfing & water sports",
@@ -13255,7 +13701,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rushikonda%20Beach%2C%20Visakhapatnam",
-        "notes": "Blue Flag certified beach with golden sands and gentle waves, offering sea kayaking, jet skiing, parasailing, and surf camps."
+        "notes": "Blue Flag certified beach with golden sands and gentle waves, offering sea kayaking, jet skiing, parasailing, and surf camps.",
+        "kind": "place"
       },
       {
         "title": "Borra Caves & Araku Valley excursion",
@@ -13277,7 +13724,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Borra%20Caves",
-        "notes": "Million-year-old limestone karst caves at 2,300 ft with dramatic illuminated stalactites and stalagmites, paired with Araku coffee plantations."
+        "notes": "Million-year-old limestone karst caves at 2,300 ft with dramatic illuminated stalactites and stalagmites, paired with Araku coffee plantations.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -13323,7 +13771,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dassam%20Falls%2C%20Ranchi",
-        "notes": "Spectacular 144-foot waterfall on the Kanchi river plunging down jagged red rocks into a frothing pool amidst dense green forests."
+        "notes": "Spectacular 144-foot waterfall on the Kanchi river plunging down jagged red rocks into a frothing pool amidst dense green forests.",
+        "kind": "place"
       },
       {
         "title": "Hundru Falls & Jonha Falls",
@@ -13345,7 +13794,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hundru%20Falls%2C%20Ranchi",
-        "notes": "One of the highest waterfalls in Jharkhand (320 ft) on the Subarnarekha river, cascading down steep natural rock formations."
+        "notes": "One of the highest waterfalls in Jharkhand (320 ft) on the Subarnarekha river, cascading down steep natural rock formations.",
+        "kind": "place"
       },
       {
         "title": "Jagannath Temple Ranchi & Dhurwa Dam",
@@ -13369,7 +13819,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jagannath%20Temple%2C%20Ranchi",
-        "notes": "17th-century hilltop temple built by King Barkagarh Jagannathpur modeled after the Puri temple, offering panoramic views over Ranchi."
+        "notes": "17th-century hilltop temple built by King Barkagarh Jagannathpur modeled after the Puri temple, offering panoramic views over Ranchi.",
+        "kind": "place"
       },
       {
         "title": "Tagore Hill & tribal litti chokha",
@@ -13397,7 +13848,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tagore%20Hill%2C%20Ranchi",
-        "notes": "Ashram of Jyotirindranath Tagore (Rabindranath Tagore's brother) atop a 300-foot rock, followed by charcoal-roasted Litti Chokha."
+        "notes": "Ashram of Jyotirindranath Tagore (Rabindranath Tagore's brother) atop a 300-foot rock, followed by charcoal-roasted Litti Chokha.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -13444,7 +13896,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Takht%20Sri%20Patna%20Sahib",
-        "notes": "One of the five sacred Takhts of Sikhism, commemorating the birthplace of the tenth Sikh Guru, Guru Gobind Singh; enjoy sacred langar."
+        "notes": "One of the five sacred Takhts of Sikhism, commemorating the birthplace of the tenth Sikh Guru, Guru Gobind Singh; enjoy sacred langar.",
+        "kind": "place"
       },
       {
         "title": "Golghar granary & Gandhi Maidan",
@@ -13466,7 +13919,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Golghar%2C%20Patna",
-        "notes": "Unique 1786 beehive-shaped dome built by Captain John Garstin with 145 spiral exterior steps winding to the top for sweeping Ganges views."
+        "notes": "Unique 1786 beehive-shaped dome built by Captain John Garstin with 145 spiral exterior steps winding to the top for sweeping Ganges views.",
+        "kind": "place"
       },
       {
         "title": "Bihar Museum (World-Class Heritage)",
@@ -13488,7 +13942,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bihar%20Museum%2C%20Patna",
-        "notes": "Architectural masterpiece designed by Maki & Associates, housing the famous 3rd-century BCE polished sandstone Didarganj Yakshi statue."
+        "notes": "Architectural masterpiece designed by Maki & Associates, housing the famous 3rd-century BCE polished sandstone Didarganj Yakshi statue.",
+        "kind": "place"
       },
       {
         "title": "Ganga Aarti at Gandhi Ghat & Litti Chokha",
@@ -13516,7 +13971,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gandhi%20Ghat%2C%20Patna",
-        "notes": "Dusk Ganga Aarti with brass lamps and devotional hymns on the Ganges riverfront, followed by authentic sattu-stuffed Litti with roasted brinjal chokha."
+        "notes": "Dusk Ganga Aarti with brass lamps and devotional hymns on the Ganges riverfront, followed by authentic sattu-stuffed Litti with roasted brinjal chokha.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -13566,7 +14022,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahabodhi%20Temple%2C%20Bodh%20Gaya",
-        "notes": "UNESCO World Heritage 50-meter pyramidal brick temple, diamond throne (Vajrasana), and direct descendant of the original Bodhi Tree."
+        "notes": "UNESCO World Heritage 50-meter pyramidal brick temple, diamond throne (Vajrasana), and direct descendant of the original Bodhi Tree.",
+        "kind": "place"
       },
       {
         "title": "Great Buddha Statue (80-foot Daibutsu)",
@@ -13589,7 +14046,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Great%20Buddha%20Statue%2C%20Bodh%20Gaya",
-        "notes": "Colossal 80-foot red granite and sandstone seated Buddha in meditation posture, flanked by statues of his ten primary disciples."
+        "notes": "Colossal 80-foot red granite and sandstone seated Buddha in meditation posture, flanked by statues of his ten primary disciples.",
+        "kind": "place"
       },
       {
         "title": "International Monasteries trail (Thai, Bhutanese, Tibetan)",
@@ -13612,7 +14070,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thai%20Monastery%2C%20Bodh%20Gaya",
-        "notes": "Explore diverse Buddhist temples built by global Buddhist nations: gilded Thai monastery, Bhutanese dzong pagoda, and Japanese Indosan temple."
+        "notes": "Explore diverse Buddhist temples built by global Buddhist nations: gilded Thai monastery, Bhutanese dzong pagoda, and Japanese Indosan temple.",
+        "kind": "place"
       },
       {
         "title": "Sujata Kuti & Niranjana River walk",
@@ -13635,7 +14094,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sujata%20Kuti%2C%20Bodh%20Gaya",
-        "notes": "Brick stupa commemorating maiden Sujata who offered rice-milk (kheer) to starving Buddha, ending his severe austerities."
+        "notes": "Brick stupa commemorating maiden Sujata who offered rice-milk (kheer) to starving Buddha, ending his severe austerities.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -13681,7 +14141,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Surat%20Castle",
-        "notes": "16th-century fortress built by Khudawand Khan to protect against Portuguese invaders, featuring drawbridges, battlements, and a museum."
+        "notes": "16th-century fortress built by Khudawand Khan to protect against Portuguese invaders, featuring drawbridges, battlements, and a museum.",
+        "kind": "place"
       },
       {
         "title": "Dumas Beach & black sand walk",
@@ -13703,7 +14164,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dumas%20Beach%2C%20Surat",
-        "notes": "Famous coastal beach with unique black magnetic sand on the Arabian Sea, renowned for tomato bhajiya and sweet corn stalls."
+        "notes": "Famous coastal beach with unique black magnetic sand on the Arabian Sea, renowned for tomato bhajiya and sweet corn stalls.",
+        "kind": "place"
       },
       {
         "title": "Surti Locho & Ghari sweet feast",
@@ -13732,7 +14194,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chauta%20Bazar%2C%20Surat",
-        "notes": "Taste Surat's signature steamed chickpea locho topped with butter, sev, and green chutney, followed by rich mawa Surti Ghari."
+        "notes": "Taste Surat's signature steamed chickpea locho topped with butter, sev, and green chutney, followed by rich mawa Surti Ghari.",
+        "kind": "activity"
       },
       {
         "title": "Dutch and Armenian Colonial Gardens",
@@ -13754,7 +14217,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dutch%20Garden%2C%20Surat",
-        "notes": "Historic 17th-century European cemetery featuring towering domed mausoleums of Dutch East India Company merchants."
+        "notes": "Historic 17th-century European cemetery featuring towering domed mausoleums of Dutch East India Company merchants.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -13801,7 +14265,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Laxmi%20Vilas%20Palace%2C%20Vadodara",
-        "notes": "Four times the size of Buckingham Palace; 1890 Indo-Saracenic royal residence with Belgian stained glass, mosaic floors, and armoury."
+        "notes": "Four times the size of Buckingham Palace; 1890 Indo-Saracenic royal residence with Belgian stained glass, mosaic floors, and armoury.",
+        "kind": "place"
       },
       {
         "title": "Sayaji Baug & Baroda Museum (Raja Ravi Varma gallery)",
@@ -13823,7 +14288,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Baroda%20Museum%2C%20Vadodara",
-        "notes": "Expansive 113-acre public park with planetarium, toy train, and museum preserving original royal oil paintings of Raja Ravi Varma."
+        "notes": "Expansive 113-acre public park with planetarium, toy train, and museum preserving original royal oil paintings of Raja Ravi Varma.",
+        "kind": "place"
       },
       {
         "title": "Champaner-Pavagadh UNESCO World Heritage excursion",
@@ -13845,7 +14311,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Champaner-Pavagadh",
-        "notes": "Pre-Mughal 16th-century Islamic city with Jama Masjid intricate stone screens and Kalika Mata temple perched atop volcanic Pavagadh hill."
+        "notes": "Pre-Mughal 16th-century Islamic city with Jama Masjid intricate stone screens and Kalika Mata temple perched atop volcanic Pavagadh hill.",
+        "kind": "place"
       },
       {
         "title": "Sev Usal & Gujarati farsan at Mandvi",
@@ -13873,7 +14340,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mandvi%20Gate%2C%20Vadodara",
-        "notes": "Savor Vadodara's iconic Sev Usal (spicy dry pea curry garnished with spring onions and crisp sev) with butter pav at historic Mahakali Sev Usal."
+        "notes": "Savor Vadodara's iconic Sev Usal (spicy dry pea curry garnished with spring onions and crisp sev) with butter pav at historic Mahakali Sev Usal.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -13919,7 +14387,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kaba%20Gandhi%20No%20Delo%2C%20Rajkot",
-        "notes": "Traditional Saurashtra courtyard home where Gandhiji lived as a boy, now an inspirational museum depicting his life through photographs."
+        "notes": "Traditional Saurashtra courtyard home where Gandhiji lived as a boy, now an inspirational museum depicting his life through photographs.",
+        "kind": "place"
       },
       {
         "title": "Watson Museum & Jubilee Garden",
@@ -13941,7 +14410,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Watson%20Museum%2C%20Rajkot",
-        "notes": "Houses rare Indus Valley Civilization artifacts, 13th-century stone sculptures, coins, and human anatomy models in colonial Jubilee Garden."
+        "notes": "Houses rare Indus Valley Civilization artifacts, 13th-century stone sculptures, coins, and human anatomy models in colonial Jubilee Garden.",
+        "kind": "place"
       },
       {
         "title": "Rotary Dolls Museum (Global Dolls Collection)",
@@ -13963,7 +14433,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rotary%20Dolls%20Museum%2C%20Rajkot",
-        "notes": "Unique museum housing over 1,600 cultural dolls dressed in national costumes from 102 countries across the globe."
+        "notes": "Unique museum housing over 1,600 cultural dolls dressed in national costumes from 102 countries across the globe.",
+        "kind": "place"
       },
       {
         "title": "Kathiyawadi thali & peda dinner",
@@ -13991,7 +14462,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rajkot%20Kathiyawadi%20Thali",
-        "notes": "Feast on rustic Kathiyawadi cuisine: ringna no olo (smoked roasted brinjal), bajra rotla with white butter, garlic chutney, and Rajkot peda."
+        "notes": "Feast on rustic Kathiyawadi cuisine: ringna no olo (smoked roasted brinjal), bajra rotla with white butter, garlic chutney, and Rajkot peda.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -14038,7 +14510,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Akshardham%20Temple%2C%20Gandhinagar",
-        "notes": "23-acre pink Rajasthani sandstone complex with 93 carved pillars, gold-plated Swaminarayan idol, audio-animatronics, and evening laser water show."
+        "notes": "23-acre pink Rajasthani sandstone complex with 93 carved pillars, gold-plated Swaminarayan idol, audio-animatronics, and evening laser water show.",
+        "kind": "place"
       },
       {
         "title": "Indroda Dinosaur and Fossil Park (India's Jurassic Park)",
@@ -14061,7 +14534,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Indroda%20Dinosaur%20Park",
-        "notes": "World's second largest dinosaur egg hatchery site; explore life-sized fiberglass dinosaurs, fossil displays, botanical garden, and zoo."
+        "notes": "World's second largest dinosaur egg hatchery site; explore life-sized fiberglass dinosaurs, fossil displays, botanical garden, and zoo.",
+        "kind": "place"
       },
       {
         "title": "Mahatma Mandir & Dandi Kutir (Salt Mound)",
@@ -14083,7 +14557,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dandi%20Kutir%2C%20Gandhinagar",
-        "notes": "World's largest museum dedicated to a single person, built in the shape of a conical salt mound commemorating the historic Dandi March."
+        "notes": "World's largest museum dedicated to a single person, built in the shape of a conical salt mound commemorating the historic Dandi March.",
+        "kind": "place"
       },
       {
         "title": "Sarita Udyan riverside deer park walk",
@@ -14105,7 +14580,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sarita%20Udyan%2C%20Gandhinagar",
-        "notes": "Lush botanical garden on the banks of the Sabarmati River, popular for birdwatching peacocks, spotted deer, and scenic evening walks."
+        "notes": "Lush botanical garden on the banks of the Sabarmati River, popular for birdwatching peacocks, spotted deer, and scenic evening walks.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -14151,7 +14627,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rock%20Garden%2C%20Chandigarh",
-        "notes": "40-acre visionary sculpture park built secretly by road inspector Nek Chand entirely from urban industrial and domestic ceramic waste."
+        "notes": "40-acre visionary sculpture park built secretly by road inspector Nek Chand entirely from urban industrial and domestic ceramic waste.",
+        "kind": "place"
       },
       {
         "title": "Sukhna Lake morning walk & boating",
@@ -14173,7 +14650,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sukhna%20Lake%2C%20Chandigarh",
-        "notes": "3-sq-km tranquil man-made lake at the foothills of the Shivalik range; enjoy pedal boating, solar boat cruises, and lakeside breakfast."
+        "notes": "3-sq-km tranquil man-made lake at the foothills of the Shivalik range; enjoy pedal boating, solar boat cruises, and lakeside breakfast.",
+        "kind": "activity"
       },
       {
         "title": "Zakir Hussain Rose Garden & Capitol Complex",
@@ -14195,7 +14673,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rose%20Garden%2C%20Chandigarh",
-        "notes": "Asia's largest rose garden boasting 50,000 rose bushes of 1,600 species, alongside Le Corbusier's UNESCO World Heritage Capitol Complex."
+        "notes": "Asia's largest rose garden boasting 50,000 rose bushes of 1,600 species, alongside Le Corbusier's UNESCO World Heritage Capitol Complex.",
+        "kind": "place"
       },
       {
         "title": "Chole bhature & Sector 17 Plaza shopping",
@@ -14223,7 +14702,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sector%2017%20Chandigarh",
-        "notes": "Fluffy bhature with spiced Amritsari chole and sweet lassi, followed by an evening stroll through Chandigarh's pedestrian shopping plaza."
+        "notes": "Fluffy bhature with spiced Amritsari chole and sweet lassi, followed by an evening stroll through Chandigarh's pedestrian shopping plaza.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -14268,7 +14748,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lodhi%20Fort%2C%20Ludhiana",
-        "notes": "500-year-old brick fortress constructed by Muslim ruler Sikandar Lodhi overlooking the Sutlej river gorge, steeped in history."
+        "notes": "500-year-old brick fortress constructed by Muslim ruler Sikandar Lodhi overlooking the Sutlej river gorge, steeped in history.",
+        "kind": "place"
       },
       {
         "title": "Maharaja Ranjit Singh War Museum",
@@ -14290,7 +14771,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=War%20Museum%2C%20Ludhiana",
-        "notes": "Sprawling military history museum featuring tanks, anti-aircraft guns, Sukhoi fighter jets, and galleries honoring Param Vir Chakra heroes."
+        "notes": "Sprawling military history museum featuring tanks, anti-aircraft guns, Sukhoi fighter jets, and galleries honoring Param Vir Chakra heroes.",
+        "kind": "place"
       },
       {
         "title": "PAU Museum of Rural Life of Punjab",
@@ -14312,7 +14794,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=PAU%20Museum%2C%20Ludhiana",
-        "notes": "Created like an authentic 18th-century Punjabi village with traditional mud havelis, phulkari embroideries, butter churns, and spinning wheels."
+        "notes": "Created like an authentic 18th-century Punjabi village with traditional mud havelis, phulkari embroideries, butter churns, and spinning wheels.",
+        "kind": "place"
       },
       {
         "title": "Butter chicken & naan dinner at Baba's",
@@ -14337,7 +14820,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Model%20Town%2C%20Ludhiana",
-        "notes": "Indulge in Punjab's legendary rich cream-simmered butter chicken, tandoori fish tikka, and crisp garlic naans in Model Town."
+        "notes": "Indulge in Punjab's legendary rich cream-simmered butter chicken, tandoori fish tikka, and crisp garlic naans in Model Town.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -14383,7 +14867,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Devi%20Talab%20Mandir%2C%20Jalandhar",
-        "notes": "200-year-old Shakti shrine dedicated to Goddess Durga set in the middle of a sacred water tank, home to the Harballabh Sangeet Sammelan."
+        "notes": "200-year-old Shakti shrine dedicated to Goddess Durga set in the middle of a sacred water tank, home to the Harballabh Sangeet Sammelan.",
+        "kind": "place"
       },
       {
         "title": "Pushpa Gujral Science City",
@@ -14406,7 +14891,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Science%20City%2C%20Jalandhar",
-        "notes": "72-acre mega-science theme park featuring a giant globe dome theatre, flight simulators, dinosaur park, and space exploration galleries."
+        "notes": "72-acre mega-science theme park featuring a giant globe dome theatre, flight simulators, dinosaur park, and space exploration galleries.",
+        "kind": "place"
       },
       {
         "title": "Rangla Punjab Haveli cultural village",
@@ -14434,7 +14920,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rangla%20Punjab%20Haveli",
-        "notes": "Living Punjabi village resort featuring live Bhangra dance, puppet shows, pottery, and an authentic Sarson da Saag & Makki di Roti lunch."
+        "notes": "Living Punjabi village resort featuring live Bhangra dance, puppet shows, pottery, and an authentic Sarson da Saag & Makki di Roti lunch.",
+        "kind": "activity"
       },
       {
         "title": "Jalandhar sports market & Model Town",
@@ -14456,7 +14943,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sports%20Market%2C%20Jalandhar",
-        "notes": "World capital of cricket bats and hockey equipment used by international Olympians, alongside bustling cafes in Model Town."
+        "notes": "World capital of cricket bats and hockey equipment used by international Olympians, alongside bustling cafes in Model Town.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -14501,7 +14989,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Qila%20Mubarak%2C%20Patiala",
-        "notes": "10-acre 1763 Sikh palace fortress with carved jharokhas, painted Sheesh Mahal, and an armoury holding swords of Guru Gobind Singh and Nadir Shah."
+        "notes": "10-acre 1763 Sikh palace fortress with carved jharokhas, painted Sheesh Mahal, and an armoury holding swords of Guru Gobind Singh and Nadir Shah.",
+        "kind": "place"
       },
       {
         "title": "Sheesh Mahal (Palace of Mirrors) & lake",
@@ -14523,7 +15012,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sheesh%20Mahal%2C%20Patiala",
-        "notes": "Built by Maharaja Narinder Singh in 1847, famous for mirrored glass walls, European suspension rope bridge (Lakshman Jhula), and medal museum."
+        "notes": "Built by Maharaja Narinder Singh in 1847, famous for mirrored glass walls, European suspension rope bridge (Lakshman Jhula), and medal museum.",
+        "kind": "place"
       },
       {
         "title": "Baradari Gardens & royal pavilion",
@@ -14545,7 +15035,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Baradari%20Gardens%2C%20Patiala",
-        "notes": "Colonial garden with twelve-gated white marble Baradari pavilion and cricket grounds that hosted historic Ranji Trophy matches."
+        "notes": "Colonial garden with twelve-gated white marble Baradari pavilion and cricket grounds that hosted historic Ranji Trophy matches.",
+        "kind": "place"
       },
       {
         "title": "Patiala Shahi turban, phulkari & jutti shopping",
@@ -14572,7 +15063,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Adalat%20Bazaar%2C%20Patiala",
-        "notes": "Shop for hand-embroidered silk Phulkari dupattas, embellished leather juttis, and enjoy famous Patiala lassi in giant brass tumblers."
+        "notes": "Shop for hand-embroidered silk Phulkari dupattas, embellished leather juttis, and enjoy famous Patiala lassi in giant brass tumblers.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -14619,7 +15111,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Swami%20Vivekanand%20Sarovar%2C%20Raipur",
-        "notes": "Historic lake featuring a colossal 37-foot bronze statue of Swami Vivekananda seated in meditation, with musical fountains and gardens."
+        "notes": "Historic lake featuring a colossal 37-foot bronze statue of Swami Vivekananda seated in meditation, with musical fountains and gardens.",
+        "kind": "place"
       },
       {
         "title": "Mahant Ghasidas Memorial Museum",
@@ -14641,7 +15134,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahant%20Ghasidas%20Museum%2C%20Raipur",
-        "notes": "One of the oldest museums in India (1875) showcasing ancient Kalachuri sculptures, tribal weaponry, masks, and gold coins."
+        "notes": "One of the oldest museums in India (1875) showcasing ancient Kalachuri sculptures, tribal weaponry, masks, and gold coins.",
+        "kind": "place"
       },
       {
         "title": "Purkhouti Muktangan tribal cultural park",
@@ -14663,7 +15157,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Purkhouti%20Muktangan%2C%20Raipur",
-        "notes": "Expansive 200-acre open-air museum preserving tribal habitats, dokra bell-metal crafts, folk sculptures, and indigenous biodiversity."
+        "notes": "Expansive 200-acre open-air museum preserving tribal habitats, dokra bell-metal crafts, folk sculptures, and indigenous biodiversity.",
+        "kind": "place"
       },
       {
         "title": "Chhattisgarhi thali with chila & fara lunch",
@@ -14690,7 +15185,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Marine%20Drive%2C%20Raipur",
-        "notes": "Taste authentic Chhattisgarhi steamed rice fara dumplings, savory rice chila with tomato chutney, and stroll along the vibrant Marine Drive."
+        "notes": "Taste authentic Chhattisgarhi steamed rice fara dumplings, savory rice chila with tomato chutney, and stroll along the vibrant Marine Drive.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -14736,7 +15232,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Maitri%20Bagh%2C%20Bhilai",
-        "notes": "111-acre park established as a symbol of Indo-Soviet cooperation, housing white tigers, toy trains, and musical fountains."
+        "notes": "111-acre park established as a symbol of Indo-Soviet cooperation, housing white tigers, toy trains, and musical fountains.",
+        "kind": "place"
       },
       {
         "title": "Deobalod Shiva Temple (Kalachuri 5th-century)",
@@ -14760,7 +15257,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Deobalod%20Temple%2C%20Bhilai",
-        "notes": "Ancient sandstone temple with a sunken sanctum and stepped water tank, carved with stone iconography of the Kalachuri dynasty."
+        "notes": "Ancient sandstone temple with a sunken sanctum and stepped water tank, carved with stone iconography of the Kalachuri dynasty.",
+        "kind": "place"
       },
       {
         "title": "Bhilai Steel Plant viewpoint & Civic Center",
@@ -14782,7 +15280,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Civic%20Center%2C%20Bhilai",
-        "notes": "View India's premier rail manufacturing industrial plant and explore the bustling tree-lined open-air Civic Center market."
+        "notes": "View India's premier rail manufacturing industrial plant and explore the bustling tree-lined open-air Civic Center market.",
+        "kind": "place"
       },
       {
         "title": "Tandula Dam scenic picnic excursion",
@@ -14804,7 +15303,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tandula%20Dam",
-        "notes": "Historic 1912 reservoir built across Tandula and Sukha rivers, offering scenic water panoramas and sunset nature walks."
+        "notes": "Historic 1912 reservoir built across Tandula and Sukha rivers, offering scenic water panoramas and sunset nature walks.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -14850,7 +15350,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jubilee%20Park%2C%20Jamshedpur",
-        "notes": "Sprawling 225-acre park gifted by Tata Steel, modeled on Mysore's Brindavan Gardens with illuminated fountains, rose beds, and Jayanti Sarovar."
+        "notes": "Sprawling 225-acre park gifted by Tata Steel, modeled on Mysore's Brindavan Gardens with illuminated fountains, rose beds, and Jayanti Sarovar.",
+        "kind": "place"
       },
       {
         "title": "Tata Steel Zoological Park & Safari",
@@ -14872,7 +15373,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tata%20Zoo%2C%20Jamshedpur",
-        "notes": "Modern zoo along Jayanti Lake with a nature trail, safari park housing Bengal tigers, leopards, and an aviary of migratory birds."
+        "notes": "Modern zoo along Jayanti Lake with a nature trail, safari park housing Bengal tigers, leopards, and an aviary of migratory birds.",
+        "kind": "activity"
       },
       {
         "title": "Dimna Lake & Dalma Wildlife Sanctuary",
@@ -14894,7 +15396,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dimna%20Lake%2C%20Jamshedpur",
-        "notes": "Picturesque reservoir at the foot of Dalma Hills; drive up into Dalma Sanctuary, famous for wild elephant herds, barking deer, and Shiva temple."
+        "notes": "Picturesque reservoir at the foot of Dalma Hills; drive up into Dalma Sanctuary, famous for wild elephant herds, barking deer, and Shiva temple.",
+        "kind": "place"
       },
       {
         "title": "Bhuvaneshwari Temple hilltop sunset",
@@ -14918,7 +15421,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhuvaneshwari%20Temple%2C%20Jamshedpur",
-        "notes": "Temple perched 500 feet atop a hillock in Telco, offering a spiritual evening breeze and breathtaking panoramic views of the city."
+        "notes": "Temple perched 500 feet atop a hillock in Telco, offering a spiritual evening breeze and breathtaking panoramic views of the city.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -14964,7 +15468,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Maithon%20Dam%2C%20Dhanbad",
-        "notes": "Damodar Valley Corporation dam on the Barakar river featuring India's first underground hydel power station, islands, and boating."
+        "notes": "Damodar Valley Corporation dam on the Barakar river featuring India's first underground hydel power station, islands, and boating.",
+        "kind": "activity"
       },
       {
         "title": "Kalyaneshwari Temple (500-year-old Shakti shrine)",
@@ -14987,7 +15492,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kalyaneshwari%20Temple%2C%20Dhanbad",
-        "notes": "Revered temple of Goddess Kalyaneshwari fulfilling devotees' wishes, nestled on the banks of the Barakar river."
+        "notes": "Revered temple of Goddess Kalyaneshwari fulfilling devotees' wishes, nestled on the banks of the Barakar river.",
+        "kind": "place"
       },
       {
         "title": "Topchanchi Lake & Parasnath hill views",
@@ -15009,7 +15515,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Topchanchi%20Lake%2C%20Dhanbad",
-        "notes": "Artificial lake constructed in 1915 surrounded by forests and hill slopes, offering tranquil nature walks and views of holy Parasnath hill."
+        "notes": "Artificial lake constructed in 1915 surrounded by forests and hill slopes, offering tranquil nature walks and views of holy Parasnath hill.",
+        "kind": "place"
       },
       {
         "title": "Bhatinda Falls rock cascade",
@@ -15031,7 +15538,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhatinda%20Falls%2C%20Dhanbad",
-        "notes": "Scenic natural waterfall tumbling over massive jagged boulders on the Katri river, popular for nature photography and picnics."
+        "notes": "Scenic natural waterfall tumbling over massive jagged boulders on the Katri river, popular for nature photography and picnics.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -15076,7 +15584,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Robbers%20Cave%2C%20Dehradun",
-        "notes": "Wade barefoot through knee-deep icy mountain streams inside a narrow 600-meter limestone gorge where water disappears underground."
+        "notes": "Wade barefoot through knee-deep icy mountain streams inside a narrow 600-meter limestone gorge where water disappears underground.",
+        "kind": "place"
       },
       {
         "title": "Forest Research Institute (FRI) Greco-Roman campus",
@@ -15098,7 +15607,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Forest%20Research%20Institute%2C%20Dehradun",
-        "notes": "Colossal 1929 British brick masterpiece larger than Buckingham Palace, housing six forestry museums and botanical gardens."
+        "notes": "Colossal 1929 British brick masterpiece larger than Buckingham Palace, housing six forestry museums and botanical gardens.",
+        "kind": "place"
       },
       {
         "title": "Mindrolling Monastery & Great Stupa (Clement Town)",
@@ -15121,7 +15631,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mindrolling%20Monastery%2C%20Dehradun",
-        "notes": "One of India's largest Buddhist monasteries, featuring a 185-foot Great Stupa adorned with murals, gold Buddha statues, and prayer gardens."
+        "notes": "One of India's largest Buddhist monasteries, featuring a 185-foot Great Stupa adorned with murals, gold Buddha statues, and prayer gardens.",
+        "kind": "place"
       },
       {
         "title": "Sahastradhara (Thousandfold Spring) sulfur bath",
@@ -15143,7 +15654,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sahastradhara%2C%20Dehradun",
-        "notes": "Dripping limestone stalactite caves and therapeutic sulfur water pools, complemented by a ropeway ride to the mountaintop park."
+        "notes": "Dripping limestone stalactite caves and therapeutic sulfur water pools, complemented by a ropeway ride to the mountaintop park.",
+        "kind": "place"
       },
       {
         "title": "Paltan Bazaar bakery walk & bun tikki",
@@ -15169,7 +15681,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Paltan%20Bazaar%2C%20Dehradun",
-        "notes": "Taste Dehradun's famous crispy bun tikki with tamarind chutney, and pick up fresh milk rusks, plum cakes, and cookies from Ellora's bakery."
+        "notes": "Taste Dehradun's famous crispy bun tikki with tamarind chutney, and pick up fresh milk rusks, plum cakes, and cookies from Ellora's bakery.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -15216,7 +15729,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Raghunath%20Temple%2C%20Jammu",
-        "notes": "Complex of seven shrines built by Maharaja Gulab Singh, covered in gold leaf and housing millions of sacred saligram stones and ancient manuscripts."
+        "notes": "Complex of seven shrines built by Maharaja Gulab Singh, covered in gold leaf and housing millions of sacred saligram stones and ancient manuscripts.",
+        "kind": "place"
       },
       {
         "title": "Bahu Fort & Bawe Wali Mata Temple",
@@ -15240,7 +15754,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bahu%20Fort%2C%20Jammu",
-        "notes": "3,000-year-old fort overlooking the Tawi river, housing the revered Kali temple and the terraced Bagh-e-Bahu garden aquarium."
+        "notes": "3,000-year-old fort overlooking the Tawi river, housing the revered Kali temple and the terraced Bagh-e-Bahu garden aquarium.",
+        "kind": "place"
       },
       {
         "title": "Amar Mahal Palace Museum (Golden Throne)",
@@ -15262,7 +15777,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Amar%20Mahal%20Museum%2C%20Jammu",
-        "notes": "French-chateau style palace designed by a French architect in 1862, displaying a 120-kg solid gold throne, Pahari miniature paintings, and royal library."
+        "notes": "French-chateau style palace designed by a French architect in 1862, displaying a 120-kg solid gold throne, Pahari miniature paintings, and royal library.",
+        "kind": "place"
       },
       {
         "title": "Kaladi kulcha & Dogra cuisine dinner",
@@ -15289,7 +15805,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jammu%20Kaladi%20Kulcha",
-        "notes": "Taste authentic Dogra specialty: pan-fried dense ripened cheese (Kaladi) stuffed in fluffy kulchas, rajma chawal with anardana chutney, and sund panjiri."
+        "notes": "Taste authentic Dogra specialty: pan-fried dense ripened cheese (Kaladi) stuffed in fluffy kulchas, rajma chawal with anardana chutney, and sund panjiri.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -15335,7 +15852,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gulmarg%20Gondola",
-        "notes": "Ride the cable car to Kongdoori (Phase 1) and up to 13,780 ft at Apharwat Peak (Phase 2) for year-round snow play, skiing, and border views."
+        "notes": "Ride the cable car to Kongdoori (Phase 1) and up to 13,780 ft at Apharwat Peak (Phase 2) for year-round snow play, skiing, and border views.",
+        "kind": "place"
       },
       {
         "title": "St. Mary's Church & Gulmarg Golf Course",
@@ -15358,7 +15876,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=St%20Marys%20Church%2C%20Gulmarg",
-        "notes": "Charming 1902 Victorian stone church in the meadows, beside the highest 18-hole green golf course in the world."
+        "notes": "Charming 1902 Victorian stone church in the meadows, beside the highest 18-hole green golf course in the world.",
+        "kind": "place"
       },
       {
         "title": "Strawberry Valley horse trail ride",
@@ -15380,7 +15899,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Strawberry%20Valley%2C%20Gulmarg",
-        "notes": "Ride mountain ponies through pine forests and rolling meadows where wild strawberries bloom in summer, framed by snow peaks."
+        "notes": "Ride mountain ponies through pine forests and rolling meadows where wild strawberries bloom in summer, framed by snow peaks.",
+        "kind": "place"
       },
       {
         "title": "Kahwa tea & hot Kashmiri kebabs by the fireplace",
@@ -15405,7 +15925,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gulmarg%20Market",
-        "notes": "Warm up with steaming saffron-infused Kashmiri Kahwa with crushed almonds, alongside freshly grilled seekh kebabs and lavasa bread."
+        "notes": "Warm up with steaming saffron-infused Kashmiri Kahwa with crushed almonds, alongside freshly grilled seekh kebabs and lavasa bread.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -15452,7 +15973,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Betaab%20Valley%2C%20Pahalgam",
-        "notes": "Lush postcard-perfect valley named after the Bollywood movie 'Betaab', featuring willow trees, crystal stream, and surrounding snowy mountains."
+        "notes": "Lush postcard-perfect valley named after the Bollywood movie 'Betaab', featuring willow trees, crystal stream, and surrounding snowy mountains.",
+        "kind": "place"
       },
       {
         "title": "Aru Valley village & Kolahoi Glacier trail",
@@ -15474,7 +15996,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Aru%20Valley%2C%20Pahalgam",
-        "notes": "Scenic mountain hamlet 12 km from Pahalgam, famous for rolling green pastures, wooden Gujjar huts, and treks to alpine Tarsar Marsar lakes."
+        "notes": "Scenic mountain hamlet 12 km from Pahalgam, famous for rolling green pastures, wooden Gujjar huts, and treks to alpine Tarsar Marsar lakes.",
+        "kind": "place"
       },
       {
         "title": "Chandanwari & Sheshnag River",
@@ -15497,7 +16020,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chandanwari%2C%20Pahalgam",
-        "notes": "The official base camp of the holy Amarnath Yatra, featuring natural snow bridges and the roaring glacier melt of the Sheshnag river."
+        "notes": "The official base camp of the holy Amarnath Yatra, featuring natural snow bridges and the roaring glacier melt of the Sheshnag river.",
+        "kind": "place"
       },
       {
         "title": "Baisaran (Mini Switzerland of Kashmir) pony trek",
@@ -15519,7 +16043,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Baisaran%2C%20Pahalgam",
-        "notes": "Pony trek up steep deodar forest trails to a vast hilltop meadow resembling Swiss alpine pastures, complete with zorbing and zip-lining."
+        "notes": "Pony trek up steep deodar forest trails to a vast hilltop meadow resembling Swiss alpine pastures, complete with zorbing and zip-lining.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -15565,7 +16090,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thajiwas%20Glacier%2C%20Sonamarg",
-        "notes": "Trek or ride a pony up to the foot of the snow-clad glacier (9,186 ft) for sledging on snow bridges amidst silver birch and pine trees."
+        "notes": "Trek or ride a pony up to the foot of the snow-clad glacier (9,186 ft) for sledging on snow bridges amidst silver birch and pine trees.",
+        "kind": "place"
       },
       {
         "title": "Sindh River trout fishing & river rafting",
@@ -15587,7 +16113,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sindh%20River%2C%20Sonamarg",
-        "notes": "Try brown and rainbow trout angling or exciting white-water river rafting along the turbulent glacial rapids of the Sindh river."
+        "notes": "Try brown and rainbow trout angling or exciting white-water river rafting along the turbulent glacial rapids of the Sindh river.",
+        "kind": "activity"
       },
       {
         "title": "Zoji La Pass & Zero Point excursion",
@@ -15609,7 +16136,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Zoji%20La%20Pass",
-        "notes": "Drive along the legendary high-altitude mountain pass at 11,575 ft connecting Kashmir with Ladakh, visiting snowy Zero Point for snowmobiling."
+        "notes": "Drive along the legendary high-altitude mountain pass at 11,575 ft connecting Kashmir with Ladakh, visiting snowy Zero Point for snowmobiling.",
+        "kind": "place"
       },
       {
         "title": "Baltal Valley scenic view",
@@ -15632,7 +16160,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Baltal%20Valley%2C%20Sonamarg",
-        "notes": "Stunning valley at the foot of Zoji La serving as the shorter helicopter and trek route to the holy Amarnath Cave."
+        "notes": "Stunning valley at the foot of Zoji La serving as the shorter helicopter and trek route to the holy Amarnath Cave.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -15678,7 +16207,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kargil%20War%20Memorial%2C%20Drass",
-        "notes": "National military memorial honoring heroes of Operation Vijay (1999), set directly opposite Tololing, Tiger Hill, and Batra Top."
+        "notes": "National military memorial honoring heroes of Operation Vijay (1999), set directly opposite Tololing, Tiger Hill, and Batra Top.",
+        "kind": "place"
       },
       {
         "title": "Mulbekh Monastery (Maitreya Buddha rock carving)",
@@ -15701,7 +16231,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mulbekh%20Monastery%2C%20Kargil",
-        "notes": "Ancient 8th-century 30-foot colossal rock carving of Future Buddha Maitreya (Chamba) sculpted into an isolated limestone rock pinnacle."
+        "notes": "Ancient 8th-century 30-foot colossal rock carving of Future Buddha Maitreya (Chamba) sculpted into an isolated limestone rock pinnacle.",
+        "kind": "place"
       },
       {
         "title": "Suru Valley & Nun-Kun mountain view",
@@ -15723,7 +16254,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Suru%20Valley%2C%20Kargil",
-        "notes": "One of the most fertile and picturesque valleys of Ladakh, framed by towering twin Himalayan peaks Nun (7,135 m) and Kun (7,077 m)."
+        "notes": "One of the most fertile and picturesque valleys of Ladakh, framed by towering twin Himalayan peaks Nun (7,135 m) and Kun (7,077 m).",
+        "kind": "place"
       },
       {
         "title": "Hunderman Historic Village (Border Museum)",
@@ -15745,7 +16277,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hunderman%20Village%2C%20Kargil",
-        "notes": "A preserved ghost village overlooking the Line of Control, with a community museum displaying letters, relics, and traditional Balti lifestyle."
+        "notes": "A preserved ghost village overlooking the Line of Control, with a community museum displaying letters, relics, and traditional Balti lifestyle.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -15791,7 +16324,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahananda%20Wildlife%20Sanctuary",
-        "notes": "Dense sal forest reserve between Teesta and Mahananda rivers, famous for wild elephant migration corridors, bison, and hornbills."
+        "notes": "Dense sal forest reserve between Teesta and Mahananda rivers, famous for wild elephant migration corridors, bison, and hornbills.",
+        "kind": "activity"
       },
       {
         "title": "Salugara Monastery & 100-foot Stupa",
@@ -15814,7 +16348,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Salugara%20Monastery%2C%20Siliguri",
-        "notes": "Founded by Tibetan lama Kalu Rinpoche, housing a revered 100-foot Buddhist stupa enshrining five sacred relics."
+        "notes": "Founded by Tibetan lama Kalu Rinpoche, housing a revered 100-foot Buddhist stupa enshrining five sacred relics.",
+        "kind": "place"
       },
       {
         "title": "Bengal Safari (North Bengal Wild Animals Park)",
@@ -15836,7 +16371,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bengal%20Safari%2C%20Siliguri",
-        "notes": "Open safari buses taking visitors through natural enclosures of Royal Bengal tigers, Asiatic black bears, leopards, and rhinos."
+        "notes": "Open safari buses taking visitors through natural enclosures of Royal Bengal tigers, Asiatic black bears, leopards, and rhinos.",
+        "kind": "activity"
       },
       {
         "title": "Hong Kong Market & momo feast",
@@ -15863,7 +16399,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hong%20Kong%20Market%2C%20Siliguri",
-        "notes": "Lively shopping bazaar for imported gadgets, Tibetan woolens, and handicrafts, paired with Darjeeling-style steamed chicken momos and thukpa."
+        "notes": "Lively shopping bazaar for imported gadgets, Tibetan woolens, and handicrafts, paired with Darjeeling-style steamed chicken momos and thukpa.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -15908,7 +16445,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Deolo%20Hill%2C%20Kalimpong",
-        "notes": "Highest point in Kalimpong (5,590 ft) with landscaped gardens offering unobstructed views of Mount Kanchenjunga, Relli valley, and paragliding."
+        "notes": "Highest point in Kalimpong (5,590 ft) with landscaped gardens offering unobstructed views of Mount Kanchenjunga, Relli valley, and paragliding.",
+        "kind": "place"
       },
       {
         "title": "Zang Dhok Palri Phodang (Durpin Monastery)",
@@ -15931,7 +16469,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Durpin%20Monastery%2C%20Kalimpong",
-        "notes": "Consecrated by the Dalai Lama in 1976, housing rare Tibetan Buddhist Kangyur scriptures brought from Tibet, and three-dimensional mandalas."
+        "notes": "Consecrated by the Dalai Lama in 1976, housing rare Tibetan Buddhist Kangyur scriptures brought from Tibet, and three-dimensional mandalas.",
+        "kind": "place"
       },
       {
         "title": "Pine View Cactus Nursery & Morgan House",
@@ -15953,7 +16492,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pine%20View%20Nursery%2C%20Kalimpong",
-        "notes": "Asia's largest private commercial collection of 1,500+ rare cacti species, followed by a visit to the 1930s British haunted-legend Morgan House."
+        "notes": "Asia's largest private commercial collection of 1,500+ rare cacti species, followed by a visit to the 1930s British haunted-legend Morgan House.",
+        "kind": "place"
       },
       {
         "title": "Kalimpong cheese, lollipops & haat bazaar",
@@ -15980,7 +16520,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kalimpong%20Market",
-        "notes": "Sample traditional Swiss-style Kalimpong gouda cheese, local chewy lollipops, dalle khursani chili pickles, and Tibetan street snacks."
+        "notes": "Sample traditional Swiss-style Kalimpong gouda cheese, local chewy lollipops, dalle khursani chili pickles, and Tibetan street snacks.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -16026,7 +16567,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mirik%20Lake",
-        "notes": "1.25-km natural lake with an 80-foot arched footbridge (Indreni Pul), pedal boating, pony rides, and reflections of Kanchenjunga."
+        "notes": "1.25-km natural lake with an 80-foot arched footbridge (Indreni Pul), pedal boating, pony rides, and reflections of Kanchenjunga.",
+        "kind": "activity"
       },
       {
         "title": "Bokar Monastery (Ngedon Dhokpye Gompa)",
@@ -16049,7 +16591,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bokar%20Monastery%2C%20Mirik",
-        "notes": "Prominent Kagyupa Buddhist meditation center perched on the highest ridge of Mirik with gold-embossed prayer halls and chanting lamas."
+        "notes": "Prominent Kagyupa Buddhist meditation center perched on the highest ridge of Mirik with gold-embossed prayer halls and chanting lamas.",
+        "kind": "place"
       },
       {
         "title": "Tingling View Point & tea garden walk",
@@ -16072,7 +16615,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tingling%20View%20Point%2C%20Mirik",
-        "notes": "Sweeping vantage point overlooking the manicured slopes of eight rolling tea gardens, pine forests, and Mirik Lake in the distance."
+        "notes": "Sweeping vantage point overlooking the manicured slopes of eight rolling tea gardens, pine forests, and Mirik Lake in the distance.",
+        "kind": "place"
       },
       {
         "title": "Orange Orchards & Pashupati Nagar Nepal border",
@@ -16094,7 +16638,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pashupati%20Nagar",
-        "notes": "Drive along the Nepal border through sweet citrus orange groves, crossing into Pashupati Nagar market for electronics, tea, and woolens."
+        "notes": "Drive along the Nepal border through sweet citrus orange groves, crossing into Pashupati Nagar market for electronics, tea, and woolens.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -16139,7 +16684,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=New%20Digha%20Beach",
-        "notes": "Vast flat sandy beach where waters recede for miles during low tide, lined with casuarina pine forests and morning seaside walks."
+        "notes": "Vast flat sandy beach where waters recede for miles during low tide, lined with casuarina pine forests and morning seaside walks.",
+        "kind": "place"
       },
       {
         "title": "Marine Aquarium and Regional Centre (MARC)",
@@ -16161,7 +16707,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Marine%20Aquarium%2C%20Digha",
-        "notes": "Asia's largest marine research aquarium, displaying rare marine biodiversity, horseshoe crabs, lobsters, sharks, and butterfly fish."
+        "notes": "Asia's largest marine research aquarium, displaying rare marine biodiversity, horseshoe crabs, lobsters, sharks, and butterfly fish.",
+        "kind": "place"
       },
       {
         "title": "Fried fish & crab stall feast at Old Digha",
@@ -16186,7 +16733,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Old%20Digha%20Beach",
-        "notes": "Select fresh pomfret, hilsa, tiger prawns, and crab directly from fishermen and have them shallow-fried with spicy coastal masala on the beach."
+        "notes": "Select fresh pomfret, hilsa, tiger prawns, and crab directly from fishermen and have them shallow-fried with spicy coastal masala on the beach.",
+        "kind": "activity"
       },
       {
         "title": "Udaipur Beach (Bengal-Odisha border) sunset",
@@ -16208,7 +16756,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Udaipur%20Beach%2C%20Digha",
-        "notes": "Serene, uncrowded virgin beach right at the state border, offering banana boat rides, quad bikes, and peaceful sunset tides."
+        "notes": "Serene, uncrowded virgin beach right at the state border, offering banana boat rides, quad bikes, and peaceful sunset tides.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -16254,7 +16803,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mandarmoni%20Beach",
-        "notes": "Longest motorable beach in India with hard packed sand; watch thousands of bright red ghost crabs scuttle across early morning tide pools."
+        "notes": "Longest motorable beach in India with hard packed sand; watch thousands of bright red ghost crabs scuttle across early morning tide pools.",
+        "kind": "place"
       },
       {
         "title": "Water sports & ATV beach rides",
@@ -16276,7 +16826,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mandarmoni%20Water%20Sports",
-        "notes": "Thrill to jet-skiing, parasailing, speed-boat rides, and quad-bike ATV driving across the flat, wide shoreline."
+        "notes": "Thrill to jet-skiing, parasailing, speed-boat rides, and quad-bike ATV driving across the flat, wide shoreline.",
+        "kind": "place"
       },
       {
         "title": "Mohana (River Delta Confluence) sunset walk",
@@ -16298,7 +16849,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mandarmoni%20Mohana",
-        "notes": "The scenic delta end where the local river joins the Bay of Bengal, lined with dense jhau pine trees and fishing trawlers at dusk."
+        "notes": "The scenic delta end where the local river joins the Bay of Bengal, lined with dense jhau pine trees and fishing trawlers at dusk.",
+        "kind": "place"
       },
       {
         "title": "Tajpur Beach coastal excursion",
@@ -16320,7 +16872,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tajpur%20Beach",
-        "notes": "Idyllic, quiet neighboring beach tucked behind dense casuarina groves with tranquil waves and fresh green coconut shacks."
+        "notes": "Idyllic, quiet neighboring beach tucked behind dense casuarina groves with tranquil waves and fresh green coconut shacks.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -16365,7 +16918,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sundarbans%20Boat%20Safari",
-        "notes": "Cruise through intricate maze-like tidal waterways lined with sundari mangrove pneumatophores, spotting spotted deer and kingfishers."
+        "notes": "Cruise through intricate maze-like tidal waterways lined with sundari mangrove pneumatophores, spotting spotted deer and kingfishers.",
+        "kind": "activity"
       },
       {
         "title": "Sajnekhali Watch Tower & Mangrove Interpretation Centre",
@@ -16388,7 +16942,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sajnekhali%20Watch%20Tower",
-        "notes": "Primary wildlife entry post featuring a watch tower over freshwater ponds, crocodile breeding enclosure, and Bonbibi forest goddess shrine."
+        "notes": "Primary wildlife entry post featuring a watch tower over freshwater ponds, crocodile breeding enclosure, and Bonbibi forest goddess shrine.",
+        "kind": "place"
       },
       {
         "title": "Sudhanyakhali Watch Tower (Tiger Sighting Point)",
@@ -16410,7 +16965,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sudhanyakhali%20Watch%20Tower",
-        "notes": "The prime spot with the highest recorded sightings of the elusive swimming Royal Bengal tiger visiting the sweetwater pond."
+        "notes": "The prime spot with the highest recorded sightings of the elusive swimming Royal Bengal tiger visiting the sweetwater pond.",
+        "kind": "place"
       },
       {
         "title": "Dobanki Watch Tower & Canopy Walk",
@@ -16432,7 +16988,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dobanki%20Watch%20Tower",
-        "notes": "Walk half a kilometer along a protected elevated wire-netted canopy walkway 20 feet above the ground, looking down into the wild mangrove canopy."
+        "notes": "Walk half a kilometer along a protected elevated wire-netted canopy walkway 20 feet above the ground, looking down into the wild mangrove canopy.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -16479,7 +17036,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lalbagh%20Botanical%20Garden%2C%20Bengaluru",
-        "notes": "Historic 240-acre garden commissioned by Hyder Ali in 1760, with a London Crystal Palace-modeled glass house and 3,000-million-year-old rock."
+        "notes": "Historic 240-acre garden commissioned by Hyder Ali in 1760, with a London Crystal Palace-modeled glass house and 3,000-million-year-old rock.",
+        "kind": "place"
       },
       {
         "title": "Vidyarthi Bhavan crispy masala dosa & filter coffee",
@@ -16506,7 +17064,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vidyarthi%20Bhavan%2C%20Bengaluru",
-        "notes": "Legendary heritage eatery founded in 1943, famous for thick, golden ghee-soaked butter masala dosas and frothy South Indian filter coffee."
+        "notes": "Legendary heritage eatery founded in 1943, famous for thick, golden ghee-soaked butter masala dosas and frothy South Indian filter coffee.",
+        "kind": "activity"
       },
       {
         "title": "Bangalore Palace Tudor royal estate",
@@ -16528,7 +17087,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bangalore%20Palace%2C%20Bengaluru",
-        "notes": "19th-century royal palace of the Wadiyars inspired by England's Windsor Castle, featuring fortified towers, stained glass, and Raja Ravi Varma paintings."
+        "notes": "19th-century royal palace of the Wadiyars inspired by England's Windsor Castle, featuring fortified towers, stained glass, and Raja Ravi Varma paintings.",
+        "kind": "place"
       },
       {
         "title": "Cubbon Park & Vidhana Soudha granite facade",
@@ -16551,7 +17111,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vidhana%20Soudha%2C%20Bengaluru",
-        "notes": "The green lungs of the city leading to the imposing neo-Dravidian granite legislative assembly bearing the motto 'Government Work is God's Work'."
+        "notes": "The green lungs of the city leading to the imposing neo-Dravidian granite legislative assembly bearing the motto 'Government Work is God's Work'.",
+        "kind": "place"
       },
       {
         "title": "Indiranagar craft brewery & culinary evening",
@@ -16576,7 +17137,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Indiranagar%2C%20Bengaluru",
-        "notes": "Experience Bengaluru's vibrant pub and microbrewery culture: freshly brewed mango cider, IPAs, sourdough pizzas, and cosmopolitan rooftop dining."
+        "notes": "Experience Bengaluru's vibrant pub and microbrewery culture: freshly brewed mango cider, IPAs, sourdough pizzas, and cosmopolitan rooftop dining.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -16626,7 +17188,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bara%20Imambara%2C%20Lucknow",
-        "notes": "Monumental 1784 hall built without pillars or wooden beams, featuring a dense 3D maze of 1,000 interlocking passageways and stepwell (Baoli)."
+        "notes": "Monumental 1784 hall built without pillars or wooden beams, featuring a dense 3D maze of 1,000 interlocking passageways and stepwell (Baoli).",
+        "kind": "place"
       },
       {
         "title": "Rumi Darwaza & Chota Imambara",
@@ -16648,7 +17211,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rumi%20Darwaza%2C%20Lucknow",
-        "notes": "60-foot colossal gateway styled after Constantinople's Sublime Porte, leading to the dazzling crystal chandelier-lit Palace of Lights."
+        "notes": "60-foot colossal gateway styled after Constantinople's Sublime Porte, leading to the dazzling crystal chandelier-lit Palace of Lights.",
+        "kind": "place"
       },
       {
         "title": "Chowk heritage walk & Chikankari embroidery",
@@ -16670,7 +17234,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chowk%2C%20Lucknow",
-        "notes": "Wander historic lanes famous for artisanal Chikankari needlework, fragrant attar perfumes, zardozi silver work, and Makhan Malai sweets."
+        "notes": "Wander historic lanes famous for artisanal Chikankari needlework, fragrant attar perfumes, zardozi silver work, and Makhan Malai sweets.",
+        "kind": "activity"
       },
       {
         "title": "Tunday Kababi & Awadhi dum biryani",
@@ -16696,7 +17261,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tunday%20Kababi%2C%20Aminabad",
-        "notes": "World-famous 1905 eatery serving melt-in-mouth Galouti kebabs infused with 160 secret spices, Mughlai parathas, and fragrant Awadhi mutton biryani."
+        "notes": "World-famous 1905 eatery serving melt-in-mouth Galouti kebabs infused with 160 secret spices, Mughlai parathas, and fragrant Awadhi mutton biryani.",
+        "kind": "activity"
       },
       {
         "title": "Hazratganj promenade & British Residency",
@@ -16718,7 +17284,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hazratganj%2C%20Lucknow",
-        "notes": "Explore cannon-scarred ruins of the 1857 Siege of Lucknow, followed by 'Ganjing' along the Victorian-style colonial arcade shopping boulevard."
+        "notes": "Explore cannon-scarred ruins of the 1857 Siege of Lucknow, followed by 'Ganjing' along the Victorian-style colonial arcade shopping boulevard.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -16768,7 +17335,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shirdi%20Sai%20Baba%20Temple",
-        "notes": "The sanctum sanctorum housing the white Italian marble idol and final samadhi of Sai Baba, where devotees of all faiths gather for morning Kakad aarti."
+        "notes": "The sanctum sanctorum housing the white Italian marble idol and final samadhi of Sai Baba, where devotees of all faiths gather for morning Kakad aarti.",
+        "kind": "place"
       },
       {
         "title": "Dwarkamai Mosque & sacred Dhuni fire",
@@ -16791,7 +17359,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dwarkamai%2C%20Shirdi",
-        "notes": "The historic mosque where Sai Baba lived for 60 years, preserving the eternal sacred Dhuni fire whose ash (Udi) is distributed to pilgrims."
+        "notes": "The historic mosque where Sai Baba lived for 60 years, preserving the eternal sacred Dhuni fire whose ash (Udi) is distributed to pilgrims.",
+        "kind": "place"
       },
       {
         "title": "Chavadi & Gurusthan sacred neem tree",
@@ -16813,7 +17382,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gurusthan%2C%20Shirdi",
-        "notes": "Gurusthan marks the neem tree where young Sai Baba first appeared to villagers; Chavadi is where Baba slept on alternate nights during his final years."
+        "notes": "Gurusthan marks the neem tree where young Sai Baba first appeared to villagers; Chavadi is where Baba slept on alternate nights during his final years.",
+        "kind": "place"
       },
       {
         "title": "Shirdi Prasadalaya massive community sattvic meal",
@@ -16842,7 +17412,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sai%20Prasadalaya%2C%20Shirdi",
-        "notes": "One of the world's largest solar-powered community dining halls, serving wholesome, subsidized consecrated vegetarian prasad to 40,000 pilgrims daily."
+        "notes": "One of the world's largest solar-powered community dining halls, serving wholesome, subsidized consecrated vegetarian prasad to 40,000 pilgrims daily.",
+        "kind": "activity"
       },
       {
         "title": "Sai Teerth Spiritual Theme Park",
@@ -16864,7 +17435,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sai%20Teerth%2C%20Shirdi",
-        "notes": "Modern devotional theme park featuring animatronics shows, 5D flight simulators across India's sacred temples, and theatrical reenactments."
+        "notes": "Modern devotional theme park featuring animatronics shows, 5D flight simulators across India's sacred temples, and theatrical reenactments.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -16913,7 +17485,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kamakshi%20Amman%20Temple%2C%20Kancheepuram",
-        "notes": "Ancient 7th-century Shakta shrine of Goddess Kamakshi seated in Padmasana with sugarcane bow and floral arrows, housing the sacred Sri Chakra."
+        "notes": "Ancient 7th-century Shakta shrine of Goddess Kamakshi seated in Padmasana with sugarcane bow and floral arrows, housing the sacred Sri Chakra.",
+        "kind": "place"
       },
       {
         "title": "Ekambareswarar Temple (Prithvi Lingam)",
@@ -16938,7 +17511,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ekambareswarar%20Temple%2C%20Kancheepuram",
-        "notes": "One of the Pancha Bhoota Sthalams representing Earth (Prithvi); features a towering 59-meter Raja Gopuram and a sacred 3,500-year-old mango tree."
+        "notes": "One of the Pancha Bhoota Sthalams representing Earth (Prithvi); features a towering 59-meter Raja Gopuram and a sacred 3,500-year-old mango tree.",
+        "kind": "place"
       },
       {
         "title": "Kailasanathar Temple (Pallava stone architecture)",
@@ -16961,7 +17535,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kailasanathar%20Temple%2C%20Kancheepuram",
-        "notes": "Oldest structural sandstone temple in Kanchipuram built by Rajasimha Pallava in 685 CE, famous for 58 circumambulatory sub-shrines and vibrant rock carvings."
+        "notes": "Oldest structural sandstone temple in Kanchipuram built by Rajasimha Pallava in 685 CE, famous for 58 circumambulatory sub-shrines and vibrant rock carvings.",
+        "kind": "place"
       },
       {
         "title": "Kanchipuram idli & traditional lunch",
@@ -16988,7 +17563,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gandhi%20Rd%2C%20Kancheepuram",
-        "notes": "Savor authentic Kovil Idli: cylindrical steamed idlis spiced with crushed black pepper, cumin, dry ginger, curry leaves, and generous pure ghee."
+        "notes": "Savor authentic Kovil Idli: cylindrical steamed idlis spiced with crushed black pepper, cumin, dry ginger, curry leaves, and generous pure ghee.",
+        "kind": "activity"
       },
       {
         "title": "Varadharaja Perumal Temple & Golden Lizard",
@@ -17012,7 +17588,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Varadharaja%20Perumal%20Temple%2C%20Kancheepuram",
-        "notes": "Divya Desam Vaishnavite temple with a 100-pillared hall carved from single stones, stone chains, and the sacred golden and silver lizard sculptures."
+        "notes": "Divya Desam Vaishnavite temple with a 100-pillared hall carved from single stones, stone chains, and the sacred golden and silver lizard sculptures.",
+        "kind": "place"
       },
       {
         "title": "Kanchipuram Silk Weavers' handloom cooperative",
@@ -17034,7 +17611,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kanchipuram%20Silk%20Saree",
-        "notes": "Watch skilled master weavers weave GI-tagged heavy mulberry silk sarees with pure gold zari borders and temple motifs on traditional pit looms."
+        "notes": "Watch skilled master weavers weave GI-tagged heavy mulberry silk sarees with pure gold zari borders and temple motifs on traditional pit looms.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -17116,7 +17694,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "One of the twelve sacred Jyotirlingas, home to the south-facing Dakshinmurti Shiva and a revered three-tiered sanctum. Special Bhasma Aarti seva takes place at dawn with advance booking.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahakaleshwar%20Jyotirlinga%2C%20Ujjain"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahakaleshwar%20Jyotirlinga%2C%20Ujjain",
+        "kind": "place"
       },
       {
         "title": "Malwi Poha Jalebi breakfast trail",
@@ -17145,7 +17724,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "notes": "Classic Malwa breakfast of steaming spiced poha sprinkled with crispy Ratlami sev and jeeravan, accompanied by hot jalebis and cutting chai.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tower%20Chowk%2C%20Ujjain"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tower%20Chowk%2C%20Ujjain",
+        "kind": "activity"
       },
       {
         "title": "Vedh Shala (Jantar Mantar observatory)",
@@ -17169,7 +17749,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "Built in 1719 by Maharaja Sawai Jai Singh II, this historic open-air observatory marks ancient India's prime meridian on the Tropic of Cancer with precision stone instruments.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vedh%20Shala%2C%20Ujjain"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vedh%20Shala%2C%20Ujjain",
+        "kind": "place"
       },
       {
         "title": "Sandipani Ashram & Gomti Kund",
@@ -17194,7 +17775,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "Ancient hermitage where Lord Krishna, Balarama, and Sudama were educated by Maharishi Sandipani in the 64 arts; features the holy Gomti Kund stepped reservoir.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sandipani%20Ashram%2C%20Ujjain"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sandipani%20Ashram%2C%20Ujjain",
+        "kind": "place"
       },
       {
         "title": "Traditional Malwi Dal Bafla lunch",
@@ -17220,7 +17802,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "notes": "The quintessential Malwa culinary feast: crisp, golden boiled-and-roasted baflas drenched in pure desi ghee, served with spicy tuvar dal, churma, and kadhi.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dal%20Bafla%2C%20Ujjain"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dal%20Bafla%2C%20Ujjain",
+        "kind": "activity"
       },
       {
         "title": "Kal Bhairav Temple darshan",
@@ -17244,7 +17827,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "Ancient tantric shrine dedicated to the fiery guardian deity of Avantika, famous for centuries-old ritual offerings consumed miraculously by the deity.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kal%20Bhairav%20Temple%2C%20Ujjain"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kal%20Bhairav%20Temple%2C%20Ujjain",
+        "kind": "place"
       },
       {
         "title": "Ram Ghat sunset & Shipra Aarti",
@@ -17268,7 +17852,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "The oldest sacred bathing ghat associated with the Simhastha Kumbh Mela, where pilgrims gather at dusk for chanting, ringing bells, and floating lamps on the Shipra River.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ram%20Ghat%2C%20Ujjain"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ram%20Ghat%2C%20Ujjain",
+        "kind": "place"
       },
       {
         "title": "Shaktipeeth Maa Harsiddhi Temple deepstambha aarti",
@@ -17292,7 +17877,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "One of the 51 holy Shaktipeeths and Kuldevi of King Vikramaditya. At dusk, brave sevadars climb the twin 50-foot stone deepstambhas (lamp pillars) to illuminate hundreds of flickering oil lamps.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Harsiddhi%20Temple%2C%20Ujjain"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Harsiddhi%20Temple%2C%20Ujjain",
+        "kind": "place"
       },
       {
         "title": "Shri Mahakal Lok Corridor evening walk",
@@ -17316,7 +17902,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "A magnificent 900-meter cultural plaza surrounding Rudrasagar Lake, spectacular under evening illumination with 108 ornate pillars depicting Shiv Tandav and monumental sculptures from Shiva Purana.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shri%20Mahakal%20Lok%2C%20Ujjain"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shri%20Mahakal%20Lok%2C%20Ujjain",
+        "kind": "place"
       }
     ],
     "setting": "plains",
@@ -17377,7 +17964,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "One of the 12 Jyotirlingas, dedicated to Lord Shiva.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mallikarjuna%20Jyotirlinga%2C%20Srisailam"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mallikarjuna%20Jyotirlinga%2C%20Srisailam",
+        "kind": "place"
       },
       {
         "title": "Bhramaramba Devi Temple",
@@ -17399,7 +17987,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "One of the 18 Maha Shakti Peethas.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhramaramba%20Devi%20Temple%2C%20Srisailam"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhramaramba%20Devi%20Temple%2C%20Srisailam",
+        "kind": "place"
       },
       {
         "title": "Srisailam Dam",
@@ -17421,7 +18010,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "One of the largest dams in India, offering scenic views.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Srisailam%20Dam%2C%20Andhra%20Pradesh"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Srisailam%20Dam%2C%20Andhra%20Pradesh",
+        "kind": "place"
       }
     ],
     "setting": "hills",
@@ -17499,7 +18089,12 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "One of the twelve sacred Jyotirlingas, situated on the holy Om-shaped Mandhata Island in the Narmada River. Features a multi-tiered sanctum housing the swayambhu Shiva lingam, reached via the scenic suspension footbridge.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Omkareshwar%20Jyotirlinga%20Temple%2C%20Omkareshwar"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Omkareshwar%20Jyotirlinga%20Temple%2C%20Omkareshwar&query_place_id=ChIJP4WlJf69YjkRDfmVMamd7LI",
+        "kind": "place",
+        "placeId": "ChIJP4WlJf69YjkRDfmVMamd7LI",
+        "ftid": "0x3962bdfe25a5853f:0xb2ec9da93195f90d",
+        "lat": 22.2454388,
+        "lng": 76.1510642
       },
       {
         "title": "Ghatside Malwi Poha Jalebi breakfast trail",
@@ -17528,7 +18123,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "notes": "Traditional morning breakfast along the river ghats: steaming turmeric poha garnished with fresh coriander and crispy sev, hot crisp jalebis, and spiced milk chai.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gomukh%20Ghat%2C%20Omkareshwar"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gomukh%20Ghat%2C%20Omkareshwar",
+        "kind": "activity"
       },
       {
         "title": "Mamleshwar Temple (Amareshwar) darshan",
@@ -17554,7 +18150,12 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "The revered twin temple to Omkareshwar on the southern mainland bank, traditionally considered an essential half of the Jyotirlinga pilgrimage. Features 10th-century Paramara stone architecture, intricate Mahimna Stotra inscriptions, and unbroken Lingarchan rituals.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mamleshwar%20Temple%2C%20Omkareshwar"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mamleshwar%20Temple%2C%20Omkareshwar&query_place_id=ChIJS9DNyui8YjkR7PemdmWRrTY",
+        "kind": "place",
+        "placeId": "ChIJS9DNyui8YjkR7PemdmWRrTY",
+        "ftid": "0x3962bce8cacdd04b:0x36ad916576a6f7ec",
+        "lat": 22.2424222,
+        "lng": 76.1505746
       },
       {
         "title": "Adi Shankaracharya Guha (Cave of Initiation)",
@@ -17579,7 +18180,12 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "The serene subterranean cave where 8th-century philosopher-saint Adi Shankaracharya met his guru Govinda Bhagavatpada, received initiation, and studied Advaita Vedanta before his historic nationwide pilgrimage.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Adi%20Shankara%20Cave%2C%20Omkareshwar"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Adi%20Shankara%20Cave%2C%20Omkareshwar&query_place_id=ChIJCwi5LNC9YjkREGoFIVZ0AFs",
+        "kind": "place",
+        "placeId": "ChIJCwi5LNC9YjkREGoFIVZ0AFs",
+        "ftid": "0x3962bdd02cb9080b:0x5b00745621056a10",
+        "lat": 22.2458273,
+        "lng": 76.1504064
       },
       {
         "title": "Traditional Malwi Dal Bafla lunch",
@@ -17606,7 +18212,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "notes": "Wholesome Malwa satvik feast: golden baked baflas dipped in pure desi ghee, served with slow-cooked tuvar dal, sweet churma laddu, kadhi, and roasted coriander chutney.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dal%20Bafla%2C%20Omkareshwar"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dal%20Bafla%2C%20Omkareshwar",
+        "kind": "activity"
       },
       {
         "title": "Ekatma Dham & 108ft Statue of Oneness",
@@ -17630,7 +18237,12 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "A monumental 108-foot bronze statue of Adi Shankaracharya depicted as a 12-year-old walking monk atop Mandhata Hill. Includes expansive viewing decks with breathtaking panoramas of the Narmada River gorge, Omkareshwar Dam, and Advaita Lok cultural exhibits.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Statue%20of%20Oneness%2C%20Omkareshwar"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Statue%20of%20Oneness%2C%20Omkareshwar&query_place_id=ChIJLyiNKum9YjkR7KP-A3R2xeo",
+        "kind": "place",
+        "placeId": "ChIJLyiNKum9YjkR7KP-A3R2xeo",
+        "ftid": "0x3962bde92a8d282f:0xeac5767403fea3ec",
+        "lat": 22.2496875,
+        "lng": 76.1505625
       },
       {
         "title": "Siddhanath & Gauri Somnath Temples walk",
@@ -17655,7 +18267,12 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "Historic 13th-century cliffside temple ruins along the island's sacred Parikrama trail. Siddhanath features an elevated stone podium flanked by massive carved elephant friezes, while star-shaped Gauri Somnath houses a colossal 6-foot black stone lingam.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Siddhnath%20Temple%2C%20Omkareshwar"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Siddhnath%20Temple%2C%20Omkareshwar&query_place_id=ChIJT5p20JK8YjkRXiZASTzvH1I",
+        "kind": "place",
+        "placeId": "ChIJT5p20JK8YjkRXiZASTzvH1I",
+        "ftid": "0x3962bc92d0769a4f:0x521fef3c4940265e",
+        "lat": 22.2458667,
+        "lng": 76.1558962
       },
       {
         "title": "Narmada & Kaveri Sangam boat ride",
@@ -17679,7 +18296,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "Scenic boat journey along the tranquil Narmada River circling the island cliffs to Triveni/Sangam where the Kaveri tributary meets the Narmada. Offers close-up views of the river canyon, cantilever suspension bridges, and pilgrim ghats.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Narmada%20River%20Boating%2C%20Omkareshwar"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Narmada%20River%20Boating%2C%20Omkareshwar",
+        "kind": "activity"
       },
       {
         "title": "Nagar Ghat sunset & Narmada Maha Aarti",
@@ -17703,7 +18321,12 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "The vibrant evening spiritual culmination where priests perform synchronized Maha Aarti with tiered brass lamps and rhythmic conch blowing. Pilgrims release floating leaf diyas onto the holy Narmada as temple bells echo across the river valley.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nagar%20Ghat%2C%20Omkareshwar"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nagar%20Ghat%2C%20Omkareshwar&query_place_id=ChIJdfFB5O-8YjkR2XrqWQkMRJM",
+        "kind": "place",
+        "placeId": "ChIJdfFB5O-8YjkR2XrqWQkMRJM",
+        "ftid": "0x3962bcefe441f175:0x93440c0959ea7ad9",
+        "lat": 22.2467397,
+        "lng": 76.1445858
       }
     ],
     "setting": "plains",
@@ -17720,7 +18343,8 @@ window.KYT_CITIES = [
     "aliases": [
       "Mandhata",
       "Shivpuri"
-    ]
+    ],
+    "ftid": "0x3962bcf3e16ccc2d:0xdde89c3b508aab8"
   },
   {
     "id": "bhimashankar",
@@ -17755,7 +18379,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "Ancient Shiva temple built in the Nagara style of architecture.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhimashankar%20Jyotirlinga%2C%20Maharashtra"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhimashankar%20Jyotirlinga%2C%20Maharashtra",
+        "kind": "place"
       },
       {
         "title": "Bhimashankar Wildlife Sanctuary",
@@ -17777,7 +18402,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "Lush green forest known for the Indian Giant Squirrel and rich flora.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhimashankar%20Wildlife%20Sanctuary%2C%20Maharashtra"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhimashankar%20Wildlife%20Sanctuary%2C%20Maharashtra",
+        "kind": "place"
       },
       {
         "title": "Gupt Bhimashankar",
@@ -17800,7 +18426,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "notes": "The spot where the river Bhima originates.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gupt%20Bhimashankar%2C%20Maharashtra"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gupt%20Bhimashankar%2C%20Maharashtra",
+        "kind": "place"
       }
     ],
     "setting": "hills",
@@ -17874,7 +18501,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "An ancient Jyotirlinga temple known for its three-faced Linga representing Brahma, Vishnu, and Shiva.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Trimbakeshwar%20Shiva%20Temple%2C%20Nashik"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Trimbakeshwar%20Shiva%20Temple%2C%20Nashik",
+        "kind": "place"
       },
       {
         "title": "Panchavati",
@@ -17897,7 +18525,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "Sacred area associated with the Ramayana, featuring the Kalaram Temple and Sita Gufa.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Panchavati%2C%20Nashik"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Panchavati%2C%20Nashik",
+        "kind": "place"
       },
       {
         "title": "Sula Vineyards",
@@ -17919,7 +18548,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "Famous vineyard offering wine tasting tours and beautiful sunset views.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sula%20Vineyards%2C%20Nashik"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sula%20Vineyards%2C%20Nashik",
+        "kind": "place"
       }
     ],
     "setting": "plains",
@@ -17988,7 +18618,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "A highly revered Jyotirlinga where Ravana is said to have worshipped Shiva.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Baba%20Baidyanath%20Dham%2C%20Deoghar"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Baba%20Baidyanath%20Dham%2C%20Deoghar",
+        "kind": "place"
       },
       {
         "title": "Naulakha Mandir",
@@ -18011,7 +18642,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "Beautiful temple dedicated to Radha-Krishna, built with a donation of 9 lakh rupees.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Naulakha%20Mandir%2C%20Deoghar"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Naulakha%20Mandir%2C%20Deoghar",
+        "kind": "place"
       },
       {
         "title": "Tapovan",
@@ -18034,7 +18666,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "notes": "A hill featuring caves where Sage Valmiki reportedly meditated.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tapovan%20Caves%2C%20Deoghar"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tapovan%20Caves%2C%20Deoghar",
+        "kind": "place"
       }
     ],
     "setting": "plains",
@@ -18087,7 +18720,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "One of the most illustrious Vaishnava temples, boasting the tallest temple tower in Asia.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sri%20Ranganathaswamy%20Temple%2C%20Srirangam%2C%20Tiruchirappalli"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sri%20Ranganathaswamy%20Temple%2C%20Srirangam%2C%20Tiruchirappalli",
+        "kind": "place"
       },
       {
         "title": "Rockfort Temple",
@@ -18110,7 +18744,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "stairs",
         "notes": "An ancient fort and temple complex built on a 83m high rock, offering panoramic city views.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tiruchirappalli%20Rock%20Fort%2C%20Tiruchirappalli"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tiruchirappalli%20Rock%20Fort%2C%20Tiruchirappalli",
+        "kind": "place"
       },
       {
         "title": "Jambukeshwarar Temple",
@@ -18133,7 +18768,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "A Pancha Bhoota Stalam representing the element of Water (Appu).",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jambukeswarar%20Temple%2C%20Thiruvanaikaval%2C%20Tiruchirappalli"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jambukeswarar%20Temple%2C%20Thiruvanaikaval%2C%20Tiruchirappalli",
+        "kind": "place"
       }
     ],
     "setting": "plains",
@@ -18188,7 +18824,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "Iconic Vishnu temple known for its immense wealth and strict dress code.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Padmanabhaswamy%20Temple%2C%20Thiruvananthapuram"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Padmanabhaswamy%20Temple%2C%20Thiruvananthapuram",
+        "kind": "place"
       },
       {
         "title": "Napier Museum",
@@ -18210,7 +18847,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "An art and natural history museum housed in a beautiful Indo-Saracenic structure.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Napier%20Museum%2C%20Thiruvananthapuram"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Napier%20Museum%2C%20Thiruvananthapuram",
+        "kind": "place"
       },
       {
         "title": "Kovalam Beach",
@@ -18232,7 +18870,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "Internationally renowned beach with three crescent-shaped beaches.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kovalam%20Beach%2C%20Kerala"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kovalam%20Beach%2C%20Kerala",
+        "kind": "place"
       }
     ],
     "setting": "coast",
@@ -18282,7 +18921,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "One of the most important pilgrimage centers in Kerala, dedicated to Lord Krishna.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Guruvayur%20Temple%2C%20Guruvayur"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Guruvayur%20Temple%2C%20Guruvayur",
+        "kind": "place"
       },
       {
         "title": "Elephant Camp (Punnathur Kotta)",
@@ -18304,7 +18944,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "A sanctuary housing over 50 captive elephants belonging to the temple.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Punnathur%20Kotta%20Elephant%20Camp%2C%20Guruvayur"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Punnathur%20Kotta%20Elephant%20Camp%2C%20Guruvayur",
+        "kind": "place"
       },
       {
         "title": "Mammiyoor Temple",
@@ -18325,7 +18966,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "A prominent Shiva temple; a visit to Guruvayur is considered incomplete without visiting here.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mammiyoor%20Temple%2C%20Guruvayur"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mammiyoor%20Temple%2C%20Guruvayur",
+        "kind": "place"
       }
     ],
     "setting": "plains",
@@ -18377,7 +19019,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "The most visited temple in Maharashtra, dedicated to Lord Vitthal (a form of Krishna).",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shree%20Vitthal%20Rukmini%20Mandir%2C%20Pandharpur"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shree%20Vitthal%20Rukmini%20Mandir%2C%20Pandharpur",
+        "kind": "place"
       },
       {
         "title": "Chandrabhaga River Ghats",
@@ -18399,7 +19042,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "Holy river banks where pilgrims take a dip before visiting the temple.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chandrabhaga%20Ghat%2C%20Pandharpur"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chandrabhaga%20Ghat%2C%20Pandharpur",
+        "kind": "place"
       },
       {
         "title": "Kaivalya Math",
@@ -18422,7 +19066,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "A serene ashram associated with the Warkari sect's traditions.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kaivalya%20Dham%2C%20Pandharpur"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kaivalya%20Dham%2C%20Pandharpur",
+        "kind": "place"
       }
     ],
     "setting": "plains",
@@ -18475,7 +19120,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "Famous temple dedicated to a 7-year-old incarnation of Lord Krishna, renowned for its daily 'darshans'.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shrinathji%20Temple%2C%20Nathdwara"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shrinathji%20Temple%2C%20Nathdwara",
+        "kind": "place"
       },
       {
         "title": "Statue of Belief (Vishwas Swaroopam)",
@@ -18497,7 +19143,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "The tallest statue of Lord Shiva in the world, standing at 369 feet.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Statue%20of%20Belief%2C%20Nathdwara"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Statue%20of%20Belief%2C%20Nathdwara",
+        "kind": "place"
       },
       {
         "title": "Haldighati",
@@ -18519,7 +19166,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "Historic mountain pass famous for the Battle of Haldighati in 1576.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Haldighati%2C%20Rajasthan"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Haldighati%2C%20Rajasthan",
+        "kind": "place"
       }
     ],
     "setting": "plains",
@@ -18579,7 +19227,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "A famous Hindu temple dedicated to Lord Krishna, known for the 'Kanakana Kindi' window.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sri%20Krishna%20Matha%2C%20Udupi"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sri%20Krishna%20Matha%2C%20Udupi",
+        "kind": "place"
       },
       {
         "title": "Malpe Beach",
@@ -18602,7 +19251,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "A pristine beach offering water sports and ferries to St. Mary's Island.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Malpe%20Beach%2C%20Udupi"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Malpe%20Beach%2C%20Udupi",
+        "kind": "place"
       },
       {
         "title": "St. Mary's Island",
@@ -18624,7 +19274,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "boat",
         "notes": "Known for its distinctive hexagonal basalt rock formations.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=St.%20Mary%27s%20Island%2C%20Malpe%2C%20Udupi"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=St.%20Mary%27s%20Island%2C%20Malpe%2C%20Udupi",
+        "kind": "place"
       }
     ],
     "notes": "A coastal city renowned for its Hindu temples, particularly the 13th-century Sri Krishna Matha, and its unique local cuisine.",
@@ -18667,7 +19318,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ahilya%20Fort%2C%20Maheshwar",
-        "notes": "Explore the majestic 18th-century fort built by Queen Ahilyabai Holkar and stroll along the serene, architecturally stunning ghats of the Narmada."
+        "notes": "Explore the majestic 18th-century fort built by Queen Ahilyabai Holkar and stroll along the serene, architecturally stunning ghats of the Narmada.",
+        "kind": "place"
       },
       {
         "title": "Maheshwari Handloom Weaving Tour",
@@ -18688,7 +19340,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rehwa%20Society%2C%20Maheshwar",
-        "notes": "Witness the traditional weaving of beautiful Maheshwari sarees and fabrics, a craft championed by Queen Ahilyabai to empower local weavers."
+        "notes": "Witness the traditional weaving of beautiful Maheshwari sarees and fabrics, a craft championed by Queen Ahilyabai to empower local weavers.",
+        "kind": "activity"
       },
       {
         "title": "Sunset Boat Ride on the Narmada",
@@ -18711,7 +19364,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Maheshwar%20Ghats",
-        "notes": "Take a tranquil boat ride at sunset for the best view of the fort and ghats, culminating in the evening Narmada Aarti."
+        "notes": "Take a tranquil boat ride at sunset for the best view of the fort and ghats, culminating in the evening Narmada Aarti.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -18759,7 +19413,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "A prominent religious institution and ashram dedicated to Swami Siddharoodha.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shree%20Siddharoodha%20Swamy%20Math%2C%20Hubballi"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shree%20Siddharoodha%20Swamy%20Math%2C%20Hubballi",
+        "kind": "place"
       },
       {
         "title": "Unkal Lake",
@@ -18779,7 +19434,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "A picturesque lake with a statue of Swami Vivekananda in the center, perfect for evening walks and boating.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Unkal%20Lake%2C%20Hubballi"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Unkal%20Lake%2C%20Hubballi",
+        "kind": "place"
       },
       {
         "title": "Chandramouleshwara Temple",
@@ -18798,7 +19454,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "A 900-year-old temple built during the Chalukya era, known for its intricate stone carvings.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chandramouleshwara%20Temple%2C%20Hubballi"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chandramouleshwara%20Temple%2C%20Hubballi",
+        "kind": "place"
       },
       {
         "title": "Nrupatunga Hill",
@@ -18817,7 +19474,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "Offers a panoramic view of the twin cities Hubballi-Dharwad. Great spot for a serene escape.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nrupatunga%20Betta%2C%20Hubballi"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nrupatunga%20Betta%2C%20Hubballi",
+        "kind": "place"
       }
     ],
     "lat": 15.3647,
@@ -18860,7 +19518,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahalakshmi%20Temple%2C%20Kolhapur",
-        "notes": "Historic 7th-century Chalukyan stone temple and major Shakti Peetha dedicated to Goddess Mahalakshmi (Ambabai), renowned for its intricate carvings and Kirnotsav festival."
+        "notes": "Historic 7th-century Chalukyan stone temple and major Shakti Peetha dedicated to Goddess Mahalakshmi (Ambabai), renowned for its intricate carvings and Kirnotsav festival.",
+        "kind": "place"
       },
       {
         "title": "New Palace & Chhatrapati Shahu Museum",
@@ -18882,7 +19541,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=New%20Palace%2C%20Kolhapur",
-        "notes": "Exquisite 19th-century black polished stone palace featuring Indo-Saracenic architecture, stained glass, and personal memorabilia and royal artefacts of the Bhonsle dynasty."
+        "notes": "Exquisite 19th-century black polished stone palace featuring Indo-Saracenic architecture, stained glass, and personal memorabilia and royal artefacts of the Bhonsle dynasty.",
+        "kind": "place"
       },
       {
         "title": "Kolhapuri Misal & Thali at Phadtare or Opal",
@@ -18908,7 +19568,8 @@ window.KYT_CITIES = [
           "veg"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Phadtare%20Misal%2C%20Kolhapur",
-        "notes": "Savor legendary spicy Kolhapuri misal with pav, followed by traditional regional fare featuring Tambada Rassa (red curry) and Pandhra Rassa (white curry)."
+        "notes": "Savor legendary spicy Kolhapuri misal with pav, followed by traditional regional fare featuring Tambada Rassa (red curry) and Pandhra Rassa (white curry).",
+        "kind": "activity"
       },
       {
         "title": "Panhala Fort excursion",
@@ -18931,7 +19592,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Panhala%20Fort%2C%20Kolhapur",
-        "notes": "Strategic Sahyadri hill fort where Chhatrapati Shivaji Maharaj spent over 500 days, featuring Teen Darwaza, Sajja Kothi, and sweeping valley vistas."
+        "notes": "Strategic Sahyadri hill fort where Chhatrapati Shivaji Maharaj spent over 500 days, featuring Teen Darwaza, Sajja Kothi, and sweeping valley vistas.",
+        "kind": "place"
       },
       {
         "title": "Rankala Lake evening walk",
@@ -18954,7 +19616,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rankala%20Lake%2C%20Kolhapur",
-        "notes": "Historic freshwater lake surrounded by gardens, Chaupati street food vendors, and the imposing Sandhya Math structure emerging from the water."
+        "notes": "Historic freshwater lake surrounded by gardens, Chaupati street food vendors, and the imposing Sandhya Math structure emerging from the water.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -19004,7 +19667,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shore%20Temple%2C%20Mahabalipuram",
-        "notes": "Iconic 8th-century granite structural temple perched on the Bay of Bengal coastline, built by Pallava king Narasimhavarman II."
+        "notes": "Iconic 8th-century granite structural temple perched on the Bay of Bengal coastline, built by Pallava king Narasimhavarman II.",
+        "kind": "place"
       },
       {
         "title": "Pancha Rathas (Five Rathas)",
@@ -19026,7 +19690,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pancha%20Rathas%2C%20Mahabalipuram",
-        "notes": "Remarkable monolithic rock-cut shrines named after the Pandavas and Draupadi, carved out of single granite boulders in Dravidian architectural styles."
+        "notes": "Remarkable monolithic rock-cut shrines named after the Pandavas and Draupadi, carved out of single granite boulders in Dravidian architectural styles.",
+        "kind": "place"
       },
       {
         "title": "Arjuna's Penance & Krishna's Butterball",
@@ -19048,7 +19713,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Arjuna%27s%20Penance%2C%20Mahabalipuram",
-        "notes": "World's largest open-air stone relief depicting the Descent of the Ganga, next to Krishna's Butterball, a giant 250-tonne boulder perched impossibly on a slope."
+        "notes": "World's largest open-air stone relief depicting the Descent of the Ganga, next to Krishna's Butterball, a giant 250-tonne boulder perched impossibly on a slope.",
+        "kind": "place"
       },
       {
         "title": "Fresh coastal seafood & cafe lunch",
@@ -19074,7 +19740,8 @@ window.KYT_CITIES = [
           "veg"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Othavadai%20Street%2C%20Mahabalipuram",
-        "notes": "Relax at coastal traveler cafes and seafood shacks along Othavadai Street serving fresh grilled catch, filter coffee, and traditional South Indian meals."
+        "notes": "Relax at coastal traveler cafes and seafood shacks along Othavadai Street serving fresh grilled catch, filter coffee, and traditional South Indian meals.",
+        "kind": "activity"
       },
       {
         "title": "Mahabalipuram Beach & Lighthouse",
@@ -19097,7 +19764,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahabalipuram%20Lighthouse",
-        "notes": "Climb the 1904 circular stone lighthouse for panoramic coastal views followed by an evening stroll on the golden sand beach."
+        "notes": "Climb the 1904 circular stone lighthouse for panoramic coastal views followed by an evening stroll on the golden sand beach.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -19146,7 +19814,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Periyar%20National%20Park%20Boat%20Safari",
-        "notes": "Early morning boat cruise on Periyar Lake inside the tiger reserve, observing wild elephants, gaur, sambar deer, and water birds along the forest shoreline."
+        "notes": "Early morning boat cruise on Periyar Lake inside the tiger reserve, observing wild elephants, gaur, sambar deer, and water birds along the forest shoreline.",
+        "kind": "activity"
       },
       {
         "title": "Spice Plantation Guided Walk",
@@ -19169,7 +19838,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Spice%20Plantation%2C%20Thekkady",
-        "notes": "Walk through organic spice gardens learning how cardamom, pepper vines, cinnamon, cloves, nutmeg, and vanilla are cultivated and harvested."
+        "notes": "Walk through organic spice gardens learning how cardamom, pepper vines, cinnamon, cloves, nutmeg, and vanilla are cultivated and harvested.",
+        "kind": "place"
       },
       {
         "title": "Traditional Kerala lunch & spice shopping",
@@ -19195,7 +19865,8 @@ window.KYT_CITIES = [
           "veg"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kumily%20Town%2C%20Thekkady",
-        "notes": "Taste Kerala sadya meals cooked with freshly ground local spices, and shop for farm-fresh green cardamom and pepper in the bustling spice market."
+        "notes": "Taste Kerala sadya meals cooked with freshly ground local spices, and shop for farm-fresh green cardamom and pepper in the bustling spice market.",
+        "kind": "activity"
       },
       {
         "title": "Kalaripayattu Martial Arts & Kathakali show",
@@ -19217,7 +19888,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kadathanadan%20Kalari%20Centre%2C%20Thekkady",
-        "notes": "Evening showcase of Kalaripayattu, the world's oldest martial art form, with acrobatics and fire weapons, paired with traditional Kathakali classical dance."
+        "notes": "Evening showcase of Kalaripayattu, the world's oldest martial art form, with acrobatics and fire weapons, paired with traditional Kathakali classical dance.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -19265,7 +19937,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mullayanagiri%20Peak%2C%20Chikmagalur",
-        "notes": "Ascend to the highest peak in Karnataka (1,930 m) for sweeping cloud-bed views, misty cool winds, and the hilltop Shiva temple."
+        "notes": "Ascend to the highest peak in Karnataka (1,930 m) for sweeping cloud-bed views, misty cool winds, and the hilltop Shiva temple.",
+        "kind": "place"
       },
       {
         "title": "Baba Budangiri & Manikyadhara Falls",
@@ -19288,7 +19961,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Baba%20Budangiri%2C%20Chikmagalur",
-        "notes": "Historic shrine named after Sufi saint Baba Budan who introduced coffee to India from Yemen, nearby the sacred perennial Manikyadhara waterfall."
+        "notes": "Historic shrine named after Sufi saint Baba Budan who introduced coffee to India from Yemen, nearby the sacred perennial Manikyadhara waterfall.",
+        "kind": "place"
       },
       {
         "title": "Estate coffee tasting & Malnad cuisine",
@@ -19314,7 +19988,8 @@ window.KYT_CITIES = [
           "veg"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chikmagalur%20Coffee%20Estate",
-        "notes": "Relish piping hot filter coffee brewed with freshly roasted beans alongside Malnad staples like akki rotti, bamboo shoot curry, and tender jackfruit fry."
+        "notes": "Relish piping hot filter coffee brewed with freshly roasted beans alongside Malnad staples like akki rotti, bamboo shoot curry, and tender jackfruit fry.",
+        "kind": "activity"
       },
       {
         "title": "Hebbe Falls jeep safari",
@@ -19337,7 +20012,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hebbe%20Falls%2C%20Chikmagalur",
-        "notes": "Off-road jeep trail through lush private coffee estates leading to the roaring two-tiered cascade of Hebbe Falls."
+        "notes": "Off-road jeep trail through lush private coffee estates leading to the roaring two-tiered cascade of Hebbe Falls.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -19384,7 +20060,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Statue%20of%20Unity%2C%20Kevadia",
-        "notes": "Stand before the monumental 182-metre bronze tribute to Sardar Vallabhbhai Patel and ride high-speed lifts to the viewing gallery inside the chest."
+        "notes": "Stand before the monumental 182-metre bronze tribute to Sardar Vallabhbhai Patel and ride high-speed lifts to the viewing gallery inside the chest.",
+        "kind": "place"
       },
       {
         "title": "Valley of Flowers & Butterfly Garden",
@@ -19406,7 +20083,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Valley%20of%20Flowers%2C%20Kevadia",
-        "notes": "Expansive botanical garden with vibrant floral landscapes, selfie points, and walkways along the banks of the Narmada."
+        "notes": "Expansive botanical garden with vibrant floral landscapes, selfie points, and walkways along the banks of the Narmada.",
+        "kind": "place"
       },
       {
         "title": "Sardar Sarovar Dam Viewpoint",
@@ -19429,7 +20107,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sardar%20Sarovar%20Dam%2C%20Kevadia",
-        "notes": "View the colossal gravity dam on the Narmada River, one of the world's largest concrete structures, providing water to millions across Western India."
+        "notes": "View the colossal gravity dam on the Narmada River, one of the world's largest concrete structures, providing water to millions across Western India.",
+        "kind": "place"
       },
       {
         "title": "Statue of Unity Evening Laser Projection Show",
@@ -19451,7 +20130,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Statue%20of%20Unity%20Laser%20Show",
-        "notes": "Dazzling evening sound and light show mapping the life and unification mission of Sardar Patel across the surface of the statue."
+        "notes": "Dazzling evening sound and light show mapping the life and unification mission of Sardar Patel across the surface of the statue.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -19499,7 +20179,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhedaghat%20Marble%20Rocks%2C%20Jabalpur",
-        "notes": "Glide on the turquoise Narmada River through a canyon of gleaming 100-foot white and pink marble cliffs as local boatmen recite folk poetry."
+        "notes": "Glide on the turquoise Narmada River through a canyon of gleaming 100-foot white and pink marble cliffs as local boatmen recite folk poetry.",
+        "kind": "activity"
       },
       {
         "title": "Dhuandhar Falls & Cable Car",
@@ -19522,7 +20203,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dhuandhar%20Falls%2C%20Jabalpur",
-        "notes": "Witness the Narmada plunging over jagged rock into a thunderous gorge, creating a massive cloud of white mist giving the falls its name ('smoke cascade')."
+        "notes": "Witness the Narmada plunging over jagged rock into a thunderous gorge, creating a massive cloud of white mist giving the falls its name ('smoke cascade').",
+        "kind": "place"
       },
       {
         "title": "Chausath Yogini Temple",
@@ -19546,7 +20228,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chausath%20Yogini%20Temple%2C%20Jabalpur",
-        "notes": "10th-century Kalachuri circular open-air temple perched on a hill, housing 64 intricately carved stone yogini statues surrounding Lord Shiva."
+        "notes": "10th-century Kalachuri circular open-air temple perched on a hill, housing 64 intricately carved stone yogini statues surrounding Lord Shiva.",
+        "kind": "place"
       },
       {
         "title": "Madan Mahal Fort & Balancing Rock",
@@ -19569,7 +20252,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Madan%20Mahal%20Fort%2C%20Jabalpur",
-        "notes": "11th-century Gondwana watchtower fort built by King Madan Shah atop a granite knoll, nearby a miraculous natural boulder balancing precariously on another."
+        "notes": "11th-century Gondwana watchtower fort built by King Madan Shah atop a granite knoll, nearby a miraculous natural boulder balancing precariously on another.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -19619,7 +20303,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Murudeshwar%20Temple",
-        "notes": "Ancient shrine on Kanduka Hill surrounded by the sea on three sides, crowned by a 249-foot high Raja Gopura with lift access to the top floor."
+        "notes": "Ancient shrine on Kanduka Hill surrounded by the sea on three sides, crowned by a 249-foot high Raja Gopura with lift access to the top floor.",
+        "kind": "place"
       },
       {
         "title": "Colossal 123-ft Shiva Statue & Geeta Upadesh",
@@ -19642,7 +20327,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shiva%20Statue%2C%20Murudeshwar",
-        "notes": "Marvel at the gigantic silver-toned Shiva statue glistening in the sea breeze, with underground dioramas depicting the story of Ravana and the Atma Linga."
+        "notes": "Marvel at the gigantic silver-toned Shiva statue glistening in the sea breeze, with underground dioramas depicting the story of Ravana and the Atma Linga.",
+        "kind": "place"
       },
       {
         "title": "Coastal Karnataka seafood & coconut curry",
@@ -19668,7 +20354,8 @@ window.KYT_CITIES = [
           "veg"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Temple%20Road%20Murudeshwar",
-        "notes": "Enjoy coastal Karavali cuisine with neer dosa, fresh fish fry, banana leaf thalis, and sweet coconut payasam."
+        "notes": "Enjoy coastal Karavali cuisine with neer dosa, fresh fish fry, banana leaf thalis, and sweet coconut payasam.",
+        "kind": "activity"
       },
       {
         "title": "Murudeshwar Beach & water sports",
@@ -19691,7 +20378,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Murudeshwar%20Beach",
-        "notes": "Stroll along the calm curve of sandy beach with views of the temple silhouette, water scooters, boat rides, and sunsets over the Arabian Sea."
+        "notes": "Stroll along the calm curve of sandy beach with views of the temple silhouette, water scooters, boat rides, and sunsets over the Arabian Sea.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -19741,7 +20429,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ramappa%20Temple%2C%20Warangal",
-        "notes": "13th-century Kakatiya masterpiece built on a star-shaped platform with lightweight floating bricks, sandbox foundation, and breathtaking carved bracket figures."
+        "notes": "13th-century Kakatiya masterpiece built on a star-shaped platform with lightweight floating bricks, sandbox foundation, and breathtaking carved bracket figures.",
+        "kind": "place"
       },
       {
         "title": "Thousand Pillar Temple (Veyikandla Gudi)",
@@ -19764,7 +20453,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thousand%20Pillar%20Temple%2C%20Warangal",
-        "notes": "12th-century Chalukyan-Kakatiya architectural marvel dedicated to Shiva, Vishnu, and Surya, with intricately carved interlocking stone pillars and a monolith Nandi."
+        "notes": "12th-century Chalukyan-Kakatiya architectural marvel dedicated to Shiva, Vishnu, and Surya, with intricately carved interlocking stone pillars and a monolith Nandi.",
+        "kind": "place"
       },
       {
         "title": "Warangal Fort & Kakatiya Kala Thoranam",
@@ -19786,7 +20476,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Warangal%20Fort",
-        "notes": "Explore the stone fortress ruins featuring four ornate ceremonial archways (Kala Thoranam) that form the official emblem of the state of Telangana."
+        "notes": "Explore the stone fortress ruins featuring four ornate ceremonial archways (Kala Thoranam) that form the official emblem of the state of Telangana.",
+        "kind": "place"
       },
       {
         "title": "Bhadrakali Temple & Lake Promenade",
@@ -19809,7 +20500,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhadrakali%20Temple%2C%20Warangal",
-        "notes": "Ancient lakefront temple dedicated to Goddess Bhadrakali, seated in a tranquil natural rock setting with scenic sunset lake views."
+        "notes": "Ancient lakefront temple dedicated to Goddess Bhadrakali, seated in a tranquil natural rock setting with scenic sunset lake views.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -19858,7 +20550,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sasan%20Gir%20Safari",
-        "notes": "Open-top jeep safari through the core dry deciduous forest tracking majestic Asiatic lion prides, leopards, spotted deer, and crested serpent eagles."
+        "notes": "Open-top jeep safari through the core dry deciduous forest tracking majestic Asiatic lion prides, leopards, spotted deer, and crested serpent eagles.",
+        "kind": "activity"
       },
       {
         "title": "Devalia Safari Park (Gir Interpretation Zone)",
@@ -19880,7 +20573,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Devalia%20Safari%20Park%2C%20Gir",
-        "notes": "Fenced ecological interpretation habitat allowing guaranteed wildlife sightings of lions, leopards, and blackbucks in a short safari circuit."
+        "notes": "Fenced ecological interpretation habitat allowing guaranteed wildlife sightings of lions, leopards, and blackbucks in a short safari circuit.",
+        "kind": "activity"
       },
       {
         "title": "Kathiyawadi Thali at a village dhaba",
@@ -19906,7 +20600,8 @@ window.KYT_CITIES = [
           "veg"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sasan%20Gir%20Village",
-        "notes": "Indulge in authentic Gujarati Kathiyawadi cuisine with sev tameta nu shaak, bajra rotla with fresh white butter, garlic chutney, and chaas."
+        "notes": "Indulge in authentic Gujarati Kathiyawadi cuisine with sev tameta nu shaak, bajra rotla with fresh white butter, garlic chutney, and chaas.",
+        "kind": "activity"
       },
       {
         "title": "Kamleshwar Dam bird watching",
@@ -19928,7 +20623,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kamleshwar%20Dam%2C%20Gir",
-        "notes": "The water lifeline of Gir nestled in the reserve, known as a breeding ground for marsh crocodiles and diverse migratory waterfowl."
+        "notes": "The water lifeline of Gir nestled in the reserve, known as a breeding ground for marsh crocodiles and diverse migratory waterfowl.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -19977,7 +20673,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Satapada%20Chilika%20Lake",
-        "notes": "Morning motorized boat cruise out onto the lagoon estuary to spot playful Irrawaddy dolphins breaching near the sea mouth."
+        "notes": "Morning motorized boat cruise out onto the lagoon estuary to spot playful Irrawaddy dolphins breaching near the sea mouth.",
+        "kind": "place"
       },
       {
         "title": "Kalijai Island Temple",
@@ -20000,7 +20697,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kalijai%20Temple%2C%20Chilika",
-        "notes": "Picturesque island shrine dedicated to Goddess Kalijai, revered by local fishermen and celebrated in Odia folklore and poetry."
+        "notes": "Picturesque island shrine dedicated to Goddess Kalijai, revered by local fishermen and celebrated in Odia folklore and poetry.",
+        "kind": "place"
       },
       {
         "title": "Fresh Lagoon Crab & Prawn Feast",
@@ -20025,7 +20723,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Barkul%20Chilika%20Dhaba",
-        "notes": "Taste mouthwatering Chilika specialties like butter garlic crab, crispy jumbo prawn fry, and freshwater fish curry at lakeside eateries."
+        "notes": "Taste mouthwatering Chilika specialties like butter garlic crab, crispy jumbo prawn fry, and freshwater fish curry at lakeside eateries.",
+        "kind": "activity"
       },
       {
         "title": "Mangalajodi Bird Sanctuary wetland trail",
@@ -20047,7 +20746,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mangalajodi%20Ecotourism%2C%20Chilika",
-        "notes": "Silently row through reedy wetlands where reformed poachers guide birders among lakhs of migratory ducks, herons, and waders."
+        "notes": "Silently row through reedy wetlands where reformed poachers guide birders among lakhs of migratory ducks, herons, and waders.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -20095,7 +20795,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kolaba%20Fort%2C%20Alibaug",
-        "notes": "Walk or take a horse cart across the wet seabed at low tide to explore the Maratha naval fortress built by Chhatrapati Shivaji Maharaj."
+        "notes": "Walk or take a horse cart across the wet seabed at low tide to explore the Maratha naval fortress built by Chhatrapati Shivaji Maharaj.",
+        "kind": "place"
       },
       {
         "title": "Nagaon & Kihim Beach relaxation",
@@ -20118,7 +20819,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nagaon%20Beach%2C%20Alibaug",
-        "notes": "Enjoy quiet strolls on flat black-sand beaches shaded by dense suru trees, with optional parasailing and jet-ski water sports."
+        "notes": "Enjoy quiet strolls on flat black-sand beaches shaded by dense suru trees, with optional parasailing and jet-ski water sports.",
+        "kind": "place"
       },
       {
         "title": "Authentic Konkani seafood lunch",
@@ -20144,7 +20846,8 @@ window.KYT_CITIES = [
           "veg"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sanman%20Restaurant%2C%20Alibaug",
-        "notes": "Feast on celebrated Konkani thalis featuring crispy rava-fried surmai or pomfret, solkadhi, and spicy crab masala."
+        "notes": "Feast on celebrated Konkani thalis featuring crispy rava-fried surmai or pomfret, solkadhi, and spicy crab masala.",
+        "kind": "activity"
       },
       {
         "title": "Kanakeshwar Temple forest hill climb",
@@ -20167,7 +20870,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "trek",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kanakeshwar%20Temple%2C%20Alibaug",
-        "notes": "Climb the 700 ancient stone stairs through dense green hills to reach this historic Shiva shrine offering calm air and bird songs."
+        "notes": "Climb the 700 ancient stone stairs through dense green hills to reach this historic Shiva shrine offering calm air and bird songs.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -20214,7 +20918,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Visva-Bharati%20University%2C%20Shantiniketan",
-        "notes": "Stroll through the iconic tree-shaded open-air classrooms of Kala Bhavana and Patha Bhavana adorned with Ramkinkar Baij sculptures and murals."
+        "notes": "Stroll through the iconic tree-shaded open-air classrooms of Kala Bhavana and Patha Bhavana adorned with Ramkinkar Baij sculptures and murals.",
+        "kind": "place"
       },
       {
         "title": "Rabindra Bhavana & Uttarayan Complex",
@@ -20236,7 +20941,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rabindra%20Bhavana%2C%20Shantiniketan",
-        "notes": "Museum complex housing Tagore's Nobel medallion replica, manuscripts, paintings, and the five architectural houses where the poet lived."
+        "notes": "Museum complex housing Tagore's Nobel medallion replica, manuscripts, paintings, and the five architectural houses where the poet lived.",
+        "kind": "place"
       },
       {
         "title": "Traditional Bengali Thali & Posto cuisine",
@@ -20262,7 +20968,8 @@ window.KYT_CITIES = [
           "veg"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bolpur%20Shantiniketan%20Restaurant",
-        "notes": "Savor an authentic Rarh Bengal feast featuring shukto, aloo posto (poppy seeds), kosha mangsho, luchi, and sweet mishti doi."
+        "notes": "Savor an authentic Rarh Bengal feast featuring shukto, aloo posto (poppy seeds), kosha mangsho, luchi, and sweet mishti doi.",
+        "kind": "activity"
       },
       {
         "title": "Sonajhurir Haat (Saturday Forest Bazaar)",
@@ -20285,7 +20992,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sonajhurir%20Haat%2C%20Shantiniketan",
-        "notes": "Vibrant weekly village fair in the Sonajhuri forest where Baul singers play ektara under trees and artisans sell dokra metal craft and kantha sarees."
+        "notes": "Vibrant weekly village fair in the Sonajhuri forest where Baul singers play ektara under trees and artisans sell dokra metal craft and kantha sarees.",
+        "kind": "activity"
       }
     ],
     "aliases": [
@@ -20359,7 +21067,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kisama%20Heritage%20Village%2C%20Kohima",
-        "notes": "Cultural village venue of the world-famous Hornbill Festival, showcasing authentic morungs (dormitories), wood carvings, and tribal traditions of the 16 Naga tribes."
+        "notes": "Cultural village venue of the world-famous Hornbill Festival, showcasing authentic morungs (dormitories), wood carvings, and tribal traditions of the 16 Naga tribes.",
+        "kind": "place"
       },
       {
         "title": "Kohima War Cemetery & Memorial",
@@ -20381,7 +21090,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kohima%20War%2C%20Cemetery",
-        "notes": "Immaculate Commonwealth cemetery on the battleground of the 1944 Battle of Kohima, featuring the famous Kohima Epitaph inscription."
+        "notes": "Immaculate Commonwealth cemetery on the battleground of the 1944 Battle of Kohima, featuring the famous Kohima Epitaph inscription.",
+        "kind": "place"
       },
       {
         "title": "Traditional Naga cuisine & market walk",
@@ -20406,7 +21116,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kohima%20Local%20Market",
-        "notes": "Experience indigenous Naga flavors flavored with smoked meats, fiery Raja Mircha (Bhut Jolokia), fermented bamboo shoots, and fresh greens."
+        "notes": "Experience indigenous Naga flavors flavored with smoked meats, fiery Raja Mircha (Bhut Jolokia), fermented bamboo shoots, and fresh greens.",
+        "kind": "activity"
       },
       {
         "title": "Kohima State Museum & Cathedral",
@@ -20429,7 +21140,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nagaland%20State%20Museum%2C%20Kohima",
-        "notes": "Explore exhibits of rare Naga tribal costumes, jewelry, musical instruments, and headgear, followed by Mary Help of Christians Cathedral."
+        "notes": "Explore exhibits of rare Naga tribal costumes, jewelry, musical instruments, and headgear, followed by Mary Help of Christians Cathedral.",
+        "kind": "place"
       }
     ],
     "aliases": [
@@ -20479,7 +21191,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Raghavendra%20Swamy%20Mutt%2C%20Mantralayam",
-        "notes": "The sacred Moola Brindavanam where Guru Raghavendra Swamy entered Jeeva Samadhi in 1671, featuring morning abhisheka, Tulasi archana, and divine peace."
+        "notes": "The sacred Moola Brindavanam where Guru Raghavendra Swamy entered Jeeva Samadhi in 1671, featuring morning abhisheka, Tulasi archana, and divine peace.",
+        "kind": "place"
       },
       {
         "title": "Tungabhadra River Holy Dip & Snana Ghats",
@@ -20503,7 +21216,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tungabhadra%20River%2C%20Mantralayam",
-        "notes": "Perform ritual snana (holy bath) in the tranquil waters of the sacred Tungabhadra River along the wide stone ghats adjoining the mutt."
+        "notes": "Perform ritual snana (holy bath) in the tranquil waters of the sacred Tungabhadra River along the wide stone ghats adjoining the mutt.",
+        "kind": "activity"
       },
       {
         "title": "Mutt Annapoorna Annadanam Bhojana",
@@ -20531,7 +21245,8 @@ window.KYT_CITIES = [
           "any"
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Annapoorna%20Dining%20Hall%2C%20Mantralayam",
-        "notes": "Experience traditional Madhwa satvik prasada served with devotion, featuring steamed rice, saaru, kootu, paysam, and cow ghee."
+        "notes": "Experience traditional Madhwa satvik prasada served with devotion, featuring steamed rice, saaru, kootu, paysam, and cow ghee.",
+        "kind": "activity"
       },
       {
         "title": "Panchamukhi Anjaneya Swamy Temple excursion",
@@ -20555,7 +21270,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Panchamukhi%20Anjaneya%20Temple%20Mantralayam",
-        "notes": "Historic rock-cave shrine 20 km away where Guru Raghavendra performed 12 years of penance and beheld the 5-faced Hanuman, amidst miraculous natural rock formations."
+        "notes": "Historic rock-cave shrine 20 km away where Guru Raghavendra performed 12 years of penance and beheld the 5-faced Hanuman, amidst miraculous natural rock formations.",
+        "kind": "place"
       },
       {
         "title": "Manchalamma Temple & Evening Rathotsavam",
@@ -20579,7 +21295,8 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Manchalamma%20Temple%20Mantralayam",
-        "notes": "Pay homage to the presiding village deity Goddess Manchalamma, followed by witnessing the resplendent evening Golden Chariot procession around the temple."
+        "notes": "Pay homage to the presiding village deity Goddess Manchalamma, followed by witnessing the resplendent evening Golden Chariot procession around the temple.",
+        "kind": "place"
       }
     ],
     "aliases": [

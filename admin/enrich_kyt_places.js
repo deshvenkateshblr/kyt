@@ -261,6 +261,16 @@ async function main() {
     for (let bIdx = 0; bIdx < beats.length; bIdx++) {
       const beat = beats[bIdx];
       const beatQuery = getCleanSearchQuery(beat, city.name);
+
+      // If this attraction is an activity (food, breakfast, lunch, trail), do NOT map via Place ID
+      if (beat.kind === 'activity') {
+        delete beat.placeId;
+        delete beat.ftid;
+        beat.mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(beatQuery)}`;
+        console.log(`   -> Beat ${bIdx + 1}/${beats.length} [ACTIVITY]: ${beat.title} (skipped Place ID)`);
+        continue;
+      }
+
       const bCacheKey = `beat::${cityId}::${beat.title}`;
 
       let bRes;
