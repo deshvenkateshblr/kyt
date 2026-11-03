@@ -425,9 +425,10 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **Tests:** 2 added in `09-plan-editing.test.js` (editor round trip, both renderers).
 66. **More than one city in a day is confirmed and covered by a test (no app change)**
     - A day can hold stops from two cities with a Travel step between them: after the travel, the suggestions switch to the arrival city and new stops carry that city. `09-plan-editing.test.js` now checks Agra stop, Agra to Jaipur travel, Jaipur stop on one day. TODO P1.9 closed.
-67. **Save PDF on the trip page (service worker cache `kyt-v100`)**
+67. **Save PDF on the trip page (service worker cache `kyt-v101`)**
     - A planned trip now has a **Save PDF** button on the trip page. It builds the file with pdfMake, the engine the Memory Album already uses, and on a phone hands it to the share sheet, so the browser's print dialog is not involved. On desktop it downloads.
     - The PDF has a cover; **Before you go** for the places that have it (access note, each item with its source link, official website, checked month); each day in order with a tappable "Open in Google Maps" on every step that has a map link ("Directions in Google Maps" on travel) and "Check-in / Check-out" on stays; and a **Destination guide** with "When to go" and the places to see, each with a Map link.
+    - *Reworked the same day:* a blue cover with an At a glance table; each day is a page with a coloured header, its steps in a timeline, then coloured panels (Before you go, When to go, Places to see) for the cities that day visits, the first time each appears. Sources are numbered [1] [2] and the full web address of each is printed under the list (and linked), so a paper copy is useful. Cities no day mentions get their panels at the end.
     - Only plain text: the PDF font has no arrows or emoji, so routes read "Agra to Jaipur". `js/trip-pdf.js` builds the document as plain data, so it is tested without a browser.
     - **Tests:** `13-trip-pdf.test.js` (4). The pdfMake library still loads from cdnjs (as on the album pages), so a first-ever offline use shows a plain message.
 

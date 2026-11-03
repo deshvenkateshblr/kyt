@@ -71,13 +71,44 @@
 
   // ── Building ──────────────────────────────────────────────────────────────────────────────────────────────
 
+  const WIDTH = 495;                                           // A4 less 50 pt margins
+  const display = u => String(u).replace(/^https:\/\//, '').replace(/\/$/, '');
   const link = (text, url) => isHttps(url) ? { text, link: url, color: COLORS.blue, decoration: 'underline' } : null;
-  const rule = (w = 0.5) => ({ canvas: [{ type: 'line', x1: 0, y1: 0, x2: 495, y2: 0, lineWidth: w, lineColor: COLORS.line }], margin: [0, 6, 0, 8] });
+  const rule = (w = 0.5, color = COLORS.line) => ({ canvas: [{ type: 'line', x1: 0, y1: 0, x2: WIDTH, y2: 0, lineWidth: w, lineColor: color }], margin: [0, 6, 0, 8] });
+  const FLAT = { hLineWidth: () => 0, vLineWidth: () => 0, paddingLeft: () => 0, paddingRight: () => 0, paddingTop: () => 0, paddingBottom: () => 0 };
 
-  function stepBlock(s) {
+  /** A tinted box with a coloured edge. Never split across pages. */
+  function panel(accent, fill, heading, stack) {
+    return {
+      table: { widths: ['*'], body: [[{ stack: [{ text: heading, fontSize: 8, bold: true, color: accent, characterSpacing: 1, margin: [0, 0, 0, 4] }].concat(stack), fillColor: fill, margin: [10, 8, 10, 8] }]] },
+      layout: { ...FLAT, vLineWidth: i => (i === 0 ? 3 : 0), vLineColor: () => accent },
+      unbreakable: true, margin: [0, 6, 0, 0]
+    };
+  }
+
+  /** Numbered sources: items end in [n], and the full address of each page is printed once, under the list. */
+  function sourced(items, extraUrls) {
+    const urls = [];
+    const num = u => { if (!isHttps(u)) return 0; let i = urls.indexOf(u); if (i < 0) { urls.push(u); i = urls.length - 1; } return i + 1; };
+    const lines = items.map(it => {
+      const n = num(it.source);
+      return { text: [{ text: it.label ? it.label + '. ' : '', bold: true }, clean(it.text), n ? { text: ` [${n}]`, color: COLORS.blue, bold: true, fontSize: 8 } : ''], fontSize: 10, color: it.color || COLORS.body, margin: [0, 0, 0, 3] };
+    });
+    (extraUrls || []).forEach(num);
+    const refs = urls.map((u, i) => ({ text: [{ text: `[${i + 1}] `, bold: true, color: COLORS.muted }, { text: display(u), link: u, color: COLORS.blue, decoration: 'underline' }], fontSize: 7.5, margin: [0, 0, 0, 1.5] }));
+    return { lines, refs };
+  }
+
+  function chip(text, color) {
+    return { table: { body: [[{ text, fontSize: 7, bold: true, color: '#FFFFFF', fillColor: color, margin: [4, 1, 4, 1] }]] }, layout: FLAT, margin: [0, 1, 0, 3] };
+  }
+
+  function stepRow(s) {
     const time = s.hour != null ? `${pad2(s.hour)}:${pad2(s.minute || 0)}` : '';
-    const stack = [];
-    stack.push({ text: [{ text: time ? time + '   ' : '', color: COLORS.faint, bold: true, fontSize: 9 }, { text: clean(s.title), bold: true, fontSize: 12, color: COLORS.ink }], margin: [0, 8, 0, 1] });
+    const body = [];
+    if (s.type === 'travel') body.push(chip('TRAVEL', '#0284C7'));
+    else if (s.type === 'stay') body.push(chip('STAY', '#7C3AED'));
+    body.push({ text: clean(s.title), bold: true, fontSize: 12, color: COLORS.ink });
     const meta = [];
     if (s.type === 'travel') {
       const route = s.from && s.to ? `${clean(s.from)} to ${clean(s.to)}` : clean(s.where);
@@ -91,114 +122,133 @@
       if (s.where) meta.push(clean(s.where));
       if (s.durationMin) meta.push(`about ${s.durationMin} min`);
     }
-    const metaText = meta.filter(Boolean).join('  |  ');
-    if (metaText) stack.push({ text: metaText, fontSize: 9.5, color: COLORS.muted, margin: [0, 0, 0, 1] });
-    if (s.notes) stack.push({ text: clean(s.notes), fontSize: 10, color: COLORS.body, margin: [0, 2, 0, 1] });
+    const metaText = meta.filter(Boolean).join('   |   ');
+    if (metaText) body.push({ text: metaText, fontSize: 9.5, color: COLORS.muted, margin: [0, 1, 0, 0] });
+    if (s.notes) body.push({ text: clean(s.notes), fontSize: 10, color: COLORS.body, margin: [0, 3, 0, 0] });
     const maps = link(s.type === 'travel' ? 'Directions in Google Maps' : 'Open in Google Maps', s.mapsUrl);
-    if (maps) stack.push({ text: maps.text, link: maps.link, color: maps.color, decoration: maps.decoration, fontSize: 9, margin: [0, 2, 0, 0] });
-    return { stack, unbreakable: true };
+    if (maps) body.push({ text: maps.text, link: maps.link, color: maps.color, decoration: maps.decoration, fontSize: 9, margin: [0, 3, 0, 0] });
+    return [{ text: time, fontSize: 10, bold: true, color: COLORS.muted, margin: [0, 2, 0, 0] }, { stack: body }];
   }
 
-  function beforeYouGoBlock(city, deps) {
-    const byg = deps.beforeYouGoInfo ? deps.beforeYouGoInfo(city) : null;
+  function stepsTable(steps) {
+    if (!steps.length) return { text: 'Nothing planned yet.', italics: true, color: COLORS.muted, fontSize: 10, margin: [0, 4, 0, 0] };
+    return {
+      table: { widths: [38, '*'], body: steps.map(stepRow), dontBreakRows: true },
+      layout: { hLineWidth: i => (i === 0 || i === steps.length ? 0 : 0.5), hLineColor: () => COLORS.line, vLineWidth: () => 0, paddingLeft: () => 0, paddingRight: () => 0, paddingTop: () => 7, paddingBottom: () => 7 }
+    };
+  }
+
+  function dayHeader(d) {
+    return {
+      table: { widths: ['*'], body: [[{ stack: [
+        { text: d.label, fontSize: 9, bold: true, color: '#BFDBFE', characterSpacing: 2 },
+        { text: d.sub || 'Itinerary', fontSize: 18, bold: true, color: '#FFFFFF', margin: [0, 2, 0, 0] }
+      ], fillColor: '#1E3A8A', margin: [14, 10, 14, 11] }]] },
+      layout: FLAT, margin: [0, 0, 0, 6]
+    };
+  }
+
+  /** The city's panels: Before you go, access, when to go, places. */
+  function cityPanels(city, deps) {
+    const out = [];
+    const heading = { text: clean(city.name) + (city.state ? ', ' + clean(city.state) : ''), bold: true, fontSize: 13, color: COLORS.ink, margin: [0, 14, 0, 0] };
     const acc = deps.accessInfo ? deps.accessInfo(city) : null;
-    if (!byg && !acc) return null;
-    const stack = [{ text: clean(city.name), bold: true, fontSize: 14, color: COLORS.ink, margin: [0, 10, 0, 4] }];
-    if (acc) {
-      stack.push({
-        text: [{ text: clean(acc.label) + '. ', bold: true }, clean(acc.text), isHttps(acc.source) ? { text: '  Source', link: acc.source, color: COLORS.blue, decoration: 'underline' } : ''],
-        fontSize: 10, color: COLORS.amber, margin: [0, 0, 0, 4]
-      });
-    }
-    if (byg) {
-      byg.items.forEach(it => {
-        stack.push({
-          text: [{ text: (KIND_LABEL[it.kind] || 'Note') + '. ', bold: true }, clean(it.text), isHttps(it.source) ? { text: '  Source', link: it.source, color: COLORS.blue, decoration: 'underline' } : ''],
-          fontSize: 10, color: COLORS.body, margin: [8, 0, 0, 3]
-        });
-      });
+    const byg = deps.beforeYouGoInfo ? deps.beforeYouGoInfo(city) : null;
+    if (acc || byg) {
+      const items = [];
+      if (acc) items.push({ label: acc.label, text: acc.text, source: acc.source, color: COLORS.amber });
+      if (byg) byg.items.forEach(it => items.push({ label: KIND_LABEL[it.kind] || 'Note', text: it.text, source: it.source }));
+      const { lines, refs } = sourced(items, byg && byg.official ? [byg.official] : []);
       const foot = [];
-      if (byg.official) foot.push({ text: 'Official website', link: byg.official, color: COLORS.blue, decoration: 'underline' });
-      if (byg.checked) foot.push({ text: (foot.length ? '   ' : '') + `Checked ${byg.checked}`, color: COLORS.faint });
-      if (foot.length) stack.push({ text: foot, fontSize: 9, margin: [8, 2, 0, 0] });
+      if (byg && byg.checked) foot.push({ text: `Checked ${byg.checked}. Rules and booking details change: confirm on the official site before you go.`, fontSize: 8, color: COLORS.muted, margin: [0, 3, 0, 0] });
+      out.push(panel(acc && !byg ? '#D97706' : '#4F46E5', acc && !byg ? '#FFFBEB' : '#EEF2FF', 'BEFORE YOU GO', lines.concat([{ stack: refs, margin: [0, 4, 0, 0] }], foot)));
     }
-    return { stack, unbreakable: true };
-  }
-
-  function placesList(city) {
-    const beats = Array.isArray(city.beats) ? city.beats.slice(0, MAX_PLACES) : [];
-    return beats.map(b => {
-      const maps = link('Map', b.mapsUrl);
-      return { text: [{ text: clean(b.title), color: COLORS.body }, maps ? { text: '   Map', link: maps.link, color: maps.color, decoration: maps.decoration, fontSize: 8.5 } : ''], fontSize: 10, margin: [0, 0, 0, 2] };
-    });
-  }
-
-  function destinationBlock(city, deps) {
-    const stack = [{ text: clean(city.name) + (city.state ? ', ' + clean(city.state) : ''), bold: true, fontSize: 14, color: COLORS.ink, margin: [0, 10, 0, 4] }];
     const seasons = deps.seasonsFor ? deps.seasonsFor(city) : [];
     if (seasons.length) {
-      stack.push({ text: 'WHEN TO GO', fontSize: 8, bold: true, color: COLORS.muted, characterSpacing: 1, margin: [0, 0, 0, 2] });
-      seasons.forEach(se => stack.push({ text: [{ text: se.span + '. ', bold: true }, `${se.tempLabel}, about ${se.avgTemp < 0 ? '-' + Math.abs(se.avgTemp) : se.avgTemp} C, ${se.rainLabel === 'wet' ? 'wet' : se.rainLabel === 'dry' ? 'dry' : 'some rain'}.`], fontSize: 10, color: COLORS.body, margin: [8, 0, 0, 1] }));
-      stack.push({ text: 'Typical day-and-night average. Check the forecast close to your dates.', fontSize: 8, color: COLORS.faint, margin: [8, 1, 0, 4] });
+      const lines = seasons.map(se => ({ text: [{ text: se.span + '. ', bold: true }, `${se.tempLabel}, about ${se.avgTemp < 0 ? '-' + Math.abs(se.avgTemp) : se.avgTemp} C, ${se.rainLabel === 'wet' ? 'wet' : se.rainLabel === 'dry' ? 'dry' : 'some rain'}.`], fontSize: 10, color: COLORS.body, margin: [0, 0, 0, 2] }));
+      lines.push({ text: 'Typical day-and-night average over 2001-2020. Check the forecast close to your dates.', fontSize: 8, color: COLORS.muted, margin: [0, 2, 0, 0] });
+      out.push(panel('#0284C7', '#F0F9FF', 'WHEN TO GO', lines));
     }
-    const places = placesList(city);
-    if (places.length) {
-      stack.push({ text: 'PLACES TO SEE', fontSize: 8, bold: true, color: COLORS.muted, characterSpacing: 1, margin: [0, 2, 0, 2] });
-      stack.push({ stack: places, margin: [8, 0, 0, 0] });
+    const beats = Array.isArray(city.beats) ? city.beats.slice(0, MAX_PLACES) : [];
+    if (beats.length) {
+      const lines = beats.map(b => {
+        const m = link('Map', b.mapsUrl);
+        return { text: [{ text: clean(b.title), color: COLORS.body }, m ? { text: '   Map', link: m.link, color: m.color, decoration: m.decoration, fontSize: 8.5 } : ''], fontSize: 10, margin: [0, 0, 0, 2] };
+      });
+      const cm = link('Open ' + clean(city.name) + ' in Google Maps', city.mapsUrl);
+      if (cm) lines.push({ text: cm.text, link: cm.link, color: cm.color, decoration: cm.decoration, fontSize: 9, margin: [0, 3, 0, 0] });
+      out.push(panel('#059669', '#ECFDF5', 'PLACES TO SEE', lines));
     }
-    const mapLink = link('Open ' + clean(city.name) + ' in Google Maps', city.mapsUrl);
-    if (mapLink) stack.push({ text: mapLink.text, link: mapLink.link, color: mapLink.color, decoration: mapLink.decoration, fontSize: 9, margin: [0, 4, 0, 0] });
-    return { stack };
+    if (!out.length) return [];
+    const first = { stack: [heading, out[0]], unbreakable: true };      // the name never sits alone at the foot of a page
+    return [first].concat(out.slice(1));
   }
 
   /**
-   * deps: { beforeYouGoInfo(city), accessInfo(city), seasonsFor(city) -> [{span, tempLabel, avgTemp, rainLabel}], logo (data URL), today }
+   * deps: { beforeYouGoInfo(city), accessInfo(city), seasonsFor(city) -> [{span, tempLabel, avgTemp, rainLabel}], logo (data URL) }
+   * Each day is a page: its steps, then a panel group for every city it touches (the first time that city appears).
    */
   function buildDocDefinition(plan, deps) {
     deps = deps || {};
     const content = [];
-    if (deps.logo) content.push({ image: deps.logo, width: 44, alignment: 'center', margin: [0, 0, 0, 8] });
-    content.push({ text: 'KYT - KNOW YOUR TRAVEL', alignment: 'center', fontSize: 9, bold: true, color: COLORS.faint, characterSpacing: 2, margin: [0, 0, 0, 28] });
-    content.push({ text: plan.title, alignment: 'center', fontSize: 28, bold: true, color: COLORS.ink, margin: [0, 0, 0, 6] });
-    if (plan.tagline) content.push({ text: plan.tagline, alignment: 'center', fontSize: 12, color: COLORS.muted, margin: [0, 0, 0, 10] });
     const dayCount = plan.days.filter(d => d.day >= 1).length;
     const route = plan.cities.map(c => clean(c.name)).join(', ');
-    const facts = [plan.origin && plan.origin !== '0' ? `From ${clean(plan.origin)}` : '', dayCount ? `${dayCount} day${dayCount === 1 ? '' : 's'}` : '', route].filter(Boolean).join('   |   ');
-    if (facts) content.push({ text: facts, alignment: 'center', fontSize: 11, color: COLORS.body, margin: [0, 0, 0, 14] });
-    content.push({ text: 'Tap any blue "Open in Google Maps" link to see the place or get directions. Times are indicative: check roads, weather and opening hours close to your day.', alignment: 'center', fontSize: 9, italics: true, color: COLORS.muted, margin: [30, 0, 30, 6] });
+    const facts = [plan.origin && plan.origin !== '0' ? `From ${clean(plan.origin)}` : '', dayCount ? `${dayCount} day${dayCount === 1 ? '' : 's'}` : ''].filter(Boolean).join('   |   ');
 
-    const byg = plan.cities.map(c => beforeYouGoBlock(c, deps)).filter(Boolean);
-    if (byg.length) {
-      content.push({ text: 'BEFORE YOU GO', fontSize: 10, bold: true, color: COLORS.blue, characterSpacing: 2, margin: [0, 24, 0, 2], pageBreak: 'before' });
-      content.push({ text: 'Things to book, carry or know before these places. Each links to the page it was read from.', fontSize: 9.5, color: COLORS.muted, margin: [0, 0, 0, 4] });
-      content.push(rule(1));
-      byg.forEach(b => content.push(b));
+    // Cover
+    content.push({
+      table: { widths: ['*'], body: [[{ stack: [
+        deps.logo ? { image: deps.logo, width: 40, margin: [0, 0, 0, 10] } : { text: '' },
+        { text: 'KYT - KNOW YOUR TRAVEL', fontSize: 8, bold: true, color: '#BFDBFE', characterSpacing: 2, margin: [0, 0, 0, 14] },
+        { text: plan.title, fontSize: 28, bold: true, color: '#FFFFFF' },
+        plan.tagline ? { text: plan.tagline, fontSize: 12, color: '#DBEAFE', margin: [0, 6, 0, 0] } : { text: '' },
+        facts ? { text: facts, fontSize: 11, bold: true, color: '#BFDBFE', margin: [0, 14, 0, 0] } : { text: '' },
+        route ? { text: route, fontSize: 10, color: '#DBEAFE', margin: [0, 3, 0, 0] } : { text: '' }
+      ], fillColor: '#1E3A8A', margin: [22, 22, 22, 24] }]] },
+      layout: FLAT, margin: [0, 0, 0, 16]
+    });
+    const glance = plan.days.map(d => {
+      const stops = d.steps.filter(s => s.type !== 'travel' && s.type !== 'stay').slice(0, 3).map(s => clean(s.title)).join(', ');
+      return [{ text: d.day === 0 ? 'Start' : 'Day ' + d.day, bold: true, fontSize: 10, color: COLORS.blue }, { stack: [{ text: d.sub || 'Itinerary', bold: true, fontSize: 10, color: COLORS.ink }, stops ? { text: stops, fontSize: 9, color: COLORS.muted, margin: [0, 1, 0, 0] } : { text: '' }] }];
+    });
+    if (glance.length) {
+      content.push({ text: 'AT A GLANCE', fontSize: 9, bold: true, color: COLORS.blue, characterSpacing: 2, margin: [0, 0, 0, 2] });
+      content.push({ table: { widths: [44, '*'], body: glance, dontBreakRows: true }, layout: { hLineWidth: i => (i === 0 ? 1 : 0.5), hLineColor: () => COLORS.line, vLineWidth: () => 0, paddingLeft: () => 0, paddingRight: () => 0, paddingTop: () => 6, paddingBottom: () => 6 } });
     }
+    content.push({ text: 'Tap a blue "Open in Google Maps" link to see the place or get directions. Sources are numbered, with the full web address printed under each list. Times are indicative: check roads, weather and opening hours close to your day.', fontSize: 8.5, italics: true, color: COLORS.muted, margin: [0, 14, 0, 0] });
 
-    plan.days.forEach((d, i) => {
-      content.push({
-        stack: [
-          { text: d.label, fontSize: 10, bold: true, color: COLORS.blue, characterSpacing: 2, margin: [0, 0, 0, 2] },
-          { text: d.sub || 'Itinerary', fontSize: 18, bold: true, color: COLORS.ink, margin: [0, 0, 0, 2] },
-          rule(1)
-        ],
-        unbreakable: true,
-        pageBreak: 'before'
+    // Days, each with the panels of the cities it touches
+    const placed = new Set();
+    const byName = n => plan.cities.find(c => clean(c.name).toLowerCase() === clean(n).toLowerCase());
+    plan.days.forEach(d => {
+      const head = dayHeader(d);
+      head.pageBreak = 'before';
+      content.push(head);
+      content.push(stepsTable(d.steps));
+      const names = [];
+      d.steps.forEach(s => (s.type === 'travel' ? [s.from, s.to] : [s.cityName]).forEach(n => { const c = n && byName(n); if (c && !names.includes(c.id)) names.push(c.id); }));
+      names.forEach(id => {
+        if (placed.has(id)) return;
+        placed.add(id);
+        cityPanels(plan.cities.find(c => c.id === id), deps).forEach(x => content.push(x));
       });
-      d.steps.forEach(s => content.push(stepBlock(s)));
     });
 
-    if (plan.cities.length) {
-      content.push({ text: 'DESTINATION GUIDE', fontSize: 10, bold: true, color: COLORS.blue, characterSpacing: 2, margin: [0, 0, 0, 2], pageBreak: 'before' });
+    // Cities no day mentions still get their panels
+    const rest = plan.cities.filter(c => !placed.has(c.id));
+    const restBlocks = [];
+    rest.forEach(c => cityPanels(c, deps).forEach(x => restBlocks.push(x)));
+    if (restBlocks.length) {
+      content.push({ text: 'MORE ABOUT YOUR DESTINATIONS', fontSize: 10, bold: true, color: COLORS.blue, characterSpacing: 2, margin: [0, 0, 0, 2], pageBreak: 'before' });
       content.push(rule(1));
-      plan.cities.forEach(c => content.push(destinationBlock(c, deps)));
+      restBlocks.forEach(x => content.push(x));
     }
 
     return {
       pageSize: 'A4',
-      pageMargins: [50, 60, 50, 55],
+      pageMargins: [50, 50, 50, 55],
       info: { title: plan.title + ' - trip plan', author: 'KYT' },
-      footer: (page, pages) => ({ text: `KYT - Know Your Travel - vividnova.com/kyt/ - Page ${page} of ${pages}`, alignment: 'center', fontSize: 8, color: COLORS.faint, margin: [0, 16, 0, 0] }),
+      footer: (page, pages) => ({ text: `${plan.title}   |   KYT - Know Your Travel - vividnova.com/kyt/   |   Page ${page} of ${pages}`, alignment: 'center', fontSize: 8, color: COLORS.faint, margin: [0, 16, 0, 0] }),
       content,
       defaultStyle: { font: 'Roboto', lineHeight: 1.3 }
     };

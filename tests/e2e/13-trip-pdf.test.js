@@ -24,7 +24,7 @@ const TRIP = {
 
 const texts = node => JSON.stringify(node);
 
-test('the PDF document has the cover, Before you go with sources, the days with map links, and the guide', async () => {
+test('the PDF document has the cover, the days with map links, and each city panel on its day, with printed source addresses', async () => {
   const { context, page } = await newPhone(env.browser);
   await page.addInitScript(() => {
     window.__docs = [];
@@ -40,14 +40,18 @@ test('the PDF document has the cover, Before you go with sources, the days with 
   assert.match(all, /Agra and Jaipur/);
   assert.match(all, /BEFORE YOU GO/);
   assert.match(all, /closed every Friday/, 'Agra\'s Before you go item');
+  assert.ok(all.indexOf('closed every Friday') < all.indexOf('DAY 2'), 'the city panel sits on the day that visits it, not at the end');
+  assert.equal(all.split('closed every Friday').length - 1, 1, 'a city appears once, on its first day');
   assert.match(all, /Rest for at least 48 hours/, 'Leh\'s access note');
-  assert.match(all, /"link":"https:\/\/www\.asiagracircle\.in/, 'each item links its source');
+  assert.match(all, /"link":"https:\/\/www\.asiagracircle\.in/, 'each source is a link');
+  assert.match(all, /"text":"www\.asiagracircle\.in\/tajmahal\.html"/, 'and its web address is printed, for a paper copy');
+  assert.match(all, /\[1\]/, 'items point to numbered sources');
   assert.match(all, /DAY 1/); assert.match(all, /DAY 2/);
   assert.match(all, /Open in Google Maps/);
   assert.match(all, /Directions in Google Maps/);
   assert.match(all, /Check-out 11:00/);
   assert.doesNotMatch(all, /30 min/, 'a stay carries no made-up duration');
-  assert.match(all, /DESTINATION GUIDE/);
+  assert.match(all, /AT A GLANCE/);
   assert.match(all, /WHEN TO GO/);
   assert.match(all, /Taj Mahal/);
   assert.doesNotMatch(all, /[→\u{1F300}-\u{1FAFF}]/u, 'no characters the PDF font lacks');
