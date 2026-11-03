@@ -1732,6 +1732,7 @@ KYT.virtualTrips = (function () {
     $('vt-fields-stay').classList.toggle('hidden', kind !== 'stay');
     $('vt-step-where-wrap').classList.toggle('hidden', kind !== 'stop');
     $('vt-step-time-label').textContent = kind === 'travel' ? 'Leaves' : (kind === 'stay' ? 'Check-in' : 'When');
+    $('vt-stay-out-wrap').classList.toggle('hidden', kind !== 'stay');
     const noun = { stop: 'stop', travel: 'travel', stay: 'stay' }[kind];
     $('vt-step-modal-title').textContent = ctx.mode === 'edit' ? `Edit ${noun}` :
       `Add ${kind === 'stop' ? 'a stop' : (kind === 'stay' ? 'a stay' : 'travel')} to Day ${ctx.dayId}`;
@@ -1745,13 +1746,14 @@ KYT.virtualTrips = (function () {
       $('vt-travel-overnight').checked = Boolean(step.overnight);
       set('vt-stay-place', step.where === (dayCity(trip, ctx.dayId) || {}).name ? '' : step.where);
       set('vt-step-time', step.hour != null ? `${pad2(step.hour)}:${pad2(step.minute || 0)}` : '');
+      set('vt-stay-out', step.checkOut);
       set('vt-step-notes', step.notes);
     } else {
       set('vt-step-title', ''); set('vt-step-where', '');
       set('vt-travel-from', pre.from); set('vt-travel-to', pre.to);
       set('vt-travel-mode', pre.mode || 'road'); set('vt-travel-duration', pre.duration || '');
       $('vt-travel-overnight').checked = Boolean(pre.overnight);
-      set('vt-stay-place', '');
+      set('vt-stay-place', ''); set('vt-stay-out', '');
       const dflt = kind === 'stay' ? 21 * 60 : (kind === 'travel' ? (pre.hour != null ? pre.hour * 60 : 9 * 60) : 12 * 60);
       const t = freeTime(trip, ctx.dayId, Math.floor(dflt / 60), dflt % 60);
       set('vt-step-time', `${pad2(t.h)}:${pad2(t.m)}`);
@@ -1843,6 +1845,8 @@ KYT.virtualTrips = (function () {
     } else {
       const place = val('vt-stay-place');
       fields = { title: `Stay in ${place || cityName}`, where: place || cityName, mapsUrl: mapsSearch(`hotels in ${place || cityName}`), icon: 'bed-double', durationMin: 30 };
+      const out = /^(\d{1,2}):(\d{2})$/.exec($('vt-stay-out').value || '');
+      fields.checkOut = out ? `${pad2(parseInt(out[1], 10))}:${out[2]}` : '';     // optional, the next morning
     }
     fields.notes = val('vt-step-notes');
 

@@ -643,7 +643,9 @@ window.KYT.ui = (function () {
       let timeWindowStr = '';
       if (step.hour != null) {
         const startStr = `${pad2(step.hour)}:${pad2(step.minute || 0)}`;
-        if (step.endHour != null) {
+        if (step.type === 'stay') {
+          timeWindowStr = `Check-in ${startStr}${step.checkOut ? ' · Check-out ' + step.checkOut : ''}`;
+        } else if (step.endHour != null) {
           const endStr = `${pad2(step.endHour)}:${pad2(step.endMinute || 0)}`;
           const dur = step.durationMin || ((step.endHour * 60 + step.endMinute) - (step.hour * 60 + (step.minute || 0)));
           const durFmt = dur > 0 ? (dur >= 60 ? `${Math.floor(dur / 60)}h${dur % 60 ? ' ' + (dur % 60) + 'm' : ''}` : `${dur}m`) : '';
@@ -698,7 +700,8 @@ window.KYT.ui = (function () {
       const pad2 = n => String(n).padStart(2, '0');
       const startStr = `${pad2(step.hour != null ? step.hour : 9)}:${pad2(step.minute || 0)}`;
       let timeStr = startStr;
-      if (step.endHour != null) {
+      const isStay = step.type === 'stay';   // a stay has a check-in and, if the user sets one, a check-out: no duration
+      if (step.endHour != null && !isStay) {
         timeStr = `${startStr} – ${pad2(step.endHour)}:${pad2(step.endMinute || 0)}`;
       }
       const verifyTags = (step.verify || []).map(v => `
@@ -742,7 +745,8 @@ window.KYT.ui = (function () {
           </div>
           <div class="text-[11px] font-semibold text-slate-500 mt-0.5 flex items-center gap-1">
             <span>${esc(step.where || 'Location')}</span>
-            ${step.durationMin ? `<span class="opacity-40">•</span><span>~${esc(step.durationMin)} mins</span>` : (step.duration ? `<span class="opacity-40">•</span><span>${esc(step.duration)}</span>` : '')}
+            ${isStay ? (step.checkOut ? `<span class="opacity-40">•</span><span data-stay-out>Check-out ${esc(step.checkOut)}</span>` : '')
+              : step.durationMin ? `<span class="opacity-40">•</span><span>~${esc(step.durationMin)} mins</span>` : (step.duration ? `<span class="opacity-40">•</span><span>${esc(step.duration)}</span>` : '')}
           </div>
           ${step.notes ? `<p class="text-xs text-slate-600 mt-1 leading-relaxed">${esc(step.notes)}</p>` : ''}
           ${verifyTags ? `<div class="flex flex-wrap gap-1">${verifyTags}</div>` : ''}

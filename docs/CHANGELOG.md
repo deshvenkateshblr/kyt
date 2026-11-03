@@ -419,4 +419,8 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - The city sheet shows "When to go" under Before you go: two or three typical seasons with an average temperature and a rain word, for example "Mar to Jun. Hot, about 31°C, dry." from `data/weather.js` (height-corrected for hill cities). Says it is typical 2001-2020 weather and to check the forecast near the dates.
     - `data/weather.js` and `js/weather-seasons.js` load on every page that loads `data/cities.js` and are in the offline precache. Not yet in the Day Plan or on city cards.
     - **Tests:** 2 added to `12-weather-seasons.test.js`.
+65. **Stays show check-in and check-out, not "~30 mins" (service worker cache `kyt-v99`)**
+    - A stay no longer shows a made-up 30-minute duration or an end time. It shows its check-in, and a check-out if you set one: "Check-in 21:00 · Check-out 11:00" on the Day Plan card, "Check-out 11:00" in the read-only timeline.
+    - The stay editor has an optional **Check-out** time (stored as `checkOut`, "HH:MM"). Existing stays just lose the minutes.
+    - **Tests:** 2 added in `09-plan-editing.test.js` (editor round trip, both renderers).
 

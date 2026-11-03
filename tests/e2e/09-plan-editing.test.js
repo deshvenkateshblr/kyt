@@ -201,10 +201,19 @@ test('a stay is a step of its own: suggested for each night, editable, and not o
   assert.equal(await page.locator('#vt-fields-stay').isVisible(), true);
   await page.fill('#vt-stay-place', 'Hotel Sunrise');
   await page.fill('#vt-step-time', '19:00');
+  assert.equal(await page.locator('#vt-stay-out').isVisible(), true, 'a stay can have a check-out time');
+  await page.fill('#vt-stay-out', '11:00');
   await page.click('#btn-save-vt-step');
   s = dayOf((await stored(page))[0], 1).find(x => x.type === 'stay');
   assert.equal(s.title, 'Stay in Hotel Sunrise');
   assert.equal(s.hour, 19);
+  assert.equal(s.checkOut, '11:00');
+  const row = await card(page, 'Stay in Hotel Sunrise').innerText();
+  assert.match(row, /Check-in 19:00 · Check-out 11:00/);
+  assert.doesNotMatch(row, /30m|19:30/, 'no placeholder duration on a stay');
+  await card(page, 'Stay in Hotel Sunrise').getByRole('button', { name: 'Edit stop' }).click();
+  assert.equal(await page.inputValue('#vt-stay-out'), '11:00', 'the check-out is remembered');
+  await page.click('#btn-cancel-step-modal');
 
   await tab(page, 2).click();
   assert.equal(await page.locator('[data-hint="stay"]').count(), 0, 'nobody sleeps on the last day of the plan');
@@ -310,5 +319,21 @@ test('Suggest a plan follows each day\'s own city, and days in the same city do 
   assert.ok(d1.length > 0 && d2.length > 0, 'both Agra days have attractions');
   assert.equal(d2.filter(t => d1.includes(t)).length, 0, `Agra day 2 repeats day 1: ${d1} / ${d2}`);
   assert.ok(d3.length > 0, 'day 3 holds Jaipur attractions, not a repeat of the last Agra day');
+  await context.close();
+});
+
+test('a stay row shows check-in and check-out, never "~30 mins"', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.goto(env.base + '/virtual_trip.html');
+  const html = await page.evaluate(() => {
+    const base = { id: 's1', type: 'stay', title: 'Stay in Indore', where: 'Indore', icon: 'bed-double', hour: 21, minute: 0, endHour: 21, endMinute: 30, durationMin: 30 };
+    const r = st => KYT.ui.renderStepCard(st, { variant: 'curated-preview' });
+    return { plain: r(base), out: r({ ...base, checkOut: '11:00' }), stop: r({ ...base, type: 'stop', title: 'Fort', icon: 'map-pin', durationMin: 90 }) };
+  });
+  assert.doesNotMatch(html.plain, /mins/, 'no made-up duration on a stay');
+  assert.doesNotMatch(html.plain, /21:00 – 21:30/, 'no end time either');
+  assert.match(html.plain, /21:00/);
+  assert.match(html.out, /Check-out 11:00/);
+  assert.match(html.stop, /~90 mins/, 'stops keep their duration');
   await context.close();
 });
