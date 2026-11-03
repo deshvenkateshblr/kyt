@@ -1,7 +1,7 @@
 # KYT: Prioritized TODO
 
 The single list of open work. Done work is in [CHANGELOG.md](CHANGELOG.md). Design intent and architecture are in [kyt_product_specification_roadmap.md](kyt_product_specification_roadmap.md).
-Last reviewed: 1 Nov 2026, against service worker cache `kyt-v97`.
+Last reviewed: 3 Nov 2026, against service worker cache kyt-v101.
 
 **How to use this file:** keep every open item here and nowhere else. When something ships, move it to the changelog. Other docs link here instead of keeping their own TODO lists.
 
@@ -15,8 +15,8 @@ Last reviewed: 1 Nov 2026, against service worker cache `kyt-v97`.
 
 | Stage | What the traveller asks | KYT today | Gap |
 |---|---|---|---|
-| Find a plan | "What can I do in 3 days from my city?" | 145 cities. 3 curated trips (two Tirupati, one Mathura and Vrindavan), from Bengaluru and Delhi. | Few ready-made plans |
-| Pick the time | "Is this a good month? Will it be crowded?" | Curated trips hold best months and festival and crowd days, but nothing shows them, and the best months are unsourced AI text. The 145 cities hold no seasonal information. | Hidden, unverified, or missing |
+| Find a plan | "What can I do in 3 days from my city?" | 159 cities. 3 curated trips (two Tirupati, one Mathura and Vrindavan), from Bengaluru and Delhi. | Few ready-made plans |
+| Pick the time | "Is this a good month? Will it be crowded?" | Curated trips hold best months and festival and crowd days, but nothing shows them, and the best months are unsourced AI text. The 159 cities hold no seasonal information. | Hidden, unverified, or missing |
 | Check it fits | "Can I really do this in 4 days?" | A Google Maps link per leg. The builder assumes fixed transfer times (4 h, 5 h or 2 h) whatever the distance, so some plans are impossible: see P1.0. Every generated plan now says it is a suggested sequence and to check Google Maps (CHANGELOG 42). | Plans can be wrong |
 | Suit the group | "My parents can't climb. We have kids." | Each attraction shows an access badge (easy, walk, trek). Plans do not use it. | Not used |
 | Prepare | "What do I book, carry and wear?" | Curated trips show a Before You Go list and tips. Virtual trips show nothing. | Missing for virtual trips |
@@ -46,14 +46,13 @@ Clear. The contradictions in generated days and the explainer on every generated
 
 | ID | Item | Why it matters | Source |
 |---|---|---|---|
-| P2.1 | **Filters in the trip builder's city library** (state, setting, vibe, effort), reusing the passport filter sheet. | Picking from 145 cities is hard without them. The data exists; only the passport uses it. | `build_virtual_trip.md` §6 |
+| P2.1 | **Filters in the trip builder's city library** (state, setting, vibe, effort), reusing the passport filter sheet. | Picking from 159 cities is hard without them. The data exists; only the passport uses it. | `build_virtual_trip.md` §6 |
 | P2.2 | **Food and culinary metadata, plus a food filter** (local cuisines, Jain and satvik availability). | Jain and satvik support is the differentiator, and cities carry no cuisine data. | Old backlog |
 | P2.3 | **Return type** (round trip or one way) and **transit mode** (own car, cab, train, flight). | Open-jaw trips and train or flight plans are common. A final-day return is always generated today. | Roadmap §6 |
 | P2.4 | **Store photos and attachments as separate records (Blobs)** instead of base64 inside the trip JSON. | Every "mark done" rewrites every photo, so photo-heavy trips will slow down. | Storage review |
 | P2.5 | **Free-flow search on curated trips.** Worth doing once P1.1 grows the list. | Finding the right trip among many. | Old backlog |
 | P2.6 | **Plan for elders, kids and fitness.** Party chips (family with elders, family with kids, friends, solo). Use each attraction's `mobility` (331 easy, 250 walk, 32 trek) and the city `effort` flag to leave out or warn on strenuous stops. The `party` tag cannot drive this: it is "any" on 609 of 615 attractions. | Pilgrimages with parents are a core use. Useful, but fewer travellers are blocked by its absence than by P0 and P1. | Data review |
 | P2.7 | **Duration nudge:** warn when the trip has fewer days than cities. Needs no distance data. | Stops people building overpacked plans. | Roadmap Phase 2 |
-| P2.8 | **Google Maps Place IDs for remaining 151 cities and core attraction beats.** 8 anchor cities are seeded (Delhi, Mumbai, Agra, Jaipur, Varanasi, Indore, Ujjain, Omkareshwar) with coordinate fallback in `travelMapsUrl`. Populate the remaining 151 cities using free batch lookups (via the Google Maps Place ID Finder) in batches by circuit (Quest hubs first: Somnath, Dwarka, Haridwar, Ayodhya, Puri, Tirupati, etc.) without requiring a paid API key. | Ensures Google Maps directions and search links open clean, branded Place Cards and eliminate local proximity ambiguity across all 159 destinations. | Owner request (Nov 2026). |
 
 ## P3: Convenience and delight
 
@@ -63,7 +62,7 @@ Clear. The contradictions in generated days and the explainer on every generated
 | P3.2 | **Hotels, stations and airports per city** as Google Maps search links. A plain link cannot enforce the "5,000+ reviews" rule, so decide whether that matters. | Saves a search, little else. | `build_city_details.md` §4 |
 | P3.3 | **Video language toggle** (English or Hindi). Depends on the audience question below. | The data has a language field; there is no user setting. | `build_city_details.md` §1 |
 | P3.4 | **Drag chips between days** in the day plan. | Steps already reorder and delete; cross-day drag is a convenience. | Old backlog |
-| P3.5 | **Explorer Quests in Passport (`visited.html`).** Curated cultural & geographical hit-lists (<15 cities each: 12 Jyotirlingas, Maha Vishnu, Sapta Moksha Puri, Sapta Nadi, Top 10 UNESCO, Maratha Forts, Toy Trains, etc.) with live stamp progress, quest banners, and passport badges. Steps 1-4 complete. See [explorer_quests_spec.md](explorer_quests_spec.md). | Transforms 145 destinations into inspiring, bite-sized travel quests instead of burying them inside generic filters; achieves >94% city coverage. | Spec doc |
+| P3.5 | **Explorer Quests in Passport (`visited.html`).** Curated cultural & geographical hit-lists (<15 cities each: 12 Jyotirlingas, Maha Vishnu, Sapta Moksha Puri, Sapta Nadi, Top 10 UNESCO, Maratha Forts, Toy Trains, etc.) with live stamp progress, quest banners, and passport badges. Steps 1-4 complete. See [explorer_quests_spec.md](explorer_quests_spec.md). | Transforms 159 destinations into inspiring, bite-sized travel quests instead of burying them inside generic filters; achieves >94% city coverage. | Spec doc |
 
 ## P4: Later, or not traveller-facing
 
@@ -86,7 +85,7 @@ Clear. The contradictions in generated days and the explainer on every generated
 |---|---|---|
 | V1 | **Passport share card on a real phone**, Android and iPhone. Only tested in a desktop browser so far. | It is the main way people show the passport to others. |
 | V2 | **Storage on a real iPhone.** Plan a trip in Safari, then Add to Home Screen: is the data still there? Leave it unopened for a week: is it still there? | iOS storage rules differ between the Safari tab and the installed app, and the home page invites installing. |
-| V3 | **Review `city-attributes-review.csv`** (the owner's judgments for all 145 cities; the file is not in the repo). | The passport filters and strength meters use `setting`, `vibes` and `effort`, and P1.0 and P2.6 will rely on `effort`. Today 16 cities are "trek", including Pushkar and Gokarna. |
+| V3 | **Review `city-attributes-review.csv`** (the owner's judgments for all 159 cities; the file is not in the repo). | The passport filters and strength meters use `setting`, `vibes` and `effort`, and P1.0 and P2.6 will rely on `effort`. Today 16 cities are "trek", including Pushkar and Gokarna. |
 
 ## Open question for the owner
 
@@ -117,4 +116,4 @@ Who are the first hundred users, and in which language do they plan? If they are
 
 ## Already done (listed as open in older docs)
 
-Visited status and bragging-rights share card (passport), sharing customised trips without a server (short links plus compressed fallback), default journey anchors on virtual trips, 12 Jyotirlinga and Vishnu shrine audit, direct city sharing, rich city detail sheet with videos and nearby cities, search box reset on adding a city, distance estimates (distance matrix and travel legs), AI prompt generation and "Refine with AI", XSS escaping of step text.
+Visited status and bragging-rights share card (passport), sharing customised trips without a server (short links plus compressed fallback), default journey anchors on virtual trips, 12 Jyotirlinga and Vishnu shrine audit, direct city sharing, rich city detail sheet with videos and nearby cities, search box reset on adding a city, distance estimates (distance matrix and travel legs), AI prompt generation and "Refine with AI", XSS escaping of step text, Google Maps Place IDs for all 159 cities and 535 place beats (CHANGELOG 68), activity search query optimization (<title> at <city>, CHANGELOG 69), interactive Google Maps verification suite (testgmap.html).

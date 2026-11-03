@@ -432,3 +432,16 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - Only plain text: the PDF font has no arrows or emoji, so routes read "Agra to Jaipur". `js/trip-pdf.js` builds the document as plain data, so it is tested without a browser.
     - **Tests:** `13-trip-pdf.test.js` (4). The pdfMake library still loads from cdnjs (as on the album pages), so a first-ever offline use shows a plain message.
 
+
+
+68. **Google Maps Place IDs for all 159 cities and 535 attraction beats (`data/cities.js`, TODO P2.8)**
+    - **Attraction Classification (`kind: 'place'` vs `kind: 'activity'`):** Audited and tagged all 693 attractions across the catalog. Fixed places (temples, monuments, viewpoints, shrines, lakes) are marked `kind: 'place'`; meal stops, street food trails, shopping walks, boat safaris, and activity tours are marked `kind: 'activity'`. Activities are strictly exempt from `placeId` and `ftid`, preventing unintended place pinning or town overrides.
+    - **100% Place ID Resolution:** Resolved canonical Google Place IDs (`ChIJ...`), Google Feature IDs (`ftid`), and coordinates (`lat`, `lng`) for all 535 places across all 16 batches (159 cities) without requiring paid API keys, using automated headless browser lookup and deterministic protobuf Feature ID conversion (`ftidToPlaceId`).
+    - **Verification & Click-Through Suite (`testgmap.html`):** Built interactive desktop tool for visual batch-by-batch review with live Google Maps iframe embeds, batch selector (1-16), filters (`All`, `🏛️ Places Only`, `☕ Activities Only`, `Missing Place ID`), direct map links, and persistent verification checklists.
+    - **Edge Cases & Ambiguity Fixes:** Separated Haji Ali Dargah (`ChIJ40INk37O5zsRBY0Hq8dd4NU`) and Shree Mahalaxmi Temple (`ChIJ0T445WzO5zsRYt1jJFF6DOI`) in Mumbai into distinct place beats; corrected distance mismatches (Dubare Elephant Camp in Coorg, Garjiya Devi Temple in Jim Corbett, Grishneshwar Jyotirlinga, Daulatabad Fort, Bibi Ka Maqbara, Adalaj Stepwell, Sardar Sarovar Dam, and Kundalpur Jain Temple).
+    - **Tooling:** Both `admin/enrich_kyt_places.js` and `admin/enrich_kyt_places.py` maintain caching in `admin/places_cache.json` and support batching, status reporting, and safe in-place updates.
+
+69. **High-precision activity search queries (`<title> at <city>`)**
+    - Updated all 158 activity beats in `data/cities.js` to construct Google Maps search links as `<title> at <city>` (e.g., `Petha & chaat at Kinari Bazaar at Agra`, `Vada pav & street food in Dadar at Mumbai`, `Kerala sadya lunch at Munnar`, `Dal baati churma royal dinner at Jaipur`). Appending the city anchors Google Maps search algorithms directly to relevant local food vendors, restaurants, and activity operators rather than generic town centers.
+    - Updated `admin/enrich_kyt_places.js` and `admin/enrich_kyt_places.py` to enforce the `<title> at <city>` format and hardened catalog loading against regex truncation.
+    - **Tests:** `admin/tests/core.test.js` (57 passed, 0 failed).
