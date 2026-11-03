@@ -1,0 +1,112 @@
+{
+  "city::ujjain": {
+    "query": "Ujjain, Madhya Pradesh, India",
+    "resolvedName": "Ujjain, Madhya Pradesh",
+    "placeId": "ChIJI_8A3ml0YzkREtSZeN-rgn8",
+    "ftid": "0x39637469de00ff23:0x7f82abdf7899d412",
+    "lat": 23.1764665,
+    "lng": 75.7885163,
+    "distanceKm": 0,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Ujjain%2C%20Madhya%20Pradesh%2C%20India&query_place_id=ChIJI_8A3ml0YzkREtSZeN-rgn8"
+  },
+  "city::omkareshwar": {
+    "query": "Omkareshwar, Madhya Pradesh, India",
+    "resolvedName": "Mandhata, Madhya Pradesh 450554",
+    "placeId": "ChIJLcxs4fO8YjkRuKoItcOJ3g0",
+    "ftid": "0x3962bcf3e16ccc2d:0xdde89c3b508aab8",
+    "lat": 22.2507773,
+    "lng": 76.1522879,
+    "distanceKm": 0.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Omkareshwar%2C%20Madhya%20Pradesh%2C%20India&query_place_id=ChIJLcxs4fO8YjkRuKoItcOJ3g0"
+  },
+  "beat::omkareshwar::Omkareshwar Jyotirlinga darshan": {
+    "query": "Omkareshwar Jyotirlinga Temple, Omkareshwar",
+    "resolvedName": "Shri Omkareshwar Jyotirlinga Temple",
+    "placeId": "ChIJP4WlJf69YjkRDfmVMamd7LI",
+    "ftid": "0x3962bdfe25a5853f:0xb2ec9da93195f90d",
+    "lat": 22.2454388,
+    "lng": 76.1510642,
+    "distanceKm": 0.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Omkareshwar%20Jyotirlinga%20Temple%2C%20Omkareshwar&query_place_id=ChIJP4WlJf69YjkRDfmVMamd7LI"
+  },
+  "beat::omkareshwar::Ghatside Malwi Poha Jalebi breakfast trail": {
+    "query": "Gomukh Ghat, Omkareshwar",
+    "resolvedName": "Gaumukh Ghat",
+    "placeId": "ChIJ-3UQdgC9YjkRus2Rd8Tmyig",
+    "ftid": "0x3962bd00761075fb:0x28cae6c47791cdba",
+    "lat": 22.243575,
+    "lng": 76.1505673,
+    "distanceKm": 0.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Gomukh%20Ghat%2C%20Omkareshwar&query_place_id=ChIJ-3UQdgC9YjkRus2Rd8Tmyig"
+  },
+  "beat::omkareshwar::Mamleshwar Temple (Amareshwar) darshan": {
+    "query": "Mamleshwar Temple, Omkareshwar",
+    "resolvedName": "Shri Mamleshwar Temple",
+    "placeId": "ChIJS9DNyui8YjkR7PemdmWRrTY",
+    "ftid": "0x3962bce8cacdd04b:0x36ad916576a6f7ec",
+    "lat": 22.2424222,
+    "lng": 76.1505746,
+    "distanceKm": 0.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mamleshwar%20Temple%2C%20Omkareshwar&query_place_id=ChIJS9DNyui8YjkR7PemdmWRrTY"
+  },
+  "beat::omkareshwar::Adi Shankaracharya Guha (Cave of Initiation)": {
+    "query": "Adi Shankara Cave, Omkareshwar",
+    "resolvedName": "आदि गुरु शंकराचार्य गुफा",
+    "placeId": "ChIJCwi5LNC9YjkREGoFIVZ0AFs",
+    "ftid": "0x3962bdd02cb9080b:0x5b00745621056a10",
+    "lat": 22.2458273,
+    "lng": 76.1504064,
+    "distanceKm": 0.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Adi%20Shankara%20Cave%2C%20Omkareshwar&query_place_id=ChIJCwi5LNC9YjkREGoFIVZ0AFs"
+  },
+  "beat::omkareshwar::Traditional Malwi Dal Bafla lunch": {
+    "query": "Dal Bafla, Omkareshwar",
+    "resolvedName": "Maa Gaytri Bhojnalay",
+    "placeId": "ChIJTYwJiO68YjkR0_7N4sdU6G8",
+    "ftid": "0x3962bcee88098c4d:0x6fe854c7e2cdfed3",
+    "lat": 22.2445621,
+    "lng": 76.1486579,
+    "distanceKm": 0.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Dal%20Bafla%2C%20Omkareshwar&query_place_id=ChIJTYwJiO68YjkR0_7N4sdU6G8"
+  },
+  "beat::omkareshwar::Ekatma Dham & 108ft Statue of Oneness": {
+    "query": "Statue of Oneness, Omkareshwar",
+    "resolvedName": "Statue of oneness (statue of shankaracharya)",
+    "placeId": "ChIJLyiNKum9YjkR7KP-A3R2xeo",
+    "ftid": "0x3962bde92a8d282f:0xeac5767403fea3ec",
+    "lat": 22.2496875,
+    "lng": 76.1505625,
+    "distanceKm": 0.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Statue%20of%20Oneness%2C%20Omkareshwar&query_place_id=ChIJLyiNKum9YjkR7KP-A3R2xeo"
+  },
+  "beat::omkareshwar::Siddhanath & Gauri Somnath Temples walk": {
+    "query": "Siddhnath Temple, Omkareshwar",
+    "resolvedName": "Shree Siddhanath Temple, Mandhata",
+    "placeId": "ChIJT5p20JK8YjkRXiZASTzvH1I",
+    "ftid": "0x3962bc92d0769a4f:0x521fef3c4940265e",
+    "lat": 22.2458667,
+    "lng": 76.1558962,
+    "distanceKm": 0.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Siddhnath%20Temple%2C%20Omkareshwar&query_place_id=ChIJT5p20JK8YjkRXiZASTzvH1I"
+  },
+  "beat::omkareshwar::Narmada & Kaveri Sangam boat ride": {
+    "query": "Narmada River Boating, Omkareshwar",
+    "resolvedName": "Narmada River Omkareshwar",
+    "placeId": "ChIJ-6F58BW9YjkRdvL1CC8yc9Y",
+    "ftid": "0x3962bd15f079a1fb:0xd673322f08f5f276",
+    "lat": 22.2447089,
+    "lng": 76.151899,
+    "distanceKm": 0.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Narmada%20River%20Boating%2C%20Omkareshwar&query_place_id=ChIJ-6F58BW9YjkRdvL1CC8yc9Y"
+  },
+  "beat::omkareshwar::Nagar Ghat sunset & Narmada Maha Aarti": {
+    "query": "Nagar Ghat, Omkareshwar",
+    "resolvedName": "Nagar Ghat",
+    "placeId": "ChIJdfFB5O-8YjkR2XrqWQkMRJM",
+    "ftid": "0x3962bcefe441f175:0x93440c0959ea7ad9",
+    "lat": 22.2467397,
+    "lng": 76.1445858,
+    "distanceKm": 0.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Nagar%20Ghat%2C%20Omkareshwar&query_place_id=ChIJdfFB5O-8YjkR2XrqWQkMRJM"
+  }
+}
