@@ -3653,9 +3653,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cellular%20Jail%2C%20Port%20Blair",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cellular%20Jail%2C%20Port%20Blair&query_place_id=ChIJB_AtYO2ViDARi0FHrdhlP-A",
         "notes": "Historical British colonial prison where Indian freedom fighters were interned; tour the solitary wings and museum, with evening Light & Sound show.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJB_AtYO2ViDARi0FHrdhlP-A",
+        "ftid": "0x308895ed602df007:0xe03f65d8ad47418b",
+        "lat": 11.6747447,
+        "lng": 92.7478601
       },
       {
         "title": "Ross Island (Netaji Subhash Chandra Bose Dweep)",
@@ -3677,9 +3681,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ross%20Island%2C%20Andaman",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ross%20Island%2C%20Andaman&query_place_id=ChIJieNQs0aViDARBI4jdJozQ2E",
         "notes": "Fascinating ghost island of British colonial ruins wrapped by massive banyan tree roots, inhabited by free-roaming spotted deer and peacocks.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJieNQs0aViDARBI4jdJozQ2E",
+        "ftid": "0x30889546b350e389:0x6143339a74238e04",
+        "lat": 11.6758295,
+        "lng": 92.7624249
       },
       {
         "title": "North Bay Island coral reef snorkeling",
@@ -3723,9 +3731,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chidiya%20Tapu%2C%20Andaman",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chidiya%20Tapu%2C%20Andaman&query_place_id=ChIJz-zwJPyNiDARUfMOLySo8wg",
         "notes": "Bird Island with dense mangrove trails and secluded pebble beaches, famous as the finest sunset point on South Andaman.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJz-zwJPyNiDARUfMOLySo8wg",
+        "ftid": "0x30888dfc24f0eccf:0x8f3a8242f0ef351",
+        "lat": 11.5059682,
+        "lng": 92.7014649
       },
       {
         "title": "Fresh seafood dinner in Port Blair",
@@ -3823,9 +3835,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nishat%20Bagh%2C%20Srinagar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nishat%20Bagh%2C%20Srinagar&query_place_id=ChIJs8NVI3GG4TgRlOTwP4_3P_0",
         "notes": "Terraced Mughal pleasure gardens built by Jahangir and Asif Khan with cascading water channels, fountains, and towering chinar trees.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJs8NVI3GG4TgRlOTwP4_3P_0",
+        "ftid": "0x38e186712355c3b3:0xfd3ff78f3ff0e494",
+        "lat": 34.1229156,
+        "lng": 74.8793917
       },
       {
         "title": "Hazratbal Shrine & Jamia Masjid",
@@ -3847,9 +3863,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hazratbal%20Shrine%2C%20Srinagar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hazratbal%20Shrine%2C%20Srinagar&query_place_id=ChIJ2bs_eryF4TgRNl5HImj2bJs",
         "notes": "White marble shrine housing a sacred relic of Prophet Muhammad on Dal Lake's northern bank, alongside the 378-pillared deodar Jamia Masjid.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ2bs_eryF4TgRNl5HImj2bJs",
+        "ftid": "0x38e185bc7a3fbbd9:0x9b6cf66822475e36",
+        "lat": 34.1288866,
+        "lng": 74.8424915
       },
       {
         "title": "Traditional Kashmiri Wazwan feast",
@@ -3899,9 +3919,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shankaracharya%20Temple%2C%20Srinagar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shankaracharya%20Temple%2C%20Srinagar&query_place_id=ChIJ3xaHP2-P4TgR2qyJZA0Sjnc",
         "notes": "Ancient 9th-century Shiva temple perched 1,100 feet above the valley floor, offering bird's-eye sunset panoramas over Dal Lake and the city.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ3xaHP2-P4TgR2qyJZA0Sjnc",
+        "ftid": "0x38e18f6f3f8716df:0x778e120d6489acda",
+        "lat": 34.0789327,
+        "lng": 74.8436158
       }
     ],
     "aliases": [
@@ -3954,9 +3978,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shanti%20Stupa%2C%20Leh",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shanti%20Stupa%2C%20Leh&query_place_id=ChIJ52QpNiXr_TgRqN0pZxJhBsk",
         "notes": "White-domed Buddhist stupa inaugurated by the Dalai Lama, offering dramatic morning panoramas over Leh town and the Stok Kangri range.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ52QpNiXr_TgRqN0pZxJhBsk",
+        "ftid": "0x38fdeb25362964e7:0xc90661126729dda8",
+        "lat": 34.1736196,
+        "lng": 77.5749988
       },
       {
         "title": "Thiksey Monastery morning prayers",
@@ -3978,9 +4006,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thiksey%20Monastery%2C%20Leh",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thiksey%20Monastery%2C%20Leh&query_place_id=ChIJG3vDl-Tx_TgRSvq54UndDfw",
         "notes": "Twelve-story Tibetan monastery resembling the Potala Palace of Lhasa, famous for its 49-foot Maitreya Buddha statue and chanting monks.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJG3vDl-Tx_TgRSvq54UndDfw",
+        "ftid": "0x38fdf1e497c37b1b:0xfc0ddd49e1b9fa4a",
+        "lat": 34.0559137,
+        "lng": 77.6677625
       },
       {
         "title": "Magnetic Hill & Indus-Zanskar Sangam",
@@ -4001,9 +4033,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sangam%20Indus%20Zanskar%2C%20Leh",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sangam%20Indus%20Zanskar%2C%20Leh&query_place_id=ChIJczqcYwGZ_TgRT952WgA0UYQ",
         "notes": "Test the optical gravity illusion on Magnetic Hill, followed by viewing the striking turquoise and muddy confluence of the Indus and Zanskar rivers.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJczqcYwGZ_TgRT952WgA0UYQ",
+        "ftid": "0x38fd9901639c3a73:0x845134005a76de4f",
+        "lat": 34.1657433,
+        "lng": 77.3330149
       },
       {
         "title": "Tibetan thukpa & butter tea in Leh Main Bazaar",
@@ -4050,9 +4086,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pangong%20Lake%2C%20Ladakh",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pangong%20Lake%2C%20Ladakh&query_place_id=ChIJlyoItmktADkRqRbAyOMXurc",
         "notes": "Drive across Chang La pass (17,688 ft) to the world's highest saltwater lake at 14,270 ft, shifting colors from deep blue to turquoise.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJlyoItmktADkRqRbAyOMXurc",
+        "ftid": "0x39002d69b6082a97:0xb7ba17e3c8c016a9",
+        "lat": 33.7595131,
+        "lng": 78.6674404
       }
     ],
     "aliases": [
@@ -4101,9 +4141,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Golden%20Temple%2C%20Amritsar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Golden%20Temple%2C%20Amritsar&query_place_id=ChIJl71n9qh8GTkRjiQmdomEQ2A",
         "notes": "Holiest Sikh gurdwara, covered in 500 kg of pure gold leaf surrounded by the sacred Amrit Sarovar pool with continuous soulful Gurbani kirtan.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJl71n9qh8GTkRjiQmdomEQ2A",
+        "ftid": "0x39197ca8f667bd97:0x604384897626248e",
+        "lat": 31.6199803,
+        "lng": 74.8764849
       },
       {
         "title": "Guru Ka Langar community meal",
@@ -4154,9 +4198,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jallianwala%20Bagh%2C%20Amritsar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jallianwala%20Bagh%2C%20Amritsar&query_place_id=ChIJ7aP4Ka98GTkRW7ecFnY5Acs",
         "notes": "National memorial commemorating the 1919 massacre preserving bullet-marked walls and the Martyrs' Well, paired with the poignant Partition Museum.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ7aP4Ka98GTkRW7ecFnY5Acs",
+        "ftid": "0x39197caf29f8a3ed:0xcb013976169cb75b",
+        "lat": 31.6205869,
+        "lng": 74.8802901
       },
       {
         "title": "Amritsari kulcha & lassi lunch",
@@ -4183,7 +4231,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Amritsari%20Kulcha%2C%20Amritsar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Maqbool%20Road%20%2F%20Town%20Hall%2C%20Amritsar%2C%20Amritsar",
         "notes": "Crispy tandoori layered potato-paneer kulcha crushed with butter, served with spicy chole, tangy onion chutney, and a tall glass of sweet creamy lassi.",
         "kind": "activity"
       },
@@ -4207,9 +4255,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Wagah%20Border%2C%20Amritsar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Wagah%20Border%2C%20Amritsar&query_place_id=ChIJE24fsIUTGTkRihhwQnipDaw",
         "notes": "Electrifying daily military parade with coordinated high-kicks and flag-lowering drill between Indian BSF and Pakistan Rangers.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJE24fsIUTGTkRihhwQnipDaw",
+        "ftid": "0x39191385b01f6e13:0xac0da9784270188a",
+        "lat": 31.6048091,
+        "lng": 74.5741101
       }
     ],
     "aliases": [
@@ -4257,9 +4309,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jaisalmer%20Fort%2C%20Jaisalmer",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jaisalmer%20Fort%2C%20Jaisalmer&query_place_id=ChIJ7XFhiCK9RzkRcxk-ksQHpdQ",
         "notes": "UNESCO World Heritage 12th-century living fortress where a quarter of the city's population resides amidst palaces, temples, and winding alleys.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ7XFhiCK9RzkRcxk-ksQHpdQ",
+        "ftid": "0x3947bd22886171ed:0xd4a507c4923e1973",
+        "lat": 26.9124555,
+        "lng": 70.9126093
       },
       {
         "title": "Patwon Ki Haveli & Salim Singh Haveli",
@@ -4280,9 +4336,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Patwon%20Ki%20Haveli%2C%20Jaisalmer",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Patwon%20Ki%20Haveli%2C%20Jaisalmer&query_place_id=ChIJA6YjDvG9RzkRRVk5FVh4eXo",
         "notes": "Cluster of five ornate merchant mansions celebrated for intricate sandstone jharokhas, lattice stonework, and gold leaf murals.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJA6YjDvG9RzkRRVk5FVh4eXo",
+        "ftid": "0x3947bdf10e23a603:0x7a79785815395945",
+        "lat": 26.9163645,
+        "lng": 70.9143452
       },
       {
         "title": "Gadisar Lake & Tilon Ki Pol gateway",
@@ -4304,9 +4364,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gadisar%20Lake%2C%20Jaisalmer",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gadisar%20Lake%2C%20Jaisalmer&query_place_id=ChIJG4vXZTu8RzkRxaF_F1IARKU",
         "notes": "14th-century rainwater reservoir surrounded by carved chhatris, shrines, ghats, and migrating birds in the desert.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJG4vXZTu8RzkRxaF_F1IARKU",
+        "ftid": "0x3947bc3b65d78b1b:0xa5440052177fa1c5",
+        "lat": 26.9085788,
+        "lng": 70.9231001
       },
       {
         "title": "Sam Sand Dunes camel safari & sunset",
@@ -4406,9 +4470,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mehrangarh%20Fort%2C%20Jodhpur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mehrangarh%20Fort%2C%20Jodhpur&query_place_id=ChIJ1eik9beNQTkRBokzkx3rw5E",
         "notes": "Massive 15th-century fortress on a 400-foot cliff with courtyards, palanquins, weaponry, and thrilling ziplines across battlements and moats.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ1eik9beNQTkRBokzkx3rw5E",
+        "ftid": "0x39418db7f5a4e8d5:0x91c3eb1d93338906",
+        "lat": 26.2981883,
+        "lng": 73.0186098
       },
       {
         "title": "Jaswant Thada marble cenotaph",
@@ -4429,9 +4497,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jaswant%20Thada%2C%20Jodhpur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jaswant%20Thada%2C%20Jodhpur&query_place_id=ChIJhfEM6LuNQTkRvR_2xCaDl-8",
         "notes": "Milky white polished marble royal cenotaph built in 1899, featuring carved gazebos, tiered gardens, and serene lakeside views.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJhfEM6LuNQTkRvR_2xCaDl-8",
+        "ftid": "0x39418dbbe80cf185:0xef978326c4f61fbd",
+        "lat": 26.3040998,
+        "lng": 73.0253613
       },
       {
         "title": "Shahi Samosa, mirchi vada & Makhaniya lassi",
@@ -4483,9 +4555,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Navchokiya%2C%20Jodhpur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Navchokiya%2C%20Jodhpur&query_place_id=ChIJb8_V_8iNQTkROhwHld2-Kuo",
         "notes": "Navigate the photogenic labyrinth of vibrant indigo-painted Brahmin houses, stepped alleyways, and carved wooden doorways.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJb8_V_8iNQTkROhwHld2-Kuo",
+        "ftid": "0x39418dc8ffd5cf6f:0xea2abedd95071c3a",
+        "lat": 26.2943046,
+        "lng": 73.0141461
       },
       {
         "title": "Umaid Bhawan Palace museum",
@@ -4506,9 +4582,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Umaid%20Bhawan%20Palace%2C%20Jodhpur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Umaid%20Bhawan%20Palace%2C%20Jodhpur&query_place_id=ChIJ97NXLfqMQTkRcb6AeFAk0Mw",
         "notes": "One of the world's largest private royal residences, showcasing art deco architecture, museum of royal clocks, and vintage motorcars.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ97NXLfqMQTkRcb6AeFAk0Mw",
+        "ftid": "0x39418cfa2d57b3f7:0xccd024507880be71",
+        "lat": 26.2810298,
+        "lng": 73.0473022
       }
     ],
     "aliases": [
@@ -4555,9 +4635,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Brahma%20Temple%2C%20Pushkar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Brahma%20Temple%2C%20Pushkar&query_place_id=ChIJ2fC6LiDdazkREIevIjlWJoU",
         "notes": "One of the world's very few temples dedicated to Creator God Lord Brahma, marked by a red spire and swan emblem.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ2fC6LiDdazkREIevIjlWJoU",
+        "ftid": "0x396bdd202ebaf0d9:0x8526563922af8710",
+        "lat": 26.4874255,
+        "lng": 74.5489438
       },
       {
         "title": "Pushkar Sarovar holy ghats & parikrama",
@@ -4581,9 +4665,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pushkar%20Lake%2C%20Pushkar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pushkar%20Lake%2C%20Pushkar&query_place_id=ChIJJ6cbdiLdazkRd5shyEnqla8",
         "notes": "Circumambulate the sacred crescent-shaped lake fringed by 52 bathing ghats and 500 whitewashed temples.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJJ6cbdiLdazkRd5shyEnqla8",
+        "ftid": "0x396bdd22761ba727:0xaf95ea49c8219b77",
+        "lat": 26.4871515,
+        "lng": 74.5540177
       },
       {
         "title": "Malpua & rabdi at Halwai Gali",
@@ -4634,9 +4722,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "trek",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Savitri%20Temple%2C%20Pushkar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Savitri%20Temple%2C%20Pushkar&query_place_id=ChIJdaPYClXcazkRFBDCPvmKpWQ",
         "notes": "Ascend Ratnagiri hill by ropeway or steps to view Goddess Savitri temple with panoramic vistas of the holy lake and Thar desert sands.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJdaPYClXcazkRFBDCPvmKpWQ",
+        "ftid": "0x396bdc550ad8a375:0x64a58af93ec21014",
+        "lat": 26.4749154,
+        "lng": 74.5398085
       }
     ],
     "aliases": [
@@ -4682,9 +4774,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kandariya%20Mahadeva%20Temple%2C%20Khajuraho",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kandariya%20Mahadeva%20Temple%2C%20Khajuraho&query_place_id=ChIJQXwl-QHmgjkRa7qFdmwbQAE",
         "notes": "UNESCO World Heritage marvel with 800+ breathtaking sculptures depicting daily life, musicians, and celebrated erotic sculptures.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJQXwl-QHmgjkRa7qFdmwbQAE",
+        "ftid": "0x3982e601f9257c41:0x1401b6c7685ba6b",
+        "lat": 24.8530234,
+        "lng": 79.9196819
       },
       {
         "title": "Eastern Group Jain Temples (Parsvanatha)",
@@ -4706,9 +4802,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Parsvanatha%20Temple%2C%20Khajuraho",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Parsvanatha%20Temple%2C%20Khajuraho&query_place_id=ChIJ8y4he-HlgjkRv2eDxZGS-cA",
         "notes": "Remarkably preserved Chandela-era Jain temples renowned for exquisite sculptures of apsaras applying kohl, tying anklets, and plucking thorns.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ8y4he-HlgjkRv2eDxZGS-cA",
+        "ftid": "0x3982e5e17b212ef3:0xc0f99291c58367bf",
+        "lat": 24.8449568,
+        "lng": 79.9366986
       },
       {
         "title": "Raneh Falls & Ken River Canyon",
@@ -4729,9 +4829,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Raneh%20Falls%2C%20Khajuraho",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Raneh%20Falls%2C%20Khajuraho&query_place_id=ChIJs2i_p1_mgjkREsw6I9AE0P4",
         "notes": "Deep canyon formed of crystalline granite in stunning shades of pink, green, and red carved by the pristine Ken River.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJs2i_p1_mgjkREsw6I9AE0P4",
+        "ftid": "0x3982e65fa7bf68b3:0xfed004d0233acc12",
+        "lat": 24.8748466,
+        "lng": 80.0512626
       },
       {
         "title": "Khajuraho Light & Sound Show",
@@ -4752,9 +4856,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Khajuraho%20Light%20and%20Sound",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Khajuraho%20Light%20and%20Sound&query_place_id=ChIJaflj41zngjkRFq2Ocr90PVI",
         "notes": "Open-air evening narrative with Amitabh Bachchan's voiceover set against the illuminated western temples recounting the Chandela dynasty.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJaflj41zngjkRFq2Ocr90PVI",
+        "ftid": "0x3982e75ce363f969:0x523d74bf728ead16",
+        "lat": 24.8537328,
+        "lng": 79.920972
       }
     ],
     "aliases": [
@@ -4799,9 +4907,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Alleppey%20Houseboat",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Punnamada%2C%20Alleppey%2C%20Alleppey&query_place_id=ChIJ5YfPZnyECDsRzy6RKcD5Y9s",
         "notes": "Drift leisurely in a traditional thatched kettuvallam through coconut lagoons, duck farms, and paddy fields below sea level.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ5YfPZnyECDsRzy6RKcD5Y9s",
+        "ftid": "0x3b08847c66cf87e5:0xdb63f9c029912ecf",
+        "lat": 9.5054176,
+        "lng": 76.3550457
       },
       {
         "title": "Karimeen Pollichathu & toddy shop lunch",
@@ -4850,9 +4962,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Alappuzha%20Beach%2C%20Alleppey",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Alappuzha%20Beach%2C%20Alleppey&query_place_id=ChIJA_6-YauFCDsRV_qx-8uEWKY",
         "notes": "Stroll along historic wooden sea bridge ruins jutting into the Arabian Sea and climb the red-and-white lighthouse for coastal views.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJA_6-YauFCDsRV_qx-8uEWKY",
+        "ftid": "0x3b0885ab61befe03:0xa65884cbfbb1fa57",
+        "lat": 9.4927482,
+        "lng": 76.3177759
       },
       {
         "title": "Marari Beach sunset & village walk",
@@ -4873,9 +4989,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Marari%20Beach%2C%20Alleppey",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Marari%20Beach%2C%20Alleppey&query_place_id=ChIJm6FxmL6HCDsRCKDaFpTfVH8",
         "notes": "Serene, uncrowded fishing village beach with swaying coconut palms, soft golden sands, and traditional wooden catamarans.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJm6FxmL6HCDsRCKDaFpTfVH8",
+        "ftid": "0x3b0887be9871a19b:0x7f54df9416daa008",
+        "lat": 9.6007506,
+        "lng": 76.2982585
       }
     ],
     "aliases": [
@@ -4928,9 +5048,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahabaleshwar%20Temple%2C%20Gokarna",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahabaleshwar%20Temple%2C%20Gokarna&query_place_id=ChIJI1ZTzSyCvjsR1uVkl2WIapQ",
         "notes": "Revered 4th-century coastal Dravidian temple enshrining the sacred Atmalinga of Lord Shiva placed by Ravana, holy to pilgrims.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJI1ZTzSyCvjsR1uVkl2WIapQ",
+        "ftid": "0x3bbe822ccd535623:0x946a88659764e5d6",
+        "lat": 14.5435357,
+        "lng": 74.3164191
       },
       {
         "title": "Kudle Beach morning walk & yoga",
@@ -4952,9 +5076,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kudle%20Beach%2C%20Gokarna",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kudle%20Beach%2C%20Gokarna&query_place_id=ChIJyW44X9GDvjsR2Pw2HgjloZw",
         "notes": "Wide crescent golden sand beach framed by rocky green hills, popular for peaceful morning swims, surfing, and beachfront yoga.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJyW44X9GDvjsR2Pw2HgjloZw",
+        "ftid": "0x3bbe83d15f386ec9:0x9ca1e5081e36fcd8",
+        "lat": 14.5437315,
+        "lng": 74.3135985
       },
       {
         "title": "Om Beach water sports",
@@ -4975,9 +5103,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Om%20Beach%2C%20Gokarna",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Om%20Beach%2C%20Gokarna&query_place_id=ChIJBa1vEhiCvjsRc1gjtHpPTyk",
         "notes": "Naturally shaped like the auspicious Hindu symbol 'Om', offering jet ski rides, banana boats, and Namaste Cafe overlooking the surf.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJBa1vEhiCvjsRc1gjtHpPTyk",
+        "ftid": "0x3bbe8218126fad05:0x294f4f7ab4235873",
+        "lat": 14.5192405,
+        "lng": 74.3230039
       },
       {
         "title": "Half Moon & Paradise Beach cliff trek",
@@ -4998,9 +5130,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "trek",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Paradise%20Beach%2C%20Gokarna",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Paradise%20Beach%2C%20Gokarna&query_place_id=ChIJS4hq6mCDvjsRmhfM22FxJUY",
         "notes": "Scenic cliffside coastal trek connecting isolated coves only accessible on foot or by local fishing boat, with breathtaking sea views.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJS4hq6mCDvjsRmhfM22FxJUY",
+        "ftid": "0x3bbe8360ea6a884b:0x46257161dbcc179a",
+        "lat": 14.5180971,
+        "lng": 74.3374598
       }
     ],
     "aliases": [

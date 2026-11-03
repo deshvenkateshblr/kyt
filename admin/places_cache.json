@@ -956,5 +956,345 @@
     "lng": 76.4713243,
     "distanceKm": 2,
     "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Lotus%20Mahal%2C%20Hampi&query_place_id=ChIJO0oL28x_tzsRAUU0ER7HXiY"
+  },
+  "beat::andaman-islands::Cellular Jail National Memorial": {
+    "query": "Cellular Jail, Port Blair",
+    "resolvedName": "Cellular Jail",
+    "placeId": "ChIJB_AtYO2ViDARi0FHrdhlP-A",
+    "ftid": "0x308895ed602df007:0xe03f65d8ad47418b",
+    "lat": 11.6747447,
+    "lng": 92.7478601,
+    "distanceKm": 104.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Cellular%20Jail%2C%20Port%20Blair&query_place_id=ChIJB_AtYO2ViDARi0FHrdhlP-A"
+  },
+  "beat::andaman-islands::Ross Island (Netaji Subhash Chandra Bose Dweep)": {
+    "query": "Ross Island, Andaman",
+    "resolvedName": "Netaji Subhash Chandra Bose Island",
+    "placeId": "ChIJieNQs0aViDARBI4jdJozQ2E",
+    "ftid": "0x30889546b350e389:0x6143339a74238e04",
+    "lat": 11.6758295,
+    "lng": 92.7624249,
+    "distanceKm": 104.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Ross%20Island%2C%20Andaman&query_place_id=ChIJieNQs0aViDARBI4jdJozQ2E"
+  },
+  "beat::andaman-islands::Chidiya Tapu sunset point": {
+    "query": "Chidiya Tapu, Andaman",
+    "resolvedName": "Chidiya Tapu Beach",
+    "placeId": "ChIJz-zwJPyNiDARUfMOLySo8wg",
+    "ftid": "0x30888dfc24f0eccf:0x8f3a8242f0ef351",
+    "lat": 11.5059682,
+    "lng": 92.7014649,
+    "distanceKm": 123.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Chidiya%20Tapu%2C%20Andaman&query_place_id=ChIJz-zwJPyNiDARUfMOLySo8wg"
+  },
+  "beat::srinagar::Shalimar Bagh & Nishat Bagh Mughal gardens": {
+    "query": "Nishat Bagh, Srinagar",
+    "resolvedName": "Shah Kashmir Arts Emporium",
+    "placeId": "ChIJs8NVI3GG4TgRlOTwP4_3P_0",
+    "ftid": "0x38e186712355c3b3:0xfd3ff78f3ff0e494",
+    "lat": 34.1229156,
+    "lng": 74.8793917,
+    "distanceKm": 7.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Nishat%20Bagh%2C%20Srinagar&query_place_id=ChIJs8NVI3GG4TgRlOTwP4_3P_0"
+  },
+  "beat::srinagar::Hazratbal Shrine & Jamia Masjid": {
+    "query": "Hazratbal Shrine, Srinagar",
+    "resolvedName": "Dargah Hazratbal Shrine",
+    "placeId": "ChIJ2bs_eryF4TgRNl5HImj2bJs",
+    "ftid": "0x38e185bc7a3fbbd9:0x9b6cf66822475e36",
+    "lat": 34.1288866,
+    "lng": 74.8424915,
+    "distanceKm": 6.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Hazratbal%20Shrine%2C%20Srinagar&query_place_id=ChIJ2bs_eryF4TgRNl5HImj2bJs"
+  },
+  "beat::srinagar::Shankaracharya Hill Temple sunset": {
+    "query": "Shankaracharya Temple, Srinagar",
+    "resolvedName": "Shri Shankaracharya Temple Srinagar",
+    "placeId": "ChIJ3xaHP2-P4TgR2qyJZA0Sjnc",
+    "ftid": "0x38e18f6f3f8716df:0x778e120d6489acda",
+    "lat": 34.0789327,
+    "lng": 74.8436158,
+    "distanceKm": 2.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Shankaracharya%20Temple%2C%20Srinagar&query_place_id=ChIJ3xaHP2-P4TgR2qyJZA0Sjnc"
+  },
+  "beat::leh::Shanti Stupa sunrise & Leh Palace": {
+    "query": "Shanti Stupa, Leh",
+    "resolvedName": "Shanti Stupa",
+    "placeId": "ChIJ52QpNiXr_TgRqN0pZxJhBsk",
+    "ftid": "0x38fdeb25362964e7:0xc90661126729dda8",
+    "lat": 34.1736196,
+    "lng": 77.5749988,
+    "distanceKm": 20.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Shanti%20Stupa%2C%20Leh&query_place_id=ChIJ52QpNiXr_TgRqN0pZxJhBsk"
+  },
+  "beat::leh::Thiksey Monastery morning prayers": {
+    "query": "Thiksey Monastery, Leh",
+    "resolvedName": "Thiksey Monastery",
+    "placeId": "ChIJG3vDl-Tx_TgRSvq54UndDfw",
+    "ftid": "0x38fdf1e497c37b1b:0xfc0ddd49e1b9fa4a",
+    "lat": 34.0559137,
+    "lng": 77.6677625,
+    "distanceKm": 5.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Thiksey%20Monastery%2C%20Leh&query_place_id=ChIJG3vDl-Tx_TgRSvq54UndDfw"
+  },
+  "beat::leh::Magnetic Hill & Indus-Zanskar Sangam": {
+    "query": "Sangam Indus Zanskar, Leh",
+    "resolvedName": "Confluence of Indus and Zanskar Rivers",
+    "placeId": "ChIJczqcYwGZ_TgRT952WgA0UYQ",
+    "ftid": "0x38fd9901639c3a73:0x845134005a76de4f",
+    "lat": 34.1657433,
+    "lng": 77.3330149,
+    "distanceKm": 34.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sangam%20Indus%20Zanskar%2C%20Leh&query_place_id=ChIJczqcYwGZ_TgRT952WgA0UYQ"
+  },
+  "beat::leh::Pangong Lake day excursion": {
+    "query": "Pangong Lake, Ladakh",
+    "resolvedName": "Pangong Tso",
+    "placeId": "ChIJlyoItmktADkRqRbAyOMXurc",
+    "ftid": "0x39002d69b6082a97:0xb7ba17e3c8c016a9",
+    "lat": 33.7595131,
+    "lng": 78.6674404,
+    "distanceKm": 97.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Pangong%20Lake%2C%20Ladakh&query_place_id=ChIJlyoItmktADkRqRbAyOMXurc"
+  },
+  "beat::amritsar::Golden Temple (Sri Harmandir Sahib) darshan": {
+    "query": "Golden Temple, Amritsar",
+    "resolvedName": "Sri Harmandir Sahib",
+    "placeId": "ChIJl71n9qh8GTkRjiQmdomEQ2A",
+    "ftid": "0x39197ca8f667bd97:0x604384897626248e",
+    "lat": 31.6199803,
+    "lng": 74.8764849,
+    "distanceKm": 1.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Golden%20Temple%2C%20Amritsar&query_place_id=ChIJl71n9qh8GTkRjiQmdomEQ2A"
+  },
+  "beat::amritsar::Jallianwala Bagh Memorial & Partition Museum": {
+    "query": "Jallianwala Bagh, Amritsar",
+    "resolvedName": "Jallianwala Bagh",
+    "placeId": "ChIJ7aP4Ka98GTkRW7ecFnY5Acs",
+    "ftid": "0x39197caf29f8a3ed:0xcb013976169cb75b",
+    "lat": 31.6205869,
+    "lng": 74.8802901,
+    "distanceKm": 1.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Jallianwala%20Bagh%2C%20Amritsar&query_place_id=ChIJ7aP4Ka98GTkRW7ecFnY5Acs"
+  },
+  "beat::amritsar::Attari-Wagah Border retreat ceremony": {
+    "query": "Wagah Border, Amritsar",
+    "resolvedName": "Attari - Wagah Border",
+    "placeId": "ChIJE24fsIUTGTkRihhwQnipDaw",
+    "ftid": "0x39191385b01f6e13:0xac0da9784270188a",
+    "lat": 31.6048091,
+    "lng": 74.5741101,
+    "distanceKm": 29,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Wagah%20Border%2C%20Amritsar&query_place_id=ChIJE24fsIUTGTkRihhwQnipDaw"
+  },
+  "beat::jaisalmer::Jaisalmer Living Fort (Sonar Qila)": {
+    "query": "Jaisalmer Fort, Jaisalmer",
+    "resolvedName": "Jaisalmer Fort",
+    "placeId": "ChIJ7XFhiCK9RzkRcxk-ksQHpdQ",
+    "ftid": "0x3947bd22886171ed:0xd4a507c4923e1973",
+    "lat": 26.9124555,
+    "lng": 70.9126093,
+    "distanceKm": 18.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Jaisalmer%20Fort%2C%20Jaisalmer&query_place_id=ChIJ7XFhiCK9RzkRcxk-ksQHpdQ"
+  },
+  "beat::jaisalmer::Patwon Ki Haveli & Salim Singh Haveli": {
+    "query": "Patwon Ki Haveli, Jaisalmer",
+    "resolvedName": "Kothari's Patwon Ki Haveli / Patwa Haveli",
+    "placeId": "ChIJA6YjDvG9RzkRRVk5FVh4eXo",
+    "ftid": "0x3947bdf10e23a603:0x7a79785815395945",
+    "lat": 26.9163645,
+    "lng": 70.9143452,
+    "distanceKm": 18.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Patwon%20Ki%20Haveli%2C%20Jaisalmer&query_place_id=ChIJA6YjDvG9RzkRRVk5FVh4eXo"
+  },
+  "beat::jaisalmer::Gadisar Lake & Tilon Ki Pol gateway": {
+    "query": "Gadisar Lake, Jaisalmer",
+    "resolvedName": "Gadisar Lake",
+    "placeId": "ChIJG4vXZTu8RzkRxaF_F1IARKU",
+    "ftid": "0x3947bc3b65d78b1b:0xa5440052177fa1c5",
+    "lat": 26.9085788,
+    "lng": 70.9231001,
+    "distanceKm": 19.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Gadisar%20Lake%2C%20Jaisalmer&query_place_id=ChIJG4vXZTu8RzkRxaF_F1IARKU"
+  },
+  "beat::jodhpur::Mehrangarh Fort & flying fox zipline": {
+    "query": "Mehrangarh Fort, Jodhpur",
+    "resolvedName": "Mehrangarh Fort",
+    "placeId": "ChIJ1eik9beNQTkRBokzkx3rw5E",
+    "ftid": "0x39418db7f5a4e8d5:0x91c3eb1d93338906",
+    "lat": 26.2981883,
+    "lng": 73.0186098,
+    "distanceKm": 1.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mehrangarh%20Fort%2C%20Jodhpur&query_place_id=ChIJ1eik9beNQTkRBokzkx3rw5E"
+  },
+  "beat::jodhpur::Jaswant Thada marble cenotaph": {
+    "query": "Jaswant Thada, Jodhpur",
+    "resolvedName": "Jaswant Thada",
+    "placeId": "ChIJhfEM6LuNQTkRvR_2xCaDl-8",
+    "ftid": "0x39418dbbe80cf185:0xef978326c4f61fbd",
+    "lat": 26.3040998,
+    "lng": 73.0253613,
+    "distanceKm": 1.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Jaswant%20Thada%2C%20Jodhpur&query_place_id=ChIJhfEM6LuNQTkRvR_2xCaDl-8"
+  },
+  "beat::jodhpur::Blue City old quarter heritage walking tour": {
+    "query": "Navchokiya, Jodhpur",
+    "resolvedName": "Navchowkiya, Sodagaran Mohalla, Jodhpur, Rajasthan 342001",
+    "placeId": "ChIJb8_V_8iNQTkROhwHld2-Kuo",
+    "ftid": "0x39418dc8ffd5cf6f:0xea2abedd95071c3a",
+    "lat": 26.2943046,
+    "lng": 73.0141461,
+    "distanceKm": 2.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Navchokiya%2C%20Jodhpur&query_place_id=ChIJb8_V_8iNQTkROhwHld2-Kuo"
+  },
+  "beat::jodhpur::Umaid Bhawan Palace museum": {
+    "query": "Umaid Bhawan Palace, Jodhpur",
+    "resolvedName": "Umaid Bhawan Palace, Jodhpur",
+    "placeId": "ChIJ97NXLfqMQTkRcb6AeFAk0Mw",
+    "ftid": "0x39418cfa2d57b3f7:0xccd024507880be71",
+    "lat": 26.2810298,
+    "lng": 73.0473022,
+    "distanceKm": 2.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Umaid%20Bhawan%20Palace%2C%20Jodhpur&query_place_id=ChIJ97NXLfqMQTkRcb6AeFAk0Mw"
+  },
+  "beat::pushkar::Brahma Temple morning darshan": {
+    "query": "Brahma Temple, Pushkar",
+    "resolvedName": "Jagatpita Shri Brahma Mandir",
+    "placeId": "ChIJ2fC6LiDdazkREIevIjlWJoU",
+    "ftid": "0x396bdd202ebaf0d9:0x8526563922af8710",
+    "lat": 26.4874255,
+    "lng": 74.5489438,
+    "distanceKm": 0.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Brahma%20Temple%2C%20Pushkar&query_place_id=ChIJ2fC6LiDdazkREIevIjlWJoU"
+  },
+  "beat::pushkar::Pushkar Sarovar holy ghats & parikrama": {
+    "query": "Pushkar Lake, Pushkar",
+    "resolvedName": "Pushkar Lake",
+    "placeId": "ChIJJ6cbdiLdazkRd5shyEnqla8",
+    "ftid": "0x396bdd22761ba727:0xaf95ea49c8219b77",
+    "lat": 26.4871515,
+    "lng": 74.5540177,
+    "distanceKm": 0.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Pushkar%20Lake%2C%20Pushkar&query_place_id=ChIJJ6cbdiLdazkRd5shyEnqla8"
+  },
+  "beat::pushkar::Savitri Mata Temple hill trek at sunset": {
+    "query": "Savitri Temple, Pushkar",
+    "resolvedName": "Shree Savitri Mata Mandir",
+    "placeId": "ChIJdaPYClXcazkRFBDCPvmKpWQ",
+    "ftid": "0x396bdc550ad8a375:0x64a58af93ec21014",
+    "lat": 26.4749154,
+    "lng": 74.5398085,
+    "distanceKm": 2.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Savitri%20Temple%2C%20Pushkar&query_place_id=ChIJdaPYClXcazkRFBDCPvmKpWQ"
+  },
+  "beat::khajuraho::Western Group of Temples & Kandariya Mahadeva": {
+    "query": "Kandariya Mahadeva Temple, Khajuraho",
+    "resolvedName": "Kandariya Mahadeva Temple Khajuraho",
+    "placeId": "ChIJQXwl-QHmgjkRa7qFdmwbQAE",
+    "ftid": "0x3982e601f9257c41:0x1401b6c7685ba6b",
+    "lat": 24.8530234,
+    "lng": 79.9196819,
+    "distanceKm": 0.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kandariya%20Mahadeva%20Temple%2C%20Khajuraho&query_place_id=ChIJQXwl-QHmgjkRa7qFdmwbQAE"
+  },
+  "beat::khajuraho::Eastern Group Jain Temples (Parsvanatha)": {
+    "query": "Parsvanatha Temple, Khajuraho",
+    "resolvedName": "Bhagawan Parshwanath Digambar Jain Mandir",
+    "placeId": "ChIJ8y4he-HlgjkRv2eDxZGS-cA",
+    "ftid": "0x3982e5e17b212ef3:0xc0f99291c58367bf",
+    "lat": 24.8449568,
+    "lng": 79.9366986,
+    "distanceKm": 1.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Parsvanatha%20Temple%2C%20Khajuraho&query_place_id=ChIJ8y4he-HlgjkRv2eDxZGS-cA"
+  },
+  "beat::khajuraho::Raneh Falls & Ken River Canyon": {
+    "query": "Raneh Falls, Khajuraho",
+    "resolvedName": "Raneh Water Falls",
+    "placeId": "ChIJs2i_p1_mgjkREsw6I9AE0P4",
+    "ftid": "0x3982e65fa7bf68b3:0xfed004d0233acc12",
+    "lat": 24.8748466,
+    "lng": 80.0512626,
+    "distanceKm": 12.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Raneh%20Falls%2C%20Khajuraho&query_place_id=ChIJs2i_p1_mgjkREsw6I9AE0P4"
+  },
+  "beat::khajuraho::Khajuraho Light & Sound Show": {
+    "query": "Khajuraho Light and Sound",
+    "resolvedName": "Light and Sound Show Evening",
+    "placeId": "ChIJaflj41zngjkRFq2Ocr90PVI",
+    "ftid": "0x3982e75ce363f969:0x523d74bf728ead16",
+    "lat": 24.8537328,
+    "lng": 79.920972,
+    "distanceKm": 0.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Khajuraho%20Light%20and%20Sound&query_place_id=ChIJaflj41zngjkRFq2Ocr90PVI"
+  },
+  "beat::alleppey::Houseboat cruise on Vembanad backwaters": {
+    "query": "Punnamada, Alleppey, Alleppey",
+    "resolvedName": "Punnamada, Finishing Point, Mullakkal, Keralam",
+    "placeId": "ChIJ5YfPZnyECDsRzy6RKcD5Y9s",
+    "ftid": "0x3b08847c66cf87e5:0xdb63f9c029912ecf",
+    "lat": 9.5054176,
+    "lng": 76.3550457,
+    "distanceKm": 4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Punnamada%2C%20Alleppey%2C%20Alleppey&query_place_id=ChIJ5YfPZnyECDsRzy6RKcD5Y9s"
+  },
+  "beat::alleppey::Alappuzha Beach & 1862 striped lighthouse": {
+    "query": "Alappuzha Beach, Alleppey",
+    "resolvedName": "Alappuzha Beach",
+    "placeId": "ChIJA_6-YauFCDsRV_qx-8uEWKY",
+    "ftid": "0x3b0885ab61befe03:0xa65884cbfbb1fa57",
+    "lat": 9.4927482,
+    "lng": 76.3177759,
+    "distanceKm": 0.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Alappuzha%20Beach%2C%20Alleppey&query_place_id=ChIJA_6-YauFCDsRV_qx-8uEWKY"
+  },
+  "beat::alleppey::Marari Beach sunset & village walk": {
+    "query": "Marari Beach, Alleppey",
+    "resolvedName": "Marari beach",
+    "placeId": "ChIJm6FxmL6HCDsRCKDaFpTfVH8",
+    "ftid": "0x3b0887be9871a19b:0x7f54df9416daa008",
+    "lat": 9.6007506,
+    "lng": 76.2982585,
+    "distanceKm": 12.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Marari%20Beach%2C%20Alleppey&query_place_id=ChIJm6FxmL6HCDsRCKDaFpTfVH8"
+  },
+  "beat::gokarna::Mahabaleshwar Temple & Atmalinga darshan": {
+    "query": "Mahabaleshwar Temple, Gokarna",
+    "resolvedName": "Shri Mahabaleshwara Temple, Gokarna",
+    "placeId": "ChIJI1ZTzSyCvjsR1uVkl2WIapQ",
+    "ftid": "0x3bbe822ccd535623:0x946a88659764e5d6",
+    "lat": 14.5435357,
+    "lng": 74.3164191,
+    "distanceKm": 0.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahabaleshwar%20Temple%2C%20Gokarna&query_place_id=ChIJI1ZTzSyCvjsR1uVkl2WIapQ"
+  },
+  "beat::gokarna::Kudle Beach morning walk & yoga": {
+    "query": "Kudle Beach, Gokarna",
+    "resolvedName": "Gokarna Kudle Beach",
+    "placeId": "ChIJyW44X9GDvjsR2Pw2HgjloZw",
+    "ftid": "0x3bbe83d15f386ec9:0x9ca1e5081e36fcd8",
+    "lat": 14.5437315,
+    "lng": 74.3135985,
+    "distanceKm": 0.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kudle%20Beach%2C%20Gokarna&query_place_id=ChIJyW44X9GDvjsR2Pw2HgjloZw"
+  },
+  "beat::gokarna::Om Beach water sports": {
+    "query": "Om Beach, Gokarna",
+    "resolvedName": "Om Beach",
+    "placeId": "ChIJBa1vEhiCvjsRc1gjtHpPTyk",
+    "ftid": "0x3bbe8218126fad05:0x294f4f7ab4235873",
+    "lat": 14.5192405,
+    "lng": 74.3230039,
+    "distanceKm": 2.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Om%20Beach%2C%20Gokarna&query_place_id=ChIJBa1vEhiCvjsRc1gjtHpPTyk"
+  },
+  "beat::gokarna::Half Moon & Paradise Beach cliff trek": {
+    "query": "Paradise Beach, Gokarna",
+    "resolvedName": "Paradise Beach, Gokarna",
+    "placeId": "ChIJS4hq6mCDvjsRmhfM22FxJUY",
+    "ftid": "0x3bbe8360ea6a884b:0x46257161dbcc179a",
+    "lat": 14.5180971,
+    "lng": 74.3374598,
+    "distanceKm": 3.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Paradise%20Beach%2C%20Gokarna&query_place_id=ChIJS4hq6mCDvjsRmhfM22FxJUY"
   }
 }
