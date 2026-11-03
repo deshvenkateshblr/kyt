@@ -415,4 +415,20 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - 44 hill and highland cities in `data/cities.js` now carry `elevation` (metres, ballpark). The script records the height of NASA's grid cell, and when a city is 100 m or more above or below it, shifts that city's highs and lows by 6.5°C per km. Rain is left alone. The file stores `elev` and `gridElev` for those cities.
     - A city whose `elevation` changed is recomputed from the locally cached NASA answer, so no network is needed. 6 new tests (38 in all).
     - **To apply:** run `python tools/weather/update_weather.py` and commit `data/weather.js`.
+64. **When to go: seasons in the city sheet (service worker cache `kyt-v98`)**
+    - The city sheet shows "When to go" under Before you go: two or three typical seasons with an average temperature and a rain word, for example "Mar to Jun. Hot, about 31°C, dry." from `data/weather.js` (height-corrected for hill cities). Says it is typical 2001-2020 weather and to check the forecast near the dates.
+    - `data/weather.js` and `js/weather-seasons.js` load on every page that loads `data/cities.js` and are in the offline precache. Not yet in the Day Plan or on city cards.
+    - **Tests:** 2 added to `12-weather-seasons.test.js`.
+65. **Stays show check-in and check-out, not "~30 mins" (service worker cache `kyt-v99`)**
+    - A stay no longer shows a made-up 30-minute duration or an end time. It shows its check-in, and a check-out if you set one: "Check-in 21:00 · Check-out 11:00" on the Day Plan card, "Check-out 11:00" in the read-only timeline.
+    - The stay editor has an optional **Check-out** time (stored as `checkOut`, "HH:MM"). Existing stays just lose the minutes.
+    - **Tests:** 2 added in `09-plan-editing.test.js` (editor round trip, both renderers).
+66. **More than one city in a day is confirmed and covered by a test (no app change)**
+    - A day can hold stops from two cities with a Travel step between them: after the travel, the suggestions switch to the arrival city and new stops carry that city. `09-plan-editing.test.js` now checks Agra stop, Agra to Jaipur travel, Jaipur stop on one day. TODO P1.9 closed.
+67. **Save PDF on the trip page (service worker cache `kyt-v101`)**
+    - A planned trip now has a **Save PDF** button on the trip page. It builds the file with pdfMake, the engine the Memory Album already uses, and on a phone hands it to the share sheet, so the browser's print dialog is not involved. On desktop it downloads.
+    - The PDF has a cover; **Before you go** for the places that have it (access note, each item with its source link, official website, checked month); each day in order with a tappable "Open in Google Maps" on every step that has a map link ("Directions in Google Maps" on travel) and "Check-in / Check-out" on stays; and a **Destination guide** with "When to go" and the places to see, each with a Map link.
+    - *Reworked the same day:* a blue cover with an At a glance table; each day is a page with a coloured header, its steps in a timeline, then coloured panels (Before you go, When to go, Places to see) for the cities that day visits, the first time each appears. Sources are numbered [1] [2] and the full web address of each is printed under the list (and linked), so a paper copy is useful. Cities no day mentions get their panels at the end.
+    - Only plain text: the PDF font has no arrows or emoji, so routes read "Agra to Jaipur". `js/trip-pdf.js` builds the document as plain data, so it is tested without a browser.
+    - **Tests:** `13-trip-pdf.test.js` (4). The pdfMake library still loads from cdnjs (as on the album pages), so a first-ever offline use shows a plain message.
 

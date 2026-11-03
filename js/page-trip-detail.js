@@ -1104,5 +1104,32 @@
       }
       refreshStartButton();
 
+      // Save PDF: the plan as a file to share (pdfMake, the same engine as the Memory Album)
+      const pdfBtn = document.getElementById('btn-save-pdf');
+      if (pdfBtn) {
+        let building = false;
+        pdfBtn.addEventListener('click', async () => {
+          if (building) return;
+          building = true;
+          const label = pdfBtn.querySelector('span');
+          const was = label.textContent;
+          label.textContent = 'Building PDF…';
+          pdfBtn.disabled = true;
+          try {
+            const ids = (cityIds && cityIds.length) ? cityIds : extractCitiesFromTrip(loadedVirtualTrip || cTrip);
+            const cities = ids.map(id => KYT.ui.resolveCity(id)).filter(Boolean);
+            const plan = KYT.tripPdf.collectPlan(loadedVirtualTrip, cTrip, cities);
+            if (!plan.days.length && !plan.cities.length) throw new Error('This trip has nothing to put in a PDF yet.');
+            await KYT.tripPdf.download(plan);
+          } catch (e) {
+            console.error('PDF failed', e);
+            alert('Could not make the PDF: ' + (e && e.message || e));
+          } finally {
+            label.textContent = was;
+            pdfBtn.disabled = false;
+          }
+        });
+      }
+
       lucide.createIcons();
     });
