@@ -423,4 +423,6 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - A stay no longer shows a made-up 30-minute duration or an end time. It shows its check-in, and a check-out if you set one: "Check-in 21:00 · Check-out 11:00" on the Day Plan card, "Check-out 11:00" in the read-only timeline.
     - The stay editor has an optional **Check-out** time (stored as `checkOut`, "HH:MM"). Existing stays just lose the minutes.
     - **Tests:** 2 added in `09-plan-editing.test.js` (editor round trip, both renderers).
+66. **More than one city in a day is confirmed and covered by a test (no app change)**
+    - A day can hold stops from two cities with a Travel step between them: after the travel, the suggestions switch to the arrival city and new stops carry that city. `09-plan-editing.test.js` now checks Agra stop, Agra to Jaipur travel, Jaipur stop on one day. TODO P1.9 closed.
 

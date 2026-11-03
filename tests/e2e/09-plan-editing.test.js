@@ -337,3 +337,23 @@ test('a stay row shows check-in and check-out, never "~30 mins"', async () => {
   assert.match(html.stop, /~90 mins/, 'stops keep their duration');
   await context.close();
 });
+
+test('P1.9: one day can hold stops from two cities with the travel between them', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openPlan(page);
+  await page.locator('[data-add-beat]').first().click();            // a stop in Agra
+  await page.click('#btn-vt-add-travel');
+  await page.fill('#vt-travel-from', 'Agra');
+  await page.fill('#vt-travel-to', 'Jaipur');
+  await page.fill('#vt-step-time', '14:00');
+  await page.click('#btn-save-vt-step');
+  const sug = await page.locator('#vt-suggestions').innerText();
+  assert.match(sug, /Amber|Hawa Mahal|City Palace/, 'after travelling, the suggestions are Jaipur\'s');
+  await page.locator('[data-add-beat]').first().click();            // a stop in Jaipur, same day
+  const day = dayOf((await stored(page))[0], 1).sort((a, b) => a.hour - b.hour || a.minute - b.minute);
+  assert.deepEqual(day.map(s => s.type), ['stop', 'travel', 'stop']);
+  assert.equal(day[0].cityName, 'Agra');
+  assert.equal(day[2].cityName, 'Jaipur');
+  assert.ok(day[2].hour * 60 + day[2].minute > day[1].hour * 60 + day[1].minute, 'Jaipur stop is after the travel');
+  await context.close();
+});
