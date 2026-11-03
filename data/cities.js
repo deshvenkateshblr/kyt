@@ -50,9 +50,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Taj%20Mahal%2C%20Agra",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Taj%20Mahal%2C%20Agra&query_place_id=ChIJbf8C1yFxdDkR3n12P4DkKt0",
         "notes": "Mughal ivory-white marble mausoleum on the Yamuna river, UNESCO World Heritage site and Wonder of the World. Best experienced at sunrise.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJbf8C1yFxdDkR3n12P4DkKt0",
+        "ftid": "0x39747121d702ff6d:0xdd2ae4803f767dde",
+        "lat": 27.1751448,
+        "lng": 78.0421422
       },
       {
         "title": "Agra Fort",
@@ -73,9 +77,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Agra%20Fort%2C%20Agra",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Agra%20Fort%2C%20Agra&query_place_id=ChIJ6zs0kdRwdDkRdpUClMxcCmQ",
         "notes": "Red sandstone fortress and former imperial residence of Mughal emperors, featuring Sheesh Mahal, Diwan-i-Khas, and Jahangiri Mahal.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ6zs0kdRwdDkRdpUClMxcCmQ",
+        "ftid": "0x397470d491343beb:0x640a5ccc94029576",
+        "lat": 27.1795328,
+        "lng": 78.021112
       },
       {
         "title": "Petha & chaat at Kinari Bazaar",
@@ -126,9 +134,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mehtab%20Bagh%2C%20Agra",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mehtab%20Bagh%2C%20Agra&query_place_id=ChIJLVpWKd5wdDkRfKYlTOV-x5w",
         "notes": "Charbagh garden complex offering pristine sunset reflection views of the Taj Mahal across the calm waters of the Yamuna.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJLVpWKd5wdDkRfKYlTOV-x5w",
+        "ftid": "0x397470de29565a2d:0x9cc77ee54c25a67c",
+        "lat": 27.1800118,
+        "lng": 78.040887
       },
       {
         "title": "Fatehpur Sikri excursion",
@@ -150,9 +162,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Fatehpur%20Sikri%2C%20Agra",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Fatehpur%20Sikri%2C%20Agra&query_place_id=ChIJjXlTSliRczkRQPvBkGfUkwg",
         "notes": "The majestic 16th-century Mughal red sandstone city founded by Emperor Akbar, home to the towering Buland Darwaza and Salim Chishti Dargah.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJjXlTSliRczkRQPvBkGfUkwg",
+        "ftid": "0x397391584a53798d:0x893d46790c1fb40",
+        "lat": 27.0945291,
+        "lng": 77.6679292
       }
     ],
     "aliases": [
@@ -198,9 +214,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hawa%20Mahal%2C%20Jaipur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hawa%20Mahal%2C%20Jaipur&query_place_id=ChIJpQvTG0uxbTkRDLLMHlNdDoY",
         "notes": "Iconic honeycomb pink sandstone facade with 953 jharokhas built for royal women to observe street festivities without being seen.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJpQvTG0uxbTkRDLLMHlNdDoY",
+        "ftid": "0x396db14b1bd30ba5:0x860e5d531eccb20c",
+        "lat": 26.9240458,
+        "lng": 75.8267144
       },
       {
         "title": "Amber Fort & Sheesh Mahal",
@@ -222,9 +242,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Amber%20Fort%2C%20Jaipur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Amber%20Fort%2C%20Jaipur&query_place_id=ChIJ-w3Sy1qwbTkRK34UR2ffIWI",
         "notes": "Majestic hilltop fortress featuring artistic Hindu elements, glittering Sheesh Mahal (mirror palace), and Maota Lake panoramic views.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ-w3Sy1qwbTkRK34UR2ffIWI",
+        "ftid": "0x396db05acbd20dfb:0x6221df6747147e2b",
+        "lat": 26.9854865,
+        "lng": 75.8513454
       },
       {
         "title": "City Palace & Jantar Mantar",
@@ -246,9 +270,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=City%20Palace%2C%20Jaipur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=City%20Palace%2C%20Jaipur&query_place_id=ChIJwbAghgu0bTkRYHt9ATEVgEQ",
         "notes": "Grand royal palace complex blending Rajput and Mughal architecture, alongside the UNESCO-listed Jantar Mantar astronomical observatory.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJwbAghgu0bTkRYHt9ATEVgEQ",
+        "ftid": "0x396db40b8620b0c1:0x44801531017d7b60",
+        "lat": 26.9257943,
+        "lng": 75.8236714
       },
       {
         "title": "Johari Bazaar & Bapu Bazaar shopping",
@@ -293,9 +321,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nahargarh%2C%20Jaipur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nahargarh%2C%20Jaipur&query_place_id=ChIJ0fNH81yxbTkRi56uF-amqgo",
         "notes": "Perched high on the rugged Aravalli hills, offering legendary twilight panoramas and glittering city-light views of the Pink City below.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ0fNH81yxbTkRi56uF-amqgo",
+        "ftid": "0x396db15cf347f3d1:0xaaaa6e617ae9e8b",
+        "lat": 26.9401659,
+        "lng": 75.8170373
       },
       {
         "title": "Dal baati churma royal dinner",
@@ -377,9 +409,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Baga%20Beach%2C%20Goa",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Baga%20Beach%2C%20Goa&query_place_id=ChIJ_96h2BzqvzsR4ME17sBmcLo",
         "notes": "Golden sands and sea breeze along North Goa's famous coastline, with water sports like parasailing and jet-skiing starting early.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ_96h2BzqvzsR4ME17sBmcLo",
+        "ftid": "0x3bbfea1cd8a1deff:0xba7066c0ee35c1e0",
+        "lat": 15.5552787,
+        "lng": 73.7517307
       },
       {
         "title": "Basilica of Bom Jesus & Old Goa",
@@ -401,9 +437,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Basilica%20of%20Bom%20Jesus%2C%20Goa",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Basilica%20of%20Bom%20Jesus%2C%20Goa&query_place_id=ChIJiQKbufK-vzsRuKcVn2hWgB4",
         "notes": "UNESCO World Heritage 16th-century baroque basilica housing the mortal remains of Saint Francis Xavier, and the adjacent Se Cathedral.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJiQKbufK-vzsRuKcVn2hWgB4",
+        "ftid": "0x3bbfbef2b99b0289:0x1e8056689f15a7b8",
+        "lat": 15.5008238,
+        "lng": 73.9114061
       },
       {
         "title": "Goan seafood & curry shack lunch",
@@ -451,9 +491,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "trek",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dudhsagar%20Falls%2C%20Goa",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dudhsagar%20Falls%2C%20Goa&query_place_id=ChIJQ4srFBimvzsRJQI7KOdIlP0",
         "notes": "Four-tiered majestic 'Sea of Milk' cascade inside Bhagwan Mahaveer Sanctuary, followed by an aromatic organic spice farm tour.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJQ4srFBimvzsRJQI7KOdIlP0",
+        "ftid": "0x3bbfa618142b8b43:0xfd9448e7283b0225",
+        "lat": 15.3144375,
+        "lng": 74.3143073
       },
       {
         "title": "Anjuna sunset & flea market",
@@ -517,9 +561,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Eravikulam%20National%20Park%2C%20Munnar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Eravikulam%20National%20Park%2C%20Munnar&query_place_id=ChIJ4fVPfqqbBzsRoPgpZ-6Us-Q",
         "notes": "Home to the endangered Nilgiri Tahr mountain goat and rolling shola grasslands, offering panoramic misty trails near Anamudi peak.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ4fVPfqqbBzsRoPgpZ-6Us-Q",
+        "ftid": "0x3b079baa7e4ff5e1:0xe4b394ee6729f8a0",
+        "lat": 10.1453912,
+        "lng": 77.0366346
       },
       {
         "title": "Tea Garden walk & photo point",
@@ -542,9 +590,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rajamala%2C%20Munnar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rajamala%2C%20Munnar&query_place_id=ChIJu0gDvfqaBzsRa-1qeuM3j24",
         "notes": "Morning stroll through emerald manicured tea plantations and rolling green terraces with crisp mountain air.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJu0gDvfqaBzsRa-1qeuM3j24",
+        "ftid": "0x3b079afabd0348bb:0x6e8f37e37a6aed6b",
+        "lat": 10.1430336,
+        "lng": 77.0397969
       },
       {
         "title": "Tata Tea Museum & tasting",
@@ -667,9 +719,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jagdish%20Temple%2C%20Udaipur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jagdish%20Temple%2C%20Udaipur&query_place_id=ChIJ44SA0mXlZzkROFPFp4ABD_A",
         "notes": "Exquisitely carved 1651 Indo-Aryan temple dedicated to Lord Vishnu, featuring continuous morning chants and sculpted pillars.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ44SA0mXlZzkROFPFp4ABD_A",
+        "ftid": "0x3967e565d28084e3:0xf00f0180a7c55338",
+        "lat": 24.5796536,
+        "lng": 73.6836153
       },
       {
         "title": "City Palace complex",
@@ -691,9 +747,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=City%20Palace%2C%20Udaipur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=City%20Palace%2C%20Udaipur&query_place_id=ChIJ1adZBmTlZzkRDqvq-navV5I",
         "notes": "Rajasthan's largest royal palace complex with mirrored corridors, peacock courtyards, Zenana Mahal, and Lake Pichola views.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ1adZBmTlZzkRDqvq-navV5I",
+        "ftid": "0x3967e5640659a7d5:0x9257af76faeaab0e",
+        "lat": 24.5764421,
+        "lng": 73.6835109
       },
       {
         "title": "Saheliyon-ki-Bari gardens",
@@ -714,9 +774,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Saheliyon%20ki%20Bari%2C%20Udaipur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Saheliyon%20ki%20Bari%2C%20Udaipur&query_place_id=ChIJd9K3fdflZzkRQeScJCCgYZ0",
         "notes": "Historic garden of royal maids with marble elephant fountains, lotus pools, and lush shaded pavilions.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJd9K3fdflZzkRQeScJCCgYZ0",
+        "ftid": "0x3967e5d77db7d277:0x9d61a020249ce441",
+        "lat": 24.6030064,
+        "lng": 73.6854901
       },
       {
         "title": "Sajjangarh Monsoon Palace sunset",
@@ -738,9 +802,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sajjangarh%2C%20Udaipur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sajjangarh%2C%20Udaipur&query_place_id=ChIJw7A_ucr6ZzkRJTV3E4HVc4A",
         "notes": "Hilltop palace perched high atop Bansdara mountain offering legendary sunset views across Fateh Sagar and the Aravalli valley.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJw7A_ucr6ZzkRJTV3E4HVc4A",
+        "ftid": "0x3967facab93fb0c3:0x8073d58113773525",
+        "lat": 24.5931853,
+        "lng": 73.6396056
       },
       {
         "title": "Lake Pichola sunset boat ride",
@@ -893,9 +961,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kashi%20Vishwanath%20Temple%2C%20Varanasi",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kashi%20Vishwanath%20Temple%2C%20Varanasi&query_place_id=ChIJFwuU7iEujjkRE3v7zU8OYEg",
         "notes": "One of the twelve sacred Jyotirlingas of Lord Shiva; darshan through the grand Kashi Vishwanath corridor connecting the river to the sanctum.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJFwuU7iEujjkRE3v7zU8OYEg",
+        "ftid": "0x398e2e21ee940b17:0x48600e4fcdfb7b13",
+        "lat": 25.3108532,
+        "lng": 83.0106783
       },
       {
         "title": "Sarnath Buddhist deer park excursion",
@@ -917,9 +989,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sarnath%2C%20Varanasi",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sarnath%2C%20Varanasi&query_place_id=ChIJK6HWcOgujjkRdKkf6rKFw6E",
         "notes": "Where Gautama Buddha gave his first sermon after enlightenment; explore the Dhamek Stupa, Ashoka Pillar ruins, and museum.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJK6HWcOgujjkRdKkf6rKFw6E",
+        "ftid": "0x398e2ee870d6a12b:0xa1c385b2ea1fa974",
+        "lat": 25.3715564,
+        "lng": 83.0252136
       },
       {
         "title": "Banarasi thandai & kachori chaat",
@@ -971,9 +1047,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dashashwamedh%20Ghat%2C%20Varanasi",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dashashwamedh%20Ghat%2C%20Varanasi&query_place_id=ChIJZx9BBB4ujjkRPMgcoTbvGqY",
         "notes": "Mesmerizing evening prayer ceremony where young priests wield massive brass oil lamps in sync with conch shells and sacred chants.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJZx9BBB4ujjkRPMgcoTbvGqY",
+        "ftid": "0x398e2e1e04411f67:0xa61aef36a11cc83c",
+        "lat": 25.3062539,
+        "lng": 83.0102193
       }
     ],
     "aliases": [
@@ -1051,9 +1131,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Red%20Fort%2C%20Delhi",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Red%20Fort%2C%20Delhi&query_place_id=ChIJ74XAbuL8DDkR-wJQ-vQyHkQ",
         "notes": "Colossal 17th-century red sandstone fortress of Mughal Emperor Shah Jahan, UNESCO World Heritage site and seat of imperial power.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ74XAbuL8DDkR-wJQ-vQyHkQ",
+        "ftid": "0x390cfce26ec085ef:0x441e32f4fa5002fb",
+        "lat": 28.6561592,
+        "lng": 77.2410203
       },
       {
         "title": "Humayun's Tomb gardens",
@@ -1074,9 +1158,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Humayun's%20Tomb%2C%20Delhi",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Humayun's%20Tomb%2C%20Delhi&query_place_id=ChIJpwtG6BzjDDkRDajfOy268bk",
         "notes": "Magnificent precursor to the Taj Mahal with symmetrical Persian Charbagh water gardens and intricate red sandstone architecture.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJpwtG6BzjDDkRDajfOy268bk",
+        "ftid": "0x390ce31ce8460ba7:0xb9f1ba2d3bdfa80d",
+        "lat": 28.5932848,
+        "lng": 77.2507492
       },
       {
         "title": "Qutub Minar complex",
@@ -1097,9 +1185,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Qutub%20Minar%2C%20Delhi",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Qutub%20Minar%2C%20Delhi&query_place_id=ChIJT5uBZwYeDTkRuJ11YPGVSYM",
         "notes": "World's tallest brick minaret (72.5m) built in 1192, featuring intricately carved Quranic inscriptions and the famous rustless Iron Pillar.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJT5uBZwYeDTkRuJ11YPGVSYM",
+        "ftid": "0x390d1e0667819b4f:0x834995f160759db8",
+        "lat": 28.5244754,
+        "lng": 77.1855206
       },
       {
         "title": "India Gate & Kartavya Path sunset",
@@ -1120,9 +1212,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=India%20Gate%2C%20Delhi",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=India%20Gate%2C%20Delhi&query_place_id=ChIJC03rqdriDDkRXT6SJRGXFwc",
         "notes": "Imposing war memorial arch honoring Indian soldiers, flanked by the lush lawns of Central Vista, canopy, and Rashtrapati Bhavan views.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJC03rqdriDDkRXT6SJRGXFwc",
+        "ftid": "0x390ce2daa9eb4d0b:0x717971125923e5d",
+        "lat": 28.612912,
+        "lng": 77.2295097
       },
       {
         "title": "Akshardham Temple light & water show",
@@ -1145,9 +1241,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Akshardham%20Temple%2C%20Delhi",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Akshardham%20Temple%2C%20Delhi&query_place_id=ChIJ-7F1mVvjDDkRKrLzXiafoGk",
         "notes": "Sprawling pink sandstone and Italian Carrara marble temple with 20,000 murtis, boat ride exhibition, and evening musical fountain.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ-7F1mVvjDDkRKrLzXiafoGk",
+        "ftid": "0x390ce35b9975b1fb:0x69a09f265ef3b22a",
+        "lat": 28.6126735,
+        "lng": 77.2772619
       }
     ],
     "aliases": [
@@ -1195,9 +1295,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gateway%20of%20India%2C%20Mumbai",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gateway%20of%20India%2C%20Mumbai&query_place_id=ChIJrVwNOsfR5zsRPHOcIKclCsc",
         "notes": "Indo-Saracenic triumphal arch overlooking the Arabian Sea, standing opposite the legendary heritage Taj Mahal Palace Hotel.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJrVwNOsfR5zsRPHOcIKclCsc",
+        "ftid": "0x3be7d1c73a0d5cad:0xc70a25a7209c733c",
+        "lat": 18.9219841,
+        "lng": 72.8346543
       },
       {
         "title": "Elephanta Caves island ferry",
@@ -1219,9 +1323,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Elephanta%20Caves%2C%20Mumbai",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Elephanta%20Caves%2C%20Mumbai&query_place_id=ChIJL2CjfTDF5zsRP_WuGhsYq_Q",
         "notes": "UNESCO World Heritage rock-cut cave temples dating to the 6th century, dominated by the colossal three-headed Maheshmurti Shiva.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJL2CjfTDF5zsRP_WuGhsYq_Q",
+        "ftid": "0x3be7c5307da3602f:0xf4ab181b1aaef53f",
+        "lat": 18.9633474,
+        "lng": 72.9314864
       },
       {
         "title": "Vada pav & street food in Dadar",
@@ -1271,9 +1379,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Haji%20Ali%20Dargah%2C%20Mumbai",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Haji%20Ali%20Dargah%2C%20Mumbai&query_place_id=ChIJ40INk37O5zsRBY0Hq8dd4NU",
         "notes": "Iconic 15th-century Indo-Islamic shrine resting on an islet connected by a narrow pedestrian causeway accessible during low tide.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ40INk37O5zsRBY0Hq8dd4NU",
+        "ftid": "0x3be7ce7e930d42e3:0xd5e05dc7ab078d05",
+        "lat": 18.9827935,
+        "lng": 72.8090001
       },
       {
         "title": "Siddhivinayak Temple darshan",
@@ -1296,9 +1408,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shree%20Siddhivinayak%20Temple%2C%20Prabhadevi%2C%20Mumbai",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shree%20Siddhivinayak%20Temple%2C%20Prabhadevi%2C%20Mumbai&query_place_id=ChIJw-tR2MDO5zsRKWNSFGmHYcw",
         "notes": "Mumbai's most visited Ganesha temple, built in 1801. Tuesdays draw very long queues, so go early on any other day.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJw-tR2MDO5zsRKWNSFGmHYcw",
+        "ftid": "0x3be7cec0d851ebc3:0xcc61876914526329",
+        "lat": 19.0169538,
+        "lng": 72.8303939
       },
       {
         "title": "Mumbadevi Temple & Zaveri Bazaar",
@@ -1321,9 +1437,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mumbadevi%20Temple%2C%20Bhuleshwar%2C%20Mumbai",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mumbadevi%20Temple%2C%20Bhuleshwar%2C%20Mumbai&query_place_id=ChIJGzJjx-zP5zsRsiUiWJoSU5g",
         "notes": "Shrine of Mumba Devi, the goddess the city is named after, set in the lanes of Bhuleshwar beside the old Zaveri jewellery bazaar.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJGzJjx-zP5zsRsiUiWJoSU5g",
+        "ftid": "0x3be7cfecc763321b:0x9853129a582225b2",
+        "lat": 18.951962,
+        "lng": 72.8307607
       },
       {
         "title": "Babulnath Temple Shiva darshan",
@@ -1345,9 +1465,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Babulnath%20Temple%2C%20Girgaon%2C%20Mumbai",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Babulnath%20Temple%2C%20Girgaon%2C%20Mumbai&query_place_id=ChIJS1S8ZgnO5zsRnXeeJ5QC7wQ",
         "notes": "Hilltop Shiva temple above Girgaon Chowpatty, reached by a long flight of steps, with views over the bay.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJS1S8ZgnO5zsRnXeeJ5QC7wQ",
+        "ftid": "0x3be7ce0966bc544b:0x4ef0294279e779d",
+        "lat": 18.958776,
+        "lng": 72.8085168
       },
       {
         "title": "Walkeshwar Temple & Banganga Tank",
@@ -1370,9 +1494,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Walkeshwar%20Temple%2C%20Malabar%20Hill%2C%20Mumbai",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Walkeshwar%20Temple%2C%20Malabar%20Hill%2C%20Mumbai&query_place_id=ChIJW4uaifnN5zsR3FyY7Il1vss",
         "notes": "Ancient Shiva temple on Malabar Hill beside the stepped Banganga Tank, a quiet pocket in the middle of the city.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJW4uaifnN5zsR3FyY7Il1vss",
+        "ftid": "0x3be7cdf9899a8b5b:0xcbbe7589ec985cdc",
+        "lat": 18.9456144,
+        "lng": 72.7931926
       },
       {
         "title": "ISKCON Juhu evening aarti",
@@ -1394,9 +1522,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=ISKCON%20Temple%20Juhu%2C%20Mumbai",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=ISKCON%20Temple%20Juhu%2C%20Mumbai&query_place_id=ChIJLzY0POjJ5zsRSA6DT53G1wY",
         "notes": "White-marble Radha Rasabihari temple with kirtan and evening aarti; vegetarian prasad and a restaurant on site.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJLzY0POjJ5zsRSA6DT53G1wY",
+        "ftid": "0x3be7c9e83c34362f:0x6d7c69d4f830e48",
+        "lat": 19.113016,
+        "lng": 72.826576
       },
       {
         "title": "Radha Gopinath Temple at Chowpatty",
@@ -1419,9 +1551,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sri%20Sri%20Radha%20Gopinath%20Temple%2C%20Chowpatty%2C%20Mumbai",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sri%20Sri%20Radha%20Gopinath%20Temple%2C%20Chowpatty%2C%20Mumbai&query_place_id=ChIJv9IVlRTO5zsRNXRFPGBa-vM",
         "notes": "Krishna temple facing Girgaon Chowpatty beach; arrive for the evening aarti, then walk the beach.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJv9IVlRTO5zsRNXRFPGBa-vM",
+        "ftid": "0x3be7ce149515d2bf:0xf3fa5a603c457435",
+        "lat": 18.9576799,
+        "lng": 72.8097855
       },
       {
         "title": "Marine Drive Queen's Necklace sunset walk",
@@ -1444,9 +1580,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Marine%20Drive%2C%20Mumbai",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Marine%20Drive%2C%20Mumbai&query_place_id=ChIJnUPoXuLR5zsRK60mJ0-SzVo",
         "notes": "Stroll along the 3.6-km crescent seaside promenade watching the Arabian Sea sunset and illuminated curve of the 'Queen's Necklace'.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJnUPoXuLR5zsRK60mJ0-SzVo",
+        "ftid": "0x3be7d1e25ee8439d:0x5acd924f2726ad2b",
+        "lat": 18.9435765,
+        "lng": 72.8227771
       }
     ],
     "aliases": [
@@ -1492,9 +1632,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chinese%20Fishing%20Nets%2C%20Kochi",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chinese%20Fishing%20Nets%2C%20Kochi&query_place_id=ChIJc7waRcsSCDsRUQdGwZAsB88",
         "notes": "Iconic shore-operated cantilevered fishing nets introduced by 14th-century Chinese traders, set against cargo ships and fishermen.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJc7waRcsSCDsRUQdGwZAsB88",
+        "ftid": "0x3b0812cb451abc73:0xcf072c90c1460751",
+        "lat": 9.9683959,
+        "lng": 76.2422419
       },
       {
         "title": "Mattancherry Palace (Dutch Palace)",
@@ -1515,9 +1659,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mattancherry%20Palace%2C%20Kochi",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mattancherry%20Palace%2C%20Kochi&query_place_id=ChIJG3_h00RtCDsRyLV04bOkgGg",
         "notes": "Portuguese-built palace gifted to the Raja of Kochi, famed for intricate Hindu mythological murals depicting the Ramayana and Mahabharata.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJG3_h00RtCDsRyLV04bOkgGg",
+        "ftid": "0x3b086d44d3e17f1b:0x6880a4b3e174b5c8",
+        "lat": 9.9582773,
+        "lng": 76.2593508
       },
       {
         "title": "Jew Town & Paradesi Synagogue",
@@ -1538,9 +1686,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Paradesi%20Synagogue%2C%20Kochi",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Paradesi%20Synagogue%2C%20Kochi&query_place_id=ChIJyxJJE8RtCDsRro21KZkb9dE",
         "notes": "The oldest active synagogue in the Commonwealth (1568) with hand-painted Chinese porcelain tiles, flanked by antique shops and spice warehouses.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJyxJJE8RtCDsRro21KZkb9dE",
+        "ftid": "0x3b086dc4134912cb:0xd1f51b9929b58dae",
+        "lat": 9.9574448,
+        "lng": 76.2592638
       },
       {
         "title": "Kerala seafood thali & appam lunch",
@@ -1589,9 +1741,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kathakali%2C%20Kochi",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kathakali%2C%20Kochi&query_place_id=ChIJRW4KizNtCDsRYdFhbtnR5lM",
         "notes": "Watch the elaborate face-painting makeup ritual followed by classical classical Kerala dance-drama with stylized facial expressions and hand mudras.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJRW4KizNtCDsRYdFhbtnR5lM",
+        "ftid": "0x3b086d338b0a6e45:0x53e6d1d96e61d161",
+        "lat": 9.9639073,
+        "lng": 76.2428112
       }
     ],
     "aliases": [
@@ -1685,9 +1841,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Beatles%20Ashram%2C%20Rishikesh",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Beatles%20Ashram%2C%20Rishikesh&query_place_id=ChIJcxN2RBIWCTkRqa43efcK04A",
         "notes": "The forested ashram where The Beatles stayed in 1968 to study meditation; explore stone meditation domes, murals, and forest trails.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJcxN2RBIWCTkRqa43efcK04A",
+        "ftid": "0x3909161244761373:0x80d30af77937aea9",
+        "lat": 30.1127675,
+        "lng": 78.3121592
       },
       {
         "title": "Ram Jhula & Lakshman Jhula suspension bridges",
@@ -1710,9 +1870,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ram%20Jhula%2C%20Rishikesh",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ram%20Jhula%2C%20Rishikesh&query_place_id=ChIJT0JOEz8WCTkRenKAI-QuqYM",
         "notes": "Iconic iron suspension bridges connecting bustling riverside ashrams, organic vegan cafes, and spiritual bookstores.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJT0JOEz8WCTkRenKAI-QuqYM",
+        "ftid": "0x3909163f134e424f:0x83a92ee42380727a",
+        "lat": 30.1233459,
+        "lng": 78.3144507
       },
       {
         "title": "Triveni Ghat Maha Aarti at sunset",
@@ -1735,9 +1899,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Triveni%20Ghat%2C%20Rishikesh",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Triveni%20Ghat%2C%20Rishikesh&query_place_id=ChIJJ6F4g8Y9CTkRywQ8V2Rjtls",
         "notes": "Sacred confluence of three holy rivers where priests conduct rhythmic Ganga Aarti while devotees float glowing oil leaf lamps down the river.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJJ6F4g8Y9CTkRywQ8V2Rjtls",
+        "ftid": "0x39093dc68378a127:0x5bb66364573c04cb",
+        "lat": 30.1037344,
+        "lng": 78.2993218
       }
     ],
     "aliases": [
@@ -17734,8 +17902,12 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "One of the twelve sacred Jyotirlingas, home to the south-facing Dakshinmurti Shiva and a revered three-tiered sanctum. Special Bhasma Aarti seva takes place at dawn with advance booking.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahakaleshwar%20Jyotirlinga%2C%20Ujjain",
-        "kind": "place"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahakaleshwar%20Jyotirlinga%2C%20Ujjain&query_place_id=ChIJ____ODZ0YzkRIswTvdHkJDA",
+        "kind": "place",
+        "placeId": "ChIJ____ODZ0YzkRIswTvdHkJDA",
+        "ftid": "0x3963743638ffffff:0x3024e4d1bd13cc22",
+        "lat": 23.1829374,
+        "lng": 75.7682472
       },
       {
         "title": "Malwi Poha Jalebi breakfast trail",
@@ -17789,8 +17961,12 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "Built in 1719 by Maharaja Sawai Jai Singh II, this historic open-air observatory marks ancient India's prime meridian on the Tropic of Cancer with precision stone instruments.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vedh%20Shala%2C%20Ujjain",
-        "kind": "place"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vedh%20Shala%2C%20Ujjain&query_place_id=ChIJU8ZgdE50YzkRo6Y_3OTmS5k",
+        "kind": "place",
+        "placeId": "ChIJU8ZgdE50YzkRo6Y_3OTmS5k",
+        "ftid": "0x3963744e7460c653:0x994be6e4dc3fa6a3",
+        "lat": 23.1716209,
+        "lng": 75.7662966
       },
       {
         "title": "Sandipani Ashram & Gomti Kund",
@@ -17815,8 +17991,12 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "Ancient hermitage where Lord Krishna, Balarama, and Sudama were educated by Maharishi Sandipani in the 64 arts; features the holy Gomti Kund stepped reservoir.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sandipani%20Ashram%2C%20Ujjain",
-        "kind": "place"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sandipani%20Ashram%2C%20Ujjain&query_place_id=ChIJ2bT7I953YzkRbh00tYjvsEg",
+        "kind": "place",
+        "placeId": "ChIJ2bT7I953YzkRbh00tYjvsEg",
+        "ftid": "0x396377de23fbb4d9:0x48b0ef88b5341d6e",
+        "lat": 23.2111837,
+        "lng": 75.782361
       },
       {
         "title": "Traditional Malwi Dal Bafla lunch",
@@ -17867,8 +18047,12 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "Ancient tantric shrine dedicated to the fiery guardian deity of Avantika, famous for centuries-old ritual offerings consumed miraculously by the deity.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kal%20Bhairav%20Temple%2C%20Ujjain",
-        "kind": "place"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kal%20Bhairav%20Temple%2C%20Ujjain&query_place_id=ChIJD6Q3DI92YzkR0pfzVNN9LKg",
+        "kind": "place",
+        "placeId": "ChIJD6Q3DI92YzkR0pfzVNN9LKg",
+        "ftid": "0x3963768f0c37a40f:0xa82c7dd354f397d2",
+        "lat": 23.2181508,
+        "lng": 75.7689299
       },
       {
         "title": "Ram Ghat sunset & Shipra Aarti",
@@ -17892,8 +18076,12 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "The oldest sacred bathing ghat associated with the Simhastha Kumbh Mela, where pilgrims gather at dusk for chanting, ringing bells, and floating lamps on the Shipra River.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ram%20Ghat%2C%20Ujjain",
-        "kind": "place"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ram%20Ghat%2C%20Ujjain&query_place_id=ChIJtf_K6DN0YzkRpa0YK8toL0Q",
+        "kind": "place",
+        "placeId": "ChIJtf_K6DN0YzkRpa0YK8toL0Q",
+        "ftid": "0x39637433e8caffb5:0x442f68cb2b18ada5",
+        "lat": 23.1880966,
+        "lng": 75.7651613
       },
       {
         "title": "Shaktipeeth Maa Harsiddhi Temple deepstambha aarti",
@@ -17917,8 +18105,12 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "One of the 51 holy Shaktipeeths and Kuldevi of King Vikramaditya. At dusk, brave sevadars climb the twin 50-foot stone deepstambhas (lamp pillars) to illuminate hundreds of flickering oil lamps.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Harsiddhi%20Temple%2C%20Ujjain",
-        "kind": "place"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Harsiddhi%20Temple%2C%20Ujjain&query_place_id=ChIJZxwvx411YzkRMQc59gOMSJY",
+        "kind": "place",
+        "placeId": "ChIJZxwvx411YzkRMQc59gOMSJY",
+        "ftid": "0x3963758dc72f1c67:0x96488c03f6390731",
+        "lat": 23.1844864,
+        "lng": 75.7646561
       },
       {
         "title": "Shri Mahakal Lok Corridor evening walk",
@@ -17942,8 +18134,12 @@ window.KYT_CITIES = [
         ],
         "mobility": "walk",
         "notes": "A magnificent 900-meter cultural plaza surrounding Rudrasagar Lake, spectacular under evening illumination with 108 ornate pillars depicting Shiv Tandav and monumental sculptures from Shiva Purana.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shri%20Mahakal%20Lok%2C%20Ujjain",
-        "kind": "place"
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shri%20Mahakal%20Lok%2C%20Ujjain&query_place_id=ChIJ105ZMQR1YzkR9lIMdQf1hbI",
+        "kind": "place",
+        "placeId": "ChIJ105ZMQR1YzkR9lIMdQf1hbI",
+        "ftid": "0x3963750431594ed7:0xb285f507750c52f6",
+        "lat": 23.1775526,
+        "lng": 75.7695069
       }
     ],
     "setting": "plains",

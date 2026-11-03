@@ -7,11 +7,12 @@ Key capabilities:
 - Mathematical 1-to-1 conversion from Google Feature ID (0x...:0x...) to canonical ChIJ Place ID
 - Haversine distance sanity checks against parent city coordinates
 - Caching in places_cache.json to avoid redundant lookups
-- CLI options for batching: --city <id>, --limit <n>, --skip-beats, --in-place, --delay <sec>
+- CLI options for batching: --batch <n>, --batch-size <n>, --city <id>, --status, --skip-city, --in-place, --delay <sec>
 
 Run:
+  py -3.9 admin/enrich_kyt_places.py --status
+  py -3.9 admin/enrich_kyt_places.py --batch 1 --in-place
   py -3.9 admin/enrich_kyt_places.py --city ujjain
-  py -3.9 admin/enrich_kyt_places.py --limit 5
 """
 
 import argparse
@@ -214,11 +215,65 @@ def save_cities_js(cities_data, filepath, prefix="window.KYT_CITIES = ", suffix=
 def main():
     parser = argparse.ArgumentParser(description="Enrich KYT cities and beats with Google Maps Place IDs")
     parser.add_argument("--city", help="Target specific city ID (e.g. 'omkareshwar' or 'ujjain')")
+    parser.add_argument("--batch", help="Batch number (e.g. 1) or range (e.g. 1-3)")
+    parser.add_argument("--batch-size", type=int, default=10, help="Number of cities per batch (default 10)")
     parser.add_argument("--limit", type=int, help="Limit number of cities to process")
+    parser.add_argument("--offset", type=int, default=0, help="Starting city offset")
+    parser.add_argument("--status", action="store_true", help="Display catalog status and batch breakdown")
     parser.add_argument("--skip-beats", action="store_true", help="Only resolve city-level Place IDs")
+    parser.add_argument("--skip-city", action="store_true", help="Only resolve beat-level Place IDs")
+    parser.add_argument("--force", action="store_true", help="Force re-resolution even if placeId is already present")
     parser.add_argument("--in-place", action="store_true", help="Update data/cities.js in place instead of cities.enriched.js")
     parser.add_argument("--delay", type=float, default=1.0, help="Delay in seconds between requests (default 1.0)")
     args = parser.parse_args()
+
+    print(f"Loading catalog from: {INPUT_JS_PATH}")
+    cities, prefix, suffix = load_cities_js(INPUT_JS_PATH)
+    print(f"Loaded {len(cities)} cities.")
+
+    if args.status:
+        total_places = 0
+        resolved_places = 0
+        total_activities = 0
+        resolved_cities = len([c for c in cities if c.get("placeId")])
+
+        for c in cities:
+            for b in c.get("beats", []):
+                if b.get("kind") == "activity":
+                    total_activities += 1
+                else:
+                    total_places += 1
+                    if b.get("placeId"):
+                        resolved_places += 1
+
+        missing_places = total_places - resolved_places
+        total_batches = math.ceil(len(cities) / args.batch_size)
+
+        print("\n================ KYT PLACES CATALOG STATUS ================")
+        print(f"Total Cities:           {len(cities)} ({resolved_cities} have city.placeId)")
+        print(f"Total Attractions:      {total_places + total_activities}")
+        print(f"  - Places:             {total_places} ({resolved_places} resolved, {missing_places} missing Place ID)")
+        print(f"  - Activities:         {total_activities} (exempt from Place ID)")
+        print(f"Total Batches:          {total_batches} (batch size: {args.batch_size} cities/batch)")
+        print("-----------------------------------------------------------")
+
+        for b in range(1, total_batches + 1):
+            b_start = (b - 1) * args.batch_size
+            b_cities = cities[b_start:b_start + args.batch_size]
+            b_places = 0
+            b_missing = 0
+            for c in b_cities:
+                for beat in c.get("beats", []):
+                    if beat.get("kind") != "activity":
+                        b_places += 1
+                        if not beat.get("placeId"):
+                            b_missing += 1
+            tag = "✓ COMPLETE" if b_missing == 0 else f"{b_missing} missing"
+            names = ", ".join([c["name"] for c in b_cities])[:50]
+            print(f"  Batch {b:2d}: cities {b_start + 1:3d}-{b_start + len(b_cities):3d} | {b_places:2d} places | {tag} | {names}...")
+        print("===========================================================\n")
+        print("Run a batch with: node admin/enrich_kyt_places.js --batch 1 --in-place")
+        return
 
     # Lazy-load Playwright so helpful error is shown if not installed
     try:
@@ -229,18 +284,31 @@ def main():
         print("    Or install:   py -3.9 -m pip install playwright && py -3.9 -m playwright install chromium\n")
         sys.exit(1)
 
-    print(f"Loading catalog from: {INPUT_JS_PATH}")
-    cities, prefix, suffix = load_cities_js(INPUT_JS_PATH)
-    print(f"Loaded {len(cities)} cities.")
-
     target_cities = cities
     if args.city:
         target_cities = [c for c in cities if c.get("id") == args.city]
         if not target_cities:
             print(f"Error: City ID '{args.city}' not found in catalog.")
             sys.exit(1)
+    elif args.batch:
+        batch_indices = []
+        if args.batch.lower() == "all":
+            total_batches = math.ceil(len(cities) / args.batch_size)
+            batch_indices = list(range(1, total_batches + 1))
+        elif "-" in args.batch:
+            start_b, end_b = [int(x.strip()) for x in args.batch.split("-")]
+            batch_indices = list(range(start_b, end_b + 1))
+        elif "," in args.batch:
+            batch_indices = [int(x.strip()) for x in args.batch.split(",")]
+        else:
+            batch_indices = [int(args.batch.strip())]
+
+        target_cities = []
+        for b in batch_indices:
+            b_start = (b - 1) * args.batch_size
+            target_cities.extend(cities[b_start:b_start + args.batch_size])
     elif args.limit:
-        target_cities = cities[:args.limit]
+        target_cities = cities[args.offset:args.offset + args.limit]
 
     cache = {}
     if os.path.exists(CACHE_PATH):
@@ -249,6 +317,8 @@ def main():
                 cache = json.load(f)
             except Exception:
                 cache = {}
+
+    out_filepath = INPUT_JS_PATH if args.in_place else OUTPUT_JS_PATH
 
     with sync_playwright() as p:
         # Prefer system Microsoft Edge if available, otherwise chromium
@@ -268,70 +338,82 @@ def main():
             city_query = f"{city['name']}, {city.get('state', '')}, India"
             cache_key = f"city::{city_id}"
 
-            if cache_key not in cache:
-                print(f"[{c_idx}/{len(target_cities)}] Resolving City: {city_query}...")
-                res = resolve_place_on_gmaps(page, city_query, city.get("lat"), city.get("lng"))
-                cache[cache_key] = res
-                with open(CACHE_PATH, "w", encoding="utf-8") as f:
-                    json.dump(cache, f, indent=2, ensure_ascii=False)
-                time.sleep(args.delay)
-            else:
-                res = cache[cache_key]
+            beats = city.get("beats", [])
+            place_beats = [b for b in beats if b.get("kind") != "activity"]
+            missing_in_city = len([b for b in place_beats if not b.get("placeId")])
 
-            # Apply to city object (respecting excluded cities like Omkareshwar)
-            if res.get("placeId") and city_id not in EXCLUDED_CITY_PLACE_IDS:
-                city["placeId"] = res["placeId"]
-            if res.get("ftid"):
-                city["ftid"] = res["ftid"]
-            if res.get("canonicalMapsUrl") and city_id not in EXCLUDED_CITY_PLACE_IDS:
-                city["mapsUrl"] = res["canonicalMapsUrl"]
+            print(f"\n[City {c_idx}/{len(target_cities)}] {city['name']} ({len(place_beats)} places, {missing_in_city} missing, {len(beats) - len(place_beats)} activities)")
 
-            if args.skip_beats:
-                continue
-
-            # Process each beat inside the city
-            for b_idx, beat in enumerate(city.get("beats", []), 1):
-                beat_query = get_clean_search_query(beat, city["name"])
-
-                # If this attraction is an activity (food, breakfast, lunch, trail), do NOT map via Place ID
-                if beat.get("kind") == "activity":
-                    beat.pop("placeId", None)
-                    beat.pop("ftid", None)
-                    beat["mapsUrl"] = f"https://www.google.com/maps/search/?api=1&query={quote_plus(beat_query)}"
-                    print(f"   -> Beat {b_idx}/{len(city.get('beats', []))} [ACTIVITY]: {beat['title']} (skipped Place ID)")
-                    continue
-
-                b_cache_key = f"beat::{city_id}::{beat['title']}"
-
-                if b_cache_key not in cache:
-                    print(f"   -> Beat {b_idx}/{len(city.get('beats', []))}: {beat_query}")
-                    b_res = resolve_place_on_gmaps(page, beat_query, city.get("lat"), city.get("lng"))
-                    if b_res.get("distanceKm") and b_res["distanceKm"] > 150:
-                        print(f"      [!] WARNING: {beat['title']} resolved {b_res['distanceKm']} km from {city['name']} ({b_res['resolvedName']})")
-                    cache[b_cache_key] = b_res
-                    with open(CACHE_PATH, "w", encoding="utf-8") as f:
-                        json.dump(cache, f, indent=2, ensure_ascii=False)
-                    time.sleep(args.delay)
+            if not args.skip_city and city_id not in EXCLUDED_CITY_PLACE_IDS:
+                if city.get("placeId") and not args.force:
+                    pass
                 else:
-                    b_res = cache[b_cache_key]
+                    if cache_key not in cache or args.force:
+                        print(f"  Resolving City: {city_query}...")
+                        res = resolve_place_on_gmaps(page, city_query, city.get("lat"), city.get("lng"))
+                        cache[cache_key] = res
+                        with open(CACHE_PATH, "w", encoding="utf-8") as f:
+                            json.dump(cache, f, indent=2, ensure_ascii=False)
+                        time.sleep(args.delay)
+                    else:
+                        res = cache[cache_key]
 
-                if b_res.get("placeId"):
-                    beat["placeId"] = b_res["placeId"]
-                if b_res.get("ftid"):
-                    beat["ftid"] = b_res["ftid"]
-                if b_res.get("lat") and b_res.get("lng"):
-                    beat["lat"] = b_res["lat"]
-                    beat["lng"] = b_res["lng"]
-                if b_res.get("canonicalMapsUrl"):
-                    beat["mapsUrl"] = b_res["canonicalMapsUrl"]
+                    if res.get("placeId") and city_id not in EXCLUDED_CITY_PLACE_IDS:
+                        city["placeId"] = res["placeId"]
+                    if res.get("ftid"):
+                        city["ftid"] = res["ftid"]
+                    if res.get("canonicalMapsUrl") and city_id not in EXCLUDED_CITY_PLACE_IDS:
+                        city["mapsUrl"] = res["canonicalMapsUrl"]
+
+            if not args.skip_beats:
+                for b_idx, beat in enumerate(beats, 1):
+                    beat_query = get_clean_search_query(beat, city["name"])
+
+                    # If this attraction is an activity, skip Place ID
+                    if beat.get("kind") == "activity":
+                        beat.pop("placeId", None)
+                        beat.pop("ftid", None)
+                        beat["mapsUrl"] = f"https://www.google.com/maps/search/?api=1&query={quote_plus(beat_query)}"
+                        print(f"   -> Beat {b_idx}/{len(beats)} [ACTIVITY]: {beat['title']} (skipped)")
+                        continue
+
+                    # If already has placeId and not force, skip
+                    if beat.get("placeId") and not args.force:
+                        print(f"   -> Beat {b_idx}/{len(beats)} [PLACE]: {beat['title']} (already has {beat['placeId']})")
+                        continue
+
+                    b_cache_key = f"beat::{city_id}::{beat['title']}"
+
+                    if b_cache_key not in cache or args.force:
+                        print(f"   -> Beat {b_idx}/{len(beats)} [PLACE]: Resolving {beat_query}...")
+                        b_res = resolve_place_on_gmaps(page, beat_query, city.get("lat"), city.get("lng"))
+                        if b_res.get("distanceKm") and b_res["distanceKm"] > 150:
+                            print(f"      [!] WARNING: {beat['title']} resolved {b_res['distanceKm']} km from {city['name']} ({b_res.get('resolvedName')})")
+                        cache[b_cache_key] = b_res
+                        with open(CACHE_PATH, "w", encoding="utf-8") as f:
+                            json.dump(cache, f, indent=2, ensure_ascii=False)
+                        time.sleep(args.delay)
+                    else:
+                        b_res = cache[b_cache_key]
+
+                    if b_res.get("placeId"):
+                        beat["placeId"] = b_res["placeId"]
+                    if b_res.get("ftid"):
+                        beat["ftid"] = b_res["ftid"]
+                    if b_res.get("lat") and b_res.get("lng"):
+                        beat["lat"] = b_res["lat"]
+                        beat["lng"] = b_res["lng"]
+                    if b_res.get("canonicalMapsUrl"):
+                        beat["mapsUrl"] = b_res["canonicalMapsUrl"]
+                    print(f"      ✓ {beat['title']} -> {beat.get('placeId') or '(no placeId)'}")
+
+            # Save incrementally after each city completes
+            save_cities_js(cities, out_filepath, prefix, suffix)
 
         browser.close()
 
-    out_path = INPUT_JS_PATH if args.in_place else OUTPUT_JS_PATH
-    save_cities_js(cities, out_path, prefix, suffix)
-    print(f"\n✓ Done! Output written to {out_path}")
+    print(f"\n✓ Batch complete! Output written to: {out_filepath}")
 
 
 if __name__ == "__main__":
-    main()
     main()

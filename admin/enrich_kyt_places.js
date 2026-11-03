@@ -271,9 +271,12 @@ async function main() {
     }
     runDescription = `city ${targetCityId}`;
   } else if (batchArg) {
-    // Supports single batch e.g. "1" or range "1-3" or list "1,2"
+    // Supports single batch e.g. "1" or range "1-3" or list "1,2" or "all"
     let batchIndices = [];
-    if (batchArg.includes('-')) {
+    if (batchArg.toLowerCase() === 'all') {
+      const totalBatches = Math.ceil(cities.length / batchSize);
+      for (let b = 1; b <= totalBatches; b++) batchIndices.push(b);
+    } else if (batchArg.includes('-')) {
       const [startB, endB] = batchArg.split('-').map(n => parseInt(n.trim(), 10));
       for (let b = startB; b <= endB; b++) batchIndices.push(b);
     } else if (batchArg.includes(',')) {

@@ -108,5 +108,495 @@
     "lng": 76.1445858,
     "distanceKm": 0.7,
     "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Nagar%20Ghat%2C%20Omkareshwar&query_place_id=ChIJdfFB5O-8YjkR2XrqWQkMRJM"
+  },
+  "beat::ujjain::Mahakaleshwar Jyotirlinga": {
+    "query": "Mahakaleshwar Jyotirlinga, Ujjain",
+    "resolvedName": "Shri Mahakaleshwar Jyotirlinga Temple",
+    "placeId": "ChIJ____ODZ0YzkRIswTvdHkJDA",
+    "ftid": "0x3963743638ffffff:0x3024e4d1bd13cc22",
+    "lat": 23.1829374,
+    "lng": 75.7682472,
+    "distanceKm": 2.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahakaleshwar%20Jyotirlinga%2C%20Ujjain&query_place_id=ChIJ____ODZ0YzkRIswTvdHkJDA"
+  },
+  "beat::ujjain::Vedh Shala (Jantar Mantar observatory)": {
+    "query": "Vedh Shala, Ujjain",
+    "resolvedName": "Jantar Mantar, Ujjain",
+    "placeId": "ChIJU8ZgdE50YzkRo6Y_3OTmS5k",
+    "ftid": "0x3963744e7460c653:0x994be6e4dc3fa6a3",
+    "lat": 23.1716209,
+    "lng": 75.7662966,
+    "distanceKm": 2.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Vedh%20Shala%2C%20Ujjain&query_place_id=ChIJU8ZgdE50YzkRo6Y_3OTmS5k"
+  },
+  "beat::ujjain::Sandipani Ashram & Gomti Kund": {
+    "query": "Sandipani Ashram, Ujjain",
+    "resolvedName": "Maharishi Sandipani Ashram",
+    "placeId": "ChIJ2bT7I953YzkRbh00tYjvsEg",
+    "ftid": "0x396377de23fbb4d9:0x48b0ef88b5341d6e",
+    "lat": 23.2111837,
+    "lng": 75.782361,
+    "distanceKm": 3.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sandipani%20Ashram%2C%20Ujjain&query_place_id=ChIJ2bT7I953YzkRbh00tYjvsEg"
+  },
+  "beat::ujjain::Kal Bhairav Temple darshan": {
+    "query": "Kal Bhairav Temple, Ujjain",
+    "resolvedName": "Kal Bhairav Temple",
+    "placeId": "ChIJD6Q3DI92YzkR0pfzVNN9LKg",
+    "ftid": "0x3963768f0c37a40f:0xa82c7dd354f397d2",
+    "lat": 23.2181508,
+    "lng": 75.7689299,
+    "distanceKm": 5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kal%20Bhairav%20Temple%2C%20Ujjain&query_place_id=ChIJD6Q3DI92YzkR0pfzVNN9LKg"
+  },
+  "beat::ujjain::Ram Ghat sunset & Shipra Aarti": {
+    "query": "Ram Ghat, Ujjain",
+    "resolvedName": "Ram Ghat Marg, Kartik Chowk, Ujjain, Madhya Pradesh 456006",
+    "placeId": "ChIJtf_K6DN0YzkRpa0YK8toL0Q",
+    "ftid": "0x39637433e8caffb5:0x442f68cb2b18ada5",
+    "lat": 23.1880966,
+    "lng": 75.7651613,
+    "distanceKm": 2.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Ram%20Ghat%2C%20Ujjain&query_place_id=ChIJtf_K6DN0YzkRpa0YK8toL0Q"
+  },
+  "beat::ujjain::Shaktipeeth Maa Harsiddhi Temple deepstambha aarti": {
+    "query": "Harsiddhi Temple, Ujjain",
+    "resolvedName": "Shree Harsiddhi Mata Shaktipeeth Temple",
+    "placeId": "ChIJZxwvx411YzkRMQc59gOMSJY",
+    "ftid": "0x3963758dc72f1c67:0x96488c03f6390731",
+    "lat": 23.1844864,
+    "lng": 75.7646561,
+    "distanceKm": 2.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Harsiddhi%20Temple%2C%20Ujjain&query_place_id=ChIJZxwvx411YzkRMQc59gOMSJY"
+  },
+  "beat::ujjain::Shri Mahakal Lok Corridor evening walk": {
+    "query": "Shri Mahakal Lok, Ujjain",
+    "resolvedName": "Shri Mahakal Lok, Ujjain",
+    "placeId": "ChIJ105ZMQR1YzkR9lIMdQf1hbI",
+    "ftid": "0x3963750431594ed7:0xb285f507750c52f6",
+    "lat": 23.1775526,
+    "lng": 75.7695069,
+    "distanceKm": 1.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Shri%20Mahakal%20Lok%2C%20Ujjain&query_place_id=ChIJ105ZMQR1YzkR9lIMdQf1hbI"
+  },
+  "beat::agra::Taj Mahal": {
+    "query": "Taj Mahal, Agra",
+    "resolvedName": "Taj Mahal",
+    "placeId": "ChIJbf8C1yFxdDkR3n12P4DkKt0",
+    "ftid": "0x39747121d702ff6d:0xdd2ae4803f767dde",
+    "lat": 27.1751448,
+    "lng": 78.0421422,
+    "distanceKm": 3.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Taj%20Mahal%2C%20Agra&query_place_id=ChIJbf8C1yFxdDkR3n12P4DkKt0"
+  },
+  "beat::agra::Agra Fort": {
+    "query": "Agra Fort, Agra",
+    "resolvedName": "Agra Fort",
+    "placeId": "ChIJ6zs0kdRwdDkRdpUClMxcCmQ",
+    "ftid": "0x397470d491343beb:0x640a5ccc94029576",
+    "lat": 27.1795328,
+    "lng": 78.021112,
+    "distanceKm": 1.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Agra%20Fort%2C%20Agra&query_place_id=ChIJ6zs0kdRwdDkRdpUClMxcCmQ"
+  },
+  "beat::agra::Mehtab Bagh sunset": {
+    "query": "Mehtab Bagh, Agra",
+    "resolvedName": "Mehtab Bagh",
+    "placeId": "ChIJLVpWKd5wdDkRfKYlTOV-x5w",
+    "ftid": "0x397470de29565a2d:0x9cc77ee54c25a67c",
+    "lat": 27.1800118,
+    "lng": 78.040887,
+    "distanceKm": 3.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mehtab%20Bagh%2C%20Agra&query_place_id=ChIJLVpWKd5wdDkRfKYlTOV-x5w"
+  },
+  "beat::agra::Fatehpur Sikri excursion": {
+    "query": "Fatehpur Sikri, Agra",
+    "resolvedName": "Fatehpur Sikri, Uttar Pradesh 283110",
+    "placeId": "ChIJjXlTSliRczkRQPvBkGfUkwg",
+    "ftid": "0x397391584a53798d:0x893d46790c1fb40",
+    "lat": 27.0945291,
+    "lng": 77.6679292,
+    "distanceKm": 35,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Fatehpur%20Sikri%2C%20Agra&query_place_id=ChIJjXlTSliRczkRQPvBkGfUkwg"
+  },
+  "beat::jaipur::Hawa Mahal morning view": {
+    "query": "Hawa Mahal, Jaipur",
+    "resolvedName": "Hawa Mahal",
+    "placeId": "ChIJpQvTG0uxbTkRDLLMHlNdDoY",
+    "ftid": "0x396db14b1bd30ba5:0x860e5d531eccb20c",
+    "lat": 26.9240458,
+    "lng": 75.8267144,
+    "distanceKm": 1.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Hawa%20Mahal%2C%20Jaipur&query_place_id=ChIJpQvTG0uxbTkRDLLMHlNdDoY"
+  },
+  "beat::jaipur::Amber Fort & Sheesh Mahal": {
+    "query": "Amber Fort, Jaipur",
+    "resolvedName": "Amber Palace",
+    "placeId": "ChIJ-w3Sy1qwbTkRK34UR2ffIWI",
+    "ftid": "0x396db05acbd20dfb:0x6221df6747147e2b",
+    "lat": 26.9854865,
+    "lng": 75.8513454,
+    "distanceKm": 8.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Amber%20Fort%2C%20Jaipur&query_place_id=ChIJ-w3Sy1qwbTkRK34UR2ffIWI"
+  },
+  "beat::jaipur::City Palace & Jantar Mantar": {
+    "query": "City Palace, Jaipur",
+    "resolvedName": "The City Palace",
+    "placeId": "ChIJwbAghgu0bTkRYHt9ATEVgEQ",
+    "ftid": "0x396db40b8620b0c1:0x44801531017d7b60",
+    "lat": 26.9257943,
+    "lng": 75.8236714,
+    "distanceKm": 1.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=City%20Palace%2C%20Jaipur&query_place_id=ChIJwbAghgu0bTkRYHt9ATEVgEQ"
+  },
+  "beat::jaipur::Nahargarh Fort sunset": {
+    "query": "Nahargarh, Jaipur",
+    "resolvedName": "Nahargarh Fort",
+    "placeId": "ChIJ0fNH81yxbTkRi56uF-amqgo",
+    "ftid": "0x396db15cf347f3d1:0xaaaa6e617ae9e8b",
+    "lat": 26.9401659,
+    "lng": 75.8170373,
+    "distanceKm": 2.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Nahargarh%2C%20Jaipur&query_place_id=ChIJ0fNH81yxbTkRi56uF-amqgo"
+  },
+  "beat::goa::Baga & Calangute Beach morning walk": {
+    "query": "Baga Beach, Goa",
+    "resolvedName": "Baga Beach",
+    "placeId": "ChIJ_96h2BzqvzsR4ME17sBmcLo",
+    "ftid": "0x3bbfea1cd8a1deff:0xba7066c0ee35c1e0",
+    "lat": 15.5552787,
+    "lng": 73.7517307,
+    "distanceKm": 45.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Baga%20Beach%2C%20Goa&query_place_id=ChIJ_96h2BzqvzsR4ME17sBmcLo"
+  },
+  "beat::goa::Basilica of Bom Jesus & Old Goa": {
+    "query": "Basilica of Bom Jesus, Goa",
+    "resolvedName": "Basilica of Bom Jesus",
+    "placeId": "ChIJiQKbufK-vzsRuKcVn2hWgB4",
+    "ftid": "0x3bbfbef2b99b0289:0x1e8056689f15a7b8",
+    "lat": 15.5008238,
+    "lng": 73.9114061,
+    "distanceKm": 29.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Basilica%20of%20Bom%20Jesus%2C%20Goa&query_place_id=ChIJiQKbufK-vzsRuKcVn2hWgB4"
+  },
+  "beat::goa::Dudhsagar Falls & spice plantation": {
+    "query": "Dudhsagar Falls, Goa",
+    "resolvedName": "Dudhsagar Falls",
+    "placeId": "ChIJQ4srFBimvzsRJQI7KOdIlP0",
+    "ftid": "0x3bbfa618142b8b43:0xfd9448e7283b0225",
+    "lat": 15.3144375,
+    "lng": 74.3143073,
+    "distanceKm": 24.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Dudhsagar%20Falls%2C%20Goa&query_place_id=ChIJQ4srFBimvzsRJQI7KOdIlP0"
+  },
+  "beat::munnar::Eravikulam National Park": {
+    "query": "Eravikulam National Park, Munnar",
+    "resolvedName": "Eravikulam National Park",
+    "placeId": "ChIJ4fVPfqqbBzsRoPgpZ-6Us-Q",
+    "ftid": "0x3b079baa7e4ff5e1:0xe4b394ee6729f8a0",
+    "lat": 10.1453912,
+    "lng": 77.0366346,
+    "distanceKm": 7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Eravikulam%20National%20Park%2C%20Munnar&query_place_id=ChIJ4fVPfqqbBzsRoPgpZ-6Us-Q"
+  },
+  "beat::munnar::Tea Garden walk & photo point": {
+    "query": "Rajamala, Munnar",
+    "resolvedName": "RAJAMALAI HILLS CHECKPOST",
+    "placeId": "ChIJu0gDvfqaBzsRa-1qeuM3j24",
+    "ftid": "0x3b079afabd0348bb:0x6e8f37e37a6aed6b",
+    "lat": 10.1430336,
+    "lng": 77.0397969,
+    "distanceKm": 6.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Rajamala%2C%20Munnar&query_place_id=ChIJu0gDvfqaBzsRa-1qeuM3j24"
+  },
+  "beat::udaipur::Jagdish Temple morning darshan": {
+    "query": "Jagdish Temple, Udaipur",
+    "resolvedName": "Jagdish Temple",
+    "placeId": "ChIJ44SA0mXlZzkROFPFp4ABD_A",
+    "ftid": "0x3967e565d28084e3:0xf00f0180a7c55338",
+    "lat": 24.5796536,
+    "lng": 73.6836153,
+    "distanceKm": 0.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Jagdish%20Temple%2C%20Udaipur&query_place_id=ChIJ44SA0mXlZzkROFPFp4ABD_A"
+  },
+  "beat::udaipur::City Palace complex": {
+    "query": "City Palace, Udaipur",
+    "resolvedName": "City Palace",
+    "placeId": "ChIJ1adZBmTlZzkRDqvq-navV5I",
+    "ftid": "0x3967e5640659a7d5:0x9257af76faeaab0e",
+    "lat": 24.5764421,
+    "lng": 73.6835109,
+    "distanceKm": 0.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=City%20Palace%2C%20Udaipur&query_place_id=ChIJ1adZBmTlZzkRDqvq-navV5I"
+  },
+  "beat::udaipur::Saheliyon-ki-Bari gardens": {
+    "query": "Saheliyon ki Bari, Udaipur",
+    "resolvedName": "Saheliyon ki bari",
+    "placeId": "ChIJd9K3fdflZzkRQeScJCCgYZ0",
+    "ftid": "0x3967e5d77db7d277:0x9d61a020249ce441",
+    "lat": 24.6030064,
+    "lng": 73.6854901,
+    "distanceKm": 2.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Saheliyon%20ki%20Bari%2C%20Udaipur&query_place_id=ChIJd9K3fdflZzkRQeScJCCgYZ0"
+  },
+  "beat::udaipur::Sajjangarh Monsoon Palace sunset": {
+    "query": "Sajjangarh, Udaipur",
+    "resolvedName": "Monsoon Palace",
+    "placeId": "ChIJw7A_ucr6ZzkRJTV3E4HVc4A",
+    "ftid": "0x3967facab93fb0c3:0x8073d58113773525",
+    "lat": 24.5931853,
+    "lng": 73.6396056,
+    "distanceKm": 5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sajjangarh%2C%20Udaipur&query_place_id=ChIJw7A_ucr6ZzkRJTV3E4HVc4A"
+  },
+  "beat::varanasi::Kashi Vishwanath Temple corridor": {
+    "query": "Kashi Vishwanath Temple, Varanasi",
+    "resolvedName": "Shri Kashi Vishwanath Temple",
+    "placeId": "ChIJFwuU7iEujjkRE3v7zU8OYEg",
+    "ftid": "0x398e2e21ee940b17:0x48600e4fcdfb7b13",
+    "lat": 25.3108532,
+    "lng": 83.0106783,
+    "distanceKm": 2.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kashi%20Vishwanath%20Temple%2C%20Varanasi&query_place_id=ChIJFwuU7iEujjkRE3v7zU8OYEg"
+  },
+  "beat::varanasi::Sarnath Buddhist deer park excursion": {
+    "query": "Sarnath, Varanasi",
+    "resolvedName": "Sarnath, Varanasi, Uttar Pradesh",
+    "placeId": "ChIJK6HWcOgujjkRdKkf6rKFw6E",
+    "ftid": "0x398e2ee870d6a12b:0xa1c385b2ea1fa974",
+    "lat": 25.3715564,
+    "lng": 83.0252136,
+    "distanceKm": 4.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sarnath%2C%20Varanasi&query_place_id=ChIJK6HWcOgujjkRdKkf6rKFw6E"
+  },
+  "beat::varanasi::Grand Ganga Aarti at dusk": {
+    "query": "Dashashwamedh Ghat, Varanasi",
+    "resolvedName": "Dashashwamedh Ghat",
+    "placeId": "ChIJZx9BBB4ujjkRPMgcoTbvGqY",
+    "ftid": "0x398e2e1e04411f67:0xa61aef36a11cc83c",
+    "lat": 25.3062539,
+    "lng": 83.0102193,
+    "distanceKm": 3.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Dashashwamedh%20Ghat%2C%20Varanasi&query_place_id=ChIJZx9BBB4ujjkRPMgcoTbvGqY"
+  },
+  "beat::delhi::Red Fort (Lal Qila)": {
+    "query": "Red Fort, Delhi",
+    "resolvedName": "Red Fort",
+    "placeId": "ChIJ74XAbuL8DDkR-wJQ-vQyHkQ",
+    "ftid": "0x390cfce26ec085ef:0x441e32f4fa5002fb",
+    "lat": 28.6561592,
+    "lng": 77.2410203,
+    "distanceKm": 2.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Red%20Fort%2C%20Delhi&query_place_id=ChIJ74XAbuL8DDkR-wJQ-vQyHkQ"
+  },
+  "beat::delhi::Humayun's Tomb gardens": {
+    "query": "Humayun's Tomb, Delhi",
+    "resolvedName": "Humayun’s Tomb",
+    "placeId": "ChIJpwtG6BzjDDkRDajfOy268bk",
+    "ftid": "0x390ce31ce8460ba7:0xb9f1ba2d3bdfa80d",
+    "lat": 28.5932848,
+    "lng": 77.2507492,
+    "distanceKm": 8.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Humayun's%20Tomb%2C%20Delhi&query_place_id=ChIJpwtG6BzjDDkRDajfOy268bk"
+  },
+  "beat::delhi::Qutub Minar complex": {
+    "query": "Qutub Minar, Delhi",
+    "resolvedName": "Qutb Minar",
+    "placeId": "ChIJT5uBZwYeDTkRuJ11YPGVSYM",
+    "ftid": "0x390d1e0667819b4f:0x834995f160759db8",
+    "lat": 28.5244754,
+    "lng": 77.1855206,
+    "distanceKm": 16.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Qutub%20Minar%2C%20Delhi&query_place_id=ChIJT5uBZwYeDTkRuJ11YPGVSYM"
+  },
+  "beat::delhi::India Gate & Kartavya Path sunset": {
+    "query": "India Gate, Delhi",
+    "resolvedName": "India Gate",
+    "placeId": "ChIJC03rqdriDDkRXT6SJRGXFwc",
+    "ftid": "0x390ce2daa9eb4d0b:0x717971125923e5d",
+    "lat": 28.612912,
+    "lng": 77.2295097,
+    "distanceKm": 6.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=India%20Gate%2C%20Delhi&query_place_id=ChIJC03rqdriDDkRXT6SJRGXFwc"
+  },
+  "beat::delhi::Akshardham Temple light & water show": {
+    "query": "Akshardham Temple, Delhi",
+    "resolvedName": "Swaminarayan Akshardham",
+    "placeId": "ChIJ-7F1mVvjDDkRKrLzXiafoGk",
+    "ftid": "0x390ce35b9975b1fb:0x69a09f265ef3b22a",
+    "lat": 28.6126735,
+    "lng": 77.2772619,
+    "distanceKm": 8.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Akshardham%20Temple%2C%20Delhi&query_place_id=ChIJ-7F1mVvjDDkRKrLzXiafoGk"
+  },
+  "beat::mumbai::Gateway of India & Colaba heritage walk": {
+    "query": "Gateway of India, Mumbai",
+    "resolvedName": "Gateway Of India Mumbai",
+    "placeId": "ChIJrVwNOsfR5zsRPHOcIKclCsc",
+    "ftid": "0x3be7d1c73a0d5cad:0xc70a25a7209c733c",
+    "lat": 18.9219841,
+    "lng": 72.8346543,
+    "distanceKm": 15.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Gateway%20of%20India%2C%20Mumbai&query_place_id=ChIJrVwNOsfR5zsRPHOcIKclCsc"
+  },
+  "beat::mumbai::Elephanta Caves island ferry": {
+    "query": "Elephanta Caves, Mumbai",
+    "resolvedName": "Elephanta Caves",
+    "placeId": "ChIJL2CjfTDF5zsRP_WuGhsYq_Q",
+    "ftid": "0x3be7c5307da3602f:0xf4ab181b1aaef53f",
+    "lat": 18.9633474,
+    "lng": 72.9314864,
+    "distanceKm": 12.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Elephanta%20Caves%2C%20Mumbai&query_place_id=ChIJL2CjfTDF5zsRP_WuGhsYq_Q"
+  },
+  "beat::mumbai::Haji Ali Dargah & Mahalaxmi Temple": {
+    "query": "Haji Ali Dargah, Mumbai",
+    "resolvedName": "Haji Ali Dargah",
+    "placeId": "ChIJ40INk37O5zsRBY0Hq8dd4NU",
+    "ftid": "0x3be7ce7e930d42e3:0xd5e05dc7ab078d05",
+    "lat": 18.9827935,
+    "lng": 72.8090001,
+    "distanceKm": 10.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Haji%20Ali%20Dargah%2C%20Mumbai&query_place_id=ChIJ40INk37O5zsRBY0Hq8dd4NU"
+  },
+  "beat::mumbai::Siddhivinayak Temple darshan": {
+    "query": "Shree Siddhivinayak Temple, Prabhadevi, Mumbai",
+    "resolvedName": "Shree Siddhivinayak Temple",
+    "placeId": "ChIJw-tR2MDO5zsRKWNSFGmHYcw",
+    "ftid": "0x3be7cec0d851ebc3:0xcc61876914526329",
+    "lat": 19.0169538,
+    "lng": 72.8303939,
+    "distanceKm": 5.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Shree%20Siddhivinayak%20Temple%2C%20Prabhadevi%2C%20Mumbai&query_place_id=ChIJw-tR2MDO5zsRKWNSFGmHYcw"
+  },
+  "beat::mumbai::Mumbadevi Temple & Zaveri Bazaar": {
+    "query": "Mumbadevi Temple, Bhuleshwar, Mumbai",
+    "resolvedName": "Shri Mumba Devi",
+    "placeId": "ChIJGzJjx-zP5zsRsiUiWJoSU5g",
+    "ftid": "0x3be7cfecc763321b:0x9853129a582225b2",
+    "lat": 18.951962,
+    "lng": 72.8307607,
+    "distanceKm": 12.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mumbadevi%20Temple%2C%20Bhuleshwar%2C%20Mumbai&query_place_id=ChIJGzJjx-zP5zsRsiUiWJoSU5g"
+  },
+  "beat::mumbai::Babulnath Temple Shiva darshan": {
+    "query": "Babulnath Temple, Girgaon, Mumbai",
+    "resolvedName": "Shree Babulnath Mandir, Mumbai",
+    "placeId": "ChIJS1S8ZgnO5zsRnXeeJ5QC7wQ",
+    "ftid": "0x3be7ce0966bc544b:0x4ef0294279e779d",
+    "lat": 18.958776,
+    "lng": 72.8085168,
+    "distanceKm": 12.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Babulnath%20Temple%2C%20Girgaon%2C%20Mumbai&query_place_id=ChIJS1S8ZgnO5zsRnXeeJ5QC7wQ"
+  },
+  "beat::mumbai::Walkeshwar Temple & Banganga Tank": {
+    "query": "Walkeshwar Temple, Malabar Hill, Mumbai",
+    "resolvedName": "Shri Walkeshwar Temple",
+    "placeId": "ChIJW4uaifnN5zsR3FyY7Il1vss",
+    "ftid": "0x3be7cdf9899a8b5b:0xcbbe7589ec985cdc",
+    "lat": 18.9456144,
+    "lng": 72.7931926,
+    "distanceKm": 14.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Walkeshwar%20Temple%2C%20Malabar%20Hill%2C%20Mumbai&query_place_id=ChIJW4uaifnN5zsR3FyY7Il1vss"
+  },
+  "beat::mumbai::ISKCON Juhu evening aarti": {
+    "query": "ISKCON Temple Juhu, Mumbai",
+    "resolvedName": "ISKCON Temple, Juhu",
+    "placeId": "ChIJLzY0POjJ5zsRSA6DT53G1wY",
+    "ftid": "0x3be7c9e83c34362f:0x6d7c69d4f830e48",
+    "lat": 19.113016,
+    "lng": 72.826576,
+    "distanceKm": 7.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=ISKCON%20Temple%20Juhu%2C%20Mumbai&query_place_id=ChIJLzY0POjJ5zsRSA6DT53G1wY"
+  },
+  "beat::mumbai::Radha Gopinath Temple at Chowpatty": {
+    "query": "Sri Sri Radha Gopinath Temple, Chowpatty, Mumbai",
+    "resolvedName": "ISKCON Chowpatty (Sri Sri Radha Gopinath Mandir)",
+    "placeId": "ChIJv9IVlRTO5zsRNXRFPGBa-vM",
+    "ftid": "0x3be7ce149515d2bf:0xf3fa5a603c457435",
+    "lat": 18.9576799,
+    "lng": 72.8097855,
+    "distanceKm": 12.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sri%20Sri%20Radha%20Gopinath%20Temple%2C%20Chowpatty%2C%20Mumbai&query_place_id=ChIJv9IVlRTO5zsRNXRFPGBa-vM"
+  },
+  "beat::mumbai::Marine Drive Queen's Necklace sunset walk": {
+    "query": "Marine Drive, Mumbai",
+    "resolvedName": "Marine Dr",
+    "placeId": "ChIJnUPoXuLR5zsRK60mJ0-SzVo",
+    "ftid": "0x3be7d1e25ee8439d:0x5acd924f2726ad2b",
+    "lat": 18.9435765,
+    "lng": 72.8227771,
+    "distanceKm": 13.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Marine%20Drive%2C%20Mumbai&query_place_id=ChIJnUPoXuLR5zsRK60mJ0-SzVo"
+  },
+  "beat::kochi::Chinese Fishing Nets at Fort Kochi dawn": {
+    "query": "Chinese Fishing Nets, Kochi",
+    "resolvedName": "Chinese Fishing Nets",
+    "placeId": "ChIJc7waRcsSCDsRUQdGwZAsB88",
+    "ftid": "0x3b0812cb451abc73:0xcf072c90c1460751",
+    "lat": 9.9683959,
+    "lng": 76.2422419,
+    "distanceKm": 0.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Chinese%20Fishing%20Nets%2C%20Kochi&query_place_id=ChIJc7waRcsSCDsRUQdGwZAsB88"
+  },
+  "beat::kochi::Mattancherry Palace (Dutch Palace)": {
+    "query": "Mattancherry Palace, Kochi",
+    "resolvedName": "Mattancherry Palace",
+    "placeId": "ChIJG3_h00RtCDsRyLV04bOkgGg",
+    "ftid": "0x3b086d44d3e17f1b:0x6880a4b3e174b5c8",
+    "lat": 9.9582773,
+    "lng": 76.2593508,
+    "distanceKm": 2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mattancherry%20Palace%2C%20Kochi&query_place_id=ChIJG3_h00RtCDsRyLV04bOkgGg"
+  },
+  "beat::kochi::Jew Town & Paradesi Synagogue": {
+    "query": "Paradesi Synagogue, Kochi",
+    "resolvedName": "Paradesi Synagogue",
+    "placeId": "ChIJyxJJE8RtCDsRro21KZkb9dE",
+    "ftid": "0x3b086dc4134912cb:0xd1f51b9929b58dae",
+    "lat": 9.9574448,
+    "lng": 76.2592638,
+    "distanceKm": 2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Paradesi%20Synagogue%2C%20Kochi&query_place_id=ChIJyxJJE8RtCDsRro21KZkb9dE"
+  },
+  "beat::kochi::Kathakali dance performance & makeup": {
+    "query": "Kathakali, Kochi",
+    "resolvedName": "GREAT K V Kathakali centre.",
+    "placeId": "ChIJRW4KizNtCDsRYdFhbtnR5lM",
+    "ftid": "0x3b086d338b0a6e45:0x53e6d1d96e61d161",
+    "lat": 9.9639073,
+    "lng": 76.2428112,
+    "distanceKm": 0.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kathakali%2C%20Kochi&query_place_id=ChIJRW4KizNtCDsRYdFhbtnR5lM"
+  },
+  "beat::rishikesh::Beatles Ashram (Chaurasi Kutia)": {
+    "query": "Beatles Ashram, Rishikesh",
+    "resolvedName": "The Beatles Ashram, Rishikesh",
+    "placeId": "ChIJcxN2RBIWCTkRqa43efcK04A",
+    "ftid": "0x3909161244761373:0x80d30af77937aea9",
+    "lat": 30.1127675,
+    "lng": 78.3121592,
+    "distanceKm": 2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Beatles%20Ashram%2C%20Rishikesh&query_place_id=ChIJcxN2RBIWCTkRqa43efcK04A"
+  },
+  "beat::rishikesh::Ram Jhula & Lakshman Jhula suspension bridges": {
+    "query": "Ram Jhula, Rishikesh",
+    "resolvedName": "Ram Jhula, Rishikesh, Uttarakhand",
+    "placeId": "ChIJT0JOEz8WCTkRenKAI-QuqYM",
+    "ftid": "0x3909163f134e424f:0x83a92ee42380727a",
+    "lat": 30.1233459,
+    "lng": 78.3144507,
+    "distanceKm": 2.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Ram%20Jhula%2C%20Rishikesh&query_place_id=ChIJT0JOEz8WCTkRenKAI-QuqYM"
+  },
+  "beat::rishikesh::Triveni Ghat Maha Aarti at sunset": {
+    "query": "Triveni Ghat, Rishikesh",
+    "resolvedName": "Triveni Ghat",
+    "placeId": "ChIJJ6F4g8Y9CTkRywQ8V2Rjtls",
+    "ftid": "0x39093dc68378a127:0x5bb66364573c04cb",
+    "lat": 30.1037344,
+    "lng": 78.2993218,
+    "distanceKm": 0.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Triveni%20Ghat%2C%20Rishikesh&query_place_id=ChIJJ6F4g8Y9CTkRywQ8V2Rjtls"
   }
 }
