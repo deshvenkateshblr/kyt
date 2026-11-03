@@ -449,16 +449,6 @@
     "distanceKm": 12.1,
     "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Elephanta%20Caves%2C%20Mumbai&query_place_id=ChIJL2CjfTDF5zsRP_WuGhsYq_Q"
   },
-  "beat::mumbai::Haji Ali Dargah & Mahalaxmi Temple": {
-    "query": "Haji Ali Dargah, Mumbai",
-    "resolvedName": "Haji Ali Dargah",
-    "placeId": "ChIJ40INk37O5zsRBY0Hq8dd4NU",
-    "ftid": "0x3be7ce7e930d42e3:0xd5e05dc7ab078d05",
-    "lat": 18.9827935,
-    "lng": 72.8090001,
-    "distanceKm": 10.2,
-    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Haji%20Ali%20Dargah%2C%20Mumbai&query_place_id=ChIJ40INk37O5zsRBY0Hq8dd4NU"
-  },
   "beat::mumbai::Siddhivinayak Temple darshan": {
     "query": "Shree Siddhivinayak Temple, Prabhadevi, Mumbai",
     "resolvedName": "Shree Siddhivinayak Temple",
@@ -598,5 +588,373 @@
     "lng": 78.2993218,
     "distanceKm": 0.9,
     "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Triveni%20Ghat%2C%20Rishikesh&query_place_id=ChIJJ6F4g8Y9CTkRywQ8V2Rjtls"
+  },
+  "beat::mumbai::Haji Ali Dargah": {
+    "query": "Haji Ali Dargah, Mumbai",
+    "resolvedName": "Haji Ali Dargah",
+    "placeId": "ChIJ40INk37O5zsRBY0Hq8dd4NU",
+    "ftid": "0x3be7ce7e930d42e3:0xd5e05dc7ab078d05",
+    "lat": 18.9827935,
+    "lng": 72.8090001,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Haji%20Ali%20Dargah%2C%20Mumbai&query_place_id=ChIJ40INk37O5zsRBY0Hq8dd4NU"
+  },
+  "beat::mumbai::Shree Mahalaxmi Temple": {
+    "query": "Shri Mahalakshmi Devi Temple, Mumbai",
+    "resolvedName": "Shri Mahalakshmi Devi Temple",
+    "placeId": "ChIJ0T445WzO5zsRYt1jJFF6DOI",
+    "ftid": "0x3be7ce6ce5383ed1:0xe20c7a512463dd62",
+    "lat": 18.9774442,
+    "lng": 72.8064233,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Shri%20Mahalakshmi%20Devi%20Temple%2C%20Mumbai&query_place_id=ChIJ0T445WzO5zsRYt1jJFF6DOI"
+  },
+  "beat::manali::Hadimba Devi Temple & cedar forest": {
+    "query": "Hadimba Temple, Manali",
+    "resolvedName": "Hadimba Devi Temple",
+    "placeId": "ChIJPeVowAaIBDkRnIfuPkskqi0",
+    "ftid": "0x39048806c068e53d:0x2daa244b3eee879c",
+    "lat": 32.2483526,
+    "lng": 77.1815727,
+    "distanceKm": 0.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Hadimba%20Temple%2C%20Manali&query_place_id=ChIJPeVowAaIBDkRnIfuPkskqi0"
+  },
+  "beat::manali::Solang Valley adventure sports": {
+    "query": "Solang Valley, Manali",
+    "resolvedName": "Solang Valley, Himachal Pradesh 175103",
+    "placeId": "ChIJuemUiDuHBDkRjPd9NhAkVRc",
+    "ftid": "0x3904873b8894e9b9:0x17552410367df78c",
+    "lat": 32.3131405,
+    "lng": 77.1635401,
+    "distanceKm": 7.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Solang%20Valley%2C%20Manali&query_place_id=ChIJuemUiDuHBDkRjPd9NhAkVRc"
+  },
+  "beat::manali::Atal Tunnel & Sissu waterfall excursion": {
+    "query": "Atal Tunnel, Manali",
+    "resolvedName": "Atal Tunnel, Himachal Pradesh",
+    "placeId": "ChIJZ5vAAyGABDkRxRpe-HRibxY",
+    "ftid": "0x3904802103c09b67:0x166f6274f85e1ac5",
+    "lat": 32.401222,
+    "lng": 77.1491316,
+    "distanceKm": 17.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Atal%20Tunnel%2C%20Manali&query_place_id=ChIJZ5vAAyGABDkRxRpe-HRibxY"
+  },
+  "beat::manali::Vashisht hot sulfur springs & temple": {
+    "query": "Vashisht Village, Manali",
+    "resolvedName": "Shri Vasishtha Temple, Vashisht Village",
+    "placeId": "ChIJLYZtvoyHBDkRZXx3G1GuL5g",
+    "ftid": "0x3904878cbe6d862d:0x982fae511b777c65",
+    "lat": 32.2650375,
+    "lng": 77.187917,
+    "distanceKm": 2.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Vashisht%20Village%2C%20Manali&query_place_id=ChIJLYZtvoyHBDkRZXx3G1GuL5g"
+  },
+  "beat::shimla::The Ridge & Christ Church": {
+    "query": "The Ridge, Shimla",
+    "resolvedName": "The Ridge",
+    "placeId": "ChIJ3y2ed5N4BTkRBCcwg_1BYUI",
+    "ftid": "0x39057893779e2ddf:0x426141fd83302704",
+    "lat": 31.1048001,
+    "lng": 77.1746678,
+    "distanceKm": 0.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Ridge%2C%20Shimla&query_place_id=ChIJ3y2ed5N4BTkRBCcwg_1BYUI"
+  },
+  "beat::shimla::Jakhoo Temple & ropeway": {
+    "query": "Jakhoo Temple, Shimla",
+    "resolvedName": "Shree Hanuman Mandir, Jakhu",
+    "placeId": "ChIJI-OqO5h4BTkRkSXEITCbdgE",
+    "ftid": "0x390578983baae323:0x1769b3021c42591",
+    "lat": 31.1011646,
+    "lng": 77.1839832,
+    "distanceKm": 1.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Jakhoo%20Temple%2C%20Shimla&query_place_id=ChIJI-OqO5h4BTkRkSXEITCbdgE"
+  },
+  "beat::shimla::Viceregal Lodge (Rashtrapati Niwas)": {
+    "query": "Viceregal Lodge, Shimla",
+    "resolvedName": "Viceregal Lodge",
+    "placeId": "ChIJHUu5Cht5BTkRh5mXIGUXKsM",
+    "ftid": "0x3905791b0ab94b1d:0xc32a176520979987",
+    "lat": 31.1035961,
+    "lng": 77.1422014,
+    "distanceKm": 2.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Viceregal%20Lodge%2C%20Shimla&query_place_id=ChIJHUu5Cht5BTkRh5mXIGUXKsM"
+  },
+  "beat::shimla::Kalka-Shimla Toy Train ride": {
+    "query": "Shimla Railway Station",
+    "resolvedName": "Shimla",
+    "placeId": "ChIJnX0Q_OV4BTkRlE5wR50GoMg",
+    "ftid": "0x390578e5fc107d9d:0xc8a0069d47704e94",
+    "lat": 31.102486,
+    "lng": 77.159796,
+    "distanceKm": 1.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Shimla%20Railway%20Station&query_place_id=ChIJnX0Q_OV4BTkRlE5wR50GoMg"
+  },
+  "beat::darjeeling::Tiger Hill sunrise over Mount Kanchenjunga": {
+    "query": "Tiger Hill, Darjeeling",
+    "resolvedName": "Tiger Hill, Darjeeling",
+    "placeId": "ChIJlX9Wccgv5DkRWIwFXOWrwqE",
+    "ftid": "0x39e42fc871567f95:0xa1c2abe55c058c58",
+    "lat": 26.9966667,
+    "lng": 88.2944444,
+    "distanceKm": 5.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Tiger%20Hill%2C%20Darjeeling&query_place_id=ChIJlX9Wccgv5DkRWIwFXOWrwqE"
+  },
+  "beat::darjeeling::Batasia Loop & War Memorial": {
+    "query": "Batasia Loop, Darjeeling",
+    "resolvedName": "Batasia Loop Darjeeling",
+    "placeId": "ChIJN317GAAv5DkRrMegCeTCNjE",
+    "ftid": "0x39e42f00187b7d37:0x3136c2e409a0c7ac",
+    "lat": 27.016892,
+    "lng": 88.2465488,
+    "distanceKm": 2.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Batasia%20Loop%2C%20Darjeeling&query_place_id=ChIJN317GAAv5DkRrMegCeTCNjE"
+  },
+  "beat::darjeeling::Darjeeling Himalayan Railway steam joyride": {
+    "query": "Darjeeling Railway Station",
+    "resolvedName": "Darjeeling",
+    "placeId": "ChIJaTszC5Mu5DkRd-DjDNvb5QE",
+    "ftid": "0x39e42e930b333b69:0x1e5dbdb0ce3e077",
+    "lat": 27.03804,
+    "lng": 88.26301,
+    "distanceKm": 0,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Darjeeling%20Railway%20Station&query_place_id=ChIJaTszC5Mu5DkRd-DjDNvb5QE"
+  },
+  "beat::darjeeling::Himalayan Mountaineering Institute & Zoo": {
+    "query": "Himalayan Mountaineering Institute, Darjeeling",
+    "resolvedName": "Himalayan Mountaineering Institute",
+    "placeId": "ChIJscSwrK8u5DkRL1bAtloiAZU",
+    "ftid": "0x39e42eafacb0c4b1:0x9501225ab6c0562f",
+    "lat": 27.0584865,
+    "lng": 88.2539376,
+    "distanceKm": 2.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Himalayan%20Mountaineering%20Institute%2C%20Darjeeling&query_place_id=ChIJscSwrK8u5DkRL1bAtloiAZU"
+  },
+  "beat::ooty::Nilgiri Mountain Railway Toy Train": {
+    "query": "Ooty Railway Station",
+    "resolvedName": "Ooty Railway Station",
+    "placeId": "ChIJ94vrcgC9qDsRhe-EJsgrh3M",
+    "ftid": "0x3ba8bd0072eb8bf7:0x73872bc82684ef85",
+    "lat": 11.4052156,
+    "lng": 76.6962564,
+    "distanceKm": 1.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Ooty%20Railway%20Station&query_place_id=ChIJ94vrcgC9qDsRhe-EJsgrh3M"
+  },
+  "beat::ooty::Government Botanical Garden": {
+    "query": "Botanical Garden, Ooty",
+    "resolvedName": "Government Botanical Garden",
+    "placeId": "ChIJfcu8W-u9qDsRj7OFxEygZH0",
+    "ftid": "0x3ba8bdeb5bbccb7d:0x7d64a04cc485b38f",
+    "lat": 11.4188751,
+    "lng": 76.7113878,
+    "distanceKm": 1.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Botanical%20Garden%2C%20Ooty&query_place_id=ChIJfcu8W-u9qDsRj7OFxEygZH0"
+  },
+  "beat::ooty::Doddabetta Peak & telescope house": {
+    "query": "Doddabetta Peak, Ooty",
+    "resolvedName": "Doddabetta Peak",
+    "placeId": "ChIJQ04Nnv-VqDsReeHdtrfB-qw",
+    "ftid": "0x3ba895ff9e0d4e43:0xacfac1b7b6dde179",
+    "lat": 11.4007267,
+    "lng": 76.7358165,
+    "distanceKm": 3.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Doddabetta%20Peak%2C%20Ooty&query_place_id=ChIJQ04Nnv-VqDsReeHdtrfB-qw"
+  },
+  "beat::mysore::Chamundeshwari Temple atop Chamundi Hill": {
+    "query": "Chamundeshwari Temple, Mysore",
+    "resolvedName": "Shri Chamundeshwari Temple",
+    "placeId": "ChIJN46-cWBwrzsRXsYH83YJuXQ",
+    "ftid": "0x3baf706071be8e37:0x74b90976f307c65e",
+    "lat": 12.2725072,
+    "lng": 76.6707214,
+    "distanceKm": 4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Chamundeshwari%20Temple%2C%20Mysore&query_place_id=ChIJN46-cWBwrzsRXsYH83YJuXQ"
+  },
+  "beat::mysore::Mysore Palace (Amba Vilas)": {
+    "query": "Mysore Palace, Mysore",
+    "resolvedName": "Mysuru Palace",
+    "placeId": "ChIJ-aH5AxFwrzsRDdokoeK6f8M",
+    "ftid": "0x3baf701103f9a1f9:0xc37fbae2a124da0d",
+    "lat": 12.305163,
+    "lng": 76.6551749,
+    "distanceKm": 0,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mysore%20Palace%2C%20Mysore&query_place_id=ChIJ-aH5AxFwrzsRDdokoeK6f8M"
+  },
+  "beat::mysore::Brindavan Gardens & musical fountain": {
+    "query": "Brindavan Gardens, Mysore",
+    "resolvedName": "Brindavana Gardens",
+    "placeId": "ChIJXcr-CeF4rzsRsrbm4H66X5E",
+    "ftid": "0x3baf78e109feca5d:0x915fba7ee0e6b6b2",
+    "lat": 12.4232732,
+    "lng": 76.5745085,
+    "distanceKm": 15.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Brindavan%20Gardens%2C%20Mysore&query_place_id=ChIJXcr-CeF4rzsRsrbm4H66X5E"
+  },
+  "beat::hyderabad::Charminar & Laad Bazaar": {
+    "query": "Charminar, Hyderabad",
+    "resolvedName": "Charminar",
+    "placeId": "ChIJm5MaboqXyzsR-xPxquRpWss",
+    "ftid": "0x3bcb978a6e1a939b:0xcb5a69e4aaf113fb",
+    "lat": 17.3615636,
+    "lng": 78.4746645,
+    "distanceKm": 0.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Charminar%2C%20Hyderabad&query_place_id=ChIJm5MaboqXyzsR-xPxquRpWss"
+  },
+  "beat::hyderabad::Golconda Fort & acoustics": {
+    "query": "Golconda Fort, Hyderabad",
+    "resolvedName": "Golconda Fort, Hyderabad, Telangana",
+    "placeId": "ChIJ80ITX4yWyzsR34Tevb2pUtc",
+    "ftid": "0x3bcb968c5f1342f3:0xd752a9bdbdde84df",
+    "lat": 17.3847636,
+    "lng": 78.4033392,
+    "distanceKm": 8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Golconda%20Fort%2C%20Hyderabad&query_place_id=ChIJ80ITX4yWyzsR34Tevb2pUtc"
+  },
+  "beat::hyderabad::Chowmahalla Palace": {
+    "query": "Chowmahalla Palace, Hyderabad",
+    "resolvedName": "Chowmahalla Palace",
+    "placeId": "ChIJq6qq2oqXyzsR6Ovd2kXV2U0",
+    "ftid": "0x3bcb978adaaaaaab:0x4dd9d545daddebe8",
+    "lat": 17.3580016,
+    "lng": 78.4716789,
+    "distanceKm": 0.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Chowmahalla%20Palace%2C%20Hyderabad&query_place_id=ChIJq6qq2oqXyzsR6Ovd2kXV2U0"
+  },
+  "beat::kolkata::Victoria Memorial & Maidan": {
+    "query": "Victoria Memorial, Kolkata",
+    "resolvedName": "Victoria Memorial",
+    "placeId": "ChIJXQGuRhN3AjoRY5fjvORAtQA",
+    "ftid": "0x3a02771346ae015d:0xb540e4bce39763",
+    "lat": 22.5448082,
+    "lng": 88.3425578,
+    "distanceKm": 3.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Victoria%20Memorial%2C%20Kolkata&query_place_id=ChIJXQGuRhN3AjoRY5fjvORAtQA"
+  },
+  "beat::kolkata::Dakshineswar Kali Temple & Belur Math": {
+    "query": "Dakshineswar Kali Temple, Kolkata",
+    "resolvedName": "Dakshineswar Kali Temple",
+    "placeId": "ChIJKXjZ3QOd-DkRTF0w7e-Ao_8",
+    "ftid": "0x39f89d03ddd97829:0xffa380efed305d4c",
+    "lat": 22.654884,
+    "lng": 88.3576911,
+    "distanceKm": 9.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Dakshineswar%20Kali%20Temple%2C%20Kolkata&query_place_id=ChIJKXjZ3QOd-DkRTF0w7e-Ao_8"
+  },
+  "beat::chennai::Kapaleeshwarar Temple, Mylapore": {
+    "query": "Kapaleeshwarar Temple, Chennai",
+    "resolvedName": "Kapaleeshwarar Temple",
+    "placeId": "ChIJM-WyVNJnUjoRidu8sHTZJ8s",
+    "ftid": "0x3a5267d254b2e533:0xcb27d974b0bcdb89",
+    "lat": 13.0337268,
+    "lng": 80.269785,
+    "distanceKm": 5.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kapaleeshwarar%20Temple%2C%20Chennai&query_place_id=ChIJM-WyVNJnUjoRidu8sHTZJ8s"
+  },
+  "beat::chennai::San Thome Basilica & Fort St. George": {
+    "query": "San Thome Basilica, Chennai",
+    "resolvedName": "Santhome Cathedral Basilica",
+    "placeId": "ChIJH7hVUn9oUjoR3pS3Si7dSKE",
+    "ftid": "0x3a52687f5255b81f:0xa148dd2e4ab794de",
+    "lat": 13.0335957,
+    "lng": 80.2776894,
+    "distanceKm": 5.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=San%20Thome%20Basilica%2C%20Chennai&query_place_id=ChIJH7hVUn9oUjoR3pS3Si7dSKE"
+  },
+  "beat::chennai::Government Museum & Bronze Gallery": {
+    "query": "Government Museum, Chennai",
+    "resolvedName": "Government Museum Chennai",
+    "placeId": "ChIJ-4qb8w5mUjoRNhwcE3v6B5U",
+    "ftid": "0x3a52660ef39b8afb:0x9507fa7b131c1c36",
+    "lat": 13.0697641,
+    "lng": 80.2570356,
+    "distanceKm": 2.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Government%20Museum%2C%20Chennai&query_place_id=ChIJ-4qb8w5mUjoRNhwcE3v6B5U"
+  },
+  "beat::chennai::Marina Beach & Lighthouse sunset": {
+    "query": "Marina Beach, Chennai",
+    "resolvedName": "Marina Beach",
+    "placeId": "ChIJuzIBtptoUjoRCrZi347PSQU",
+    "ftid": "0x3a52689bb60132bb:0x549cf8edf62b60a",
+    "lat": 13.0499526,
+    "lng": 80.2824026,
+    "distanceKm": 3.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Marina%20Beach%2C%20Chennai&query_place_id=ChIJuzIBtptoUjoRCrZi347PSQU"
+  },
+  "beat::pondicherry::French Quarter (White Town) heritage walk": {
+    "query": "White Town, Pondicherry",
+    "resolvedName": "White Town, Puducherry",
+    "placeId": "ChIJYWqPNStiUzoRLbrYbWfGPC4",
+    "ftid": "0x3a53622b358f6a61:0x2e3cc6676dd8ba2d",
+    "lat": 11.9313835,
+    "lng": 79.8338761,
+    "distanceKm": 113,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=White%20Town%2C%20Pondicherry&query_place_id=ChIJYWqPNStiUzoRLbrYbWfGPC4"
+  },
+  "beat::pondicherry::Sri Aurobindo Ashram": {
+    "query": "Sri Aurobindo Ashram, Pondicherry",
+    "resolvedName": "Sri Aurobindo Ashram",
+    "placeId": "ChIJ5yDbPytiUzoRD2ZGY-0faC4",
+    "ftid": "0x3a53622b3fdb20e7:0x2e681fed6346660f",
+    "lat": 11.9367072,
+    "lng": 79.834115,
+    "distanceKm": 113.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sri%20Aurobindo%20Ashram%2C%20Pondicherry&query_place_id=ChIJ5yDbPytiUzoRD2ZGY-0faC4"
+  },
+  "beat::pondicherry::Auroville & Matrimandir meditation dome": {
+    "query": "Matrimandir, Auroville",
+    "resolvedName": "Auroville Matrimandir",
+    "placeId": "ChIJVVXlpJNmUzoRKDCokH0mXdU",
+    "ftid": "0x3a536693a4e55555:0xd55d267d90a83028",
+    "lat": 12.0070941,
+    "lng": 79.8106322,
+    "distanceKm": 121.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Matrimandir%2C%20Auroville&query_place_id=ChIJVVXlpJNmUzoRKDCokH0mXdU"
+  },
+  "beat::pondicherry::Promenade Beach & Gandhi statue sunset": {
+    "query": "Promenade Beach, Pondicherry",
+    "resolvedName": "Promenade Beach",
+    "placeId": "ChIJq_oNnCxiUzoR8fNcqLDnp_s",
+    "ftid": "0x3a53622c9c0dfaab:0xfba7e7b0a85cf3f1",
+    "lat": 11.9312773,
+    "lng": 79.8358019,
+    "distanceKm": 113,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Promenade%20Beach%2C%20Pondicherry&query_place_id=ChIJq_oNnCxiUzoR8fNcqLDnp_s"
+  },
+  "beat::hampi::Matanga Hill sunrise panorama": {
+    "query": "Matanga Hill, Hampi",
+    "resolvedName": "Matanga Hill",
+    "placeId": "ChIJM01BS8V_tzsR7MAjj-ckIug",
+    "ftid": "0x3bb77fc54b414d33:0xe82224e78f23c0ec",
+    "lat": 15.3316387,
+    "lng": 76.4682381,
+    "distanceKm": 0.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Matanga%20Hill%2C%20Hampi&query_place_id=ChIJM01BS8V_tzsR7MAjj-ckIug"
+  },
+  "beat::hampi::Virupaksha Temple darshan": {
+    "query": "Virupaksha Temple, Hampi",
+    "resolvedName": "Virupaksha Temple, Hampi",
+    "placeId": "ChIJV_KDB_F_tzsRDerWkB1XnEE",
+    "ftid": "0x3bb77ff10783f257:0x419c571d90d6ea0d",
+    "lat": 15.3351333,
+    "lng": 76.4586529,
+    "distanceKm": 0.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Virupaksha%20Temple%2C%20Hampi&query_place_id=ChIJV_KDB_F_tzsRDerWkB1XnEE"
+  },
+  "beat::hampi::Vittala Temple & iconic Stone Chariot": {
+    "query": "Vittala Temple, Hampi",
+    "resolvedName": "Ancient Shree Vijaya Vitthala Temple",
+    "placeId": "ChIJr9fR3sF_tzsRbZRZR4LIbKI",
+    "ftid": "0x3bb77fc1ded1d7af:0xa26cc8824759946d",
+    "lat": 15.3423049,
+    "lng": 76.4751917,
+    "distanceKm": 1.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Vittala%20Temple%2C%20Hampi&query_place_id=ChIJr9fR3sF_tzsRbZRZR4LIbKI"
+  },
+  "beat::hampi::Royal Enclosure & Lotus Mahal": {
+    "query": "Lotus Mahal, Hampi",
+    "resolvedName": "Lotus Mahal",
+    "placeId": "ChIJO0oL28x_tzsRAUU0ER7HXiY",
+    "ftid": "0x3bb77fccdb0b4a3b:0x265ec71e11344501",
+    "lat": 15.3202851,
+    "lng": 76.4713243,
+    "distanceKm": 2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Lotus%20Mahal%2C%20Hampi&query_place_id=ChIJO0oL28x_tzsRAUU0ER7HXiY"
   }
 }
