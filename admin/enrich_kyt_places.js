@@ -165,21 +165,25 @@ async function resolvePlace(page, query, expectedLat, expectedLng) {
 
 function loadCities(filepath) {
   const raw = fs.readFileSync(filepath, 'utf8');
-  const match = raw.match(/^(window\.KYT_CITIES\s*=\s*)(\[\s*\{[\s\S]*?\}\s*\])(\s*;[\s\S]*)$/);
-  if (match) {
+  const prefixMarker = 'window.KYT_CITIES = ';
+  const pIdx = raw.indexOf(prefixMarker);
+  let sIdx = raw.lastIndexOf('\r\n];');
+  let closeLen = 4;
+  if (sIdx === -1) {
+    sIdx = raw.lastIndexOf('\n];');
+    closeLen = 3;
+  }
+  if (pIdx !== -1 && sIdx !== -1) {
+    const prefix = raw.slice(0, pIdx + prefixMarker.length);
+    const jsonStr = raw.slice(pIdx + prefixMarker.length, sIdx + (closeLen - 1));
+    const suffix = raw.slice(sIdx + (closeLen - 1));
     return {
-      cities: JSON.parse(match[2]),
-      prefix: match[1],
-      suffix: match[3]
+      cities: JSON.parse(jsonStr),
+      prefix,
+      suffix
     };
   }
-  const match2 = raw.match(/window\.KYT_CITIES\s*=\s*(\[\s*\{[\s\S]*?\}\s*\])\s*;/);
-  if (!match2) throw new Error(`Could not parse window.KYT_CITIES from ${filepath}`);
-  return {
-    cities: JSON.parse(match2[1]),
-    prefix: 'window.KYT_CITIES = ',
-    suffix: ';\n'
-  };
+  throw new Error(`Could not parse window.KYT_CITIES from ${filepath}`);
 }
 
 function saveCities(cities, filepath, prefix, suffix) {
@@ -362,8 +366,15 @@ async function main() {
         if (beat.kind === 'activity') {
           delete beat.placeId;
           delete beat.ftid;
-          beat.mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(beatQuery)}`;
-          console.log(`   -> Beat ${bIdx + 1}/${beats.length} [ACTIVITY]: ${beat.title} (skipped)`);
+          const cleanCityName = city.name.replace(/\s*\(.*?\)/, '').trim();
+          let q = (beat.title || '').trim();
+          const escapedCity = cleanCityName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          const regex = new RegExp(`\\b(at|in)\\s+${escapedCity}$`, 'i');
+          if (!regex.test(q)) {
+            q = `${q} at ${cleanCityName}`;
+          }
+          beat.mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+          console.log(`   -> Beat ${bIdx + 1}/${beats.length} [ACTIVITY]: ${beat.title} -> ${q}`);
           continue;
         }
 

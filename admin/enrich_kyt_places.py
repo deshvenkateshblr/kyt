@@ -27,6 +27,9 @@ import time
 from pathlib import Path
 from urllib.parse import unquote, urlparse, parse_qs, quote_plus
 
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+
 # Base paths
 BASE_DIR = Path(__file__).resolve().parent.parent
 INPUT_JS_PATH = BASE_DIR / "data" / "cities.js"
@@ -190,19 +193,22 @@ def load_cities_js(filepath):
     """Load window.KYT_CITIES and preserve prefix/suffix code."""
     with open(filepath, "r", encoding="utf-8") as f:
         raw = f.read()
-    # Match the array block between window.KYT_CITIES = and the closing semicolon
-    match = re.search(r'^(window\.KYT_CITIES\s*=\s*)(\[\s*\{[\s\S]*?\}\s*\])(\s*;[\s\S]*)$', raw)
-    if match:
-        prefix = match.group(1)
-        cities_json = match.group(2)
-        suffix = match.group(3)
+
+    prefix_marker = "window.KYT_CITIES = "
+    p_idx = raw.find(prefix_marker)
+    s_idx = raw.rfind("\r\n];")
+    close_len = 4
+    if s_idx == -1:
+        s_idx = raw.rfind("\n];")
+        close_len = 3
+
+    if p_idx != -1 and s_idx != -1:
+        prefix = raw[:p_idx + len(prefix_marker)]
+        cities_json = raw[p_idx + len(prefix_marker):s_idx + (close_len - 1)]
+        suffix = raw[s_idx + (close_len - 1):]
         return json.loads(cities_json), prefix, suffix
-    
-    # Fallback search
-    match2 = re.search(r'window\.KYT_CITIES\s*=\s*(\[\s*\{[\s\S]*?\}\s*\])\s*;', raw)
-    if not match2:
-        raise ValueError(f"Could not parse window.KYT_CITIES array from {filepath}")
-    return json.loads(match2.group(1)), "window.KYT_CITIES = ", ";\n"
+
+    raise ValueError(f"Could not parse window.KYT_CITIES array from {filepath}")
 
 
 def save_cities_js(cities_data, filepath, prefix="window.KYT_CITIES = ", suffix=";\n"):
@@ -373,8 +379,12 @@ def main():
                     if beat.get("kind") == "activity":
                         beat.pop("placeId", None)
                         beat.pop("ftid", None)
-                        beat["mapsUrl"] = f"https://www.google.com/maps/search/?api=1&query={quote_plus(beat_query)}"
-                        print(f"   -> Beat {b_idx}/{len(beats)} [ACTIVITY]: {beat['title']} (skipped)")
+                        clean_city_name = re.sub(r'\s*\(.*?\)', '', city["name"]).strip()
+                        q = (beat.get("title") or "").strip()
+                        if not re.search(rf'\b(at|in)\s+{re.escape(clean_city_name)}$', q, re.IGNORECASE):
+                            q = f"{q} at {clean_city_name}"
+                        beat["mapsUrl"] = f"https://www.google.com/maps/search/?api=1&query={quote_plus(q)}"
+                        print(f"   -> Beat {b_idx}/{len(beats)} [ACTIVITY]: {beat['title']} -> {q}")
                         continue
 
                     # If already has placeId and not force, skip

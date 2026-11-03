@@ -110,7 +110,7 @@ window.KYT_CITIES = [
           "jain",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kinari%20Bazaar%2C%20Agra",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Petha%20%26%20chaat%20at%20Kinari%20Bazaar%20at%20Agra",
         "notes": "Sample world-famous Agra petha (candied ash gourd), spicy dal moth, and tangy bedmi puri chaat in the historic old walled city.",
         "kind": "activity"
       },
@@ -297,7 +297,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Johari%20Bazaar%2C%20Jaipur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Johari%20Bazaar%20%26%20Bapu%20Bazaar%20shopping%20at%20Jaipur",
         "notes": "Explore colorful bustling bazaars famous for precious gemstones, silver jewelry, block-printed quilts, and Mojari leather footwear.",
         "kind": "activity"
       },
@@ -354,7 +354,7 @@ window.KYT_CITIES = [
           "jain",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=MI%20Road%2C%20Jaipur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dal%20baati%20churma%20royal%20dinner%20at%20Jaipur",
         "notes": "Authentic Rajasthani feast of baked wheat balls dipped in ghee, panchmel dal, sweet churma, and fiery gatte ki sabzi.",
         "kind": "activity"
       }
@@ -468,7 +468,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Candolim%2C%20Goa",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Goan%20seafood%20%26%20curry%20shack%20lunch%20at%20Goa",
         "notes": "Savor Goan fish curry rice, butter-garlic tiger prawns, rava-fried kingfish, and refreshing Sol Kadhi at a beachfront shack.",
         "kind": "activity"
       },
@@ -519,7 +519,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Anjuna%2C%20Goa",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Anjuna%20sunset%20%26%20flea%20market%20at%20Goa",
         "notes": "Vibrant coastal hippie market with live acoustic music, handcrafted jewelry, bohemian clothing, and sunset cocktails over the rocky cove.",
         "kind": "activity"
       }
@@ -617,7 +617,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tea%20Museum%2C%20Munnar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tata%20Tea%20Museum%20%26%20tasting%20at%20Munnar",
         "notes": "Exhibits detailing the evolution of Munnar's century-old tea estates, antique CTC rollers, and an informative tea-tasting demonstration.",
         "kind": "activity"
       },
@@ -646,7 +646,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Munnar%20town",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kerala%20sadya%20lunch%20at%20Munnar",
         "notes": "Traditional banana-leaf banquet with parippu, sambar, avial, thoran, payasam, banana chips, and Kerala red matta rice.",
         "kind": "activity"
       },
@@ -670,7 +670,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mattupetty%20Dam%2C%20Munnar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mattupetty%20Dam%20%26%20boating%20at%20Munnar",
         "notes": "Scenic reservoir framed by tea gardens and eucalyptus forests; enjoy speed boating and occasional wild elephant sightings on the banks.",
         "kind": "activity"
       }
@@ -831,7 +831,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lake%20Pichola%2C%20Udaipur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lake%20Pichola%20sunset%20boat%20ride%20at%20Udaipur",
         "notes": "Magical cruise gliding past Jag Mandir Island and the illuminated Taj Lake Palace as twilight reflects on the water.",
         "kind": "activity"
       },
@@ -860,7 +860,7 @@ window.KYT_CITIES = [
           "jain",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Old%20City%2C%20Udaipur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dal%20baati%20churma%20rooftop%20dinner%20at%20Udaipur",
         "notes": "Authentic Mewari dinner of ghee-soaked dal baati, ker sangri, and churma while admiring lighted ghats from a rooftop terrace.",
         "kind": "activity"
       }
@@ -937,7 +937,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Assi%20Ghat%2C%20Varanasi",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sunrise%20boat%20ride%20on%20the%20Ganges%20at%20Varanasi",
         "notes": "Gliding quietly past 84 ghats at daybreak as pilgrims perform morning surya namaskar and temple bells echo along the sacred river.",
         "kind": "activity"
       },
@@ -1022,7 +1022,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Godowlia%2C%20Varanasi",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Banarasi%20thandai%20%26%20kachori%20chaat%20at%20Varanasi",
         "notes": "Taste rich saffron Banarasi thandai, Tamatar chaat, crispy kachori jalebi, and melt-in-mouth Malaiyo in the old alleys.",
         "kind": "activity"
       },
@@ -1107,7 +1107,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chandni%20Chowk%2C%20Delhi",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jama%20Masjid%20%26%20Chandni%20Chowk%20food%20walk%20at%20Delhi",
         "notes": "Visit India's largest mosque followed by breakfast at Paranthe Wali Gali, Daulat ki Chaat, and historic Jalebi Wala.",
         "kind": "activity"
       },
@@ -1355,7 +1355,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dadar%2C%20Mumbai",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vada%20pav%20%26%20street%20food%20in%20Dadar%20at%20Mumbai",
         "notes": "The quintessential Mumbai experience: spicy piping-hot vada pav with garlic chutney, pav bhaji, kanda poha, and cutting chai.",
         "kind": "activity"
       },
@@ -1747,7 +1747,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Fort%20Kochi%2C%20Kochi",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kerala%20seafood%20thali%20%26%20appam%20lunch%20at%20Kochi",
         "notes": "Taste Malabar fish curry cooked in earthen pots with kudampuli (pot tamarind), freshly made appams, squid roast, and tender coconut pudding.",
         "kind": "activity"
       },
@@ -1824,7 +1824,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Swarg%20Ashram%2C%20Rishikesh",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Morning%20Yoga%20%26%20meditation%20along%20the%20Ganga%20at%20Rishikesh",
         "notes": "Guided pranayama and Hatha yoga session on the serene banks of the emerald Ganges, surrounded by forested Himalayan foothills.",
         "kind": "activity"
       },
@@ -1847,7 +1847,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shivpuri%2C%20Rishikesh",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=White%20water%20river%20rafting%20at%20Rishikesh",
         "notes": "Exhilarating Grade III and IV rapids along the roaring Ganges, tackling famous rapids like Roller Coaster, Golf Course, and Club House.",
         "kind": "activity"
       },
@@ -2098,7 +2098,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Old%20Manali",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Old%20Manali%20cafes%20%26%20trout%20dinner%20at%20Manali",
         "notes": "Bohemian quarter filled with live acoustic music, wood-fired thin-crust pizza, fresh Himalayan river trout, and Himachali siddu.",
         "kind": "activity"
       }
@@ -2235,7 +2235,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mall%20Road%2C%20Shimla",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mall%20Road%20%26%20Lakkar%20Bazaar%20walk%20at%20Shimla",
         "notes": "Lively car-free pedestrian street with heritage shops, colonial post offices, steamed Himachali siddu, and carved wooden handicrafts.",
         "kind": "activity"
       },
@@ -2401,7 +2401,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Happy%20Valley%20Tea%20Estate%2C%20Darjeeling",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Happy%20Valley%20Tea%20Estate%20tour%20%26%20tasting%20at%20Darjeeling",
         "notes": "Walk through manicured tea bushes on steep slopes, watch tea plucking and processing, and sip world-famous first-flush Darjeeling tea.",
         "kind": "activity"
       },
@@ -2457,7 +2457,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chowrasta%2C%20Darjeeling",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chowrasta%20Mall%20momos%20%26%20tea%20at%20Darjeeling",
         "notes": "Relax on public benches at the social heart of the town enjoying steaming Darjeeling momos, thukpa, and pastries from heritage bakeries.",
         "kind": "activity"
       }
@@ -2588,7 +2588,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ooty%20Lake%2C%20Ooty",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ooty%20Lake%20%26%20boat%20ride%20at%20Ooty",
         "notes": "Historic 65-acre artificial lake built by John Sullivan in 1824, offering pedal boating against eucalyptus trees and misty hills.",
         "kind": "activity"
       },
@@ -2616,7 +2616,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tea%20Factory%2C%20Ooty",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Homemade%20chocolates%20%26%20Tea%20Factory%20tour%20at%20Ooty",
         "notes": "Watch tea leaf processing and sample fresh Nilgiri orthodox black tea alongside Ooty's legendary homemade fudge and dark chocolates.",
         "kind": "activity"
       }
@@ -2721,7 +2721,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Devaraja%20Market%2C%20Mysore",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Devaraja%20Market%20sensory%20walk%20at%20Mysore",
         "notes": "Vibrant century-old bazaar overflowing with heaps of colorful kumkum powder, jasmine flower garlands, betel leaves, and sandalwood oils.",
         "kind": "activity"
       },
@@ -2750,7 +2750,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mylari%20Dosa%2C%20Mysore",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mylari%20masala%20dosa%20%26%20Mysore%20pak%20lunch%20at%20Mysore",
         "notes": "Savor the legendary pillow-soft butter masala dosa with coconut chutney at Hotel Original Mylari, followed by melt-in-mouth ghee Mysore pak.",
         "kind": "activity"
       },
@@ -2883,7 +2883,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hyderabad%20Biryani",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hyderabadi%20dum%20biryani%20lunch%20at%20Hyderabad",
         "notes": "Legendary fragrant basmati rice slow-cooked on dum with marinated meat, saffron, caramelized onions, served with mirchi ka salan and dahi chutney.",
         "kind": "activity"
       },
@@ -2934,7 +2934,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hussain%20Sagar%2C%20Hyderabad",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hussain%20Sagar%20Lake%20%26%20Buddha%20statue%20boat%20ride%20at%20Hyderabad",
         "notes": "Ferry across the heart-shaped lake to the world's tallest monolithic stone statue of Gautama Buddha at Gibraltar Rock during sunset.",
         "kind": "activity"
       }
@@ -2984,7 +2984,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Howrah%20Bridge%2C%20Kolkata",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Howrah%20Bridge%20%26%20Mullick%20Ghat%20Flower%20Market%20at%20Kolkata",
         "notes": "Iconic cantilever bridge spanning the Hooghly river, combined with the sensory explosion of Asia's largest wholesale flower market.",
         "kind": "activity"
       },
@@ -3069,7 +3069,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Park%20Street%2C%20Kolkata",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kati%20roll%20%26%20mishti%20doi%20culinary%20trail%20at%20Kolkata",
         "notes": "Original Nizam's flaky paratha kati roll, followed by earthen pot mishti doi (sweet curd), sandesh, and spongy rasgulla.",
         "kind": "activity"
       },
@@ -3092,7 +3092,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=College%20Street%2C%20Kolkata",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=College%20Street%20Boi%20Para%20%26%20Indian%20Coffee%20House%20at%20Kolkata",
         "notes": "World's largest secondhand book market stretching 1.5 km, topped with an intellectual 'adda' session and cold coffee at the 1942 Coffee House.",
         "kind": "activity"
       }
@@ -3203,7 +3203,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mylapore%2C%20Chennai",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Murugan%20Idli%20%26%20filter%20coffee%20lunch%20at%20Chennai",
         "notes": "Authentic Tamil lunch: piping hot soft idlis, crispy ghee roast dosas, four types of chutneys, and frothy Kumbakonam degree filter coffee.",
         "kind": "activity"
       },
@@ -3364,7 +3364,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=White%20Town%2C%20Pondicherry",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=French%20cafe%20brunch%20%26%20croissants%20at%20Pondicherry",
         "notes": "Savor artisanal butter croissants, French baguettes, quiches, and espresso at a charming French colonial courtyard cafe.",
         "kind": "activity"
       },
@@ -3586,7 +3586,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tungabhadra%20River%2C%20Hampi",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Coracle%20boat%20ride%20on%20Tungabhadra%20River%20at%20Hampi",
         "notes": "Spin across the calm granite river gorge in a traditional round reed coracle boat beneath massive balancing boulder cliffs.",
         "kind": "activity"
       }
@@ -3708,7 +3708,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=North%20Bay%20Island%2C%20Andaman",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=North%20Bay%20Island%20coral%20reef%20snorkeling%20at%20Andaman%20Islands",
         "notes": "Rich coral reef featured on India's 20-rupee currency note; experience sea walking, glass-bottom boat rides, and snorkeling.",
         "kind": "activity"
       },
@@ -3761,7 +3761,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Port%20Blair",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Fresh%20seafood%20dinner%20in%20Port%20Blair%20at%20Andaman%20Islands",
         "notes": "Taste island-caught grilled red snapper, butter-garlic crab, tiger prawns, and coconut-based curries in Aberdeen Bazaar.",
         "kind": "activity"
       }
@@ -3812,7 +3812,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dal%20Lake%2C%20Srinagar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dal%20Lake%20shikara%20ride%20%26%20floating%20vegetable%20market%20at%20Srinagar",
         "notes": "Glide past floating lotus gardens, houseboats, and water channels at dawn to witness traditional boat-to-boat barter vegetable trading.",
         "kind": "activity"
       },
@@ -3894,7 +3894,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Residency%20Road%2C%20Srinagar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Traditional%20Kashmiri%20Wazwan%20feast%20at%20Srinagar",
         "notes": "Elaborate multi-course royal feast featuring Rogan Josh, Gushtaba, Rista, Tabak Maaz, Kahwa green tea, and fragrant saffron rice.",
         "kind": "activity"
       },
@@ -4064,7 +4064,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Main%20Bazaar%2C%20Leh",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tibetan%20thukpa%20%26%20butter%20tea%20in%20Leh%20Main%20Bazaar%20at%20Leh",
         "notes": "Sip salty Ladakhi butter tea (Gur Gur chai) with steamed momos, hearty thukpa noodle soup, and browse Pashmina shawls and prayer wheels.",
         "kind": "activity"
       },
@@ -4175,7 +4175,7 @@ window.KYT_CITIES = [
           "jain",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Guru%20Ka%20Langar%2C%20Amritsar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Guru%20Ka%20Langar%20community%20meal%20at%20Amritsar",
         "notes": "Partake in the world's largest free community kitchen serving up to 100,000 pilgrims daily regardless of religion, caste, or wealth.",
         "kind": "activity"
       },
@@ -4231,7 +4231,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Maqbool%20Road%20%2F%20Town%20Hall%2C%20Amritsar%2C%20Amritsar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Amritsari%20kulcha%20%26%20lassi%20lunch%20at%20Amritsar",
         "notes": "Crispy tandoori layered potato-paneer kulcha crushed with butter, served with spicy chole, tangy onion chutney, and a tall glass of sweet creamy lassi.",
         "kind": "activity"
       },
@@ -4391,7 +4391,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sam%20Sand%20Dunes%2C%20Jaisalmer",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sam%20Sand%20Dunes%20camel%20safari%20%26%20sunset%20at%20Jaisalmer",
         "notes": "Ride camels across undulating golden sand dunes of the Thar Desert, watch a crimson sunset, and enjoy dune-bashing jeeps.",
         "kind": "activity"
       },
@@ -4421,7 +4421,7 @@ window.KYT_CITIES = [
           "jain",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sam%20Sand%20Dunes%2C%20Jaisalmer",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Desert%20camp%20folk%20dance%20%26%20Rajasthani%20dinner%20at%20Jaisalmer",
         "notes": "Campfire night under desert stars featuring Kalbelia folk dancers, Manganiyar musicians, and authentic Rajasthani ker sangri and dal baati.",
         "kind": "activity"
       }
@@ -4531,7 +4531,7 @@ window.KYT_CITIES = [
           "jain",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Clock%20Tower%2C%20Jodhpur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shahi%20Samosa%2C%20mirchi%20vada%20%26%20Makhaniya%20lassi%20at%20Jodhpur",
         "notes": "Indulge in iconic Jodhpur street snacks: giant spicy mirchi vada, pyaz kachori, and thick saffron-infused curd lassi at Sardar Market.",
         "kind": "activity"
       },
@@ -4698,7 +4698,7 @@ window.KYT_CITIES = [
           "jain",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pushkar%20Market",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Malpua%20%26%20rabdi%20at%20Halwai%20Gali%20at%20Pushkar",
         "notes": "Taste Pushkar's legendary sweet treat: deep-fried syrupy malpuas served warm with condensed milk rabdi, and falafel rolls.",
         "kind": "activity"
       },
@@ -4938,7 +4938,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kuttanad%2C%20Alleppey",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Karimeen%20Pollichathu%20%26%20toddy%20shop%20lunch%20at%20Alleppey",
         "notes": "Savor spicy pearl spot fish (Karimeen) wrapped in banana leaves and roasted in coconut oil, served with tapioca and fresh toddy.",
         "kind": "activity"
       },
@@ -5262,7 +5262,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Town%20Hall%20Rd%2C%20Madurai",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jigarthanda%20%26%20Madurai%20bun%20parotta%20dinner%20at%20Madurai",
         "notes": "Taste Madurai's iconic chilled dessert Jigarthanda (almond gum, nannari syrup, ice cream) and famous flaky bun parotta with spicy salna.",
         "kind": "activity"
       }
@@ -5475,7 +5475,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ranthambore%20National%20Park",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Morning%20Tiger%20Safari%20in%20Ranthambore%20National%20Park%20at%20Ranthambore",
         "notes": "Open-top jeep safari through dry deciduous forests in search of Royal Bengal tigers, leopards, marsh crocodiles, and sambar deer.",
         "kind": "activity"
       },
@@ -5607,7 +5607,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jim%20Corbett%20National%20Park",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jungle%20Jeep%20Safari%20in%20Dhikala%20%2F%20Bijrani%20Zone%20at%20Jim%20Corbett",
         "notes": "Thrilling early morning safari tracking tigers, wild Asian elephants, gharials, and spotted deer through dense sal forests and riverbeds.",
         "kind": "activity"
       },
@@ -5739,7 +5739,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Naini%20Lake%2C%20Nainital",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Naini%20Lake%20boating%20%26%20Mall%20Road%20walk%20at%20Nainital",
         "notes": "Paddle or row across the pear-shaped emerald mountain lake, followed by a stroll along the vibrant lakeside Mall Road.",
         "kind": "activity"
       },
@@ -5848,7 +5848,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tibetan%20Market%2C%20Nainital",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tibetan%20Market%20momos%20%26%20thukpa%20at%20Nainital",
         "notes": "Shop for handcrafted woolens and enjoy steaming chicken and vegetable momos, thukpa, and hot chocolate near the lake.",
         "kind": "activity"
       }
@@ -5981,7 +5981,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Char%20Dukan%2C%20Landour",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Landour%20Bakehouse%20%26%20Char%20Dukan%20treats%20at%20Mussoorie",
         "notes": "Sample apple pie, lemon curd tarts, and ginger tea at Landour Bakehouse, and bun omelette and Maggie at iconic Char Dukan.",
         "kind": "activity"
       },
@@ -6004,7 +6004,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mall%20Road%2C%20Mussoorie",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mall%20Road%20evening%20stroll%20%26%20sunset%20at%20Mussoorie",
         "notes": "Bustling ridge-top promenade lined with vintage street lamps, wooden handicrafts, woolen shawls, and twinkling Doon valley night views.",
         "kind": "activity"
       }
@@ -6165,7 +6165,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Madikeri%2C%20Coorg",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Authentic%20Kodava%20pandi%20curry%20%26%20akki%20roti%20dinner%20at%20Coorg",
         "notes": "Taste world-renowned Kodava cuisine: spicy pork curry (pandi curry) flavored with wild kachampuli vinegar, soft rice rotis, and fresh filter coffee.",
         "kind": "activity"
       }
@@ -6242,7 +6242,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Banasura%20Sagar%20Dam%2C%20Wayanad",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Banasura%20Sagar%20Dam%20%26%20speed%20boating%20at%20Wayanad",
         "notes": "Largest earth dam in India and second largest in Asia, set against the Banasura hills with speed boating across scenic green islands.",
         "kind": "activity"
       },
@@ -6406,7 +6406,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mapro%20Garden%2C%20Mahabaleshwar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mapro%20Garden%20strawberry%20feast%20at%20Mahabaleshwar",
         "notes": "Sample fresh strawberries with clotted cream, wood-fired thin-crust cheese pizza, fruit preserves, and strawberry ice cream.",
         "kind": "activity"
       },
@@ -6429,7 +6429,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Venna%20Lake%2C%20Mahabaleshwar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Venna%20Lake%20boating%20%26%20horse%20riding%20at%20Mahabaleshwar",
         "notes": "Serene 28-acre lake framed by pine trees; enjoy pedal and row boating followed by hot roasted corn on the cob (bhutta).",
         "kind": "activity"
       }
@@ -6565,7 +6565,7 @@ window.KYT_CITIES = [
           "jain",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=MG%20Road%20%2F%20Lohagad%2C%20Lonavala%2C%20Lonavala",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lohanad%20Fort%20trek%20%26%20chikki%20shopping%20at%20Lonavala",
         "notes": "Browse famous Maganlal chikki shops for peanut, crushed cashew, sesame, and dry fruit brittle, paired with hot ginger chai.",
         "kind": "activity"
       }
@@ -6700,7 +6700,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Fergusson%20College%20Rd%2C%20Pune",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=FC%20Road%20food%20walk%20%26%20Puneri%20misal%20pav%20at%20Pune",
         "notes": "Taste fiery Puneri misal pav topped with farsan, legendary bun muska and chai at Cafe Goodluck (est. 1935), and Vaishali filter coffee.",
         "kind": "activity"
       },
@@ -6891,7 +6891,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Old%20City%2C%20Aurangabad%2C%20Aurangabad",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Naan%20Qalia%20%26%20Himroo%20shawl%20shopping%20at%20Aurangabad",
         "notes": "Taste Aurangabad's historic royal dish: tandoor-baked naan served with aromatic mutton qalia curry, and browse Persian-influenced Himroo weaves.",
         "kind": "activity"
       }
@@ -7030,7 +7030,7 @@ window.KYT_CITIES = [
           "jain",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Agashiye%2C%20Ahmedabad",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gujarati%20thali%20lunch%20at%20Agashiye%20at%20Ahmedabad",
         "notes": "Lavish traditional Gujarati banquet served in bronze kansa thalis: dhokla, khandvi, undhiyu, kadhi, rotlis with pure ghee, and mango aamras.",
         "kind": "activity"
       },
@@ -7061,7 +7061,7 @@ window.KYT_CITIES = [
           "jain",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Manek%20Chowk%2C%20Ahmedabad",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Manek%20Chowk%20night%20street%20food%20market%20at%20Ahmedabad",
         "notes": "Historic square that transforms into an open-air food carnival at dusk: chocolate cheese sandwiches, pav bhaji, kulfi, and jalebi fafda.",
         "kind": "activity"
       }
@@ -7187,7 +7187,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhujodi%2C%20Kutch",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhujodi%20artisan%20craft%20village%20at%20Kutch",
         "notes": "Meet national award-winning weavers, bandhani tie-dye artisans, Rogan art painters, and bell-makers in their traditional workshops.",
         "kind": "activity"
       },
@@ -7648,7 +7648,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tomb%20of%20Tansen%2C%20Gwalior",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tomb%20of%20Tansen%20%26%20Gwalior%20namkeen%20at%20Gwalior",
         "notes": "Pay homage to Mughal court music legend Mian Tansen under the sacred tamarind tree, followed by crispy bedai kachori and poha.",
         "kind": "activity"
       }
@@ -8029,7 +8029,7 @@ window.KYT_CITIES = [
           "jain",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chappan%20Dukan%2C%20Indore",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chappan%20Dukan%20street%20food%20trail%20at%20Indore",
         "notes": "Famous 56-shop clean food street: Indori poha with sev & jeeravan, crispy khopra patties, hot bhutte ka kees, and shikanji.",
         "kind": "activity"
       },
@@ -8060,7 +8060,7 @@ window.KYT_CITIES = [
           "jain",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sarafa%20Bazaar%2C%20Indore",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sarafa%20Bazaar%20midnight%20jewelry%20market%20feast%20at%20Indore",
         "notes": "Daytime jewelry market that transforms into a legendary midnight street food festival serving dahi vada, garadu, jaleba, and rabdi.",
         "kind": "activity"
       }
@@ -8186,7 +8186,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Raghurajpur%2C%20Puri",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Raghurajpur%20Heritage%20Craft%20Village%20excursion%20at%20Puri",
         "notes": "Artisanal village where every household creates exquisite Pattachitra palm-leaf scroll paintings, tusser silk art, and Gotipua dancers.",
         "kind": "activity"
       },
@@ -8209,7 +8209,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Satapada%2C%20Chilika",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chilika%20Lake%20(Satapada)%20dolphin%20boat%20safari%20at%20Puri",
         "notes": "Boat cruise on Asia's largest brackish lagoon to spot rare playful Irrawaddy dolphins and migratory water birds.",
         "kind": "activity"
       }
@@ -8378,7 +8378,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Saheed%20Nagar%2C%20Bhubaneswar%2C%20Bhubaneswar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Odia%20thali%20%26%20chhena%20poda%20feast%20at%20Bhubaneswar",
         "notes": "Traditional Odia meal with dalma (lentil-vegetable stew), besara, machha besara, followed by caramelized roasted cottage cheese Chhena Poda.",
         "kind": "activity"
       }
@@ -8646,7 +8646,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Paltan%20Bazaar%2C%20Guwahati%2C%20Guwahati",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Assamese%20thali%20with%20masor%20tenga%20lunch%20at%20Guwahati",
         "notes": "Authentic Khaar, tangy river fish curry (Masor Tenga) with elephant apple, pitika mashed potatoes, black rice kheer, and Assam orthodox tea.",
         "kind": "activity"
       },
@@ -8670,7 +8670,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Brahmaputra%20Cruise%2C%20Guwahati",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Brahmaputra%20Sunset%20River%20Cruise%20at%20Guwahati",
         "notes": "Scenic cruise aboard river steamer on the mighty Brahmaputra with folk Bihu music and breathtaking sunset reflections.",
         "kind": "activity"
       }
@@ -8804,7 +8804,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Police%20Bazar%2C%20Shillong",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ward's%20Lake%20%26%20Police%20Bazar%20street%20food%20at%20Shillong",
         "notes": "Feed ducks around colonial horseshoe-shaped Ward's Lake, then browse lively Police Bazar for Khasi Jadoh, momos, and boutique cafes.",
         "kind": "activity"
       }
@@ -9259,7 +9259,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=MG%20Marg%2C%20Gangtok",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=MG%20Marg%20pedestrian%20promenade%20%26%20Sikkimese%20dinner%20at%20Gangtok",
         "notes": "Litter-free, vehicle-free paved boulevard with flower gardens, statues, cafes, hot pork or cheese momos, thukpa, and fermented millet tongba.",
         "kind": "activity"
       }
@@ -9445,7 +9445,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kaziranga%20Elephant%20Safari",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Early%20morning%20Elephant%20Safari%20for%20One-Horned%20Rhinos%20at%20Kaziranga",
         "notes": "Ride through early mist in tall elephant grass to view armor-plated Indian rhinos grazing peacefully alongside wild water buffalo.",
         "kind": "activity"
       },
@@ -9468,7 +9468,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kaziranga%20Jeep%20Safari",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jeep%20Safari%20in%20Western%20(Bagori)%20Range%20at%20Kaziranga",
         "notes": "Open jeep safari tracking Royal Bengal tigers, swamp deer (barasingha), herds of wild Asian elephants, and thousands of migratory pelicans.",
         "kind": "activity"
       },
@@ -9525,7 +9525,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hathikuli%20Tea%20Estate%2C%20Kaziranga",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hathikuli%20Tea%20Estate%20stroll%20%26%20Assam%20tea%20tasting%20at%20Kaziranga",
         "notes": "Visit the certified organic tea plantation bordering the park and taste strong, malty orthodox Assam black and green tea.",
         "kind": "activity"
       }
@@ -9688,7 +9688,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=McLeod%20Ganj",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tibetan%20momos%20%26%20Bhagsu%20cake%20at%20McLeod%20Ganj%20at%20Dharamshala",
         "notes": "Indulge in steaming tingmo bread, shapta, thenthuk noodle soup, and the famous local crumbly caramel Bhagsu Cake in bohemian cafes.",
         "kind": "activity"
       }
@@ -10098,7 +10098,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Agni%20Theertham%2C%20Rameswaram",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Agni%20Theertham%20morning%20holy%20dip%20at%20Rameswaram",
         "notes": "The sacred shoreline of the Bay of Bengal facing the temple where pilgrims take a ceremonial dip to cleanse sins.",
         "kind": "activity"
       },
@@ -10311,7 +10311,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=South%20Rampart%2C%20Thanjavur%2C%20Thanjavur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thanjavur%20painting%20%26%20dancing%20doll%20workshop%20at%20Thanjavur",
         "notes": "Watch traditional artisans applying 22-carat gold foil and semi-precious stones to religious paintings, and balancing bobblehead dolls.",
         "kind": "activity"
       }
@@ -10358,7 +10358,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kodaikanal%20Lake",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kodaikanal%20Lake%20cycling%20%26%20boating%20at%20Kodaikanal",
         "notes": "Man-made 60-acre star-shaped lake created in 1863; rent bicycles or tandem bikes along the 5-km lake perimeter, or paddle boat.",
         "kind": "activity"
       },
@@ -10576,7 +10576,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Matheran%20Market",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Echo%20Point%20%26%20leather%20footwear%20shopping%20at%20Matheran",
         "notes": "Test your voice at Echo Point and browse handcrafted Kolhapuri leather chappals, honey, and fresh chikki along the bazaar.",
         "kind": "activity"
       }
@@ -11088,7 +11088,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Har%20Ki%20Pauri%2C%20Haridwar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Har%20Ki%20Pauri%20Brahmakund%20morning%20holy%20dip%20at%20Haridwar",
         "notes": "The holiest bathing ghat bearing the footprint of Lord Vishnu; bathe in the crystal-clear swift waters of the mountain Ganges.",
         "kind": "activity"
       },
@@ -11145,7 +11145,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Moti%20Bazaar%2C%20Haridwar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kachori%20%26%20rabdi%20jalebi%20at%20Moti%20Bazaar%20at%20Haridwar",
         "notes": "Famous vegetarian street food: hot hing-stuffed urad dal kachoris with aloo subzi, kulhad lassi, and giant crispy jalebis.",
         "kind": "activity"
       },
@@ -11286,7 +11286,7 @@ window.KYT_CITIES = [
           "jain",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Holi%20Gate%2C%20Mathura",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mathura%20peda%20%26%20kachori%20at%20Holi%20Gate%20at%20Mathura",
         "notes": "Indulge in authentic caramel-brown Mathura pedas made from slow-roasted mawa, paired with bedmi puri and spicy aloo sabzi.",
         "kind": "activity"
       },
@@ -11310,7 +11310,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vishram%20Ghat%2C%20Mathura",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vishram%20Ghat%20evening%20Yamuna%20aarti%20%26%20boat%20ride%20at%20Mathura",
         "notes": "The central ghat where Lord Krishna rested after slaying tyrant Kansa; take a gentle evening boat cruise and witness the Yamuna Aarti.",
         "kind": "activity"
       }
@@ -11660,7 +11660,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Triveni%20Sangam%2C%20Prayagraj",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Triveni%20Sangam%20holy%20boat%20ride%20%26%20dip%20at%20Prayagraj",
         "notes": "Take a wooden boat to the visible confluence where the pale green waters of the Yamuna merge with the murky sacred Ganga.",
         "kind": "activity"
       },
@@ -11743,7 +11743,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Civil%20Lines%2C%20Prayagraj",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Netram%20kachori%20%26%20Civil%20Lines%20chaat%20at%20Prayagraj",
         "notes": "Taste Netram's pure desi ghee dal kachoris with dum aloo, followed by Loknath street gulab jamuns and chaat in the old city.",
         "kind": "activity"
       }
@@ -12688,7 +12688,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Majuli%20Mishing%20Village",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mishing%20tribal%20village%20%26%20bamboo%20stilt%20house%20lunch%20at%20Majuli",
         "notes": "Experience indigenous Mishing hospitality: traditional lunch cooked inside bamboo hollows (pitha), local herb curries, and handloom weaving.",
         "kind": "activity"
       },
@@ -12791,7 +12791,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Elephant%20Beach%2C%20Havelock",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Elephant%20Beach%20water%20sports%20%26%20scuba%20diving%20at%20Havelock%20Island",
         "notes": "Vibrant coral reefs ideal for beginner scuba diving, sea walking, glass-bottom boats, and snorkeling amongst clownfish and sea turtles.",
         "kind": "activity"
       },
@@ -12841,7 +12841,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Havelock%20Mangroves%2C%20Havelock%20Island",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Night%20kayaking%20through%20bioluminescent%20waters%20at%20Havelock%20Island",
         "notes": "Paddle silently through calm mangrove lagoons watching glowing blue phytoplankton light up in the water with every paddle stroke.",
         "kind": "activity"
       }
@@ -12890,7 +12890,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bharatpur%20Beach%2C%20Neil%20Island",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bharatpur%20Beach%20coral%20reef%20%26%20snorkeling%20at%20Neil%20Island",
         "notes": "The primary water sports beach with shallow, gentle turquoise waters teeming with colorful live corals and tropical fish.",
         "kind": "activity"
       },
@@ -13045,7 +13045,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Agatti%20Island%2C%20Lakshadweep",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Agatti%20Island%20lagoon%20%26%20coral%20reef%20snorkeling%20at%20Lakshadweep",
         "notes": "Touch down on the world's most scenic island airstrip and snorkel in clear emerald lagoons amongst sea turtles and butterfly fish.",
         "kind": "activity"
       },
@@ -13068,7 +13068,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bangaram%20Island%2C%20Lakshadweep",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bangaram%20Island%20sandbar%20%26%20scuba%20diving%20at%20Lakshadweep",
         "notes": "Tear-drop shaped uninhabited paradise surrounded by a shallow lagoon, shipwrecks for scuba diving, and glowing bioluminescence.",
         "kind": "activity"
       },
@@ -13346,7 +13346,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nakki%20Lake%2C%20Mount%20Abu",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nakki%20Lake%20boat%20ride%20%26%20Toad%20Rock%20at%20Mount%20Abu",
         "notes": "Sacred lake legendarily scooped out by gods using their fingernails (nakh); enjoy pedal boating and climb nearby Toad Rock formation.",
         "kind": "activity"
       },
@@ -13510,7 +13510,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Camel%20Breeding%20Farm%2C%20Bikaner",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=National%20Research%20Centre%20on%20Camel%20(Camel%20Farm)%20at%20Bikaner",
         "notes": "Asia's only camel breeding facility; learn about desert camel breeds, ride camels, and sample fresh camel milk ice cream and tea.",
         "kind": "activity"
       },
@@ -13540,7 +13540,7 @@ window.KYT_CITIES = [
           "jain",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rampuria%20Havelis%2C%20Bikaner",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bikaneri%20bhujia%2C%20rasgulla%20%26%20old%20havelis%20walk%20at%20Bikaner",
         "notes": "Admire the red Dulmera sandstone Rampuria merchant havelis and taste crispy authentic moth-bean Bikaneri bhujia and spongy rasgullas.",
         "kind": "activity"
       }
@@ -13779,7 +13779,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kumarakom",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kerala%20duck%20roast%20%26%20appam%20lunch%20at%20Kumarakom",
         "notes": "Taste Kuttanad's culinary signature: slow-roasted duck (Tharavu roast) with black pepper and coconut slices, paired with hot lacy appams.",
         "kind": "activity"
       },
@@ -13909,7 +13909,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kovalam%20Beach",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ayurvedic%20massage%20%26%20coastal%20shack%20lunch%20at%20Kovalam",
         "notes": "Experience rejuvenating traditional Ayurvedic herbal oil massage, followed by grilled kingfish and fresh pineapple juice by the sea.",
         "kind": "activity"
       },
@@ -13989,7 +13989,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=North%20Cliff%2C%20Varkala",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Varkala%20North%20Cliff%20walk%20%26%20cafe%20breakfast%20at%20Varkala",
         "notes": "Stroll along the cliff-edge boardwalk lined with bohemian cafes, yoga studios, Tibetan craft stalls, and breakfast smoothie bowls.",
         "kind": "activity"
       },
@@ -14070,7 +14070,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kappil%20Beach%2C%20Varkala",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kappil%20Beach%20%26%20estuary%20boat%20ride%20at%20sunset%20at%20Varkala",
         "notes": "Picturesque spot 7 km north where the serene Edava-Nadayara backwaters meet the roaring Arabian Sea, separated by a thin road.",
         "kind": "activity"
       }
@@ -14206,7 +14206,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thrissur%20Round",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thrissur%20halwa%20%26%20Kerala%20gold%20market%20walk%20at%20Thrissur",
         "notes": "Stroll the circular Swaraj Round shopping for banana chips, soft black halwa cooked in pure ghee, and traditional kasavu handloom sarees.",
         "kind": "activity"
       }
@@ -15314,7 +15314,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tagore%20Hill%2C%20Ranchi",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tagore%20Hill%20%26%20tribal%20litti%20chokha%20at%20Ranchi",
         "notes": "Ashram of Jyotirindranath Tagore (Rabindranath Tagore's brother) atop a 300-foot rock, followed by charcoal-roasted Litti Chokha.",
         "kind": "activity"
       }
@@ -15449,7 +15449,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gandhi%20Ghat%2C%20Patna",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ganga%20Aarti%20at%20Gandhi%20Ghat%20%26%20Litti%20Chokha%20at%20Patna",
         "notes": "Dusk Ganga Aarti with brass lamps and devotional hymns on the Ganges riverfront, followed by authentic sattu-stuffed Litti with roasted brinjal chokha.",
         "kind": "activity"
       }
@@ -15696,7 +15696,7 @@ window.KYT_CITIES = [
           "jain",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chauta%20Bazar%2C%20Surat",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Surti%20Locho%20%26%20Ghari%20sweet%20feast%20at%20Surat",
         "notes": "Taste Surat's signature steamed chickpea locho topped with butter, sev, and green chutney, followed by rich mawa Surti Ghari.",
         "kind": "activity"
       },
@@ -15858,7 +15858,7 @@ window.KYT_CITIES = [
           "jain",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mandvi%20Gate%2C%20Vadodara",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sev%20Usal%20%26%20Gujarati%20farsan%20at%20Mandvi%20at%20Vadodara",
         "notes": "Savor Vadodara's iconic Sev Usal (spicy dry pea curry garnished with spring onions and crisp sev) with butter pav at historic Mahakali Sev Usal.",
         "kind": "activity"
       }
@@ -15992,7 +15992,7 @@ window.KYT_CITIES = [
           "jain",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rajkot%20Kathiyawadi%20Thali",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kathiyawadi%20thali%20%26%20peda%20dinner%20at%20Rajkot",
         "notes": "Feast on rustic Kathiyawadi cuisine: ringna no olo (smoked roasted brinjal), bajra rotla with white butter, garlic chutney, and Rajkot peda.",
         "kind": "activity"
       }
@@ -16200,7 +16200,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sukhna%20Lake%2C%20Chandigarh",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sukhna%20Lake%20morning%20walk%20%26%20boating%20at%20Chandigarh",
         "notes": "3-sq-km tranquil man-made lake at the foothills of the Shivalik range; enjoy pedal boating, solar boat cruises, and lakeside breakfast.",
         "kind": "activity"
       },
@@ -16256,7 +16256,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sector%2017%20Chandigarh",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chole%20bhature%20%26%20Sector%2017%20Plaza%20shopping%20at%20Chandigarh",
         "notes": "Fluffy bhature with spiced Amritsari chole and sweet lassi, followed by an evening stroll through Chandigarh's pedestrian shopping plaza.",
         "kind": "activity"
       }
@@ -16386,7 +16386,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Model%20Town%2C%20Ludhiana",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Butter%20chicken%20%26%20naan%20dinner%20at%20Baba's%20at%20Ludhiana",
         "notes": "Indulge in Punjab's legendary rich cream-simmered butter chicken, tandoori fish tikka, and crisp garlic naans in Model Town.",
         "kind": "activity"
       }
@@ -16494,7 +16494,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rangla%20Punjab%20Haveli",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rangla%20Punjab%20Haveli%20cultural%20village%20at%20Jalandhar",
         "notes": "Living Punjabi village resort featuring live Bhangra dance, puppet shows, pottery, and an authentic Sarson da Saag & Makki di Roti lunch.",
         "kind": "activity"
       },
@@ -16517,7 +16517,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sports%20Market%2C%20Jalandhar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jalandhar%20sports%20market%20%26%20Model%20Town%20at%20Jalandhar",
         "notes": "World capital of cricket bats and hockey equipment used by international Olympians, alongside bustling cafes in Model Town.",
         "kind": "activity"
       }
@@ -16649,7 +16649,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Adalat%20Bazaar%2C%20Patiala",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Patiala%20Shahi%20turban%2C%20phulkari%20%26%20jutti%20shopping%20at%20Patiala",
         "notes": "Shop for hand-embroidered silk Phulkari dupattas, embellished leather juttis, and enjoy famous Patiala lassi in giant brass tumblers.",
         "kind": "activity"
       }
@@ -16783,7 +16783,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Marine%20Drive%2C%20Raipur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chhattisgarhi%20thali%20with%20chila%20%26%20fara%20lunch%20at%20Raipur",
         "notes": "Taste authentic Chhattisgarhi steamed rice fara dumplings, savory rice chila with tomato chutney, and stroll along the vibrant Marine Drive.",
         "kind": "activity"
       }
@@ -16991,7 +16991,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tata%20Zoo%2C%20Jamshedpur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tata%20Steel%20Zoological%20Park%20%26%20Safari%20at%20Jamshedpur",
         "notes": "Modern zoo along Jayanti Lake with a nature trail, safari park housing Bengal tigers, leopards, and an aviary of migratory birds.",
         "kind": "activity"
       },
@@ -17094,7 +17094,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Maithon%20Dam%2C%20Dhanbad",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Maithon%20Dam%20%26%20deer%20park%20island%20boat%20ride%20at%20Dhanbad",
         "notes": "Damodar Valley Corporation dam on the Barakar river featuring India's first underground hydel power station, islands, and boating.",
         "kind": "activity"
       },
@@ -17335,7 +17335,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Paltan%20Bazaar%2C%20Dehradun",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Paltan%20Bazaar%20bakery%20walk%20%26%20bun%20tikki%20at%20Dehradun",
         "notes": "Taste Dehradun's famous crispy bun tikki with tamarind chutney, and pick up fresh milk rusks, plum cakes, and cookies from Ellora's bakery.",
         "kind": "activity"
       }
@@ -17472,7 +17472,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jammu%20Kaladi%20Kulcha",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kaladi%20kulcha%20%26%20Dogra%20cuisine%20dinner%20at%20Jammu",
         "notes": "Taste authentic Dogra specialty: pan-fried dense ripened cheese (Kaladi) stuffed in fluffy kulchas, rajma chawal with anardana chutney, and sund panjiri.",
         "kind": "activity"
       }
@@ -17604,7 +17604,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gulmarg%20Market",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kahwa%20tea%20%26%20hot%20Kashmiri%20kebabs%20by%20the%20fireplace%20at%20Gulmarg",
         "notes": "Warm up with steaming saffron-infused Kashmiri Kahwa with crushed almonds, alongside freshly grilled seekh kebabs and lavasa bread.",
         "kind": "activity"
       }
@@ -17814,7 +17814,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sindh%20River%2C%20Sonamarg",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sindh%20River%20trout%20fishing%20%26%20river%20rafting%20at%20Sonamarg",
         "notes": "Try brown and rainbow trout angling or exciting white-water river rafting along the turbulent glacial rapids of the Sindh river.",
         "kind": "activity"
       },
@@ -18051,7 +18051,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahananda%20Wildlife%20Sanctuary",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mahananda%20Wildlife%20Sanctuary%20safari%20at%20Siliguri",
         "notes": "Dense sal forest reserve between Teesta and Mahananda rivers, famous for wild elephant migration corridors, bison, and hornbills.",
         "kind": "activity"
       },
@@ -18102,7 +18102,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bengal%20Safari%2C%20Siliguri",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bengal%20Safari%20(North%20Bengal%20Wild%20Animals%20Park)%20at%20Siliguri",
         "notes": "Open safari buses taking visitors through natural enclosures of Royal Bengal tigers, Asiatic black bears, leopards, and rhinos.",
         "kind": "activity"
       },
@@ -18130,7 +18130,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hong%20Kong%20Market%2C%20Siliguri",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hong%20Kong%20Market%20%26%20momo%20feast%20at%20Siliguri",
         "notes": "Lively shopping bazaar for imported gadgets, Tibetan woolens, and handicrafts, paired with Darjeeling-style steamed chicken momos and thukpa.",
         "kind": "activity"
       }
@@ -18263,7 +18263,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kalimpong%20Market",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kalimpong%20cheese%2C%20lollipops%20%26%20haat%20bazaar%20at%20Kalimpong",
         "notes": "Sample traditional Swiss-style Kalimpong gouda cheese, local chewy lollipops, dalle khursani chili pickles, and Tibetan street snacks.",
         "kind": "activity"
       }
@@ -18311,7 +18311,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mirik%20Lake",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sumendu%20Lake%20(Mirik%20Lake)%20boating%20%26%20arched%20bridge%20at%20Mirik",
         "notes": "1.25-km natural lake with an 80-foot arched footbridge (Indreni Pul), pedal boating, pony rides, and reflections of Kanchenjunga.",
         "kind": "activity"
       },
@@ -18390,7 +18390,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pashupati%20Nagar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Orange%20Orchards%20%26%20Pashupati%20Nagar%20Nepal%20border%20at%20Mirik",
         "notes": "Drive along the Nepal border through sweet citrus orange groves, crossing into Pashupati Nagar market for electronics, tea, and woolens.",
         "kind": "activity"
       }
@@ -18494,7 +18494,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Old%20Digha%20Beach",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Fried%20fish%20%26%20crab%20stall%20feast%20at%20Old%20Digha%20at%20Digha",
         "notes": "Select fresh pomfret, hilsa, tiger prawns, and crab directly from fishermen and have them shallow-fried with spicy coastal masala on the beach.",
         "kind": "activity"
       },
@@ -18699,7 +18699,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sundarbans%20Boat%20Safari",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mangrove%20boat%20safari%20through%20Matla%20%26%20Bidya%20rivers%20at%20Sundarbans",
         "notes": "Cruise through intricate maze-like tidal waterways lined with sundari mangrove pneumatophores, spotting spotted deer and kingfishers.",
         "kind": "activity"
       },
@@ -18861,7 +18861,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vidyarthi%20Bhavan%2C%20Bengaluru",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vidyarthi%20Bhavan%20crispy%20masala%20dosa%20%26%20filter%20coffee%20at%20Bengaluru",
         "notes": "Legendary heritage eatery founded in 1943, famous for thick, golden ghee-soaked butter masala dosas and frothy South Indian filter coffee.",
         "kind": "activity"
       },
@@ -18942,7 +18942,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Indiranagar%2C%20Bengaluru",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Indiranagar%20craft%20brewery%20%26%20culinary%20evening%20at%20Bengaluru",
         "notes": "Experience Bengaluru's vibrant pub and microbrewery culture: freshly brewed mango cider, IPAs, sourdough pizzas, and cosmopolitan rooftop dining.",
         "kind": "activity"
       }
@@ -19047,7 +19047,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chowk%2C%20Lucknow",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chowk%20heritage%20walk%20%26%20Chikankari%20embroidery%20at%20Lucknow",
         "notes": "Wander historic lanes famous for artisanal Chikankari needlework, fragrant attar perfumes, zardozi silver work, and Makhan Malai sweets.",
         "kind": "activity"
       },
@@ -19074,7 +19074,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tunday%20Kababi%2C%20Aminabad",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tunday%20Kababi%20%26%20Awadhi%20dum%20biryani%20at%20Lucknow",
         "notes": "World-famous 1905 eatery serving melt-in-mouth Galouti kebabs infused with 160 secret spices, Mughlai parathas, and fragrant Awadhi mutton biryani.",
         "kind": "activity"
       },
@@ -19241,7 +19241,7 @@ window.KYT_CITIES = [
           "jain",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sai%20Prasadalaya%2C%20Shirdi",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shirdi%20Prasadalaya%20massive%20community%20sattvic%20meal%20at%20Shirdi",
         "notes": "One of the world's largest solar-powered community dining halls, serving wholesome, subsidized consecrated vegetarian prasad to 40,000 pilgrims daily.",
         "kind": "activity"
       },
@@ -19408,7 +19408,7 @@ window.KYT_CITIES = [
           "satvik",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gandhi%20Rd%2C%20Kancheepuram",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kanchipuram%20idli%20%26%20traditional%20lunch%20at%20Kancheepuram",
         "notes": "Savor authentic Kovil Idli: cylindrical steamed idlis spiced with crushed black pepper, cumin, dry ginger, curry leaves, and generous pure ghee.",
         "kind": "activity"
       },
@@ -19460,7 +19460,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kanchipuram%20Silk%20Saree",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kanchipuram%20Silk%20Weavers'%20handloom%20cooperative%20at%20Kancheepuram",
         "notes": "Watch skilled master weavers weave GI-tagged heavy mulberry silk sarees with pure gold zari borders and temple motifs on traditional pit looms.",
         "kind": "activity"
       }
@@ -19578,7 +19578,7 @@ window.KYT_CITIES = [
           "any"
         ],
         "notes": "Classic Malwa breakfast of steaming spiced poha sprinkled with crispy Ratlami sev and jeeravan, accompanied by hot jalebis and cutting chai.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tower%20Chowk%2C%20Ujjain",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Malwi%20Poha%20Jalebi%20breakfast%20trail%20at%20Ujjain",
         "kind": "activity"
       },
       {
@@ -19664,7 +19664,7 @@ window.KYT_CITIES = [
           "any"
         ],
         "notes": "The quintessential Malwa culinary feast: crisp, golden boiled-and-roasted baflas drenched in pure desi ghee, served with spicy tuvar dal, churma, and kadhi.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dal%20Bafla%2C%20Ujjain",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Traditional%20Malwi%20Dal%20Bafla%20lunch%20at%20Ujjain",
         "kind": "activity"
       },
       {
@@ -20014,7 +20014,7 @@ window.KYT_CITIES = [
           "any"
         ],
         "notes": "Traditional morning breakfast along the river ghats: steaming turmeric poha garnished with fresh coriander and crispy sev, hot crisp jalebis, and spiced milk chai.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gomukh%20Ghat%2C%20Omkareshwar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ghatside%20Malwi%20Poha%20Jalebi%20breakfast%20trail%20at%20Omkareshwar",
         "kind": "activity"
       },
       {
@@ -20103,7 +20103,7 @@ window.KYT_CITIES = [
           "any"
         ],
         "notes": "Wholesome Malwa satvik feast: golden baked baflas dipped in pure desi ghee, served with slow-cooked tuvar dal, sweet churma laddu, kadhi, and roasted coriander chutney.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dal%20Bafla%2C%20Omkareshwar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Traditional%20Malwi%20Dal%20Bafla%20lunch%20at%20Omkareshwar",
         "kind": "activity"
       },
       {
@@ -20187,7 +20187,7 @@ window.KYT_CITIES = [
         ],
         "mobility": "easy",
         "notes": "Scenic boat journey along the tranquil Narmada River circling the island cliffs to Triveni/Sangam where the Kaveri tributary meets the Narmada. Offers close-up views of the river canyon, cantilever suspension bridges, and pilgrim ghats.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Narmada%20River%20Boating%2C%20Omkareshwar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Narmada%20%26%20Kaveri%20Sangam%20boat%20ride%20at%20Omkareshwar",
         "kind": "activity"
       },
       {
@@ -21342,7 +21342,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rehwa%20Society%2C%20Maheshwar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Maheshwari%20Handloom%20Weaving%20Tour%20at%20Maheshwar",
         "notes": "Witness the traditional weaving of beautiful Maheshwari sarees and fabrics, a craft championed by Queen Ahilyabai to empower local weavers.",
         "kind": "activity"
       },
@@ -21366,7 +21366,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Maheshwar%20Ghats",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sunset%20Boat%20Ride%20on%20the%20Narmada%20at%20Maheshwar",
         "notes": "Take a tranquil boat ride at sunset for the best view of the fort and ghats, culminating in the evening Narmada Aarti.",
         "kind": "activity"
       }
@@ -21594,7 +21594,7 @@ window.KYT_CITIES = [
           "any",
           "veg"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Phadtare%20Misal%2C%20Kolhapur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kolhapuri%20Misal%20%26%20Thali%20at%20Phadtare%20or%20Opal%20at%20Kolhapur",
         "notes": "Savor legendary spicy Kolhapuri misal with pav, followed by traditional regional fare featuring Tambada Rassa (red curry) and Pandhra Rassa (white curry).",
         "kind": "activity"
       },
@@ -21786,7 +21786,7 @@ window.KYT_CITIES = [
           "any",
           "veg"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Othavadai%20Street%2C%20Mahabalipuram",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Fresh%20coastal%20seafood%20%26%20cafe%20lunch%20at%20Mahabalipuram",
         "notes": "Relax at coastal traveler cafes and seafood shacks along Othavadai Street serving fresh grilled catch, filter coffee, and traditional South Indian meals.",
         "kind": "activity"
       },
@@ -21864,7 +21864,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Periyar%20National%20Park%20Boat%20Safari",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Periyar%20National%20Park%20Lake%20Boat%20Safari%20at%20Thekkady",
         "notes": "Early morning boat cruise on Periyar Lake inside the tiger reserve, observing wild elephants, gaur, sambar deer, and water birds along the forest shoreline.",
         "kind": "activity"
       },
@@ -21919,7 +21919,7 @@ window.KYT_CITIES = [
           "any",
           "veg"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kumily%20Town%2C%20Thekkady",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Traditional%20Kerala%20lunch%20%26%20spice%20shopping%20at%20Thekkady",
         "notes": "Taste Kerala sadya meals cooked with freshly ground local spices, and shop for farm-fresh green cardamom and pepper in the bustling spice market.",
         "kind": "activity"
       },
@@ -22055,7 +22055,7 @@ window.KYT_CITIES = [
           "any",
           "veg"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chikmagalur%20Coffee%20Estate",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Estate%20coffee%20tasting%20%26%20Malnad%20cuisine%20at%20Chikmagalur",
         "notes": "Relish piping hot filter coffee brewed with freshly roasted beans alongside Malnad staples like akki rotti, bamboo shoot curry, and tender jackfruit fry.",
         "kind": "activity"
       },
@@ -22079,7 +22079,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "trek",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hebbe%20Falls%2C%20Chikmagalur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hebbe%20Falls%20jeep%20safari%20at%20Chikmagalur",
         "notes": "Off-road jeep trail through lush private coffee estates leading to the roaring two-tiered cascade of Hebbe Falls.",
         "kind": "activity"
       }
@@ -22263,7 +22263,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhedaghat%20Marble%20Rocks%2C%20Jabalpur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhedaghat%20Marble%20Rocks%20Boat%20Ride%20at%20Jabalpur",
         "notes": "Glide on the turquoise Narmada River through a canyon of gleaming 100-foot white and pink marble cliffs as local boatmen recite folk poetry.",
         "kind": "activity"
       },
@@ -22458,7 +22458,7 @@ window.KYT_CITIES = [
           "any",
           "veg"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Temple%20Road%20Murudeshwar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Coastal%20Karnataka%20seafood%20%26%20coconut%20curry%20at%20Murudeshwar",
         "notes": "Enjoy coastal Karavali cuisine with neer dosa, fresh fish fry, banana leaf thalis, and sweet coconut payasam.",
         "kind": "activity"
       },
@@ -22674,7 +22674,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sasan%20Gir%20Safari",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sasan%20Gir%20Morning%20Jeep%20Safari%20at%20Gir%20National%20Park",
         "notes": "Open-top jeep safari through the core dry deciduous forest tracking majestic Asiatic lion prides, leopards, spotted deer, and crested serpent eagles.",
         "kind": "activity"
       },
@@ -22697,7 +22697,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Devalia%20Safari%20Park%2C%20Gir",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Devalia%20Safari%20Park%20(Gir%20Interpretation%20Zone)%20at%20Gir%20National%20Park",
         "notes": "Fenced ecological interpretation habitat allowing guaranteed wildlife sightings of lions, leopards, and blackbucks in a short safari circuit.",
         "kind": "activity"
       },
@@ -22724,7 +22724,7 @@ window.KYT_CITIES = [
           "any",
           "veg"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sasan%20Gir%20Village",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kathiyawadi%20Thali%20at%20a%20village%20dhaba%20at%20Gir%20National%20Park",
         "notes": "Indulge in authentic Gujarati Kathiyawadi cuisine with sev tameta nu shaak, bajra rotla with fresh white butter, garlic chutney, and chaas.",
         "kind": "activity"
       },
@@ -22859,7 +22859,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Barkul%20Chilika%20Dhaba",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Fresh%20Lagoon%20Crab%20%26%20Prawn%20Feast%20at%20Chilika%20Lake",
         "notes": "Taste mouthwatering Chilika specialties like butter garlic crab, crispy jumbo prawn fry, and freshwater fish curry at lakeside eateries.",
         "kind": "activity"
       },
@@ -22994,7 +22994,7 @@ window.KYT_CITIES = [
           "any",
           "veg"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sanman%20Restaurant%2C%20Alibaug",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Authentic%20Konkani%20seafood%20lunch%20at%20Alibaug",
         "notes": "Feast on celebrated Konkani thalis featuring crispy rava-fried surmai or pomfret, solkadhi, and spicy crab masala.",
         "kind": "activity"
       },
@@ -23128,7 +23128,7 @@ window.KYT_CITIES = [
           "any",
           "veg"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bolpur%20Shantiniketan%20Restaurant",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Traditional%20Bengali%20Thali%20%26%20Posto%20cuisine%20at%20Shantiniketan",
         "notes": "Savor an authentic Rarh Bengal feast featuring shukto, aloo posto (poppy seeds), kosha mangsho, luchi, and sweet mishti doi.",
         "kind": "activity"
       },
@@ -23152,7 +23152,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sonajhurir%20Haat%2C%20Shantiniketan",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sonajhurir%20Haat%20(Saturday%20Forest%20Bazaar)%20at%20Shantiniketan",
         "notes": "Vibrant weekly village fair in the Sonajhuri forest where Baul singers play ektara under trees and artisans sell dokra metal craft and kantha sarees.",
         "kind": "activity"
       }
@@ -23284,7 +23284,7 @@ window.KYT_CITIES = [
         "diet": [
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kohima%20Local%20Market",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Traditional%20Naga%20cuisine%20%26%20market%20walk%20at%20Kohima",
         "notes": "Experience indigenous Naga flavors flavored with smoked meats, fiery Raja Mircha (Bhut Jolokia), fermented bamboo shoots, and fresh greens.",
         "kind": "activity"
       },
@@ -23393,7 +23393,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tungabhadra%20River%2C%20Mantralayam",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tungabhadra%20River%20Holy%20Dip%20%26%20Snana%20Ghats%20at%20Mantralayam",
         "notes": "Perform ritual snana (holy bath) in the tranquil waters of the sacred Tungabhadra River along the wide stone ghats adjoining the mutt.",
         "kind": "activity"
       },
@@ -23422,7 +23422,7 @@ window.KYT_CITIES = [
           "veg",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Annapoorna%20Dining%20Hall%2C%20Mantralayam",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mutt%20Annapoorna%20Annadanam%20Bhojana%20at%20Mantralayam",
         "notes": "Experience traditional Madhwa satvik prasada served with devotion, featuring steamed rice, saaru, kootu, paysam, and cow ghee.",
         "kind": "activity"
       },
