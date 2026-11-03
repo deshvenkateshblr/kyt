@@ -1296,5 +1296,331 @@
     "lng": 74.3374598,
     "distanceKm": 3.5,
     "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Paradise%20Beach%2C%20Gokarna&query_place_id=ChIJS4hq6mCDvjsRmhfM22FxJUY"
+  },
+  "beat::madurai::Meenakshi Amman Temple darshan": {
+    "query": "Meenakshi Amman Temple, Madurai",
+    "resolvedName": "Meenakshi Amman Temple",
+    "placeId": "ChIJh2nkYYTFADsRA2co5RxiNPE",
+    "ftid": "0x3b00c58461e46987:0xf134621ce5286703",
+    "lat": 9.9195045,
+    "lng": 78.1193418,
+    "distanceKm": 0.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Meenakshi%20Amman%20Temple%2C%20Madurai&query_place_id=ChIJh2nkYYTFADsRA2co5RxiNPE"
+  },
+  "beat::madurai::Thirumalai Nayakar Palace": {
+    "query": "Thirumalai Nayakar Palace, Madurai",
+    "resolvedName": "Thirumalai Nayakkar Palace, Panthadi 1st St, Mahal Area, Madurai Main, Madurai, Tamil Nadu 625001",
+    "placeId": "ChIJBUt6Fp3FADsRpN6L7XdDKmY",
+    "ftid": "0x3b00c59d167a4b05:0x662a4377ed8bdea4",
+    "lat": 9.9150904,
+    "lng": 78.1237483,
+    "distanceKm": 1.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Thirumalai%20Nayakar%20Palace%2C%20Madurai&query_place_id=ChIJBUt6Fp3FADsRpN6L7XdDKmY"
+  },
+  "beat::madurai::Gandhi Memorial Museum": {
+    "query": "Gandhi Memorial Museum, Madurai",
+    "resolvedName": "Gandhi Memorial Museum",
+    "placeId": "ChIJbQvbHLzFADsRh3MOwOrofDw",
+    "ftid": "0x3b00c5bc1cdb0b6d:0x3c7ce8eac00e7387",
+    "lat": 9.9299477,
+    "lng": 78.1383853,
+    "distanceKm": 2.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Gandhi%20Memorial%20Museum%2C%20Madurai&query_place_id=ChIJbQvbHLzFADsRh3MOwOrofDw"
+  },
+  "beat::kanyakumari::Triveni Sangam sunrise & Bhagavathy Amman Temple": {
+    "query": "Triveni Sangam, Kanyakumari",
+    "resolvedName": "Triveni Tourist Home",
+    "placeId": "ChIJodifNiXtBDsREyHcFt06f4Y",
+    "ftid": "0x3b04ed25369fd8a1:0x867f3add16dc2113",
+    "lat": 8.0835871,
+    "lng": 77.5488666,
+    "distanceKm": 0.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Triveni%20Sangam%2C%20Kanyakumari&query_place_id=ChIJodifNiXtBDsREyHcFt06f4Y"
+  },
+  "beat::kanyakumari::Vivekananda Rock Memorial ferry": {
+    "query": "Vivekananda Rock Memorial, Kanyakumari",
+    "resolvedName": "Vivekananda Rock Memorial",
+    "placeId": "ChIJwSRdSSntBDsRwKOziITrmXk",
+    "ftid": "0x3b04ed29495d24c1:0x7999eb8488b3a3c0",
+    "lat": 8.0781369,
+    "lng": 77.5552127,
+    "distanceKm": 0.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Vivekananda%20Rock%20Memorial%2C%20Kanyakumari&query_place_id=ChIJwSRdSSntBDsRwKOziITrmXk"
+  },
+  "beat::kanyakumari::Thiruvalluvar Statue": {
+    "query": "Thiruvalluvar Statue, Kanyakumari",
+    "resolvedName": "Thiruvalluvar Statue",
+    "placeId": "ChIJW1COJCntBDsRp9MsSJICJak",
+    "ftid": "0x3b04ed29248e505b:0xa9250292482cd3a7",
+    "lat": 8.0778074,
+    "lng": 77.5540357,
+    "distanceKm": 0.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Thiruvalluvar%20Statue%2C%20Kanyakumari&query_place_id=ChIJW1COJCntBDsRp9MsSJICJak"
+  },
+  "beat::kanyakumari::Padmanabhapuram Palace excursion": {
+    "query": "Padmanabhapuram Palace, Kanyakumari",
+    "resolvedName": "Padmanabhapuram Palace",
+    "placeId": "ChIJPQfSKff4BDsRb7CR4Qo5fCU",
+    "ftid": "0x3b04f8f729d2073d:0x257c390ae191b06f",
+    "lat": 8.2507431,
+    "lng": 77.3266987,
+    "distanceKm": 31.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Padmanabhapuram%20Palace%2C%20Kanyakumari&query_place_id=ChIJPQfSKff4BDsRb7CR4Qo5fCU"
+  },
+  "beat::kanyakumari::Sunset View Point": {
+    "query": "Sunset Point, Kanyakumari",
+    "resolvedName": "Sunset Point, Kanyakumari",
+    "placeId": "ChIJg8j_DhztBDsRhw-IBilBMKU",
+    "ftid": "0x3b04ed1c0effc883:0xa530412906880f87",
+    "lat": 8.0785642,
+    "lng": 77.531674,
+    "distanceKm": 2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sunset%20Point%2C%20Kanyakumari&query_place_id=ChIJg8j_DhztBDsRhw-IBilBMKU"
+  },
+  "beat::ranthambore::Ranthambore Fort & Trinetra Ganesh Temple": {
+    "query": "Ranthambore Fort",
+    "resolvedName": "Ranthambore Fort",
+    "placeId": "ChIJU6g7730nbjkRIfCSXS8GScY",
+    "ftid": "0x396e277def3ba853:0xc649062f5d92f021",
+    "lat": 26.0207552,
+    "lng": 76.4549695,
+    "distanceKm": 0.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Ranthambore%20Fort&query_place_id=ChIJU6g7730nbjkRIfCSXS8GScY"
+  },
+  "beat::ranthambore::Padam Talao & Jogi Mahal": {
+    "query": "Padam Talao, Ranthambore",
+    "resolvedName": "Padma Talao",
+    "placeId": "ChIJCTs0e53YcTkR_TPyhtdzm38",
+    "ftid": "0x3971d89d7b343b09:0x7f9b73d786f233fd",
+    "lat": 26.0267752,
+    "lng": 76.4570317,
+    "distanceKm": 0.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Padam%20Talao%2C%20Ranthambore&query_place_id=ChIJCTs0e53YcTkR_TPyhtdzm38"
+  },
+  "beat::ranthambore::Rajiv Gandhi Regional Museum of Natural History": {
+    "query": "Sawai Madhopur",
+    "resolvedName": "Sawaimadhopur, Rajasthan",
+    "placeId": "ChIJh8eTzz4kbjkRnT5df6jBSJE",
+    "ftid": "0x396e243ecf93c787:0x9148c1a87f5d3e9d",
+    "lat": 26.012373,
+    "lng": 76.3560109,
+    "distanceKm": 10,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sawai%20Madhopur&query_place_id=ChIJh8eTzz4kbjkRnT5df6jBSJE"
+  },
+  "beat::jim-corbett::Corbett Falls & nature walk": {
+    "query": "Corbett Falls",
+    "resolvedName": "Corbett Falls",
+    "placeId": "ChIJNT2p3iR0CjkRGIRR0pvFCDg",
+    "ftid": "0x390a7424dea93d35:0x3808c59bd2518418",
+    "lat": 29.2915401,
+    "lng": 79.3199208,
+    "distanceKm": 54.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Corbett%20Falls&query_place_id=ChIJNT2p3iR0CjkRGIRR0pvFCDg"
+  },
+  "beat::jim-corbett::Garjiya Devi Temple on the Kosi River": {
+    "query": "Garjiya Devi Temple, Ramnagar",
+    "resolvedName": "Garjiya Devi Temple, Ramnagar",
+    "placeId": null,
+    "ftid": null,
+    "lat": null,
+    "lng": null,
+    "distanceKm": null,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Garjiya%20Devi%20Temple%2C%20Ramnagar"
+  },
+  "beat::jim-corbett::Jim Corbett Museum (Choti Haldwani)": {
+    "query": "Corbett Museum, Kaladhungi",
+    "resolvedName": "Jim Corbett Museum",
+    "placeId": "ChIJ7cv8nbV1CjkRuSamrFjtR4w",
+    "ftid": "0x390a75b59dfccbed:0x8c47ed58aca626b9",
+    "lat": 29.2927537,
+    "lng": 79.3382708,
+    "distanceKm": 56.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Corbett%20Museum%2C%20Kaladhungi&query_place_id=ChIJ7cv8nbV1CjkRuSamrFjtR4w"
+  },
+  "beat::nainital::Naina Devi Temple": {
+    "query": "Naina Devi Temple, Nainital",
+    "resolvedName": "Shree Maa Naina Devi Temple",
+    "placeId": "ChIJeealb-yhoDkRdnRcI-cfsDo",
+    "ftid": "0x39a0a1ec6fa5e679:0x3ab01fe7235c7476",
+    "lat": 29.3891405,
+    "lng": 79.4543263,
+    "distanceKm": 11.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Naina%20Devi%20Temple%2C%20Nainital&query_place_id=ChIJeealb-yhoDkRdnRcI-cfsDo"
+  },
+  "beat::nainital::Snow View Point & aerial ropeway": {
+    "query": "Snow View Point, Nainital",
+    "resolvedName": "Snow View heritage kmvm",
+    "placeId": "ChIJQ8Wu4oyhoDkRzz-Wla-H_9E",
+    "ftid": "0x39a0a18ce2aec543:0xd1ff87af95963fcf",
+    "lat": 29.3964677,
+    "lng": 79.4598185,
+    "distanceKm": 12,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Snow%20View%20Point%2C%20Nainital&query_place_id=ChIJQ8Wu4oyhoDkRzz-Wla-H_9E"
+  },
+  "beat::nainital::Tiffin Top (Dorothy's Seat) trek": {
+    "query": "Tiffin Top, Nainital",
+    "resolvedName": "Tiffin Top",
+    "placeId": "ChIJZRTXVeihoDkRweGBtu6Tbo4",
+    "ftid": "0x39a0a1e855d71465:0x8e6e93eeb681e1c1",
+    "lat": 29.3836288,
+    "lng": 79.4505608,
+    "distanceKm": 10.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Tiffin%20Top%2C%20Nainital&query_place_id=ChIJZRTXVeihoDkRweGBtu6Tbo4"
+  },
+  "beat::mussoorie::Kempty Falls": {
+    "query": "Kempty Falls, Mussoorie",
+    "resolvedName": "Kempty Waterfall",
+    "placeId": "ChIJUTv2Y5nRCDkRiArGO450Ta8",
+    "ftid": "0x3908d19963f63b51:0xaf4d748e3bc60a88",
+    "lat": 30.4877782,
+    "lng": 78.0366836,
+    "distanceKm": 5.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kempty%20Falls%2C%20Mussoorie&query_place_id=ChIJUTv2Y5nRCDkRiArGO450Ta8"
+  },
+  "beat::mussoorie::Gun Hill ropeway & viewpoint": {
+    "query": "Gun Hill, Mussoorie",
+    "resolvedName": "Gun Hill, Mussoorie",
+    "placeId": "ChIJhZZ2D93QCDkRsGcUl5BYnCQ",
+    "ftid": "0x3908d0dd0f769685:0x249c5890971467b0",
+    "lat": 30.4593197,
+    "lng": 78.0742701,
+    "distanceKm": 0.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Gun%20Hill%2C%20Mussoorie&query_place_id=ChIJhZZ2D93QCDkRsGcUl5BYnCQ"
+  },
+  "beat::mussoorie::Camel's Back Road & Lal Tibba scenic walk": {
+    "query": "Lal Tibba, Mussoorie",
+    "resolvedName": "Lal Tibba Scenic Cafe",
+    "placeId": "ChIJlXGRkpbQCDkR0HvjQF_AokU",
+    "ftid": "0x3908d09692917195:0x45a2c05f40e37bd0",
+    "lat": 30.4667171,
+    "lng": 78.0949727,
+    "distanceKm": 1.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Lal%20Tibba%2C%20Mussoorie&query_place_id=ChIJlXGRkpbQCDkR0HvjQF_AokU"
+  },
+  "beat::coorg::Abbey Falls amidst coffee estates": {
+    "query": "Abbey Falls, Coorg",
+    "resolvedName": "Abbi Waterfall",
+    "placeId": "ChIJJ-a10A4BpTsREOa0mU7bOK0",
+    "ftid": "0x3ba5010ed0b5e627:0xad38db4e99b4e610",
+    "lat": 12.4578946,
+    "lng": 75.7164803,
+    "distanceKm": 10.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Abbey%20Falls%2C%20Coorg&query_place_id=ChIJJ-a10A4BpTsREOa0mU7bOK0"
+  },
+  "beat::coorg::Dubare Elephant Camp": {
+    "query": "Dubare Elephant Camp, Kushalnagar, Coorg",
+    "placeId": "ChIJ__-ldRKnqTsRYl-ouITuHLQ",
+    "ftid": "0x3ba5a71275a5bfff:0xb41cce84b8a85f62",
+    "lat": 12.369025,
+    "lng": 75.9043455,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Dubare%20Elephant%20Camp%2C%20Kushalnagar%2C%20Coorg&query_place_id=ChIJ__-ldRKnqTsRYl-ouITuHLQ"
+  },
+  "beat::coorg::Namdroling Monastery (Golden Temple), Bylakuppe": {
+    "query": "Namdroling Monastery, Bylakuppe",
+    "resolvedName": "Namdroling Monastery Golden Temple",
+    "placeId": "ChIJF9-V22CnpTsRp042LzmwG_g",
+    "ftid": "0x3ba5a760db95df17:0xf81bb0392f364ea7",
+    "lat": 12.430628,
+    "lng": 75.9669536,
+    "distanceKm": 33.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Namdroling%20Monastery%2C%20Bylakuppe&query_place_id=ChIJF9-V22CnpTsRp042LzmwG_g"
+  },
+  "beat::coorg::Raja's Seat sunset & Madikeri Fort": {
+    "query": "Raja's Seat, Madikeri",
+    "resolvedName": "Raja Seat Garden",
+    "placeId": "ChIJO_c_fqKqpTsRMn4pdatm7EQ",
+    "ftid": "0x3ba5aaa27e3ff73b:0x44ec66ab75297e32",
+    "lat": 12.4144899,
+    "lng": 75.7368986,
+    "distanceKm": 8.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Raja's%20Seat%2C%20Madikeri&query_place_id=ChIJO_c_fqKqpTsRMn4pdatm7EQ"
+  },
+  "beat::wayanad::Edakkal Caves prehistoric petroglyphs": {
+    "query": "Edakkal Caves, Wayanad",
+    "resolvedName": "Edakkal Caves",
+    "placeId": "ChIJ43AFxSIPpjsR3-Cpk3Ypcds",
+    "ftid": "0x3ba60f22c50570e3:0xdb71297693a9e0df",
+    "lat": 11.6268407,
+    "lng": 76.234269,
+    "distanceKm": 15.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Edakkal%20Caves%2C%20Wayanad&query_place_id=ChIJ43AFxSIPpjsR3-Cpk3Ypcds"
+  },
+  "beat::wayanad::Soochipara Waterfalls (Sentinel Rock)": {
+    "query": "Soochipara Falls, Wayanad",
+    "resolvedName": "Soochipara Waterfalls",
+    "placeId": "ChIJqTpaOG4TpjsR0mtwt8jyxkw",
+    "ftid": "0x3ba6136e385a3aa9:0x4cc6f2c8b7706bd2",
+    "lat": 11.5089763,
+    "lng": 76.163892,
+    "distanceKm": 23.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Soochipara%20Falls%2C%20Wayanad&query_place_id=ChIJqTpaOG4TpjsR0mtwt8jyxkw"
+  },
+  "beat::wayanad::Pookode Lake freshwater cruise & spices": {
+    "query": "Pookode Lake, Wayanad",
+    "resolvedName": "Pookode Lake",
+    "placeId": "ChIJiTfRqIhtpjsReKZ1OA3Me9Q",
+    "ftid": "0x3ba66d88a8d13789:0xd47bcc0d3875a678",
+    "lat": 11.5424566,
+    "lng": 76.0272233,
+    "distanceKm": 22.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Pookode%20Lake%2C%20Wayanad&query_place_id=ChIJiTfRqIhtpjsReKZ1OA3Me9Q"
+  },
+  "beat::mahabaleshwar::Arthur's Seat (Queen of Points)": {
+    "query": "Arthur's Seat, Mahabaleshwar",
+    "resolvedName": "Arthur's Seat",
+    "placeId": "ChIJS1hP3Th7wjsRhjq3q1LfgLM",
+    "ftid": "0x3bc27b38dd4f584b:0xb380df52abb73a86",
+    "lat": 17.9807113,
+    "lng": 73.6372979,
+    "distanceKm": 6.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Arthur's%20Seat%2C%20Mahabaleshwar&query_place_id=ChIJS1hP3Th7wjsRhjq3q1LfgLM"
+  },
+  "beat::mahabaleshwar::Pratapgad Fort excursion": {
+    "query": "Pratapgad Fort, Mahabaleshwar",
+    "resolvedName": "Pratapgad Fort",
+    "placeId": "ChIJ8fl6xY-7wjsR62Y2qg1_zQA",
+    "ftid": "0x3bc2bb8fc57af9f1:0xcd7f0daa3666eb",
+    "lat": 17.9371187,
+    "lng": 73.5782008,
+    "distanceKm": 8.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Pratapgad%20Fort%2C%20Mahabaleshwar&query_place_id=ChIJ8fl6xY-7wjsR62Y2qg1_zQA"
+  },
+  "beat::lonavala::Karla & Bhaja Buddhist Caves": {
+    "query": "Karla Caves, Lonavala",
+    "resolvedName": "Karla Caves",
+    "placeId": "ChIJ00EhToOqwjsRdm0blvace3o",
+    "ftid": "0x3bc2aa834e2141d3:0x7a7b9cf6961b6d76",
+    "lat": 18.7832875,
+    "lng": 73.4704531,
+    "distanceKm": 7.6,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Karla%20Caves%2C%20Lonavala&query_place_id=ChIJ00EhToOqwjsRdm0blvace3o"
+  },
+  "beat::lonavala::Tiger's Leap (Vaghdari) & Lion's Point": {
+    "query": "Tiger's Leap, Lonavala",
+    "resolvedName": "Tiger Point Lonavala",
+    "placeId": "ChIJ30jHY-wD6DsRSuDDJvPcQLQ",
+    "ftid": "0x3be803ec63c748df:0xb440dcf326c3e04a",
+    "lat": 18.6960869,
+    "lng": 73.385235,
+    "distanceKm": 6.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Tiger's%20Leap%2C%20Lonavala&query_place_id=ChIJ30jHY-wD6DsRSuDDJvPcQLQ"
+  },
+  "beat::lonavala::Bhushi Dam & waterfalls": {
+    "query": "Bhushi Dam, Lonavala",
+    "resolvedName": "Bhushi Dam",
+    "placeId": "ChIJSXUDsWEB6DsRGK56_D4p-A8",
+    "ftid": "0x3be80161b1037549:0xff8293efc7aae18",
+    "lat": 18.7224264,
+    "lng": 73.3962885,
+    "distanceKm": 3.3,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhushi%20Dam%2C%20Lonavala&query_place_id=ChIJSXUDsWEB6DsRGK56_D4p-A8"
+  },
+  "beat::jim_corbett::Garjiya Devi Temple on the Kosi River": {
+    "query": "Garjiya Devi Temple, Ramnagar, Uttarakhand",
+    "placeId": "ChIJoUJIduQQCjkRc3q75-K98ww",
+    "ftid": "0x390a10e4764842a1:0xcf3bde2e7bb7a73",
+    "lat": 29.4941308,
+    "lng": 79.141226,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Garjiya%20Devi%20Temple%2C%20Ramnagar%2C%20Uttarakhand&query_place_id=ChIJoUJIduQQCjkRc3q75-K98ww"
   }
 }

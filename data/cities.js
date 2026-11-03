@@ -5177,9 +5177,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Meenakshi%20Amman%20Temple%2C%20Madurai",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Meenakshi%20Amman%20Temple%2C%20Madurai&query_place_id=ChIJh2nkYYTFADsRA2co5RxiNPE",
         "notes": "Iconic Dravidian architectural marvel with 14 towering gopurams carved with 33,000 colorful sculptures, and the Hall of Thousand Pillars.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJh2nkYYTFADsRA2co5RxiNPE",
+        "ftid": "0x3b00c58461e46987:0xf134621ce5286703",
+        "lat": 9.9195045,
+        "lng": 78.1193418
       },
       {
         "title": "Thirumalai Nayakar Palace",
@@ -5200,9 +5204,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thirumalai%20Nayakar%20Palace%2C%20Madurai",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thirumalai%20Nayakar%20Palace%2C%20Madurai&query_place_id=ChIJBUt6Fp3FADsRpN6L7XdDKmY",
         "notes": "17th-century palace built by King Thirumalai Nayak blending Dravidian and Islamic styles, featuring colossal white stucco pillars.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJBUt6Fp3FADsRpN6L7XdDKmY",
+        "ftid": "0x3b00c59d167a4b05:0x662a4377ed8bdea4",
+        "lat": 9.9150904,
+        "lng": 78.1237483
       },
       {
         "title": "Gandhi Memorial Museum",
@@ -5223,9 +5231,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gandhi%20Memorial%20Museum%2C%20Madurai",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gandhi%20Memorial%20Museum%2C%20Madurai&query_place_id=ChIJbQvbHLzFADsRh3MOwOrofDw",
         "notes": "Housed in the historic Rani Mangammal Palace, preserving the bloodstained dhoti worn by Mahatma Gandhi when he was assassinated.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJbQvbHLzFADsRh3MOwOrofDw",
+        "ftid": "0x3b00c5bc1cdb0b6d:0x3c7ce8eac00e7387",
+        "lat": 9.9299477,
+        "lng": 78.1383853
       },
       {
         "title": "Jigarthanda & Madurai bun parotta dinner",
@@ -5302,9 +5314,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Triveni%20Sangam%2C%20Kanyakumari",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Triveni%20Sangam%2C%20Kanyakumari&query_place_id=ChIJodifNiXtBDsREyHcFt06f4Y",
         "notes": "Sacred meeting point of three oceans; witness sunrise and visit the 3,000-year-old temple of Goddess Kanya with her sparkling diamond nose ring.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJodifNiXtBDsREyHcFt06f4Y",
+        "ftid": "0x3b04ed25369fd8a1:0x867f3add16dc2113",
+        "lat": 8.0835871,
+        "lng": 77.5488666
       },
       {
         "title": "Vivekananda Rock Memorial ferry",
@@ -5327,9 +5343,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vivekananda%20Rock%20Memorial%2C%20Kanyakumari",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vivekananda%20Rock%20Memorial%2C%20Kanyakumari&query_place_id=ChIJwSRdSSntBDsRwKOziITrmXk",
         "notes": "Take the short ferry to the offshore granite rock where Swami Vivekananda attained enlightenment in 1892, housing the meditation hall.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJwSRdSSntBDsRwKOziITrmXk",
+        "ftid": "0x3b04ed29495d24c1:0x7999eb8488b3a3c0",
+        "lat": 8.0781369,
+        "lng": 77.5552127
       },
       {
         "title": "Thiruvalluvar Statue",
@@ -5350,9 +5370,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thiruvalluvar%20Statue%2C%20Kanyakumari",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thiruvalluvar%20Statue%2C%20Kanyakumari&query_place_id=ChIJW1COJCntBDsRp9MsSJICJak",
         "notes": "Colossal 133-foot stone statue honoring the celebrated Tamil saint and poet Thiruvalluvar, representing the 133 chapters of the Tirukkural.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJW1COJCntBDsRp9MsSJICJak",
+        "ftid": "0x3b04ed29248e505b:0xa9250292482cd3a7",
+        "lat": 8.0778074,
+        "lng": 77.5540357
       },
       {
         "title": "Padmanabhapuram Palace excursion",
@@ -5373,9 +5397,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Padmanabhapuram%20Palace%2C%20Kanyakumari",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Padmanabhapuram%20Palace%2C%20Kanyakumari&query_place_id=ChIJPQfSKff4BDsRb7CR4Qo5fCU",
         "notes": "Magnificent 16th-century wooden palace of Travancore kings featuring intricate rosewood ceilings, secret underground passageways, and mica windows.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJPQfSKff4BDsRb7CR4Qo5fCU",
+        "ftid": "0x3b04f8f729d2073d:0x257c390ae191b06f",
+        "lat": 8.2507431,
+        "lng": 77.3266987
       },
       {
         "title": "Sunset View Point",
@@ -5396,9 +5424,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sunset%20Point%2C%20Kanyakumari",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sunset%20Point%2C%20Kanyakumari&query_place_id=ChIJg8j_DhztBDsRhw-IBilBMKU",
         "notes": "Spectacular ocean vantage point where visitors gather to watch the sun dip beneath the vast meeting of three seas.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJg8j_DhztBDsRhw-IBilBMKU",
+        "ftid": "0x3b04ed1c0effc883:0xa530412906880f87",
+        "lat": 8.0785642,
+        "lng": 77.531674
       }
     ],
     "aliases": [
@@ -5468,9 +5500,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ranthambore%20Fort",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ranthambore%20Fort&query_place_id=ChIJU6g7730nbjkRIfCSXS8GScY",
         "notes": "UNESCO World Heritage 10th-century hill fort overlooking the jungle, home to the revered three-eyed Ganesha temple receiving thousands of mail letters.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJU6g7730nbjkRIfCSXS8GScY",
+        "ftid": "0x396e277def3ba853:0xc649062f5d92f021",
+        "lat": 26.0207552,
+        "lng": 76.4549695
       },
       {
         "title": "Padam Talao & Jogi Mahal",
@@ -5492,9 +5528,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Padam%20Talao%2C%20Ranthambore",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Padam%20Talao%2C%20Ranthambore&query_place_id=ChIJCTs0e53YcTkR_TPyhtdzm38",
         "notes": "The park's largest water lily lake flanked by the historic royal hunting lodge Jogi Mahal and India's second largest banyan tree.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJCTs0e53YcTkR_TPyhtdzm38",
+        "ftid": "0x3971d89d7b343b09:0x7f9b73d786f233fd",
+        "lat": 26.0267752,
+        "lng": 76.4570317
       },
       {
         "title": "Rajiv Gandhi Regional Museum of Natural History",
@@ -5515,9 +5555,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sawai%20Madhopur",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sawai%20Madhopur&query_place_id=ChIJh8eTzz4kbjkRnT5df6jBSJE",
         "notes": "Modern interactive museum educating visitors on Thar flora, wildlife conservation, and regional Rajasthani biodiversity.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJh8eTzz4kbjkRnT5df6jBSJE",
+        "ftid": "0x396e243ecf93c787:0x9148c1a87f5d3e9d",
+        "lat": 26.012373,
+        "lng": 76.3560109
       }
     ],
     "aliases": [
@@ -5586,9 +5630,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Corbett%20Falls",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Corbett%20Falls&query_place_id=ChIJNT2p3iR0CjkRGIRR0pvFCDg",
         "notes": "Picturesque 66-foot waterfall tucked inside teak woods, offering peaceful forested nature trails and birdsong.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJNT2p3iR0CjkRGIRR0pvFCDg",
+        "ftid": "0x390a7424dea93d35:0x3808c59bd2518418",
+        "lat": 29.2915401,
+        "lng": 79.3199208
       },
       {
         "title": "Garjiya Devi Temple on the Kosi River",
@@ -5610,9 +5658,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Garjiya%20Devi%20Temple%2C%20Ramnagar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Garjiya%20Devi%20Temple%2C%20Ramnagar%2C%20Uttarakhand&query_place_id=ChIJoUJIduQQCjkRc3q75-K98ww",
         "notes": "Sacred Shakti shrine dramatically perched atop a huge boulder surrounded by the roaring currents of the Kosi River.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJoUJIduQQCjkRc3q75-K98ww",
+        "ftid": "0x390a10e4764842a1:0xcf3bde2e7bb7a73",
+        "lat": 29.4941308,
+        "lng": 79.141226
       },
       {
         "title": "Jim Corbett Museum (Choti Haldwani)",
@@ -5633,9 +5685,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Corbett%20Museum%2C%20Kaladhungi",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Corbett%20Museum%2C%20Kaladhungi&query_place_id=ChIJ7cv8nbV1CjkRuSamrFjtR4w",
         "notes": "Heritage stone cottage that was the winter residence of hunter-turned-conservationist Jim Corbett, preserving memorabilia, letters, and rifles.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ7cv8nbV1CjkRuSamrFjtR4w",
+        "ftid": "0x390a75b59dfccbed:0x8c47ed58aca626b9",
+        "lat": 29.2927537,
+        "lng": 79.3382708
       }
     ],
     "aliases": [
@@ -5707,9 +5763,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Naina%20Devi%20Temple%2C%20Nainital",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Naina%20Devi%20Temple%2C%20Nainital&query_place_id=ChIJeealb-yhoDkRdnRcI-cfsDo",
         "notes": "Revered Shakti Peetha located on the northern shore of Naini Lake where Goddess Sati's eyes (nayan) are believed to have fallen.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJeealb-yhoDkRdnRcI-cfsDo",
+        "ftid": "0x39a0a1ec6fa5e679:0x3ab01fe7235c7476",
+        "lat": 29.3891405,
+        "lng": 79.4543263
       },
       {
         "title": "Snow View Point & aerial ropeway",
@@ -5730,9 +5790,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Snow%20View%20Point%2C%20Nainital",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Snow%20View%20Point%2C%20Nainital&query_place_id=ChIJQ8Wu4oyhoDkRzz-Wla-H_9E",
         "notes": "Cable car ride to 7,450 feet offering clear views of the majestic Himalayan peaks including Nanda Devi, Trishul, and Nanda Kot.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJQ8Wu4oyhoDkRzz-Wla-H_9E",
+        "ftid": "0x39a0a18ce2aec543:0xd1ff87af95963fcf",
+        "lat": 29.3964677,
+        "lng": 79.4598185
       },
       {
         "title": "Tiffin Top (Dorothy's Seat) trek",
@@ -5753,9 +5817,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "trek",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tiffin%20Top%2C%20Nainital",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tiffin%20Top%2C%20Nainital&query_place_id=ChIJZRTXVeihoDkRweGBtu6Tbo4",
         "notes": "Scenic 4-km trek through oak, pine, and deodar woods up to Dorothy's Seat with panoramic views over the town and Kumaon hills.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJZRTXVeihoDkRweGBtu6Tbo4",
+        "ftid": "0x39a0a1e855d71465:0x8e6e93eeb681e1c1",
+        "lat": 29.3836288,
+        "lng": 79.4505608
       },
       {
         "title": "Tibetan Market momos & thukpa",
@@ -5827,9 +5895,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kempty%20Falls%2C%20Mussoorie",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kempty%20Falls%2C%20Mussoorie&query_place_id=ChIJUTv2Y5nRCDkRiArGO450Ta8",
         "notes": "Cascading mountain waterfall developed as a picnic spot during the British Raj; enjoy swimming in natural pools and ropeway views.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJUTv2Y5nRCDkRiArGO450Ta8",
+        "ftid": "0x3908d19963f63b51:0xaf4d748e3bc60a88",
+        "lat": 30.4877782,
+        "lng": 78.0366836
       },
       {
         "title": "Gun Hill ropeway & viewpoint",
@@ -5851,9 +5923,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gun%20Hill%2C%20Mussoorie",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gun%20Hill%2C%20Mussoorie&query_place_id=ChIJhZZ2D93QCDkRsGcUl5BYnCQ",
         "notes": "Ride the cable car to Mussoorie's second highest peak for 360-degree panoramas of the snow-clad Bunderpunch range and Doon Valley.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJhZZ2D93QCDkRsGcUl5BYnCQ",
+        "ftid": "0x3908d0dd0f769685:0x249c5890971467b0",
+        "lat": 30.4593197,
+        "lng": 78.0742701
       },
       {
         "title": "Camel's Back Road & Lal Tibba scenic walk",
@@ -5874,9 +5950,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lal%20Tibba%2C%20Mussoorie",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lal%20Tibba%2C%20Mussoorie&query_place_id=ChIJlXGRkpbQCDkR0HvjQF_AokU",
         "notes": "Peaceful 3-km cliffside walk shaped like a camel's hump, leading up into pine-scented Landour to Lal Tibba viewpoint.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJlXGRkpbQCDkR0HvjQF_AokU",
+        "ftid": "0x3908d09692917195:0x45a2c05f40e37bd0",
+        "lat": 30.4667171,
+        "lng": 78.0949727
       },
       {
         "title": "Landour Bakehouse & Char Dukan treats",
@@ -5972,9 +6052,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Abbey%20Falls%2C%20Coorg",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Abbey%20Falls%2C%20Coorg&query_place_id=ChIJJ-a10A4BpTsREOa0mU7bOK0",
         "notes": "Roaring waterfall cascading down boulders surrounded by private coffee plantations, pepper vines, and a hanging bridge.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJJ-a10A4BpTsREOa0mU7bOK0",
+        "ftid": "0x3ba5010ed0b5e627:0xad38db4e99b4e610",
+        "lat": 12.4578946,
+        "lng": 75.7164803
       },
       {
         "title": "Dubare Elephant Camp",
@@ -5995,9 +6079,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dubare%20Elephant%20Camp%2C%20Coorg",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dubare%20Elephant%20Camp%2C%20Kushalnagar%2C%20Coorg&query_place_id=ChIJ__-ldRKnqTsRYl-ouITuHLQ",
         "notes": "River camp on the banks of the Kaveri River where visitors can participate in elephant bathing, feeding, and river rafting.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ__-ldRKnqTsRYl-ouITuHLQ",
+        "ftid": "0x3ba5a71275a5bfff:0xb41cce84b8a85f62",
+        "lat": 12.369025,
+        "lng": 75.9043455
       },
       {
         "title": "Namdroling Monastery (Golden Temple), Bylakuppe",
@@ -6019,9 +6107,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Namdroling%20Monastery%2C%20Bylakuppe",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Namdroling%20Monastery%2C%20Bylakuppe&query_place_id=ChIJF9-V22CnpTsRp042LzmwG_g",
         "notes": "Second largest Tibetan settlement in India, featuring three colossal 40-foot gold statues of Buddha, Padmasambhava, and Amitayus.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJF9-V22CnpTsRp042LzmwG_g",
+        "ftid": "0x3ba5a760db95df17:0xf81bb0392f364ea7",
+        "lat": 12.430628,
+        "lng": 75.9669536
       },
       {
         "title": "Raja's Seat sunset & Madikeri Fort",
@@ -6043,9 +6135,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Raja's%20Seat%2C%20Madikeri",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Raja's%20Seat%2C%20Madikeri&query_place_id=ChIJO_c_fqKqpTsRMn4pdatm7EQ",
         "notes": "Scenic seasonal garden pavilion where the Kings of Kodagu once watched sunsets over layered misty hills and valleys.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJO_c_fqKqpTsRMn4pdatm7EQ",
+        "ftid": "0x3ba5aaa27e3ff73b:0x44ec66ab75297e32",
+        "lat": 12.4144899,
+        "lng": 75.7368986
       },
       {
         "title": "Authentic Kodava pandi curry & akki roti dinner",
@@ -6119,9 +6215,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "trek",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Edakkal%20Caves%2C%20Wayanad",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Edakkal%20Caves%2C%20Wayanad&query_place_id=ChIJ43AFxSIPpjsR3-Cpk3Ypcds",
         "notes": "Two natural rock shelters perched at 3,900 ft on Ambukuthi Mala featuring rare Neolithic rock engravings dating to 6,000 BCE.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ43AFxSIPpjsR3-Cpk3Ypcds",
+        "ftid": "0x3ba60f22c50570e3:0xdb71297693a9e0df",
+        "lat": 11.6268407,
+        "lng": 76.234269
       },
       {
         "title": "Banasura Sagar Dam & speed boating",
@@ -6165,9 +6265,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "trek",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Soochipara%20Falls%2C%20Wayanad",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Soochipara%20Falls%2C%20Wayanad&query_place_id=ChIJqTpaOG4TpjsR0mtwt8jyxkw",
         "notes": "Three-tiered 200-meter waterfall roaring through dense montane forests, offering natural pool bathing and rock-climbing terrain.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJqTpaOG4TpjsR0mtwt8jyxkw",
+        "ftid": "0x3ba6136e385a3aa9:0x4cc6f2c8b7706bd2",
+        "lat": 11.5089763,
+        "lng": 76.163892
       },
       {
         "title": "Pookode Lake freshwater cruise & spices",
@@ -6189,9 +6293,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pookode%20Lake%2C%20Wayanad",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pookode%20Lake%2C%20Wayanad&query_place_id=ChIJiTfRqIhtpjsReKZ1OA3Me9Q",
         "notes": "Scenic natural freshwater lake in the shape of India's map surrounded by evergreen forests, blue water lilies, and bamboo handicrafts.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJiTfRqIhtpjsReKZ1OA3Me9Q",
+        "ftid": "0x3ba66d88a8d13789:0xd47bcc0d3875a678",
+        "lat": 11.5424566,
+        "lng": 76.0272233
       }
     ],
     "aliases": [
@@ -6238,9 +6346,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Arthur's%20Seat%2C%20Mahabaleshwar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Arthur's%20Seat%2C%20Mahabaleshwar&query_place_id=ChIJS1hP3Th7wjsRhjq3q1LfgLM",
         "notes": "Dramatic 1,470-meter cliff viewpoint overlooking the deep Savitri River valley and dense Tiger Spring canyon, known for aero-currents.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJS1hP3Th7wjsRhjq3q1LfgLM",
+        "ftid": "0x3bc27b38dd4f584b:0xb380df52abb73a86",
+        "lat": 17.9807113,
+        "lng": 73.6372979
       },
       {
         "title": "Pratapgad Fort excursion",
@@ -6262,9 +6374,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "trek",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pratapgad%20Fort%2C%20Mahabaleshwar",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pratapgad%20Fort%2C%20Mahabaleshwar&query_place_id=ChIJ8fl6xY-7wjsR62Y2qg1_zQA",
         "notes": "Historic 1656 mountain fortress of Chhatrapati Shivaji Maharaj where he defeated Afzal Khan; features Bhavani temple and double-walled ramparts.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ8fl6xY-7wjsR62Y2qg1_zQA",
+        "ftid": "0x3bc2bb8fc57af9f1:0xcd7f0daa3666eb",
+        "lat": 17.9371187,
+        "lng": 73.5782008
       },
       {
         "title": "Mapro Garden strawberry feast",
@@ -6361,9 +6477,13 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Karla%20Caves%2C%20Lonavala",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Karla%20Caves%2C%20Lonavala&query_place_id=ChIJ00EhToOqwjsRdm0blvace3o",
         "notes": "Ancient 2nd-century BCE rock-cut Buddhist chaitya hall with grand vaulted teakwood ribs, Ashokan lion pillar, and 37 carved columns.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ00EhToOqwjsRdm0blvace3o",
+        "ftid": "0x3bc2aa834e2141d3:0x7a7b9cf6961b6d76",
+        "lat": 18.7832875,
+        "lng": 73.4704531
       },
       {
         "title": "Tiger's Leap (Vaghdari) & Lion's Point",
@@ -6384,9 +6504,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tiger's%20Leap%2C%20Lonavala",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tiger's%20Leap%2C%20Lonavala&query_place_id=ChIJ30jHY-wD6DsRSuDDJvPcQLQ",
         "notes": "Cliff-edge viewpoint resembling a leaping tiger, dropping sheer 650 meters into the valley with mist rolls, waterfalls, and tea stalls.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJ30jHY-wD6DsRSuDDJvPcQLQ",
+        "ftid": "0x3be803ec63c748df:0xb440dcf326c3e04a",
+        "lat": 18.6960869,
+        "lng": 73.385235
       },
       {
         "title": "Bhushi Dam & waterfalls",
@@ -6407,9 +6531,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "walk",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhushi%20Dam%2C%20Lonavala",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bhushi%20Dam%2C%20Lonavala&query_place_id=ChIJSXUDsWEB6DsRGK56_D4p-A8",
         "notes": "Popular masonry dam on the Indrayani river where overflowing monsoon waters rush over stepped stone tiers.",
-        "kind": "place"
+        "kind": "place",
+        "placeId": "ChIJSXUDsWEB6DsRGK56_D4p-A8",
+        "ftid": "0x3be80161b1037549:0xff8293efc7aae18",
+        "lat": 18.7224264,
+        "lng": 73.3962885
       },
       {
         "title": "Lohanad Fort trek & chikki shopping",
@@ -6437,7 +6565,7 @@ window.KYT_CITIES = [
           "jain",
           "any"
         ],
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lonavala%20Chikki",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=MG%20Road%20%2F%20Lohagad%2C%20Lonavala%2C%20Lonavala",
         "notes": "Browse famous Maganlal chikki shops for peanut, crushed cashew, sesame, and dry fruit brittle, paired with hot ginger chai.",
         "kind": "activity"
       }
