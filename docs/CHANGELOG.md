@@ -411,4 +411,8 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - Checked the re-run `data/weather.js` against IMD 1991-2020 normals. NASA's daily highs run 3 to 6°C too hot and its lows 4 to 6°C too cold (the day-night swing is 1.8 to 2.7 times real), but the average of high and low is within about 1.5°C and annual rain within 3%. So only (high + low) / 2 and rainfall are trusted. The script's sanity gate now checks those, not the highs and lows.
     - `js/weather-seasons.js` (new, not yet loaded by any page): turns a city's 12 months into at most three seasons, for example "Oct to Feb · Cold, about 3°C · dry". Merges neighbouring months cheapest-first, treats the year as a circle, never makes a one-month season, and says "All year" for flat climates. Loads in the browser as `KYT.weatherSeasons` and in Node.
     - **Tests:** `12-weather-seasons.test.js` (10); `test_update_weather.py` now 32.
+63. **Weather: height correction for hill cities (tooling and data, no app change yet)**
+    - 44 hill and highland cities in `data/cities.js` now carry `elevation` (metres, ballpark). The script records the height of NASA's grid cell, and when a city is 100 m or more above or below it, shifts that city's highs and lows by 6.5°C per km. Rain is left alone. The file stores `elev` and `gridElev` for those cities.
+    - A city whose `elevation` changed is recomputed from the locally cached NASA answer, so no network is needed. 6 new tests (38 in all).
+    - **To apply:** run `python tools/weather/update_weather.py` and commit `data/weather.js`.
 

@@ -61,6 +61,8 @@ ANCHORS = {
     "chennai": [("mean", 0, 22, 28)],
 }
 COMMUNITY = "AG"
+LAPSE_PER_KM = 6.5        # deg C cooler per km higher: a ballpark, which is all the app promises
+LAPSE_MIN_DIFF = 100      # metres; closer than this and the grid is taken as right
 MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
 DAYS = [31, 28.25, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 SOURCE_NAME = "NASA POWER climatology"
@@ -91,7 +93,7 @@ def load_cities(path: Path) -> list[dict]:
         lat, lng = c.get("lat"), c.get("lng")
         if not isinstance(lat, (int, float)) or not isinstance(lng, (int, float)):
             raise SystemExit(f"{c.get('id')} has no lat/lng in {path}")
-        out.append({"id": c["id"], "name": c.get("name", c["id"]), "lat": lat, "lng": lng, "setting": c.get("setting")})
+        out.append({"id": c["id"], "name": c.get("name", c["id"]), "lat": lat, "lng": lng, "setting": c.get("setting"), "elevation": c.get("elevation")})
     return out
 
 
@@ -171,11 +173,34 @@ def parse_response(data: dict, names=(HI_PARAM, LO_PARAM, RAIN_PARAM)) -> dict:
         return vals
 
     hi, lo, per_day = months(blocks["hi"], names[0]), months(blocks["lo"], names[1]), months(blocks["rain"], names[2])
-    return {
+    out = {
         "hi": [round(v, 1) for v in hi],
         "lo": [round(v, 1) for v in lo],
         "rain": [int(round(v * d)) for v, d in zip(per_day, DAYS)],     # mm per day -> mm per month
     }
+    try:                                                     # height of the grid cell NASA answered for, in metres
+        g = data["geometry"]["coordinates"][2]
+        if isinstance(g, (int, float)) and not isinstance(g, bool):
+            out["gridElev"] = float(g)
+    except (KeyError, IndexError, TypeError):
+        pass
+    return out
+
+
+def adjust_for_height(entry: dict, town) -> dict:
+    """Shift temperatures from the height of NASA's ~55 km grid cell to the town's own height (standard lapse rate).
+    Only when the city has an `elevation` and the two differ by LAPSE_MIN_DIFF m or more. Rain is left alone.
+    The result never carries gridElev unless a shift was considered, so cities without elevations are untouched."""
+    entry = dict(entry)
+    grid = entry.pop("gridElev", None)
+    if not isinstance(town, (int, float)) or isinstance(town, bool) or grid is None:
+        return entry
+    entry["elev"], entry["gridElev"] = int(town), int(round(grid))
+    if abs(town - grid) >= LAPSE_MIN_DIFF:
+        shift = (town - grid) * LAPSE_PER_KM / 1000.0
+        entry["hi"] = [round(v - shift, 1) for v in entry["hi"]]
+        entry["lo"] = [round(v - shift, 1) for v in entry["lo"]]
+    return entry
 
 
 def validate(entry: dict) -> None:
@@ -218,7 +243,8 @@ def render(meta: dict, order: list[str], entries: dict) -> str:
     for n, cid in enumerate(ids):
         e = entries[cid]
         arr = lambda k: json.dumps(e[k], separators=(", ", ": "))
-        lines.append(f'    {json.dumps(cid)}: {{"hi": {arr("hi")}, "lo": {arr("lo")}, "rain": {arr("rain")}, "src": {json.dumps(e["src"])}}}'
+        extra = lambda e: "".join(f', "{k}": {e[k]}' for k in ("elev", "gridElev") if k in e)
+        lines.append(f'    {json.dumps(cid)}: {{"hi": {arr("hi")}, "lo": {arr("lo")}, "rain": {arr("rain")}, "src": {json.dumps(e["src"])}{extra(e)}}}'
                      + ("," if n < len(ids) - 1 else ""))
     lines += ["  }", "};", ""]
     return "\n".join(lines)
@@ -281,7 +307,9 @@ def run(args, fetch=None, sleep=time.sleep, today=None, out=print) -> int:
             except ValueError as e:
                 out(f"warning: override for {cid} ignored ({e}); an override needs hi, lo and rain, 12 numbers each")
         have = old.get(cid)
-        if have and have.get("src") == "nasa-power" and (cid not in pool_ids or not args.refresh):
+        town = c.get("elevation")
+        height_ok = have is not None and have.get("elev") == town and (town is None or "gridElev" in have)
+        if have and have.get("src") == "nasa-power" and (cid not in pool_ids or (height_ok and not args.refresh)):
             entries[cid] = have
             kept += 1
             continue
@@ -310,7 +338,7 @@ def run(args, fetch=None, sleep=time.sleep, today=None, out=print) -> int:
                 entry = parse_response(raw, names)
                 validate(entry)
                 cache_file.write_text(json.dumps({"url": url, "fetched": today, "data": raw}), encoding="utf-8")
-            entries[cid] = {**entry, "src": "nasa-power"}
+            entries[cid] = {**adjust_for_height(entry, town), "src": "nasa-power"}
             out(f"[{n}/{len(todo)}] {cid}: ok")
         except (RuntimeError, ValueError) as e:
             failed.append((cid, str(e)))

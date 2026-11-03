@@ -339,5 +339,54 @@ class Retrying(unittest.TestCase):
                 uw.fetch_json("https://x", retries=2, sleep=lambda s: None)
 
 
+class HeightCorrection(Base):
+    """NASA answers for a ~55 km cell whose height (200 m in the fake) is not the town's."""
+    def setUp(self):
+        super().setUp()
+        data = [dict(CITIES[1], elevation=3500), dict(CITIES[0]), dict(CITIES[3], elevation=250)]
+        self.write(data)
+
+    def write(self, data):
+        (self.tmp / "cities.js").write_text("window.KYT_CITIES = " + json.dumps(data) + ";\n", encoding="utf-8")
+
+    def test_a_town_above_its_grid_cell_is_cooled_by_the_lapse_rate(self):
+        self.go()
+        leh = self.weather()["cities"]["leh"]
+        self.assertAlmostEqual(leh["hi"][0], 30.0 - 6.5 * 3.3, places=1)       # 3300 m higher: 21.45 C cooler
+        self.assertAlmostEqual(leh["lo"][0], 18.0 - 6.5 * 3.3, places=1)
+        self.assertEqual((leh["elev"], leh["gridElev"]), (3500, 200))
+
+    def test_rain_is_never_adjusted(self):
+        self.go()
+        self.assertEqual(self.weather()["cities"]["leh"]["rain"], uw.parse_response(api_answer())["rain"])
+
+    def test_a_city_without_elevation_is_untouched_and_carries_no_height_fields(self):
+        self.go()
+        agra = self.weather()["cities"]["agra"]
+        self.assertEqual(agra["hi"], [30.0] * 12)
+        self.assertNotIn("elev", agra)
+
+    def test_a_small_difference_is_taken_as_the_grid_being_right(self):
+        self.go()
+        m = self.weather()["cities"]["manali"]                                  # 250 vs 200 m
+        self.assertEqual(m["hi"], [30.0] * 12)
+        self.assertEqual(m["elev"], 250)
+
+    def test_adding_an_elevation_later_corrects_from_the_cache_without_the_network(self):
+        self.write([CITIES[1]])
+        self.go()
+        self.assertEqual(self.weather()["cities"]["leh"]["hi"][0], 30.0)
+        self.write([dict(CITIES[1], elevation=3500)])
+        before = len(self.calls)
+        self.go()
+        self.assertEqual(len(self.calls), before, "served from the cache")
+        self.assertLess(self.weather()["cities"]["leh"]["hi"][0], 10)
+
+    def test_a_missing_grid_height_leaves_the_numbers_alone(self):
+        out = uw.adjust_for_height(uw.parse_response({**api_answer(), "geometry": {}}), 3500)
+        self.assertEqual(out["hi"], [30.0] * 12)
+        self.assertNotIn("elev", out)
+
+
 if __name__ == "__main__":
     unittest.main()
