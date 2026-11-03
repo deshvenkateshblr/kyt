@@ -222,8 +222,13 @@ class Running(Base):
         self.assertEqual(json.loads(res.stdout), [4, 12, 12, "NASA POWER climatology"])
 
 
-DELHI = {"hi": [21.3, 25.0, 31.0, 38.0, 41.0, 39.5, 35.0, 34.0, 34.5, 34.0, 28.5, 23.0],
-         "lo": [7.8, 10.5, 15.0, 21.0, 25.5, 27.5, 26.5, 26.0, 24.5, 19.5, 13.0, 8.5]}
+DELHI = {"hi": [20.1, 24.2, 29.9, 36.5, 39.9, 39.0, 35.6, 34.2, 34.1, 33.0, 28.4, 22.8],      # IMD 1991-2020, Safdarjung
+         "lo": [7.5, 10.6, 15.6, 21.3, 25.8, 27.7, 27.5, 26.7, 25.0, 19.5, 13.0, 8.4]}
+DELHI_RAIN_PER_DAY = [0.62, 0.76, 0.56, 0.54, 0.99, 2.47, 6.76, 7.52, 4.12, 0.49, 0.2, 0.26]
+
+
+def delhi_answer(**kw):
+    return api_answer(hi=kw.get("hi", DELHI["hi"]), lo=kw.get("lo", DELHI["lo"]), per_day=kw.get("per_day", DELHI_RAIN_PER_DAY))
 
 
 class Parameters(Base):
@@ -237,28 +242,36 @@ class Parameters(Base):
         with self.assertRaisesRegex(ValueError, "unexpected response shape"):
             uw.parse_response(old_style)
 
-    def test_extreme_looking_temperatures_for_an_anchor_city_are_not_written(self):
-        extremes = {"hi": [31.3, 35.7, 42.7, 45.6, 48.1, 48.8, 46.8, 43.8, 40.2, 38.7, 37.7, 29.8],
-                    "lo": [-1.4, 1.2, 6.1, 14.1, 17.8, 24.0, 23.8, 22.6, 17.1, 12.5, 6.5, 0.5]}
-        code = self.go(answers={"delhi": api_answer(hi=extremes["hi"], lo=extremes["lo"])})
+    def test_implausible_averages_for_an_anchor_city_are_not_written(self):
+        code = self.go(answers={"delhi": delhi_answer(hi=[45.0] * 12, lo=[35.0] * 12)})     # an average of 40 C all year
         self.assertEqual(code, 1)
         self.assertFalse((self.tmp / "weather.js").exists(), "nothing is written")
         text = "\n".join(self.log)
         self.assertIn("NOT WRITTEN", text)
-        self.assertRegex(text, r"delhi: mean high in JAN is 31\.3 C, expected 17 to 25")
-        self.assertRegex(text, r"delhi: mean low in JAN is -1\.4 C")
+        self.assertRegex(text, r"delhi: average temperature in JAN is 40\.0 C, expected 10 to 18 C")
+
+    def test_rain_left_in_mm_per_day_is_caught(self):
+        code = self.go(answers={"delhi": delhi_answer(per_day=[v / 30 for v in DELHI_RAIN_PER_DAY])})   # a unit slip, rain 30x too small
+        self.assertEqual(code, 1)
+        self.assertRegex("\n".join(self.log), r"delhi: rainfall in JUL is \d+\.\d mm, expected 150 to 270 mm")
+
+    def test_nasas_known_bias_does_not_block_a_run(self):
+        """Measured 2 Nov 2026: highs ~6 C too hot, lows ~4 C too cold, but the average and the rain are right."""
+        nasa_delhi_hi = [26.8, 31.4, 38.3, 43.7, 46.6, 46.5, 42.5, 37.1, 36.3, 35.3, 31.6, 27.5]
+        nasa_delhi_lo = [2.8, 5.2, 9.8, 16.6, 23.1, 26.2, 25.7, 24.0, 19.8, 14.6, 8.9, 3.9]
+        self.assertEqual(self.go(answers={"delhi": delhi_answer(hi=nasa_delhi_hi, lo=nasa_delhi_lo)}), 0)
 
     def test_plausible_temperatures_pass_and_the_escape_hatch_exists(self):
-        self.assertEqual(self.go(answers={"delhi": api_answer(hi=DELHI["hi"], lo=DELHI["lo"])}), 0)
+        self.assertEqual(self.go(answers={"delhi": delhi_answer()}), 0)
         self.assertIn("delhi", self.weather()["cities"])
         # the same extremes are written when asked for explicitly
         self.setUp()
-        bad = api_answer(hi=[40.0] * 12, lo=[30.0] * 12)
+        bad = delhi_answer(hi=[45.0] * 12, lo=[35.0] * 12)
         self.assertEqual(self.go("--no-sanity-check", answers={"delhi": bad}), 0)
         self.assertIn("delhi", self.weather()["cities"])
 
     def test_the_file_records_which_parameters_were_used(self):
-        self.go(answers={"delhi": api_answer(hi=DELHI["hi"], lo=DELHI["lo"])})
+        self.go(answers={"delhi": delhi_answer()})
         self.assertEqual(self.weather()["meta"]["params"], {"hi": "T2M_MAX_AVG", "lo": "T2M_MIN_AVG", "rain": "PRECTOTCORR"})
 
     def test_data_from_other_parameters_is_never_kept_or_mixed(self):
@@ -267,16 +280,16 @@ class Parameters(Base):
         self.go("--hi-param", "T2M_MAX", "--lo-param", "T2M_MIN", "--no-sanity-check", answers={"agra": old_style, "delhi": old_style})
         self.assertEqual(self.weather()["meta"]["params"]["hi"], "T2M_MAX")
         self.calls.clear()
-        self.go("--cities", "agra", answers={"delhi": api_answer(hi=DELHI["hi"], lo=DELHI["lo"])})
+        self.go("--cities", "agra", answers={"delhi": delhi_answer()})
         self.assertEqual(len(self.calls), 2, "every city again, not just the one named")
         self.assertTrue(any("parameters changed" in line for line in self.log))
         self.assertEqual(self.weather()["meta"]["params"]["hi"], "T2M_MAX_AVG")
-        self.assertEqual(self.weather()["cities"]["delhi"]["hi"][0], 21.3)
+        self.assertEqual(self.weather()["cities"]["delhi"]["hi"][0], 20.1)
 
     def test_a_city_that_fails_after_a_parameter_change_is_left_out_not_kept_with_old_numbers(self):
         old_style = api_answer(names=("T2M_MAX", "T2M_MIN", "PRECTOTCORR"))
         self.go("--hi-param", "T2M_MAX", "--lo-param", "T2M_MIN", "--no-sanity-check", answers={"agra": old_style, "delhi": old_style})
-        code = self.go(answers={"agra": RuntimeError("could not reach NASA POWER"), "delhi": api_answer(hi=DELHI["hi"], lo=DELHI["lo"])})
+        code = self.go(answers={"agra": RuntimeError("could not reach NASA POWER"), "delhi": delhi_answer()})
         self.assertEqual(code, 1)
         self.assertEqual(list(self.weather()["cities"]), ["delhi"], "agra waits for the next run")
         self.assertEqual(self.go(), 0)
@@ -286,7 +299,7 @@ class Parameters(Base):
         legacy = ('window.KYT_WEATHER = {"meta": {"source": "NASA POWER climatology"}, "cities": '
                   '{"agra": {"hi": [31.0] , "lo": [0.0], "rain": [1], "src": "nasa-power"}}};\n')
         (self.tmp / "weather.js").write_text(legacy, encoding="utf-8")
-        self.go(answers={"delhi": api_answer(hi=DELHI["hi"], lo=DELHI["lo"])})
+        self.go(answers={"delhi": delhi_answer()})
         self.assertEqual(len(self.calls), 2)
         self.assertEqual(len(self.weather()["cities"]["agra"]["hi"]), 12)
 
