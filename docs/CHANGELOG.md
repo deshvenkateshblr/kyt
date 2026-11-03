@@ -415,4 +415,8 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - 44 hill and highland cities in `data/cities.js` now carry `elevation` (metres, ballpark). The script records the height of NASA's grid cell, and when a city is 100 m or more above or below it, shifts that city's highs and lows by 6.5°C per km. Rain is left alone. The file stores `elev` and `gridElev` for those cities.
     - A city whose `elevation` changed is recomputed from the locally cached NASA answer, so no network is needed. 6 new tests (38 in all).
     - **To apply:** run `python tools/weather/update_weather.py` and commit `data/weather.js`.
+64. **When to go: seasons in the city sheet (service worker cache `kyt-v98`)**
+    - The city sheet shows "When to go" under Before you go: two or three typical seasons with an average temperature and a rain word, for example "Mar to Jun. Hot, about 31°C, dry." from `data/weather.js` (height-corrected for hill cities). Says it is typical 2001-2020 weather and to check the forecast near the dates.
+    - `data/weather.js` and `js/weather-seasons.js` load on every page that loads `data/cities.js` and are in the offline precache. Not yet in the Day Plan or on city cards.
+    - **Tests:** 2 added to `12-weather-seasons.test.js`.
 

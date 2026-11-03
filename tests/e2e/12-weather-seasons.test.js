@@ -109,3 +109,33 @@ test('every city in data/weather.js gets two or three whole-year seasons, none a
     s.forEach(x => assert.match(x.text, /· (Cold|Cool|Pleasant|Warm|Hot), about −?\d+°C · (dry|some rain|wet)$/, `${id}: ${x.text}`));
   }
 });
+
+// ── In the app ────────────────────────────────────────────────────────────────────────────────────────────
+const { launch, newPhone } = require('./helpers');
+const { before: beforeAll, after: afterAll } = require('node:test');
+let env;
+beforeAll(async () => { env = await launch(); });
+afterAll(async () => { await env.browser.close(); env.server.close(); });
+
+test('the city sheet shows When to go with two or three seasons, and clears it for the next city', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.goto(env.base + '/virtual_trip.html');
+  await page.fill('#vt-new-name', 'Weather');
+  await page.click('#btn-vt-create');
+  await page.waitForSelector('#vt-screen-canvas:not(.hidden)');
+  await page.evaluate(() => KYT.virtualTrips.openCityDetail('delhi', false));
+  await page.waitForSelector('#cd-weather');
+  const n = await page.locator('#cd-weather li[data-season]').count();
+  assert.ok(n >= 2 && n <= 3, `Delhi shows ${n} seasons`);
+  assert.match(await page.locator('#cd-weather').innerText(), /when to go[\s\S]*about \d+°C/i);
+  const shimla = await page.evaluate(() => { KYT.virtualTrips.openCityDetail('shimla', false); return document.getElementById('cd-weather').innerText; });
+  assert.match(shimla, /Cold|Cool/, 'a hill city is not shown as hot all year');
+  assert.equal(await page.locator('#cd-weather').count(), 1, 'one panel, the old one replaced');
+  await context.close();
+});
+
+test('weather data and the summariser are in the offline precache', () => {
+  const sw = require('fs').readFileSync(require('path').join(__dirname, '../../sw.js'), 'utf8');
+  assert.match(sw, /\.\/data\/weather\.js/);
+  assert.match(sw, /\.\/js\/weather-seasons\.js/);
+});

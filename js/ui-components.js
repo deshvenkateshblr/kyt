@@ -238,6 +238,23 @@ window.KYT.ui = (function () {
     return `<span data-byg-chip class="inline-flex items-center gap-1 text-[10px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-100 rounded-full px-2 py-0.5" title="${esc(info.kinds.map(k => BYG_META[k].label).join(', '))}"><i data-lucide="clipboard-check" class="w-3 h-3"></i>Before you go${shown ? ': ' + esc(shown) : ''}</span>`;
   }
 
+  /** "When to go": two or three typical seasons from data/weather.js, or '' when a city has no weather data. */
+  function renderWeatherSeasons(city, id) {
+    const W = window.KYT_WEATHER, S = KYT.weatherSeasons;
+    const entry = W && W.cities && city && W.cities[city.id];
+    const seasons = entry && S ? S.summarise(entry) : [];
+    if (!seasons.length) return '';
+    const esc = KYT.utils.escapeHTML;
+    const period = (W.meta && W.meta.period || '').replace('-', '\u2013');
+    const rows = seasons.map(se => `<li data-season class="flex items-start gap-2">
+        <i data-lucide="${se.rainLabel === 'wet' ? 'cloud-rain' : se.tempLabel === 'Hot' ? 'sun' : se.tempLabel === 'Cold' ? 'snowflake' : 'cloud-sun'}" class="w-4 h-4 text-sky-600 shrink-0 mt-px"></i>
+        <p class="leading-snug"><span class="font-bold">${esc(se.span)}.</span> ${esc(se.tempLabel)}, about ${se.avgTemp < 0 ? '\u2212' + Math.abs(se.avgTemp) : se.avgTemp}\u00b0C, ${esc(se.rainLabel === 'dry' ? 'dry' : se.rainLabel === 'wet' ? 'wet' : 'some rain')}.</p></li>`).join('');
+    return `<div ${id ? `id="${id}" ` : ''}class="text-xs text-slate-700 bg-sky-50/70 border border-sky-100 rounded-xl px-3 py-2.5 space-y-2">
+      <p class="flex items-center gap-1.5 font-extrabold text-sky-900 uppercase tracking-wider text-[11px]"><i data-lucide="calendar-days" class="w-4 h-4"></i> When to go</p>
+      <ul class="space-y-1.5">${rows}</ul>
+      <p class="text-[11px] text-slate-500">Typical average temperature day and night${period ? ', ' + esc(period) : ''}. Check the forecast close to your dates.</p></div>`;
+  }
+
   function renderGeneratedPlanNotice() {
     return `
       <p id="generated-plan-notice" class="flex items-start gap-1.5 text-[11px] leading-snug text-slate-500">
@@ -1136,7 +1153,13 @@ window.KYT.ui = (function () {
       if (bygHtml && attrList && attrList.parentElement) {
         attrList.parentElement.insertAdjacentHTML('beforebegin', bygHtml);
       }
-      if ((accessHtml || bygHtml) && window.lucide) window.lucide.createIcons();
+      const oldWx = document.getElementById('cd-weather');
+      if (oldWx) oldWx.remove();
+      const wxHtml = renderWeatherSeasons(city, 'cd-weather');
+      if (wxHtml && attrList && attrList.parentElement) {
+        attrList.parentElement.insertAdjacentHTML('beforebegin', wxHtml);
+      }
+      if ((accessHtml || bygHtml || wxHtml) && window.lucide) window.lucide.createIcons();
       if (attrList) {
         if (city.beats && city.beats.length > 0) {
           attrList.innerHTML = city.beats.map(b => renderAttractionAccordion(b, city.name)).join('');
@@ -1348,6 +1371,7 @@ window.KYT.ui = (function () {
     beforeYouGoInfo,
     renderBeforeYouGo,
     renderBeforeYouGoChip,
+    renderWeatherSeasons,
     renderMobilityBadge,
     categoryMeta,
     encodeAiTrip,
