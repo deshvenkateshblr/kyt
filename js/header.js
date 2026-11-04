@@ -232,6 +232,13 @@ KYT.header = (function() {
         </a>
       </div>
 
+      <!-- Save: opens Save & Open; the dot shows there are changes not yet saved to a file -->
+      <button type="button" id="kyt-nav-save" data-kyt-backup class="relative flex flex-col items-center gap-0.5 px-1.5 py-1.5 bg-white rounded-xl shadow-sm text-kyt-accent hover:text-blue-600 active:scale-90 transition-all border border-slate-100 min-w-[38px]" title="Save your trips to a file">
+        <i data-lucide="save" class="w-4 h-4"></i>
+        <span class="text-[9px] font-bold text-slate-400 leading-none">Save</span>
+        <span data-kyt-save-dot style="display:none;position:absolute;top:3px;right:5px;width:8px;height:8px;border-radius:9999px;background:#F59E0B;border:1.5px solid #fff"></span>
+      </button>
+
       <!-- Right Action -->
       ${rightBtnHtml}
     `;
@@ -245,6 +252,7 @@ KYT.header = (function() {
       });
     }
 
+    if (window.KYT && KYT.backup && KYT.backup.bind) KYT.backup.bind(el);
     if (window.lucide) {
       lucide.createIcons();
     }

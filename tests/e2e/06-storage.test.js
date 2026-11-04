@@ -41,7 +41,7 @@ test('one backup file holds passport, virtual trips and the current trip with it
   assert.equal(b.activeTrip.name, 'Goa Escape');
   assert.equal(b.activeTrip.steps.length, 2);
   assert.match(text, /wheels up/); assert.match(text, /ticket\.png/);
-  assert.match(await a.page.locator('#kyt-backup-msg').innerText(), /Saved: 2 cities, 1 virtual trips/);
+  assert.match(await a.page.locator('#kyt-backup-msg').innerText(), /Saved: 2 cities, 1 virtual trip,/);
   await a.context.close();
 
   // brand-new device
@@ -49,7 +49,7 @@ test('one backup file holds passport, virtual trips and the current trip with it
   await c.page.goto(env.base + '/index.html');
   await c.page.click('[data-kyt-backup]');
   await c.page.setInputFiles('#kyt-backup-file', file);
-  await c.page.waitForFunction(() => /Restored/.test(document.getElementById('kyt-backup-msg').textContent));
+  await c.page.waitForFunction(() => /Opened/.test(document.getElementById('kyt-backup-msg').textContent));
   assert.match(c.page.dialogs.join('\n'), /Passport: 2 cities[\s\S]*Virtual trips: 1[\s\S]*Goa Escape/);
   await c.page.goto(env.base + '/view_trip.html');
   await c.page.waitForFunction(() => window.KYT && KYT.store);
@@ -82,13 +82,13 @@ test('End Trip offers a backup first: cancel keeps the trip, backup downloads th
   await page.goto(env.base + '/configure_trip.html');
   await page.waitForSelector('#btn-end-trip');
   await page.click('#btn-end-trip');
-  assert.match(await page.locator('#kyt-end-sheet').innerText(), /permanently deletes[\s\S]*Download backup, then end trip[\s\S]*End without a backup[\s\S]*Keep my trip/);
+  assert.match(await page.locator('#kyt-end-sheet').innerText(), /permanently deletes[\s\S]*Save a copy, then end trip[\s\S]*End without saving[\s\S]*Keep my trip/);
   await page.click('#kyt-end-cancel');
   assert.equal(await page.locator('#kyt-end-sheet').count(), 0);
   assert.equal(await page.evaluate(async () => { await KYT.store.loadData(); return KYT.store.get().stepsData.length; }), 1);
   await page.click('#btn-end-trip');
   const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#kyt-end-backup')]);
-  assert.match(dl.suggestedFilename(), /^kyt-backup-\d{4}-\d{2}-\d{2}\.json$/);
+  assert.match(dl.suggestedFilename(), /^kyt-saved-\d{4}-\d{2}-\d{2}\.json$/);
   await dl.saveAs('/tmp/kyt-test-end.json');
   assert.equal(JSON.parse(fs.readFileSync('/tmp/kyt-test-end.json', 'utf8')).activeTrip.name, 'Goa Escape');
   await page.waitForURL('**/index.html');
@@ -115,7 +115,7 @@ test('a failed save is visible: no space left shows a clear message with a backu
   await page.evaluate(() => { Storage.prototype.setItem = function () { throw new DOMException('full', 'QuotaExceededError'); }; });
   await page.fill('#vt-new-name', 'Too big'); await page.click('#btn-vt-create');
   await page.waitForSelector('#kyt-toast');
-  assert.match(await page.locator('#kyt-toast').innerText(), /could not be saved[\s\S]*no room left[\s\S]*Back up now/);
+  assert.match(await page.locator('#kyt-toast').innerText(), /could not be saved[\s\S]*no room left[\s\S]*Save now/);
   await page.click('#kyt-toast [data-kyt-backup]');
   await page.waitForSelector('#kyt-backup-sheet');
   await context.close();
@@ -130,7 +130,7 @@ test('passport writes also report a full device', async () => {
   await context.close();
 });
 
-test('the home page and the trip editor both link to Back up and restore', async () => {
+test('the home page and the trip editor both link to Save and Open', async () => {
   const { context, page } = await newPhone(env.browser);
   await page.goto(env.base + '/index.html');
   assert.equal(await page.locator('.k-backup-link').isVisible(), true);
@@ -142,7 +142,7 @@ test('the home page and the trip editor both link to Back up and restore', async
 test('every page carries one feedback link to info@vividnova.com, added by the single js/footer.js', async () => {
   const fsx = require('node:fs'), pth = require('node:path');
   const root = pth.resolve(__dirname, '..', '..');
-  const pages = fsx.readdirSync(root).filter(f => f.endsWith('.html'));
+  const pages = fsx.readdirSync(root).filter(f => f.endsWith('.html') && f !== 'testgmap.html');   // testgmap.html is the owner's internal audit page
   assert.ok(pages.length >= 7);
   assert.ok(fsx.readFileSync(pth.join(root, 'sw.js'), 'utf8').includes('./js/footer.js'), 'footer.js must be in the service worker shell');
   for (const f of pages) {
@@ -167,8 +167,9 @@ test('footer wording, and the backup sheet reports whether storage works on this
   assert.equal(await page.evaluate(() => Object.keys(JSON.parse(localStorage.getItem('kyt_passport'))).join()), 'agra', 'stamp survives a reload');
   await page.evaluate(() => KYT.backup.openSheet());
   await page.waitForSelector('#kyt-backup-sheet');
+  await page.click('#kyt-backup-sheet summary');
   const txt = await page.locator('#kyt-backup-sheet').innerText();
-  assert.match(txt, /This device check[\s\S]*✓ Settings and passport storage works[\s\S]*✓ Trip storage works[\s\S]*1 city stamped here/);
+  assert.match(txt, /About this device[\s\S]*✓ Settings and passport storage works[\s\S]*✓ Trip storage works[\s\S]*1 city stamped here/);
   await context.close();
 });
 
@@ -196,7 +197,7 @@ test('installed app with no data explains that it is separate from Safari, once;
   assert.match(await page.locator('#kyt-fresh-notice').innerText(), /separate from Safari/);
   await page.reload(); await page.waitForTimeout(800);
   assert.equal(await page.locator('#kyt-fresh-notice').count(), 0, 'shown only once');
-  assert.match(await page.locator('.k-device-note').first().innerText(), /Already using KYT in Safari\?[\s\S]*Back up or restore your data/);
+  assert.match(await page.locator('.k-device-note').first().innerText(), /Already using KYT in Safari\?[\s\S]*Save or open your trips/);
   await context.close();
 });
 
@@ -221,4 +222,132 @@ test('Refresh app clears the offline cache and service worker, then reloads', as
   const [nav] = await Promise.all([page.waitForNavigation(), page.click('#kyt-refresh')]);
   assert.equal(await page.evaluate(async () => (await caches.keys()).includes('kyt-v1')), false, 'old cache removed');
   await context.close();
+});
+
+// ── Save and Open: tracking, the toolbar button, the nudge, the phone share sheet ─────────────────────────────
+
+const setNow = (page, key, v) => page.evaluate(([k, x]) => localStorage.setItem(k, x), [key, v]);
+
+test('Save tracks what changed: a dot on the toolbar Save button appears after a change and clears after saving', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.goto(env.base + '/virtual_trip.html');
+  await page.waitForSelector('#kyt-nav-save');
+  assert.equal(await page.locator('#kyt-nav-save [data-kyt-save-dot]').isVisible(), false, 'nothing changed yet');
+  await page.fill('#vt-new-name', 'Dot'); await page.click('#btn-vt-create');
+  await page.waitForSelector('#vt-screen-canvas:not(.hidden)');
+  assert.equal(await page.locator('#kyt-nav-save [data-kyt-save-dot]').isVisible(), true, 'a new trip is a change');
+  await page.click('#kyt-nav-save');
+  await page.waitForSelector('#kyt-backup-sheet');
+  assert.match(await page.locator('#kyt-backup-sheet').innerText(), /Save & Open[\s\S]*change[\s\S]*none saved to a file yet/);
+  const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#kyt-backup-download')]);
+  assert.match(dl.suggestedFilename(), /^kyt-saved-/);
+  await page.waitForFunction(() => /Saved:/.test(document.getElementById('kyt-backup-msg').textContent));
+  assert.equal(await page.locator('#kyt-nav-save [data-kyt-save-dot]').isVisible(), false, 'saved: the dot is gone');
+  await page.click('#kyt-backup-close');
+  await page.click('#kyt-nav-save');
+  assert.match(await page.locator('#kyt-backup-sheet').innerText(), /Everything is saved/);
+  await context.close();
+});
+
+test('the Save button is on every page that has the toolbar', async () => {
+  const { context, page } = await newPhone(env.browser);
+  for (const f of ['virtual_trip.html', 'curated_trips.html', 'visited.html', 'view_trip.html']) {
+    await page.goto(env.base + '/' + f);
+    await page.waitForSelector('#kyt-nav-save');
+    assert.equal(await page.locator('#kyt-nav-save').count(), 1, f);
+    assert.ok(await page.locator('#kyt-nav-save').isVisible(), f);
+  }
+  await context.close();
+});
+
+test('the toolbar still fits a small phone with the Save button added', async () => {
+  const { context, page } = await newPhone(env.browser, { viewport: { width: 360, height: 740 } });
+  await page.goto(env.base + '/virtual_trip.html');
+  await page.waitForSelector('#kyt-nav-save');
+  const w = await page.evaluate(() => { const t = document.getElementById('main-toolbar'); return { scroll: t.scrollWidth, client: t.clientWidth, right: document.getElementById('kyt-nav-live') ? document.getElementById('kyt-nav-live').getBoundingClientRect().right : 0, vw: innerWidth }; });
+  assert.ok(w.scroll <= w.client + 1, `toolbar overflows: ${JSON.stringify(w)}`);
+  assert.ok(w.right <= w.vw, `right button is off screen: ${JSON.stringify(w)}`);
+  await context.close();
+});
+
+test('a reminder appears once enough has changed with nothing saved, can be put off for a day, and never blocks', async () => {
+  const { context, page } = await newPhone(env.browser, { nudge: true });
+  await page.goto(env.base + '/virtual_trip.html');
+  await page.waitForSelector('#kyt-nav-save');
+  await page.evaluate(() => { for (let i = 0; i < 3; i++) KYT.backup.markChanged(); });
+  await page.waitForTimeout(4600);
+  assert.equal(await page.locator('#kyt-save-nudge').count(), 0, '3 changes is too few to nag about');
+  await page.evaluate(() => KYT.backup.markChanged());
+  await page.waitForSelector('#kyt-save-nudge');
+  assert.match(await page.locator('#kyt-save-nudge').innerText(), /Save a copy\?[\s\S]*only on this device/);
+  assert.equal(await page.locator('#btn-vt-create').isEnabled(), true, 'the page underneath still works');
+  await page.click('#kyt-nudge-later');
+  assert.equal(await page.locator('#kyt-save-nudge').count(), 0);
+  await page.reload(); await page.waitForTimeout(3200);
+  assert.equal(await page.locator('#kyt-save-nudge').count(), 0, 'put off for a day');
+  await context.close();
+});
+
+test('a reminder also appears for old unsaved changes, and saving from it clears everything', async () => {
+  const { context, page } = await newPhone(env.browser, { nudge: true });
+  await page.goto(env.base + '/virtual_trip.html');
+  await setNow(page, 'kyt_change_count', '2');
+  await setNow(page, 'kyt_changed_at', new Date(Date.now() - 5 * 86400000).toISOString());
+  await page.reload();
+  await page.waitForSelector('#kyt-save-nudge');
+  const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#kyt-nudge-save')]);
+  assert.match(dl.suggestedFilename(), /^kyt-saved-/);
+  await page.waitForFunction(() => !document.getElementById('kyt-save-nudge'));
+  assert.deepEqual(await page.evaluate(() => KYT.backup.status().unsaved), false);
+  await context.close();
+});
+
+test('on a phone, Save opens the share sheet (Files, Drive, WhatsApp) with a .json file and counts as saved', async () => {
+  const { context, page } = await newPhone(env.browser, { userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)' });
+  await page.addInitScript(() => {
+    navigator.canShare = () => true;
+    navigator.share = async d => { window.__shared = { name: d.files[0].name, type: d.files[0].type, size: d.files[0].size }; };
+  });
+  await page.goto(env.base + '/visited.html');
+  await page.evaluate(() => PassportStore.unlockCity('agra'));
+  await page.evaluate(() => KYT.backup.openSheet());
+  await page.click('#kyt-backup-download');
+  await page.waitForFunction(() => window.__shared);
+  const sh = await page.evaluate(() => window.__shared);
+  assert.match(sh.name, /^kyt-saved-\d{4}-\d{2}-\d{2}\.json$/); assert.equal(sh.type, 'application/json'); assert.ok(sh.size > 50);
+  assert.equal(await page.evaluate(() => KYT.backup.status().unsaved), false);
+  await context.close();
+});
+
+test('closing the share sheet without choosing is not a save, and says so', async () => {
+  const { context, page } = await newPhone(env.browser, { userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)' });
+  await page.addInitScript(() => {
+    navigator.canShare = () => true;
+    navigator.share = async () => { const e = new Error('cancelled'); e.name = 'AbortError'; throw e; };
+  });
+  await page.goto(env.base + '/visited.html');
+  await page.evaluate(() => PassportStore.unlockCity('agra'));
+  await page.evaluate(() => KYT.backup.openSheet());
+  await page.click('#kyt-backup-download');
+  await page.waitForFunction(() => /Not saved/.test(document.getElementById('kyt-backup-msg').textContent));
+  assert.equal(await page.evaluate(() => KYT.backup.status().unsaved), true, 'still unsaved');
+  await context.close();
+});
+
+test('opening a saved file counts as saved: the file and the device now match', async () => {
+  const a = await newPhone(env.browser);
+  await seedEverything(a.page);
+  await a.page.goto(env.base + '/index.html');
+  await a.page.click('[data-kyt-backup]');
+  const [dl] = await Promise.all([a.page.waitForEvent('download'), a.page.click('#kyt-backup-download')]);
+  await dl.saveAs('/tmp/kyt-test-open.json');
+  await a.context.close();
+  const b = await newPhone(env.browser);
+  await b.page.goto(env.base + '/index.html');
+  await b.page.click('[data-kyt-backup]');
+  await b.page.setInputFiles('#kyt-backup-file', '/tmp/kyt-test-open.json');
+  await b.page.waitForFunction(() => /Opened/.test(document.getElementById('kyt-backup-msg').textContent));
+  assert.match(b.page.dialogs.join('\n'), /Open this saved file\?/);
+  assert.equal(await b.page.evaluate(() => KYT.backup.status().unsaved), false);
+  await b.context.close();
 });

@@ -114,10 +114,10 @@ window.KYT.store = (() => {
       await setItem('kyt_tripNotes', tripNotes);
       await setItem('kyt_tripCoverImage', tripCoverImage || '');
       await setItem('kyt_stepsData', JSON.stringify(stepsData));
-      if (window.KYT.backup) window.KYT.backup.requestPersistence();
+      if (window.KYT.backup) { window.KYT.backup.requestPersistence(); if (window.KYT.backup.markChanged) window.KYT.backup.markChanged(); }
     } catch (e) {
       console.error('IndexedDB save failed:', e);
-      alert('Your last change could not be saved: this device may be out of space. Download a backup (Back up or restore everything), then free some space.');
+      alert('Your last change could not be saved: this device may be out of space. Save a copy to a file (Save & Open), then free some space.');
     }
   }
 

@@ -60,11 +60,13 @@ async function launch() {
 
 /** A fresh, isolated phone-sized browser context (empty IndexedDB / localStorage). */
 async function newPhone(browser, opts = {}) {
+  const { nudge, ...ctxOpts } = opts;      // nudge: true lets the "Save a copy?" card appear; otherwise it is silenced so it cannot cover a button mid-test
   const context = await browser.newContext({
     viewport: { width: 390, height: 844 },
     deviceScaleFactor: 2, isMobile: true, hasTouch: true,
-    acceptDownloads: true, ...opts
+    acceptDownloads: true, ...ctxOpts
   });
+  if (!nudge) await context.addInitScript(() => { try { localStorage.setItem('kyt_save_snooze', String(Date.now() + 86400000 * 365)); } catch (e) { /* about:blank */ } });
   await context.route('**/*', route => {
     const u = route.request().url();
     if (u.startsWith('http://127.0.0.1') || u.startsWith('data:') || u.startsWith('blob:')) return route.continue();

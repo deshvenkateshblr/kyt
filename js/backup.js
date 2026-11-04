@@ -5,7 +5,9 @@
  *  - requestPersistence(): asks the browser not to evict KYT's data when the device runs low on space.
  *  - buildBackup() / downloadBackup() / restoreFromText(): ONE file with the passport, virtual trips and the
  *    current trip, including photos and tickets (they live inside the trip's steps).
- *  - openSheet() / confirmEndTrip(): the two dialogs people see ("Back up & restore", "End this trip?").
+ *  - openSheet() / confirmEndTrip(): the two dialogs people see ("Save & Open", "End this trip?").
+ *  - Save and Open: the same file, in words a first-time user understands. Tracks what changed since the last
+ *    save (markChanged / status), shows a dot on the toolbar's Save button, and nudges gently, never blocking.
  *
  * No dependencies. Uses KYT.store for the current trip when it is on the page. Styles are inline so the
  * dialogs look the same on every page, with or without Tailwind.
@@ -13,7 +15,7 @@
 window.KYT = window.KYT || {};
 
 window.KYT.backup = (() => {
-  const KEYS = { passport: 'kyt_passport', vtrips: 'kyt_virtual_trips', shareName: 'kyt_share_name', lastBackup: 'kyt_last_backup' };
+  const KEYS = { passport: 'kyt_passport', vtrips: 'kyt_virtual_trips', shareName: 'kyt_share_name', lastBackup: 'kyt_last_backup', changedAt: 'kyt_changed_at', changes: 'kyt_change_count', snooze: 'kyt_save_snooze' };
   const FORMAT = 1;
 
   // ── small helpers ─────────────────────────────────────────────────────────
@@ -26,7 +28,7 @@ window.KYT.backup = (() => {
     const el = document.createElement('div');
     el.id = 'kyt-toast'; el.setAttribute('role', 'alert');
     el.style.cssText = 'position:fixed;left:12px;right:12px;bottom:16px;z-index:300;max-width:480px;margin:0 auto;padding:14px 16px;border-radius:14px;background:#7F1D1D;color:#fff;font:600 14px/1.4 system-ui,sans-serif;box-shadow:0 12px 30px rgba(0,0,0,.35)';
-    el.innerHTML = esc(message) + ' <button type="button" style="margin-left:8px;background:none;border:0;color:#FECACA;font-weight:800;text-decoration:underline;font-size:14px" data-kyt-backup>Back up now</button>';
+    el.innerHTML = esc(message) + ' <button type="button" style="margin-left:8px;background:none;border:0;color:#FECACA;font-weight:800;text-decoration:underline;font-size:14px" data-kyt-backup>Save now</button>';
     document.body.appendChild(el);
     bind(el);
     setTimeout(() => el.remove(), ms || 12000);
@@ -35,15 +37,78 @@ window.KYT.backup = (() => {
   // ── safe localStorage write ───────────────────────────────────────────────
   let lastWarn = 0;
   function safeSet(key, value) {
-    try { localStorage.setItem(key, value); requestPersistence(); return true; }
+    try { localStorage.setItem(key, value); requestPersistence(); if (key === KEYS.passport || key === KEYS.vtrips) markChanged(); return true; }
     catch (e) {
       console.error('localStorage write failed for', key, e);
       if (Date.now() - lastWarn > 5000 && typeof document !== 'undefined' && document.body) {
         lastWarn = Date.now();
-        toast('Your last change could not be saved: this device has no room left for KYT. Download a backup, then free some space.');
+        toast('Your last change could not be saved: this device has no room left for KYT. Save a copy to a file, then free some space.');
       }
       return false;
     }
+  }
+
+  // ── what has changed since the last save ──────────────────────────────────
+  const DAY = 86400000;
+  let nudgeTimer = null;
+  const IDLE_MS = 3000;
+  let lastActivity = Date.now();
+  if (typeof document !== 'undefined') ['pointerdown', 'keydown', 'touchstart'].forEach(ev => document.addEventListener(ev, () => { lastActivity = Date.now(); }, { capture: true, passive: true }));
+  function markChanged() {
+    try {
+      localStorage.setItem(KEYS.changes, String((parseInt(readLocal(KEYS.changes), 10) || 0) + 1));
+      if (!readLocal(KEYS.changedAt)) localStorage.setItem(KEYS.changedAt, new Date().toISOString());
+    } catch (e) { /* storage blocked: nothing to track */ }
+    refreshIndicators();
+    if (typeof document !== 'undefined' && document.body) { clearTimeout(nudgeTimer); nudgeTimer = setTimeout(maybeNudge, 4000); }
+  }
+  function markSaved(at) {
+    try {
+      localStorage.setItem(KEYS.lastBackup, at || new Date().toISOString());
+      localStorage.removeItem(KEYS.changedAt); localStorage.removeItem(KEYS.changes); localStorage.removeItem(KEYS.snooze);
+    } catch (e) { /* not critical */ }
+    refreshIndicators();
+    const n = typeof document !== 'undefined' && document.getElementById('kyt-save-nudge'); if (n) n.remove();
+  }
+  /** { lastSaved: Date|null, changes: n, unsaved: bool, since: Date|null } */
+  function status() {
+    const last = readLocal(KEYS.lastBackup), since = readLocal(KEYS.changedAt);
+    const changes = parseInt(readLocal(KEYS.changes), 10) || 0;
+    return { lastSaved: last ? new Date(last) : null, changes, unsaved: changes > 0, since: since ? new Date(since) : null };
+  }
+  function refreshIndicators() {
+    if (typeof document === 'undefined') return;
+    const st = status();
+    document.querySelectorAll('[data-kyt-save-dot]').forEach(el => { el.style.display = st.unsaved ? 'block' : 'none'; });
+    document.querySelectorAll('[data-kyt-backup][title]').forEach(el => {
+      if (el.id === 'kyt-nav-save') el.title = st.unsaved ? 'Save your trips: you have changes that are only on this device' : 'Save your trips to a file';
+    });
+  }
+  /** A gentle, dismissible reminder: enough has changed (or it has been long enough) and nothing is saved. */
+  function maybeNudge() {
+    try {
+      if (typeof document === 'undefined' || !document.body) return;
+      if (document.getElementById('kyt-save-nudge') || document.getElementById('kyt-backup-sheet') || document.getElementById('kyt-end-sheet')) return;
+      const st = status();
+      if (!st.unsaved) return;
+      const snooze = parseInt(readLocal(KEYS.snooze), 10) || 0;
+      if (Date.now() < snooze) return;
+      if (Date.now() - lastActivity < IDLE_MS) { clearTimeout(nudgeTimer); nudgeTimer = setTimeout(maybeNudge, 1500); return; }   // never while they are tapping or typing
+      const aged = st.since && Date.now() - st.since.getTime() > 3 * DAY;
+      const enough = st.lastSaved ? st.changes >= 15 : st.changes >= 4;
+      if (!aged && !enough) return;
+      const el = document.createElement('div');
+      el.id = 'kyt-save-nudge'; el.setAttribute('role', 'status');
+      el.style.cssText = 'position:fixed;left:12px;right:12px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:240;max-width:480px;margin:0 auto;padding:14px 16px;border-radius:16px;background:#fff;color:#0F172A;border:2px solid #BFDBFE;font:600 14px/1.45 system-ui,sans-serif;box-shadow:0 14px 30px rgba(15,23,42,.25)';
+      const what = st.lastSaved ? 'Your latest changes are only on this device.' : 'Your trips are only on this device.';
+      el.innerHTML = `<strong style="font-weight:900">Save a copy?</strong> ${what} One tap saves everything to a file you keep. <div style="display:flex;gap:10px;margin-top:10px"><button type="button" id="kyt-nudge-save" style="flex:1;padding:10px;border-radius:12px;border:0;background:#2563EB;color:#fff;font:800 14px system-ui">Save now</button><button type="button" id="kyt-nudge-later" style="flex:1;padding:10px;border-radius:12px;border:2px solid #E2E8F0;background:#fff;color:#475569;font:800 14px system-ui">Not today</button></div>`;
+      document.body.appendChild(el);
+      el.querySelector('#kyt-nudge-later').onclick = () => { try { localStorage.setItem(KEYS.snooze, String(Date.now() + DAY)); } catch (e) { /* */ } el.remove(); };
+      el.querySelector('#kyt-nudge-save').onclick = async () => {
+        const b = el.querySelector('#kyt-nudge-save'); b.textContent = 'Saving…';
+        try { await saveToFile(); el.remove(); } catch (e) { b.textContent = 'Could not save. Tap to retry.'; }
+      };
+    } catch (e) { /* never get in the way */ }
   }
 
   // ── persistence ───────────────────────────────────────────────────────────
@@ -118,37 +183,56 @@ window.KYT.backup = (() => {
     };
   }
 
-  async function downloadBackup() {
+  const fileName = () => `kyt-saved-${new Date().toISOString().slice(0, 10)}.json`;
+
+  /**
+   * Saves everything to one file. On a phone the share sheet opens, so "Save to Files", Drive or WhatsApp are
+   * one tap; elsewhere it downloads. Resolves to the summary, or null when the person closed the share sheet.
+   */
+  async function saveToFile() {
     const backup = await buildBackup();
-    const blob = new Blob([JSON.stringify(backup)], { type: 'application/json' });
+    const text = JSON.stringify(backup);
+    const name = fileName();
+    const phone = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) && navigator.share;
+    if (phone) {
+      const file = new File([text], name, { type: 'application/json' });
+      if (!navigator.canShare || navigator.canShare({ files: [file] })) {
+        try { await navigator.share({ files: [file], title: 'My KYT trips' }); }
+        catch (e) { if (e && e.name === 'AbortError') return null; throw e; }
+        markSaved(backup.createdAt);
+        return { ...summary(backup), method: 'share', name };
+      }
+    }
+    const blob = new Blob([text], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url; a.download = `kyt-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    a.href = url; a.download = name;
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 4000);
-    try { localStorage.setItem(KEYS.lastBackup, backup.createdAt); } catch (e) { /* not critical */ }
-    return summary(backup);
+    markSaved(backup.createdAt);
+    return { ...summary(backup), method: 'download', name };
   }
+  const downloadBackup = saveToFile;
 
   // ── restore ───────────────────────────────────────────────────────────────
   /** Returns {ok:true, summary} or {ok:false, reason}. `confirmFn` lets tests skip the browser confirm(). */
   async function restoreFromText(text, confirmFn) {
     let b;
-    try { b = JSON.parse(text); } catch (e) { return { ok: false, reason: 'This file is not a KYT backup (it could not be read).' }; }
+    try { b = JSON.parse(text); } catch (e) { return { ok: false, reason: 'This is not a KYT saved file (it could not be read).' }; }
     if (b && b.kytVersion && !b.kytBackup) return { ok: false, reason: 'This is a single-trip file. Import it from Edit Trip, using Import Trip.' };
-    if (!b || b.kytBackup !== FORMAT) return { ok: false, reason: 'This file is not a KYT backup.' };
+    if (!b || b.kytBackup !== FORMAT) return { ok: false, reason: 'This is not a KYT saved file.' };
     const passportOk = b.passport && typeof b.passport === 'object' && !Array.isArray(b.passport);
     const vtripsOk = Array.isArray(b.virtualTrips);
     const tripOk = !b.activeTrip || (Array.isArray(b.activeTrip.steps) && b.activeTrip.steps.every(s => s && s.targetTime && !isNaN(new Date(s.targetTime))));
-    if (!passportOk || !vtripsOk || !tripOk) return { ok: false, reason: 'This backup file is damaged, so nothing was changed.' };
+    if (!passportOk || !vtripsOk || !tripOk) return { ok: false, reason: 'This saved file is damaged, so nothing was changed.' };
 
     const s = summary(b);
-    const lines = [`Restore this backup? It replaces what is on this device now:`, `• Passport: ${s.cities} ${s.cities === 1 ? 'city' : 'cities'}`, `• Virtual trips: ${s.virtualTrips}`,
+    const lines = [`Open this saved file? It replaces what is on this device now. (Save first if you want to keep what is here.)`, `• Passport: ${s.cities} ${s.cities === 1 ? 'city' : 'cities'}`, `• Virtual trips: ${s.virtualTrips}`,
       s.activeTrip ? `• Current trip: "${s.activeTrip}" (${s.steps} steps)` : `• Current trip: none in the file, so yours stays as it is`];
     if (!(confirmFn ? confirmFn(lines.join('\n')) : window.confirm(lines.join('\n')))) return { ok: false, reason: 'cancelled' };
 
     if (!safeSet(KEYS.passport, JSON.stringify(b.passport)) || !safeSet(KEYS.vtrips, JSON.stringify(b.virtualTrips))) {
-      return { ok: false, reason: 'There is not enough space on this device to restore. Nothing else was changed.' };
+      return { ok: false, reason: 'There is not enough space on this device to open this file. Nothing else was changed.' };
     }
     if (b.shareName) safeSet(KEYS.shareName, b.shareName);
     if (b.activeTrip && window.KYT.store) {
@@ -160,6 +244,7 @@ window.KYT.backup = (() => {
       KYT.store.setCurrentIndex(0);
       await KYT.store.saveData();
     }
+    markSaved(b.createdAt);                                  // what is on screen now is exactly what the file holds
     return { ok: true, summary: s };
   }
 
@@ -179,33 +264,40 @@ window.KYT.backup = (() => {
     return wrap;
   }
 
+  const dateTxt = d => d.toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
+
   async function openSheet() {
     const st = await storageStatus();
     const t = await selfTest();
-    const last = readLocal(KEYS.lastBackup);
-    const lastTxt = last ? `Last backup: ${new Date(last).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })}` : 'No backup yet';
-    const prot = st.persisted === null ? '' : (st.persisted ? 'Protected from automatic cleanup.' : 'Not yet protected from automatic cleanup by the browser, so a backup matters.');
+    const sv = status();
+    const state = sv.unsaved
+      ? `<span style="color:#B45309">● ${sv.changes} ${sv.changes === 1 ? 'change' : 'changes'} ${sv.lastSaved ? 'since you last saved (' + esc(dateTxt(sv.lastSaved)) + ')' : ', none saved to a file yet'}</span>`
+      : (sv.lastSaved ? `<span style="color:#047857">✓ Everything is saved (${esc(dateTxt(sv.lastSaved))})</span>` : '<span style="color:#64748B">Nothing saved to a file yet</span>');
+    const prot = st.persisted === null ? '' : (st.persisted ? 'Protected from automatic cleanup.' : 'Not yet protected from automatic cleanup by the browser, so a saved file matters.');
     const wrap = sheet('kyt-backup-sheet', `
-      <h2 style="margin:0 0 6px;font-size:20px;font-weight:900">Back up &amp; restore</h2>
-      <p style="margin:0 0 4px;font-size:14px;line-height:1.5;color:#475569">KYT keeps everything on this device only: no account, no cloud. Clearing browser data, switching phones or running out of space can erase it.</p>
-      <p style="margin:0 0 12px;font-size:14px;line-height:1.5;color:#475569">One file holds your passport, virtual trips and current trip, with photos and tickets.</p>
-      <p style="margin:0 0 6px;font-size:12.5px;line-height:1.6;color:#334155"><strong>This device check</strong><br>
-        ${t.local ? '✓' : '✗'} Settings and passport storage ${t.local ? 'works' : 'is blocked or full'} · ${t.idb ? '✓' : '✗'} Trip storage ${t.idb ? 'works' : 'is blocked or full'}<br>
-        Running as ${esc(t.mode)} · ${t.passportCities} ${t.passportCities === 1 ? 'city' : 'cities'} stamped here<br>
-        <span style="color:#64748B">The installed app and the browser keep separate data. Use a backup to move between them.</span></p>
-      <p style="margin:0;font-size:12.5px;font-weight:700;color:#64748B">${esc(lastTxt)}${prot ? ' · ' + esc(prot) : ''}</p>
-      <div id="kyt-backup-msg" aria-live="polite" style="margin-top:10px;font-size:14px;font-weight:700;color:#047857"></div>
-      <button type="button" id="kyt-backup-download" style="${PRIMARY}">Download backup</button>
-      <button type="button" id="kyt-backup-restore" style="${SECOND}">Restore from a backup file</button>
+      <h2 style="margin:0 0 6px;font-size:20px;font-weight:900">Save &amp; Open</h2>
+      <p style="margin:0 0 10px;font-size:14px;line-height:1.5;color:#475569">Your trips live on this device only: no account, no cloud. <strong>Save</strong> puts all of them, with your passport, photos and tickets, in one file you keep (Files, Drive, or send it to yourself). <strong>Open</strong> that file on any phone to carry on.</p>
+      <p style="margin:0;font-size:13.5px;font-weight:800">${state}</p>
+      <div id="kyt-backup-msg" aria-live="polite" style="margin-top:8px;font-size:14px;font-weight:700;color:#047857"></div>
+      <button type="button" id="kyt-backup-download" style="${PRIMARY}">Save to a file</button>
+      <button type="button" id="kyt-backup-restore" style="${SECOND}">Open a saved file</button>
       <input type="file" id="kyt-backup-file" accept=".json,application/json" style="display:none">
+      <details style="margin-top:12px"><summary style="cursor:pointer;font-size:12.5px;font-weight:800;color:#64748B">About this device</summary>
+        <p style="margin:6px 0 0;font-size:12.5px;line-height:1.6;color:#334155">
+        ${t.local ? '✓' : '✗'} Settings and passport storage ${t.local ? 'works' : 'is blocked or full'} · ${t.idb ? '✓' : '✗'} Trip storage ${t.idb ? 'works' : 'is blocked or full'}<br>
+        Running as ${esc(t.mode)} · ${t.passportCities} ${t.passportCities === 1 ? 'city' : 'cities'} stamped here${prot ? '<br>' + esc(prot) : ''}<br>
+        <span style="color:#64748B">The installed app and the browser keep separate data. Save in one, then Open the file in the other, to move your trips across.</span></p></details>
       <button type="button" id="kyt-backup-close" style="${QUIET}">Close</button>`);
     const msg = wrap.querySelector('#kyt-backup-msg');
     const say = (t, bad) => { msg.textContent = t; msg.style.color = bad ? '#B91C1C' : '#047857'; };
     wrap.addEventListener('click', e => { if (e.target === wrap) wrap.remove(); });
     wrap.querySelector('#kyt-backup-close').onclick = () => wrap.remove();
     wrap.querySelector('#kyt-backup-download').onclick = async () => {
-      try { const s = await downloadBackup(); say(`Saved: ${s.cities} cities, ${s.virtualTrips} virtual trips${s.activeTrip ? ', current trip "' + s.activeTrip + '"' : ''}. Keep the file somewhere safe, such as your Drive.`); }
-      catch (e) { say('Could not create the backup: ' + e.message, true); }
+      try {
+        const r = await saveToFile();
+        if (!r) return say('Not saved: the share sheet was closed. Tap Save to a file to try again.', true);
+        say(`Saved: ${r.cities} ${r.cities === 1 ? 'city' : 'cities'}, ${r.virtualTrips} virtual ${r.virtualTrips === 1 ? 'trip' : 'trips'}${r.activeTrip ? ', current trip "' + r.activeTrip + '"' : ''}. Keep the file somewhere safe, such as your Drive.`);
+      } catch (e) { say('Could not save: ' + e.message, true); }
     };
     const file = wrap.querySelector('#kyt-backup-file');
     wrap.querySelector('#kyt-backup-restore').onclick = () => file.click();
@@ -213,7 +305,7 @@ window.KYT.backup = (() => {
       const f = file.files[0]; if (!f) return;
       const r = await restoreFromText(await f.text());
       file.value = '';
-      if (r.ok) { say('Restored. Reloading…'); setTimeout(() => location.reload(), 900); }
+      if (r.ok) { say('Opened. Reloading…'); setTimeout(() => location.reload(), 900); }
       else if (r.reason !== 'cancelled') say(r.reason, true);
     };
     return wrap;
@@ -225,16 +317,17 @@ window.KYT.backup = (() => {
       const wrap = sheet('kyt-end-sheet', `
         <h2 style="margin:0 0 6px;font-size:20px;font-weight:900">End this trip?</h2>
         <p style="margin:0;font-size:14px;line-height:1.5;color:#475569">Ending <strong>${esc(tripName || 'this trip')}</strong> permanently deletes its steps, notes, tickets and photos from this device. Your passport stamps stay.</p>
-        <button type="button" id="kyt-end-backup" style="${PRIMARY}">Download backup, then end trip</button>
-        <button type="button" id="kyt-end-skip" style="${SECOND}">End without a backup</button>
+        <button type="button" id="kyt-end-backup" style="${PRIMARY}">Save a copy, then end trip</button>
+        <button type="button" id="kyt-end-skip" style="${SECOND}">End without saving</button>
         <button type="button" id="kyt-end-cancel" style="${QUIET}">Keep my trip</button>`);
       const done = v => { wrap.remove(); resolve(v); };
       wrap.addEventListener('click', e => { if (e.target === wrap) done(null); });
       wrap.querySelector('#kyt-end-cancel').onclick = () => done(null);
       wrap.querySelector('#kyt-end-skip').onclick = () => done('skip');
       wrap.querySelector('#kyt-end-backup').onclick = async () => {
-        try { await downloadBackup(); done('backup'); }
-        catch (e) { wrap.querySelector('#kyt-end-backup').textContent = 'Backup failed. Tap to try again.'; }
+        const btn = wrap.querySelector('#kyt-end-backup');
+        try { const r = await saveToFile(); if (r) done('backup'); else btn.textContent = 'Not saved yet. Tap to try again.'; }
+        catch (e) { btn.textContent = 'Saving failed. Tap to try again.'; }
       };
     });
   }
@@ -250,7 +343,7 @@ window.KYT.backup = (() => {
       const el = document.createElement('div');
       el.id = 'kyt-fresh-notice'; el.setAttribute('role', 'status');
       el.style.cssText = 'position:fixed;left:12px;right:12px;top:calc(12px + env(safe-area-inset-top));z-index:280;max-width:480px;margin:0 auto;padding:14px 16px;border-radius:16px;background:#1E3A8A;color:#fff;font:600 14px/1.45 system-ui,sans-serif;box-shadow:0 14px 30px rgba(0,0,0,.35)';
-      el.innerHTML = 'Starting fresh? This app keeps its own data, separate from Safari. If you used KYT in Safari first, back it up there, then restore it here. <div style="display:flex;gap:10px;margin-top:10px"><button type="button" data-kyt-backup style="flex:1;padding:10px;border-radius:12px;border:0;background:#fff;color:#1E3A8A;font:800 14px system-ui">Restore a backup</button><button type="button" id="kyt-fresh-dismiss" style="flex:1;padding:10px;border-radius:12px;border:2px solid #93C5FD;background:none;color:#fff;font:800 14px system-ui">Got it</button></div>';
+      el.innerHTML = 'Starting fresh? This app keeps its own data, separate from Safari. If you used KYT in Safari first, save it there, then open the file here. <div style="display:flex;gap:10px;margin-top:10px"><button type="button" data-kyt-backup style="flex:1;padding:10px;border-radius:12px;border:0;background:#fff;color:#1E3A8A;font:800 14px system-ui">Open a saved file</button><button type="button" id="kyt-fresh-dismiss" style="flex:1;padding:10px;border-radius:12px;border:2px solid #93C5FD;background:none;color:#fff;font:800 14px system-ui">Got it</button></div>';
       document.body.appendChild(el);
       bind(el);
       el.querySelector('#kyt-fresh-dismiss').onclick = () => el.remove();
@@ -259,6 +352,7 @@ window.KYT.backup = (() => {
 
   // Any element marked data-kyt-backup opens the sheet.
   function bind(root) {
+    refreshIndicators();
     (root || document).querySelectorAll('[data-kyt-backup]').forEach(el => {
       if (el.dataset.kytBackupBound) return;
       el.dataset.kytBackupBound = '1';
@@ -266,10 +360,10 @@ window.KYT.backup = (() => {
     });
   }
   if (typeof document !== 'undefined') {
-    const start = () => { bind(); maybeShowFreshAppNotice(); };
+    const start = () => { bind(); refreshIndicators(); maybeShowFreshAppNotice(); setTimeout(maybeNudge, 2500); };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
     else start();
   }
 
-  return { selfTest, safeSet, requestPersistence, storageStatus, buildBackup, downloadBackup, restoreFromText, openSheet, confirmEndTrip, bind };
+  return { selfTest, safeSet, requestPersistence, storageStatus, buildBackup, downloadBackup, saveToFile, restoreFromText, openSheet, confirmEndTrip, bind, markChanged, markSaved, status, maybeNudge, refreshIndicators };
 })();

@@ -264,7 +264,7 @@ test('Mumbai has its famous temples, so a Spiritual vegetarian day is full of th
   const { context, page } = await newPhone(env.browser);
   await page.goto(env.base + '/virtual_trip.html');
   const titles = await page.evaluate(() => window.KYT_CITIES.find(c => c.id === 'mumbai').beats.map(b => b.title).join('|'));
-  for (const t of ['Siddhivinayak', 'Mumbadevi', 'Babulnath', 'ISKCON Juhu', 'Walkeshwar', 'Radha Gopinath', 'Haji Ali Dargah & Mahalaxmi']) {
+  for (const t of ['Siddhivinayak', 'Mumbadevi', 'Babulnath', 'ISKCON Juhu', 'Walkeshwar', 'Radha Gopinath', 'Haji Ali Dargah', 'Shree Mahalaxmi']) {
     assert.match(titles, new RegExp(t), `${t} is listed`);
   }
   const spiritual = await page.evaluate(() => window.KYT_CITIES.find(c => c.id === 'mumbai').beats.filter(b => b.intent.includes('spiritual')).length);

@@ -445,3 +445,11 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - Updated all 158 activity beats in `data/cities.js` to construct Google Maps search links as `<title> at <city>` (e.g., `Petha & chaat at Kinari Bazaar at Agra`, `Vada pav & street food in Dadar at Mumbai`, `Kerala sadya lunch at Munnar`, `Dal baati churma royal dinner at Jaipur`). Appending the city anchors Google Maps search algorithms directly to relevant local food vendors, restaurants, and activity operators rather than generic town centers.
     - Updated `admin/enrich_kyt_places.js` and `admin/enrich_kyt_places.py` to enforce the `<title> at <city>` format and hardened catalog loading against regex truncation.
     - **Tests:** `admin/tests/core.test.js` (57 passed, 0 failed).
+68. **Save and Open replaces Back up and restore (service worker cache `kyt-v102`)**
+    - The same single file (passport, virtual trips, current trip with photos and tickets, format unchanged, so old backups still open), in plain words: **Save to a file** and **Open a saved file**. File name `kyt-saved-<date>.json`.
+    - **Found without looking for it:** a **Save** button in the toolbar on every page, with an amber dot when there are changes not yet in a file; the home page link reads "Save or open your trips"; End Trip offers "Save a copy, then end trip".
+    - **Reminders, never blocking:** the app counts changes since the last save. After 4 changes with nothing ever saved, 15 changes since the last save, or 3 days of unsaved changes, a small card offers "Save a copy?" (Save now / Not today; Not today is quiet for a day). It waits until you have stopped tapping or typing for 3 seconds, never covers a page you are using, and is not shown while a dialog is open.
+    - **On a phone, Save opens the share sheet**, so Save to Files, Drive or WhatsApp is one tap; closing the sheet without choosing is not counted as saved. Elsewhere it downloads.
+    - Opening a file counts as saved (device and file match). The device check moved into a closed "About this device".
+    - **Tests:** 8 new in `06-storage.test.js`, 7 reworded. The footer test now skips `testgmap.html` (the internal audit page); the Mumbai test follows the renamed Haji Ali and Mahalaxmi places.
+
