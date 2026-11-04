@@ -452,4 +452,7 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **On a phone, Save opens the share sheet**, so Save to Files, Drive or WhatsApp is one tap; closing the sheet without choosing is not counted as saved. Elsewhere it downloads.
     - Opening a file counts as saved (device and file match). The device check moved into a closed "About this device".
     - **Tests:** 8 new in `06-storage.test.js`, 7 reworded. The footer test now skips `testgmap.html` (the internal audit page); the Mumbai test follows the renamed Haji Ali and Mahalaxmi places.
+69. **Saved file is `.kyt` (service worker cache `kyt-v103`)**
+    - Save now writes `kyt-saved-<date>.kyt` (still plain JSON inside, shared as `application/json`). Open has no file-type filter, so iPhone does not grey the file out, and it goes by what is inside: `.kyt`, old `.json` backups and renamed files open; anything else is refused with "not a KYT saved file".
+    - End Trip says what saving keeps: "Save this trip, then end it. Saving first keeps the whole trip in a file: Open it later to see it again." There is no in-app list of ended trips; the saved file is the archive.
 

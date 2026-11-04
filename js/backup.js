@@ -183,7 +183,7 @@ window.KYT.backup = (() => {
     };
   }
 
-  const fileName = () => `kyt-saved-${new Date().toISOString().slice(0, 10)}.json`;
+  const fileName = () => `kyt-saved-${new Date().toISOString().slice(0, 10)}.kyt`;     // plain JSON inside; Open goes by content, so .json files from before still open
 
   /**
    * Saves everything to one file. On a phone the share sheet opens, so "Save to Files", Drive or WhatsApp are
@@ -281,7 +281,7 @@ window.KYT.backup = (() => {
       <div id="kyt-backup-msg" aria-live="polite" style="margin-top:8px;font-size:14px;font-weight:700;color:#047857"></div>
       <button type="button" id="kyt-backup-download" style="${PRIMARY}">Save to a file</button>
       <button type="button" id="kyt-backup-restore" style="${SECOND}">Open a saved file</button>
-      <input type="file" id="kyt-backup-file" accept=".json,application/json" style="display:none">
+      <input type="file" id="kyt-backup-file" style="display:none">
       <details style="margin-top:12px"><summary style="cursor:pointer;font-size:12.5px;font-weight:800;color:#64748B">About this device</summary>
         <p style="margin:6px 0 0;font-size:12.5px;line-height:1.6;color:#334155">
         ${t.local ? '✓' : '✗'} Settings and passport storage ${t.local ? 'works' : 'is blocked or full'} · ${t.idb ? '✓' : '✗'} Trip storage ${t.idb ? 'works' : 'is blocked or full'}<br>
@@ -316,8 +316,8 @@ window.KYT.backup = (() => {
     return new Promise(resolve => {
       const wrap = sheet('kyt-end-sheet', `
         <h2 style="margin:0 0 6px;font-size:20px;font-weight:900">End this trip?</h2>
-        <p style="margin:0;font-size:14px;line-height:1.5;color:#475569">Ending <strong>${esc(tripName || 'this trip')}</strong> permanently deletes its steps, notes, tickets and photos from this device. Your passport stamps stay.</p>
-        <button type="button" id="kyt-end-backup" style="${PRIMARY}">Save a copy, then end trip</button>
+        <p style="margin:0;font-size:14px;line-height:1.5;color:#475569">Ending <strong>${esc(tripName || 'this trip')}</strong> permanently deletes its steps, notes, tickets and photos from this device. Your passport stamps stay. <strong>Saving first keeps the whole trip in a file</strong>: Open it later to see it again.</p>
+        <button type="button" id="kyt-end-backup" style="${PRIMARY}">Save this trip, then end it</button>
         <button type="button" id="kyt-end-skip" style="${SECOND}">End without saving</button>
         <button type="button" id="kyt-end-cancel" style="${QUIET}">Keep my trip</button>`);
       const done = v => { wrap.remove(); resolve(v); };

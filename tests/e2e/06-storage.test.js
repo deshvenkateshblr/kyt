@@ -82,13 +82,13 @@ test('End Trip offers a backup first: cancel keeps the trip, backup downloads th
   await page.goto(env.base + '/configure_trip.html');
   await page.waitForSelector('#btn-end-trip');
   await page.click('#btn-end-trip');
-  assert.match(await page.locator('#kyt-end-sheet').innerText(), /permanently deletes[\s\S]*Save a copy, then end trip[\s\S]*End without saving[\s\S]*Keep my trip/);
+  assert.match(await page.locator('#kyt-end-sheet').innerText(), /permanently deletes[\s\S]*Save this trip, then end it[\s\S]*End without saving[\s\S]*Keep my trip/);
   await page.click('#kyt-end-cancel');
   assert.equal(await page.locator('#kyt-end-sheet').count(), 0);
   assert.equal(await page.evaluate(async () => { await KYT.store.loadData(); return KYT.store.get().stepsData.length; }), 1);
   await page.click('#btn-end-trip');
   const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#kyt-end-backup')]);
-  assert.match(dl.suggestedFilename(), /^kyt-saved-\d{4}-\d{2}-\d{2}\.json$/);
+  assert.match(dl.suggestedFilename(), /^kyt-saved-\d{4}-\d{2}-\d{2}\.kyt$/);
   await dl.saveAs('/tmp/kyt-test-end.json');
   assert.equal(JSON.parse(fs.readFileSync('/tmp/kyt-test-end.json', 'utf8')).activeTrip.name, 'Goa Escape');
   await page.waitForURL('**/index.html');
@@ -240,7 +240,7 @@ test('Save tracks what changed: a dot on the toolbar Save button appears after a
   await page.waitForSelector('#kyt-backup-sheet');
   assert.match(await page.locator('#kyt-backup-sheet').innerText(), /Save & Open[\s\S]*change[\s\S]*none saved to a file yet/);
   const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#kyt-backup-download')]);
-  assert.match(dl.suggestedFilename(), /^kyt-saved-/);
+  assert.match(dl.suggestedFilename(), /^kyt-saved-.*\.kyt$/);
   await page.waitForFunction(() => /Saved:/.test(document.getElementById('kyt-backup-msg').textContent));
   assert.equal(await page.locator('#kyt-nav-save [data-kyt-save-dot]').isVisible(), false, 'saved: the dot is gone');
   await page.click('#kyt-backup-close');
@@ -296,13 +296,13 @@ test('a reminder also appears for old unsaved changes, and saving from it clears
   await page.reload();
   await page.waitForSelector('#kyt-save-nudge');
   const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#kyt-nudge-save')]);
-  assert.match(dl.suggestedFilename(), /^kyt-saved-/);
+  assert.match(dl.suggestedFilename(), /^kyt-saved-.*\.kyt$/);
   await page.waitForFunction(() => !document.getElementById('kyt-save-nudge'));
   assert.deepEqual(await page.evaluate(() => KYT.backup.status().unsaved), false);
   await context.close();
 });
 
-test('on a phone, Save opens the share sheet (Files, Drive, WhatsApp) with a .json file and counts as saved', async () => {
+test('on a phone, Save opens the share sheet (Files, Drive, WhatsApp) with a .kyt file and counts as saved', async () => {
   const { context, page } = await newPhone(env.browser, { userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)' });
   await page.addInitScript(() => {
     navigator.canShare = () => true;
@@ -314,7 +314,7 @@ test('on a phone, Save opens the share sheet (Files, Drive, WhatsApp) with a .js
   await page.click('#kyt-backup-download');
   await page.waitForFunction(() => window.__shared);
   const sh = await page.evaluate(() => window.__shared);
-  assert.match(sh.name, /^kyt-saved-\d{4}-\d{2}-\d{2}\.json$/); assert.equal(sh.type, 'application/json'); assert.ok(sh.size > 50);
+  assert.match(sh.name, /^kyt-saved-\d{4}-\d{2}-\d{2}\.kyt$/); assert.equal(sh.type, 'application/json', 'plain JSON inside, so chat and mail apps treat it as data'); assert.ok(sh.size > 50);
   assert.equal(await page.evaluate(() => KYT.backup.status().unsaved), false);
   await context.close();
 });
@@ -350,4 +350,32 @@ test('opening a saved file counts as saved: the file and the device now match', 
   assert.match(b.page.dialogs.join('\n'), /Open this saved file\?/);
   assert.equal(await b.page.evaluate(() => KYT.backup.status().unsaved), false);
   await b.context.close();
+});
+
+test('Open goes by what is inside, not the file name: .kyt, .json and an oddly named file all open; other files are refused', async () => {
+  const a = await newPhone(env.browser);
+  await seedEverything(a.page);
+  await a.page.goto(env.base + '/index.html');
+  await a.page.click('[data-kyt-backup]');
+  const [dl] = await Promise.all([a.page.waitForEvent('download'), a.page.click('#kyt-backup-download')]);
+  await dl.saveAs('/tmp/kyt-name-test.kyt');
+  await a.context.close();
+  fs.copyFileSync('/tmp/kyt-name-test.kyt', '/tmp/kyt-name-test.json');
+  fs.copyFileSync('/tmp/kyt-name-test.kyt', '/tmp/kyt-name-test-renamed.txt');
+  fs.writeFileSync('/tmp/kyt-name-test-bad.kyt', 'this is not a KYT file');
+  for (const f of ['/tmp/kyt-name-test.kyt', '/tmp/kyt-name-test.json', '/tmp/kyt-name-test-renamed.txt']) {
+    const b = await newPhone(env.browser);
+    await b.page.goto(env.base + '/index.html');
+    await b.page.click('[data-kyt-backup]');
+    assert.equal(await b.page.locator('#kyt-backup-file').getAttribute('accept'), null, 'no type filter, so no phone greys the file out');
+    await b.page.setInputFiles('#kyt-backup-file', f);
+    await b.page.waitForFunction(() => /Opened/.test(document.getElementById('kyt-backup-msg').textContent), null, { timeout: 8000 });
+    await b.context.close();
+  }
+  const c = await newPhone(env.browser);
+  await c.page.goto(env.base + '/index.html');
+  await c.page.click('[data-kyt-backup]');
+  await c.page.setInputFiles('#kyt-backup-file', '/tmp/kyt-name-test-bad.kyt');
+  await c.page.waitForFunction(() => /not a KYT saved file/.test(document.getElementById('kyt-backup-msg').textContent));
+  await c.context.close();
 });
