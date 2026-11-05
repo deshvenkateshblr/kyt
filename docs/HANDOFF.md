@@ -32,7 +32,7 @@ Start a fresh review from here. The full backlog is [TODO.md](TODO.md); what shi
 5. **Content and later:** P1.1 more curated trips, P1.2 plan-ahead notes, P1.6 weather by month, P1.7 best months, V3 review of `city-attributes-review.csv` (`effort: trek` is unreliable, wrong for Pushkar and Gokarna among others); P2 and P3 items are in TODO.md.
 
 ## Things worth knowing
-- `generateSteps` is still exported and used by tests and "Suggest a plan"; the old stay modal, regenerate and "rebuild keeping edits" paths are gone.
+- `generateSteps` is still exported and used by tests (the "Suggest a plan" button was removed in 72); the old stay modal, regenerate and "rebuild keeping edits" paths are gone.
 - The sticky day tabs use `-top-4` because the scroll container has 16 px padding.
 - City cards show an "N videos" link (a real `?city=<id>` anchor); the city sheet opens in place on a plain click.
 - Sources for each access note are in the data (`access.source`), so they can be re-checked.

@@ -220,18 +220,17 @@ test('a stay is a step of its own: suggested for each night, editable, and not o
   await context.close();
 });
 
-test('Suggest a plan fills only the empty days and keeps what you added', async () => {
+test('the plan generator (test fixture) fills only the empty days and keeps what you added', async () => {
   const { context, page } = await newPhone(env.browser);
   await openPlan(page);
   await page.click('#btn-vt-add-own');
   await page.fill('#vt-step-title', 'My own thing');
   await page.click('#btn-save-vt-step');
-  await page.click('#btn-vt-suggest');
+  await page.evaluate(() => KYT.virtualTrips.seedPlanForTests());
   const t = (await stored(page))[0];
   assert.deepEqual(dayOf(t, 1).map(s => s.title), ['My own thing'], 'Day 1 had a step, so it is left alone');
   assert.ok(dayOf(t, 2).length >= 3, 'Day 2 was empty and now has a day');
   assert.ok(dayOf(t, 2).some(s => s.type === 'travel'), 'generated travel is tagged as travel');
-  assert.equal(await page.locator('#btn-vt-suggest').count(), 0, 'no empty days left, so no button');
   await context.close();
 });
 
@@ -306,7 +305,7 @@ test('Suggest a plan follows each day\'s own city, and days in the same city do 
     const t = { id: 't', name: 't', cities: [...new Set(cities)], originCity: 'already_there', duration: cities.length,
       taste: { intent: 'mixed', diet: 'any', pace: 'standard' }, nightStays: null, steps: null,
       days: cities.map((c, i) => ({ id: i + 1, cityId: c })) };
-    KYT.virtualTrips.suggestPlan(t);
+    KYT.virtualTrips.seedPlanForTests(t);
     const beatTitles = id => new Set(window.KYT_CITIES.find(c => c.id === id).beats.map(b => b.title));
     return cities.map((c, i) => {
       const own = beatTitles(c);
@@ -355,5 +354,28 @@ test('P1.9: one day can hold stops from two cities with the travel between them'
   assert.equal(day[0].cityName, 'Agra');
   assert.equal(day[2].cityName, 'Jaipur');
   assert.ok(day[2].hour * 60 + day[2].minute > day[1].hour * 60 + day[1].minute, 'Jaipur stop is after the travel');
+  await context.close();
+});
+
+test('Add your own stop starts after the day\'s last step, and the card has a map link with the place', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openPlan(page);
+  await page.click('#btn-vt-add-own');
+  assert.equal(await page.inputValue('#vt-step-time'), '09:00', 'an empty day starts in the morning');
+  await page.fill('#vt-step-title', 'Old Fort');
+  await page.fill('#vt-step-time', '14:00');
+  await page.fill('#vt-step-where', 'Fort Road');
+  await page.click('#btn-save-vt-step');
+  await page.click('#btn-vt-add-own');
+  const t = await page.inputValue('#vt-step-time');
+  const [h, m] = t.split(':').map(Number);
+  assert.ok(h * 60 + m > 14 * 60, `second stop comes after the 14:00 one, got ${t}`);
+  assert.notEqual(t, '12:00');
+  await page.fill('#vt-step-title', 'Tea stall');
+  await page.click('#btn-save-vt-step');
+  const link = page.locator('[data-step-id] a', { hasText: 'Open in Maps' });
+  assert.equal(await link.count(), 2);
+  assert.match(await link.first().getAttribute('href'), /google\.com\/maps\/search.*query=/);
+  assert.match(await page.locator('[data-step-id]').first().innerText(), /Fort Road/);
   await context.close();
 });

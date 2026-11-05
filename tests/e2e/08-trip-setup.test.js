@@ -139,10 +139,10 @@ test('the header is just back, the name and Share; the Day Plan owns the summary
   assert.equal(await page.locator('#vt-day-tabs [role="tab"]').count(), 2);
   assert.match(await page.locator('#vt-itinerary-list').innerText(), /From Delhi · 2 days/);
   assert.equal(await visible(page, '#btn-vt-edit-setup'), true);
-  assert.equal(await visible(page, '#btn-vt-suggest'), true);
+  assert.equal(await page.locator('#btn-vt-suggest').count(), 0, 'no Suggest a plan button any more');
   assert.equal(await page.locator('#vt-subnav-back-label').innerText(), 'Setup', 'with nothing planned, back is the setup');
 
-  await page.click('#btn-vt-suggest');
+  await page.evaluate(() => KYT.virtualTrips.seedPlanForTests());
   assert.equal(await page.locator('[data-step-id]').first().getByRole('button', { name: 'Edit stop' }).count(), 1, 'steps are editable right here');
   assert.equal(await page.locator('#vt-subnav-back-label').innerText(), 'View Trip');
 

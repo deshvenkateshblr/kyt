@@ -1475,6 +1475,8 @@ KYT.virtualTrips = (function () {
     trip.steps = trip.steps.map((s, i) => [s, i]).sort((a, b) => key(a[0]) - key(b[0]) || a[1] - b[1]).map(x => x[0]);
   }
 
+  // Test fixture only: the generator fills a trip's empty days. No button in the app uses it (Suggest a plan was removed);
+  // tests use it to get a realistic plan quickly. TODO(P4): replace by explicit fixtures and delete.
   // ── "Suggest a plan": the generator fills only the days that have nothing in them yet ──────────
   /** Where to sleep each night when nothing has been chosen: stay put within about 130 km, else move. */
   function defaultNightStays(trip) {
@@ -1495,7 +1497,6 @@ KYT.virtualTrips = (function () {
     return stays;
   }
 
-  /** True when a journey like this generated step is already in the plan: into this day's city from yesterday, or out of it into tomorrow's. */
   function plannedAlready(trip, dayId, title) {
     const days = sortedDays(trip).filter(d => d.id >= 1);
     const idx = days.findIndex(d => d.id === dayId);
@@ -1511,7 +1512,7 @@ KYT.virtualTrips = (function () {
     return false;
   }
 
-  function suggestPlan(trip) {
+  function seedPlanForTests(trip) {
     ensureDays(trip);
     // One city per day, in day order and NOT de-duplicated: the generator reads day N's city from
     // position N, so a plan of Agra, Agra, Jaipur must stay Agra, Agra, Jaipur.
@@ -1754,7 +1755,14 @@ KYT.virtualTrips = (function () {
       set('vt-travel-mode', pre.mode || 'road'); set('vt-travel-duration', pre.duration || '');
       $('vt-travel-overnight').checked = Boolean(pre.overnight);
       set('vt-stay-place', ''); set('vt-stay-out', '');
-      const dflt = kind === 'stay' ? 21 * 60 : (kind === 'travel' ? (pre.hour != null ? pre.hour * 60 : 9 * 60) : 12 * 60);
+      const mine = stepsOfDay(trip, ctx.dayId);
+      let after = null;                                   // 15 minutes after the day's last step ends
+      if (mine.length) {
+        const last = mine[mine.length - 1];
+        after = Math.min((last.hour || 0) * 60 + (last.minute || 0) + (last.durationMin || defaultStepDuration(last)) + 15, 23 * 60 + 45);
+      }
+      let dflt = kind === 'travel' && pre.hour != null ? pre.hour * 60 : (after != null ? after : 9 * 60);
+      if (kind === 'stay') dflt = Math.max(dflt, 21 * 60);
       const t = freeTime(trip, ctx.dayId, Math.floor(dflt / 60), dflt % 60);
       set('vt-step-time', `${pad2(t.h)}:${pad2(t.m)}`);
       set('vt-step-notes', '');
@@ -2017,7 +2025,6 @@ KYT.virtualTrips = (function () {
     const city = dayCity(trip, day.id);
     const mine = stepsOfDay(trip, day.id);
     const totalSteps = (trip.steps || []).length;
-    const emptyDays = days.some(d => stepsOfDay(trip, d.id).length === 0);
     const btn = 'text-[11px] font-bold px-3 py-1.5 rounded-full transition-colors cursor-pointer';
 
     // 1. Summary and the two trip-wide actions
@@ -2025,7 +2032,6 @@ KYT.virtualTrips = (function () {
       <div class="flex items-center gap-2 flex-wrap bg-white border border-slate-200/90 rounded-2xl px-3.5 py-2.5 shadow-xs">
         <p class="w-full text-xs font-bold text-slate-600 leading-snug">${esc(tripSummaryText(trip))}</p>
         <button type="button" id="btn-vt-edit-setup" class="${btn} text-blue-600 bg-blue-50 hover:bg-blue-100">Edit cities &amp; start</button>
-        ${emptyDays ? `<button type="button" id="btn-vt-suggest" class="${btn} text-indigo-700 bg-indigo-50 hover:bg-indigo-100 inline-flex items-center gap-1"><i data-lucide="wand-2" class="w-3 h-3"></i> Suggest a plan</button>` : ''}
         ${totalSteps ? `<button type="button" id="btn-vt-reset-plan" class="${btn} ml-auto text-slate-500 hover:text-rose-600">Clear plan</button>` : ''}
       </div>
       ${trip.suggested && !trip.curatedId ? KYT.ui.renderGeneratedPlanNotice() : ''}
@@ -2253,7 +2259,6 @@ KYT.virtualTrips = (function () {
       activeDayId = null; saveVTrips(); renderBuilder(); return;
     }
     if (q('#btn-vt-edit-setup')) { openCanvas(trip.id); return; }
-    if (q('#btn-vt-suggest')) { suggestPlan(trip); saveVTrips(); renderBuilder(); return; }
     if (q('#btn-vt-reset-plan')) {
       if (confirm('Clear every stop, stay and travel step from this plan? Your cities and days stay.')) {
         trip.steps = null; trip.suggested = false; saveVTrips(); renderBuilder();
@@ -2822,7 +2827,13 @@ KYT.virtualTrips = (function () {
     addNearby,
     useAsMyTrip,
     generateSteps,
-    suggestPlan,
+    /** Test fixture: fill the empty days of a trip (or, with no argument, the open one) from the generator. */
+    seedPlanForTests(t) {
+      if (t) return seedPlanForTests(t);
+      const trip = getActiveTrip();
+      if (!trip) return 0;
+      const n = seedPlanForTests(trip); saveVTrips(); renderBuilder(); return n;
+    },
     /** Re-read the planned trips and redraw the list (after Past trips adds one). */
     refresh() { vtrips = loadVTrips(); renderHub(); }
   };

@@ -622,7 +622,7 @@ window.KYT.ui = (function () {
 
     if (variant === 'builder') {
       const mapsLink = step.mapsUrl
-        ? `<a href="${esc(step.mapsUrl)}" target="_blank" rel="noopener" class="inline-flex items-center gap-0.5 text-[9px] font-bold text-blue-500 hover:text-blue-700 mt-1"><i data-lucide="map-pin" class="w-2.5 h-2.5"></i> Map</a>`
+        ? `<a href="${esc(step.mapsUrl)}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 hover:text-blue-800 mt-1.5"><i data-lucide="map-pin" class="w-3 h-3"></i> ${step.where && step.type !== 'travel' ? esc(step.where) + ' · ' : ''}Open in Maps</a>`
         : '';
       const notesText = step.notes
         ? `<p class="text-[11px] text-slate-500 leading-relaxed mt-1">${esc(step.notes)}</p>`

@@ -85,7 +85,7 @@ Clear. The contradictions in generated days and the explainer on every generated
 
 | ID | Defect | Who it hurts | Status | Value |
 |---|---|---|---|---|
-| D1 | Normal plans can be impossible or unsafe: transfer times are fixed for hill and pilgrimage places; Sonamarg, Kargil and the Manali to Leh and Srinagar to Leh roads have no gate; no arrival-day rest step for altitude places (see P1.0). | A family sent to Leh with sightseeing on day 1, or to a closed road. | Checked | 5 |
+| D1 | Suggest a plan was removed, so this now concerns only curated and generated plans (rough transfer times only):  transfer times are fixed for hill and pilgrimage places; Sonamarg, Kargil and the Manali to Leh and Srinagar to Leh roads have no gate; no arrival-day rest step for altitude places (see P1.0). | A family sent to Leh with sightseeing on day 1, or to a closed road. | Checked | 5 |
 | D2 | No start-date awareness: a trip to Kedarnath, Badrinath or Spiti in the closed months raises no warning, though the closed months are in the data (P1.0, P1.6, P1.7). | Anyone planning a season-limited place. | Checked | 5 |
 | D3 | Saving a step does not wait for the device write (`KYT.store.saveData()` is not awaited in `js/step-form.js`), so leaving the page at once can lose the edit. Probable cause of the flaky "web link attachment" test. | Anyone who edits and taps away quickly, on a slow phone. | Suspected | 4 |
 | D4 | Open replaces everything on the device with the file, including newer work, after a confirm that does not offer to save first; no merge. | Someone who opens an old file by mistake. | Checked | 4 |

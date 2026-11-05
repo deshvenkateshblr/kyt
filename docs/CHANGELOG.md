@@ -466,3 +466,8 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - A heads-up also appears on its own, at the top of any page, when the allowance is 70% used: "KYT is getting full. See what uses space / Later". Later quiets it for 3 days; it never appears while there is plenty of room.
     - **Tests:** 5 added in `06-storage.test.js`.
 
+72. **Suggest a plan removed; Add your own stop follows the day (service worker cache `kyt-v106`)**
+    - The **Suggest a plan** button is gone: you build your own plan, with the city's suggestions to pick from. The generator stays only as a test fixture (`KYT.virtualTrips.seedPlanForTests`); cleanup to explicit fixtures is a P4 item.
+    - **Add your own stop** (and Add travel and Add stay) no longer starts at 12:00. It starts 15 minutes after the day's last step ends (9:00 on an empty day; stays no earlier than 21:00), so it fits what is already there.
+    - A stop's map link is now clear: "Open in Maps" with the place name beside it, searching the place (or the stop's name) in the day's city.
+    - **Tests:** one added in `09-plan-editing.test.js`; tests that used the button now use the fixture.

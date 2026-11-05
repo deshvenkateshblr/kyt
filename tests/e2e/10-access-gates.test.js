@@ -41,7 +41,7 @@ test('a trek place is never generated as a day trip, a normal place still is', a
     const t = { ...trip, steps: null };
     // suggestPlan builds night stays itself; use a temp trip like it does
     const added = [];
-    KYT.virtualTrips.suggestPlan(Object.assign(t, { days: cities.map((c, i) => ({ id: i + 1, cityId: c })) }));
+    KYT.virtualTrips.seedPlanForTests(Object.assign(t, { days: cities.map((c, i) => ({ id: i + 1, cityId: c })) }));
     return (t.steps || []).map(s => s.title);
   }, cities);
   const gated = await titles(['rishikesh', 'kedarnath', 'kedarnath']);
@@ -109,7 +109,7 @@ async function planFor(page, cityId, query) {
   await page.selectOption('#vt-origin-city', 'bengaluru');
   await page.click('#btn-vt-build');
   await page.waitForSelector('#vt-screen-builder:not(.hidden)');
-  await page.click('#btn-vt-suggest');
+  await page.evaluate(() => KYT.virtualTrips.seedPlanForTests());
   await page.waitForSelector('#vt-day-panel .step-card, #vt-day-panel [data-step-id]');
 }
 
@@ -233,7 +233,7 @@ test('Add travel starts from what is planned: arriving unless the journey in is 
   assert.deepEqual(await fields(), ['Nashik', 'Aurangabad'], 'the next journey leaves Nashik');
   await page.click('#btn-cancel-step-modal');
   // Suggest a plan fills the empty days without a second journey into Nashik
-  await page.click('#btn-vt-suggest');
+  await page.evaluate(() => KYT.virtualTrips.seedPlanForTests());
   await page.click('[data-day-id="2"][role="tab"]');
   const day2 = await page.locator('#vt-day-panel').innerText();
   assert.doesNotMatch(day2, /Travel to Nashik|Travel from Pune to Nashik/, 'no duplicate journey into Nashik');

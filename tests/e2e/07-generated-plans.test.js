@@ -192,7 +192,7 @@ async function buildPlan(page, name, cities) {
   await page.selectOption('#vt-origin-city', 'bengaluru');
   await page.click('#btn-vt-build');
   await page.waitForSelector('#vt-screen-builder:not(.hidden)');
-  await page.click('#btn-vt-suggest');
+  await page.evaluate(() => KYT.virtualTrips.seedPlanForTests());
   await page.click('#vt-subnav-back');
   await page.waitForURL('**/trip_detail.html*');
   await page.waitForSelector('#btn-edit-plan');
@@ -246,7 +246,7 @@ test('an interest a city cannot serve still gets sights, not a day of only meals
   await page.click('#btn-vt-style-toggle');
   await page.click('.vt-chip[data-field="intent"][data-id="spiritual"]');
   await page.click('.vt-chip[data-field="diet"][data-id="veg"]');
-  await page.click('#btn-vt-suggest');
+  await page.evaluate(() => KYT.virtualTrips.seedPlanForTests());
   const day1 = (await page.evaluate(() => JSON.parse(localStorage.getItem('kyt_virtual_trips'))[0].steps)).filter(s => s.dayId === 1);
   const sights = day1.filter(s => !/breakfast|lunch|dinner|refreshment/i.test(s.title));
   assert.ok(sights.length >= 2, `Day 1 has sights, got: ${day1.map(s => s.title).join(' | ')}`);
