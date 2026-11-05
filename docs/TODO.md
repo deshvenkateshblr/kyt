@@ -79,6 +79,31 @@ Clear. The contradictions in generated days and the explainer on every generated
 
 ---
 
+## Open defects, ranked by perceived user value (5 = most)
+
+"Checked" means seen in the code or a test on 5 Nov 2026; "suspected" means likely but not reproduced.
+
+| ID | Defect | Who it hurts | Status | Value |
+|---|---|---|---|---|
+| D1 | Normal plans can be impossible or unsafe: transfer times are fixed for hill and pilgrimage places; Sonamarg, Kargil and the Manali to Leh and Srinagar to Leh roads have no gate; no arrival-day rest step for altitude places (see P1.0). | A family sent to Leh with sightseeing on day 1, or to a closed road. | Checked | 5 |
+| D2 | No start-date awareness: a trip to Kedarnath, Badrinath or Spiti in the closed months raises no warning, though the closed months are in the data (P1.0, P1.6, P1.7). | Anyone planning a season-limited place. | Checked | 5 |
+| D3 | Saving a step does not wait for the device write (`KYT.store.saveData()` is not awaited in `js/step-form.js`), so leaving the page at once can lose the edit. Probable cause of the flaky "web link attachment" test. | Anyone who edits and taps away quickly, on a slow phone. | Suspected | 4 |
+| D4 | Open replaces everything on the device with the file, including newer work, after a confirm that does not offer to save first; no merge. | Someone who opens an old file by mistake. | Checked | 4 |
+| D5 | Generated plans' hotel steps (for example "Hotel Check-in, Dinner & Overnight Stay") are not typed as stays: no check-in and check-out wording, and the day can show a stay hint as well. | Anyone using Suggest a plan. | Suspected | 3 |
+| D6 | Generated Return and arrival steps carry no from and to (P1.8b), so a day's cities are guessed from text; this feeds the PDF's city panels and "Plan this again". | Plans with several cities. | Checked | 3 |
+| D7 | City attribute judgments are unreviewed: 16 cities are "trek", including Pushkar and Gokarna (V3). Filters, strength meters and the stay rule use them. | Filters and plans that treat easy places as treks. | Checked | 3 |
+| D8 | Text in Hindi or other Indian scripts typed into a trip, note or stay prints as blank boxes in the PDF (pdfMake's built-in font is Latin only). | Hindi-speaking users who save a PDF. | Suspected | 3 |
+| D9 | Cities cannot be reordered once a plan has steps (P1.8c). | Anyone who changes the route. | Checked | 3 |
+| D10 | The PDF needs the pdfMake library from cdnjs, so the first use while offline fails with a message (P1.10). | Travellers without signal, which is when they most want it. | Checked | 2 |
+| D11 | Service worker cache bumps are manual (`CACHE_NAME`, `APP_VERSION` and each script's `?v=`); a forgotten bump leaves people on old code. Only the first two are tested. | Every user after a release, silently. | Checked | 2 |
+| D12 | Stays have no number of nights or dates, only a check-out time (P1.8b). | Multi-night stays. | Checked | 2 |
+| D13 | Past trips: "Plan this again" guesses cities from each step's place text and drops the origin; shrunk photos cannot be restored; no PDF or album for a past trip. | Past-trip users. | Checked | 2 |
+| D14 | Weather: Mawlynnong, Bhimashankar and Tirupati have no elevation; cities sharing a grid cell share rain figures; no season in the Day Plan. | Small accuracy gaps. | Checked | 2 |
+| D15 | The share worker's 6-character code uses a weak random source and can overwrite an existing key (P4.8). | Rare, but it overwrites someone's shared trip. | Checked | 2 |
+| D16 | The toolbar holds 360 px phones exactly; 320 px phones are untested. | Very small phones. | Suspected | 1 |
+| D17 | `testgmap.html`, the internal Maps audit page, is served publicly without the footer or toolbar. | Nobody, unless found. | Checked | 1 |
+| D18 | Some tests depend on curated place titles (Mumbai) and on timing, so a data edit or a slow machine fails them with no user-visible bug. | The owner's release checks. | Checked | 1 |
+
 ## Verify before the next release (checks on shipped work, not features)
 
 | ID | Check | Why |
