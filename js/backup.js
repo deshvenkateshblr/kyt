@@ -111,6 +111,26 @@ window.KYT.backup = (() => {
     } catch (e) { /* never get in the way */ }
   }
 
+  /** Once in a while, when the browser's allowance is nearly used: say so, with a way to deal with it. */
+  async function maybeLowSpaceNotice() {
+    try {
+      if (typeof document === 'undefined' || !document.body) return;
+      if (document.getElementById('kyt-space-notice') || document.getElementById('kyt-backup-sheet') || document.getElementById('kyt-end-sheet')) return;
+      if (Date.now() < (parseInt(readLocal('kyt_space_snooze'), 10) || 0)) return;
+      const st = await storageStatus();
+      const m = meterInfo({}, st.usage, st.quota);
+      if (m.level === 'ok') return;
+      const el = document.createElement('div');
+      el.id = 'kyt-space-notice'; el.setAttribute('role', 'status');
+      el.style.cssText = 'position:fixed;left:12px;right:12px;top:calc(12px + env(safe-area-inset-top));z-index:235;max-width:480px;margin:0 auto;padding:12px 14px;border-radius:14px;background:#FFFBEB;color:#78350F;border:2px solid #FCD34D;font:600 13.5px/1.45 system-ui,sans-serif;box-shadow:0 10px 24px rgba(0,0,0,.2)';
+      el.innerHTML = `<strong style="font-weight:900">${m.level === 'full' ? 'KYT is almost out of room.' : 'KYT is getting full.'}</strong> Photos take the most. <div style="display:flex;gap:10px;margin-top:8px"><button type="button" id="kyt-space-open" style="flex:1;padding:8px;border-radius:10px;border:0;background:#D97706;color:#fff;font:800 13px system-ui">See what uses space</button><button type="button" id="kyt-space-later" style="flex:1;padding:8px;border-radius:10px;border:2px solid #FCD34D;background:#fff;color:#78350F;font:800 13px system-ui">Later</button></div>`;
+      document.body.appendChild(el);
+      const snooze = () => { try { localStorage.setItem('kyt_space_snooze', String(Date.now() + 3 * DAY)); } catch (e) { /* */ } el.remove(); };
+      el.querySelector('#kyt-space-later').onclick = snooze;
+      el.querySelector('#kyt-space-open').onclick = () => { snooze(); openSheet(); };
+    } catch (e) { /* never get in the way */ }
+  }
+
   // ── persistence ───────────────────────────────────────────────────────────
   let persistAsked = false;
   async function requestPersistence() {
@@ -129,6 +149,55 @@ window.KYT.backup = (() => {
       if (navigator.storage && navigator.storage.estimate) { const e = await navigator.storage.estimate(); out.usage = e.usage; out.quota = e.quota; }
     } catch (e) { /* unsupported */ }
     return out;
+  }
+
+  // ── how much room KYT is using ────────────────────────────────────────────
+  const mb = n => (n < 1024 * 1024 ? Math.max(1, Math.round(n / 1024)) + ' KB' : (n / (1024 * 1024)).toFixed(n < 10 * 1024 * 1024 ? 1 : 0) + ' MB');
+  /**
+   * Pure. parts = bytes of { live, past, other }, usage and quota from the browser (either may be null).
+   * level: 'ok' | 'low' (70% of the allowance used) | 'full' (90%). The browser's usage also counts the app's own
+   * files, so the share is of the whole allowance; the breakdown is only the traveller's own data.
+   */
+  function meterInfo(parts, usage, quota) {
+    const live = parts.live || 0, past = parts.past || 0, other = parts.other || 0;
+    const mine = live + past + other;
+    const share = usage != null && quota ? usage / quota : null;
+    const level = share == null ? 'ok' : (share >= 0.9 ? 'full' : (share >= 0.7 ? 'low' : 'ok'));
+    return { live, past, other, mine, share, level, rows: [['Current trip', live], ['Past trips', past], ['Planned trips, passport and settings', other]] };
+  }
+  async function storageBreakdown() {
+    let live = 0, past = 0, other = 0, pastCount = 0;
+    try {
+      if (window.KYT.store) {
+        await KYT.store.loadData();
+        const t = KYT.store.get();
+        live = JSON.stringify(t.stepsData || []).length + (t.tripCoverImage ? String(t.tripCoverImage).length : 0);
+      }
+    } catch (e) { /* unknown */ }
+    try {
+      if (window.KYT.pastTrips) {
+        const list = await KYT.pastTrips.all();
+        pastCount = list.length;
+        list.forEach(r => { past += JSON.stringify(r).length; });
+      }
+    } catch (e) { /* unknown */ }
+    try { for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); other += k.length + (localStorage.getItem(k) || '').length; } } catch (e) { /* blocked */ }
+    const st = await storageStatus();
+    return { ...meterInfo({ live, past, other }, st.usage, st.quota), pastCount, usage: st.usage, quota: st.quota };
+  }
+  function meterHtml(m) {
+    const color = m.level === 'full' ? '#B91C1C' : (m.level === 'low' ? '#B45309' : '#2563EB');
+    const bar = m.share != null ? `<div style="height:8px;border-radius:9999px;background:#E2E8F0;overflow:hidden;margin:6px 0"><div style="height:100%;width:${Math.min(100, Math.max(2, Math.round(m.share * 100)))}%;background:${color}"></div></div>` : '';
+    const line = m.share != null
+      ? `KYT is using about ${Math.round(m.share * 100)}% of the room this browser allows it (${mb(m.usage)} of ${mb(m.quota)}). That count includes the app's own files.`
+      : 'This browser did not say how much room KYT has.';
+    const warn = m.level === 'full' ? '<p style="margin:6px 0 0;font-size:13px;font-weight:800;color:#B91C1C">Almost full. Save a file now, then remove photos from Past trips or delete old trips.</p>'
+      : (m.level === 'low' ? '<p style="margin:6px 0 0;font-size:13px;font-weight:800;color:#B45309">Getting full. Removing photos from a past trip frees the most room.</p>' : '');
+    const rows = m.rows.filter(r => r[1] > 0).map(r => `<div style="display:flex;justify-content:space-between;font-size:12.5px;color:#334155"><span>${esc(r[0])}${r[0] === 'Past trips' && m.pastCount ? ' (' + m.pastCount + ')' : ''}</span><strong>${esc(mb(r[1]))}</strong></div>`).join('');
+    return `<div data-kyt-meter style="margin-top:12px;padding:10px 12px;border:1px solid #E2E8F0;border-radius:12px;background:#F8FAFC">
+      <div style="font-size:12.5px;font-weight:800;color:#0F172A">Space on this device</div>${bar}
+      <div style="font-size:12px;color:#64748B;line-height:1.4">${esc(line)}</div>
+      <div style="margin-top:6px">${rows}</div>${warn}</div>`;
   }
 
   // ── "does storage work on this device?" ────────────────────────────────────
@@ -275,6 +344,7 @@ window.KYT.backup = (() => {
     const st = await storageStatus();
     const t = await selfTest();
     const sv = status();
+    const meter = await storageBreakdown();
     const state = sv.unsaved
       ? `<span style="color:#B45309">● ${sv.changes} ${sv.changes === 1 ? 'change' : 'changes'} ${sv.lastSaved ? 'since you last saved (' + esc(dateTxt(sv.lastSaved)) + ')' : ', none saved to a file yet'}</span>`
       : (sv.lastSaved ? `<span style="color:#047857">✓ Everything is saved (${esc(dateTxt(sv.lastSaved))})</span>` : '<span style="color:#64748B">Nothing saved to a file yet</span>');
@@ -287,6 +357,7 @@ window.KYT.backup = (() => {
       <button type="button" id="kyt-backup-download" style="${PRIMARY}">Save to a file</button>
       <button type="button" id="kyt-backup-restore" style="${SECOND}">Open a saved file</button>
       <input type="file" id="kyt-backup-file" style="display:none">
+      ${meterHtml(meter)}
       <details style="margin-top:12px"><summary style="cursor:pointer;font-size:12.5px;font-weight:800;color:#64748B">About this device</summary>
         <p style="margin:6px 0 0;font-size:12.5px;line-height:1.6;color:#334155">
         ${t.local ? '✓' : '✗'} Settings and passport storage ${t.local ? 'works' : 'is blocked or full'} · ${t.idb ? '✓' : '✗'} Trip storage ${t.idb ? 'works' : 'is blocked or full'}<br>
@@ -365,10 +436,10 @@ window.KYT.backup = (() => {
     });
   }
   if (typeof document !== 'undefined') {
-    const start = () => { bind(); refreshIndicators(); maybeShowFreshAppNotice(); setTimeout(maybeNudge, 2500); };
+    const start = () => { bind(); refreshIndicators(); maybeShowFreshAppNotice(); setTimeout(maybeNudge, 2500); setTimeout(maybeLowSpaceNotice, 3500); };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
     else start();
   }
 
-  return { selfTest, safeSet, requestPersistence, storageStatus, buildBackup, downloadBackup, saveToFile, restoreFromText, openSheet, confirmEndTrip, bind, markChanged, markSaved, status, maybeNudge, refreshIndicators };
+  return { meterInfo, storageBreakdown, selfTest, safeSet, requestPersistence, storageStatus, buildBackup, downloadBackup, saveToFile, restoreFromText, openSheet, confirmEndTrip, bind, markChanged, markSaved, status, maybeNudge, maybeLowSpaceNotice, refreshIndicators };
 })();

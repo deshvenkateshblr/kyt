@@ -66,7 +66,7 @@ async function newPhone(browser, opts = {}) {
     deviceScaleFactor: 2, isMobile: true, hasTouch: true,
     acceptDownloads: true, ...ctxOpts
   });
-  if (!nudge) await context.addInitScript(() => { try { localStorage.setItem('kyt_save_snooze', String(Date.now() + 86400000 * 365)); } catch (e) { /* about:blank */ } });
+  if (!nudge) await context.addInitScript(() => { try { localStorage.setItem('kyt_save_snooze', String(Date.now() + 86400000 * 365)); localStorage.setItem('kyt_space_snooze', String(Date.now() + 86400000 * 365)); } catch (e) { /* about:blank */ } });
   await context.route('**/*', route => {
     const u = route.request().url();
     if (u.startsWith('http://127.0.0.1') || u.startsWith('data:') || u.startsWith('blob:')) return route.continue();

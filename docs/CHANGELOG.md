@@ -460,4 +460,9 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - The **Past trips** list on the Trips page shows dates, days, steps, photos and size for each. **View** opens it read-only (days, steps, notes, photos). **Plan this again** makes a new planned trip from it (same days, times and places; no photos or old dates), which goes through the usual Start this trip with fresh dates. **Remove photos** frees space and keeps the story. **Delete** removes it after a confirm.
     - Past trips are inside the saved `.kyt` file (`pastTrips`; the format number is unchanged, so older files still open) and the open prompt lists "Past trips: N".
     - `js/past-trips.js` (rules are pure and tested in Node). **Tests:** `14-past-trips.test.js` (7).
+71. **Storage meter (service worker cache `kyt-v105`)**
+    - Save & Open now shows **Space on this device**: a bar for how much of the browser's allowance KYT uses, the figure in MB, and your own data split into Current trip, Past trips (with a count) and Planned trips, passport and settings. The browser's figure includes the app's own files, and the sheet says so.
+    - Amber "Getting full" from 70% of the allowance, red "Almost full" from 90%, with the advice to remove photos from Past trips (the biggest saving). When the browser will not say, no warning is shown.
+    - A heads-up also appears on its own, at the top of any page, when the allowance is 70% used: "KYT is getting full. See what uses space / Later". Later quiets it for 3 days; it never appears while there is plenty of room.
+    - **Tests:** 5 added in `06-storage.test.js`.
 

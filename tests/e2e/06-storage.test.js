@@ -379,3 +379,66 @@ test('Open goes by what is inside, not the file name: .kyt, .json and an oddly n
   await c.page.waitForFunction(() => /not a KYT saved file/.test(document.getElementById('kyt-backup-msg').textContent));
   await c.context.close();
 });
+
+// ── Storage meter ─────────────────────────────────────────────────────────────────────────────────────────────
+
+const stubStorage = (usage, quota) => ({ persisted: async () => true, persist: async () => true, estimate: async () => ({ usage, quota }) });
+
+test('the meter rule: ok under 70%, low from 70%, full from 90%, and ok when the browser will not say', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.goto(env.base + '/index.html');
+  const r = await page.evaluate(() => {
+    const m = KYT.backup.meterInfo;
+    return [m({}, 50, 100).level, m({}, 70, 100).level, m({}, 89, 100).level, m({}, 90, 100).level, m({}, null, null).level, m({ live: 1, past: 2, other: 3 }, 1, 100).mine];
+  });
+  assert.deepEqual(r, ['ok', 'low', 'low', 'full', 'ok', 6]);
+  await context.close();
+});
+
+test('Save & Open shows what uses space: current trip, past trips, planned trips, and the share of the allowance', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.addInitScript(([u, q]) => { Object.defineProperty(navigator, 'storage', { configurable: true, value: { persisted: async () => true, persist: async () => true, estimate: async () => ({ usage: u, quota: q }) } }); }, [30 * 1024 * 1024, 100 * 1024 * 1024]);
+  await seedEverything(page);
+  await page.goto(env.base + '/index.html');
+  await page.click('[data-kyt-backup]');
+  await page.waitForSelector('[data-kyt-meter]');
+  const txt = await page.locator('[data-kyt-meter]').innerText();
+  assert.match(txt, /Space on this device/);
+  assert.match(txt, /about 30% of the room[\s\S]*30\.?0? MB of 100 MB|30 MB of 100 MB/);
+  assert.match(txt, /Current trip[\s\S]*Planned trips, passport and settings/);
+  assert.doesNotMatch(txt, /getting full|almost full/i);
+  await context.close();
+});
+
+test('the meter warns when the allowance is 70% and 90% used', async () => {
+  for (const [used, word] of [[75, /Getting full/], [95, /Almost full/]]) {
+    const { context, page } = await newPhone(env.browser);
+    await page.addInitScript(([u, q]) => { Object.defineProperty(navigator, 'storage', { configurable: true, value: { persisted: async () => true, persist: async () => true, estimate: async () => ({ usage: u, quota: q }) } }); }, [used, 100]);
+    await page.goto(env.base + '/index.html');
+    await page.click('[data-kyt-backup]');
+    await page.waitForSelector('[data-kyt-meter]');
+    assert.match(await page.locator('[data-kyt-meter]').innerText(), word);
+    await context.close();
+  }
+});
+
+test('when the device is nearly full a heads-up appears on its own, once, and can be put off for days', async () => {
+  const { context, page } = await newPhone(env.browser, { nudge: true });
+  await page.addInitScript(() => { Object.defineProperty(navigator, 'storage', { configurable: true, value: { persisted: async () => true, persist: async () => true, estimate: async () => ({ usage: 80, quota: 100 }) } }); });
+  await page.goto(env.base + '/virtual_trip.html');
+  await page.waitForSelector('#kyt-space-notice');
+  assert.match(await page.locator('#kyt-space-notice').innerText(), /getting full/i);
+  await page.click('#kyt-space-later');
+  await page.reload(); await page.waitForTimeout(4200);
+  assert.equal(await page.locator('#kyt-space-notice').count(), 0, 'put off for three days');
+  await context.close();
+});
+
+test('no heads-up while there is plenty of room', async () => {
+  const { context, page } = await newPhone(env.browser, { nudge: true });
+  await page.addInitScript(() => { Object.defineProperty(navigator, 'storage', { configurable: true, value: { persisted: async () => true, persist: async () => true, estimate: async () => ({ usage: 10, quota: 100 }) } }); });
+  await page.goto(env.base + '/virtual_trip.html');
+  await page.waitForTimeout(4200);
+  assert.equal(await page.locator('#kyt-space-notice').count(), 0);
+  await context.close();
+});
