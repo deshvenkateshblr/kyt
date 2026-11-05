@@ -76,13 +76,13 @@ test('restore refuses bad files and changes nothing', async () => {
   await context.close();
 });
 
-test('End Trip offers a backup first: cancel keeps the trip, backup downloads then ends', async () => {
+test('End Trip moves the trip to Past trips and offers a saved file first: cancel keeps the trip, the file downloads then ends', async () => {
   const { context, page } = await newPhone(env.browser);
   await seedTrip(page, env.base, { name: 'Goa Escape', steps: [{ title: 'Flight', icon: 'plane', where: 'Airport', targetTime: iso(1, 7) }] });
   await page.goto(env.base + '/configure_trip.html');
   await page.waitForSelector('#btn-end-trip');
   await page.click('#btn-end-trip');
-  assert.match(await page.locator('#kyt-end-sheet').innerText(), /permanently deletes[\s\S]*Save this trip, then end it[\s\S]*End without saving[\s\S]*Keep my trip/);
+  assert.match(await page.locator('#kyt-end-sheet').innerText(), /moves it to Past trips[\s\S]*End trip[\s\S]*Save a file first, then end it[\s\S]*Keep my trip/);
   await page.click('#kyt-end-cancel');
   assert.equal(await page.locator('#kyt-end-sheet').count(), 0);
   assert.equal(await page.evaluate(async () => { await KYT.store.loadData(); return KYT.store.get().stepsData.length; }), 1);
@@ -91,7 +91,7 @@ test('End Trip offers a backup first: cancel keeps the trip, backup downloads th
   assert.match(dl.suggestedFilename(), /^kyt-saved-\d{4}-\d{2}-\d{2}\.kyt$/);
   await dl.saveAs('/tmp/kyt-test-end.json');
   assert.equal(JSON.parse(fs.readFileSync('/tmp/kyt-test-end.json', 'utf8')).activeTrip.name, 'Goa Escape');
-  await page.waitForURL('**/index.html');
+  await page.waitForURL('**/virtual_trip.html');
   await context.close();
 });
 

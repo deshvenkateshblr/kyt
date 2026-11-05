@@ -2822,7 +2822,9 @@ KYT.virtualTrips = (function () {
     addNearby,
     useAsMyTrip,
     generateSteps,
-    suggestPlan
+    suggestPlan,
+    /** Re-read the planned trips and redraw the list (after Past trips adds one). */
+    refresh() { vtrips = loadVTrips(); renderHub(); }
   };
 
   if (window.KYT) window.KYT.virtualTrips = api;

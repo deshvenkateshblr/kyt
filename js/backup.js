@@ -162,8 +162,10 @@ window.KYT.backup = (() => {
       passport: readJson(KEYS.passport, {}),
       virtualTrips: readJson(KEYS.vtrips, []),
       shareName: readLocal(KEYS.shareName) || '',
-      activeTrip: null
+      activeTrip: null,
+      pastTrips: []
     };
+    if (window.KYT.pastTrips) { try { backup.pastTrips = await KYT.pastTrips.all(); } catch (e) { backup.pastTrips = []; } }
     if (window.KYT.store) {
       await KYT.store.loadData();
       const t = KYT.store.get();
@@ -178,6 +180,7 @@ window.KYT.backup = (() => {
     return {
       cities: Object.keys(b.passport || {}).length,
       virtualTrips: (b.virtualTrips || []).length,
+      pastTrips: Array.isArray(b.pastTrips) ? b.pastTrips.length : 0,
       activeTrip: b.activeTrip ? b.activeTrip.name : null,
       steps: b.activeTrip ? b.activeTrip.steps.length : 0
     };
@@ -224,10 +227,11 @@ window.KYT.backup = (() => {
     const passportOk = b.passport && typeof b.passport === 'object' && !Array.isArray(b.passport);
     const vtripsOk = Array.isArray(b.virtualTrips);
     const tripOk = !b.activeTrip || (Array.isArray(b.activeTrip.steps) && b.activeTrip.steps.every(s => s && s.targetTime && !isNaN(new Date(s.targetTime))));
-    if (!passportOk || !vtripsOk || !tripOk) return { ok: false, reason: 'This saved file is damaged, so nothing was changed.' };
+    const pastOk = b.pastTrips == null || (Array.isArray(b.pastTrips) && b.pastTrips.every(r => r && Array.isArray(r.steps)));
+    if (!passportOk || !vtripsOk || !tripOk || !pastOk) return { ok: false, reason: 'This saved file is damaged, so nothing was changed.' };
 
     const s = summary(b);
-    const lines = [`Open this saved file? It replaces what is on this device now. (Save first if you want to keep what is here.)`, `• Passport: ${s.cities} ${s.cities === 1 ? 'city' : 'cities'}`, `• Virtual trips: ${s.virtualTrips}`,
+    const lines = [`Open this saved file? It replaces what is on this device now. (Save first if you want to keep what is here.)`, `• Passport: ${s.cities} ${s.cities === 1 ? 'city' : 'cities'}`, `• Virtual trips: ${s.virtualTrips}`, `• Past trips: ${s.pastTrips}`,
       s.activeTrip ? `• Current trip: "${s.activeTrip}" (${s.steps} steps)` : `• Current trip: none in the file, so yours stays as it is`];
     if (!(confirmFn ? confirmFn(lines.join('\n')) : window.confirm(lines.join('\n')))) return { ok: false, reason: 'cancelled' };
 
@@ -244,6 +248,7 @@ window.KYT.backup = (() => {
       KYT.store.setCurrentIndex(0);
       await KYT.store.saveData();
     }
+    if (window.KYT.pastTrips && Array.isArray(b.pastTrips)) { try { await KYT.pastTrips.replaceAll(b.pastTrips); } catch (e) { /* the rest was opened */ } }
     markSaved(b.createdAt);                                  // what is on screen now is exactly what the file holds
     return { ok: true, summary: s };
   }
@@ -316,9 +321,9 @@ window.KYT.backup = (() => {
     return new Promise(resolve => {
       const wrap = sheet('kyt-end-sheet', `
         <h2 style="margin:0 0 6px;font-size:20px;font-weight:900">End this trip?</h2>
-        <p style="margin:0;font-size:14px;line-height:1.5;color:#475569">Ending <strong>${esc(tripName || 'this trip')}</strong> permanently deletes its steps, notes, tickets and photos from this device. Your passport stamps stay. <strong>Saving first keeps the whole trip in a file</strong>: Open it later to see it again.</p>
-        <button type="button" id="kyt-end-backup" style="${PRIMARY}">Save this trip, then end it</button>
-        <button type="button" id="kyt-end-skip" style="${SECOND}">End without saving</button>
+        <p style="margin:0;font-size:14px;line-height:1.5;color:#475569">Ending <strong>${esc(tripName || 'this trip')}</strong> moves it to <strong>Past trips</strong> on this device, so you can look back at it or plan it again. Photos are shrunk to save space. Your passport gets its stamps.</p>
+        <button type="button" id="kyt-end-skip" style="${PRIMARY}">End trip</button>
+        <button type="button" id="kyt-end-backup" style="${SECOND}">Save a file first, then end it</button>
         <button type="button" id="kyt-end-cancel" style="${QUIET}">Keep my trip</button>`);
       const done = v => { wrap.remove(); resolve(v); };
       wrap.addEventListener('click', e => { if (e.target === wrap) done(null); });

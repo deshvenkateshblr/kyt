@@ -455,4 +455,9 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
 69. **Saved file is `.kyt` (service worker cache `kyt-v103`)**
     - Save now writes `kyt-saved-<date>.kyt` (still plain JSON inside, shared as `application/json`). Open has no file-type filter, so iPhone does not grey the file out, and it goes by what is inside: `.kyt`, old `.json` backups and renamed files open; anything else is refused with "not a KYT saved file".
     - End Trip says what saving keeps: "Save this trip, then end it. Saving first keeps the whole trip in a file: Open it later to see it again." There is no in-app list of ended trips; the saved file is the archive.
+70. **Past trips: ending a trip keeps it (service worker cache `kyt-v104`)**
+    - End Trip no longer deletes. It moves the trip to **Past trips** on the device (steps, notes, cover; photos and image tickets shrunk to about 1000 px at 70%, roughly a fifth of the size). If the device has no room, it asks before the trip is lost. The End Trip sheet says so and still offers "Save a file first, then end it". After ending you land on the Trips page with the list open and an **Undo** (puts the trip back as the live trip).
+    - The **Past trips** list on the Trips page shows dates, days, steps, photos and size for each. **View** opens it read-only (days, steps, notes, photos). **Plan this again** makes a new planned trip from it (same days, times and places; no photos or old dates), which goes through the usual Start this trip with fresh dates. **Remove photos** frees space and keeps the story. **Delete** removes it after a confirm.
+    - Past trips are inside the saved `.kyt` file (`pastTrips`; the format number is unchanged, so older files still open) and the open prompt lists "Past trips: N".
+    - `js/past-trips.js` (rules are pure and tested in Node). **Tests:** `14-past-trips.test.js` (7).
 

@@ -202,11 +202,21 @@ window.KYT.config = (() => {
 
   
   async function endTrip() {
-    // Ending deletes steps, notes, tickets and photos for good: offer a backup first.
+    // Ending moves the trip to Past trips (photos shrunk); the sheet also offers a saved file first.
     let go = false;
     if (KYT.backup && KYT.backup.confirmEndTrip) go = !!(await KYT.backup.confirmEndTrip(KYT.store.get().tripName));
     else go = confirm('Are you sure you want to end and delete the current trip?');
     if (go) {
+      // Keep the trip in Past trips first (photos shrunk); if the device has no room, ask before losing it
+      let kept = null;
+      const live = KYT.store.get();
+      if (window.KYT.pastTrips && live.stepsData && live.stepsData.length) {
+        try { kept = await KYT.pastTrips.archive(live); }
+        catch (e) {
+          console.error('Could not keep the trip in Past trips:', e);
+          if (!confirm('There is not enough space to keep this trip in Past trips. End it anyway? Save a file first if you want a copy.')) return;
+        }
+      }
       // Stamp visits for cities present in this trip before deleting
       if (window.PassportStore && window.KYT_CITIES) {
         const { stepsData } = KYT.store.get();
@@ -224,7 +234,8 @@ window.KYT.config = (() => {
       KYT.store.setCurrentIndex(0);
       await KYT.store.saveData();
       localStorage.removeItem('kyt_stepsData');
-      window.location.href = 'index.html';
+      if (kept) { try { sessionStorage.setItem('kyt_undo_end', kept.id); } catch (e) { /* blocked */ } }
+      window.location.href = kept ? 'virtual_trip.html' : 'index.html';
     }
   }
 

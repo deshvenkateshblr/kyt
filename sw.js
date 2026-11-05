@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kyt-v103';
+const CACHE_NAME = 'kyt-v104';
 
 // Files that make up the offline-capable app shell
 const APP_SHELL = [
@@ -42,6 +42,7 @@ const APP_SHELL = [
   './data/weather.js',
   './js/weather-seasons.js',
   './js/trip-pdf.js',
+  './js/past-trips.js',
   './data/india-map.js',
   './lib/tailwindcss.js',
   './lib/lucide.js',

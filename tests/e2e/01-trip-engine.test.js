@@ -185,14 +185,15 @@ test('Now view: the card shows the step title and a Google Maps link for its pla
   await context.close();
 });
 
-test('End Current Trip wipes the trip and returns to the new-user launcher', async () => {
+test('End Current Trip clears the live trip (kept in Past trips) and the launcher is for a new user again', async () => {
   const { context, page } = await newPhone(env.browser);
   await seedTrip(page, env.base, { steps: THREE() });
   await page.goto(env.base + '/configure_trip.html');
   await page.waitForSelector('#btn-end-trip');
   await page.click('#btn-end-trip');
   await page.click('#kyt-end-skip');
-  await page.waitForURL('**/index.html');
+  await page.waitForURL('**/virtual_trip.html');
+  await page.goto(env.base + '/index.html');
   await page.waitForSelector('#options-container a');
   assert.equal(await page.locator('#options-container a[href="view_trip.html"]').count(), 0);
   await context.close();
@@ -207,7 +208,7 @@ test('ending a trip stamps the passport for cities named in its steps', async ()
   await page.waitForSelector('#btn-end-trip');
   await page.click('#btn-end-trip');
   await page.click('#kyt-end-skip');
-  await page.waitForURL('**/index.html');
+  await page.waitForURL('**/virtual_trip.html');
   const stored = await page.evaluate(() => JSON.parse(localStorage.getItem('kyt_passport') || '{}'));
   assert.ok(stored.agra, 'Agra should be marked visited after ending a trip that mentions Agra');
   await context.close();

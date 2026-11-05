@@ -164,7 +164,9 @@ window.KYT.store = (() => {
 
   return {
     get, setTripName, setTripNotes, setCoverImage, setStepsData, setCurrentIndex,
-    getStep, updateStep, saveData, loadData
+    getStep, updateStep, saveData, loadData,
+    /** Raw string values in the same IndexedDB (used by Past trips). */
+    getRaw: key => getItem(key), setRaw: (key, val) => setItem(key, val)
   };
 })();
 
