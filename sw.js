@@ -1,4 +1,15 @@
-const CACHE_NAME = 'kyt-v109';
+const CACHE_NAME = 'kyt-v110';
+
+// Big third-party files (the PDF library and the Hindi font) live in their own cache, which a release does not
+// wipe, so they are downloaded once and then work offline.
+const LIB_CACHE = 'kyt-lib-v1';
+const LIB_FILES = [
+  './lib/pdfmake.min.js',
+  './lib/vfs_fonts.js',
+  './lib/fonts/NotoSansDevanagari-Regular.ttf',
+  './lib/fonts/NotoSansDevanagari-Bold.ttf'
+];
+const isLib = url => /\/lib\/(pdfmake\.min\.js|vfs_fonts\.js|fonts\/)/.test(new URL(url).pathname);
 
 // Files that make up the offline-capable app shell
 const APP_SHELL = [
@@ -53,13 +64,18 @@ const APP_SHELL = [
 
   // -- Install: pre-cache the app shell --------------------------------------
 self.addEventListener('install', event => {
-  event.waitUntil(
+  event.waitUntil(Promise.all([
+    caches.open(LIB_CACHE).then(async cache => {
+      for (const f of LIB_FILES) {
+        try { if (!(await cache.match(f))) await cache.add(f); } catch (e) { console.warn('[SW] lib file not cached yet:', f); }
+      }
+    }),
     caches.open(CACHE_NAME).then(cache => {
       return cache.addAll(APP_SHELL).catch(err => {
         console.warn('[SW] Some app shell assets failed to cache:', err);
       });
     })
-  );
+  ]));
   self.skipWaiting();
 });
 
@@ -67,7 +83,7 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
+      Promise.all(keys.filter(k => k !== CACHE_NAME && k !== LIB_CACHE).map(k => caches.delete(k)))
     )
   );
   self.clients.claim();
@@ -93,6 +109,20 @@ self.addEventListener('fetch', event => {
       });
     });
   };
+
+  // The bundled libraries never change between releases: serve them from the library cache first.
+  if (isLib(event.request.url)) {
+    event.respondWith(
+      caches.open(LIB_CACHE).then(async cache => {
+        const hit = await cache.match(event.request, { ignoreSearch: true });
+        if (hit) return hit;
+        const res = await fetch(event.request);
+        if (res && res.ok) cache.put(event.request, res.clone());
+        return res;
+      })
+    );
+    return;
+  }
 
   event.respondWith(
     fetchWithTimeout(event.request, 2000)

@@ -561,7 +561,7 @@ KYT.virtualTrips = (function () {
     DOM.selectedCitiesRoot.innerHTML = trip.cities.map((cId, idx) => {
       const city = window.KYT_CITIES.find(c => c.id === cId);
       const name = city ? KYT.utils.escapeHTML(city.name) : KYT.utils.escapeHTML(cId);
-      // Once there are steps, days are tied to their cities, so the order is changed in the Day Plan instead.
+      // Once there are steps, the order is changed in the Day Plan (Earlier / Later on each day), which moves the steps with it.
       const canMove = !(trip.steps && trip.steps.length);
       const isFirst = idx === 0 || !canMove;
       const isLast = idx === trip.cities.length - 1 || !canMove;
@@ -1455,6 +1455,26 @@ KYT.virtualTrips = (function () {
     addDay(trip, cityId);
     return true;
   }
+  /**
+   * Swap a day with the one before (-1) or after (+1), with its steps. Days are numbered, not dated, so the steps
+   * keep their times. The chosen-cities list follows the new order. Returns the day's new number, or null.
+   */
+  function moveDay(trip, dayId, dir) {
+    ensureDays(trip);
+    const other = dayId + dir;
+    const a = trip.days.find(d => d.id === dayId), b = trip.days.find(d => d.id === other);
+    if (!a || !b || dayId < 1 || other < 1) return null;
+    a.id = other; b.id = dayId;
+    (trip.steps || []).forEach(st => {
+      const d = Number(st.dayId);
+      if (d === dayId) st.dayId = other; else if (d === other) st.dayId = dayId;
+    });
+    sortAllSteps(trip);
+    const order = [];
+    sortedDays(trip).filter(d => d.id >= 1).forEach(d => { if (d.cityId && !order.includes(d.cityId)) order.push(d.cityId); });
+    trip.cities = order.filter(id => trip.cities.includes(id)).concat(trip.cities.filter(id => !order.includes(id)));
+    return other;
+  }
   function removeCityFromTrip(trip, cityId) {
     ensureDays(trip);
     trip.cities = trip.cities.filter(c => c !== cityId);
@@ -2134,7 +2154,11 @@ KYT.virtualTrips = (function () {
               class="appearance-none bg-white border border-slate-200 rounded-lg pl-2.5 pr-7 py-1 text-xs font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 ${locked ? 'opacity-70' : 'cursor-pointer'}">${cityOptions}</select>
             <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none"></i>
           </div>
-          ${days.length > 1 ? `<button type="button" id="btn-vt-remove-day" class="ml-auto ${btn} text-slate-400 hover:text-rose-600">Remove day</button>` : ''}
+          <div class="ml-auto flex items-center gap-1">
+            ${day.id >= 2 ? `<button type="button" id="btn-vt-day-earlier" title="Swap with the day before" class="${btn} text-slate-500 hover:text-blue-700">&larr; Earlier</button>` : ''}
+            ${day.id >= 1 && day.id < days.filter(d => d.id >= 1).length ? `<button type="button" id="btn-vt-day-later" title="Swap with the day after" class="${btn} text-slate-500 hover:text-blue-700">Later &rarr;</button>` : ''}
+            ${days.length > 1 ? `<button type="button" id="btn-vt-remove-day" class="${btn} text-slate-400 hover:text-rose-600">Remove day</button>` : ''}
+          </div>
         </div>`;
 
     if (mine.length) {
@@ -2306,6 +2330,15 @@ KYT.virtualTrips = (function () {
       const last = days[days.length - 1];
       activeDayId = addDay(trip, last ? last.cityId : trip.cities[0]);
       saveVTrips(); renderBuilder(); return;
+    }
+    const moveBtn = q('#btn-vt-day-earlier') ? -1 : (q('#btn-vt-day-later') ? 1 : 0);
+    if (moveBtn) {
+      const other = activeDayId + moveBtn;
+      const travel = (trip.steps || []).filter(st => st.type === 'travel' && [activeDayId, other].includes(Number(st.dayId)));
+      if (travel.length && !confirm(`Day ${activeDayId} and Day ${other} swap, with their steps. Travel steps keep their wording (${travel.map(t => t.title).slice(0, 2).join('; ')}), so check them afterwards. Swap anyway?`)) return;
+      const now = moveDay(trip, activeDayId, moveBtn);
+      if (now) { activeDayId = now; saveVTrips(); renderBuilder(); }
+      return;
     }
     if (q('#btn-vt-remove-day')) {
       const n = stepsOfDay(trip, activeDayId).length;
@@ -2892,6 +2925,7 @@ KYT.virtualTrips = (function () {
     generateSteps,
     /** Test fixture: fill the empty days of a trip (or, with no argument, the open one) from the generator. */
     monthWarnings,
+    moveDay,
     seedPlanForTests(t) {
       if (t) return seedPlanForTests(t);
       const trip = getActiveTrip();

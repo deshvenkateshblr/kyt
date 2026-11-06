@@ -273,6 +273,70 @@
     });
   }
 
+  // ── Hindi and other Devanagari text ───────────────────────────────────────────────────────────────────
+  // The built-in PDF font (Roboto) has no Devanagari, so Hindi or Marathi in a step, a note or a stay printed as empty boxes.
+  // Text in that script is set in Noto Sans Devanagari (kept in /lib/fonts, loaded only when a document needs it); everything
+  // else stays in Roboto. Other Indian scripts (Tamil, Telugu, Bengali and so on) still need their own font.
+  const DEVA_FONT = 'NotoDeva';
+  const DEVA_ANY = /[\u0900-\u097F]/;
+  const DEVA_RUN = /[\u0900-\u097F\u200C\u200D][\u0900-\u097F\u200C\u200D \u00A0]*/g;
+
+  /** "ताज Taj" -> [{text:'ताज',font}, ' Taj']; text with no Devanagari comes back as one plain string. */
+  function splitScripts(str) {
+    if (!DEVA_ANY.test(str)) return [str];
+    const out = []; let last = 0, m;
+    DEVA_RUN.lastIndex = 0;
+    while ((m = DEVA_RUN.exec(str))) {
+      if (m.index > last) out.push(str.slice(last, m.index));
+      const run = m[0].replace(/\s+$/, ''), trail = m[0].slice(run.length);
+      out.push({ text: run, font: DEVA_FONT });
+      if (trail) out.push(trail);
+      last = m.index + m[0].length;
+    }
+    if (last < str.length) out.push(str.slice(last));
+    return out.reduce((acc, x) => { if (typeof x === 'string' && typeof acc[acc.length - 1] === 'string') acc[acc.length - 1] += x; else acc.push(x); return acc; }, []);
+  }
+  const hasDevanagari = doc => DEVA_ANY.test(JSON.stringify(doc.content || []));
+
+  /** Marks every run of Devanagari in a document, in place, so it is drawn with the Devanagari font. */
+  function withScriptFonts(node) {
+    const inline = item => (typeof item === 'string' ? splitScripts(item) : [walk(item)]);
+    function walk(n) {
+      if (typeof n === 'string') { const p = splitScripts(n); return p.length === 1 && typeof p[0] === 'string' ? n : { text: p }; }
+      if (Array.isArray(n)) return n.map(walk);
+      if (!n || typeof n !== 'object') return n;
+      for (const k of Object.keys(n)) {
+        const v = n[k];
+        if (k === 'text') {
+          if (typeof v === 'string') { const p = splitScripts(v); if (!(p.length === 1 && typeof p[0] === 'string')) n.text = p; }
+          else if (Array.isArray(v)) n.text = [].concat(...v.map(inline));
+        } else if (v && typeof v === 'object' && k !== 'layout') n[k] = walk(v);
+      }
+      return n;
+    }
+    return walk(node);
+  }
+
+  const FONT_FILES = { normal: 'NotoSansDevanagari-Regular.ttf', bold: 'NotoSansDevanagari-Bold.ttf' };
+  const toBase64 = buf => { const b = new Uint8Array(buf); let s = ''; for (let i = 0; i < b.length; i += 0x8000) s += String.fromCharCode.apply(null, b.subarray(i, i + 0x8000)); return btoa(s); };
+
+  /** Gives pdfMake the Devanagari font. Fails with a plain message when the font cannot be fetched (first use, offline). */
+  async function loadDevanagariFont() {
+    if (pdfMake.fonts && pdfMake.fonts[DEVA_FONT]) return;
+    try {
+      for (const f of Object.values(FONT_FILES)) {
+        const res = await fetch('./lib/fonts/' + f);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        pdfMake.vfs = pdfMake.vfs || {};
+        pdfMake.vfs[f] = toBase64(await res.arrayBuffer());
+      }
+    } catch (e) {
+      throw new Error('This trip has Hindi text, and the font for it is not on this device yet. Connect to the internet once and try again.');
+    }
+    const roboto = { Roboto: { normal: 'Roboto-Regular.ttf', bold: 'Roboto-Medium.ttf', italics: 'Roboto-Italic.ttf', bolditalics: 'Roboto-MediumItalic.ttf' } };   // pdfMake's built-in set, kept when we add a font
+    pdfMake.fonts = Object.assign({}, roboto, pdfMake.fonts, { [DEVA_FONT]: { normal: FONT_FILES.normal, bold: FONT_FILES.bold, italics: FONT_FILES.normal, bolditalics: FONT_FILES.bold } });
+  }
+
   /** Builds the PDF and hands it over: the share sheet on a phone, a download elsewhere. Resolves to the file name. */
   async function download(plan) {
     if (typeof pdfMake === 'undefined') throw new Error('The PDF library did not load. Check your connection and try again.');
@@ -289,6 +353,7 @@
       seasonsFor: city => (seasons && W && W.cities && W.cities[city.id]) ? seasons.summarise(W.cities[city.id]) : []
     };
     const doc = buildDocDefinition(plan, deps);
+    if (hasDevanagari(doc)) { await loadDevanagariFont(); withScriptFonts(doc.content); }
     const fileName = (plan.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_').replace(/^_|_$/g, '').toLowerCase() || 'trip') + '_plan.pdf';
     const pdf = pdfMake.createPdf(doc);
     const phone = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) && navigator.share;
@@ -304,5 +369,5 @@
     return fileName;
   }
 
-  return { collectPlan, buildDocDefinition, download, daysOf, MAX_PLACES, MONTHS };
+  return { collectPlan, buildDocDefinition, download, daysOf, splitScripts, withScriptFonts, hasDevanagari, MAX_PLACES, MONTHS };
 });

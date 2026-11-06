@@ -137,3 +137,77 @@ test('a shared link carries the travel month and the PDF from it shows it', asyn
   assert.match(JSON.stringify(await page.evaluate(() => JSON.parse(JSON.stringify(window.__docs[0].content)))), /TRAVELLING IN JULY/);
   await context.close();
 });
+
+// ── Hindi (Devanagari) text ──────────────────────────────────────────────────────────────────────────────
+test('splitScripts and withScriptFonts mark only the Devanagari runs, keeping the rest and the layout', () => {
+  const T = require('../../js/trip-pdf.js');
+  assert.deepEqual(T.splitScripts('Taj Mahal'), ['Taj Mahal']);
+  assert.deepEqual(T.splitScripts('ताज महल visit'), [{ text: 'ताज महल', font: 'NotoDeva' }, ' visit']);
+  assert.deepEqual(T.splitScripts('Stay: होटल सूर्य, Agra'), ['Stay: ', { text: 'होटल सूर्य', font: 'NotoDeva' }, ', Agra']);
+  const doc = { content: [
+    { text: 'होटल', bold: true },
+    { text: ['Check-in ', { text: 'सुबह', color: 'red' }, ' ok'] },
+    { table: { body: [['plain', 'आगरा'], [{ text: 'x' }, { text: 'y' }]] } },
+    { stack: [{ text: 'English only' }] }
+  ] };
+  assert.equal(T.hasDevanagari(doc), true);
+  assert.equal(T.hasDevanagari({ content: [{ text: 'English only' }] }), false);
+  T.withScriptFonts(doc.content);
+  assert.deepEqual(doc.content[0], { text: [{ text: 'होटल', font: 'NotoDeva' }], bold: true }, 'the parent keeps bold; the run carries the font');
+  assert.deepEqual(doc.content[1].text.map(x => typeof x === 'string' ? x : (x.font || x.color)), ['Check-in ', 'red', ' ok']);
+  assert.deepEqual(doc.content[1].text[1], { text: [{ text: 'सुबह', font: 'NotoDeva' }], color: 'red' });
+  assert.equal(doc.content[2].table.body[0][0], 'plain', 'a plain table cell is untouched');
+  assert.deepEqual(doc.content[2].table.body[0][1], { text: [{ text: 'आगरा', font: 'NotoDeva' }] }, 'a Hindi cell stays a cell');
+  assert.equal(doc.content[3].stack[0].text, 'English only');
+});
+
+test('with the real PDF library, a trip with Hindi in it makes a PDF that carries the Hindi text and its font', async () => {
+  const { execFileSync } = require('node:child_process'), fsx = require('node:fs');
+  const { context, page } = await newPhone(env.browser, { realPdf: true });
+  const trip = { ...TRIP, id: 'pdfh', name: 'आगरा यात्रा', steps: TRIP.steps.concat([{ id: 'h', dayId: 2, type: 'stop', cityName: 'Jaipur', title: 'हवा महल देखना', where: 'Hawa Mahal', hour: 11, minute: 0, durationMin: 60 }]) };
+  await page.addInitScript(t => { try { localStorage.setItem('kyt_virtual_trips', JSON.stringify([t])); } catch (e) { /* about:blank */ } }, trip);
+  await page.goto(env.base + '/trip_detail.html?id=pdfh');
+  await page.waitForSelector('#btn-save-pdf');
+  await page.waitForFunction(() => typeof pdfMake === 'object' || typeof pdfMake === 'function');
+  const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#btn-save-pdf')]);
+  const file = '/tmp/kyt-hindi-test.pdf';
+  await dl.saveAs(file);
+  const raw = fsx.readFileSync(file).toString('latin1');
+  assert.match(raw, /NotoSansDevanagari/, 'the Hindi font is inside the PDF');
+  assert.match(raw, /Roboto/, 'and the usual font for everything else');
+  try {
+    const text = execFileSync('pdftotext', [file, '-']).toString();
+    assert.match(text, /हवा महल/);
+    assert.match(text, /Taj Mahal at sunrise/);
+  } catch (e) { if (e.code !== 'ENOENT') throw e; }       // no pdftotext here: the font check above stands
+  assert.deepEqual(page.errors, []);
+  await context.close();
+});
+
+test('an English-only trip does not load the Hindi font', async () => {
+  const { context, page } = await newPhone(env.browser, { realPdf: true });
+  const asked = [];
+  page.on('request', r => { if (/NotoSansDevanagari/.test(r.url())) asked.push(r.url()); });
+  await page.addInitScript(t => { try { localStorage.setItem('kyt_virtual_trips', JSON.stringify([t])); } catch (e) { /* about:blank */ } }, TRIP);
+  await page.goto(env.base + '/trip_detail.html?id=pdf1');
+  await page.waitForSelector('#btn-save-pdf');
+  const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#btn-save-pdf')]);
+  await dl.saveAs('/tmp/kyt-english-test.pdf');
+  assert.deepEqual(asked, []);
+  await context.close();
+});
+
+test('the PDF library and the Hindi font are bundled and kept in a cache a release does not wipe', async () => {
+  const fsx = require('node:fs'), pth = require('node:path');
+  const root = pth.resolve(__dirname, '..', '..');
+  const sw = fsx.readFileSync(pth.join(root, 'sw.js'), 'utf8');
+  for (const f of ['lib/pdfmake.min.js', 'lib/vfs_fonts.js', 'lib/fonts/NotoSansDevanagari-Regular.ttf', 'lib/fonts/NotoSansDevanagari-Bold.ttf']) {
+    assert.ok(fsx.existsSync(pth.join(root, f)), f + ' exists');
+    assert.ok(sw.includes("'./" + f + "'"), f + ' is in the library cache list');
+  }
+  assert.match(sw, /k !== CACHE_NAME && k !== LIB_CACHE/, 'activate keeps the library cache');
+  for (const page of ['trip_detail.html', 'virtual_trip.html', 'view_trip.html', 'configure_trip.html']) {
+    const html = fsx.readFileSync(pth.join(root, page), 'utf8');
+    assert.doesNotMatch(html, /cdnjs\.cloudflare\.com\/ajax\/libs\/pdfmake/, page + ' no longer needs the CDN');
+  }
+});

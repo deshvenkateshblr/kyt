@@ -60,7 +60,7 @@ async function launch() {
 
 /** A fresh, isolated phone-sized browser context (empty IndexedDB / localStorage). */
 async function newPhone(browser, opts = {}) {
-  const { nudge, ...ctxOpts } = opts;      // nudge: true lets the "Save a copy?" card appear; otherwise it is silenced so it cannot cover a button mid-test
+  const { nudge, realPdf, ...ctxOpts } = opts;      // realPdf: true loads the bundled pdfMake; otherwise it is stubbed to nothing so tests can install their own stand-in      // nudge: true lets the "Save a copy?" card appear; otherwise it is silenced so it cannot cover a button mid-test
   const context = await browser.newContext({
     viewport: { width: 390, height: 844 },
     deviceScaleFactor: 2, isMobile: true, hasTouch: true,
@@ -69,6 +69,7 @@ async function newPhone(browser, opts = {}) {
   if (!nudge) await context.addInitScript(() => { try { localStorage.setItem('kyt_save_snooze', String(Date.now() + 86400000 * 365)); localStorage.setItem('kyt_space_snooze', String(Date.now() + 86400000 * 365)); } catch (e) { /* about:blank */ } });
   await context.route('**/*', route => {
     const u = route.request().url();
+    if (!realPdf && /\/lib\/(pdfmake\.min|vfs_fonts)\.js/.test(u)) return route.fulfill({ status: 200, contentType: 'application/javascript', body: '' });
     if (u.startsWith('http://127.0.0.1') || u.startsWith('data:') || u.startsWith('blob:')) return route.continue();
     return route.abort();
   });

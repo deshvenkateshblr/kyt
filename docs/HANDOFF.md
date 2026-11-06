@@ -4,7 +4,7 @@ Start a fresh review from here. The full backlog is [TODO.md](TODO.md); what shi
 
 ## Where things stand
 - **Repo:** `github.com/deshvenkateshblr/KYT`, zero-server PWA (vanilla JS, Tailwind CDN, Lucide, `sw.js`), hosted at vividnova.com/KYT. Clean tree, all pushed.
-- **Tests:** `NODE_PATH=/opt/npm-tools/node_modules node --test --test-concurrency=1 "tests/e2e/*.test.js"` (137 pass; `KYT_PW_TIMEOUT` shortens waits). Bumping a version means `sw.js` `CACHE_NAME` and `js/footer.js` `APP_VERSION` together (a test enforces it).
+- **Tests:** `NODE_PATH=/opt/npm-tools/node_modules node --test --test-concurrency=1 "tests/e2e/*.test.js"` (203 pass; `KYT_PW_TIMEOUT` shortens waits). Bumping a version: run `npm run bump` (sets `sw.js` `CACHE_NAME`, `js/footer.js` `APP_VERSION` and every page's `?v=` together; tests enforce it). PDF tests: the harness stubs pdfMake unless `newPhone(browser, { realPdf: true })`.
 - **Git flow:** commit on master, `git fetch origin master`, rebase if behind, `git push origin HEAD:master`.
 
 ## The virtual trip model (built by hand, suggestions carry the intelligence)

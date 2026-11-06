@@ -533,3 +533,36 @@ test('with no current trip here, Add also brings the file\'s current trip', asyn
   assert.equal(await b.page.evaluate(async () => { await KYT.store.loadData(); return KYT.store.get().tripName; }), 'Goa Escape');
   await b.context.close();
 });
+
+test('every release number agrees: sw.js, the footer, and the ?v= on every local script and style in every page (D11)', () => {
+  const fsx = require('node:fs'), pth = require('node:path');
+  const root = pth.resolve(__dirname, '..', '..');
+  const sw = /CACHE_NAME = 'kyt-v(\d+)'/.exec(fsx.readFileSync(pth.join(root, 'sw.js'), 'utf8'))[1];
+  const footer = /APP_VERSION = (\d+)/.exec(fsx.readFileSync(pth.join(root, 'js', 'footer.js'), 'utf8'))[1];
+  assert.equal(footer, sw, 'footer.js APP_VERSION equals sw.js CACHE_NAME (run: npm run bump)');
+  const odd = [];
+  for (const f of fsx.readdirSync(root).filter(n => n.endsWith('.html'))) {
+    const html = fsx.readFileSync(pth.join(root, f), 'utf8');
+    for (const m of html.matchAll(/(?:src|href)="((?:\.\/)?[a-zA-Z0-9_\/.-]+\.(?:js|css))\?v=(\d+)"/g)) if (m[2] !== sw) odd.push(`${f}: ${m[1]} ?v=${m[2]}`);
+  }
+  assert.deepEqual(odd, [], 'every ?v= equals the app version (run: npm run bump)');
+});
+
+test('the bump command changes all three places together', () => {
+  const { execFileSync } = require('node:child_process'), fsx = require('node:fs'), pth = require('node:path'), os = require('node:os');
+  const root = pth.resolve(__dirname, '..', '..');
+  const tmp = fsx.mkdtempSync(pth.join(os.tmpdir(), 'kyt-bump-'));
+  try {
+    fsx.mkdirSync(pth.join(tmp, 'js')); fsx.mkdirSync(pth.join(tmp, 'scripts'));
+    fsx.writeFileSync(pth.join(tmp, 'sw.js'), "const CACHE_NAME = 'kyt-v7';\n");
+    fsx.writeFileSync(pth.join(tmp, 'js', 'footer.js'), 'const APP_VERSION = 7;\n');
+    fsx.writeFileSync(pth.join(tmp, 'a.html'), '<script src="./js/x.js?v=3"></script><script src="js/y.js?v=9"></script><link href="./css/z.css?v=1"><script src="https://cdn.example.com/p.js?v=2"></script>');
+    fsx.copyFileSync(pth.join(root, 'scripts', 'bump-version.js'), pth.join(tmp, 'scripts', 'bump-version.js'));
+    execFileSync('node', [pth.join(tmp, 'scripts', 'bump-version.js')]);
+    assert.match(fsx.readFileSync(pth.join(tmp, 'sw.js'), 'utf8'), /kyt-v8/);
+    assert.match(fsx.readFileSync(pth.join(tmp, 'js', 'footer.js'), 'utf8'), /APP_VERSION = 8/);
+    const html = fsx.readFileSync(pth.join(tmp, 'a.html'), 'utf8');
+    assert.match(html, /x\.js\?v=8/); assert.match(html, /y\.js\?v=8/); assert.match(html, /z\.css\?v=8/);
+    assert.match(html, /p\.js\?v=2"/, 'another site\'s file is left alone');
+  } finally { fsx.rmSync(tmp, { recursive: true, force: true }); }
+});

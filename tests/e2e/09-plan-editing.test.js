@@ -454,3 +454,33 @@ test('a shared link with a month brings the month into the new trip', async () =
   await page.waitForFunction(() => (JSON.parse(localStorage.getItem('kyt_virtual_trips') || '[]')[0] || {}).travelMonth === 7);
   await context.close();
 });
+
+test('Earlier and Later swap a day with its steps and the cities list follows; the end days have one button (D9)', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openPlan(page, [['Agra', 'agra'], ['Jaipur', 'jaipur']]);
+  await page.evaluate(() => KYT.virtualTrips.seedPlanForTests());
+  const before = (await stored(page))[0];
+  const dayCities = t => t.days.filter(d => d.id >= 1).sort((a, b) => a.id - b.id).map(d => d.cityId);
+  assert.deepEqual(dayCities(before), ['agra', 'jaipur']);
+  const firstOfDay1 = before.steps.find(s => Number(s.dayId) === 1 && s.type === 'stop');
+  await page.click('[data-day-tab="1"], #vt-day-tabs button:has-text("Day 1")');
+  assert.equal(await page.locator('#btn-vt-day-earlier').count(), 0, 'nothing before day 1');
+  assert.equal(await page.locator('#btn-vt-day-later').count(), 1);
+  await page.click('#btn-vt-day-later');
+  const after = (await stored(page))[0];
+  assert.deepEqual(dayCities(after), ['jaipur', 'agra']);
+  assert.deepEqual(after.cities.slice(0, 2), ['jaipur', 'agra'], 'the chosen-cities list follows');
+  assert.equal(Number(after.steps.find(s => s.id === firstOfDay1.id).dayId), 2, 'its steps moved with the day');
+  assert.equal(after.steps.length, before.steps.length, 'no step lost');
+  assert.equal(await page.locator('#btn-vt-day-earlier').count(), 1, 'the day is now second');
+  assert.equal(await page.locator('#btn-vt-day-later').count(), 0, 'and last');
+  await context.close();
+});
+
+test('moveDay refuses to move off either end', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openPlan(page, [['Agra', 'agra'], ['Jaipur', 'jaipur']]);
+  const r = await page.evaluate(() => { const t = JSON.parse(localStorage.getItem('kyt_virtual_trips'))[0]; return [KYT.virtualTrips.moveDay(t, 1, -1), KYT.virtualTrips.moveDay(t, 2, 1)]; });
+  assert.deepEqual(r, [null, null]);
+  await context.close();
+});
