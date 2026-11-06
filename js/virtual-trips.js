@@ -270,6 +270,7 @@ KYT.virtualTrips = (function () {
     url.searchParams.set('trip', trip.name || 'Shared Trip');
     url.searchParams.set('cities', trip.cities.join(','));
     url.searchParams.set('taste', encodeTaste(trip.taste));
+    if (trip.travelMonth) url.searchParams.set('m', String(trip.travelMonth));
     if (trip.curatedId) {
       url.searchParams.set('curated', trip.curatedId);
     }
@@ -1501,27 +1502,7 @@ KYT.virtualTrips = (function () {
     (trip.cities || []).forEach(id => { const c = cityById(id); if (c && !seen.has(c.id)) { seen.add(c.id); out.push(c); } });
     return out;
   }
-  const inMonthRange = (m, [a, b]) => (a <= b ? m >= a && m <= b : m >= a || m <= b);     // 1-12; a range may wrap the year end
-  /** What the chosen month means for each city: closed, wet or very hot. Pure, so it is easy to test. */
-  function monthWarnings(cities, month) {
-    const out = [];
-    if (!month) return out;
-    const W = window.KYT_WEATHER, S = KYT.weatherSeasons;
-    cities.forEach(c => {
-      const a = c.access;
-      if (a && Array.isArray(a.closed) && inMonthRange(month, a.closed)) {
-        out.push({ city: c.name, kind: 'closed', text: `${c.name} is usually closed or cut off in ${MONTH_LONG[month - 1]} (${MONTH_LONG[a.closed[0] - 1]} to ${MONTH_LONG[a.closed[1] - 1]}).` });
-      }
-      const e = W && W.cities && W.cities[c.id];
-      if (e && S && Array.isArray(e.hi) && e.hi.length === 12) {
-        const avg = Math.round((e.hi[month - 1] + e.lo[month - 1]) / 2), rain = e.rain[month - 1];
-        const t = S.tempLabel(avg), r = S.rainLabel(rain);
-        const bits = [`about ${avg < 0 ? '−' + Math.abs(avg) : avg}°C`, r === 'wet' ? 'wet' : (r === 'some rain' ? 'some rain' : 'dry')];
-        out.push({ city: c.name, kind: r === 'wet' ? 'wet' : (t === 'Hot' ? 'hot' : 'info'), text: `${c.name} in ${MONTH_LONG[month - 1]}: ${t.toLowerCase()}, ${bits.join(', ')}.` });
-      }
-    });
-    return out;
-  }
+  const monthWarnings = (cities, month) => KYT.ui.monthNotes(cities, month);
   function renderBeforeYouGoPanel(trip) {
     const cities = tripCities(trip);
     if (!cities.length) return '';
@@ -2791,11 +2772,13 @@ KYT.virtualTrips = (function () {
             url.searchParams.delete('curated');
             url.searchParams.delete('origin');
             url.searchParams.delete('days');
+            url.searchParams.delete('m');
             window.history.replaceState({}, '', url.toString());
             return;
           }
           const sharedCurated = params.get('curated');
           const sharedOrigin = params.get('origin');
+          const sharedMonth = parseInt(params.get('m'), 10);
           const sharedDays = parseInt(params.get('days'), 10);
           const tasteParts = sharedTaste && sharedTaste.length === 3 ? decodeTaste(sharedTaste) : (sharedTaste ? sharedTaste.split('|') : ['mixed', 'any', 'standard']);
           const fullCities = sharedCities.split(',').map(code => {
@@ -2819,6 +2802,7 @@ KYT.virtualTrips = (function () {
             newTrip.cities = fullCities;
             if (sharedOrigin) newTrip.originCity = resolvedOrigin;
             if (!isNaN(sharedDays) && sharedDays > 0) newTrip.duration = sharedDays;
+            if (sharedMonth >= 1 && sharedMonth <= 12) newTrip.travelMonth = sharedMonth;
             if (sharedTaste) {
               newTrip.taste = {
                 intent: tasteParts[0] || newTrip.taste.intent,
@@ -2848,6 +2832,7 @@ KYT.virtualTrips = (function () {
               steps: null,
               curatedId: ''
             };
+            if (sharedMonth >= 1 && sharedMonth <= 12) newTrip.travelMonth = sharedMonth;
           }
 
           vtrips.push(newTrip);
@@ -2857,6 +2842,7 @@ KYT.virtualTrips = (function () {
           url.searchParams.delete('trip');
           url.searchParams.delete('cities');
           url.searchParams.delete('taste');
+          url.searchParams.delete('m');
           url.searchParams.delete('curated');
           url.searchParams.delete('origin');
           url.searchParams.delete('days');

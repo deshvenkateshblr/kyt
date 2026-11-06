@@ -65,7 +65,8 @@
       tagline: clean((curated && curated.tagline) || ''),
       origin: trip && trip.originCity && trip.originCity !== 'already_there' ? trip.originCity : '',
       days: daysOf(trip, curated),
-      cities: (cities || []).filter(Boolean)
+      cities: (cities || []).filter(Boolean),
+      month: trip && Number(trip.travelMonth) >= 1 && Number(trip.travelMonth) <= 12 ? Number(trip.travelMonth) : 0
     };
   }
 
@@ -215,6 +216,13 @@
       content.push({ text: 'AT A GLANCE', fontSize: 9, bold: true, color: COLORS.blue, characterSpacing: 2, margin: [0, 0, 0, 2] });
       content.push({ table: { widths: [44, '*'], body: glance, dontBreakRows: true }, layout: { hLineWidth: i => (i === 0 ? 1 : 0.5), hLineColor: () => COLORS.line, vLineWidth: () => 0, paddingLeft: () => 0, paddingRight: () => 0, paddingTop: () => 6, paddingBottom: () => 6 } });
     }
+    const mNotes = plan.month && deps.monthNotes ? deps.monthNotes(plan.cities, plan.month) : [];
+    if (mNotes.length) {
+      const names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      const bad = mNotes.some(n => n.kind === 'closed' || n.kind === 'wet' || n.kind === 'hot');
+      content.push(panel(bad ? '#D97706' : '#0284C7', bad ? '#FFFBEB' : '#F0F9FF', 'TRAVELLING IN ' + names[plan.month - 1].toUpperCase(),
+        mNotes.map(n => ({ text: [{ text: (n.kind === 'closed' ? 'Closed. ' : n.kind === 'wet' ? 'Wet. ' : n.kind === 'hot' ? 'Hot. ' : ''), bold: true }, clean(n.text)], fontSize: 9.5, color: COLORS.body, margin: [0, 0, 0, 2] }))));
+    }
     content.push({ text: 'Tap a blue "Open in Google Maps" link to see the place or get directions. Sources are numbered, with the full web address printed under each list. Times are indicative: check roads, weather and opening hours close to your day.', fontSize: 8.5, italics: true, color: COLORS.muted, margin: [0, 14, 0, 0] });
 
     // Days, each with the panels of the cities it touches
@@ -276,6 +284,7 @@
     const deps = {
       logo,
       beforeYouGoInfo: ui.beforeYouGoInfo,
+      monthNotes: ui.monthNotes,
       accessInfo: ui.accessInfo,
       seasonsFor: city => (seasons && W && W.cities && W.cities[city.id]) ? seasons.summarise(W.cities[city.id]) : []
     };

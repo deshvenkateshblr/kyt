@@ -476,3 +476,9 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - An optional **Travelling in** month (kept with the trip, never assumed) adds warnings: a place usually closed or cut off that month (ranges that wrap the year end, such as Dec to May, work), and each city's typical temperature and rain for that month, flagged when wet or hot. This is the start-date awareness of D2; the start-date dialog does not warn yet.
     - **Style** (Intent, Diet, Pace) was only reachable low down in the suggestions list. It is now one small line at the top, "Style: Mixed · Any · Standard · Change", and the chips open only when tapped.
     - **Tests:** 3 added in `09-plan-editing.test.js`.
+74. **Travel month and start date, finished (service worker cache `kyt-v108`)**
+    - **Start this trip** now checks the chosen date: closed or cut-off places, wet or very hot months for any city in the plan, and a month that differs from the "Travelling in" month you set. Shown as one amber note under the date; it never blocks Start.
+    - The **travel month travels with the trip**: the share link carries it (`m=`, also in the compact fallback link; the short-code snapshot already had it), opening a shared link restores it, and the saved `.kyt` file keeps it with the trip.
+    - **Save PDF** adds a "Travelling in <month>" box after At a glance (closures, wet, hot, typical weather per city), only when a month is set (also read from a shared link).
+    - The month rules moved to one place (`KYT.ui.monthNotes`) used by the Day Plan, the start dialog and the PDF.
+    - **Tests:** 4 added (09, 13).

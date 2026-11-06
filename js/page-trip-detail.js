@@ -247,6 +247,7 @@
           if (originParam) url.searchParams.set('origin', originParam);
           if (daysParam) url.searchParams.set('days', String(daysParam));
           if (curatedParam) url.searchParams.set('curated', curatedParam);
+          if (loadedVirtualTrip && loadedVirtualTrip.travelMonth) url.searchParams.set('m', String(loadedVirtualTrip.travelMonth));
 
           let usedShortCode = false;
           const shortenerEndpoint = getShortenerEndpoint();
@@ -1119,6 +1120,8 @@
             const ids = (cityIds && cityIds.length) ? cityIds : extractCitiesFromTrip(loadedVirtualTrip || cTrip);
             const cities = ids.map(id => KYT.ui.resolveCity(id)).filter(Boolean);
             const plan = KYT.tripPdf.collectPlan(loadedVirtualTrip, cTrip, cities);
+            const sharedM = parseInt(params.get('m'), 10);
+            if (!plan.month && sharedM >= 1 && sharedM <= 12) plan.month = sharedM;
             if (!plan.days.length && !plan.cities.length) throw new Error('This trip has nothing to put in a PDF yet.');
             await KYT.tripPdf.download(plan);
           } catch (e) {

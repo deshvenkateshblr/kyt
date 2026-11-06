@@ -93,3 +93,47 @@ test('without the PDF library the person gets a plain message, not a dead button
 test('the PDF script is in the offline precache', () => {
   assert.match(require('fs').readFileSync(require('path').join(__dirname, '../../sw.js'), 'utf8'), /\.\/js\/trip-pdf\.js/);
 });
+
+test('a travel month puts a Travelling in box in the PDF, with closures and weather; no month, no box', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.addInitScript(() => {
+    window.__docs = [];
+    window.pdfMake = { createPdf: doc => { window.__docs.push(doc); return { download() {}, getBlob(cb) { cb(new Blob(['x'])); } }; } };
+  });
+  const trip = { ...TRIP, id: 'pdf2', travelMonth: 1 };
+  await page.addInitScript(t => { try { if (!localStorage.getItem('kyt_virtual_trips')) localStorage.setItem('kyt_virtual_trips', JSON.stringify([t])); } catch (e) { /* about:blank */ } }, trip);
+  await page.goto(env.base + '/trip_detail.html?id=pdf2');
+  await page.waitForSelector('#btn-save-pdf');
+  await page.click('#btn-save-pdf');
+  await page.waitForFunction(() => window.__docs.length === 1);
+  const all = JSON.stringify(await page.evaluate(() => JSON.parse(JSON.stringify(window.__docs[0].content))));
+  assert.match(all, /TRAVELLING IN JANUARY/);
+  assert.match(all, /Agra in January/);
+  await context.close();
+  const none = await newPhone(env.browser);
+  await none.page.addInitScript(() => {
+    window.__docs = [];
+    window.pdfMake = { createPdf: doc => { window.__docs.push(doc); return { download() {}, getBlob(cb) { cb(new Blob(['x'])); } }; } };
+  });
+  await none.page.addInitScript(t => { try { localStorage.setItem('kyt_virtual_trips', JSON.stringify([t])); } catch (e) { /* about:blank */ } }, TRIP);
+  await none.page.goto(env.base + '/trip_detail.html?id=pdf1');
+  await none.page.waitForSelector('#btn-save-pdf');
+  await none.page.click('#btn-save-pdf');
+  await none.page.waitForFunction(() => window.__docs.length === 1);
+  assert.doesNotMatch(JSON.stringify(await none.page.evaluate(() => JSON.parse(JSON.stringify(window.__docs[0].content)))), /TRAVELLING IN/);
+  await none.context.close();
+});
+
+test('a shared link carries the travel month and the PDF from it shows it', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.addInitScript(() => {
+    window.__docs = [];
+    window.pdfMake = { createPdf: doc => { window.__docs.push(doc); return { download() {}, getBlob(cb) { cb(new Blob(['x'])); } }; } };
+  });
+  await page.goto(env.base + '/trip_detail.html?trip=Shared&cities=agra,jaipur&taste=msa&origin=delhi&days=2&m=7');
+  await page.waitForSelector('#btn-save-pdf');
+  await page.click('#btn-save-pdf');
+  await page.waitForFunction(() => window.__docs.length === 1);
+  assert.match(JSON.stringify(await page.evaluate(() => JSON.parse(JSON.stringify(window.__docs[0].content)))), /TRAVELLING IN JULY/);
+  await context.close();
+});

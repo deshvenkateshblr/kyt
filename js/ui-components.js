@@ -941,8 +941,48 @@ window.KYT.ui = (function () {
     return out;
   }
 
+  const MONTH_LONG = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const inMonthRange = (m, r) => (r[0] <= r[1] ? m >= r[0] && m <= r[1] : m >= r[0] || m <= r[1]);   // 1-12; a range may wrap the year end
+
+  /**
+   * What a month means for each city: closed or cut off, wet, very hot, or just the typical weather.
+   * Returns [{ city, kind: 'closed'|'wet'|'hot'|'info', text }]. Empty when no month.
+   */
+  function monthNotes(cities, month) {
+    const out = [];
+    month = Number(month);
+    if (!month || month < 1 || month > 12) return out;
+    const W = window.KYT_WEATHER, S = window.KYT && KYT.weatherSeasons;
+    (cities || []).forEach(c => {
+      if (!c) return;
+      const a = c.access;
+      if (a && Array.isArray(a.closed) && inMonthRange(month, a.closed)) {
+        out.push({ city: c.name, kind: 'closed', text: `${c.name} is usually closed or cut off in ${MONTH_LONG[month - 1]} (${MONTH_LONG[a.closed[0] - 1]} to ${MONTH_LONG[a.closed[1] - 1]}).` });
+      }
+      const e = W && W.cities && W.cities[c.id];
+      if (e && S && Array.isArray(e.hi) && e.hi.length === 12) {
+        const avg = Math.round((e.hi[month - 1] + e.lo[month - 1]) / 2), rain = e.rain[month - 1];
+        const t = S.tempLabel(avg), r = S.rainLabel(rain);
+        out.push({ city: c.name, kind: r === 'wet' ? 'wet' : (t === 'Hot' ? 'hot' : 'info'),
+          text: `${c.name} in ${MONTH_LONG[month - 1]}: ${t.toLowerCase()}, about ${avg < 0 ? '\u2212' + Math.abs(avg) : avg}\u00b0C, ${r}.` });
+      }
+    });
+    return out;
+  }
+  const isWarning = n => n.kind === 'closed' || n.kind === 'wet' || n.kind === 'hot';
+
+  /** The distinct cities of a planned trip, in day order (days first, then the chosen list). */
+  function citiesOfPlan(trip) {
+    const seen = new Set(), out = [];
+    const add = id => { const c = id && resolveCity(id); if (c && !seen.has(c.id)) { seen.add(c.id); out.push(c); } };
+    ((trip && trip.days) || []).filter(d => d.id >= 1).sort((a, b) => a.id - b.id).forEach(d => add(d.cityId));
+    ((trip && trip.cities) || []).forEach(add);
+    return out;
+  }
+
   /** Ask "When does your trip start?". Resolves to a local-midnight Date, or null if cancelled. */
-  function askStartDate() {
+  function askStartDate(ctx) {
+    ctx = ctx || {};
     return new Promise(resolve => {
       const esc = window.KYT.utils.escapeHTML;
       const today = new Date(); today.setHours(0, 0, 0, 0);
@@ -964,6 +1004,7 @@ window.KYT.ui = (function () {
             <button type="button" id="kyt-start-date-today"
               class="shrink-0 px-4 py-3 rounded-xl bg-blue-50 text-blue-700 font-bold text-sm hover:bg-blue-100 active:scale-95 transition">Today</button>
           </div>
+          <div id="kyt-start-date-notes" class="mt-3 space-y-1 hidden" aria-live="polite"></div>
           <div class="mt-5 flex gap-3">
             <button type="button" id="kyt-start-date-cancel"
               class="flex-1 py-3 rounded-xl text-slate-600 font-bold text-sm hover:bg-slate-100 transition">Cancel</button>
@@ -976,7 +1017,18 @@ window.KYT.ui = (function () {
       const input = overlay.querySelector('#kyt-start-date-input');
       const confirmBtn = overlay.querySelector('#kyt-start-date-confirm');
       const valid = () => { const d = parseLocalDate(input.value); return d && d >= today ? d : null; };
-      const sync = () => { confirmBtn.disabled = !valid(); };
+      const notesBox = overlay.querySelector('#kyt-start-date-notes');
+      const showNotes = () => {
+        const d = valid(), list = [];
+        if (d) {
+          const month = d.getMonth() + 1, said = Number(ctx.travelMonth) || 0;
+          if (said && said !== month) list.push(`<li data-start-note="month" class="text-xs text-amber-900 flex gap-1.5"><span class="font-extrabold">Different month.</span><span>You planned for ${MONTH_LONG[said - 1]}; this date is in ${MONTH_LONG[month - 1]}.</span></li>`);
+          monthNotes(ctx.cities, month).filter(isWarning).forEach(n => list.push(`<li data-start-note="${n.kind}" class="text-xs text-amber-900 flex gap-1.5"><span class="font-extrabold">${n.kind === 'closed' ? 'Closed.' : (n.kind === 'wet' ? 'Wet.' : 'Hot.')}</span><span>${esc(n.text)}</span></li>`));
+        }
+        notesBox.innerHTML = list.length ? `<ul class="space-y-1 bg-amber-50 border border-amber-200 rounded-xl px-3 py-2">${list.join('')}</ul><p class="text-[11px] text-slate-500">You can still start. These are typical conditions: check before you go.</p>` : '';
+        notesBox.classList.toggle('hidden', !list.length);
+      };
+      const sync = () => { confirmBtn.disabled = !valid(); showNotes(); };
       const finish = value => {
         document.removeEventListener('keydown', onKey);
         overlay.remove();
@@ -1010,7 +1062,7 @@ window.KYT.ui = (function () {
       if (!confirm(`This will overwrite your current active trip ("${current.tripName}"). Do you want to proceed?`)) return false;
     }
 
-    const startDate = await askStartDate();
+    const startDate = await askStartDate({ cities: citiesOfPlan(trip), travelMonth: trip.travelMonth });
     if (!startDate) return false;
 
     KYT.store.setTripName(trip.name);
@@ -1391,6 +1443,8 @@ window.KYT.ui = (function () {
     parseLocalDate,
     buildLiveSteps,
     askStartDate,
+    monthNotes,
+    citiesOfPlan,
     startTripLive,
     /** City detail slide-over */
     cityDetail

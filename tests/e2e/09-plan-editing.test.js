@@ -426,3 +426,31 @@ test('choosing a travel month shows its notes and is kept with the trip', async 
   assert.equal((await stored(page))[0].travelMonth, 7);
   await context.close();
 });
+
+test('the start date dialog warns about a closed or wet month and a month that differs from the plan, and still lets you start', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openPlan(page, [['Leh', 'leh'], ['Agra', 'agra']]);
+  await page.selectOption('#vt-travel-month', '7');
+  await page.evaluate(() => KYT.virtualTrips.seedPlanForTests());
+  const leh = await page.evaluate(() => { const c = KYT_CITIES.find(x => x.id === 'leh'); return c.access && c.access.closed; });
+  const closedMonth = leh ? leh[0] : 1;
+  await page.evaluate(() => { window.__ask = KYT.ui.askStartDate({ cities: ['leh', 'agra'].map(KYT.ui.resolveCity), travelMonth: 7 }); });
+  await page.waitForSelector('#kyt-start-date-input');
+  const y = new Date().getFullYear() + 1, pad = n => String(n).padStart(2, '0');
+  await page.fill('#kyt-start-date-input', `${y}-${pad(closedMonth)}-15`);
+  const notes = await page.locator('#kyt-start-date-notes').innerText();
+  if (leh) assert.match(notes, /closed or cut off/i);
+  assert.match(notes, /planned for July/i, 'the date is in another month than the one chosen');
+  assert.equal(await page.locator('#kyt-start-date-confirm').isDisabled(), false, 'a warning never blocks');
+  await page.fill('#kyt-start-date-input', `${y}-07-15`);
+  assert.doesNotMatch(await page.locator('#kyt-start-date-notes').innerText(), /planned for July/);
+  await page.keyboard.press('Escape');
+  await context.close();
+});
+
+test('a shared link with a month brings the month into the new trip', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.goto(env.base + '/virtual_trip.html?trip=Shared&cities=agra,jaipur&taste=msa&origin=delhi&days=2&m=7');
+  await page.waitForFunction(() => (JSON.parse(localStorage.getItem('kyt_virtual_trips') || '[]')[0] || {}).travelMonth === 7);
+  await context.close();
+});
