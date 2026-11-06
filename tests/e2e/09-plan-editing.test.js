@@ -260,7 +260,7 @@ test('days follow the cities: adding a city adds a day, removing one takes its d
   await page.fill('#vt-city-search', 'Udaipur');
   await page.click('.btn-add-city[data-id="udaipur"]');
   await page.click('#btn-vt-dest-done');
-  assert.equal(await page.locator('.btn-move-city-left, .btn-move-city-right').count(), 0);
+  assert.ok(await page.locator('.btn-move-city-left, .btn-move-city-right').count() > 0, 'cities can be moved with steps too');
   let t = (await stored(page))[0];
   assert.deepEqual(t.days.map(d => d.cityId), ['agra', 'jaipur', 'udaipur']);
 
@@ -482,5 +482,153 @@ test('moveDay refuses to move off either end', async () => {
   await openPlan(page, [['Agra', 'agra'], ['Jaipur', 'jaipur']]);
   const r = await page.evaluate(() => { const t = JSON.parse(localStorage.getItem('kyt_virtual_trips'))[0]; return [KYT.virtualTrips.moveDay(t, 1, -1), KYT.virtualTrips.moveDay(t, 2, 1)]; });
   assert.deepEqual(r, [null, null]);
+  await context.close();
+});
+
+// ── Stays: one entry per night, shown as one stay; a Review list for what looks off (D12) ───────────────
+const stayStep = (id, dayId, where, extra = {}) => ({ id, dayId, type: 'stay', cityName: 'Agra', title: 'Stay in ' + where, where, hour: 21, minute: 0, durationMin: 30, icon: 'bed-double', ...extra });
+const stopStep = (id, dayId, title, hour, extra = {}) => ({ id, dayId, type: 'stop', cityName: 'Agra', title, where: title, hour, minute: 0, durationMin: 90, icon: 'map-pin', ...extra });
+/** One city, three days, and exactly the steps given. */
+async function threeDays(page, steps) {
+  await openPlan(page, [['Agra', 'agra']]);
+  await page.evaluate(st => {
+    const all = JSON.parse(localStorage.getItem('kyt_virtual_trips'));
+    all[0].days = [{ id: 1, cityId: 'agra' }, { id: 2, cityId: 'agra' }, { id: 3, cityId: 'agra' }];
+    all[0].duration = 3; all[0].steps = st;
+    localStorage.setItem('kyt_virtual_trips', JSON.stringify(all));
+    KYT.virtualTrips.redrawPlan();
+  }, steps);
+  await page.waitForSelector('#vt-day-tabs');
+}
+
+test('consecutive nights at one place read as one stay: check-in on night 1, check-out on the last night', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await threeDays(page, [stopStep('a', 1, 'Taj Mahal', 9), stayStep('s1', 1, 'Hotel Taj'), stopStep('b', 2, 'Agra Fort', 9), stayStep('s2', 2, 'Hotel Taj', { checkOut: '11:00' }), stopStep('c', 3, 'Mehtab Bagh', 9)]);
+  assert.match(await card(page, 'Stay in Hotel Taj').innerText(), /Check-in 21:00 · night 1 of 2/);
+  await tab(page, 2).click();
+  const t2 = await card(page, 'Stay in Hotel Taj').innerText();
+  assert.match(t2, /Night 2 of 2 · Check-out 11:00/);
+  assert.doesNotMatch(t2, /Check-in/);
+  await context.close();
+});
+
+test('"Stay at X again tonight" adds the next night and moves the check-out to it', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await threeDays(page, [stopStep('a', 1, 'Taj Mahal', 9), stayStep('s1', 1, 'Hotel Taj', { checkOut: '11:00' }), stopStep('b', 2, 'Agra Fort', 9), stopStep('c', 3, 'Mehtab Bagh', 9)]);
+  await tab(page, 2).click();
+  const hint = page.locator('[data-hint="stay"]');
+  assert.match(await hint.innerText(), /Stay at Hotel Taj again tonight/);
+  await hint.click();
+  const t = (await stored(page))[0];
+  const stays = t.steps.filter(x => x.type === 'stay').sort((a, b) => a.dayId - b.dayId);
+  assert.deepEqual(stays.map(x => [x.dayId, x.where, x.checkOut || '']), [[1, 'Hotel Taj', ''], [2, 'Hotel Taj', '11:00']]);
+  assert.equal(await page.locator('[data-hint="stay"]').count(), 0, 'the night is covered');
+  await context.close();
+});
+
+test('the Nights picker adds a stay for each night and stops, saying why, when the city changes or the days run out', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await threeDays(page, [stopStep('a', 1, 'Taj Mahal', 9), stopStep('b', 2, 'Agra Fort', 9), stopStep('c', 3, 'Mehtab Bagh', 9)]);
+  await page.click('#btn-vt-add-stay');
+  assert.equal(await page.locator('#vt-stay-nights-wrap').isVisible(), true);
+  await page.fill('#vt-stay-place', 'Hotel Taj');
+  await page.fill('#vt-stay-out', '10:30');
+  await page.selectOption('#vt-stay-nights', '2');
+  await page.click('#btn-save-vt-step');
+  let stays = (await stored(page))[0].steps.filter(x => x.type === 'stay').sort((a, b) => a.dayId - b.dayId);
+  assert.deepEqual(stays.map(x => [x.dayId, x.where, x.checkOut || '']), [[1, 'Hotel Taj', ''], [2, 'Hotel Taj', '10:30']]);
+  assert.ok(stays[1].hour >= 21, 'a later night checks in at 21:00 or after the day\'s last step');
+  // asking for more nights than days left: adds what fits and says so
+  await tab(page, 3).click();
+  await page.click('#btn-vt-add-stay');
+  await page.fill('#vt-stay-place', 'Hotel Oberoi');
+  await page.selectOption('#vt-stay-nights', '3');
+  await page.click('#btn-save-vt-step');
+  assert.ok(page.dialogs.some(d => /Added 1 of 3 nights: there is no Day 4/.test(d)), page.dialogs.join(' | '));
+  stays = (await stored(page))[0].steps.filter(x => x.type === 'stay');
+  assert.equal(stays.length, 3);
+  await context.close();
+});
+
+test('editing a stay has no Nights picker', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await threeDays(page, [stayStep('s1', 1, 'Hotel Taj'), stopStep('a', 1, 'Taj Mahal', 9)]);
+  await page.evaluate(() => window.editVirtualTripStep('s1'));
+  await page.waitForSelector('#vt-step-modal:not(.hidden)');
+  assert.equal(await page.locator('#vt-stay-nights-wrap').isVisible(), false);
+  await context.close();
+});
+
+test('Review lists what looks off, with a fix for each, and stays out of the way when all is well', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await threeDays(page, [stopStep('a', 1, 'Taj Mahal', 9), stopStep('b', 2, 'Agra Fort', 9), stopStep('c', 3, 'Mehtab Bagh', 9)]);
+  assert.match(await page.locator('#vt-review').innerText(), /Review · 2 to look at/i);
+  assert.equal(await page.locator('#vt-review li').count(), 0, 'collapsed until opened');
+  await page.click('#btn-vt-review-toggle');
+  assert.equal(await page.locator('#vt-review li[data-review="no-stay"]').count(), 2, 'days 1 and 2 have no stay; the last day needs none');
+  await page.locator('#vt-review li[data-review="no-stay"]').first().locator('button').click();
+  let stays = (await stored(page))[0].steps.filter(x => x.type === 'stay');
+  assert.deepEqual(stays.map(x => x.dayId), [1]);
+  assert.match(await page.locator('#vt-review').innerText(), /Review · 1 to look at/i);
+  assert.equal(await page.locator('#vt-review li').count(), 1, 'the list stays open while you fix things');
+  await page.locator('#vt-review li[data-review="no-stay"]').first().locator('button').click();
+  assert.equal(await page.locator('#vt-review').count(), 0, 'nothing left to review');
+  await context.close();
+});
+
+test('reviewTrip flags a stay in the wrong city, an early check-in, a late check-out, two stays, and a stay on the last day', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openPlan(page, [['Agra', 'agra'], ['Jaipur', 'jaipur']]);
+  const keys = await page.evaluate(() => {
+    const trip = {
+      cities: ['agra', 'jaipur'], originCity: 'delhi', days: [{ id: 1, cityId: 'agra' }, { id: 2, cityId: 'jaipur' }],
+      steps: [
+        { id: 'a', dayId: 1, type: 'stop', cityName: 'Agra', title: 'Dinner', hour: 20, minute: 0, durationMin: 150 },
+        { id: 's1', dayId: 1, type: 'stay', cityName: 'Jaipur', title: 'Stay', where: 'Hotel', hour: 21, minute: 0, durationMin: 30 },
+        { id: 's1b', dayId: 1, type: 'stay', cityName: 'Agra', title: 'Stay', where: 'Hotel 2', hour: 23, minute: 0, durationMin: 30, checkOut: '11:00' },
+        { id: 't', dayId: 2, type: 'travel', cityName: 'Jaipur', title: 'Travel', from: 'Agra', to: 'Jaipur', hour: 6, minute: 0, durationMin: 240 },
+        { id: 's2', dayId: 2, type: 'stay', cityName: 'Jaipur', title: 'Stay', where: 'Hotel 3', hour: 21, minute: 0, durationMin: 30 }
+      ]
+    };
+    return KYT.virtualTrips.reviewTrip(trip).map(i => i.key).sort();
+  });
+  assert.deepEqual(keys, ['early-checkin', 'last-day-stay', 'late-checkout', 'stay-city', 'two-stays'].sort());
+  await context.close();
+});
+
+test('a Review step button opens that step to correct it', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await threeDays(page, [stopStep('a', 1, 'Taj Mahal', 9), stayStep('s1', 1, 'Hotel Taj', { hour: 8 }), stopStep('b', 2, 'Agra Fort', 9), stayStep('s2', 2, 'Hotel Taj'), stopStep('c', 3, 'Mehtab Bagh', 9)]);
+  await page.click('#btn-vt-review-toggle');
+  const row = page.locator('#vt-review li[data-review="early-checkin"]');
+  assert.equal(await row.count(), 1);
+  assert.match(await row.innerText(), /Day 1: check-in 08:00 is before your last step ends/);
+  await row.locator('button').click();
+  await page.waitForSelector('#vt-step-modal:not(.hidden)');
+  assert.equal(await page.inputValue('#vt-step-time'), '08:00');
+  await page.fill('#vt-step-time', '21:00');
+  await page.click('#btn-save-vt-step');
+  assert.equal(await page.locator('#vt-review li[data-review="early-checkin"]').count(), 0, 'corrected, so the flag is gone');
+  await context.close();
+});
+
+test('moving a city with steps moves its days and steps with it and renumbers the days (D9)', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openPlan(page, [['Agra', 'agra'], ['Jaipur', 'jaipur'], ['Udaipur', 'udaipur']]);
+  await page.evaluate(() => KYT.virtualTrips.seedPlanForTests());
+  const before = (await stored(page))[0];
+  const agraDays = before.days.filter(d => d.cityId === 'agra').map(d => d.id);
+  const agraSteps = before.steps.filter(x => agraDays.includes(Number(x.dayId))).map(x => x.id).sort();
+  await page.click('#btn-vt-edit-setup');
+  await page.click('#btn-vt-dest-edit');
+  await page.locator('.vt-selected-city-chip', { hasText: 'Agra' }).locator('.btn-move-city-right').click();
+  const t = (await stored(page))[0];
+  assert.deepEqual(t.cities.slice(0, 2), ['jaipur', 'agra']);
+  const order = t.days.filter(d => d.id >= 1).sort((a, b) => a.id - b.id).map(d => d.cityId);
+  assert.ok(order.indexOf('jaipur') < order.indexOf('agra') && order.indexOf('agra') < order.indexOf('udaipur'), order.join());
+  assert.deepEqual(t.days.filter(d => d.id >= 1).map(d => d.id).sort((a, b) => a - b), t.days.filter(d => d.id >= 1).map((d, k) => k + 1), 'days are 1..n');
+  const newAgra = t.days.filter(d => d.cityId === 'agra').map(d => d.id);
+  assert.deepEqual(t.steps.filter(x => newAgra.includes(Number(x.dayId))).map(x => x.id).sort(), agraSteps, 'its steps went with it');
+  assert.equal(t.steps.length, before.steps.length);
   await context.close();
 });

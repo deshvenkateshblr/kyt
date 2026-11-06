@@ -494,3 +494,10 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **D10:** pdfMake and its fonts are now bundled in `lib/` and kept in their own cache (`kyt-lib-v1`) that a release does not wipe, so the PDF works offline after the first online visit, and an update does not re-download 2.6 MB.
     - **D11:** `npm run bump` sets the service worker cache name, the footer version and every page's `?v=` together; tests fail if any of them differ. All `?v=` now equal the app version.
     - **Tests:** 10 added (04, 05, 06, 09, 13). The test harness stubs the PDF library by default; `newPhone(browser, { realPdf: true })` loads the real one.
+77. **Nights and Review for stays; cities movable with steps (service worker cache `kyt-v111`)**
+    - **Cities can be reordered after the plan has steps** (D9 as you meant it, on the destination chips). A city's days move together with their steps and the days are renumbered; if there are travel steps it asks first, since their wording does not change.
+    - **One stay entry per night, shown as one stay.** Consecutive nights in the same city at the same place read "Check-in 21:00 · night 1 of 3", "Night 2 of 3", "Night 3 of 3 · Check-out 11:00", in the Day Plan and in Save PDF. Nothing new is stored.
+    - **Stay at Hotel X again tonight:** the stay suggestion after a night in the same city adds the next night in one tap and moves the check-out to it.
+    - **Nights picker** in Add a stay (1 to 7): adds a stay on each following day while those days are in the same city, with the check-out on the last night. It stops, and says why, if a day ends in another city, already has a stay, or does not exist.
+    - **Review** (collapsed line, "n to look at") lists: a night with no stay, a stay in a different city than you end the day in, check-in before the day's last step ends, check-out after you leave next morning, two stays on one night, and (as a soft note) a stay on the last day. Each row has Add stay or Review step. Nothing blocks.
+    - **Tests:** 10 added (09, 13). Test hook `KYT.virtualTrips.redrawPlan()`.

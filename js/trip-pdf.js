@@ -104,7 +104,7 @@
     return { table: { body: [[{ text, fontSize: 7, bold: true, color: '#FFFFFF', fillColor: color, margin: [4, 1, 4, 1] }]] }, layout: FLAT, margin: [0, 1, 0, 3] };
   }
 
-  function stepRow(s) {
+  function stepRow(s, night) {
     const time = s.hour != null ? `${pad2(s.hour)}:${pad2(s.minute || 0)}` : '';
     const body = [];
     if (s.type === 'travel') body.push(chip('TRAVEL', '#0284C7'));
@@ -117,8 +117,13 @@
       if (s.duration) meta.push('about ' + clean(s.duration));
     } else if (s.type === 'stay') {
       meta.push(clean(s.where));
-      meta.push(`Check-in ${time}`.trim());
-      if (s.checkOut) meta.push(`Check-out ${s.checkOut}`);
+      if (night && night.of > 1) {
+        if (night.night === 1) meta.push(`Check-in ${time}`.trim(), `night 1 of ${night.of}`);
+        else { meta.push(`Night ${night.night} of ${night.of}`); if (night.night === night.of && s.checkOut) meta.push(`Check-out ${s.checkOut}`); }
+      } else {
+        meta.push(`Check-in ${time}`.trim());
+        if (s.checkOut) meta.push(`Check-out ${s.checkOut}`);
+      }
     } else {
       if (s.where) meta.push(clean(s.where));
       if (s.durationMin) meta.push(`about ${s.durationMin} min`);
@@ -131,10 +136,10 @@
     return [{ text: time, fontSize: 10, bold: true, color: COLORS.muted, margin: [0, 2, 0, 0] }, { stack: body }];
   }
 
-  function stepsTable(steps) {
+  function stepsTable(steps, runs) {
     if (!steps.length) return { text: 'Nothing planned yet.', italics: true, color: COLORS.muted, fontSize: 10, margin: [0, 4, 0, 0] };
     return {
-      table: { widths: [38, '*'], body: steps.map(stepRow), dontBreakRows: true },
+      table: { widths: [38, '*'], body: steps.map(st => stepRow(st, runs && runs.get(st.id))), dontBreakRows: true },
       layout: { hLineWidth: i => (i === 0 || i === steps.length ? 0 : 0.5), hLineColor: () => COLORS.line, vLineWidth: () => 0, paddingLeft: () => 0, paddingRight: () => 0, paddingTop: () => 7, paddingBottom: () => 7 }
     };
   }
@@ -225,6 +230,8 @@
     }
     content.push({ text: 'Tap a blue "Open in Google Maps" link to see the place or get directions. Sources are numbered, with the full web address printed under each list. Times are indicative: check roads, weather and opening hours close to your day.', fontSize: 8.5, italics: true, color: COLORS.muted, margin: [0, 14, 0, 0] });
 
+    const stayNights = deps.stayRuns ? deps.stayRuns([].concat(...plan.days.map(d => d.steps.map(st => ({ ...st, dayId: d.day }))))) : null;
+
     // Days, each with the panels of the cities it touches
     const placed = new Set();
     const byName = n => plan.cities.find(c => clean(c.name).toLowerCase() === clean(n).toLowerCase());
@@ -232,7 +239,7 @@
       const head = dayHeader(d);
       head.pageBreak = 'before';
       content.push(head);
-      content.push(stepsTable(d.steps));
+      content.push(stepsTable(d.steps, stayNights));
       const names = [];
       d.steps.forEach(s => (s.type === 'travel' ? [s.from, s.to] : [s.cityName]).forEach(n => { const c = n && byName(n); if (c && !names.includes(c.id)) names.push(c.id); }));
       names.forEach(id => {
@@ -349,6 +356,7 @@
       logo,
       beforeYouGoInfo: ui.beforeYouGoInfo,
       monthNotes: ui.monthNotes,
+      stayRuns: ui.stayRuns,
       accessInfo: ui.accessInfo,
       seasonsFor: city => (seasons && W && W.cities && W.cities[city.id]) ? seasons.summarise(W.cities[city.id]) : []
     };

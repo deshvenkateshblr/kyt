@@ -211,3 +211,23 @@ test('the PDF library and the Hindi font are bundled and kept in a cache a relea
     assert.doesNotMatch(html, /cdnjs\.cloudflare\.com\/ajax\/libs\/pdfmake/, page + ' no longer needs the CDN');
   }
 });
+
+test('consecutive nights print as one stay: check-in on night 1, check-out on the last night', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.addInitScript(() => {
+    window.__docs = [];
+    window.pdfMake = { createPdf: doc => { window.__docs.push(doc); return { download() {}, getBlob(cb) { cb(new Blob(['x'])); } }; } };
+  });
+  const st = (id, dayId, extra = {}) => ({ id, dayId, type: 'stay', cityName: 'Agra', title: 'Stay in Hotel Taj', where: 'Hotel Taj', hour: 21, minute: 0, durationMin: 30, ...extra });
+  const trip = { ...TRIP, id: 'pdfn', cities: ['agra'], steps: [st('n1', 1), st('n2', 2), st('n3', 3, { checkOut: '11:00' })] };
+  await page.addInitScript(t => { try { localStorage.setItem('kyt_virtual_trips', JSON.stringify([t])); } catch (e) { /* about:blank */ } }, trip);
+  await page.goto(env.base + '/trip_detail.html?id=pdfn');
+  await page.waitForSelector('#btn-save-pdf');
+  await page.click('#btn-save-pdf');
+  await page.waitForFunction(() => window.__docs.length === 1);
+  const all = JSON.stringify(await page.evaluate(() => JSON.parse(JSON.stringify(window.__docs[0].content))));
+  assert.match(all, /Check-in 21:00/); assert.match(all, /night 1 of 3/);
+  assert.match(all, /Night 2 of 3/); assert.match(all, /Night 3 of 3/); assert.match(all, /Check-out 11:00/);
+  assert.equal(all.split('Check-in').length - 1, 1, 'check-in is printed once');
+  await context.close();
+});

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kyt-v110';
+const CACHE_NAME = 'kyt-v111';
 
 // Big third-party files (the PDF library and the Hindi font) live in their own cache, which a release does not
 // wipe, so they are downloaded once and then work offline.

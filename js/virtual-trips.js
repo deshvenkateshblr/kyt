@@ -561,8 +561,7 @@ KYT.virtualTrips = (function () {
     DOM.selectedCitiesRoot.innerHTML = trip.cities.map((cId, idx) => {
       const city = window.KYT_CITIES.find(c => c.id === cId);
       const name = city ? KYT.utils.escapeHTML(city.name) : KYT.utils.escapeHTML(cId);
-      // Once there are steps, the order is changed in the Day Plan (Earlier / Later on each day), which moves the steps with it.
-      const canMove = !(trip.steps && trip.steps.length);
+      const canMove = true;                                  // with steps too: a city's days and steps move together
       const isFirst = idx === 0 || !canMove;
       const isLast = idx === trip.cities.length - 1 || !canMove;
       return `
@@ -1483,11 +1482,26 @@ KYT.virtualTrips = (function () {
     if (!trip.steps || !trip.steps.length) trip.steps = null;
   }
 
-  /** Swap two neighbouring cities before any step exists; their days follow, one day per city. */
+  /**
+   * Swap two neighbouring cities in the route. Each city's days move together as a block, with their steps, and the
+   * days are renumbered 1..n. Works with or without steps. Day 0 (travel and arrival) stays where it is.
+   */
   function swapCities(trip, i, j) {
+    ensureDays(trip);
     const t = trip.cities[i]; trip.cities[i] = trip.cities[j]; trip.cities[j] = t;
     const days = sortedDays(trip).filter(d => d.id >= 1);
-    if (days.length === trip.cities.length) days.forEach((d, k) => { d.cityId = trip.cities[k]; });
+    const rank = id => { const k = trip.cities.indexOf(id); return k < 0 ? trip.cities.length : k; };
+    const ordered = days.map((d, k) => ({ d, k })).sort((x, y) => rank(x.d.cityId) - rank(y.d.cityId) || x.k - y.k).map(x => x.d);
+    const renumber = new Map(ordered.map((d, k) => [d.id, k + 1]));
+    (trip.steps || []).forEach(st => { const n = renumber.get(Number(st.dayId)); if (n != null) st.dayId = n; });
+    ordered.forEach((d, k) => { d.id = k + 1; });
+    sortAllSteps(trip);
+  }
+
+  /** Moving a city moves its days with it; travel steps keep their wording, so ask first when there are any. */
+  function confirmCityMove(trip) {
+    const travel = (trip.steps || []).filter(st => st.type === 'travel');
+    return !travel.length || confirm('Moving a city moves its days and steps with it. Travel steps keep their wording (for example "' + travel[0].title + '"), so check them afterwards. Move anyway?');
   }
 
   function sortAllSteps(trip) {
@@ -1554,6 +1568,63 @@ KYT.virtualTrips = (function () {
           </div>
           ${warnHtml}
           ${notes || '<p class="text-[11px] text-slate-400">No special notes for these places yet. Check opening hours and bookings close to your dates.</p>'}` : ''}
+      </div>`;
+  }
+
+  // ── Review: things in the plan that look off, each with a way to fix it ───────────────────────────
+  let reviewOpen = false;
+  const hm = (h, m) => `${pad2(h)}:${pad2(m || 0)}`;
+  const toMin = t => { const x = /^(\d{1,2}):(\d{2})$/.exec(t || ''); return x ? Number(x[1]) * 60 + Number(x[2]) : null; };
+  /** Light checks on the stays. Nothing here blocks anything: it only points at steps worth a second look. */
+  function reviewTrip(trip) {
+    const out = [];
+    if (!trip || !trip.steps || !trip.steps.length) return out;
+    const days = sortedDays(trip).filter(d => d.id >= 1);
+    days.forEach((d, idx) => {
+      const mine = stepsOfDay(trip, d.id);
+      if (!mine.length) return;
+      const isLast = idx === days.length - 1;
+      const stays = mine.filter(x => x.type === 'stay');
+      const endCity = citiesOfDay(trip, d.id).slice(-1)[0] || dayCity(trip, d.id);
+      const overnight = mine.some(x => x.type === 'travel' && x.overnight);
+      if (!isLast && !stays.length && !overnight) out.push({ key: 'no-stay', dayId: d.id, fix: 'add-stay', text: `Day ${d.id}: no stay for the night${endCity ? ' in ' + endCity.name : ''}.` });
+      if (stays.length > 1) out.push({ key: 'two-stays', dayId: d.id, stepId: stays[1].id, fix: 'edit', text: `Day ${d.id}: ${stays.length} stays on one night.` });
+      const others = mine.filter(x => x.type !== 'stay' && !(x.type === 'travel' && x.overnight));
+      stays.forEach(st => {
+        if (endCity && st.cityName && String(st.cityName).toLowerCase() !== endCity.name.toLowerCase()) {
+          out.push({ key: 'stay-city', dayId: d.id, stepId: st.id, fix: 'edit', text: `Day ${d.id}: the stay is in ${st.cityName}, but you end the day in ${endCity.name}.` });
+        }
+        const checkIn = (st.hour || 0) * 60 + (st.minute || 0);
+        if (others.length) {
+          const end = Math.max(...others.map(x => (x.hour || 0) * 60 + (x.minute || 0) + (x.durationMin || defaultStepDuration(x))));
+          if (checkIn < end) out.push({ key: 'early-checkin', dayId: d.id, stepId: st.id, fix: 'edit', text: `Day ${d.id}: check-in ${hm(st.hour, st.minute)} is before your last step ends (${hm(Math.floor(end / 60) % 24, end % 60)}).` });
+        }
+        const next = days[idx + 1], out1 = toMin(st.checkOut);
+        const first = next ? stepsOfDay(trip, next.id)[0] : null;
+        if (out1 != null && first && first.type === 'travel' && (first.hour || 0) * 60 + (first.minute || 0) < out1) {
+          out.push({ key: 'late-checkout', dayId: d.id, stepId: st.id, fix: 'edit', text: `Day ${d.id}: check-out ${st.checkOut} is after you leave on Day ${next.id} (${hm(first.hour, first.minute)}).` });
+        }
+        if (isLast) out.push({ key: 'last-day-stay', soft: true, dayId: d.id, stepId: st.id, fix: 'edit', text: `Day ${d.id} is your last day and has a stay. Is that right?` });
+      });
+    });
+    return out;
+  }
+  function renderReviewPanel(trip) {
+    const items = reviewTrip(trip);
+    if (!items.length) return '';
+    const esc = KYT.utils.escapeHTML;
+    const rows = reviewOpen ? `<ul class="space-y-1.5 pt-1">${items.map(it => `
+        <li data-review="${it.key}" class="flex items-start gap-2 text-xs ${it.soft ? 'text-slate-600' : 'text-amber-950'}">
+          <span class="flex-1 leading-snug">${esc(it.text)}</span>
+          <button type="button" data-review-fix="${it.fix}" data-review-day="${it.dayId}" data-review-step="${it.stepId || ''}" class="shrink-0 font-bold text-blue-600 underline underline-offset-2 cursor-pointer">${it.fix === 'add-stay' ? 'Add stay' : 'Review step'}</button>
+        </li>`).join('')}</ul>` : '';
+    return `
+      <div id="vt-review" class="bg-amber-50 border border-amber-200 rounded-2xl px-3.5 py-2">
+        <button type="button" id="btn-vt-review-toggle" aria-expanded="${reviewOpen}" class="w-full flex items-center gap-2 text-left cursor-pointer">
+          <i data-lucide="list-checks" class="w-4 h-4 text-amber-600"></i>
+          <span class="flex-1 text-xs font-extrabold uppercase tracking-wider text-amber-900">Review <span class="text-amber-700 normal-case tracking-normal font-bold">· ${items.length} to look at</span></span>
+          <i data-lucide="${reviewOpen ? 'chevron-up' : 'chevron-down'}" class="w-4 h-4 text-amber-500"></i>
+        </button>${rows}
       </div>`;
   }
 
@@ -1734,25 +1805,55 @@ KYT.virtualTrips = (function () {
     renderBuilder();
   }
 
+  /** Check-in time for a night on a day: 21:00, or 15 minutes after the day's last step ends if that is later (never past 23:30). */
+  function stayTimeFor(trip, dayId) {
+    const mine = stepsOfDay(trip, dayId).filter(x => x.type !== 'stay');
+    let mins = 21 * 60;
+    if (mine.length) {
+      const last = mine[mine.length - 1];
+      const lastEnd = (last.hour || 0) * 60 + (last.minute || 0) + (last.durationMin || defaultStepDuration(last));
+      mins = Math.min(Math.max(lastEnd + 15, 21 * 60), 23 * 60 + 30);
+    }
+    return { h: Math.floor(mins / 60), m: mins % 60 };
+  }
+
+  /**
+   * "Nights: n" in the stay editor: the same stay on the following days, one entry per night, while those days are in the
+   * same city. The check-out goes on the last night. Returns { added, why } where why says what stopped it early.
+   */
+  function addExtraNights(trip, first, extra, checkOut) {
+    let added = 0, why = '';
+    first.checkOut = '';
+    for (let k = 1; k <= extra; k++) {
+      const dayId = Number(first.dayId) + k;
+      if (!(trip.days || []).some(d => d.id === dayId)) { why = `there is no Day ${dayId}`; break; }
+      const cities = citiesOfDay(trip, dayId);
+      const end = cities[cities.length - 1];
+      if (!end || end.name.toLowerCase() !== String(first.cityName).toLowerCase()) { why = `Day ${dayId} ends in ${end ? end.name : 'another city'}`; break; }
+      if (stepsOfDay(trip, dayId).some(x => x.type === 'stay')) { why = `Day ${dayId} already has a stay`; break; }
+      const t = stayTimeFor(trip, dayId);
+      pushStep(trip, { ...first, id: newStepId(), dayId, checkOut: '', hour: undefined, minute: undefined, endHour: undefined, endMinute: undefined }, t.h, t.m);
+      added++;
+    }
+    const last = trip.steps.filter(x => x.type === 'stay' && Number(x.dayId) === Number(first.dayId) + added)[0] || first;
+    last.checkOut = checkOut || '';
+    return { added, why };
+  }
+
   function addStayStep(trip, dayId, place) {
     const cities = citiesOfDay(trip, dayId);
     const city = cities[cities.length - 1] || dayCity(trip, dayId);
     if (!city) return;
-    const mine = stepsOfDay(trip, dayId);
-    let h = 21, m = 0;
-    if (mine.length > 0) {
-      const last = mine[mine.length - 1];
-      const lastDur = last.durationMin || defaultStepDuration(last);
-      const lastEnd = (last.hour || 0) * 60 + (last.minute || 0) + lastDur;
-      const nextM = Math.min(Math.max(lastEnd + 15, 21 * 60), 23 * 60 + 30);
-      h = Math.floor(nextM / 60);
-      m = nextM % 60;
-    }
-    pushStep(trip, {
+    const { h, m } = stayTimeFor(trip, dayId);
+    const step = {
       id: newStepId(), dayId, cityName: city.name, type: 'stay', title: `Stay in ${place || city.name}`, notes: '',
       where: place || city.name, mapsUrl: mapsSearch(`hotels in ${place || city.name}`), icon: 'bed-double',
       durationMin: 30
-    }, h, m);
+    };
+    // Another night at the same place: the check-out belongs to the last night, so it moves here.
+    const before = stepsOfDay(trip, dayId - 1).find(x => x.type === 'stay' && String(x.where || '').toLowerCase() === String(step.where).toLowerCase() && String(x.cityName || '').toLowerCase() === city.name.toLowerCase());
+    if (before && before.checkOut) { step.checkOut = before.checkOut; before.checkOut = ''; }
+    pushStep(trip, step, h, m);
     saveVTrips();
     renderBuilder();
   }
@@ -1816,6 +1917,8 @@ KYT.virtualTrips = (function () {
     $('vt-step-where-wrap').classList.toggle('hidden', kind !== 'stop');
     $('vt-step-time-label').textContent = kind === 'travel' ? 'Leaves' : (kind === 'stay' ? 'Check-in' : 'When');
     $('vt-stay-out-wrap').classList.toggle('hidden', kind !== 'stay');
+    $('vt-stay-nights-wrap').classList.toggle('hidden', !(kind === 'stay' && ctx.mode !== 'edit'));
+    $('vt-stay-nights').value = '1';
     const noun = { stop: 'stop', travel: 'travel', stay: 'stay' }[kind];
     $('vt-step-modal-title').textContent = ctx.mode === 'edit' ? `Edit ${noun}` :
       `Add ${kind === 'stop' ? 'a stop' : (kind === 'stay' ? 'a stay' : 'travel')} to Day ${ctx.dayId}`;
@@ -1951,6 +2054,11 @@ KYT.virtualTrips = (function () {
       if (!trip.steps) trip.steps = [];
       setStepTime(step, h, mi, step.durationMin);
       trip.steps.push(step);
+      const nights = kind === 'stay' ? Number($('vt-stay-nights').value) || 1 : 1;
+      if (nights > 1) {
+        const r = addExtraNights(trip, step, nights - 1, fields.checkOut);
+        if (r.added < nights - 1) alert(`Added ${r.added + 1} of ${nights} nights: ${r.why}.`);
+      }
     }
     sortAllSteps(trip);
     saveVTrips();
@@ -2072,7 +2180,9 @@ KYT.virtualTrips = (function () {
         data: hintData(currentEndCity.name, placeName(origin), km, depHour) });
     }
     if (!isLast && !mine.some(s => s.type === 'stay') && !mine.some(s => s.type === 'travel' && s.overnight)) {
-      hints.push({ key: 'stay', icon: 'bed-double', text: `Stay in ${currentEndCity.name} tonight`, sub: '', data: 'data-hint="stay"' });
+      const lastNight = prevSteps.filter(x => x.type === 'stay' && String(x.cityName || '').toLowerCase() === currentEndCity.name.toLowerCase()).pop();
+      if (lastNight && lastNight.where) hints.push({ key: 'stay', icon: 'bed-double', text: `Stay at ${lastNight.where} again tonight`, sub: 'another night, same place', data: `data-hint="stay" data-place="${esc(lastNight.where)}"` });
+      else hints.push({ key: 'stay', icon: 'bed-double', text: `Stay in ${currentEndCity.name} tonight`, sub: '', data: 'data-hint="stay"' });
     }
     return hints;
   }
@@ -2105,6 +2215,7 @@ KYT.virtualTrips = (function () {
     if (activeDayId == null || !days.some(d => d.id === activeDayId)) activeDayId = (days.find(d => d.id >= 1) || days[0]).id;
     const day = days.find(d => d.id === activeDayId);
     const city = dayCity(trip, day.id);
+    const stayNights = KYT.ui.stayRuns(trip.steps || []);
     const mine = stepsOfDay(trip, day.id);
     const totalSteps = (trip.steps || []).length;
     const btn = 'text-[11px] font-bold px-3 py-1.5 rounded-full transition-colors cursor-pointer';
@@ -2119,6 +2230,7 @@ KYT.virtualTrips = (function () {
         ${styleOpen ? stylePanelHtml(trip) : ''}
       </div>
       ${renderBeforeYouGoPanel(trip)}
+      ${renderReviewPanel(trip)}
       ${trip.suggested && !trip.curatedId ? KYT.ui.renderGeneratedPlanNotice() : ''}
     `;
 
@@ -2198,7 +2310,7 @@ KYT.virtualTrips = (function () {
                   </span>
                   <div class="h-px flex-1 bg-sky-200/60"></div>
                 </div>
-                ${KYT.ui.renderStepCard(slot.step, { variant: 'builder', isFirst: slot.globalIndex === 0, isLast: slot.globalIndex === mine.length - 1 })}
+                ${KYT.ui.renderStepCard(slot.step, { variant: 'builder', night: stayNights.get(slot.step.id), isFirst: slot.globalIndex === 0, isLast: slot.globalIndex === mine.length - 1 })}
               </div>`;
           } else {
             return `
@@ -2211,12 +2323,12 @@ KYT.virtualTrips = (function () {
                   <div class="h-px flex-1 bg-slate-200/60"></div>
                   <span class="text-[10px] font-bold text-slate-400">${slot.steps.length} stop${slot.steps.length > 1 ? 's' : ''}</span>
                 </div>
-                <div class="relative">${slot.steps.map(item => KYT.ui.renderStepCard(item.step, { variant: 'builder', isFirst: item.globalIndex === 0, isLast: item.globalIndex === mine.length - 1 })).join('')}</div>
+                <div class="relative">${slot.steps.map(item => KYT.ui.renderStepCard(item.step, { variant: 'builder', night: stayNights.get(item.step.id), isFirst: item.globalIndex === 0, isLast: item.globalIndex === mine.length - 1 })).join('')}</div>
               </div>`;
           }
         }).join('') + `</div>`;
       } else {
-        html += `<div class="relative">${mine.map((st, k) => KYT.ui.renderStepCard(st, { variant: 'builder', isFirst: k === 0, isLast: k === mine.length - 1 })).join('')}</div>`;
+        html += `<div class="relative">${mine.map((st, k) => KYT.ui.renderStepCard(st, { variant: 'builder', night: stayNights.get(st.id), isFirst: k === 0, isLast: k === mine.length - 1 })).join('')}</div>`;
       }
     } else {
       html += `<p id="vt-day-empty" class="text-xs text-slate-500 bg-white/70 border border-dashed border-slate-300 rounded-xl px-3.5 py-3">Nothing planned for this day yet. Pick from the suggestions below, or add your own.</p>`;
@@ -2357,6 +2469,18 @@ KYT.virtualTrips = (function () {
     if (q('#btn-vt-add-own')) { openStepEditor({ mode: 'add', kind: 'stop', dayId: activeDayId }); return; }
     if (q('#btn-vt-add-travel')) { openStepEditor({ mode: 'add', kind: 'travel', dayId: activeDayId, prefill: travelPrefill(trip, activeDayId) }); return; }
     if (q('#btn-vt-add-stay')) { openStepEditor({ mode: 'add', kind: 'stay', dayId: activeDayId }); return; }
+    if (q('#btn-vt-review-toggle')) { reviewOpen = !reviewOpen; renderBuilder(); return; }
+    const fixBtn = q('[data-review-fix]');
+    if (fixBtn) {
+      const dayId = Number(fixBtn.dataset.reviewDay);
+      activeDayId = dayId;
+      if (fixBtn.dataset.reviewFix === 'add-stay') {
+        const prevNight = stepsOfDay(trip, dayId - 1).filter(x => x.type === 'stay').pop();
+        const end = citiesOfDay(trip, dayId).slice(-1)[0];
+        addStayStep(trip, dayId, prevNight && end && String(prevNight.cityName).toLowerCase() === end.name.toLowerCase() ? prevNight.where : undefined);
+      } else { renderBuilder(); openStepEditor({ mode: 'edit', stepId: fixBtn.dataset.reviewStep }); }
+      return;
+    }
     if (q('#btn-vt-byg-toggle')) { bygOpen = !bygOpen; renderBuilder(); return; }
     if (q('#btn-vt-style-toggle')) { styleOpen = !styleOpen; renderBuilder(); return; }
     const chip = q('#vt-taste .vt-chip');
@@ -2369,7 +2493,7 @@ KYT.virtualTrips = (function () {
     }
     const hint = q('[data-hint]');
     if (hint) {
-      if (hint.dataset.hint === 'stay') { addStayStep(trip, activeDayId); return; }
+      if (hint.dataset.hint === 'stay') { addStayStep(trip, activeDayId, hint.dataset.place || undefined); return; }
       const km = hint.dataset.km === '' ? null : Number(hint.dataset.km);
       openStepEditor({
         mode: 'add', kind: 'travel', dayId: activeDayId,
@@ -2578,7 +2702,7 @@ KYT.virtualTrips = (function () {
           e.stopPropagation();
           const idx = parseInt(leftBtn.dataset.index, 10);
           const trip = getActiveTrip();
-          if (trip && idx > 0) {
+          if (trip && idx > 0 && confirmCityMove(trip)) {
             swapCities(trip, idx - 1, idx);
             saveVTrips();
             renderCanvas();
@@ -2591,7 +2715,7 @@ KYT.virtualTrips = (function () {
           e.stopPropagation();
           const idx = parseInt(rightBtn.dataset.index, 10);
           const trip = getActiveTrip();
-          if (trip && idx < trip.cities.length - 1) {
+          if (trip && idx < trip.cities.length - 1 && confirmCityMove(trip)) {
             swapCities(trip, idx, idx + 1);
             saveVTrips();
             renderCanvas();
@@ -2926,6 +3050,7 @@ KYT.virtualTrips = (function () {
     /** Test fixture: fill the empty days of a trip (or, with no argument, the open one) from the generator. */
     monthWarnings,
     moveDay,
+    reviewTrip,
     seedPlanForTests(t) {
       if (t) return seedPlanForTests(t);
       const trip = getActiveTrip();
@@ -2933,7 +3058,9 @@ KYT.virtualTrips = (function () {
       const n = seedPlanForTests(trip); saveVTrips(); renderBuilder(); return n;
     },
     /** Re-read the planned trips and redraw the list (after Past trips adds one). */
-    refresh() { vtrips = loadVTrips(); renderHub(); }
+    refresh() { vtrips = loadVTrips(); renderHub(); },
+    /** Re-read the trips and redraw the open Day Plan (used by tests that write a plan straight into storage). */
+    redrawPlan() { vtrips = loadVTrips(); renderBuilder(); }
   };
 
   if (window.KYT) window.KYT.virtualTrips = api;

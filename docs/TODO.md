@@ -96,7 +96,7 @@ Clear. The contradictions in generated days and the explainer on every generated
 | D9 | (Done in CHANGELOG 76: Earlier and Later on each day.) Cities cannot be reordered once a plan has steps (P1.8c). | Anyone who changes the route. | Checked | 3 |
 | D10 | (Done in CHANGELOG 76: bundled and cached.) The PDF needs the pdfMake library from cdnjs, so the first use while offline fails with a message (P1.10). | Travellers without signal, which is when they most want it. | Checked | 2 |
 | D11 | (Done in CHANGELOG 76: npm run bump and tests.) Service worker cache bumps are manual (`CACHE_NAME`, `APP_VERSION` and each script's `?v=`); a forgotten bump leaves people on old code. Only the first two are tested. | Every user after a release, silently. | Checked | 2 |
-| D12 | Stays have no number of nights or dates, only a check-out time (P1.8b). | Multi-night stays. | Checked | 2 |
+| D12 | (Done in CHANGELOG 77: a stay per night, Nights picker, again-tonight, Review.) Stays have no number of nights or dates, only a check-out time (P1.8b). | Multi-night stays. | Checked | 2 |
 | D13 | Past trips: "Plan this again" guesses cities from each step's place text and drops the origin; shrunk photos cannot be restored; no PDF or album for a past trip. | Past-trip users. | Checked | 2 |
 | D14 | Weather: Mawlynnong, Bhimashankar and Tirupati have no elevation; cities sharing a grid cell share rain figures; no season in the Day Plan. | Small accuracy gaps. | Checked | 2 |
 | D15 | The share worker's 6-character code uses a weak random source and can overwrite an existing key (P4.8). | Rare, but it overwrites someone's shared trip. | Checked | 2 |

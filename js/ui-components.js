@@ -644,7 +644,11 @@ window.KYT.ui = (function () {
       if (step.hour != null) {
         const startStr = `${pad2(step.hour)}:${pad2(step.minute || 0)}`;
         if (step.type === 'stay') {
-          timeWindowStr = `Check-in ${startStr}${step.checkOut ? ' · Check-out ' + step.checkOut : ''}`;
+          const n = options.night;
+          if (n && n.of > 1) {
+            timeWindowStr = n.night === 1 ? `Check-in ${startStr} · night 1 of ${n.of}`
+              : (n.night === n.of ? `Night ${n.night} of ${n.of}${step.checkOut ? ' · Check-out ' + step.checkOut : ''}` : `Night ${n.night} of ${n.of}`);
+          } else timeWindowStr = `Check-in ${startStr}${step.checkOut ? ' · Check-out ' + step.checkOut : ''}`;
         } else if (step.endHour != null) {
           const endStr = `${pad2(step.endHour)}:${pad2(step.endMinute || 0)}`;
           const dur = step.durationMin || ((step.endHour * 60 + step.endMinute) - (step.hour * 60 + (step.minute || 0)));
@@ -978,6 +982,24 @@ window.KYT.ui = (function () {
     ((trip && trip.days) || []).filter(d => d.id >= 1).sort((a, b) => a.id - b.id).forEach(d => add(d.cityId));
     ((trip && trip.cities) || []).forEach(add);
     return out;
+  }
+
+  /**
+   * Consecutive nights at the same place count as one stay. Returns Map(stepId -> { night, of }) for every stay step:
+   * a night follows the one before when it is on the next day, in the same city, at the same place.
+   */
+  function stayRuns(steps) {
+    const key = x => `${String(x.cityName || '').trim().toLowerCase()}|${String(x.where || '').trim().toLowerCase()}`;
+    const stays = (steps || []).filter(x => x && x.type === 'stay').slice().sort((a, b) => Number(a.dayId) - Number(b.dayId));
+    const runsOut = new Map(); let run = [];
+    const flush = () => { run.forEach((x, i) => runsOut.set(x.id, { night: i + 1, of: run.length })); run = []; };
+    stays.forEach(x => {
+      const prev = run[run.length - 1];
+      if (prev && Number(x.dayId) === Number(prev.dayId) + 1 && key(x) === key(prev)) run.push(x);
+      else { flush(); run = [x]; }
+    });
+    flush();
+    return runsOut;
   }
 
   /** Ask "When does your trip start?". Resolves to a local-midnight Date, or null if cancelled. */
@@ -1443,6 +1465,7 @@ window.KYT.ui = (function () {
     parseLocalDate,
     buildLiveSteps,
     askStartDate,
+    stayRuns,
     monthNotes,
     citiesOfPlan,
     startTripLive,
