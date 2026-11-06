@@ -1475,6 +1475,87 @@ KYT.virtualTrips = (function () {
     trip.steps = trip.steps.map((s, i) => [s, i]).sort((a, b) => key(a[0]) - key(b[0]) || a[1] - b[1]).map(x => x[0]);
   }
 
+  function styleLineOf(trip) {
+    const t = trip.taste || DEFAULT_TASTE;
+    return ['intent', 'diet', 'pace'].map(k => (TASTE_FIELDS[k].find(o => o.id === t[k]) || {}).label).filter(Boolean).join(' · ');
+  }
+  function stylePanelHtml(trip) {
+    const t = trip.taste || DEFAULT_TASTE;
+    return `<div id="vt-taste" class="w-full space-y-3 bg-slate-50 rounded-xl border border-slate-100 p-3">${Object.keys(TASTE_FIELDS).map(key => {
+      const info = TASTE_INFO[key];
+      const cur = TASTE_FIELDS[key].find(o => o.id === t[key]);
+      return `<div><div class="flex items-baseline justify-between gap-2 mb-1.5"><span class="text-[11px] font-black uppercase tracking-wider text-slate-500">${info.title}</span><span class="text-[11px] text-slate-400 text-right">${cur && info.hints[cur.id] ? info.hints[cur.id] : ''}</span></div>
+        <div class="flex gap-1.5 flex-wrap">${TASTE_FIELDS[key].map(o => `<button type="button" data-field="${key}" data-id="${o.id}" aria-pressed="${t[key] === o.id}"
+          class="vt-chip px-3 py-1.5 rounded-full text-xs whitespace-nowrap cursor-pointer ${t[key] === o.id ? 'bg-blue-600 text-white font-bold shadow-sm' : 'bg-white text-slate-600 border border-slate-200 font-medium hover:bg-slate-50'}">${o.label}</button>`).join('')}</div></div>`;
+    }).join('')}<p class="text-[11px] text-slate-400">Style only sorts the suggestions. Nothing is hidden.</p></div>`;
+  }
+
+  // ── Before you go: shown first in the Day Plan, with an optional travel month ──────────────────
+  let bygOpen = true;
+  const esc = t => KYT.utils.escapeHTML(t);
+  const MONTH_LONG = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  /** The trip's distinct cities in day order. */
+  function tripCities(trip) {
+    const seen = new Set(), out = [];
+    sortedDays(trip).filter(d => d.id >= 1).forEach(d => { const c = cityById(d.cityId); if (c && !seen.has(c.id)) { seen.add(c.id); out.push(c); } });
+    (trip.cities || []).forEach(id => { const c = cityById(id); if (c && !seen.has(c.id)) { seen.add(c.id); out.push(c); } });
+    return out;
+  }
+  const inMonthRange = (m, [a, b]) => (a <= b ? m >= a && m <= b : m >= a || m <= b);     // 1-12; a range may wrap the year end
+  /** What the chosen month means for each city: closed, wet or very hot. Pure, so it is easy to test. */
+  function monthWarnings(cities, month) {
+    const out = [];
+    if (!month) return out;
+    const W = window.KYT_WEATHER, S = KYT.weatherSeasons;
+    cities.forEach(c => {
+      const a = c.access;
+      if (a && Array.isArray(a.closed) && inMonthRange(month, a.closed)) {
+        out.push({ city: c.name, kind: 'closed', text: `${c.name} is usually closed or cut off in ${MONTH_LONG[month - 1]} (${MONTH_LONG[a.closed[0] - 1]} to ${MONTH_LONG[a.closed[1] - 1]}).` });
+      }
+      const e = W && W.cities && W.cities[c.id];
+      if (e && S && Array.isArray(e.hi) && e.hi.length === 12) {
+        const avg = Math.round((e.hi[month - 1] + e.lo[month - 1]) / 2), rain = e.rain[month - 1];
+        const t = S.tempLabel(avg), r = S.rainLabel(rain);
+        const bits = [`about ${avg < 0 ? '−' + Math.abs(avg) : avg}°C`, r === 'wet' ? 'wet' : (r === 'some rain' ? 'some rain' : 'dry')];
+        out.push({ city: c.name, kind: r === 'wet' ? 'wet' : (t === 'Hot' ? 'hot' : 'info'), text: `${c.name} in ${MONTH_LONG[month - 1]}: ${t.toLowerCase()}, ${bits.join(', ')}.` });
+      }
+    });
+    return out;
+  }
+  function renderBeforeYouGoPanel(trip) {
+    const cities = tripCities(trip);
+    if (!cities.length) return '';
+    const month = Number(trip.travelMonth) || 0;
+    const warn = monthWarnings(cities, month);
+    const warnHtml = month ? `<ul id="vt-month-notes" class="space-y-1">${warn.map(w => {
+      const bad = w.kind === 'closed' || w.kind === 'wet' || w.kind === 'hot';
+      return `<li data-month-note="${w.kind}" class="flex items-start gap-1.5 text-xs ${bad ? 'text-amber-900' : 'text-slate-600'}"><i data-lucide="${w.kind === 'closed' ? 'triangle-alert' : (w.kind === 'wet' ? 'cloud-rain' : (w.kind === 'hot' ? 'sun' : 'cloud-sun'))}" class="w-3.5 h-3.5 shrink-0 mt-px ${bad ? 'text-amber-600' : 'text-sky-600'}"></i><span class="leading-snug">${esc(w.text)}</span></li>`;
+    }).join('')}</ul>` : '';
+    const notes = cities.map(c => {
+      const inner = KYT.ui.renderAccessNote(c) + KYT.ui.renderBeforeYouGo(c);
+      return inner ? `<div data-byg-city="${esc(c.id)}" class="space-y-1.5"><p class="text-[11px] font-black uppercase tracking-wider text-slate-500">${esc(c.name)}</p>${inner}</div>` : '';
+    }).join('');
+    const count = cities.filter(c => c.access || (c.beforeYouGo && c.beforeYouGo.items && c.beforeYouGo.items.length)).length;
+    return `
+      <div id="vt-byg" class="bg-white border border-slate-200/90 rounded-2xl px-3.5 py-2.5 shadow-xs space-y-2.5">
+        <button type="button" id="btn-vt-byg-toggle" aria-expanded="${bygOpen}" class="w-full flex items-center gap-2 text-left cursor-pointer">
+          <i data-lucide="clipboard-check" class="w-4 h-4 text-indigo-500"></i>
+          <span class="flex-1 text-xs font-extrabold uppercase tracking-wider text-indigo-900">Before you go${count ? ` <span class="text-slate-400 font-bold normal-case tracking-normal">· ${count} ${count === 1 ? 'place has' : 'places have'} notes</span>` : ''}</span>
+          <i data-lucide="${bygOpen ? 'chevron-up' : 'chevron-down'}" class="w-4 h-4 text-slate-400"></i>
+        </button>
+        ${bygOpen ? `
+          <div class="flex items-center gap-2">
+            <label for="vt-travel-month" class="text-[11px] font-bold text-slate-500 shrink-0">Travelling in</label>
+            <select id="vt-travel-month" class="flex-1 min-w-0 bg-slate-50 border border-slate-200 rounded-lg px-2 py-1.5 text-xs font-semibold text-slate-800">
+              <option value="">Not sure yet</option>
+              ${MONTH_LONG.map((n, i) => `<option value="${i + 1}" ${month === i + 1 ? 'selected' : ''}>${n}</option>`).join('')}
+            </select>
+          </div>
+          ${warnHtml}
+          ${notes || '<p class="text-[11px] text-slate-400">No special notes for these places yet. Check opening hours and bookings close to your dates.</p>'}` : ''}
+      </div>`;
+  }
+
   // Test fixture only: the generator fills a trip's empty days. No button in the app uses it (Suggest a plan was removed);
   // tests use it to get a realistic plan quickly. TODO(P4): replace by explicit fixtures and delete.
   // ── "Suggest a plan": the generator fills only the days that have nothing in them yet ──────────
@@ -2032,8 +2113,11 @@ KYT.virtualTrips = (function () {
       <div class="flex items-center gap-2 flex-wrap bg-white border border-slate-200/90 rounded-2xl px-3.5 py-2.5 shadow-xs">
         <p class="w-full text-xs font-bold text-slate-600 leading-snug">${esc(tripSummaryText(trip))}</p>
         <button type="button" id="btn-vt-edit-setup" class="${btn} text-blue-600 bg-blue-50 hover:bg-blue-100">Edit cities &amp; start</button>
+        <p class="w-full text-[11px] text-slate-500 leading-snug">Style: ${esc(styleLineOf(trip))} · <button type="button" id="btn-vt-style-toggle" class="font-bold text-blue-600 underline underline-offset-2 cursor-pointer" aria-expanded="${styleOpen}">${styleOpen ? 'Hide' : 'Change'}</button></p>
         ${totalSteps ? `<button type="button" id="btn-vt-reset-plan" class="${btn} ml-auto text-slate-500 hover:text-rose-600">Clear plan</button>` : ''}
+        ${styleOpen ? stylePanelHtml(trip) : ''}
       </div>
+      ${renderBeforeYouGoPanel(trip)}
       ${trip.suggested && !trip.curatedId ? KYT.ui.renderGeneratedPlanNotice() : ''}
     `;
 
@@ -2171,7 +2255,6 @@ KYT.virtualTrips = (function () {
         </div>`;
     };
     const t = trip.taste || DEFAULT_TASTE;
-    const styleLine = ['intent', 'diet', 'pace'].map(k => (TASTE_FIELDS[k].find(o => o.id === t[k]) || {}).label).filter(Boolean).join(' · ');
     html += `
         <div class="pt-1">
           ${dayCities.length > 1 ? `
@@ -2184,14 +2267,6 @@ KYT.virtualTrips = (function () {
             </div>
           ` : ''}
           <p class="text-xs font-black uppercase text-slate-700 tracking-wider">${drawerCity ? 'Things to do in ' + esc(drawerCity.name) : 'Suggestions'}</p>
-          <button type="button" id="btn-vt-style-toggle" class="mt-1 mb-2 -ml-1 ${btn} text-slate-500 hover:text-blue-600 inline-flex items-center gap-1" aria-expanded="${styleOpen}"><i data-lucide="sliders" class="w-3 h-3"></i> Sorted for ${esc(styleLine)} · ${styleOpen ? 'Hide' : 'Change'}</button>
-          ${styleOpen ? `<div id="vt-taste" class="space-y-3 bg-white rounded-xl border border-slate-100 p-3 mb-2">${Object.keys(TASTE_FIELDS).map(key => {
-            const info = TASTE_INFO[key];
-            const cur = TASTE_FIELDS[key].find(o => o.id === t[key]);
-            return `<div><div class="flex items-baseline justify-between gap-2 mb-1.5"><span class="text-[11px] font-black uppercase tracking-wider text-slate-500">${info.title}</span><span class="text-[11px] text-slate-400 text-right">${cur && info.hints[cur.id] ? info.hints[cur.id] : ''}</span></div>
-              <div class="flex gap-1.5 flex-wrap">${TASTE_FIELDS[key].map(o => `<button type="button" data-field="${key}" data-id="${o.id}" aria-pressed="${t[key] === o.id}"
-                class="vt-chip px-3 py-1.5 rounded-full text-xs whitespace-nowrap cursor-pointer ${t[key] === o.id ? 'bg-blue-600 text-white font-bold shadow-sm' : 'bg-white text-slate-600 border border-slate-200 font-medium hover:bg-slate-50'}">${o.label}</button>`).join('')}</div></div>`;
-          }).join('')}<p class="text-[11px] text-slate-400">Style only sorts the suggestions. Nothing is hidden.</p></div>` : ''}
           <div id="vt-suggestions" class="space-y-2">
             ${sg.all.length ? sg.fits.map((b, i) => row(b, i)).join('') +
               (sg.fits.length && sg.others.length ? `<p class="text-[11px] font-black uppercase tracking-wider text-slate-400 pt-1">More in ${esc(city.name)}</p>` : '') +
@@ -2268,6 +2343,7 @@ KYT.virtualTrips = (function () {
     if (q('#btn-vt-add-own')) { openStepEditor({ mode: 'add', kind: 'stop', dayId: activeDayId }); return; }
     if (q('#btn-vt-add-travel')) { openStepEditor({ mode: 'add', kind: 'travel', dayId: activeDayId, prefill: travelPrefill(trip, activeDayId) }); return; }
     if (q('#btn-vt-add-stay')) { openStepEditor({ mode: 'add', kind: 'stay', dayId: activeDayId }); return; }
+    if (q('#btn-vt-byg-toggle')) { bygOpen = !bygOpen; renderBuilder(); return; }
     if (q('#btn-vt-style-toggle')) { styleOpen = !styleOpen; renderBuilder(); return; }
     const chip = q('#vt-taste .vt-chip');
     if (chip) { trip.taste[chip.dataset.field] = chip.dataset.id; saveVTrips(); renderBuilder(); return; }
@@ -2291,6 +2367,7 @@ KYT.virtualTrips = (function () {
   function onBuilderChange(e) {
     const trip = getActiveTrip();
     if (!trip) return;
+    if (e.target.id === 'vt-travel-month') { trip.travelMonth = Number(e.target.value) || null; saveVTrips(); renderBuilder(); return; }
     if (e.target.id === 'vt-day-city') {
       const d = trip.days.find(x => x.id === activeDayId);
       if (d) { d.cityId = e.target.value; saveVTrips(); renderBuilder(); }
@@ -2828,6 +2905,7 @@ KYT.virtualTrips = (function () {
     useAsMyTrip,
     generateSteps,
     /** Test fixture: fill the empty days of a trip (or, with no argument, the open one) from the generator. */
+    monthWarnings,
     seedPlanForTests(t) {
       if (t) return seedPlanForTests(t);
       const trip = getActiveTrip();

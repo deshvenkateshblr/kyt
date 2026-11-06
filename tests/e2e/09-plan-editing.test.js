@@ -379,3 +379,50 @@ test('Add your own stop starts after the day\'s last step, and the card has a ma
   assert.match(await page.locator('[data-step-id]').first().innerText(), /Fort Road/);
   await context.close();
 });
+
+test('Before you go comes first in the Day Plan; a travel month warns about closures, and Style stays one small link at the top', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openPlan(page);
+  const order = await page.evaluate(() => {
+    const list = document.getElementById('vt-itinerary-list');
+    const kids = [...list.querySelectorAll('#vt-byg, #vt-day-tabs')].map(e => e.id);
+    return kids;
+  });
+  assert.deepEqual(order, ['vt-byg', 'vt-day-tabs'], 'Before you go sits above the day tabs');
+  const link = page.locator('#btn-vt-style-toggle');
+  assert.equal(await link.innerText(), 'Change');
+  assert.ok((await link.boundingBox()).height < 24, 'a small link, not a button');
+  await link.click();
+  assert.equal(await page.locator('#vt-taste .vt-chip').count() > 3, true, 'chips open at the top');
+  await page.click('#vt-taste .vt-chip[data-field="diet"][data-id="veg"]');
+  assert.match(await page.locator('#vt-itinerary-list').innerText(), /Style: .*Veg/);
+  assert.equal((await stored(page))[0].taste.diet, 'veg', 'the change is kept');
+  await context.close();
+});
+
+test('monthWarnings: a closed month (wrapping the year end) and a wet month are flagged', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openPlan(page);
+  const r = await page.evaluate(() => {
+    const spiti = KYT_CITIES.find(c => c.id === 'spiti_valley') || KYT_CITIES.find(c => c.access && c.access.closed);
+    const w = KYT.virtualTrips.monthWarnings([spiti], spiti.access.closed[0]);
+    const none = KYT.virtualTrips.monthWarnings([spiti], 0);
+    const delhi = KYT.virtualTrips.monthWarnings([KYT_CITIES.find(c => c.id === 'delhi')], 7);
+    return { closed: w.some(x => x.kind === 'closed'), none: none.length, delhi: delhi.map(x => x.kind) };
+  });
+  assert.equal(r.closed, true);
+  assert.equal(r.none, 0, 'no month chosen, no warnings');
+  assert.ok(r.delhi.includes('wet'), 'Delhi in July is wet');
+  await context.close();
+});
+
+test('choosing a travel month shows its notes and is kept with the trip', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openPlan(page);
+  await page.selectOption('#vt-travel-month', '7');
+  await page.waitForSelector('#vt-month-notes li');
+  assert.equal((await stored(page))[0].travelMonth, 7);
+  await page.reload();
+  assert.equal((await stored(page))[0].travelMonth, 7);
+  await context.close();
+});

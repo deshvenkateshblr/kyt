@@ -471,3 +471,8 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **Add your own stop** (and Add travel and Add stay) no longer starts at 12:00. It starts 15 minutes after the day's last step ends (9:00 on an empty day; stays no earlier than 21:00), so it fits what is already there.
     - A stop's map link is now clear: "Open in Maps" with the place name beside it, searching the place (or the stop's name) in the day's city.
     - **Tests:** one added in `09-plan-editing.test.js`; tests that used the button now use the fixture.
+73. **Before you go first in the Day Plan; Style moved to the top (service worker cache `kyt-v107`)**
+    - The Day Plan now opens with a **Before you go** panel above the day tabs: each city's access note and Before you go notes (book ahead, permits, ID, dress, rules), collapsible.
+    - An optional **Travelling in** month (kept with the trip, never assumed) adds warnings: a place usually closed or cut off that month (ranges that wrap the year end, such as Dec to May, work), and each city's typical temperature and rain for that month, flagged when wet or hot. This is the start-date awareness of D2; the start-date dialog does not warn yet.
+    - **Style** (Intent, Diet, Pace) was only reachable low down in the suggestions list. It is now one small line at the top, "Style: Mixed · Any · Standard · Change", and the chips open only when tapped.
+    - **Tests:** 3 added in `09-plan-editing.test.js`.
