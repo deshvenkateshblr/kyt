@@ -185,6 +185,7 @@ test('a trip can be created and edited with the network off (offline-first)', as
   await page.click('#btn-add-step');
   await page.fill('#form-step-title', 'In-flight note');
   await page.click('#btn-save-step');
+  await page.waitForSelector('#step-form-view.hidden', { state: 'attached' });   // the form closes once the device write is done
   assert.match(await page.locator('#step-count-badge').innerText(), /^1 item$/);
   await context.close();
 });

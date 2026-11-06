@@ -482,3 +482,8 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **Save PDF** adds a "Travelling in <month>" box after At a glance (closures, wet, hot, typical weather per city), only when a month is set (also read from a shared link).
     - The month rules moved to one place (`KYT.ui.monthNotes`) used by the Day Plan, the start dialog and the PDF.
     - **Tests:** 4 added (09, 13).
+75. **Saving a step waits for the device; Open no longer silently replaces (service worker cache `kyt-v109`)**
+    - **D3:** Save on the step form now waits for the device write before the form closes (the button is disabled meanwhile), and the four trip writes start together. Leaving the page right after Save can no longer lose the edit. This was the cause of the flaky "web link attachment" test, which now waits for the form to close.
+    - **D4:** Open, on a device that already has trips, asks: **Add the file to what is here** (keeps everything here, adds passport cities, planned trips and past trips the file has and this device does not; same id keeps this device's version; the current trip is kept, or taken from the file if this device has none), **Replace what is here with the file**, **Save what is here to a file first**, or Cancel. Both lists (in the file, on this device) are shown. A device with nothing on it still gets the plain confirm.
+    - **D5, D6** closed: they only concerned the removed Suggest a plan.
+    - **Tests:** 5 added (01, 06); 4 older tests now wait for the form to close.

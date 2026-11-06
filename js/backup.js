@@ -300,9 +300,17 @@ window.KYT.backup = (() => {
     if (!passportOk || !vtripsOk || !tripOk || !pastOk) return { ok: false, reason: 'This saved file is damaged, so nothing was changed.' };
 
     const s = summary(b);
-    const lines = [`Open this saved file? It replaces what is on this device now. (Save first if you want to keep what is here.)`, `• Passport: ${s.cities} ${s.cities === 1 ? 'city' : 'cities'}`, `• Virtual trips: ${s.virtualTrips}`, `• Past trips: ${s.pastTrips}`,
+    const lines = [`Open this saved file? It replaces what is on this device now. (Save first if you want to keep what is here.)`, `• Passport: ${s.cities} ${s.cities === 1 ? 'city' : 'cities'}`, `• Virtual trips: ${s.virtualTrips}${s.virtualTrips ? ' (' + b.virtualTrips.slice(0, 3).map(t => t.name || 'Untitled').join(', ') + (s.virtualTrips > 3 ? ', …' : '') + ')' : ''}`, `• Past trips: ${s.pastTrips}`,
       s.activeTrip ? `• Current trip: "${s.activeTrip}" (${s.steps} steps)` : `• Current trip: none in the file, so yours stays as it is`];
-    if (!(confirmFn ? confirmFn(lines.join('\n')) : window.confirm(lines.join('\n')))) return { ok: false, reason: 'cancelled' };
+    const here = await deviceSummary();
+    // A device with nothing on it just needs a yes. A device with trips is offered: add the file, replace, or save first.
+    let mode;
+    if (confirmFn) mode = await confirmFn(lines.join('\n'), { summary: s, here });
+    else if (here.any) mode = await chooseOpenMode(s, here);
+    else mode = window.confirm(lines.join('\n'));
+    if (mode === true) mode = 'replace';
+    if (mode !== 'replace' && mode !== 'merge') return { ok: false, reason: 'cancelled' };
+    if (mode === 'merge') return mergeFile(b, s);
 
     if (!safeSet(KEYS.passport, JSON.stringify(b.passport)) || !safeSet(KEYS.vtrips, JSON.stringify(b.virtualTrips))) {
       return { ok: false, reason: 'There is not enough space on this device to open this file. Nothing else was changed.' };
@@ -319,7 +327,53 @@ window.KYT.backup = (() => {
     }
     if (window.KYT.pastTrips && Array.isArray(b.pastTrips)) { try { await KYT.pastTrips.replaceAll(b.pastTrips); } catch (e) { /* the rest was opened */ } }
     markSaved(b.createdAt);                                  // what is on screen now is exactly what the file holds
-    return { ok: true, summary: s };
+    return { ok: true, summary: s, mode: 'replace' };
+  }
+
+  /** What is on this device now: counts, and whether there is anything worth protecting. */
+  async function deviceSummary() {
+    const passport = readJson(KEYS.passport, {}), vtrips = readJson(KEYS.vtrips, []);
+    let past = [], steps = 0, name = '';
+    if (window.KYT.pastTrips) { try { past = await KYT.pastTrips.all(); } catch (e) { past = []; } }
+    if (window.KYT.store) { try { await KYT.store.loadData(); const t = KYT.store.get(); steps = (t.stepsData || []).length; name = steps ? t.tripName : ''; } catch (e) { /* none */ } }
+    const cities = Object.keys(passport && typeof passport === 'object' ? passport : {}).length;
+    return { cities, virtualTrips: Array.isArray(vtrips) ? vtrips.length : 0, pastTrips: past.length, activeTrip: name || null, steps, any: !!(cities || (Array.isArray(vtrips) && vtrips.length) || past.length || steps) };
+  }
+
+  /**
+   * Adds what the file has to what is here and keeps both. A passport city or a trip already on the device (same
+   * id) stays as it is here; the rest of the file is added. The device's current trip is kept: a file's current trip
+   * is only added when this device has none.
+   */
+  async function mergeFile(b, s) {
+    const added = { cities: 0, virtualTrips: 0, pastTrips: 0, activeTrip: false, skippedActive: false };
+    const passport = readJson(KEYS.passport, {});
+    Object.keys(b.passport || {}).forEach(id => { if (!(id in passport)) { passport[id] = b.passport[id]; added.cities++; } });
+    const vt = readJson(KEYS.vtrips, []);
+    const have = new Set(vt.map(t => t && t.id));
+    (b.virtualTrips || []).forEach(t => { if (t && !have.has(t.id)) { vt.push(t); have.add(t.id); added.virtualTrips++; } });
+    if (!safeSet(KEYS.passport, JSON.stringify(passport)) || !safeSet(KEYS.vtrips, JSON.stringify(vt))) {
+      return { ok: false, reason: 'There is not enough space on this device to add this file. Nothing was changed.' };
+    }
+    if (window.KYT.pastTrips && Array.isArray(b.pastTrips) && b.pastTrips.length) {
+      try {
+        const cur = await KYT.pastTrips.all(); const ids = new Set(cur.map(r => r.id));
+        const extra = b.pastTrips.filter(r => r && !ids.has(r.id));
+        if (extra.length) { await KYT.pastTrips.replaceAll(cur.concat(extra)); added.pastTrips = extra.length; }
+      } catch (e) { /* the rest was added */ }
+    }
+    if (b.activeTrip && window.KYT.store) {
+      await KYT.store.loadData();
+      if ((KYT.store.get().stepsData || []).length) added.skippedActive = true;
+      else {
+        const t = b.activeTrip;
+        KYT.store.setTripName(t.name || 'My Trip'); KYT.store.setTripNotes(t.notes || ''); KYT.store.setCoverImage(t.cover || null);
+        KYT.store.setStepsData(t.steps.map(x => ({ ...x, targetTime: new Date(x.targetTime) }))); KYT.store.setCurrentIndex(0);
+        await KYT.store.saveData(); added.activeTrip = true;
+      }
+    }
+    markChanged();                                           // the device now differs from any earlier file
+    return { ok: true, summary: s, mode: 'merge', added };
   }
 
   // ── dialogs ───────────────────────────────────────────────────────────────
@@ -339,6 +393,35 @@ window.KYT.backup = (() => {
   }
 
   const dateTxt = d => d.toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
+
+  /** Open, when this device already has trips: resolves 'merge', 'replace' or null. */
+  function chooseOpenMode(s, here) {
+    return new Promise(resolve => {
+      const row = (label, n) => n ? `<li>${label}: <strong>${n}</strong></li>` : '';
+      const wrap = sheet('kyt-open-sheet', `
+        <h2 style="margin:0 0 6px;font-size:20px;font-weight:900">Open this saved file?</h2>
+        <p style="margin:0 0 4px;font-size:13.5px;font-weight:800;color:#334155">In the file</p>
+        <ul style="margin:0 0 8px;padding-left:18px;font-size:13.5px;line-height:1.6;color:#334155">${row('Passport cities', s.cities)}${row('Virtual trips', s.virtualTrips)}${row('Past trips', s.pastTrips)}${s.activeTrip ? `<li>Current trip: <strong>${esc(s.activeTrip)}</strong></li>` : ''}</ul>
+        <p style="margin:0 0 4px;font-size:13.5px;font-weight:800;color:#334155">On this device now</p>
+        <ul style="margin:0 0 6px;padding-left:18px;font-size:13.5px;line-height:1.6;color:#334155">${row('Passport cities', here.cities)}${row('Virtual trips', here.virtualTrips)}${row('Past trips', here.pastTrips)}${here.activeTrip ? `<li>Current trip: <strong>${esc(here.activeTrip)}</strong></li>` : ''}</ul>
+        <button type="button" id="kyt-open-merge" style="${PRIMARY}">Add the file to what is here</button>
+        <p style="margin:4px 2px 0;font-size:12px;color:#64748B;line-height:1.45">Keeps everything on this device and adds what the file has that you do not. Your current trip stays as it is.</p>
+        <button type="button" id="kyt-open-replace" style="${SECOND}">Replace what is here with the file</button>
+        <button type="button" id="kyt-open-save" style="${SECOND}">Save what is here to a file first</button>
+        <div id="kyt-open-msg" aria-live="polite" style="margin-top:6px;font-size:13px;font-weight:700;color:#047857"></div>
+        <button type="button" id="kyt-open-cancel" style="${QUIET}">Cancel</button>`);
+      const done = v => { wrap.remove(); resolve(v); };
+      wrap.addEventListener('click', e => { if (e.target === wrap) done(null); });
+      wrap.querySelector('#kyt-open-cancel').onclick = () => done(null);
+      wrap.querySelector('#kyt-open-merge').onclick = () => done('merge');
+      wrap.querySelector('#kyt-open-replace').onclick = () => done('replace');
+      wrap.querySelector('#kyt-open-save').onclick = async () => {
+        const msg = wrap.querySelector('#kyt-open-msg');
+        try { const r = await saveToFile(); msg.style.color = r ? '#047857' : '#B91C1C'; msg.textContent = r ? 'Saved. Now choose how to open the file.' : 'Not saved: the share sheet was closed.'; }
+        catch (e) { msg.style.color = '#B91C1C'; msg.textContent = 'Could not save: ' + e.message; }
+      };
+    });
+  }
 
   async function openSheet() {
     const st = await storageStatus();
@@ -381,7 +464,8 @@ window.KYT.backup = (() => {
       const f = file.files[0]; if (!f) return;
       const r = await restoreFromText(await f.text());
       file.value = '';
-      if (r.ok) { say('Opened. Reloading…'); setTimeout(() => location.reload(), 900); }
+      if (r.ok && r.mode === 'merge') { const a = r.added; say(`Added ${a.cities} ${a.cities === 1 ? 'city' : 'cities'}, ${a.virtualTrips} virtual ${a.virtualTrips === 1 ? 'trip' : 'trips'}, ${a.pastTrips} past ${a.pastTrips === 1 ? 'trip' : 'trips'}${a.activeTrip ? ' and the current trip' : ''}${a.skippedActive ? '. Your current trip was kept; the file\'s current trip was not added' : ''}. Reloading…`); setTimeout(() => location.reload(), 1800); }
+      else if (r.ok) { say('Opened. Reloading…'); setTimeout(() => location.reload(), 900); }
       else if (r.reason !== 'cancelled') say(r.reason, true);
     };
     return wrap;
@@ -441,5 +525,5 @@ window.KYT.backup = (() => {
     else start();
   }
 
-  return { meterInfo, storageBreakdown, selfTest, safeSet, requestPersistence, storageStatus, buildBackup, downloadBackup, saveToFile, restoreFromText, openSheet, confirmEndTrip, bind, markChanged, markSaved, status, maybeNudge, maybeLowSpaceNotice, refreshIndicators };
+  return { meterInfo, storageBreakdown, selfTest, safeSet, requestPersistence, storageStatus, buildBackup, downloadBackup, saveToFile, restoreFromText, deviceSummary, mergeFile, openSheet, confirmEndTrip, bind, markChanged, markSaved, status, maybeNudge, maybeLowSpaceNotice, refreshIndicators };
 })();

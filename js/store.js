@@ -110,10 +110,12 @@ window.KYT.store = (() => {
   // ── Persistence ───────────────────────────────────────────────────────────
   async function saveData() {
     try {
-      await setItem('kyt_tripName', tripName);
-      await setItem('kyt_tripNotes', tripNotes);
-      await setItem('kyt_tripCoverImage', tripCoverImage || '');
-      await setItem('kyt_stepsData', JSON.stringify(stepsData));
+      await Promise.all([                                           // all four writes start together
+        setItem('kyt_tripName', tripName),
+        setItem('kyt_tripNotes', tripNotes),
+        setItem('kyt_tripCoverImage', tripCoverImage || ''),
+        setItem('kyt_stepsData', JSON.stringify(stepsData))
+      ]);
       if (window.KYT.backup) { window.KYT.backup.requestPersistence(); if (window.KYT.backup.markChanged) window.KYT.backup.markChanged(); }
     } catch (e) {
       console.error('IndexedDB save failed:', e);

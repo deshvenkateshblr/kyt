@@ -442,3 +442,94 @@ test('no heads-up while there is plenty of room', async () => {
   assert.equal(await page.locator('#kyt-space-notice').count(), 0);
   await context.close();
 });
+
+// ── Open when this device already has trips (D4) ─────────────────────────────────────────────────────────
+async function fileFromDevice(path) {
+  const a = await newPhone(env.browser);
+  await seedEverything(a.page);
+  await a.page.goto(env.base + '/index.html');
+  await a.page.click('[data-kyt-backup]');
+  const [dl] = await Promise.all([a.page.waitForEvent('download'), a.page.click('#kyt-backup-download')]);
+  await dl.saveAs(path);
+  await a.context.close();
+}
+async function deviceWithOwnTrips() {
+  const b = await newPhone(env.browser);
+  await seedTrip(b.page, env.base, { name: 'My Own Trip', notes: '', steps: [{ title: 'Own step', icon: 'sun', where: 'Here', targetTime: iso(2, 9) }] });
+  await b.page.evaluate(() => {
+    localStorage.setItem('kyt_passport', JSON.stringify({ agra: { date: 'mine' }, udaipur: { date: '2025-03-03' } }));
+    localStorage.setItem('kyt_virtual_trips', JSON.stringify([{ id: 'own1', name: 'Own plan', originCity: 'delhi', cities: ['agra'], taste: {}, steps: null }, { id: 'v1', name: 'Rajasthan (edited here)', originCity: 'delhi', cities: ['jaipur'], taste: {}, steps: null }]));
+  });
+  await b.page.goto(env.base + '/index.html');
+  await b.page.click('[data-kyt-backup]');
+  return b;
+}
+
+test('a device with trips is offered: add the file, replace, or save first; Cancel changes nothing', async () => {
+  await fileFromDevice('/tmp/kyt-test-d4a.json');
+  const b = await deviceWithOwnTrips();
+  await b.page.setInputFiles('#kyt-backup-file', '/tmp/kyt-test-d4a.json');
+  await b.page.waitForSelector('#kyt-open-sheet');
+  const txt = await b.page.locator('#kyt-open-sheet').innerText();
+  assert.match(txt, /In the file[\s\S]*Goa Escape[\s\S]*On this device now[\s\S]*My Own Trip/);
+  for (const id of ['merge', 'replace', 'save', 'cancel']) assert.equal(await b.page.locator('#kyt-open-' + id).count(), 1, id);
+  await b.page.click('#kyt-open-cancel');
+  assert.equal(await b.page.locator('#kyt-open-sheet').count(), 0);
+  assert.equal(JSON.parse(await b.page.evaluate(() => localStorage.getItem('kyt_virtual_trips'))).length, 2, 'nothing changed');
+  await b.context.close();
+});
+
+test('Add the file to what is here keeps your trips and current trip, and adds only what is new', async () => {
+  await fileFromDevice('/tmp/kyt-test-d4b.json');
+  const b = await deviceWithOwnTrips();
+  await b.page.setInputFiles('#kyt-backup-file', '/tmp/kyt-test-d4b.json');
+  await b.page.waitForSelector('#kyt-open-merge');
+  await b.page.click('#kyt-open-merge');
+  await b.page.waitForFunction(() => /Added/.test((document.getElementById('kyt-backup-msg') || {}).textContent || ''));
+  const msg = await b.page.locator('#kyt-backup-msg').innerText();
+  assert.match(msg, /Added 1 city, 0 virtual trips|Added 1 city/);
+  assert.match(msg, /current trip was kept/i);
+  const st = await b.page.evaluate(() => ({ p: JSON.parse(localStorage.getItem('kyt_passport')), v: JSON.parse(localStorage.getItem('kyt_virtual_trips')).map(t => t.name) }));
+  assert.deepEqual(Object.keys(st.p).sort(), ['agra', 'goa', 'udaipur'], 'the file\'s goa was added, yours stay');
+  assert.equal(st.p.agra.date, 'mine', 'a city on both keeps this device\'s entry');
+  assert.deepEqual(st.v.sort(), ['Own plan', 'Rajasthan (edited here)'], 'same id keeps your version, nothing duplicated');
+  await b.page.goto(env.base + '/view_trip.html');
+  await b.page.waitForFunction(() => window.KYT && KYT.store);
+  assert.equal(await b.page.evaluate(async () => { await KYT.store.loadData(); return KYT.store.get().tripName; }), 'My Own Trip');
+  assert.equal(await b.page.evaluate(() => KYT.backup.status().unsaved), true, 'the device now differs from any file');
+  await b.context.close();
+});
+
+test('Replace what is here with the file works as before, and Save first downloads a file then lets you choose', async () => {
+  await fileFromDevice('/tmp/kyt-test-d4c.json');
+  const b = await deviceWithOwnTrips();
+  await b.page.setInputFiles('#kyt-backup-file', '/tmp/kyt-test-d4c.json');
+  await b.page.waitForSelector('#kyt-open-save');
+  const [dl] = await Promise.all([b.page.waitForEvent('download'), b.page.click('#kyt-open-save')]);
+  assert.match(dl.suggestedFilename(), /\.kyt$/);
+  await b.page.waitForFunction(() => /Saved\. Now choose/.test(document.getElementById('kyt-open-msg').textContent));
+  assert.equal(await b.page.locator('#kyt-open-sheet').count(), 1, 'still asking');
+  await b.page.click('#kyt-open-replace');
+  await b.page.waitForFunction(() => /Opened/.test(document.getElementById('kyt-backup-msg').textContent));
+  const v = await b.page.evaluate(() => JSON.parse(localStorage.getItem('kyt_virtual_trips')).map(t => t.name));
+  assert.deepEqual(v, ['Rajasthan'], 'exactly the file');
+  await b.context.close();
+});
+
+test('with no current trip here, Add also brings the file\'s current trip', async () => {
+  await fileFromDevice('/tmp/kyt-test-d4d.json');
+  const b = await newPhone(env.browser);
+  await b.page.goto(env.base + '/index.html');
+  await b.page.evaluate(() => localStorage.setItem('kyt_virtual_trips', JSON.stringify([{ id: 'own1', name: 'Own plan', originCity: 'delhi', cities: ['agra'], taste: {}, steps: null }])));
+  await b.page.reload();
+  await b.page.click('[data-kyt-backup]');
+  await b.page.setInputFiles('#kyt-backup-file', '/tmp/kyt-test-d4d.json');
+  await b.page.waitForSelector('#kyt-open-merge');
+  await b.page.click('#kyt-open-merge');
+  await b.page.waitForFunction(() => /Added/.test(document.getElementById('kyt-backup-msg').textContent));
+  assert.match(await b.page.locator('#kyt-backup-msg').innerText(), /and the current trip/);
+  await b.page.goto(env.base + '/view_trip.html');
+  await b.page.waitForFunction(() => window.KYT && KYT.store);
+  assert.equal(await b.page.evaluate(async () => { await KYT.store.loadData(); return KYT.store.get().tripName; }), 'Goa Escape');
+  await b.context.close();
+});

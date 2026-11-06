@@ -195,7 +195,7 @@ window.KYT.stepForm = (() => {
   }
 
   // ── Save ──────────────────────────────────────────────────────────────────
-  function save() {
+  async function save() {
     const id         = formStepId.value;
     const title      = formStepTitle.value.trim() || 'Untitled Step';
     const targetTime = new Date(formStepTime.value);
@@ -224,7 +224,10 @@ window.KYT.stepForm = (() => {
       KYT.store.setCurrentIndex(0);
     }
 
-    KYT.store.saveData();
+    const saveBtn = document.getElementById('btn-save-step');
+    if (saveBtn) saveBtn.disabled = true;                         // one tap, one save
+    try { await KYT.store.saveData(); }                            // wait for the device write, so leaving the page at once cannot lose the edit
+    finally { if (saveBtn) saveBtn.disabled = false; }
     if (KYT.config && typeof KYT.config.renderConfigSteps === 'function') {
       KYT.config.renderConfigSteps();
     }

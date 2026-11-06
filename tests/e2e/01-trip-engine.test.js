@@ -19,6 +19,7 @@ async function addStep(page, title, where) {
   await page.fill('#form-step-title', title);
   await page.fill('#form-step-where', where);
   await page.click('#btn-save-step');
+  await page.waitForSelector('#step-form-view.hidden', { state: 'attached' });   // the form closes once the device write is done
 }
 
 test('new user sees the new-user launcher with all four entry points', async () => {
@@ -83,7 +84,7 @@ test('add steps in the editor: count badge updates, steps sort by time, data sur
   await page.fill('#form-step-where', 'Place A');
   await page.fill('#form-step-time', '2020-01-01T08:00');
   await page.click('#btn-save-step');
-
+  await page.waitForSelector('#step-form-view.hidden', { state: 'attached' });   // the form closes once the device write is done
   assert.match(await page.locator('#step-count-badge').innerText(), /^2 items$/);
   const titles = await page.$$eval('#config-steps-list .config-step-row p.font-bold', ps => ps.map(p => p.textContent.trim()));
   assert.deepEqual(titles, ['First thing', 'Second thing']);
@@ -125,6 +126,7 @@ test('edit an existing step from the editor list (pencil button)', async () => {
   assert.equal(await page.inputValue('#form-step-title'), 'Check in');
   await page.fill('#form-step-title', 'Check in (late)');
   await page.click('#btn-save-step');
+  await page.waitForSelector('#step-form-view.hidden', { state: 'attached' });   // the form closes once the device write is done
   const titles = await page.$$eval('#config-steps-list .config-step-row p.font-bold', ps => ps.map(p => p.textContent.trim()));
   assert.ok(titles.includes('Check in (late)'));
   assert.equal(titles.length, 3, 'editing must not duplicate the step');
@@ -211,5 +213,24 @@ test('ending a trip stamps the passport for cities named in its steps', async ()
   await page.waitForURL('**/virtual_trip.html');
   const stored = await page.evaluate(() => JSON.parse(localStorage.getItem('kyt_passport') || '{}'));
   assert.ok(stored.agra, 'Agra should be marked visited after ending a trip that mentions Agra');
+  await context.close();
+});
+
+test('saving a step waits for the device write before it closes the form (D3)', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await seedTrip(page, env.base, { name: 'Wait', notes: '', steps: [{ title: 'First', icon: 'sun', where: 'Here', targetTime: iso(1, 9) }] });
+  await page.goto(env.base + '/configure_trip.html');
+  await page.waitForSelector('#btn-add-step');
+  await page.evaluate(() => {
+    const real = KYT.store.saveData.bind(KYT.store);
+    KYT.store.saveData = async () => { await new Promise(r => setTimeout(r, 500)); await real(); window.__written = true; };
+  });
+  await page.click('#btn-add-step');
+  await page.fill('#form-step-title', 'Slow save');
+  await page.click('#btn-save-step');
+  assert.equal(await page.locator('#btn-save-step').isDisabled(), true, 'one tap, one save');
+  await page.waitForFunction(() => window.__written === true);
+  await page.waitForFunction(() => document.getElementById('btn-save-step').disabled === false);
+  assert.match(await page.locator('body').innerText(), /Slow save/);
   await context.close();
 });
