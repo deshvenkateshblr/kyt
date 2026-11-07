@@ -41,7 +41,7 @@
                                 --mist: #DCE8FB;
                                 --ink: #0F172A;
                                 --muted: #475569;
-                                --marigold: #FFB020;
+                                --marigold: #2563EB;
                                 --line: #CBD7EE;
                                 --ring: #1D4ED8;
                                 --font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -59,7 +59,7 @@
                                 ul, ol { padding: 0; list-style: none; }
                                 a { color: inherit; }
                                 :focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; border-radius: 6px; }
-                                .k-dark :focus-visible, .k-hero :focus-visible { outline-color: var(--marigold); }
+                                .k-dark :focus-visible { outline-color: #fff; }
                                 .k-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
                                 .k-wrap {
@@ -104,169 +104,56 @@
                                 /* ------------------------------------------------------------------
                                 Hero
                                 ------------------------------------------------------------------ */
-                                .k-hero { position: relative; background: var(--sky); color: #fff; padding-top: env(safe-area-inset-top); overflow: hidden; }
-                                .k-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding-top: 16px; }
-                                .k-brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
-                                .k-brand-badge { display: inline-flex; align-items: center; justify-content: center; background: #fff; padding: 4px 8px; border-radius: 12px; box-shadow: 0 4px 12px rgba(7, 24, 74, 0.16); height: 40px; }
-                                .k-brand-badge img { height: 28px; width: auto; max-width: 64px; object-fit: contain; display: block; border-radius: 0; }
+                                .k-hero { background: #fff; color: var(--ink); padding-top: env(safe-area-inset-top); }
+                                .k-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 16px; }
+                                .k-brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+                                .k-brand-badge { display: inline-flex; align-items: center; justify-content: center; background: #fff; padding: 3px 6px; border-radius: 10px; border: 1px solid var(--line); height: 38px; }
+                                .k-brand-badge img { height: 26px; width: auto; max-width: 60px; object-fit: contain; }
                                 .k-brand-text { display: flex; flex-direction: column; line-height: 1.15; }
-                                .k-brand-name { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em; color: #fff; }
-                                .k-brand-tagline { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; color: rgba(255, 255, 255, 0.88); text-transform: uppercase; }
-                                .k-install-btn {
-                                display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.88rem; color: #fff; text-decoration: none;
-                                padding: 8px 16px; border-radius: 999px; background: rgba(255, 255, 255, 0.16); border: 1.5px solid rgba(255, 255, 255, 0.35);
-                                backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transition: all 0.2s ease; white-space: nowrap;
-                                }
-                                .k-install-btn:hover { background: rgba(255, 255, 255, 0.26); border-color: rgba(255, 255, 255, 0.65); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(6, 20, 66, 0.22); }
+                                .k-brand-name { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em; }
+                                .k-brand-tagline { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.04em; color: var(--muted); text-transform: uppercase; }
+                                .k-install-btn { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 0.86rem; color: var(--sky-deep); text-decoration: none; padding: 10px 2px; white-space: nowrap; }
                                 .k-install-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
-                                .k-hero-pill { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.18); border: 1px solid rgba(255, 255, 255, 0.35); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #fff; font-weight: 700; font-size: 0.84rem; letter-spacing: 0.02em; padding: 4px 14px; border-radius: 999px; margin-bottom: 14px; }
-                                .k-hero-grid { display: grid; gap: 8px; padding-top: clamp(24px, 5vw, 48px); padding-bottom: clamp(70px, 12vw, 130px); }
+                                .k-hero-grid { display: grid; gap: 22px; padding-top: clamp(20px, 4vw, 44px); padding-bottom: clamp(28px, 5vw, 56px); }
                                 .k-hero-grid > * { min-width: 0; }
-                                .k-hero .k-lead { margin-top: 20px; color: #fff; }
-                                #launch { margin-top: 28px; scroll-margin-top: 16px; }
-                                .k-reassure { margin-top: 14px; font-size: 0.92rem; font-weight: 700; color: #fff; }
-                                .k-ridge { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: clamp(56px, 11vw, 120px); pointer-events: none; }
+                                .k-h1 span.k-accent { color: var(--sky-deep); }
+                                .k-hero .k-lead { margin-top: 14px; color: var(--muted); }
+                                @media (min-width: 900px) { .k-hero-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); column-gap: 64px; align-items: center; } }
                                 @media (max-width: 480px) {
-                                .k-wrap {
-                                padding-left: max(16px, env(safe-area-inset-left));
-                                padding-right: max(16px, env(safe-area-inset-right));
-                                }
-                                .k-top { gap: 8px; }
-                                .k-brand { gap: 8px; }
-                                .k-brand-badge { height: 36px; padding: 3px 6px; border-radius: 10px; }
-                                .k-brand-badge img { height: 24px; max-width: 50px; }
-                                .k-brand-name { font-size: 1.1rem; }
-                                .k-brand-tagline { font-size: 0.65rem; }
-                                .k-install-btn { padding: 6px 10px; font-size: 0.78rem; gap: 6px; }
+                                .k-wrap { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
                                 .k-install-btn .k-install-long { display: none; }
-                                .k-menu-card { padding: 14px 12px; border-radius: 22px; }
-                                .k-menu-card-header { padding: 2px 4px 10px; margin-bottom: 10px; }
-                                .k-launch { padding: 10px 8px; border-radius: 18px; gap: 8px; }
-                                .k-option-card { padding: 10px 10px; gap: 10px; border-radius: 14px; }
-                                .k-option-icon { width: 36px; height: 36px; border-radius: 10px; }
-                                .k-option-icon svg { width: 18px; height: 18px; }
-                                .k-option-title { font-size: 0.88rem; }
-                                }
-                                @media (min-width: 900px) {
-                                .k-hero-grid { grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr); column-gap: 56px; align-items: center; }
                                 }
 
-                                /* Dedicated Trip Menu Section at Top */
-                                .k-menu-section { display: flex; justify-content: center; width: 100%; margin-top: 24px; }
-                                @media (min-width: 900px) {
-                                .k-menu-section { margin-top: 0; justify-content: flex-end; }
-                                }
-                                .k-menu-card {
-                                width: 100%; max-width: 480px;
-                                background: rgba(255, 255, 255, 0.14);
-                                border: 1.5px solid rgba(255, 255, 255, 0.32);
-                                border-radius: 28px;
-                                padding: 18px;
-                                backdrop-filter: blur(14px);
-                                -webkit-backdrop-filter: blur(14px);
-                                box-shadow: 0 20px 44px -14px rgba(6, 20, 66, 0.45);
-                                }
-                                .k-menu-card-header {
-                                display: flex; align-items: center; justify-content: space-between;
-                                padding: 2px 6px 14px;
-                                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-                                margin-bottom: 14px;
-                                }
-                                .k-menu-card-title {
-                                font-weight: 800; font-size: 1rem; color: #fff; letter-spacing: -0.01em;
-                                display: flex; align-items: center; gap: 8px;
-                                }
-                                .k-menu-card-tag {
-                                font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
-                                color: var(--marigold); background: rgba(0, 0, 0, 0.24); padding: 4px 10px; border-radius: 999px;
-                                }
-                                .k-menu-card #launch { margin-top: 0; }
-                                .k-menu-card .k-launch { box-shadow: 0 14px 28px -10px rgba(6, 20, 66, 0.2); }
-                                .k-backup-link { display: block; margin: 8px auto 0; padding: 10px 14px; min-height: 44px; background: none; border: 0; color: #fff; font: 700 0.9rem/1.2 inherit; text-decoration: underline; text-underline-offset: 3px; opacity: 0.95; cursor: pointer; }
-                                .k-menu-card .k-reassure { text-align: center; margin-top: 14px; opacity: 0.9; }
-
-                                /* Launcher: filled in by js/index.js (new user or returning user) */
-                                .k-launch { display: grid; gap: 10px; padding: 12px; max-width: 480px; background: #fff; color: var(--ink); border-radius: 24px; box-shadow: 0 22px 44px -22px rgba(6, 20, 66, 0.7); }
+                                /* The action list: no card, no frame. One solid primary button, then plain rows split by hairlines. */
+                                .k-menu-section { width: 100%; max-width: 480px; }
+                                #launch { scroll-margin-top: 16px; }
+                                .k-loading { color: var(--muted); font-weight: 700; padding: 12px 0; }
+                                .k-launch { display: block; }
                                 .k-launch.hidden { display: none; }
-                                .k-loading { padding: 18px 8px; text-align: center; color: #fff; font-size: 0.95rem; max-width: 480px; }
-
-                                .k-option-card {
-                                display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px;
-                                border-radius: 16px; background: #F8FAFD; border: 1.5px solid #E2E8F4;
-                                text-decoration: none; color: var(--ink);
-                                transition: transform 0.16s ease, background-color 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
-                                cursor: pointer; text-align: left;
-                                }
-                                @media (hover: hover) {
-                                .k-option-card:hover {
-                                transform: translateY(-2px); background: #FFFFFF; border-color: #BFD3F8;
-                                box-shadow: 0 8px 18px -4px rgba(37, 99, 235, 0.18);
-                                }
-                                }
-                                /* Touch feedback: the card visibly presses in and darkens while held */
-                                .k-option-card:active { transform: scale(0.97); background: #E6EEFB; border-color: #93B4F0; box-shadow: none; }
-                                .k-option-card.k-option-primary:active { background: linear-gradient(135deg, #1E40AF 0%, #0B1220 100%); }
-
-                                .k-option-card { -webkit-tap-highlight-color: transparent; box-shadow: 0 2px 6px -2px rgba(15, 23, 42, 0.18); border-color: #D5DFF0; }
-
-                                .k-option-card.k-option-primary {
-                                background: linear-gradient(135deg, #1E3A8A 0%, #0F172A 100%);
-                                border-color: #1E3A8A; color: #FFFFFF;
-                                box-shadow: 0 8px 20px -4px rgba(15, 23, 42, 0.35);
-                                }
-                                .k-option-card.k-option-primary:hover {
-                                background: linear-gradient(135deg, #2563EB 0%, #1E3A8A 100%);
-                                border-color: #3B82F6; box-shadow: 0 12px 24px -4px rgba(37, 99, 235, 0.4);
-                                }
-                                .k-option-card.k-option-primary .k-option-desc { color: #CBD5E1; }
-                                .k-option-card.k-option-primary .k-option-title { color: #FFFFFF; }
-                                .k-option-card.k-option-primary .k-option-arrow { color: #0F172A; background: #fff; }
-
-                                .k-option-icon {
-                                width: 42px; height: 42px; border-radius: 12px;
-                                display: flex; align-items: center; justify-content: center;
-                                flex-shrink: 0; margin-top: 1px;
-                                }
-                                .k-option-icon svg { width: 22px; height: 22px; }
-
-                                .k-option-body { flex: 1; min-width: 0; }
-                                .k-option-head {
-                                display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 2px; flex-wrap: wrap;
-                                }
-                                .k-option-title {
-                                font-weight: 800; font-size: 0.95rem; letter-spacing: -0.01em; line-height: 1.25; color: #0F172A;
-                                }
-                                .k-option-badge {
-                                font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
-                                padding: 2px 7px; border-radius: 999px; flex-shrink: 0;
-                                }
-                                .k-option-desc {
-                                font-size: 0.78rem; line-height: 1.4; color: #64748B; font-weight: 500; margin: 0;
-                                }
-                                .k-option-arrow {
-                                margin-top: 6px; box-sizing: border-box; width: 30px; height: 30px; padding: 6px; border-radius: 999px;
-                                color: #fff; background: #2563EB; flex-shrink: 0;
-                                transition: transform 0.15s ease, color 0.15s ease;
-                                }
-                                @media (hover: hover) { .k-option-card:hover .k-option-arrow { transform: translateX(3px); } }
-
-                                @media (max-width: 520px) {
-                                /* Icon, title and arrow share one row; the description gets the full card width. */
-                                .k-option-card { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 12px; row-gap: 4px; align-items: center; }
-                                .k-option-card > .k-option-body { display: contents; }
-                                .k-option-card .k-option-icon { grid-column: 1; grid-row: 1; margin-top: 0; }
-                                .k-option-card .k-option-head { grid-column: 2; grid-row: 1; flex-direction: column; align-items: flex-start; gap: 4px; margin-bottom: 0; }
-                                .k-option-card .k-option-arrow { grid-column: 3; grid-row: 1; margin-top: 0; }
-                                .k-option-card .k-option-desc { grid-column: 1 / -1; grid-row: 2; font-size: 0.82rem; }
-                                .k-option-card:not(:has(.k-option-icon)) .k-option-head { grid-column: 1 / -1; }
-                                .k-option-title { font-size: 1rem; }
-                                }
-                                /* One-time first-visit hint: same look as hover, driven by js/index.js */
-                                .k-option-card { transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
-                                .k-option-card.k-nudge { transform: translateY(-3px) scale(1.015); background: #FFFFFF; border-color: #60A5FA; box-shadow: 0 10px 22px -6px rgba(37, 99, 235, 0.35); }
-                                .k-option-card.k-nudge .k-option-arrow { transform: translateX(4px); }
-                                .k-device-note { margin: 14px 2px 0; padding: 10px 12px; border-radius: 12px; background: #FEF3C7; color: #78350F; font-size: 0.86rem; line-height: 1.45; }
+                                .k-option-card { display: flex; align-items: center; gap: 14px; min-height: 60px; padding: 12px 2px; text-decoration: none; color: var(--ink); border-top: 1px solid #E3E9F4; -webkit-tap-highlight-color: transparent; transition: background-color 0.25s ease; }
+                                .k-option-card:active { background: #EEF3FD; }
+                                .k-option-icon { width: 22px; height: 22px; flex: none; color: var(--sky-deep); }
+                                .k-option-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+                                .k-option-title { font-weight: 800; font-size: 1rem; letter-spacing: -0.01em; line-height: 1.25; }
+                                .k-option-desc { font-size: 0.86rem; font-weight: 500; color: var(--muted); line-height: 1.35; }
+                                .k-option-arrow { width: 18px; height: 18px; flex: none; color: #94A3B8; }
+                                .k-option-card.k-option-primary { background: var(--sky-deep); color: #fff; border: 0; border-radius: 14px; padding: 16px 16px; margin-bottom: 4px; }
+                                .k-option-primary .k-option-icon, .k-option-primary .k-option-arrow { color: #fff; }
+                                .k-option-primary .k-option-desc { color: rgba(255, 255, 255, 0.85); }
+                                .k-option-primary:active { background: #1E40AF; }
+                                .k-option-primary + .k-option-card { border-top: 0; }
+                                @media (hover: hover) { .k-option-card:hover { background: #F3F6FC; } .k-option-primary:hover { background: #1E40AF; } }
+                                .k-option-card:last-child { border-bottom: 1px solid #E3E9F4; }
+                                /* One-time first-visit hint, driven by js/index.js: the row lights up as a hover would */
+                                .k-option-card.k-nudge { background: #EAF1FF; }
+                                .k-option-card.k-option-primary.k-nudge { background: #1E40AF; }
+                                .k-option-card.k-nudge .k-option-arrow { color: var(--sky-deep); transform: translateX(3px); }
+                                .k-option-card.k-option-primary.k-nudge .k-option-arrow { color: #fff; }
+                                .k-option-arrow { transition: transform 0.25s ease; }
                                 .k-launch :focus-visible { outline-color: var(--sky-deep); }
+                                .k-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 14px; margin-top: 12px; font-size: 0.86rem; color: var(--muted); font-weight: 600; }
+                                .k-backup-link { background: none; border: 0; padding: 10px 0; min-height: 44px; font: 700 0.86rem/1.2 inherit; color: var(--sky-deep); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+                                .k-device-note { margin: 14px 0 0; padding: 0; color: var(--muted); font-size: 0.86rem; line-height: 1.5; }
 
                                 /* ------------------------------------------------------------------
                                 The demo phone: plan a day, add photos, finish it, get the seal.
@@ -332,7 +219,7 @@
                                 /* ------------------------------------------------------------------
                                 Sections
                                 ------------------------------------------------------------------ */
-                                .k-sec { padding-top: clamp(56px, 9vw, 104px); padding-bottom: clamp(56px, 9vw, 104px); }
+                                .k-sec { padding-top: clamp(36px, 6vw, 72px); padding-bottom: clamp(36px, 6vw, 72px); }
                                 .k-dark { background: var(--dusk); color: #fff; }
                                 .k-mist { background: var(--mist); }
                                 .k-white { background: #fff; }
@@ -466,6 +353,54 @@
                                 .k-foot a { text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
                                 @media (max-width: 480px) { .k-end-cta .k-btn { width: 100%; } .k-book li { grid-template-columns: 96px 1fr; } .k-book li svg { width: 96px; height: 68px; } }
 
+
+                                /* ------------------------------------------------------------------
+                                Flat theme: one blue accent on white and light grey. No hard shadows, no tilted cards, no second accent colour.
+                                ------------------------------------------------------------------ */
+                                .k-mist, .k-gold { background: var(--paper); }
+                                .k-dark { background: #fff; color: var(--ink); }
+                                .k-dark .k-p, .k-gold .k-p { color: var(--muted); }
+                                .k-line li { background: #fff; border: 1px solid #E3E9F4; }
+                                .k-line .now { border: 1.5px solid var(--sky-deep); box-shadow: none; }
+                                .k-line .later { background: transparent; border: 1px dashed #B6C5E4; }
+                                .k-book { border: 1px solid var(--line); border-radius: 16px; box-shadow: none; transform: none; }
+                                .k-book::before { display: none; }
+                                .k-city { border: 1px solid var(--line); box-shadow: none; }
+                                .k-play { background: var(--sky-deep); border-color: #fff; }
+                                .k-play::after { border-left-color: #fff; }
+                                .k-city-add { background: var(--sky-deep); }
+                                .k-pill { border: 1px solid var(--line); background: #fff; }
+                                .k-pill.on { background: var(--sky-deep); border-color: var(--sky-deep); }
+                                .k-link { background: var(--sky-deep); box-shadow: none; }
+                                .k-link small { color: rgba(255, 255, 255, 0.85); }
+                                .k-ticks li::before { background: var(--sky-deep); }
+                                .k-ticks li::after { border-color: #fff; }
+                                .k-soon { background: var(--sky-deep); }
+                                .k-board li { border-top: 1px solid var(--line); }
+                                .k-board li:last-child { border-bottom: 1px solid var(--line); }
+                                .k-seals .b { color: var(--sky); } .k-seals .c { color: var(--sky-deep); }
+                                .k-fold { margin-top: 24px; }
+                                .k-fold > summary { cursor: pointer; font-weight: 800; color: var(--sky-deep); padding: 12px 0; min-height: 44px; list-style: none; }
+                                .k-fold > summary::-webkit-details-marker { display: none; }
+                                .k-fold > summary::after { content: " \25BE"; }
+                                .k-fold[open] > summary::after { content: " \25B4"; }
+                                .k-device-card { background: none; border: 0; border-top: 1px solid #E3E9F4; border-radius: 0; box-shadow: none; padding: 20px 0 6px; transition: none; }
+                                .k-device-card:hover { transform: none; box-shadow: none; border-color: #E3E9F4; }
+                                .k-device-header { border-bottom: 0; padding-bottom: 0; margin-bottom: 14px; }
+                                .k-device-apple, .k-device-android { background: none; color: var(--sky-deep); }
+                                .k-offline-banner { background: none; border: 0; border-top: 1px solid #E3E9F4; border-radius: 0; padding: 20px 0 0; color: var(--muted); }
+                                .k-offline-icon { display: none; }
+                                .k-offline-text strong { color: var(--ink); display: inline; }
+                                .k-final { background: var(--sky-deep); color: #fff; }
+                                .k-final .k-h2 { max-width: 20ch; }
+                                .k-final .k-btn--gold { background: #fff; color: var(--sky-deep); }
+                                .k-final .k-btn--gold:hover { background: #EEF3FD; }
+                                .k-end-cta { align-items: center; gap: 8px 22px; }
+                                .k-quiet { color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; padding: 10px 0; }
+                                .k-final :focus-visible { outline-color: #fff; }
+                                .k-foot { border-top-color: rgba(255, 255, 255, 0.25); color: rgba(255, 255, 255, 0.85); }
+                                @media (max-width: 480px) { .k-end-cta .k-btn { width: 100%; } }
+
                                 @media (prefers-reduced-motion: reduce) {
                                 html { scroll-behavior: auto; }
                                 *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -524,9 +459,7 @@
       <div class="k-wrap">
         <div class="k-top">
           <a class="k-brand" href="./" aria-label="KYT, Know Your Travel">
-            <span class="k-brand-badge">
-              <img src="icons/KYT.jpg" alt="KYT" width="56" height="28">
-            </span>
+            <span class="k-brand-badge"><img src="icons/KYT.jpg" alt="KYT" width="56" height="28"></span>
             <span class="k-brand-text">
               <span class="k-brand-name">KYT</span>
               <span class="k-brand-tagline">Know Your Travel</span>
@@ -538,94 +471,39 @@
               <path d="M12 18h.01"/>
               <path d="M12 7v5m0 0l-2-2m2 2l2-2"/>
             </svg>
-            <span>
-              Add to Home<span class="k-install-long"> Screen</span>
-            </span>
+            <span>Add to Home<span class="k-install-long"> Screen</span></span>
           </a>
         </div>
 
         <div class="k-hero-grid">
           <div class="k-hero-text">
-            <div class="k-hero-pill">
-              <span>✨ Travel on your own terms</span>
-            </div>
             <h1 class="k-h1">
               <span>Know your travel.</span>
-              <span>Plan it your way.</span>
-              <span>Happy journey!</span>
+              <span class="k-accent">Plan it your way.</span>
             </h1>
-            <p class="k-lead">India isn&rsquo;t a checklist&mdash;it&rsquo;s an adventure waiting to unfold. Map out your route step by step, keep tickets, chai stops, and memories in your pocket, and share the plan with the people riding with you.</p>
+            <p class="k-lead">Map out your route step by step, keep tickets and memories in your pocket, and share the plan with the people riding with you.</p>
           </div>
 
-          <!-- Dedicated section for menu items at the top -->
           <section class="k-menu-section" aria-label="Trip Menu">
-            <div class="k-menu-card">
-              <div class="k-menu-card-header">
-                <span class="k-menu-card-title">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                  </svg>
-                  Trip Menu
-                </span>
-                <span class="k-menu-card-tag">Quick Access</span>
-              </div>
-              <div id="launch">
-                <div id="loading" class="k-loading">Checking your trip&hellip;</div>
-                <div id="options-container" class="k-launch hidden"></div>
-                <noscript>
-                  <div class="k-launch">
-                    <a href="configure_trip.html" class="k-option-card">
-                      <div class="k-option-body">
-                        <div class="k-option-head">
-                          <span class="k-option-title">Have an Upcoming Trip?</span>
-                          <span class="k-option-badge" style="background: #EEF2FF; color: #4338CA;">Ready to go</span>
-                        </div>
-                        <p class="k-option-desc">Already booked? Add flights, hotels and tickets step by step.</p>
-                      </div>
-                    </a>
-                    <a href="virtual_trip.html" class="k-option-card">
-                      <div class="k-option-body">
-                        <div class="k-option-head">
-                          <span class="k-option-title">Start a Virtual Trip</span>
-                          <span class="k-option-badge" style="background: #EFF6FF; color: #1D4ED8;">Smart Planner</span>
-                        </div>
-                        <p class="k-option-desc">Pick cities, set your pace and food, get a day-by-day plan.</p>
-                      </div>
-                    </a>
-                    <a href="curated_trips.html" class="k-option-card">
-                      <div class="k-option-body">
-                        <div class="k-option-head">
-                          <span class="k-option-title">AI Curated Journeys</span>
-                          <span class="k-option-badge" style="background: #FEF3C7; color: #B45309;">Handcrafted</span>
-                        </div>
-                        <p class="k-option-desc">Pilgrimage, coastal and heritage trips you can make your own.</p>
-                      </div>
-                    </a>
-                    <a href="visited.html" class="k-option-card">
-                      <div class="k-option-body">
-                        <div class="k-option-head">
-                          <span class="k-option-title">India Explorer Passport</span>
-                          <span class="k-option-badge" style="background: #ECFDF5; color: #047857;">Hit List</span>
-                        </div>
-                        <p class="k-option-desc">Mark the cities you have visited and collect stamps.</p>
-                      </div>
-                    </a>
-                  </div>
-                </noscript>
-              </div>
-              <p class="k-reassure">No sign-up. Your trips stay on your phone.</p>
+            <div id="launch">
+              <div id="loading" class="k-loading">Checking your trip&hellip;</div>
+              <div id="options-container" class="k-launch hidden"></div>
+              <noscript>
+                <div class="k-launch">
+                  <a href="virtual_trip.html" class="k-option-card k-option-primary"><span class="k-option-body"><span class="k-option-title">Start a Virtual Trip</span><span class="k-option-desc">Pick cities and get a day-by-day plan.</span></span></a>
+                  <a href="configure_trip.html" class="k-option-card"><span class="k-option-body"><span class="k-option-title">Upcoming Trip</span><span class="k-option-desc">Tickets and hotels already booked? Start here.</span></span></a>
+                  <a href="curated_trips.html" class="k-option-card"><span class="k-option-body"><span class="k-option-title">AI Curated Journeys</span><span class="k-option-desc">Not sure where to go? Start with ideas.</span></span></a>
+                  <a href="visited.html" class="k-option-card"><span class="k-option-body"><span class="k-option-title">India Explorer Passport</span><span class="k-option-desc">Mark places you have visited and share a card.</span></span></a>
+                </div>
+              </noscript>
+            </div>
+            <div class="k-meta">
+              <span>No sign-up. Trips stay on your phone.</span>
               <button type="button" class="k-backup-link" data-kyt-backup>Save or open your trips</button>
             </div>
           </section>
         </div>
       </div>
-      <svg class="k-ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path d="M0 78 L120 40 L210 66 L330 22 L450 70 L560 46 L690 84 L810 36 L930 72 L1060 30 L1190 70 L1310 44 L1440 76 V120 H0Z" fill="#1D4ED8"/>
-        <path d="M0 100 L150 74 L280 96 L420 66 L560 98 L700 80 L860 104 L1000 76 L1150 102 L1290 80 L1440 98 V120 H0Z" fill="#DCE8FB"/>
-        <path d="M0 114 L180 100 L360 112 L560 98 L760 114 L980 102 L1200 114 L1440 104 V120 H0Z" fill="#F4F7FB"/>
-      </svg>
     </header>
 
     <main>
@@ -728,7 +606,7 @@
             <div class="k-city-vid" aria-hidden="true">
               <svg class="bg" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice">
                 <rect width="320" height="180" fill="#0B1F4D"/>
-                <circle cx="250" cy="52" r="22" fill="#FFB020"/>
+                <circle cx="250" cy="52" r="22" fill="#2563EB"/>
                 <path d="M0 130 L50 96 L96 124 L150 82 L214 128 L268 92 L320 122 V180 H0Z" fill="#1D4ED8"/>
                 <path d="M0 154 L70 124 L140 150 L220 118 L320 150 V180 H0Z" fill="#2563EB"/>
               </svg>
@@ -902,7 +780,7 @@
       </section>
 
       <!-- 7. Privacy + flight mode -->
-      <section class="k-sec k-dark" aria-labelledby="h-privacy">
+      <section class="k-sec k-white" aria-labelledby="h-privacy">
         <div class="k-wrap k-two">
           <div>
             <h2 class="k-h2" id="h-privacy">Your plans stay on your phone.</h2>
@@ -916,12 +794,12 @@
           <svg class="k-flow" viewBox="0 0 360 230" role="img" aria-labelledby="flowT flowD">
             <title id="flowT">Your plans stay on your phone</title>
             <desc id="flowD">A phone holding your trip, with a blocked line to a server. Nothing is sent.</desc>
-            <rect x="22" y="26" width="112" height="182" rx="20" fill="#12306E" stroke="#FFB020" stroke-width="4"/>
-            <rect x="40" y="52" width="76" height="12" rx="6" fill="#FFB020"/>
+            <rect x="22" y="26" width="112" height="182" rx="20" fill="#12306E" stroke="#2563EB" stroke-width="4"/>
+            <rect x="40" y="52" width="76" height="12" rx="6" fill="#2563EB"/>
             <rect x="40" y="76" width="60" height="8" rx="4" fill="#5C79B8"/>
             <rect x="40" y="94" width="68" height="8" rx="4" fill="#5C79B8"/>
             <rect x="40" y="124" width="76" height="48" rx="10" fill="#1B3F86"/>
-            <path d="M52 148l8 8 16-18" fill="none" stroke="#FFB020" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M52 148l8 8 16-18" fill="none" stroke="#2563EB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
             <text x="78" y="226" text-anchor="middle" fill="#fff" font-size="13" font-weight="800" font-family="inherit">Your phone</text>
             <path d="M138 118 H220" stroke="#6C86BF" stroke-width="3" stroke-dasharray="6 7" stroke-linecap="round"/>
             <circle cx="180" cy="118" r="17" fill="#0B1F4D" stroke="#FF8A80" stroke-width="3.5"/>
@@ -934,7 +812,7 @@
       </section>
 
       <!-- 8. Coming soon -->
-      <section class="k-sec k-gold" aria-labelledby="h-soon">
+      <section class="k-sec" aria-labelledby="h-soon">
         <div class="k-wrap k-two">
           <div>
             <span class="k-soon">Curated trips</span>
@@ -957,6 +835,8 @@
         <div class="k-wrap">
           <h2 class="k-h2" id="h-home">Add KYT to your home screen.</h2>
           <p class="k-p">There is no app store and nothing to download. KYT opens full screen, like any app on your phone.</p>
+          <details class="k-fold">
+          <summary>Show the steps</summary>
           <div class="k-how">
             <div class="k-device-card">
               <div class="k-device-header">
@@ -1034,6 +914,8 @@
             </div>
           </div>
 
+          </details>
+
           <div class="k-offline-banner">
             <div class="k-offline-icon">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -1049,14 +931,14 @@
       </section>
 
       <!-- 10. Close -->
-      <section class="k-sec k-dark" aria-labelledby="h-go">
+      <section class="k-sec k-final" aria-labelledby="h-go">
         <div class="k-wrap">
           <h2 class="k-h2" id="h-go">Pick a place. Plan the first step.</h2>
           <div class="k-end-cta">
             <a class="k-btn k-btn--gold" href="virtual_trip.html">Start a new virtual trip</a>
-            <a class="k-btn k-btn--line" href="curated_trips.html">AI Curated Trips</a>
-            <a class="k-btn k-btn--line" href="configure_trip.html">Build a trip manually</a>
-            <a class="k-btn k-btn--line" href="visited.html">My digital passport</a>
+            <a class="k-quiet" href="curated_trips.html">AI Curated Trips</a>
+            <a class="k-quiet" href="configure_trip.html">Build a trip manually</a>
+            <a class="k-quiet" href="visited.html">My digital passport</a>
           </div>
           <div class="k-foot">
             <span>KYT, Know Your Travel. Your trips stay on your device.</span>
@@ -1066,12 +948,12 @@
       </section>
     </main>
 
-    <script src="./lib/lucide.js?v=112"></script>
-    <script src="./js/store.js?v=112"></script>
-    <script src="./js/backup.js?v=112"></script>
-    <script src="./js/index.js?v=112"></script>
+    <script src="./lib/lucide.js?v=113"></script>
+    <script src="./js/store.js?v=113"></script>
+    <script src="./js/backup.js?v=113"></script>
+    <script src="./js/index.js?v=113"></script>
 
-    <script src="./js/page-home.js?v=112"></script>
-    <script src="./js/footer.js?v=112"></script>
+    <script src="./js/page-home.js?v=113"></script>
+    <script src="./js/footer.js?v=113"></script>
 </body>
 </html>

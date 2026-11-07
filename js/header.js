@@ -180,7 +180,16 @@ KYT.header = (function() {
     const active = options.active || 'view';
 
     // Style the outer container if not already styled
-    el.className = 'w-full max-w-md mx-auto flex justify-between items-center z-[60] bg-white/50 backdrop-blur-md rounded-2xl p-2 border border-white/60 shadow-sm mt-4 sm:mt-8 px-3 sm:px-4 mb-3 relative';
+    if (!document.getElementById('kyt-toolbar-css')) {
+      // Very narrow phones (320 px): the full-size toolbar is about 357 px wide and cut Live off the screen. Tighten it.
+      const st = document.createElement('style');
+      st.id = 'kyt-toolbar-css';
+      st.textContent = '@media (max-width: 359px){.kyt-toolbar{padding-left:.375rem!important;padding-right:.375rem!important;gap:.25rem}' +
+        '.kyt-toolbar>div{gap:.25rem!important}.kyt-toolbar a,.kyt-toolbar button{padding-left:.25rem!important;padding-right:.25rem!important;min-width:0!important}' +
+        '.kyt-toolbar>div>a:first-child{width:36px!important;height:36px!important}}';
+      document.head.appendChild(st);
+    }
+    el.className = 'kyt-toolbar w-full max-w-md mx-auto flex justify-between items-center z-[60] bg-white/50 backdrop-blur-md rounded-2xl p-2 border border-white/60 shadow-sm mt-4 sm:mt-8 px-3 sm:px-4 mb-3 relative';
 
     // Determine right button
     let rightBtnHtml = '';

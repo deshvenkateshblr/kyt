@@ -100,7 +100,7 @@ Clear. The contradictions in generated days and the explainer on every generated
 | D13 | (Fixed in CHANGELOG 78 except shrunk photos and past-trip PDF or album, which remain.) Past trips: "Plan this again" guesses cities from each step's place text and drops the origin; shrunk photos cannot be restored; no PDF or album for a past trip. | Past-trip users. | Checked | 2 |
 | D14 | (Done in CHANGELOG 78 (weather link for the three). Grid-cell sharing and a season in the Day Plan remain.) Weather: Mawlynnong, Bhimashankar and Tirupati have no elevation; cities sharing a grid cell share rain figures; no season in the Day Plan. | Small accuracy gaps. | Checked | 2 |
 | D15 | (Done in CHANGELOG 78: day anchor plus clash check. Redeploy the worker.) The share worker's 6-character code uses a weak random source and can overwrite an existing key (P4.8). | Rare, but it overwrites someone's shared trip. | Checked | 2 |
-| D16 | The toolbar holds 360 px phones exactly; 320 px phones are untested. | Very small phones. | Suspected | 1 |
+| D16 | The toolbar holds 360 px phones exactly; 320 px phones are untested. | Very small phones. | Done (v113: toolbar fits 320 and 300 px, tested) | 1 |
 | D17 | (Done in CHANGELOG 78: deleted.) `testgmap.html`, the internal Maps audit page, is served publicly without the footer or toolbar. | Nobody, unless found. | Checked | 1 |
 | D18 | Some tests depend on curated place titles (Mumbai) and on timing, so a data edit or a slow machine fails them with no user-visible bug. | The owner's release checks. | Checked | 1 |
 

@@ -197,6 +197,7 @@ test('installed app with no data explains that it is separate from Safari, once;
   assert.match(await page.locator('#kyt-fresh-notice').innerText(), /separate from Safari/);
   await page.reload(); await page.waitForTimeout(800);
   assert.equal(await page.locator('#kyt-fresh-notice').count(), 0, 'shown only once');
+  await page.evaluate(() => { document.querySelector('.k-fold').open = true; });
   assert.match(await page.locator('.k-device-note').first().innerText(), /Already using KYT in Safari\?[\s\S]*Save or open your trips/);
   await context.close();
 });

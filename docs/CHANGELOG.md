@@ -507,3 +507,8 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **D15 (needs the worker redeployed):** share codes are now 2 characters for the day (days since 2024-01-01, repeating every 1,296 days) plus 4 random characters from crypto, still 6 in all. The worker also looks for the code first and tries again on a clash. Old links keep working.
     - **D17:** `testgmap.html` deleted.
     - **Tests:** 7 added (06, 12, 14).
+
+79. **Home page revamp and 320 px toolbar (v113)**
+   - Home page is now flat: light header with one blue accent, a single solid primary action ("Start a Virtual Trip", or "View Current Trip" for returning users) and plain hairline-separated rows instead of a boxed card with shadows and coloured badges. Shorter intro copy; the mountain ridge, the "Trip Menu / Quick Access" header and the second accent colour are gone.
+   - Sections below use only white and light grey, with no hard shadows or tilted cards; the closing call to action is the one blue block. Install steps are folded under "Show the steps" (the top "Add to Home Screen" link opens them). Section padding reduced.
+   - Toolbar shrinks on phones under 360 px so Live and Save stay on screen (D16). New tests in tests/e2e/15-layout.test.js.
