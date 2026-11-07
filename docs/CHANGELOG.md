@@ -530,3 +530,6 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
    - In Safari (a browser tab) on iPhone and Android, Save now downloads the file directly, like any download, instead of opening the share sheet. The share sheet stays one tap away ("Choose where to send it instead").
    - In the installed home-screen app the share sheet stays the default, since iOS gives a downloaded blob no clear destination there (not verified on a device); a "Download to my phone instead" link offers the direct route.
    - Phone downloads use a generic file type so iOS keeps the `.kyt` name.
+
+84. **Home menu animation restored (v118)**
+   - The one-time first-visit "lift and glow" on each option is back (rows lift and light up in turn). Rows also rise in one after another whenever the menu appears, press in on tap, and the arrow slides on hover. All of it is off for people who ask their phone to reduce motion.
