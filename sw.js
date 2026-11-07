@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kyt-v113';
+const CACHE_NAME = 'kyt-v114';
 
 // Big third-party files (the PDF library and the Hindi font) live in their own cache, which a release does not
 // wipe, so they are downloaded once and then work offline.
@@ -52,6 +52,7 @@ const APP_SHELL = [
   './data/cities.js',
   './data/weather.js',
   './js/weather-seasons.js',
+  './js/pdf-scripts.js',
   './js/trip-pdf.js',
   './js/past-trips.js',
   './data/india-map.js',

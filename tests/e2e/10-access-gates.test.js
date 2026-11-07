@@ -260,3 +260,27 @@ test('with two or more cities there is a Google Maps route link in their order',
   assert.match(href, /origin=Pune India&destination=Aurangabad India&waypoints=Nashik India/);
   await context.close();
 });
+
+test('D1: road and altitude notes are advice, not gates: Zojila road for Sonamarg and Kargil, and a plain high-altitude tip for places above 2,500 m with no curated note', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await open(page);
+  const r = await page.evaluate(() => {
+    const info = id => KYT.ui.accessInfo(KYT_CITIES.find(c => c.id === id));
+    return { sonamarg: info('sonamarg'), kargil: info('kargil'), gulmarg: info('gulmarg'), auli: info('auli'), jaipur: info('jaipur'), leh: info('leh') };
+  });
+  for (const id of ['sonamarg', 'kargil']) {
+    assert.match(r[id].text, /Recommended: check the road/);
+    assert.equal(r[id].gated, false, id + ' is advice, so stays in normal plans');
+    assert.match(r[id].source, /^https:\/\//);
+  }
+  for (const id of ['gulmarg', 'auli']) {
+    assert.match(r[id].text, /Recommended: keep the first day easy/);
+    assert.equal(r[id].gated, false);
+  }
+  assert.equal(r.jaipur, null);
+  assert.equal(r.leh.gated, true, 'the curated Leh rule is unchanged');
+  await page.evaluate(() => KYT.virtualTrips.openCityDetail('gulmarg', false));
+  await page.waitForSelector('#cd-access');
+  assert.match(await page.locator('#cd-access').innerText(), /High altitude/);
+  await context.close();
+});

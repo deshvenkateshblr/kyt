@@ -17650,6 +17650,11 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sonamarg%20Kashmir%20India",
     "notes": "The Meadow of Gold, nestled along the Sindh River, gateway to Ladakh and starting point of the Amarnath Baltal route.",
+    "access": {
+      "kind": "seasonal",
+      "note": "Recommended: check the road before you go. The Zojila road can shut for weeks in winter and after heavy snow, and Sonamarg is at 2,800 m, so keep the first day easy.",
+      "source": "https://www.tribuneindia.com/news/j-k/srinagar-leh-road-reopens-after-73-days-378993"
+    },
     "beats": [
       {
         "title": "Thajiwas Glacier pony trek & snow activities",
@@ -17779,6 +17784,11 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kargil%20Ladakh%20India",
     "notes": "A historic transit town on the Suru River between Srinagar and Leh, famous for the Kargil War Memorial and Buddhist rock-art.",
+    "access": {
+      "kind": "seasonal",
+      "note": "Recommended: check the road before you go. The Zojila road from Srinagar can shut for weeks in winter and after heavy snow, and Kargil is at about 2,700 m, so keep the first day easy.",
+      "source": "https://www.tribuneindia.com/news/j-k/srinagar-leh-road-reopens-after-73-days-378993"
+    },
     "beats": [
       {
         "title": "Kargil War Memorial (Drass)",

@@ -163,6 +163,9 @@ window.KYT.ui = (function () {
   /** Access note for a city whose normal plan fails (trek, winter closure, altitude, permit). Null for most places. */
   function accessInfo(city) {
     const a = city && city.access;
+    if (!a && city && city.elevation >= 2500) {      // no curated note: a plain recommendation, never a gate
+      return { kind: 'altitude', label: 'High altitude', text: `About ${city.elevation.toLocaleString('en-IN')} m. Recommended: keep the first day easy, drink plenty of water and sleep low if you can.`, source: '', gated: false, advisory: true };
+    }
     if (!a) return null;
     const closed = a.closed ? `Usually closed ${MONTHS[a.closed[0] - 1]} to ${MONTHS[a.closed[1] - 1]}.` : '';
     return {

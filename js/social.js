@@ -422,6 +422,9 @@ window.KYT.social = (() => {
 
       // ── Generate & share/download ─────────────────────────────────────────────
       const fileName = data.tripName.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '_journal.pdf';
+      // Hindi, Tamil and other Indian text in step names or notes needs its own font
+      const scripts = window.KYT && KYT.pdfScripts;
+      if (scripts && scripts.hasIndicScript(docDefinition)) { await scripts.loadFonts(pdfMake, docDefinition); scripts.withScriptFonts(docDefinition.content); }
       const pdfDoc   = pdfMake.createPdf(docDefinition);
 
       if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i) && navigator.share) {

@@ -231,3 +231,43 @@ test('consecutive nights print as one stay: check-in on night 1, check-out on th
   assert.equal(all.split('Check-in').length - 1, 1, 'check-in is printed once');
   await context.close();
 });
+
+test('other Indian scripts are split and fonted per script; the fonts exist and each script has one', () => {
+  const S = require('../../js/pdf-scripts.js');
+  assert.deepEqual(S.splitScripts('Meenakshi மதுரை temple'), ['Meenakshi ', { text: 'மதுரை', font: 'NotoTamil' }, ' temple']);
+  assert.deepEqual(S.splitScripts('తిరుపతి'), [{ text: 'తిరుపతి', font: 'NotoTelugu' }]);
+  assert.deepEqual(S.splitScripts('हिंदी தமிழ்'), [{ text: 'हिंदी ', font: 'NotoDeva' }, { text: 'தமிழ்', font: 'NotoTamil' }]);
+  assert.deepEqual(S.scriptsIn({ content: [{ text: 'ঢাকা' }, { text: 'ગુજરાત' }, { image: 'data:image/jpeg;base64,AAAA஀' }] }), ['Bengali', 'Gujarati']);
+  for (const s of S.SCRIPTS) assert.ok(require('fs').existsSync(require('path').join(__dirname, '../../lib/fonts', s.file + '-Regular.ttf')), s.key + ' font file');
+  const sw = require('fs').readFileSync(require('path').join(__dirname, '../../sw.js'), 'utf8');
+  assert.match(sw, /\.\/js\/pdf-scripts\.js/);
+});
+
+test('the Memory Album PDF carries Tamil text too (it used to print empty boxes)', async () => {
+  const { execFileSync } = require('node:child_process'), fsx = require('node:fs');
+  const { seedTrip, iso } = require('./helpers');
+  const PHOTO = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=';
+  const { context, page } = await newPhone(env.browser, { realPdf: true });
+  await seedTrip(page, env.base, { name: 'Madurai', steps: [{ title: 'மீனாட்சி கோவில்', icon: 'landmark', where: 'Madurai', targetTime: iso(1, 9), memories: [PHOTO] }] });
+  await page.waitForFunction(() => typeof pdfMake === 'object' || typeof pdfMake === 'function');
+  const [dl] = await Promise.all([page.waitForEvent('download'), page.evaluate(() => document.getElementById('btn-download-card').click())]);
+  const file = '/tmp/kyt-album-tamil.pdf';
+  await dl.saveAs(file);
+  assert.match(fsx.readFileSync(file).toString('latin1'), /NotoSansTamil/, 'the Tamil font is inside the PDF');
+  try { assert.match(execFileSync('pdftotext', [file, '-']).toString(), /மீனாட்சி/); } catch (e) { if (e.code !== 'ENOENT') throw e; }
+  await context.close();
+});
+
+test('a Tamil trip step makes a trip PDF with the Tamil font, loaded on demand', async () => {
+  const fsx = require('node:fs');
+  const { context, page } = await newPhone(env.browser, { realPdf: true });
+  const trip = { ...TRIP, id: 'pdft', name: 'Madurai', steps: TRIP.steps.concat([{ id: 't', dayId: 2, type: 'stop', cityName: 'Jaipur', title: 'மீனாட்சி கோவில்', where: 'Madurai', hour: 11, minute: 0, durationMin: 60 }]) };
+  await page.addInitScript(t => { try { localStorage.setItem('kyt_virtual_trips', JSON.stringify([t])); } catch (e) { /* about:blank */ } }, trip);
+  await page.goto(env.base + '/trip_detail.html?id=pdft');
+  await page.waitForSelector('#btn-save-pdf');
+  await page.waitForFunction(() => typeof pdfMake === 'object' || typeof pdfMake === 'function');
+  const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#btn-save-pdf')]);
+  await dl.saveAs('/tmp/kyt-tamil-test.pdf');
+  assert.match(fsx.readFileSync('/tmp/kyt-tamil-test.pdf').toString('latin1'), /NotoSansTamil/);
+  await context.close();
+});
