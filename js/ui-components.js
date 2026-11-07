@@ -241,10 +241,17 @@ window.KYT.ui = (function () {
   /** "When to go": two or three typical seasons from data/weather.js, or '' when a city has no weather data. */
   function renderWeatherSeasons(city, id) {
     const W = window.KYT_WEATHER, S = KYT.weatherSeasons;
+    const esc = KYT.utils.escapeHTML;
+    if (city && city.weatherLink) {       // no trustworthy seasonal figures for this place: point at a live forecast instead
+      const url = 'https://www.google.com/search?q=' + encodeURIComponent('weather ' + city.name);
+      return `<div ${id ? `id="${id}" ` : ''}class="text-xs text-slate-700 bg-sky-50/70 border border-sky-100 rounded-xl px-3 py-2.5 space-y-1.5">
+      <p class="flex items-center gap-1.5 font-extrabold text-sky-900 uppercase tracking-wider text-[11px]"><i data-lucide="calendar-days" class="w-4 h-4"></i> When to go</p>
+      <a data-weather-link href="${esc(url)}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 font-bold text-blue-600 underline underline-offset-2">Check the current weather for ${esc(city.name)} <i data-lucide="external-link" class="w-3 h-3"></i></a>
+      <p class="text-[11px] text-slate-500">We do not have reliable seasonal averages for this place, so a live forecast is more useful.</p></div>`;
+    }
     const entry = W && W.cities && city && W.cities[city.id];
     const seasons = entry && S ? S.summarise(entry) : [];
     if (!seasons.length) return '';
-    const esc = KYT.utils.escapeHTML;
     const period = (W.meta && W.meta.period || '').replace('-', '\u2013');
     const rows = seasons.map(se => `<li data-season class="flex items-start gap-2">
         <i data-lucide="${se.rainLabel === 'wet' ? 'cloud-rain' : se.tempLabel === 'Hot' ? 'sun' : se.tempLabel === 'Cold' ? 'snowflake' : 'cloud-sun'}" class="w-4 h-4 text-sky-600 shrink-0 mt-px"></i>
@@ -938,7 +945,11 @@ window.KYT.ui = (function () {
           notes: s.notes || '',
           targetTime: when,
           status: 'todo',
-          attachments: []
+          attachments: [],
+          // Kept so that a finished trip can be planned again exactly, instead of guessing from the text.
+          type: s.type || '',
+          cityName: s.cityName || '',
+          ...(out.length === 0 && trip.originCity ? { originCity: trip.originCity } : {})
         });
       });
     });

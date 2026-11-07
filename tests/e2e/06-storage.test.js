@@ -142,7 +142,7 @@ test('the home page and the trip editor both link to Save and Open', async () =>
 test('every page carries one feedback link to info@vividnova.com, added by the single js/footer.js', async () => {
   const fsx = require('node:fs'), pth = require('node:path');
   const root = pth.resolve(__dirname, '..', '..');
-  const pages = fsx.readdirSync(root).filter(f => f.endsWith('.html') && f !== 'testgmap.html');   // testgmap.html is the owner's internal audit page
+  const pages = fsx.readdirSync(root).filter(f => f.endsWith('.html'));
   assert.ok(pages.length >= 7);
   assert.ok(fsx.readFileSync(pth.join(root, 'sw.js'), 'utf8').includes('./js/footer.js'), 'footer.js must be in the service worker shell');
   for (const f of pages) {
@@ -565,4 +565,47 @@ test('the bump command changes all three places together', () => {
     assert.match(html, /x\.js\?v=8/); assert.match(html, /y\.js\?v=8/); assert.match(html, /z\.css\?v=8/);
     assert.match(html, /p\.js\?v=2"/, 'another site\'s file is left alone');
   } finally { fsx.rmSync(tmp, { recursive: true, force: true }); }
+});
+
+test('the internal Maps audit page is no longer shipped (D17)', () => {
+  const fsx = require('node:fs'), pth = require('node:path');
+  assert.equal(fsx.existsSync(pth.resolve(__dirname, '..', '..', 'testgmap.html')), false);
+});
+
+// ── Share worker: the code has a day anchor and is checked for a clash (D15) ─────────────────────────────
+test('a share code is 6 characters: 2 for the day, 4 random, and the day part changes with the date (D15)', async () => {
+  const { pathToFileURL } = require('node:url'), pth = require('node:path');
+  const W = await import(pathToFileURL(pth.resolve(__dirname, '..', '..', 'cloudflare-worker', 'worker.js')).href);
+  const d1 = Date.UTC(2026, 10, 7, 12), d2 = Date.UTC(2026, 10, 8, 12);
+  const a = W.makeCode(d1), b = W.makeCode(d1), c = W.makeCode(d2);
+  for (const x of [a, b, c]) assert.match(x, /^[0-9a-z]{6}$/);
+  assert.equal(a.slice(0, 2), b.slice(0, 2), 'same day, same anchor');
+  assert.notEqual(a.slice(0, 2), c.slice(0, 2), 'next day, next anchor');
+  assert.equal(parseInt(c.slice(0, 2), 36) - parseInt(a.slice(0, 2), 36), 1);
+  assert.equal(W.makeCode(Date.UTC(2024, 0, 1)).slice(0, 2), '00', 'the count starts at 2024-01-01');
+  const seen = new Set(Array.from({ length: 2000 }, () => W.makeCode(d1).slice(2)));
+  assert.ok(seen.size > 1900, 'the random part varies: ' + seen.size);
+});
+
+test('the random part has no bias, and a code already in use is never handed out again', async () => {
+  const { pathToFileURL } = require('node:url'), pth = require('node:path');
+  const W = await import(pathToFileURL(pth.resolve(__dirname, '..', '..', 'cloudflare-worker', 'worker.js')).href);
+  // every byte value 0..255 once: bytes at or above 252 must be skipped, the rest map evenly onto 36 letters
+  const all = Array.from({ length: 256 }, (_, i) => i);
+  let pos = 0;
+  const feed = n => { const out = new Uint8Array(n); for (let i = 0; i < n; i++) out[i] = all[pos++ % 256]; return out; };
+  const counts = {};
+  for (let i = 0; i < 63; i++) for (const ch of W.makeCode(Date.UTC(2026, 0, 1), feed).slice(2)) counts[ch] = (counts[ch] || 0) + 1;
+  const vals = Object.values(counts);
+  assert.ok(Math.max(...vals) - Math.min(...vals) <= 2, 'even use of every letter: ' + JSON.stringify(counts));
+  // a store that already holds the first two codes it would hand out
+  const first = W.makeCode(Date.UTC(2026, 0, 1), () => Uint8Array.from([0, 1, 2, 3, 4, 5, 6, 7]));
+  const taken = new Set([first]);
+  let seq = 0;
+  const rand = n => Uint8Array.from({ length: n }, (_, i) => (seq === 0 ? i : 40 + (i % 5)));
+  const kv = { async get(k) { if (taken.has(k)) { seq++; return '{}'; } return null; } };
+  const got = await W.freeCode(kv, Date.UTC(2026, 0, 1), rand);
+  assert.ok(got && !taken.has(got), 'skipped the taken code: ' + got);
+  const full = { async get() { return '{}'; } };
+  assert.equal(await W.freeCode(full, Date.now()), null, 'gives up cleanly when nothing is free');
 });

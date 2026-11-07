@@ -12232,6 +12232,7 @@ window.KYT_CITIES = [
   {
     "id": "mawlynnong",
     "name": "Mawlynnong",
+    "weatherLink": true,
     "icon": "tree-pine",
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mawlynnong%20Meghalaya%20India",
@@ -14806,6 +14807,7 @@ window.KYT_CITIES = [
   {
     "id": "tirupati",
     "name": "Tirupati",
+    "weatherLink": true,
     "icon": "landmark",
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tirupati%20Andhra%20Pradesh%20India",
@@ -20106,6 +20108,7 @@ window.KYT_CITIES = [
   {
     "id": "bhimashankar",
     "name": "Bhimashankar",
+    "weatherLink": true,
     "state": "Maharashtra",
     "description": "An ancient shrine in the Sahyadri mountains, famous for its Jyotirlinga and the lush Bhimashankar Wildlife Sanctuary.",
     "lat": 19.0718,

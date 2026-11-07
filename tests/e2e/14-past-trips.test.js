@@ -57,6 +57,32 @@ test('the rules: a past trip becomes a planned trip with days, times, types and 
   assert.equal(t.originCity, 'already_there');
 });
 
+test('a trip that was planned here keeps its origin, cities and step types, instead of guessing from the text (D13)', () => {
+  const cities = [{ id: 'goa', name: 'Goa' }, { id: 'hampi', name: 'Hampi' }, { id: 'bengaluru', name: 'Bengaluru' }];
+  const rec = { id: 'pt_2', name: 'South', steps: [
+    { title: 'Overnight bus', icon: 'map-pin', where: 'KSRTC stand', type: 'travel', cityName: 'Hampi', originCity: 'bengaluru', targetTime: '2025-03-01T22:00:00' },
+    { title: 'Virupaksha Temple', icon: 'landmark', where: 'Temple Road', type: 'stop', cityName: 'Hampi', targetTime: '2025-03-02T09:00:00' },
+    { title: 'Sunset', icon: 'sun', where: 'Anegundi', type: 'stop', cityName: 'Goa', targetTime: '2025-03-03T17:00:00' }] };
+  const t = PT.planFromRecord(rec, cities, 5);
+  assert.equal(t.originCity, 'bengaluru', 'the origin comes back');
+  assert.deepEqual(t.cities, ['hampi', 'goa'], 'cities from the plan, not from words in the text');
+  assert.equal(t.steps[0].type, 'travel', 'a travel step stays travel even with a plain icon');
+  assert.deepEqual(t.days.map(d => d.cityId), ['hampi', 'hampi', 'goa']);
+});
+
+test('starting a planned trip records each step\'s type and city, and the origin on the first step (D13)', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.goto(env.base + '/virtual_trip.html');
+  const out = await page.evaluate(() => {
+    const trip = { originCity: 'delhi', steps: [
+      { id: 'a', dayId: 1, type: 'travel', cityName: 'Agra', title: 'Train', hour: 6, minute: 0 },
+      { id: 'b', dayId: 1, type: 'stop', cityName: 'Agra', title: 'Taj', hour: 9, minute: 0 }] };
+    return KYT.ui.buildLiveSteps(trip, new Date(2026, 5, 1)).map(s => [s.type, s.cityName, s.originCity || '']);
+  });
+  assert.deepEqual(out, [['travel', 'Agra', 'delhi'], ['stop', 'Agra', '']]);
+  await context.close();
+});
+
 test('summary and sizes', () => {
   const rec = { steps: [{ targetTime: '2025-03-01T07:00:00', memories: ['a', { photo: 'b' }], attachments: [{ data: 'c' }] }, { targetTime: '2025-03-02T07:00:00' }] };
   const s = PT.summarise(rec);

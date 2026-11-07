@@ -501,3 +501,9 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - **Nights picker** in Add a stay (1 to 7): adds a stay on each following day while those days are in the same city, with the check-out on the last night. It stops, and says why, if a day ends in another city, already has a stay, or does not exist.
     - **Review** (collapsed line, "n to look at") lists: a night with no stay, a stay in a different city than you end the day in, check-in before the day's last step ends, check-out after you leave next morning, two stays on one night, and (as a soft note) a stay on the last day. Each row has Add stay or Review step. Nothing blocks.
     - **Tests:** 10 added (09, 13). Test hook `KYT.virtualTrips.redrawPlan()`.
+78. **Past trips plan again exactly; weather link where figures are untrustworthy; shorter-risk share codes; testgmap removed (service worker cache `kyt-v112`)**
+    - **D13:** a trip started from a plan now records each step's type and city, and the origin on its first step. "Plan this again" uses them, so the origin and cities come back as planned instead of being guessed from the text. Trips ended before this change still use the old guess. Photos that were shrunk cannot be restored, and a past trip still has no PDF or album (both stay open).
+    - **D14:** Mawlynnong, Bhimashankar and Tirupati show **Check the current weather** (a web search, opens in a new tab) in place of "When to go" seasons, and their figures are removed from `data/weather.js`. The update tool skips cities marked `weatherLink`.
+    - **D15 (needs the worker redeployed):** share codes are now 2 characters for the day (days since 2024-01-01, repeating every 1,296 days) plus 4 random characters from crypto, still 6 in all. The worker also looks for the code first and tries again on a clash. Old links keep working.
+    - **D17:** `testgmap.html` deleted.
+    - **Tests:** 7 added (06, 12, 14).

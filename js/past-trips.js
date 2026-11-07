@@ -72,10 +72,11 @@
       if (isNaN(d)) return;
       const key = d.getFullYear() * 10000 + d.getMonth() * 100 + d.getDate();
       if (!dayIndex.has(key)) dayIndex.set(key, dayIndex.size + 1);
-      const city = cityOfStep(s, cities || []);
+      const named = s.cityName && (cities || []).find(c => c.name === s.cityName);       // the plan said which city; guess from the text only for trips that were never planned here
+      const city = named || cityOfStep(s, cities || []);
       if (city && !route.includes(city.id)) route.push(city.id);
       const icon = s.icon || 'map-pin';
-      const type = TRAVEL_ICONS.includes(icon) ? 'travel' : (STAY_ICONS.includes(icon) ? 'stay' : 'stop');
+      const type = ['stop', 'travel', 'stay'].includes(s.type) ? s.type : (TRAVEL_ICONS.includes(icon) ? 'travel' : (STAY_ICONS.includes(icon) ? 'stay' : 'stop'));
       out.push({
         id: 'pa_' + (now || Date.now()) + '_' + i, dayId: dayIndex.get(key), type, cityName: city ? city.name : '',
         title: s.title || 'Stop', where: s.where || '', mapsUrl: s.mapUrl || '', notes: s.notes || '', icon,
@@ -88,7 +89,7 @@
       return { id, cityId: c ? c.id : (route[0] || null) };
     });
     return {
-      id: String((now || Date.now())), name: (rec.name || 'Past trip') + ' (again)', originCity: 'already_there',
+      id: String((now || Date.now())), name: (rec.name || 'Past trip') + ' (again)', originCity: (steps.find(s => s.originCity) || {}).originCity || 'already_there',
       cities: route, days, duration: days.length || 1, taste: { intent: 'mixed', diet: 'any', pace: 'standard' }, steps: out
     };
   }
