@@ -313,9 +313,10 @@ test('a reminder also appears for changes left unsaved for days; "Save now" open
   await context.close();
 });
 
-test('on a phone, Save opens the share sheet (Files, Drive, WhatsApp) with a .kyt file and counts as saved', async () => {
+test('in the installed phone app, Save opens the share sheet (Files, Drive, WhatsApp) with a .kyt file and counts as saved', async () => {
   const { context, page } = await newPhone(env.browser, { userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)' });
   await page.addInitScript(() => {
+    Object.defineProperty(navigator, 'standalone', { value: true });     // installed on the home screen
     navigator.canShare = () => true;
     navigator.share = async d => { window.__shared = { name: d.files[0].name, type: d.files[0].type, size: d.files[0].size }; };
   });
@@ -334,6 +335,7 @@ test('on a phone, Save opens the share sheet (Files, Drive, WhatsApp) with a .ky
 test('closing the share sheet without choosing is not a save, and says so', async () => {
   const { context, page } = await newPhone(env.browser, { userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)' });
   await page.addInitScript(() => {
+    Object.defineProperty(navigator, 'standalone', { value: true });     // installed on the home screen
     navigator.canShare = () => true;
     navigator.share = async () => { const e = new Error('cancelled'); e.name = 'AbortError'; throw e; };
   });
@@ -620,4 +622,21 @@ test('the random part has no bias, and a code already in use is never handed out
   assert.ok(got && !taken.has(got), 'skipped the taken code: ' + got);
   const full = { async get() { return '{}'; } };
   assert.equal(await W.freeCode(full, Date.now()), null, 'gives up cleanly when nothing is free');
+});
+
+test('on an iPhone in Safari, Save downloads straight to Downloads (no share sheet), with the share sheet one tap away', async () => {
+  const { context, page } = await newPhone(env.browser, { userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)', acceptDownloads: true });
+  await page.addInitScript(() => { navigator.canShare = () => true; navigator.share = async d => { window.__shared = d.files[0].name; }; });
+  await page.goto(env.base + '/visited.html');
+  await page.evaluate(() => PassportStore.unlockCity('agra'));
+  await page.evaluate(() => KYT.backup.openSheet());
+  assert.match(await page.locator('#kyt-backup-how').innerText(), /straight to your Downloads folder/);
+  const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#kyt-backup-download')]);
+  assert.match(dl.suggestedFilename(), /^kyt-saved-.*\.kyt$/);
+  assert.equal(await page.evaluate(() => window.__shared || null), null, 'no share sheet');
+  assert.match(await page.locator('#kyt-backup-msg').innerText(), /Downloads/);
+  assert.equal(await page.evaluate(() => KYT.backup.status().unsaved), false);
+  await page.click('#kyt-backup-alt');
+  await page.waitForFunction(() => window.__shared);
+  await context.close();
 });

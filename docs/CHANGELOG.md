@@ -525,3 +525,8 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
    - The "Save a copy?" banner fired after only 4 edits and came back on the next edit when dismissed. Now: only for real work left unsaved for a day or more (20 changes, or 40 after a first save), or anything unsaved for 3 days; never in the first session; at most once a week, however it is dismissed. While someone works, the dot on Save is the only signal. "Save now" opens the Save sheet instead of jumping into the share sheet.
    - The Save sheet says, before the phone's share sheet opens, what will happen: tap Save to Files (iPhone) or Drive, Files, WhatsApp (Android), and that closing it loses nothing. Closing the sheet is no longer shown as a red error.
    - Home page: the pale header is now a deep-blue gradient with a white primary button and tinted icon chips, a curved edge into the page, soft shadows on the sample cards instead of outlines. Still one blue accent, no boxed card around the actions.
+
+83. **Save goes straight to Downloads on iPhone (v117)**
+   - In Safari (a browser tab) on iPhone and Android, Save now downloads the file directly, like any download, instead of opening the share sheet. The share sheet stays one tap away ("Choose where to send it instead").
+   - In the installed home-screen app the share sheet stays the default, since iOS gives a downloaded blob no clear destination there (not verified on a device); a "Download to my phone instead" link offers the direct route.
+   - Phone downloads use a generic file type so iOS keeps the `.kyt` name.

@@ -263,11 +263,16 @@ window.KYT.backup = (() => {
    * Saves everything to one file. On a phone the share sheet opens, so "Save to Files", Drive or WhatsApp are
    * one tap; elsewhere it downloads. Resolves to the summary, or null when the person closed the share sheet.
    */
-  async function saveToFile() {
+  /** True in the installed (home screen) app, where iPhone gives a blob download no Downloads folder to land in. */
+  const isInstalledApp = () => { try { return !!navigator.standalone || (window.matchMedia && matchMedia('(display-mode: standalone)').matches); } catch (e) { return false; } };
+  const isPhone = () => /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  /** How Save works here: 'download' (straight to Downloads, like any file) or 'share' (the phone's share sheet). */
+  function defaultMethod() { return isPhone() && navigator.share && isInstalledApp() ? 'share' : 'download'; }
+  async function saveToFile(method) {
     const backup = await buildBackup();
     const text = JSON.stringify(backup);
     const name = fileName();
-    const phone = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) && navigator.share;
+    const phone = (method || defaultMethod()) === 'share' && isPhone() && navigator.share;
     if (phone) {
       const file = new File([text], name, { type: 'application/json' });
       if (!navigator.canShare || navigator.canShare({ files: [file] })) {
@@ -277,7 +282,7 @@ window.KYT.backup = (() => {
         return { ...summary(backup), method: 'share', name };
       }
     }
-    const blob = new Blob([text], { type: 'application/json' });
+    const blob = new Blob([text], { type: isPhone() ? 'application/octet-stream' : 'application/json' });   // octet-stream: iOS keeps the .kyt name instead of renaming to .json
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url; a.download = name;
@@ -434,14 +439,16 @@ window.KYT.backup = (() => {
       ? `<span style="color:#B45309">● ${sv.changes} ${sv.changes === 1 ? 'change' : 'changes'} ${sv.lastSaved ? 'since you last saved (' + esc(dateTxt(sv.lastSaved)) + ')' : ', none saved to a file yet'}</span>`
       : (sv.lastSaved ? `<span style="color:#047857">✓ Everything is saved (${esc(dateTxt(sv.lastSaved))})</span>` : '<span style="color:#64748B">Nothing saved to a file yet</span>');
     const prot = st.persisted === null ? '' : (st.persisted ? 'Protected from automatic cleanup.' : 'Not yet protected from automatic cleanup by the browser, so a saved file matters.');
-    const viaShare = !!(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent) && navigator.share);
+    const viaShare = defaultMethod() === 'share';
+    const other = isPhone() && navigator.share;   // a phone that could do either
     const wrap = sheet('kyt-backup-sheet', `
       <h2 style="margin:0 0 6px;font-size:20px;font-weight:900">Save &amp; Open</h2>
       <p style="margin:0 0 10px;font-size:14px;line-height:1.5;color:#475569">Your trips live on this device only: no account, no cloud. <strong>Save</strong> puts all of them, with your passport, photos and tickets, in one file you keep (Files, Drive, or send it to yourself). <strong>Open</strong> that file on any phone to carry on.</p>
       <p style="margin:0;font-size:13.5px;font-weight:800">${state}</p>
       <div id="kyt-backup-msg" aria-live="polite" style="margin-top:8px;font-size:14px;font-weight:700;color:#047857"></div>
       <button type="button" id="kyt-backup-download" style="${PRIMARY}">Save to a file</button>
-      ${viaShare ? `<p id="kyt-backup-how" style="margin:8px 2px 0;font-size:12.5px;line-height:1.5;color:#475569">Your phone's own share sheet opens next, because that is how a file leaves an app. Tap <strong>${/iPhone|iPad|iPod/i.test(navigator.userAgent) ? 'Save to Files' : 'Drive, Files or WhatsApp'}</strong> and pick where to keep it. Closing the sheet saves nothing, and nothing is lost.</p>` : ''}
+      ${viaShare ? `<p id="kyt-backup-how" style="margin:8px 2px 0;font-size:12.5px;line-height:1.5;color:#475569">Your phone's share sheet opens next, because that is how a file leaves an installed app. Tap <strong>${/iPhone|iPad|iPod/i.test(navigator.userAgent) ? 'Save to Files' : 'Drive, Files or WhatsApp'}</strong> and pick where to keep it. Closing it saves nothing, and nothing is lost.</p>` : (isPhone() ? `<p id="kyt-backup-how" style="margin:8px 2px 0;font-size:12.5px;line-height:1.5;color:#475569">The file goes straight to your Downloads folder, in Files.</p>` : '')}
+      ${other ? `<button type="button" id="kyt-backup-alt" style="background:none;border:0;padding:10px 2px;font:700 12.5px system-ui;color:#2563EB;text-decoration:underline;cursor:pointer">${viaShare ? 'Download to my phone instead' : 'Choose where to send it instead (share sheet)'}</button>` : ''}
       <button type="button" id="kyt-backup-restore" style="${SECOND}">Open a saved file</button>
       <input type="file" id="kyt-backup-file" style="display:none">
       ${meterHtml(meter)}
@@ -455,13 +462,16 @@ window.KYT.backup = (() => {
     const say = (t, bad) => { msg.textContent = t; msg.style.color = bad ? '#B91C1C' : '#047857'; };
     wrap.addEventListener('click', e => { if (e.target === wrap) wrap.remove(); });
     wrap.querySelector('#kyt-backup-close').onclick = () => wrap.remove();
-    wrap.querySelector('#kyt-backup-download').onclick = async () => {
+    const run = async method => {
       try {
-        const r = await saveToFile();
+        const r = await saveToFile(method);
         if (!r) return say('Nothing was saved because the share sheet was closed. Tap Save to a file whenever you are ready.', false);
-        say(`Saved: ${r.cities} ${r.cities === 1 ? 'city' : 'cities'}, ${r.virtualTrips} virtual ${r.virtualTrips === 1 ? 'trip' : 'trips'}${r.activeTrip ? ', current trip "' + r.activeTrip + '"' : ''}. Keep the file somewhere safe, such as your Drive.`);
+        say(`Saved: ${r.cities} ${r.cities === 1 ? 'city' : 'cities'}, ${r.virtualTrips} virtual ${r.virtualTrips === 1 ? 'trip' : 'trips'}${r.activeTrip ? ', current trip "' + r.activeTrip + '"' : ''}. ${r.method === 'download' && isPhone() ? 'It is in Downloads, in the Files app.' : 'Keep the file somewhere safe, such as your Drive.'}`);
       } catch (e) { say('Could not save: ' + e.message, true); }
     };
+    wrap.querySelector('#kyt-backup-download').onclick = () => run();
+    const alt = wrap.querySelector('#kyt-backup-alt');
+    if (alt) alt.onclick = () => run(viaShare ? 'download' : 'share');
     const file = wrap.querySelector('#kyt-backup-file');
     wrap.querySelector('#kyt-backup-restore').onclick = () => file.click();
     file.onchange = async () => {
