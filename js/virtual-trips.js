@@ -2335,6 +2335,7 @@ KYT.virtualTrips = (function () {
     }
 
     html += KYT.ui.renderAccessNote(city, 'vt-day-access');
+    html += KYT.ui.renderSeasonLine(city, trip.travelMonth, 'vt-day-season');
 
     const hints = dayHints(trip, day);
     if (hints.length) {

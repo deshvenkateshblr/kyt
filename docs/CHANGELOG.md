@@ -516,3 +516,7 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
 80. **Indian scripts in every PDF, and advice for high and road-dependent places (v114)**
    - D8: new `js/pdf-scripts.js` sets Hindi, Bengali, Punjabi, Gujarati, Odia, Tamil, Telugu, Kannada and Malayalam text in Noto Sans fonts (in `lib/fonts`, about 1 MB in all, fetched only when a document has that script, then kept offline). The trip PDF and the Memory Album PDF both use it; English-only documents load nothing extra.
    - D1, as advice rather than a gate: Sonamarg and Kargil carry a "Recommended: check the road before you go" note about the Zojila road, and any place above 2,500 m with no curated note shows a plain "keep the first day easy" tip. They show in the city sheet, the Day Plan and the PDF, and never change a plan.
+
+81. **Past-trip PDF and a season in the Day Plan (v115)**
+   - D13: a past trip's view has Save as PDF, the same journal PDF a live trip gets (`KYT.social.downloadAlbumPDF` now takes a saved trip). Shrunk photos are not restorable, and the view already says so.
+   - D14: with a travel month chosen, each Day Plan day shows a quiet line with that city's season ("Jaipur in July: hot, about 33°C, wet. Mar to Jun season, wider-area average"). "When to go" now says figures cover the wider area (about 55 km).

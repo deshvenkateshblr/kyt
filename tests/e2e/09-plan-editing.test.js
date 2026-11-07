@@ -427,6 +427,19 @@ test('choosing a travel month shows its notes and is kept with the trip', async 
   await context.close();
 });
 
+test('D14: the Day Plan names the season at the day\'s city once a month is chosen, and says the figures are wider-area averages', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openPlan(page);
+  await page.evaluate(() => KYT.virtualTrips.seedPlanForTests());
+  await page.waitForSelector('#vt-screen-builder:not(.hidden)');
+  assert.equal(await page.locator('#vt-day-season').count(), 0, 'no month, no season line');
+  await page.selectOption('#vt-travel-month', '7');
+  await page.waitForSelector('#vt-day-season');
+  assert.match(await page.locator('#vt-day-season').innerText(), /in July: .*\d+\u00b0C, .* season, wider-area average/);
+  assert.match(await page.evaluate(() => KYT.ui.renderWeatherSeasons(KYT_CITIES.find(c => c.id === 'jaipur'))), /wider area \(about 55 km\)/);
+  await context.close();
+});
+
 test('the start date dialog warns about a closed or wet month and a month that differs from the plan, and still lets you start', async () => {
   const { context, page } = await newPhone(env.browser);
   await openPlan(page, [['Leh', 'leh'], ['Agra', 'agra']]);

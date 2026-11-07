@@ -271,9 +271,16 @@
       <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start"><div><h2 style="margin:0;font-size:20px;font-weight:900">${esc(rec.name)}</h2>
       <p style="margin:2px 0 0;font-size:12px;color:#64748B">${esc(fmt(s.first))}${s.last && fmt(s.last) !== fmt(s.first) ? ' to ' + esc(fmt(s.last)) : ''} · ${s.photos} photos (shrunk to save space)</p></div>
       <button type="button" data-past-close style="${BTN}background:#F1F5F9;color:#334155;border:0">Close</button></div>
+      ${root.KYT && root.KYT.social && root.KYT.social.downloadAlbumPDF && rec.steps.length ? `<button type="button" data-past-pdf style="${BTN}margin-top:10px;background:#2563EB;color:#fff;border:0">Save as PDF</button>` : ''}
       ${rec.notes ? `<p style="font-size:13px;color:#334155;margin:10px 0 0">${esc(rec.notes)}</p>` : ''}${body}</div>`;
     document.body.appendChild(wrap);
-    wrap.addEventListener('click', e => { if (e.target === wrap || e.target.closest('[data-past-close]')) wrap.remove(); });
+    wrap.addEventListener('click', e => {
+      if (e.target === wrap || e.target.closest('[data-past-close]')) wrap.remove();
+      const pdf = e.target.closest('[data-past-pdf]');
+      if (pdf) {   // the same journal PDF as a live trip, built from this saved copy
+        root.KYT.social.downloadAlbumPDF({ tripName: rec.name, tripCoverImage: rec.cover || null, stepsData: rec.steps.map(st => ({ ...st, memories: (st.memories || []).map(photoOf).filter(Boolean) })) }, pdf);
+      }
+    });
   }
 
   function toast(msg, actionLabel, onAction) {

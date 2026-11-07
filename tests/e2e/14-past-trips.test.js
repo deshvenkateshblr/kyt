@@ -194,3 +194,19 @@ test('if the device has no room to keep the trip, the person is asked before it 
   assert.equal(await page.evaluate(async () => { await KYT.store.loadData(); return KYT.store.get().stepsData.length; }), 1, 'declining keeps the live trip');
   await context.close();
 });
+
+test('D13: a past trip can be saved as the same journal PDF a live trip gets', async () => {
+  const { context, page } = await newPhone(env.browser, { realPdf: true });
+  await page.goto(env.base + '/virtual_trip.html');
+  await endTripWith(page, await bigPhoto(page));
+  await page.waitForSelector('#vt-past [data-past-id]');
+  await page.click('[data-past-act="view"]');
+  await page.waitForFunction(() => typeof pdfMake === 'object' || typeof pdfMake === 'function');
+  const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#kyt-past-view [data-past-pdf]')]);
+  assert.match(dl.suggestedFilename(), /goa_escape_journal\.pdf/);
+  await dl.saveAs('/tmp/kyt-past.pdf');
+  const raw = fs.readFileSync('/tmp/kyt-past.pdf').toString('latin1');
+  assert.ok(raw.startsWith('%PDF'));
+  try { const t = require('node:child_process').execFileSync('pdftotext', ['/tmp/kyt-past.pdf', '-']).toString(); assert.match(t, /Fort Aguada/); } catch (e) { if (e.code !== 'ENOENT') throw e; }
+  await context.close();
+});

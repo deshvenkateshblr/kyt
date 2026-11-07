@@ -230,17 +230,21 @@ window.KYT.social = (() => {
   }
 
   // ─── PDF Download ─────────────────────────────────────────────────────────────
-  async function downloadPDF() {
-    const originalText = btnDownloadCard.innerHTML;
-    btnDownloadCard.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> Building PDF…';
-    btnDownloadCard.disabled = true;
-    if (window.lucide) lucide.createIcons({ root: btnDownloadCard });
+  // source: optional { tripName, tripCoverImage, stepsData } (a past trip); button: the button to show progress on
+  async function downloadPDF(source, button) {
+    const btn = button || btnDownloadCard;
+    const originalText = btn ? btn.innerHTML : '';
+    if (btn) {
+      btn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> Building PDF…';
+      btn.disabled = true;
+      if (window.lucide) lucide.createIcons({ root: btn });
+    }
 
     await new Promise(r => setTimeout(r, 80)); // let UI breathe
 
     try {
-      const data = KYT.store.get();
-      const sortedSteps = [...data.stepsData].sort((a, b) => a.targetTime - b.targetTime);
+      const data = source && source.stepsData ? source : KYT.store.get();
+      const sortedSteps = data.stepsData.map(st => ({ ...st, targetTime: new Date(st.targetTime) })).sort((a, b) => a.targetTime - b.targetTime);
 
       const fmtTime  = d => d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
       const fmtLong  = d => d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
@@ -440,9 +444,11 @@ window.KYT.social = (() => {
       console.error('PDF generation failed:', err);
       alert('Failed to generate PDF: ' + err.message);
     } finally {
-      btnDownloadCard.innerHTML = originalText;
-      btnDownloadCard.disabled  = false;
-      if (window.lucide) lucide.createIcons({ root: btnDownloadCard });
+      if (btn) {
+        btn.innerHTML = originalText;
+        btn.disabled  = false;
+        if (window.lucide) lucide.createIcons({ root: btn });
+      }
     }
   }
 
@@ -452,8 +458,8 @@ window.KYT.social = (() => {
   if (btnCloseCard)    btnCloseCard.addEventListener('click', () => {
     if (memoryCardView) memoryCardView.classList.add('hidden');
   });
-  if (btnDownloadCard) btnDownloadCard.addEventListener('click', downloadPDF);
+  if (btnDownloadCard) btnDownloadCard.addEventListener('click', () => downloadPDF());
 
-  return { checkCompletion, openAlbum: generateMemoryCard };
+  return { checkCompletion, openAlbum: generateMemoryCard, downloadAlbumPDF: downloadPDF };
 })();
 

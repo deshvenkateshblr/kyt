@@ -262,7 +262,19 @@ window.KYT.ui = (function () {
     return `<div ${id ? `id="${id}" ` : ''}class="text-xs text-slate-700 bg-sky-50/70 border border-sky-100 rounded-xl px-3 py-2.5 space-y-2">
       <p class="flex items-center gap-1.5 font-extrabold text-sky-900 uppercase tracking-wider text-[11px]"><i data-lucide="calendar-days" class="w-4 h-4"></i> When to go</p>
       <ul class="space-y-1.5">${rows}</ul>
-      <p class="text-[11px] text-slate-500">Typical average temperature day and night${period ? ', ' + esc(period) : ''}. Check the forecast close to your dates.</p></div>`;
+      <p class="text-[11px] text-slate-500">Typical average temperature day and night${period ? ', ' + esc(period) : ''}, for the wider area (about 55 km), so nearby places can look alike. Check the forecast close to your dates.</p></div>`;
+  }
+
+  /** One quiet line for a day of the Day Plan: the season the trip falls in at that day's city. '' without a month or data. */
+  function renderSeasonLine(city, month, id) {
+    month = Number(month);
+    const W = window.KYT_WEATHER, S = window.KYT && KYT.weatherSeasons;
+    const entry = W && W.cities && city && !city.weatherLink && W.cities[city.id];
+    if (!month || month < 1 || month > 12 || !entry || !S) return '';
+    const se = S.summarise(entry).find(x => x.months.includes(month - 1));
+    if (!se) return '';
+    const t = se.avgTemp < 0 ? '\u2212' + Math.abs(se.avgTemp) : se.avgTemp;
+    return `<p ${id ? `id="${id}" ` : ''}class="flex items-center gap-1.5 text-[11px] text-slate-500"><i data-lucide="cloud-sun" class="w-3.5 h-3.5 text-sky-500 shrink-0"></i><span>${esc(city.name)} in ${MONTH_LONG[month - 1]}: ${esc(se.tempLabel.toLowerCase())}, about ${t}\u00b0C, ${esc(se.rainLabel)}. <span class="text-slate-400">${esc(se.span)} season, wider-area average.</span></span></p>`;
   }
 
   function renderGeneratedPlanNotice() {
@@ -1463,7 +1475,7 @@ window.KYT.ui = (function () {
     beforeYouGoInfo,
     renderBeforeYouGo,
     renderBeforeYouGoChip,
-    renderWeatherSeasons,
+    renderWeatherSeasons, renderSeasonLine,
     renderMobilityBadge,
     categoryMeta,
     encodeAiTrip,
