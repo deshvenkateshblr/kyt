@@ -184,7 +184,14 @@ KYT.header = (function() {
       // Very narrow phones (320 px): the full-size toolbar is about 357 px wide and cut Live off the screen. Tighten it.
       const st = document.createElement('style');
       st.id = 'kyt-toolbar-css';
-      st.textContent = '@media (max-width: 359px){.kyt-toolbar{padding-left:.375rem!important;padding-right:.375rem!important;gap:.25rem}' +
+      st.textContent = '.kyt-toolbar a,.kyt-toolbar button{transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease}' +
+        '.kyt-toolbar a:active,.kyt-toolbar button:active{transform:scale(.94)}' +
+        '@media (hover:hover){.kyt-toolbar a:hover,.kyt-toolbar button:hover{transform:translateY(-2px)}}' +
+        // the Save button lifts and glows (twice) when something has changed: a cue, not a banner
+        '@keyframes kyt-cue{0%,50%,100%{transform:none;box-shadow:none}22%{transform:translateY(-4px) scale(1.14);box-shadow:0 10px 18px -6px rgba(37,99,235,.6)}72%{transform:translateY(-3px) scale(1.08);box-shadow:0 8px 14px -6px rgba(37,99,235,.5)}}' +
+        '.kyt-cue{animation:kyt-cue 1.4s ease-in-out 1}' +
+        '@media (prefers-reduced-motion:reduce){.kyt-cue{animation:none}.kyt-toolbar a,.kyt-toolbar button{transition:none}}' +
+        '@media (max-width: 359px){.kyt-toolbar{padding-left:.375rem!important;padding-right:.375rem!important;gap:.25rem}' +
         '.kyt-toolbar>div{gap:.25rem!important}.kyt-toolbar a,.kyt-toolbar button{padding-left:.25rem!important;padding-right:.25rem!important;min-width:0!important}' +
         '.kyt-toolbar>div>a:first-child{width:36px!important;height:36px!important}}';
       document.head.appendChild(st);

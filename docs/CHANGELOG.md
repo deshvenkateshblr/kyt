@@ -533,3 +533,6 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
 
 84. **Home menu animation restored (v118)**
    - The one-time first-visit "lift and glow" on each option is back (rows lift and light up in turn). Rows also rise in one after another whenever the menu appears, press in on tap, and the arrow slides on hover. All of it is off for people who ask their phone to reduce motion.
+
+85. **Toolbar buttons move like the home menu (v119)**
+   - The top toolbar buttons press in on tap and lift on hover. When something changes (a step, a city, a photo), the Save button lifts and glows twice, at most once a minute, as the gentle cue that there is something to save. It replaces nagging: the banner stays rare. Off under Reduce Motion.

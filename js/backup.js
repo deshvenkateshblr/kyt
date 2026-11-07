@@ -61,7 +61,17 @@ window.KYT.backup = (() => {
       if (!readLocal(KEYS.changedAt)) localStorage.setItem(KEYS.changedAt, new Date().toISOString());
     } catch (e) { /* storage blocked: nothing to track */ }
     refreshIndicators();
+    cueSave();
     if (typeof document !== 'undefined' && document.body) { clearTimeout(nudgeTimer); nudgeTimer = setTimeout(maybeNudge, 4000); }
+  }
+  /** A quiet cue instead of a banner: the Save button lifts and glows (at most once a minute) after something changes. */
+  let lastCue = 0;
+  function cueSave() {
+    if (typeof document === 'undefined' || Date.now() - lastCue < 60000) return;
+    const btns = document.querySelectorAll('#kyt-nav-save');
+    if (!btns.length) return;
+    lastCue = Date.now();
+    btns.forEach(b => { b.classList.remove('kyt-cue'); void b.offsetWidth; b.classList.add('kyt-cue'); setTimeout(() => b.classList.remove('kyt-cue'), 1500); });
   }
   function markSaved(at) {
     try {

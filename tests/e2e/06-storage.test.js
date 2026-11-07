@@ -640,3 +640,16 @@ test('on an iPhone in Safari, Save downloads straight to Downloads (no share she
   await page.waitForFunction(() => window.__shared);
   await context.close();
 });
+
+test('changing something makes the Save button lift and glow, once a minute at most', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.goto(env.base + '/visited.html');
+  await page.waitForSelector('#kyt-nav-save');
+  await page.evaluate(() => KYT.backup.markChanged());
+  assert.equal(await page.locator('#kyt-nav-save.kyt-cue').count(), 1, 'cued');
+  assert.equal(await page.locator('#kyt-nav-save').evaluate(e => getComputedStyle(e).animationName), 'kyt-cue');
+  await page.waitForFunction(() => !document.querySelector('#kyt-nav-save.kyt-cue'), null, { timeout: 4000 });
+  await page.evaluate(() => KYT.backup.markChanged());
+  assert.equal(await page.locator('#kyt-nav-save.kyt-cue').count(), 0, 'not again within a minute');
+  await context.close();
+});
