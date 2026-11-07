@@ -271,35 +271,45 @@ test('the toolbar still fits a small phone with the Save button added', async ()
   await context.close();
 });
 
-test('a reminder appears once enough has changed with nothing saved, can be put off for a day, and never blocks', async () => {
+test('the reminder is calm: not in the first session, only after real unsaved work, and once a week at most', async () => {
   const { context, page } = await newPhone(env.browser, { nudge: true });
   await page.goto(env.base + '/virtual_trip.html');
   await page.waitForSelector('#kyt-nav-save');
-  await page.evaluate(() => { for (let i = 0; i < 3; i++) KYT.backup.markChanged(); });
-  await page.waitForTimeout(4600);
-  assert.equal(await page.locator('#kyt-save-nudge').count(), 0, '3 changes is too few to nag about');
-  await page.evaluate(() => KYT.backup.markChanged());
+  await page.evaluate(() => { for (let i = 0; i < 30; i++) KYT.backup.markChanged(); });
+  await page.waitForTimeout(4800);
+  assert.equal(await page.locator('#kyt-save-nudge').count(), 0, 'thirty edits in the first session: only the dot on Save, no banner');
+  assert.equal(await page.locator('[data-kyt-save-dot]').first().evaluate(e => getComputedStyle(e).display), 'block');
+  // a day later, with real work unsaved
+  await setNow(page, 'kyt_changed_at', new Date(Date.now() - 2 * 86400000).toISOString());
+  await page.reload();
   await page.waitForSelector('#kyt-save-nudge');
   assert.match(await page.locator('#kyt-save-nudge').innerText(), /Save a copy\?[\s\S]*only on this device/);
   assert.equal(await page.locator('#btn-vt-create').isEnabled(), true, 'the page underneath still works');
   await page.click('#kyt-nudge-later');
   assert.equal(await page.locator('#kyt-save-nudge').count(), 0);
-  await page.reload(); await page.waitForTimeout(3200);
-  assert.equal(await page.locator('#kyt-save-nudge').count(), 0, 'put off for a day');
+  // more edits right away do not bring it back
+  await page.evaluate(() => { for (let i = 0; i < 10; i++) KYT.backup.markChanged(); });
+  await page.waitForTimeout(4800);
+  assert.equal(await page.locator('#kyt-save-nudge').count(), 0, 'not again on the next edits');
+  await page.reload(); await page.waitForTimeout(3600);
+  assert.equal(await page.locator('#kyt-save-nudge').count(), 0, 'nor on the next visit: a week');
+  assert.ok((parseInt(await page.evaluate(() => localStorage.getItem('kyt_save_snooze')), 10) - Date.now()) > 6 * 86400000);
   await context.close();
 });
 
-test('a reminder also appears for old unsaved changes, and saving from it clears everything', async () => {
+test('a reminder also appears for changes left unsaved for days; "Save now" opens the Save sheet, which explains the next step', async () => {
   const { context, page } = await newPhone(env.browser, { nudge: true });
   await page.goto(env.base + '/virtual_trip.html');
   await setNow(page, 'kyt_change_count', '2');
   await setNow(page, 'kyt_changed_at', new Date(Date.now() - 5 * 86400000).toISOString());
   await page.reload();
   await page.waitForSelector('#kyt-save-nudge');
-  const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#kyt-nudge-save')]);
+  await page.click('#kyt-nudge-save');
+  await page.waitForSelector('#kyt-backup-sheet');
+  assert.equal(await page.locator('#kyt-save-nudge').count(), 0);
+  const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#kyt-backup-download')]);
   assert.match(dl.suggestedFilename(), /^kyt-saved-.*\.kyt$/);
-  await page.waitForFunction(() => !document.getElementById('kyt-save-nudge'));
-  assert.deepEqual(await page.evaluate(() => KYT.backup.status().unsaved), false);
+  await page.waitForFunction(() => KYT.backup.status().unsaved === false);
   await context.close();
 });
 
@@ -312,6 +322,7 @@ test('on a phone, Save opens the share sheet (Files, Drive, WhatsApp) with a .ky
   await page.goto(env.base + '/visited.html');
   await page.evaluate(() => PassportStore.unlockCity('agra'));
   await page.evaluate(() => KYT.backup.openSheet());
+  assert.match(await page.locator('#kyt-backup-how').innerText(), /share sheet opens next[\s\S]*Save to Files/);
   await page.click('#kyt-backup-download');
   await page.waitForFunction(() => window.__shared);
   const sh = await page.evaluate(() => window.__shared);
@@ -330,7 +341,7 @@ test('closing the share sheet without choosing is not a save, and says so', asyn
   await page.evaluate(() => PassportStore.unlockCity('agra'));
   await page.evaluate(() => KYT.backup.openSheet());
   await page.click('#kyt-backup-download');
-  await page.waitForFunction(() => /Not saved/.test(document.getElementById('kyt-backup-msg').textContent));
+  await page.waitForFunction(() => /Nothing was saved/.test(document.getElementById('kyt-backup-msg').textContent));
   assert.equal(await page.evaluate(() => KYT.backup.status().unsaved), true, 'still unsaved');
   await context.close();
 });

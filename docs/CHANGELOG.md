@@ -520,3 +520,8 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
 81. **Past-trip PDF and a season in the Day Plan (v115)**
    - D13: a past trip's view has Save as PDF, the same journal PDF a live trip gets (`KYT.social.downloadAlbumPDF` now takes a saved trip). Shrunk photos are not restorable, and the view already says so.
    - D14: with a travel month chosen, each Day Plan day shows a quiet line with that city's season ("Jaipur in July: hot, about 33°C, wet. Mar to Jun season, wider-area average"). "When to go" now says figures cover the wider area (about 55 km).
+
+82. **Calmer saving, a clearer iPhone save step, a richer home page (v116)** (found testing on an iPhone)
+   - The "Save a copy?" banner fired after only 4 edits and came back on the next edit when dismissed. Now: only for real work left unsaved for a day or more (20 changes, or 40 after a first save), or anything unsaved for 3 days; never in the first session; at most once a week, however it is dismissed. While someone works, the dot on Save is the only signal. "Save now" opens the Save sheet instead of jumping into the share sheet.
+   - The Save sheet says, before the phone's share sheet opens, what will happen: tap Save to Files (iPhone) or Drive, Files, WhatsApp (Android), and that closing it loses nothing. Closing the sheet is no longer shown as a red error.
+   - Home page: the pale header is now a deep-blue gradient with a white primary button and tinted icon chips, a curved edge into the page, soft shadows on the sample cards instead of outlines. Still one blue accent, no boxed card around the actions.

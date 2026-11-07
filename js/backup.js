@@ -16,6 +16,7 @@ window.KYT = window.KYT || {};
 
 window.KYT.backup = (() => {
   const KEYS = { passport: 'kyt_passport', vtrips: 'kyt_virtual_trips', shareName: 'kyt_share_name', lastBackup: 'kyt_last_backup', changedAt: 'kyt_changed_at', changes: 'kyt_change_count', snooze: 'kyt_save_snooze' };
+  const NUDGE_QUIET_MS = 7 * 86400000;   // at most one reminder a week, however much changes
   const FORMAT = 1;
 
   // ── small helpers ─────────────────────────────────────────────────────────
@@ -94,20 +95,21 @@ window.KYT.backup = (() => {
       const snooze = parseInt(readLocal(KEYS.snooze), 10) || 0;
       if (Date.now() < snooze) return;
       if (Date.now() - lastActivity < IDLE_MS) { clearTimeout(nudgeTimer); nudgeTimer = setTimeout(maybeNudge, 1500); return; }   // never while they are tapping or typing
-      const aged = st.since && Date.now() - st.since.getTime() > 3 * DAY;
-      const enough = st.lastSaved ? st.changes >= 15 : st.changes >= 4;
-      if (!aged && !enough) return;
+      // Calm by design: the dot on Save already says "unsaved" while someone works. The banner is for work that has sat unsaved for a day or more
+      // and amounts to something (or for anything left unsaved three days). Never during the first session, never more than once a week.
+      const age = st.since ? Date.now() - st.since.getTime() : 0;
+      const enough = st.lastSaved ? st.changes >= 40 : st.changes >= 20;
+      if (!(age > 3 * DAY || (age > DAY && enough))) return;
       const el = document.createElement('div');
       el.id = 'kyt-save-nudge'; el.setAttribute('role', 'status');
       el.style.cssText = 'position:fixed;left:12px;right:12px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:240;max-width:480px;margin:0 auto;padding:14px 16px;border-radius:16px;background:#fff;color:#0F172A;border:2px solid #BFDBFE;font:600 14px/1.45 system-ui,sans-serif;box-shadow:0 14px 30px rgba(15,23,42,.25)';
       const what = st.lastSaved ? 'Your latest changes are only on this device.' : 'Your trips are only on this device.';
-      el.innerHTML = `<strong style="font-weight:900">Save a copy?</strong> ${what} One tap saves everything to a file you keep. <div style="display:flex;gap:10px;margin-top:10px"><button type="button" id="kyt-nudge-save" style="flex:1;padding:10px;border-radius:12px;border:0;background:#2563EB;color:#fff;font:800 14px system-ui">Save now</button><button type="button" id="kyt-nudge-later" style="flex:1;padding:10px;border-radius:12px;border:2px solid #E2E8F0;background:#fff;color:#475569;font:800 14px system-ui">Not today</button></div>`;
+      el.innerHTML = `<strong style="font-weight:900">Save a copy?</strong> ${what} Saving makes one file with all of it, which you keep. <div style="display:flex;gap:10px;margin-top:10px"><button type="button" id="kyt-nudge-save" style="flex:1;padding:10px;border-radius:12px;border:0;background:#2563EB;color:#fff;font:800 14px system-ui">Save now</button><button type="button" id="kyt-nudge-later" style="flex:1;padding:10px;border-radius:12px;border:2px solid #E2E8F0;background:#fff;color:#475569;font:800 14px system-ui">Not now</button></div>`;
       document.body.appendChild(el);
-      el.querySelector('#kyt-nudge-later').onclick = () => { try { localStorage.setItem(KEYS.snooze, String(Date.now() + DAY)); } catch (e) { /* */ } el.remove(); };
-      el.querySelector('#kyt-nudge-save').onclick = async () => {
-        const b = el.querySelector('#kyt-nudge-save'); b.textContent = 'Saving…';
-        try { await saveToFile(); el.remove(); } catch (e) { b.textContent = 'Could not save. Tap to retry.'; }
-      };
+      const quiet = () => { try { localStorage.setItem(KEYS.snooze, String(Date.now() + NUDGE_QUIET_MS)); } catch (e) { /* */ } };
+      quiet();                                         // shown once: whatever happens next, it does not come back this week
+      el.querySelector('#kyt-nudge-later').onclick = () => el.remove();
+      el.querySelector('#kyt-nudge-save').onclick = () => { el.remove(); openSheet(); };   // explains what will happen first, rather than jumping into the share sheet
     } catch (e) { /* never get in the way */ }
   }
 
@@ -432,12 +434,14 @@ window.KYT.backup = (() => {
       ? `<span style="color:#B45309">● ${sv.changes} ${sv.changes === 1 ? 'change' : 'changes'} ${sv.lastSaved ? 'since you last saved (' + esc(dateTxt(sv.lastSaved)) + ')' : ', none saved to a file yet'}</span>`
       : (sv.lastSaved ? `<span style="color:#047857">✓ Everything is saved (${esc(dateTxt(sv.lastSaved))})</span>` : '<span style="color:#64748B">Nothing saved to a file yet</span>');
     const prot = st.persisted === null ? '' : (st.persisted ? 'Protected from automatic cleanup.' : 'Not yet protected from automatic cleanup by the browser, so a saved file matters.');
+    const viaShare = !!(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent) && navigator.share);
     const wrap = sheet('kyt-backup-sheet', `
       <h2 style="margin:0 0 6px;font-size:20px;font-weight:900">Save &amp; Open</h2>
       <p style="margin:0 0 10px;font-size:14px;line-height:1.5;color:#475569">Your trips live on this device only: no account, no cloud. <strong>Save</strong> puts all of them, with your passport, photos and tickets, in one file you keep (Files, Drive, or send it to yourself). <strong>Open</strong> that file on any phone to carry on.</p>
       <p style="margin:0;font-size:13.5px;font-weight:800">${state}</p>
       <div id="kyt-backup-msg" aria-live="polite" style="margin-top:8px;font-size:14px;font-weight:700;color:#047857"></div>
       <button type="button" id="kyt-backup-download" style="${PRIMARY}">Save to a file</button>
+      ${viaShare ? `<p id="kyt-backup-how" style="margin:8px 2px 0;font-size:12.5px;line-height:1.5;color:#475569">Your phone's own share sheet opens next, because that is how a file leaves an app. Tap <strong>${/iPhone|iPad|iPod/i.test(navigator.userAgent) ? 'Save to Files' : 'Drive, Files or WhatsApp'}</strong> and pick where to keep it. Closing the sheet saves nothing, and nothing is lost.</p>` : ''}
       <button type="button" id="kyt-backup-restore" style="${SECOND}">Open a saved file</button>
       <input type="file" id="kyt-backup-file" style="display:none">
       ${meterHtml(meter)}
@@ -454,7 +458,7 @@ window.KYT.backup = (() => {
     wrap.querySelector('#kyt-backup-download').onclick = async () => {
       try {
         const r = await saveToFile();
-        if (!r) return say('Not saved: the share sheet was closed. Tap Save to a file to try again.', true);
+        if (!r) return say('Nothing was saved because the share sheet was closed. Tap Save to a file whenever you are ready.', false);
         say(`Saved: ${r.cities} ${r.cities === 1 ? 'city' : 'cities'}, ${r.virtualTrips} virtual ${r.virtualTrips === 1 ? 'trip' : 'trips'}${r.activeTrip ? ', current trip "' + r.activeTrip + '"' : ''}. Keep the file somewhere safe, such as your Drive.`);
       } catch (e) { say('Could not save: ' + e.message, true); }
     };
