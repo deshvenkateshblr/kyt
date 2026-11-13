@@ -536,3 +536,8 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
 
 85. **Toolbar buttons move like the home menu (v119)**
    - The top toolbar buttons press in on tap and lift on hover. When something changes (a step, a city, a photo), the Save button lifts and glows twice, at most once a minute, as the gentle cue that there is something to save. It replaces nagging: the banner stays rare. Off under Reduce Motion.
+
+86. **Save and Open work like KYF (v120)** (the first city of a new virtual trip was already prompting to save)
+   - Toolbar Save now saves in one tap, like KYF's Save Data: the file downloads, and a short note says where it went ("Saved as kyt-saved-….kyt, in Downloads") with "Open a file or more" for opening and options. No dialog in between.
+   - Nothing about saving appears while someone works: the Save button animation added in v119 is gone, and the dot on Save shows only once changes have sat unsaved for a day. The one reminder banner is for changes left unsaved 3+ days, once a week at most (a browser can clear a site's data if it is unused for a while).
+   - Home and trip pages keep their "Save or open your trips" link, which opens the Save & Open sheet as before.

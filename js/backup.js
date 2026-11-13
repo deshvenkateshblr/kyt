@@ -61,17 +61,7 @@ window.KYT.backup = (() => {
       if (!readLocal(KEYS.changedAt)) localStorage.setItem(KEYS.changedAt, new Date().toISOString());
     } catch (e) { /* storage blocked: nothing to track */ }
     refreshIndicators();
-    cueSave();
     if (typeof document !== 'undefined' && document.body) { clearTimeout(nudgeTimer); nudgeTimer = setTimeout(maybeNudge, 4000); }
-  }
-  /** A quiet cue instead of a banner: the Save button lifts and glows (at most once a minute) after something changes. */
-  let lastCue = 0;
-  function cueSave() {
-    if (typeof document === 'undefined' || Date.now() - lastCue < 60000) return;
-    const btns = document.querySelectorAll('#kyt-nav-save');
-    if (!btns.length) return;
-    lastCue = Date.now();
-    btns.forEach(b => { b.classList.remove('kyt-cue'); void b.offsetWidth; b.classList.add('kyt-cue'); setTimeout(() => b.classList.remove('kyt-cue'), 1500); });
   }
   function markSaved(at) {
     try {
@@ -90,7 +80,7 @@ window.KYT.backup = (() => {
   function refreshIndicators() {
     if (typeof document === 'undefined') return;
     const st = status();
-    document.querySelectorAll('[data-kyt-save-dot]').forEach(el => { el.style.display = st.unsaved ? 'block' : 'none'; });
+    document.querySelectorAll('[data-kyt-save-dot]').forEach(el => { el.style.display = st.unsaved && st.since && Date.now() - st.since.getTime() > DAY ? 'block' : 'none'; });   // quiet at first: only once it has sat unsaved for a day
     document.querySelectorAll('[data-kyt-backup][title]').forEach(el => {
       if (el.id === 'kyt-nav-save') el.title = st.unsaved ? 'Save your trips: you have changes that are only on this device' : 'Save your trips to a file';
     });
@@ -105,11 +95,10 @@ window.KYT.backup = (() => {
       const snooze = parseInt(readLocal(KEYS.snooze), 10) || 0;
       if (Date.now() < snooze) return;
       if (Date.now() - lastActivity < IDLE_MS) { clearTimeout(nudgeTimer); nudgeTimer = setTimeout(maybeNudge, 1500); return; }   // never while they are tapping or typing
-      // Calm by design: the dot on Save already says "unsaved" while someone works. The banner is for work that has sat unsaved for a day or more
-      // and amounts to something (or for anything left unsaved three days). Never during the first session, never more than once a week.
+      // Calm by design, like KYF: saving is the person's call. Nothing appears while they work. Only changes left unsaved for 3+ days
+      // (a browser can clear a site's data if it is not used for a while) get one reminder, at most once a week.
       const age = st.since ? Date.now() - st.since.getTime() : 0;
-      const enough = st.lastSaved ? st.changes >= 40 : st.changes >= 20;
-      if (!(age > 3 * DAY || (age > DAY && enough))) return;
+      if (age <= 3 * DAY) return;
       const el = document.createElement('div');
       el.id = 'kyt-save-nudge'; el.setAttribute('role', 'status');
       el.style.cssText = 'position:fixed;left:12px;right:12px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:240;max-width:480px;margin:0 auto;padding:14px 16px;border-radius:16px;background:#fff;color:#0F172A;border:2px solid #BFDBFE;font:600 14px/1.45 system-ui,sans-serif;box-shadow:0 14px 30px rgba(15,23,42,.25)';
@@ -534,13 +523,32 @@ window.KYT.backup = (() => {
     } catch (e) { /* storage blocked */ }
   }
 
-  // Any element marked data-kyt-backup opens the sheet.
+  /** Toolbar Save: one tap saves the file (like KYF's Save Data), then a short note says where it went, with a way to Open or see options. */
+  function saveNote(html) {
+    const old = document.getElementById('kyt-save-note'); if (old) old.remove();
+    const el = document.createElement('div');
+    el.id = 'kyt-save-note'; el.setAttribute('role', 'status');
+    el.style.cssText = 'position:fixed;left:12px;right:12px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:300;max-width:480px;margin:0 auto;padding:12px 16px;border-radius:14px;background:#0F172A;color:#fff;font:600 13.5px/1.45 system-ui,sans-serif;box-shadow:0 12px 30px rgba(0,0,0,.35)';
+    el.innerHTML = html + ' <button type="button" id="kyt-save-more" style="margin-left:6px;background:none;border:0;color:#93C5FD;font:800 13.5px system-ui;text-decoration:underline;padding:6px 2px">Open a file or more</button>';
+    document.body.appendChild(el);
+    el.querySelector('#kyt-save-more').onclick = () => { el.remove(); openSheet(); };
+    setTimeout(() => el.remove(), 7000);
+  }
+  async function quickSave() {
+    try {
+      const r = await saveToFile();
+      if (!r) return saveNote('Nothing was saved because the share sheet was closed.');
+      saveNote(`\u2713 Saved as <strong>${esc(r.name)}</strong>${r.method === 'download' && isPhone() ? ', in Downloads' : ''}.`);
+    } catch (e) { saveNote('Could not save: ' + esc(e.message || e)); }
+  }
+
+  // Any element marked data-kyt-backup opens the sheet; the toolbar's Save button saves straight away.
   function bind(root) {
     refreshIndicators();
     (root || document).querySelectorAll('[data-kyt-backup]').forEach(el => {
       if (el.dataset.kytBackupBound) return;
       el.dataset.kytBackupBound = '1';
-      el.addEventListener('click', e => { e.preventDefault(); openSheet(); });
+      el.addEventListener('click', e => { e.preventDefault(); if (el.id === 'kyt-nav-save') quickSave(); else openSheet(); });
     });
   }
   if (typeof document !== 'undefined') {
@@ -549,5 +557,5 @@ window.KYT.backup = (() => {
     else start();
   }
 
-  return { meterInfo, storageBreakdown, selfTest, safeSet, requestPersistence, storageStatus, buildBackup, downloadBackup, saveToFile, restoreFromText, deviceSummary, mergeFile, openSheet, confirmEndTrip, bind, markChanged, markSaved, status, maybeNudge, maybeLowSpaceNotice, refreshIndicators };
+  return { meterInfo, storageBreakdown, selfTest, safeSet, requestPersistence, storageStatus, buildBackup, downloadBackup, saveToFile, restoreFromText, deviceSummary, mergeFile, openSheet, quickSave, confirmEndTrip, bind, markChanged, markSaved, status, maybeNudge, maybeLowSpaceNotice, refreshIndicators };
 })();

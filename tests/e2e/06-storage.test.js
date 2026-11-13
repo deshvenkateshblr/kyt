@@ -229,15 +229,18 @@ test('Refresh app clears the offline cache and service worker, then reloads', as
 
 const setNow = (page, key, v) => page.evaluate(([k, x]) => localStorage.setItem(k, x), [key, v]);
 
-test('Save tracks what changed: a dot on the toolbar Save button appears after a change and clears after saving', async () => {
+test('Save tracks what changed quietly: no dot at first, a dot once changes have sat unsaved for a day, cleared after saving', async () => {
   const { context, page } = await newPhone(env.browser);
   await page.goto(env.base + '/virtual_trip.html');
   await page.waitForSelector('#kyt-nav-save');
   assert.equal(await page.locator('#kyt-nav-save [data-kyt-save-dot]').isVisible(), false, 'nothing changed yet');
   await page.fill('#vt-new-name', 'Dot'); await page.click('#btn-vt-create');
   await page.waitForSelector('#vt-screen-canvas:not(.hidden)');
-  assert.equal(await page.locator('#kyt-nav-save [data-kyt-save-dot]').isVisible(), true, 'a new trip is a change');
-  await page.click('#kyt-nav-save');
+  assert.equal(await page.locator('#kyt-nav-save [data-kyt-save-dot]').isVisible(), false, 'a new trip is a change, but nothing nags about it');
+  await setNow(page, 'kyt_changed_at', new Date(Date.now() - 2 * 86400000).toISOString());
+  await page.reload(); await page.waitForSelector('#kyt-nav-save');
+  assert.equal(await page.locator('#kyt-nav-save [data-kyt-save-dot]').isVisible(), true, 'after a day, a quiet dot');
+  await page.evaluate(() => KYT.backup.openSheet());
   await page.waitForSelector('#kyt-backup-sheet');
   assert.match(await page.locator('#kyt-backup-sheet').innerText(), /Save & Open[\s\S]*change[\s\S]*none saved to a file yet/);
   const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#kyt-backup-download')]);
@@ -245,7 +248,7 @@ test('Save tracks what changed: a dot on the toolbar Save button appears after a
   await page.waitForFunction(() => /Saved:/.test(document.getElementById('kyt-backup-msg').textContent));
   assert.equal(await page.locator('#kyt-nav-save [data-kyt-save-dot]').isVisible(), false, 'saved: the dot is gone');
   await page.click('#kyt-backup-close');
-  await page.click('#kyt-nav-save');
+  await page.evaluate(() => KYT.backup.openSheet());
   assert.match(await page.locator('#kyt-backup-sheet').innerText(), /Everything is saved/);
   await context.close();
 });
@@ -278,9 +281,13 @@ test('the reminder is calm: not in the first session, only after real unsaved wo
   await page.evaluate(() => { for (let i = 0; i < 30; i++) KYT.backup.markChanged(); });
   await page.waitForTimeout(4800);
   assert.equal(await page.locator('#kyt-save-nudge').count(), 0, 'thirty edits in the first session: only the dot on Save, no banner');
-  assert.equal(await page.locator('[data-kyt-save-dot]').first().evaluate(e => getComputedStyle(e).display), 'block');
-  // a day later, with real work unsaved
+  assert.equal(await page.locator('[data-kyt-save-dot]').first().evaluate(e => getComputedStyle(e).display), 'none', 'first session: nothing shows');
+  assert.equal(await page.locator('#kyt-nav-save.kyt-cue').count(), 0, 'no animation either');
+  // two days later it is still quiet (just the dot), and at four days there is one reminder
   await setNow(page, 'kyt_changed_at', new Date(Date.now() - 2 * 86400000).toISOString());
+  await page.reload(); await page.waitForTimeout(3600);
+  assert.equal(await page.locator('#kyt-save-nudge').count(), 0, 'two days: no banner');
+  await setNow(page, 'kyt_changed_at', new Date(Date.now() - 4 * 86400000).toISOString());
   await page.reload();
   await page.waitForSelector('#kyt-save-nudge');
   assert.match(await page.locator('#kyt-save-nudge').innerText(), /Save a copy\?[\s\S]*only on this device/);
@@ -641,15 +648,27 @@ test('on an iPhone in Safari, Save downloads straight to Downloads (no share she
   await context.close();
 });
 
-test('changing something makes the Save button lift and glow, once a minute at most', async () => {
-  const { context, page } = await newPhone(env.browser);
+test('toolbar Save saves straight away (like KYF Save Data): a file downloads, a short note says where, and Open is one tap further', async () => {
+  const { context, page } = await newPhone(env.browser, { acceptDownloads: true });
   await page.goto(env.base + '/visited.html');
+  await page.evaluate(() => PassportStore.unlockCity('agra'));
   await page.waitForSelector('#kyt-nav-save');
-  await page.evaluate(() => KYT.backup.markChanged());
-  assert.equal(await page.locator('#kyt-nav-save.kyt-cue').count(), 1, 'cued');
-  assert.equal(await page.locator('#kyt-nav-save').evaluate(e => getComputedStyle(e).animationName), 'kyt-cue');
-  await page.waitForFunction(() => !document.querySelector('#kyt-nav-save.kyt-cue'), null, { timeout: 4000 });
-  await page.evaluate(() => KYT.backup.markChanged());
-  assert.equal(await page.locator('#kyt-nav-save.kyt-cue').count(), 0, 'not again within a minute');
+  const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#kyt-nav-save')]);
+  assert.match(dl.suggestedFilename(), /^kyt-saved-.*\.kyt$/);
+  assert.equal(await page.locator('#kyt-backup-sheet').count(), 0, 'no dialog in between');
+  assert.match(await page.locator('#kyt-save-note').innerText(), /Saved as kyt-saved-.*\.kyt/);
+  await page.click('#kyt-save-more');
+  await page.waitForSelector('#kyt-backup-sheet');
+  assert.equal(await page.evaluate(() => KYT.backup.status().unsaved), false);
+  await context.close();
+});
+
+test('adding a first city to a new virtual trip shows nothing about saving', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.goto(env.base + '/virtual_trip.html');
+  await page.evaluate(() => { for (let i = 0; i < 3; i++) KYT.backup.markChanged(); });
+  await page.waitForTimeout(5000);
+  assert.equal(await page.locator('#kyt-save-nudge, #kyt-save-note, #kyt-toast, .kyt-cue').count(), 0);
+  assert.equal(await page.locator('[data-kyt-save-dot]').first().evaluate(e => getComputedStyle(e).display), 'none');
   await context.close();
 });

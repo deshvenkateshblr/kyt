@@ -156,7 +156,7 @@ test('past trips travel in the saved file and come back when it is opened on a n
   const a = await newPhone(env.browser);
   await a.page.goto(env.base + '/virtual_trip.html');
   await endTripWith(a.page, await bigPhoto(a.page));
-  await a.page.click('[data-kyt-backup]');
+  await a.page.evaluate(() => KYT.backup.openSheet());
   const [dl] = await Promise.all([a.page.waitForEvent('download'), a.page.click('#kyt-backup-download')]);
   await dl.saveAs('/tmp/kyt-past-test.kyt');
   assert.equal(JSON.parse(fs.readFileSync('/tmp/kyt-past-test.kyt', 'utf8')).pastTrips.length, 1);
@@ -164,7 +164,7 @@ test('past trips travel in the saved file and come back when it is opened on a n
 
   const b = await newPhone(env.browser);
   await b.page.goto(env.base + '/virtual_trip.html');
-  await b.page.click('[data-kyt-backup]');
+  await b.page.evaluate(() => KYT.backup.openSheet());
   await b.page.setInputFiles('#kyt-backup-file', '/tmp/kyt-past-test.kyt');
   await b.page.waitForFunction(() => /Opened/.test(document.getElementById('kyt-backup-msg').textContent));
   assert.match(b.page.dialogs.join('\n'), /Past trips: 1/);
