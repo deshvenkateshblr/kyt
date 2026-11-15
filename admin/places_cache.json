@@ -5390,5 +5390,85 @@
     "lng": 77.4224842,
     "distanceKm": 0.8,
     "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Manchalamma%20Temple%20Mantralayam&query_place_id=ChIJu8v4XuI6tjsRt1QUE_WAmto"
+  },
+  "beat::goa::Fontainhas heritage quarter walk": {
+    "query": "Fontainhas, Panaji, Goa",
+    "resolvedName": "Fontainhas (quarter), Altinho, Panaji, Goa",
+    "placeId": "ChIJBQKjg4XAvzsReu5VP9GM5q0",
+    "ftid": "0x3bbfc08583a30205:0xade68cd13f55ee7a",
+    "lat": 15.4941033,
+    "lng": 73.8300775,
+    "distanceKm": 21.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Fontainhas%2C%20Panaji%2C%20Goa&query_place_id=ChIJBQKjg4XAvzsReu5VP9GM5q0"
+  },
+  "beat::goa::Shree Mangesh Mandir darshan": {
+    "query": "Shree Mangesh Mandir, Priol, Ponda, Goa",
+    "resolvedName": "Shree Mangesh Mandir, Mangeshi",
+    "placeId": "ChIJAQAAALy6vzsR9rv-XA9g7a8",
+    "ftid": "0x3bbfbabc00000001:0xafed600f5cfebbf6",
+    "lat": 15.4449051,
+    "lng": 73.9663825,
+    "distanceKm": 20.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Shree%20Mangesh%20Mandir%2C%20Priol%2C%20Ponda%2C%20Goa&query_place_id=ChIJAQAAALy6vzsR9rv-XA9g7a8"
+  },
+  "beat::goa::Shri Shanta Durga Temple darshan": {
+    "query": "Shri Shanta Durga Temple, Kavlem, Ponda, Goa",
+    "resolvedName": "Shri Shantadurga Temple",
+    "placeId": "ChIJrYu521bAvzsRMZ5n0rjkYnA",
+    "ftid": "0x3bbfc056dbb98bad:0x7062e4b8d2679e31",
+    "lat": 15.3962235,
+    "lng": 73.9852776,
+    "distanceKm": 15.1,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Shri%20Shanta%20Durga%20Temple%2C%20Kavlem%2C%20Ponda%2C%20Goa&query_place_id=ChIJrYu521bAvzsRMZ5n0rjkYnA"
+  },
+  "beat::goa::Palolem Beach sunset & crescent bay": {
+    "query": "Palolem Beach, Canacona, Goa",
+    "resolvedName": "Palolem Beach",
+    "placeId": "ChIJuwJb0FFFvjsR9bsPS33GGx4",
+    "ftid": "0x3bbe4551d05b02bb:0x1e1bc67d4b0fbbf5",
+    "lat": 15.0099648,
+    "lng": 74.0232186,
+    "distanceKm": 32.9,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Palolem%20Beach%2C%20Canacona%2C%20Goa&query_place_id=ChIJuwJb0FFFvjsR9bsPS33GGx4"
+  },
+  "beat::varanasi::Kaal Bhairav Temple darshan": {
+    "query": "Kaal Bhairav Mandir, Varanasi",
+    "resolvedName": "Shri Kaal Bhairav Temple, (Varanasi)",
+    "placeId": "ChIJV6gSa3wujjkRx-kXI0C4P4U",
+    "ftid": "0x398e2e7c6b12a857:0x853fb8402317e9c7",
+    "lat": 25.3176573,
+    "lng": 83.0159247,
+    "distanceKm": 1.8,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kaal%20Bhairav%20Mandir%2C%20Varanasi&query_place_id=ChIJV6gSa3wujjkRx-kXI0C4P4U"
+  },
+  "beat::varanasi::Sankat Mochan Hanuman Temple darshan": {
+    "query": "Sankat Mochan Hanuman Temple, Varanasi",
+    "resolvedName": "Shri Sankat Mochan Hanuman Temple, (Varanasi)",
+    "placeId": "ChIJFekJmQsxjjkR0rn-P-nKYgw",
+    "ftid": "0x398e310b9909e915:0xc62cae93ffeb9d2",
+    "lat": 25.2827795,
+    "lng": 83.0001741,
+    "distanceKm": 3.5,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sankat%20Mochan%20Hanuman%20Temple%2C%20Varanasi&query_place_id=ChIJFekJmQsxjjkR0rn-P-nKYgw"
+  },
+  "beat::ayodhya::Guptar Ghat riverfront promenade": {
+    "query": "Guptar Ghat, Ayodhya",
+    "resolvedName": "Guptar Ghat",
+    "placeId": "ChIJMVgLstoFmjkRKVAIgq7RVFk",
+    "ftid": "0x399a05dab20b5831:0x5954d1ae82085029",
+    "lat": 26.8004826,
+    "lng": 82.1167726,
+    "distanceKm": 7.2,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Guptar%20Ghat%2C%20Ayodhya&query_place_id=ChIJMVgLstoFmjkRKVAIgq7RVFk"
+  },
+  "beat::udupi::Kapu Beach & 1901 Lighthouse": {
+    "query": "Kapu Light House, Udupi",
+    "resolvedName": "Kapu Light House",
+    "placeId": "ChIJ2_IEi1awvDsRbTrYSp0oVHo",
+    "ftid": "0x3bbcb0568b04f2db:0x7a54289d4ad83a6d",
+    "lat": 13.2239492,
+    "lng": 74.7367974,
+    "distanceKm": 13.4,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kapu%20Light%20House%2C%20Udupi&query_place_id=ChIJ2_IEi1awvDsRbTrYSp0oVHo"
   }
 }

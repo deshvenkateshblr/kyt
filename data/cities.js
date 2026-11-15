@@ -418,6 +418,33 @@ window.KYT_CITIES = [
         "lng": 73.7517307
       },
       {
+        "title": "Fontainhas heritage quarter walk",
+        "icon": "landmark",
+        "where": "Altinho, Panaji, Goa",
+        "hour": 9,
+        "intent": [
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Fontainhas%2C%20Panaji%2C%20Goa&query_place_id=ChIJBQKjg4XAvzsReu5VP9GM5q0",
+        "notes": "Asia's only Latin Quarter featuring vibrant Portuguese-colonial villas, azulejo tile plaques, art galleries, and narrow historic alleys.",
+        "kind": "place",
+        "placeId": "ChIJBQKjg4XAvzsReu5VP9GM5q0",
+        "ftid": "0x3bbfc08583a30205:0xade68cd13f55ee7a",
+        "lat": 15.4941033,
+        "lng": 73.8300775
+      },
+      {
         "title": "Basilica of Bom Jesus & Old Goa",
         "icon": "landmark",
         "where": "Old Goa",
@@ -444,6 +471,94 @@ window.KYT_CITIES = [
         "ftid": "0x3bbfbef2b99b0289:0x1e8056689f15a7b8",
         "lat": 15.5008238,
         "lng": 73.9114061
+      },
+      {
+        "title": "Traditional Goan vegetarian breakfast & bhaji trail",
+        "icon": "utensils",
+        "where": "Cafe Bhonsle & Cafe Tato, Panaji, Goa",
+        "hour": 10,
+        "intent": [
+          "culinary"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "diet": [
+          "veg",
+          "satvik",
+          "any"
+        ],
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Traditional%20Goan%20vegetarian%20breakfast%20%26%20bhaji%20trail%20at%20Goa",
+        "notes": "Sample iconic century-old Goan vegetarian institutions serving piping-hot Patal Bhaji, Sukhi Bhaji, hot puris, Alsande tonak, and Goan buns.",
+        "kind": "activity"
+      },
+      {
+        "title": "Shree Mangesh Mandir darshan",
+        "icon": "landmark",
+        "where": "Priol, Ponda, Goa",
+        "hour": 11,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any",
+          "family"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shree%20Mangesh%20Mandir%2C%20Priol%2C%20Ponda%2C%20Goa&query_place_id=ChIJAQAAALy6vzsR9rv-XA9g7a8",
+        "notes": "Revered 450-year-old Shiva temple exhibiting distinct Goan-Saraswat architecture, a seven-story Deepastambha lamp tower, and a sacred water tank.",
+        "kind": "place",
+        "placeId": "ChIJAQAAALy6vzsR9rv-XA9g7a8",
+        "ftid": "0x3bbfbabc00000001:0xafed600f5cfebbf6",
+        "lat": 15.4449051,
+        "lng": 73.9663825
+      },
+      {
+        "title": "Shri Shanta Durga Temple darshan",
+        "icon": "landmark",
+        "where": "Kavlem, Ponda, Goa",
+        "hour": 12,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any",
+          "family"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shri%20Shanta%20Durga%20Temple%2C%20Kavlem%2C%20Ponda%2C%20Goa&query_place_id=ChIJrYu521bAvzsRMZ5n0rjkYnA",
+        "notes": "Dedicated to Goddess Shantadurga as peace mediator between Shiva and Vishnu, noted for Roman-arched stained glass windows and golden palanquin.",
+        "kind": "place",
+        "placeId": "ChIJrYu521bAvzsRMZ5n0rjkYnA",
+        "ftid": "0x3bbfc056dbb98bad:0x7062e4b8d2679e31",
+        "lat": 15.3962235,
+        "lng": 73.9852776
       },
       {
         "title": "Goan seafood & curry shack lunch",
@@ -522,6 +637,35 @@ window.KYT_CITIES = [
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Anjuna%20sunset%20%26%20flea%20market%20at%20Goa",
         "notes": "Vibrant coastal hippie market with live acoustic music, handcrafted jewelry, bohemian clothing, and sunset cocktails over the rocky cove.",
         "kind": "activity"
+      },
+      {
+        "title": "Palolem Beach sunset & crescent bay",
+        "icon": "waves",
+        "where": "Canacona, South Goa",
+        "hour": 17,
+        "intent": [
+          "nature",
+          "adventure"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Palolem%20Beach%2C%20Canacona%2C%20Goa&query_place_id=ChIJuwJb0FFFvjsR9bsPS33GGx4",
+        "notes": "South Goa's postcard-perfect crescent-shaped white sand cove fringed by coconut palms, calm swimmable waters, kayaking, and sunset beach cafes.",
+        "kind": "place",
+        "placeId": "ChIJuwJb0FFFvjsR9bsPS33GGx4",
+        "ftid": "0x3bbe4551d05b02bb:0x1e1bc67d4b0fbbf5",
+        "lat": 15.0099648,
+        "lng": 74.0232186
       }
     ],
     "aliases": [
@@ -970,6 +1114,34 @@ window.KYT_CITIES = [
         "lng": 83.0106783
       },
       {
+        "title": "Kaal Bhairav Temple darshan",
+        "icon": "landmark",
+        "where": "Bharonath, Visheshwarganj, Varanasi",
+        "hour": 9,
+        "intent": [
+          "spiritual"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kaal%20Bhairav%20Mandir%2C%20Varanasi&query_place_id=ChIJV6gSa3wujjkRx-kXI0C4P4U",
+        "notes": "Pay respects to the fierce 'Kotwal of Kashi' (guardian deity of Varanasi), a mandatory pilgrim visit to seek blessings and permission before leaving the holy city.",
+        "kind": "place",
+        "placeId": "ChIJV6gSa3wujjkRx-kXI0C4P4U",
+        "ftid": "0x398e2e7c6b12a857:0x853fb8402317e9c7",
+        "lat": 25.3176573,
+        "lng": 83.0159247
+      },
+      {
         "title": "Sarnath Buddhist deer park excursion",
         "icon": "landmark",
         "where": "Sarnath, Varanasi",
@@ -1024,6 +1196,64 @@ window.KYT_CITIES = [
         ],
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Banarasi%20thandai%20%26%20kachori%20chaat%20at%20Varanasi",
         "notes": "Taste rich saffron Banarasi thandai, Tamatar chaat, crispy kachori jalebi, and melt-in-mouth Malaiyo in the old alleys.",
+        "kind": "activity"
+      },
+      {
+        "title": "Sankat Mochan Hanuman Temple darshan",
+        "icon": "landmark",
+        "where": "Sankat Mochan Road, Durgakund, Varanasi",
+        "hour": 16,
+        "intent": [
+          "spiritual"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any",
+          "family"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sankat%20Mochan%20Hanuman%20Temple%2C%20Varanasi&query_place_id=ChIJFekJmQsxjjkR0rn-P-nKYgw",
+        "notes": "Founded by saint-poet Goswami Tulsidas on the spot where he had a divine vision of Lord Hanuman, famed for its spiritual solace and iconic Besan Laddoo prasad.",
+        "kind": "place",
+        "placeId": "ChIJFekJmQsxjjkR0rn-P-nKYgw",
+        "ftid": "0x398e310b9909e915:0xc62cae93ffeb9d2",
+        "lat": 25.2827795,
+        "lng": 83.0001741
+      },
+      {
+        "title": "Iconic Banarasi chaat trail at Kashi & Deena Chaat Bhandar",
+        "icon": "utensils",
+        "where": "Godowlia & Dashashwamedh, Varanasi",
+        "hour": 17,
+        "intent": [
+          "culinary"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "diet": [
+          "veg",
+          "satvik",
+          "any"
+        ],
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Iconic%20Banarasi%20chaat%20trail%20at%20Kashi%20%26%20Deena%20Chaat%20Bhandar%20at%20Varanasi",
+        "notes": "Delight in Kashi's legendary street food institutions: piping-hot spiced Tamatar Chaat served in earthen kulhads with melted ghee, crisp Palak Patta Chaat, Dahi Bhalla, and Gulab Jamun.",
         "kind": "activity"
       },
       {
@@ -11586,6 +11816,62 @@ window.KYT_CITIES = [
         "lng": 82.1992155
       },
       {
+        "title": "Hanuman Garhi laddoo & Awadhi satvik food trail",
+        "icon": "utensils",
+        "where": "Hanuman Garhi Road, Ayodhya",
+        "hour": 13,
+        "intent": [
+          "culinary"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "diet": [
+          "veg",
+          "satvik"
+        ],
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hanuman%20Garhi%20laddoo%20%26%20Awadhi%20satvik%20food%20trail%20at%20Ayodhya",
+        "notes": "Taste Ayodhya's iconic pure desi ghee Besan Laddoos at Hanuman Garhi lane, sweet Khurchan, Rabdi-Jalebi, and authentic Awadhi no-onion no-garlic satvik thalis.",
+        "kind": "activity"
+      },
+      {
+        "title": "Guptar Ghat riverfront promenade",
+        "icon": "waves",
+        "where": "Cantonment, Faizabad, Ayodhya",
+        "hour": 16,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Guptar%20Ghat%2C%20Ayodhya&query_place_id=ChIJMVgLstoFmjkRKVAIgq7RVFk",
+        "notes": "The sacred Saryu riverfront where Lord Rama is believed to have taken Jal Samadhi, featuring open sandstone ghats, manicured riverside gardens, and tranquil sunsets.",
+        "kind": "place",
+        "placeId": "ChIJMVgLstoFmjkRKVAIgq7RVFk",
+        "ftid": "0x399a05dab20b5831:0x5954d1ae82085029",
+        "lat": 26.8004826,
+        "lng": 82.1167726
+      },
+      {
         "title": "Saryu River Ghats & evening Maha Aarti",
         "icon": "waves",
         "where": "Naya Ghat / Ram Ki Paidi, Ayodhya",
@@ -21222,6 +21508,61 @@ window.KYT_CITIES = [
         "lng": 74.7520446
       },
       {
+        "title": "St. Mary's Island",
+        "icon": "palmtree",
+        "where": "Off Malpe Coast",
+        "hour": 10,
+        "intent": [
+          "nature",
+          "adventure"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "deep"
+        ],
+        "mobility": "boat",
+        "notes": "Known for its distinctive hexagonal basalt rock formations.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=St.%20Mary's%20Island%2C%20Malpe%2C%20Udupi&query_place_id=ChIJfauSXsG_vDsRHoFf0928arc",
+        "kind": "place",
+        "placeId": "ChIJfauSXsG_vDsRHoFf0928arc",
+        "ftid": "0x3bbcbfc15e92ab7d:0xb76abcddd35f811e",
+        "lat": 13.3791456,
+        "lng": 74.6733896
+      },
+      {
+        "title": "Mitra Samaj & Sri Krishna Matha Anna Brahma dining",
+        "icon": "utensils",
+        "where": "Car Street, Udupi",
+        "hour": 12,
+        "intent": [
+          "culinary",
+          "spiritual"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "diet": [
+          "veg",
+          "satvik"
+        ],
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mitra%20Samaj%20%26%20Sri%20Krishna%20Matha%20Anna%20Brahma%20dining%20at%20Udupi",
+        "notes": "Experience the sacred tradition of Udupi cuisine: free temple bhojana (Anna Santharpana) at the Matha's dining hall, plus legendary Masala Dosa, Goli Baje, and Filter Coffee at heritage Mitra Samaj.",
+        "kind": "activity"
+      },
+      {
         "title": "Malpe Beach",
         "icon": "sun",
         "where": "6 km from Udupi",
@@ -21250,13 +21591,13 @@ window.KYT_CITIES = [
         "lng": 74.6976506
       },
       {
-        "title": "St. Mary's Island",
-        "icon": "palmtree",
-        "where": "Off Malpe Coast",
-        "hour": 10,
+        "title": "Kapu Beach & 1901 Lighthouse",
+        "icon": "landmark",
+        "where": "Kaup, 13 km South of Udupi",
+        "hour": 17,
         "intent": [
           "nature",
-          "adventure"
+          "cultural"
         ],
         "faith": [
           "any"
@@ -21265,16 +21606,17 @@ window.KYT_CITIES = [
           "any"
         ],
         "pace": [
-          "deep"
+          "short",
+          "standard"
         ],
-        "mobility": "boat",
-        "notes": "Known for its distinctive hexagonal basalt rock formations.",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=St.%20Mary's%20Island%2C%20Malpe%2C%20Udupi&query_place_id=ChIJfauSXsG_vDsRHoFf0928arc",
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kapu%20Light%20House%2C%20Udupi&query_place_id=ChIJ2_IEi1awvDsRbTrYSp0oVHo",
+        "notes": "Historic 27-meter British-built black-and-white stone lighthouse perched atop rugged coastal boulders, offering sweeping panoramic sunset views over the Arabian Sea.",
         "kind": "place",
-        "placeId": "ChIJfauSXsG_vDsRHoFf0928arc",
-        "ftid": "0x3bbcbfc15e92ab7d:0xb76abcddd35f811e",
-        "lat": 13.3791456,
-        "lng": 74.6733896
+        "placeId": "ChIJ2_IEi1awvDsRbTrYSp0oVHo",
+        "ftid": "0x3bbcb0568b04f2db:0x7a54289d4ad83a6d",
+        "lat": 13.2239492,
+        "lng": 74.7367974
       }
     ],
     "notes": "A coastal city renowned for its Hindu temples, particularly the 13th-century Sri Krishna Matha, and its unique local cuisine.",
@@ -23503,28 +23845,3 @@ window.KYT_CITIES = [
     "code": "mtm"
   }
 ];
-
-// Central City Catalog Accessors & Statistics
-if (typeof window !== 'undefined') {
-  window.KYT = window.KYT || {};
-  window.KYT.getCities = function() {
-    return Array.isArray(window.KYT_CITIES) ? window.KYT_CITIES : [];
-  };
-  window.KYT.getCityCount = function() {
-    return window.KYT.getCities().length;
-  };
-  window.KYT.getCatalogStats = function() {
-    var cities = window.KYT.getCities();
-    var states = new Set();
-    var attractions = 0;
-    for (var i = 0; i < cities.length; i++) {
-      if (cities[i].state) states.add(cities[i].state);
-      if (Array.isArray(cities[i].beats)) attractions += cities[i].beats.length;
-    }
-    return {
-      citiesCount: cities.length,
-      statesCount: states.size,
-      attractionsCount: attractions
-    };
-  };
-}

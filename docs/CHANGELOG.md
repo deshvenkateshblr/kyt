@@ -445,3 +445,13 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - Updated all 158 activity beats in `data/cities.js` to construct Google Maps search links as `<title> at <city>` (e.g., `Petha & chaat at Kinari Bazaar at Agra`, `Vada pav & street food in Dadar at Mumbai`, `Kerala sadya lunch at Munnar`, `Dal baati churma royal dinner at Jaipur`). Appending the city anchors Google Maps search algorithms directly to relevant local food vendors, restaurants, and activity operators rather than generic town centers.
     - Updated `admin/enrich_kyt_places.js` and `admin/enrich_kyt_places.py` to enforce the `<title> at <city>` format and hardened catalog loading against regex truncation.
     - **Tests:** `admin/tests/core.test.js` (57 passed, 0 failed).
+
+70. **Expanded attraction beats for major cities: Goa, Kashi (Varanasi), Ayodhya, and Udupi**
+    - **Goa (expanded from 5 to 10 beats):** Added major cultural, temple, beach, and culinary beats: Fontainhas Latin Quarter heritage walk (`place`), Shree Mangesh Mandir darshan in Ponda (`place`), Shri Shanta Durga Temple darshan in Kavlem (`place`), Palolem Beach & crescent bay in South Goa (`place`), and traditional Goan vegetarian breakfast & bhaji trail at Cafe Bhonsle & Cafe Tato in Panaji (`activity`).
+    - **Kashi / Varanasi (expanded from 5 to 8 beats):** Added Kaal Bhairav Temple darshan (`place`, Kotwal of Kashi), Sankat Mochan Hanuman Temple darshan (`place`, founded by Tulsidas), and the legendary evening street food feast: Iconic Banarasi chaat trail at Kashi Chaat Bhandar & Deena Chaat Bhandar at Godowlia (`activity`, Tamatar Chaat, Palak Patta Chaat, Dahi Bhalla).
+    - **Ayodhya (expanded from 4 to 6 beats):** Added Guptar Ghat riverfront promenade (`place`, site of Rama's Jal Samadhi) and Hanuman Garhi laddoo & Awadhi satvik food trail (`activity`, pure desi ghee Besan Laddoos, Khurchan, Rabdi-Jalebi).
+    - **Udupi (expanded from 3 to 5 beats):** Brought Udupi up to catalog standard with Kapu Beach & 1901 British Lighthouse (`place`) and Mitra Samaj & Sri Krishna Matha Anna Brahma dining (`activity`, sacred temple Anna Santharpana and heritage Masala Dosa & Filter Coffee).
+    - **Place ID Resolution:** Resolved canonical Google Place IDs (`ChIJ...`), feature IDs (`ftid`), and coordinates for all 8 new places with 0 missing IDs across the 705-attraction catalog (543 places, 162 activities). Synced `admin/places_cache.json` and `data/cities.enriched.js`.
+    - **Tests:** `admin/tests/core.test.js` (57 passed, 0 failed).
+
+
