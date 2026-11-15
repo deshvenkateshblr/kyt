@@ -4,7 +4,7 @@ Start a fresh review from here. The full backlog is [TODO.md](TODO.md); what shi
 
 ## Where things stand
 - **Repo:** `github.com/deshvenkateshblr/KYT`, zero-server PWA (vanilla JS, Tailwind CDN, Lucide, `sw.js`), hosted at vividnova.com/KYT. Clean tree, all pushed.
-- **Tests:** `NODE_PATH=/opt/npm-tools/node_modules node --test --test-concurrency=1 "tests/e2e/*.test.js"` (137 pass; `KYT_PW_TIMEOUT` shortens waits). Bumping a version means `sw.js` `CACHE_NAME` and `js/footer.js` `APP_VERSION` together (a test enforces it).
+- **Tests:** `NODE_PATH=/opt/npm-tools/node_modules node --test --test-concurrency=1 "tests/e2e/*.test.js"` (218 pass; `KYT_PW_TIMEOUT` shortens waits). Bumping a version: run `npm run bump` (sets `sw.js` `CACHE_NAME`, `js/footer.js` `APP_VERSION` and every page's `?v=` together; tests enforce it). PDF tests: the harness stubs pdfMake unless `newPhone(browser, { realPdf: true })`.
 - **Git flow:** commit on master, `git fetch origin master`, rebase if behind, `git push origin HEAD:master`.
 
 ## The virtual trip model (built by hand, suggestions carry the intelligence)
@@ -32,7 +32,7 @@ Start a fresh review from here. The full backlog is [TODO.md](TODO.md); what shi
 5. **Content and later:** P1.1 more curated trips, P1.2 plan-ahead notes, P1.6 weather by month, P1.7 best months, V3 review of `city-attributes-review.csv` (`effort: trek` is unreliable, wrong for Pushkar and Gokarna among others); P2 and P3 items are in TODO.md.
 
 ## Things worth knowing
-- `generateSteps` is still exported and used by tests and "Suggest a plan"; the old stay modal, regenerate and "rebuild keeping edits" paths are gone.
+- `generateSteps` is still exported and used by tests (the "Suggest a plan" button was removed in 72); the old stay modal, regenerate and "rebuild keeping edits" paths are gone.
 - The sticky day tabs use `-top-4` because the scroll container has 16 px padding.
 - City cards show an "N videos" link (a real `?city=<id>` anchor); the city sheet opens in place on a plain click.
 - Sources for each access note are in the data (`access.source`), so they can be re-checked.

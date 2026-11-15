@@ -271,15 +271,15 @@ test('strength panel: always open beside the title on desktop; tablet remembers 
   await context.close();
 });
 
-test('data: every city carries valid vibes (1-3 of spiritual/heritage/nature/adventure/foodie), effort (easy/trek) and setting', () => {
+test('data: every city carries valid vibes (1-3 of spiritual/heritage/nature/adventure/foodie) and setting', () => {
   const fsx = require('node:fs'), vm = require('node:vm');
   const win = {}; new vm.Script(fsx.readFileSync(require('node:path').resolve(__dirname, '..', '..', 'data', 'cities.js'), 'utf8')).runInNewContext({ window: win });
   const V = new Set(['spiritual', 'heritage', 'nature', 'adventure', 'foodie']), bad = [];
   for (const c of win.KYT_CITIES) {
     const okV = Array.isArray(c.vibes) && c.vibes.length >= 1 && c.vibes.length <= 3 && c.vibes.every(v => V.has(v)) && new Set(c.vibes).size === c.vibes.length;
-    if (!okV || !['easy', 'trek'].includes(c.effort) || !['coast', 'hills', 'plains'].includes(c.setting)) bad.push(c.id);
+    if (!okV || !['coast', 'hills', 'plains'].includes(c.setting)) bad.push(c.id);
   }
-  assert.deepEqual(bad, [], 'cities need "vibes": [1-3 of spiritual|heritage|nature|adventure|foodie], "effort": "easy"|"trek", "setting": "coast"|"hills"|"plains" in data/cities.js');
+  assert.deepEqual(bad, [], 'cities need "vibes": [1-3 of spiritual|heritage|nature|adventure|foodie], "setting": "coast"|"hills"|"plains" in data/cities.js');
 });
 
 test('setting: every city carries a valid setting in data/cities.js, and known cities classify correctly (Kutch is not hills)', async () => {
@@ -369,4 +369,11 @@ test('page scripts live in js/page-*.js, are referenced by a page, parse, and ar
     assert.ok(htmls.includes(`./js/${f}`), `${f} is not referenced by any page`);
     assert.ok(sw.includes(`./js/${f}`), `${f} is missing from the service worker's APP_SHELL, so the page would break offline`);
   }
+});
+
+test('the Effort filter and the city "effort" field are gone (D7)', () => {
+  const fsx = require('node:fs'), pth = require('node:path');
+  const root = pth.resolve(__dirname, '..', '..');
+  assert.doesNotMatch(fsx.readFileSync(pth.join(root, 'data', 'cities.js'), 'utf8'), /^    "effort":/m);
+  assert.doesNotMatch(fsx.readFileSync(pth.join(root, 'js', 'passport-extras.js'), 'utf8'), /Has a trek|id: 'effort'/);
 });

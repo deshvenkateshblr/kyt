@@ -1,6 +1,6 @@
 # Cloudflare Worker Setup for KYT Shortlinks
 
-This tiny serverless script lets you share 55-character WhatsApp links (e.g. `https://vividnova.com/kyt/trip_detail.html?c=k7x9p2`) with 100% full itinerary fidelity.
+This tiny serverless script lets you share short WhatsApp links (e.g. `https://vividnova.com/kyt/trip_detail.html?c=sxk7x9`; the first two characters are the day, the rest random) with 100% full itinerary fidelity.
 
 ---
 

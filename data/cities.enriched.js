@@ -183,7 +183,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "easy",
     "code": "agr"
   },
   {
@@ -371,7 +370,6 @@ window.KYT_CITIES = [
       "heritage",
       "foodie"
     ],
-    "effort": "easy",
     "code": "jai"
   },
   {
@@ -381,7 +379,6 @@ window.KYT_CITIES = [
       "nature",
       "heritage"
     ],
-    "effort": "easy",
     "code": "goa",
     "name": "Goa",
     "icon": "waves",
@@ -832,7 +829,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "mun"
   },
   {
@@ -1022,7 +1018,6 @@ window.KYT_CITIES = [
       "heritage",
       "nature"
     ],
-    "effort": "easy",
     "code": "uda"
   },
   {
@@ -1301,7 +1296,6 @@ window.KYT_CITIES = [
       "heritage",
       "foodie"
     ],
-    "effort": "easy",
     "code": "var"
   },
   {
@@ -1494,7 +1488,6 @@ window.KYT_CITIES = [
       "heritage",
       "foodie"
     ],
-    "effort": "easy",
     "code": "del"
   },
   {
@@ -1861,7 +1854,6 @@ window.KYT_CITIES = [
       "heritage",
       "foodie"
     ],
-    "effort": "easy",
     "code": "mum"
   },
   {
@@ -2023,7 +2015,6 @@ window.KYT_CITIES = [
       "heritage",
       "foodie"
     ],
-    "effort": "easy",
     "code": "koc"
   },
   {
@@ -2182,7 +2173,6 @@ window.KYT_CITIES = [
       "adventure",
       "nature"
     ],
-    "effort": "easy",
     "code": "ris"
   },
   {
@@ -2346,7 +2336,6 @@ window.KYT_CITIES = [
       "adventure",
       "nature"
     ],
-    "effort": "trek",
     "code": "man"
   },
   {
@@ -2511,7 +2500,6 @@ window.KYT_CITIES = [
       "heritage",
       "nature"
     ],
-    "effort": "easy",
     "code": "shi"
   },
   {
@@ -2705,7 +2693,6 @@ window.KYT_CITIES = [
       "nature",
       "heritage"
     ],
-    "effort": "easy",
     "code": "dar"
   },
   {
@@ -2864,7 +2851,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "oot"
   },
   {
@@ -3024,7 +3010,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "easy",
     "code": "mys"
   },
   {
@@ -3183,7 +3168,6 @@ window.KYT_CITIES = [
       "heritage",
       "foodie"
     ],
-    "effort": "easy",
     "code": "hyd"
   },
   {
@@ -3339,7 +3323,6 @@ window.KYT_CITIES = [
       "heritage",
       "foodie"
     ],
-    "effort": "easy",
     "code": "kol"
   },
   {
@@ -3505,7 +3488,6 @@ window.KYT_CITIES = [
       "heritage",
       "spiritual"
     ],
-    "effort": "easy",
     "code": "che"
   },
   {
@@ -3668,7 +3650,6 @@ window.KYT_CITIES = [
       "heritage",
       "spiritual"
     ],
-    "effort": "easy",
     "code": "pon"
   },
   {
@@ -3677,7 +3658,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "trek",
     "code": "hmp",
     "name": "Hampi",
     "icon": "landmark",
@@ -4010,7 +3990,6 @@ window.KYT_CITIES = [
       "nature",
       "adventure"
     ],
-    "effort": "easy",
     "code": "and"
   },
   {
@@ -4171,7 +4150,6 @@ window.KYT_CITIES = [
       "nature",
       "heritage"
     ],
-    "effort": "easy",
     "code": "sri"
   },
   {
@@ -4339,7 +4317,6 @@ window.KYT_CITIES = [
       "spiritual",
       "nature"
     ],
-    "effort": "easy",
     "code": "leh"
   },
   {
@@ -4508,7 +4485,6 @@ window.KYT_CITIES = [
       "foodie",
       "heritage"
     ],
-    "effort": "easy",
     "code": "amr"
   },
   {
@@ -4668,7 +4644,6 @@ window.KYT_CITIES = [
       "heritage",
       "adventure"
     ],
-    "effort": "easy",
     "code": "ja1"
   },
   {
@@ -4834,7 +4809,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "easy",
     "code": "jod"
   },
   {
@@ -4972,7 +4946,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "trek",
     "code": "pus"
   },
   {
@@ -5106,7 +5079,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "easy",
     "code": "kha"
   },
   {
@@ -5240,7 +5212,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "all"
   },
   {
@@ -5250,7 +5221,6 @@ window.KYT_CITIES = [
       "spiritual",
       "nature"
     ],
-    "effort": "trek",
     "code": "gkn",
     "name": "Gokarna",
     "icon": "waves",
@@ -5512,7 +5482,6 @@ window.KYT_CITIES = [
       "heritage",
       "foodie"
     ],
-    "effort": "easy",
     "code": "mad"
   },
   {
@@ -5675,7 +5644,6 @@ window.KYT_CITIES = [
       "spiritual",
       "nature"
     ],
-    "effort": "easy",
     "code": "kan"
   },
   {
@@ -5807,7 +5775,6 @@ window.KYT_CITIES = [
       "nature",
       "heritage"
     ],
-    "effort": "easy",
     "code": "ran"
   },
   {
@@ -5938,7 +5905,6 @@ window.KYT_CITIES = [
       "nature",
       "adventure"
     ],
-    "effort": "easy",
     "code": "jim"
   },
   {
@@ -6095,7 +6061,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "trek",
     "code": "nai"
   },
   {
@@ -6252,7 +6217,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "mus"
   },
   {
@@ -6414,7 +6378,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "coo"
   },
   {
@@ -6546,7 +6509,6 @@ window.KYT_CITIES = [
       "nature",
       "adventure"
     ],
-    "effort": "trek",
     "code": "way"
   },
   {
@@ -6676,7 +6638,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "mah"
   },
   {
@@ -6813,7 +6774,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "lon"
   },
   {
@@ -6976,7 +6936,6 @@ window.KYT_CITIES = [
       "heritage",
       "foodie"
     ],
-    "effort": "easy",
     "code": "pun"
   },
   {
@@ -7139,7 +7098,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "easy",
     "code": "aur"
   },
   {
@@ -7309,7 +7267,6 @@ window.KYT_CITIES = [
       "heritage",
       "foodie"
     ],
-    "effort": "easy",
     "code": "ahm"
   },
   {
@@ -7463,7 +7420,6 @@ window.KYT_CITIES = [
       "nature",
       "heritage"
     ],
-    "effort": "easy",
     "code": "kut"
   },
   {
@@ -7601,7 +7557,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "dwa"
   },
   {
@@ -7759,7 +7714,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "som"
   },
   {
@@ -7894,7 +7848,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "easy",
     "code": "gwa"
   },
   {
@@ -8030,7 +7983,6 @@ window.KYT_CITIES = [
       "heritage",
       "spiritual"
     ],
-    "effort": "easy",
     "code": "orc"
   },
   {
@@ -8165,7 +8117,6 @@ window.KYT_CITIES = [
       "heritage",
       "nature"
     ],
-    "effort": "easy",
     "code": "bho"
   },
   {
@@ -8308,7 +8259,6 @@ window.KYT_CITIES = [
       "foodie",
       "heritage"
     ],
-    "effort": "easy",
     "code": "ind"
   },
   {
@@ -8458,7 +8408,6 @@ window.KYT_CITIES = [
       "spiritual",
       "nature"
     ],
-    "effort": "easy",
     "code": "pur"
   },
   {
@@ -8626,7 +8575,6 @@ window.KYT_CITIES = [
       "heritage",
       "spiritual"
     ],
-    "effort": "easy",
     "code": "bhu"
   },
   {
@@ -8759,7 +8707,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "easy",
     "code": "kon"
   },
   {
@@ -8918,7 +8865,6 @@ window.KYT_CITIES = [
       "spiritual",
       "nature"
     ],
-    "effort": "easy",
     "code": "guw"
   },
   {
@@ -9051,7 +8997,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "sh1"
   },
   {
@@ -9183,7 +9128,6 @@ window.KYT_CITIES = [
       "nature",
       "adventure"
     ],
-    "effort": "trek",
     "code": "ch1"
   },
   {
@@ -9344,7 +9288,6 @@ window.KYT_CITIES = [
       "spiritual",
       "nature"
     ],
-    "effort": "easy",
     "code": "taw"
   },
   {
@@ -9507,7 +9450,6 @@ window.KYT_CITIES = [
       "nature",
       "spiritual"
     ],
-    "effort": "easy",
     "code": "gan"
   },
   {
@@ -9645,7 +9587,6 @@ window.KYT_CITIES = [
       "nature",
       "spiritual"
     ],
-    "effort": "easy",
     "code": "pel"
   },
   {
@@ -9773,7 +9714,6 @@ window.KYT_CITIES = [
       "nature",
       "adventure"
     ],
-    "effort": "easy",
     "code": "kaz"
   },
   {
@@ -9939,7 +9879,6 @@ window.KYT_CITIES = [
       "spiritual",
       "nature"
     ],
-    "effort": "trek",
     "code": "dha"
   },
   {
@@ -10074,7 +10013,6 @@ window.KYT_CITIES = [
       "nature",
       "heritage"
     ],
-    "effort": "trek",
     "code": "dal"
   },
   {
@@ -10263,7 +10201,6 @@ window.KYT_CITIES = [
       "spiritual",
       "nature"
     ],
-    "effort": "trek",
     "code": "spi",
     "lat": 32.2461,
     "lng": 78.0349,
@@ -10427,7 +10364,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "ram"
   },
   {
@@ -10558,7 +10494,6 @@ window.KYT_CITIES = [
       "heritage",
       "spiritual"
     ],
-    "effort": "easy",
     "code": "tha"
   },
   {
@@ -10688,7 +10623,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "kod"
   },
   {
@@ -10823,7 +10757,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "mat"
   },
   {
@@ -10956,7 +10889,6 @@ window.KYT_CITIES = [
       "adventure",
       "nature"
     ],
-    "effort": "trek",
     "code": "aul"
   },
   {
@@ -11125,7 +11057,6 @@ window.KYT_CITIES = [
       "spiritual",
       "adventure"
     ],
-    "effort": "trek",
     "code": "ked"
   },
   {
@@ -11287,7 +11218,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "trek",
     "code": "bad"
   },
   {
@@ -11422,7 +11352,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "har"
   },
   {
@@ -11558,7 +11487,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "ma1"
   },
   {
@@ -11697,7 +11625,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "vri"
   },
   {
@@ -11914,7 +11841,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "ayo"
   },
   {
@@ -12048,7 +11974,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "pra"
   },
   {
@@ -12185,7 +12110,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "gay"
   },
   {
@@ -12319,7 +12243,6 @@ window.KYT_CITIES = [
       "heritage",
       "spiritual"
     ],
-    "effort": "easy",
     "code": "nal"
   },
   {
@@ -12455,7 +12378,6 @@ window.KYT_CITIES = [
       "spiritual",
       "heritage"
     ],
-    "effort": "easy",
     "code": "raj"
   },
   {
@@ -12591,7 +12513,6 @@ window.KYT_CITIES = [
       "spiritual",
       "heritage"
     ],
-    "effort": "easy",
     "code": "sar"
   },
   {
@@ -12723,7 +12644,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "maw"
   },
   {
@@ -12885,7 +12805,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "zir"
   },
   {
@@ -13019,7 +12938,6 @@ window.KYT_CITIES = [
       "heritage",
       "nature"
     ],
-    "effort": "easy",
     "code": "maj"
   },
   {
@@ -13145,7 +13063,6 @@ window.KYT_CITIES = [
       "nature",
       "adventure"
     ],
-    "effort": "easy",
     "code": "hav"
   },
   {
@@ -13275,7 +13192,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "nei"
   },
   {
@@ -13428,7 +13344,6 @@ window.KYT_CITIES = [
       "nature",
       "adventure"
     ],
-    "effort": "easy",
     "code": "lak"
   },
   {
@@ -13574,7 +13489,6 @@ window.KYT_CITIES = [
       "nature",
       "adventure"
     ],
-    "effort": "trek",
     "code": "cho"
   },
   {
@@ -13705,7 +13619,6 @@ window.KYT_CITIES = [
       "nature",
       "spiritual"
     ],
-    "effort": "easy",
     "code": "mou"
   },
   {
@@ -13843,7 +13756,6 @@ window.KYT_CITIES = [
       "heritage",
       "foodie"
     ],
-    "effort": "easy",
     "code": "bik"
   },
   {
@@ -13977,7 +13889,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "easy",
     "code": "chi"
   },
   {
@@ -14108,7 +14019,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "kum"
   },
   {
@@ -14240,7 +14150,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "kov"
   },
   {
@@ -14373,7 +14282,6 @@ window.KYT_CITIES = [
       "nature",
       "spiritual"
     ],
-    "effort": "easy",
     "code": "va1"
   },
   {
@@ -14509,7 +14417,6 @@ window.KYT_CITIES = [
       "heritage",
       "spiritual"
     ],
-    "effort": "easy",
     "code": "thr"
   },
   {
@@ -14643,7 +14550,6 @@ window.KYT_CITIES = [
       "heritage",
       "spiritual"
     ],
-    "effort": "easy",
     "code": "bel"
   },
   {
@@ -14778,7 +14684,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "easy",
     "code": "hal"
   },
   {
@@ -14913,7 +14818,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "trek",
     "code": "ba1"
   },
   {
@@ -15048,7 +14952,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "easy",
     "code": "pat"
   },
   {
@@ -15184,7 +15087,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "vij"
   },
   {
@@ -15348,7 +15250,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "tir"
   },
   {
@@ -15481,7 +15382,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "vis"
   },
   {
@@ -15616,7 +15516,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "ra1"
   },
   {
@@ -15754,7 +15653,6 @@ window.KYT_CITIES = [
       "heritage",
       "spiritual"
     ],
-    "effort": "easy",
     "code": "pa1"
   },
   {
@@ -15891,7 +15789,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "bod"
   },
   {
@@ -16026,7 +15923,6 @@ window.KYT_CITIES = [
     "vibes": [
       "foodie"
     ],
-    "effort": "easy",
     "code": "sur"
   },
   {
@@ -16161,7 +16057,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "easy",
     "code": "vad"
   },
   {
@@ -16294,7 +16189,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "easy",
     "code": "ra2"
   },
   {
@@ -16428,7 +16322,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "ga1"
   },
   {
@@ -16558,7 +16451,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "easy",
     "code": "cha"
   },
   {
@@ -16688,7 +16580,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "easy",
     "code": "lud"
   },
   {
@@ -16819,7 +16710,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "jal"
   },
   {
@@ -16952,7 +16842,6 @@ window.KYT_CITIES = [
       "heritage",
       "foodie"
     ],
-    "effort": "easy",
     "code": "pa2"
   },
   {
@@ -17085,7 +16974,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "easy",
     "code": "rai"
   },
   {
@@ -17219,7 +17107,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "easy",
     "code": "bhi"
   },
   {
@@ -17350,7 +17237,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "jam"
   },
   {
@@ -17478,7 +17364,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "dh1"
   },
   {
@@ -17639,7 +17524,6 @@ window.KYT_CITIES = [
       "nature",
       "heritage"
     ],
-    "effort": "easy",
     "code": "deh"
   },
   {
@@ -17775,7 +17659,6 @@ window.KYT_CITIES = [
       "spiritual",
       "heritage"
     ],
-    "effort": "easy",
     "code": "ja2"
   },
   {
@@ -17908,7 +17791,6 @@ window.KYT_CITIES = [
       "adventure",
       "nature"
     ],
-    "effort": "easy",
     "code": "gul"
   },
   {
@@ -18043,7 +17925,6 @@ window.KYT_CITIES = [
       "nature",
       "adventure"
     ],
-    "effort": "easy",
     "code": "pah"
   },
   {
@@ -18053,6 +17934,11 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sonamarg%20Kashmir%20India",
     "notes": "The Meadow of Gold, nestled along the Sindh River, gateway to Ladakh and starting point of the Amarnath Baltal route.",
+    "access": {
+      "kind": "seasonal",
+      "note": "Recommended: check the road before you go. The Zojila road can shut for weeks in winter and after heavy snow, and Sonamarg is at 2,800 m, so keep the first day easy.",
+      "source": "https://www.tribuneindia.com/news/j-k/srinagar-leh-road-reopens-after-73-days-378993"
+    },
     "beats": [
       {
         "title": "Thajiwas Glacier pony trek & snow activities",
@@ -18173,7 +18059,6 @@ window.KYT_CITIES = [
       "nature",
       "adventure"
     ],
-    "effort": "easy",
     "code": "son"
   },
   {
@@ -18183,6 +18068,11 @@ window.KYT_CITIES = [
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kargil%20Ladakh%20India",
     "notes": "A historic transit town on the Suru River between Srinagar and Leh, famous for the Kargil War Memorial and Buddhist rock-art.",
+    "access": {
+      "kind": "seasonal",
+      "note": "Recommended: check the road before you go. The Zojila road from Srinagar can shut for weeks in winter and after heavy snow, and Kargil is at about 2,700 m, so keep the first day easy.",
+      "source": "https://www.tribuneindia.com/news/j-k/srinagar-leh-road-reopens-after-73-days-378993"
+    },
     "beats": [
       {
         "title": "Kargil War Memorial (Drass)",
@@ -18307,7 +18197,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "easy",
     "code": "kar"
   },
   {
@@ -18432,7 +18321,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "sil"
   },
   {
@@ -18567,7 +18455,6 @@ window.KYT_CITIES = [
       "nature",
       "heritage"
     ],
-    "effort": "easy",
     "code": "kal"
   },
   {
@@ -18693,7 +18580,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "mir"
   },
   {
@@ -18823,7 +18709,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "dig"
   },
   {
@@ -18955,7 +18840,6 @@ window.KYT_CITIES = [
     "vibes": [
       "nature"
     ],
-    "effort": "easy",
     "code": "ma2"
   },
   {
@@ -19084,7 +18968,6 @@ window.KYT_CITIES = [
       "nature",
       "adventure"
     ],
-    "effort": "easy",
     "code": "sun"
   },
   {
@@ -19248,7 +19131,6 @@ window.KYT_CITIES = [
       "heritage",
       "foodie"
     ],
-    "effort": "easy",
     "code": "ben"
   },
   {
@@ -19407,7 +19289,6 @@ window.KYT_CITIES = [
       "heritage",
       "foodie"
     ],
-    "effort": "easy",
     "code": "luc"
   },
   {
@@ -19571,7 +19452,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "sh2"
   },
   {
@@ -19766,7 +19646,6 @@ window.KYT_CITIES = [
       "spiritual",
       "heritage"
     ],
-    "effort": "easy",
     "code": "ka1"
   },
   {
@@ -20075,7 +19954,6 @@ window.KYT_CITIES = [
       "spiritual",
       "heritage"
     ],
-    "effort": "easy",
     "code": "ujj"
   },
   {
@@ -20196,7 +20074,6 @@ window.KYT_CITIES = [
       "spiritual",
       "nature"
     ],
-    "effort": "easy",
     "code": "sr1",
     "notes": "Home to the Mallikarjuna Jyotirlinga and Bhramaramba Shakti Peeth, a sacred town on the banks of River Krishna.",
     "icon": "landmark",
@@ -20510,7 +20387,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "omk",
     "notes": "A sacred island on the Narmada river, shaped like the holy 'Om', housing one of the 12 revered Jyotirlingas.",
     "icon": "landmark",
@@ -20624,7 +20500,6 @@ window.KYT_CITIES = [
       "spiritual",
       "nature"
     ],
-    "effort": "trek",
     "code": "bh1",
     "notes": "An ancient shrine in the Sahyadri mountains, famous for its Jyotirlinga and the lush Bhimashankar Wildlife Sanctuary.",
     "icon": "mountain",
@@ -20757,7 +20632,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "nas",
     "notes": "An ancient holy city on the Godavari river, famous for the Kumbh Mela, Trimbakeshwar Jyotirlinga, and vineyards.",
     "icon": "landmark",
@@ -20887,7 +20761,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "deo",
     "notes": "A major Hindu pilgrimage site renowned for the Baidyanath Jyotirlinga temple, attracting millions during Shravan.",
     "icon": "landmark",
@@ -21002,7 +20875,6 @@ window.KYT_CITIES = [
       "spiritual",
       "heritage"
     ],
-    "effort": "easy",
     "code": "ti1",
     "notes": "An ancient city centered around the Rock Fort, and home to the massive Sri Ranganathaswamy Temple in Srirangam.",
     "icon": "landmark",
@@ -21115,7 +20987,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "easy",
     "code": "thi",
     "notes": "The capital of Kerala, distinguished by its British colonial architecture, art galleries, and the magnificent Padmanabhaswamy Temple.",
     "icon": "landmark",
@@ -21223,7 +21094,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "gur",
     "notes": "A bustling temple town in Kerala, home to the revered Guruvayur Sri Krishna Temple, often called the 'Dwarka of the South'.",
     "icon": "landmark",
@@ -21335,7 +21205,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "pan",
     "notes": "A major pilgrimage city on the banks of the Chandrabhaga River, dedicated to Lord Vitthal and Rukmini.",
     "icon": "landmark",
@@ -21447,7 +21316,6 @@ window.KYT_CITIES = [
     "vibes": [
       "spiritual"
     ],
-    "effort": "easy",
     "code": "nat",
     "notes": "A picturesque town in the Aravalli hills, famous for its Shrinathji Temple, dedicated to Lord Krishna.",
     "icon": "landmark",
@@ -21466,7 +21334,6 @@ window.KYT_CITIES = [
       "spiritual",
       "foodie"
     ],
-    "effort": "easy",
     "code": "udp",
     "name": "Udupi",
     "state": "Karnataka",
@@ -21725,7 +21592,6 @@ window.KYT_CITIES = [
       "heritage",
       "spiritual"
     ],
-    "effort": "easy",
     "code": "ma3"
   },
   {
@@ -21734,7 +21600,6 @@ window.KYT_CITIES = [
     "vibes": [
       "heritage"
     ],
-    "effort": "easy",
     "code": "hbl",
     "name": "Hubballi (Hubli)",
     "icon": "plane",
@@ -22012,7 +21877,6 @@ window.KYT_CITIES = [
       "heritage",
       "foodie"
     ],
-    "effort": "easy",
     "code": "klh"
   },
   {
@@ -22175,7 +22039,6 @@ window.KYT_CITIES = [
       "heritage",
       "spiritual"
     ],
-    "effort": "easy",
     "code": "mbl"
   },
   {
@@ -22307,7 +22170,6 @@ window.KYT_CITIES = [
       "nature",
       "adventure"
     ],
-    "effort": "easy",
     "code": "tkd"
   },
   {
@@ -22440,7 +22302,6 @@ window.KYT_CITIES = [
       "nature",
       "adventure"
     ],
-    "effort": "trek",
     "code": "ckm"
   },
   {
@@ -22574,7 +22435,6 @@ window.KYT_CITIES = [
       "heritage",
       "nature"
     ],
-    "effort": "easy",
     "code": "kvd"
   },
   {
@@ -22709,7 +22569,6 @@ window.KYT_CITIES = [
       "heritage",
       "spiritual"
     ],
-    "effort": "easy",
     "code": "jbp"
   },
   {
@@ -22847,7 +22706,6 @@ window.KYT_CITIES = [
       "heritage",
       "nature"
     ],
-    "effort": "easy",
     "code": "mdw"
   },
   {
@@ -22985,7 +22843,6 @@ window.KYT_CITIES = [
       "heritage",
       "spiritual"
     ],
-    "effort": "easy",
     "code": "wgl"
   },
   {
@@ -23112,7 +22969,6 @@ window.KYT_CITIES = [
       "nature",
       "adventure"
     ],
-    "effort": "easy",
     "code": "gir"
   },
   {
@@ -23246,7 +23102,6 @@ window.KYT_CITIES = [
       "nature",
       "adventure"
     ],
-    "effort": "easy",
     "code": "clk"
   },
   {
@@ -23382,7 +23237,6 @@ window.KYT_CITIES = [
       "nature",
       "foodie"
     ],
-    "effort": "easy",
     "code": "abg"
   },
   {
@@ -23513,7 +23367,6 @@ window.KYT_CITIES = [
       "heritage",
       "foodie"
     ],
-    "effort": "easy",
     "code": "shn"
   },
   {
@@ -23673,7 +23526,6 @@ window.KYT_CITIES = [
       "heritage",
       "nature"
     ],
-    "effort": "easy",
     "code": "khm"
   },
   {
@@ -23841,7 +23693,6 @@ window.KYT_CITIES = [
       "spiritual",
       "heritage"
     ],
-    "effort": "easy",
     "code": "mtm"
   }
 ];

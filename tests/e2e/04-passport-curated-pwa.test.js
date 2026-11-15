@@ -185,6 +185,7 @@ test('a trip can be created and edited with the network off (offline-first)', as
   await page.click('#btn-add-step');
   await page.fill('#form-step-title', 'In-flight note');
   await page.click('#btn-save-step');
+  await page.waitForSelector('#step-form-view.hidden', { state: 'attached' });   // the form closes once the device write is done
   assert.match(await page.locator('#step-count-badge').innerText(), /^1 item$/);
   await context.close();
 });
@@ -461,3 +462,21 @@ test('sharing a refined trip with shortener generates ?c= link and loading ?c= r
 });
 
 
+
+test('the PDF library works offline after the app has been opened once (D10)', async () => {
+  const { context, page } = await newPhone(env.browser, { realPdf: true });
+  await page.goto(env.base + '/configure_trip.html');
+  await page.evaluate(async () => { await navigator.serviceWorker.ready; });
+  await page.waitForFunction(async () => {
+    const c = await caches.open('kyt-lib-v1');
+    return (await c.keys()).length >= 4;
+  }, null, { timeout: 20000 });
+  await page.waitForTimeout(1500);                                  // the app shell finishes caching
+  await context.setOffline(true);
+  await page.goto(env.base + '/trip_detail.html?trip=Offline&cities=agra,jaipur&taste=msa&origin=delhi&days=2');
+  await page.waitForSelector('#btn-save-pdf');
+  assert.equal(await page.evaluate(() => typeof pdfMake), 'object', 'the PDF library loaded with no network');
+  const font = await page.evaluate(async () => (await fetch('./lib/fonts/NotoSansDevanagari-Regular.ttf')).ok);
+  assert.equal(font, true, 'and so is the Hindi font');
+  await context.close();
+});

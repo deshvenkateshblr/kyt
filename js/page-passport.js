@@ -110,7 +110,7 @@
         cities = cities.filter(c => activeQuest.cityIds.includes(c.id));
       }
 
-      // 1. City-attribute filters (vibe, setting, effort, food, region, state)
+      // 1. City-attribute filters (vibe, setting, food, region, state)
       cities = PassportExtras.apply(cities);
       PassportExtras.renderChips(document.getElementById('active-filters'), document.getElementById('btn-open-filters'), document.getElementById('btn-open-quests'));
 

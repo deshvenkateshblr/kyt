@@ -82,3 +82,10 @@
       .catch(function (err) { console.warn('[SW] Registration failed:', err); });
       });
       }
+
+      /* "Add to Home Screen" at the top jumps to the steps, which are folded: open them. */
+      (function () {
+        var fold = document.querySelector('.k-fold');
+        var link = document.querySelector('.k-install-btn');
+        if (fold && link) link.addEventListener('click', function () { fold.open = true; });
+      })();

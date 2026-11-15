@@ -432,26 +432,119 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - Only plain text: the PDF font has no arrows or emoji, so routes read "Agra to Jaipur". `js/trip-pdf.js` builds the document as plain data, so it is tested without a browser.
     - **Tests:** `13-trip-pdf.test.js` (4). The pdfMake library still loads from cdnjs (as on the album pages), so a first-ever offline use shows a plain message.
 
+68. **Save and Open replaces Back up and restore (service worker cache `kyt-v102`)**
+    - The same single file (passport, virtual trips, current trip with photos and tickets, format unchanged, so old backups still open), in plain words: **Save to a file** and **Open a saved file**. File name `kyt-saved-<date>.json`.
+    - **Found without looking for it:** a **Save** button in the toolbar on every page, with an amber dot when there are changes not yet in a file; the home page link reads "Save or open your trips"; End Trip offers "Save a copy, then end trip".
+    - **Reminders, never blocking:** the app counts changes since the last save. After 4 changes with nothing ever saved, 15 changes since the last save, or 3 days of unsaved changes, a small card offers "Save a copy?" (Save now / Not today; Not today is quiet for a day). It waits until you have stopped tapping or typing for 3 seconds, never covers a page you are using, and is not shown while a dialog is open.
+    - **On a phone, Save opens the share sheet**, so Save to Files, Drive or WhatsApp is one tap; closing the sheet without choosing is not counted as saved. Elsewhere it downloads.
+    - Opening a file counts as saved (device and file match). The device check moved into a closed "About this device".
+    - **Tests:** 8 new in `06-storage.test.js`, 7 reworded. The footer test now skips `testgmap.html` (the internal audit page); the Mumbai test follows the renamed Haji Ali and Mahalaxmi places.
+69. **Saved file is `.kyt` (service worker cache `kyt-v103`)**
+    - Save now writes `kyt-saved-<date>.kyt` (still plain JSON inside, shared as `application/json`). Open has no file-type filter, so iPhone does not grey the file out, and it goes by what is inside: `.kyt`, old `.json` backups and renamed files open; anything else is refused with "not a KYT saved file".
+    - End Trip says what saving keeps: "Save this trip, then end it. Saving first keeps the whole trip in a file: Open it later to see it again." There is no in-app list of ended trips; the saved file is the archive.
+70. **Past trips: ending a trip keeps it (service worker cache `kyt-v104`)**
+    - End Trip no longer deletes. It moves the trip to **Past trips** on the device (steps, notes, cover; photos and image tickets shrunk to about 1000 px at 70%, roughly a fifth of the size). If the device has no room, it asks before the trip is lost. The End Trip sheet says so and still offers "Save a file first, then end it". After ending you land on the Trips page with the list open and an **Undo** (puts the trip back as the live trip).
+    - The **Past trips** list on the Trips page shows dates, days, steps, photos and size for each. **View** opens it read-only (days, steps, notes, photos). **Plan this again** makes a new planned trip from it (same days, times and places; no photos or old dates), which goes through the usual Start this trip with fresh dates. **Remove photos** frees space and keeps the story. **Delete** removes it after a confirm.
+    - Past trips are inside the saved `.kyt` file (`pastTrips`; the format number is unchanged, so older files still open) and the open prompt lists "Past trips: N".
+    - `js/past-trips.js` (rules are pure and tested in Node). **Tests:** `14-past-trips.test.js` (7).
+71. **Storage meter (service worker cache `kyt-v105`)**
+    - Save & Open now shows **Space on this device**: a bar for how much of the browser's allowance KYT uses, the figure in MB, and your own data split into Current trip, Past trips (with a count) and Planned trips, passport and settings. The browser's figure includes the app's own files, and the sheet says so.
+    - Amber "Getting full" from 70% of the allowance, red "Almost full" from 90%, with the advice to remove photos from Past trips (the biggest saving). When the browser will not say, no warning is shown.
+    - A heads-up also appears on its own, at the top of any page, when the allowance is 70% used: "KYT is getting full. See what uses space / Later". Later quiets it for 3 days; it never appears while there is plenty of room.
+    - **Tests:** 5 added in `06-storage.test.js`.
 
+72. **Suggest a plan removed; Add your own stop follows the day (service worker cache `kyt-v106`)**
+    - The **Suggest a plan** button is gone: you build your own plan, with the city's suggestions to pick from. The generator stays only as a test fixture (`KYT.virtualTrips.seedPlanForTests`); cleanup to explicit fixtures is a P4 item.
+    - **Add your own stop** (and Add travel and Add stay) no longer starts at 12:00. It starts 15 minutes after the day's last step ends (9:00 on an empty day; stays no earlier than 21:00), so it fits what is already there.
+    - A stop's map link is now clear: "Open in Maps" with the place name beside it, searching the place (or the stop's name) in the day's city.
+    - **Tests:** one added in `09-plan-editing.test.js`; tests that used the button now use the fixture.
+73. **Before you go first in the Day Plan; Style moved to the top (service worker cache `kyt-v107`)**
+    - The Day Plan now opens with a **Before you go** panel above the day tabs: each city's access note and Before you go notes (book ahead, permits, ID, dress, rules), collapsible.
+    - An optional **Travelling in** month (kept with the trip, never assumed) adds warnings: a place usually closed or cut off that month (ranges that wrap the year end, such as Dec to May, work), and each city's typical temperature and rain for that month, flagged when wet or hot. This is the start-date awareness of D2; the start-date dialog does not warn yet.
+    - **Style** (Intent, Diet, Pace) was only reachable low down in the suggestions list. It is now one small line at the top, "Style: Mixed · Any · Standard · Change", and the chips open only when tapped.
+    - **Tests:** 3 added in `09-plan-editing.test.js`.
+74. **Travel month and start date, finished (service worker cache `kyt-v108`)**
+    - **Start this trip** now checks the chosen date: closed or cut-off places, wet or very hot months for any city in the plan, and a month that differs from the "Travelling in" month you set. Shown as one amber note under the date; it never blocks Start.
+    - The **travel month travels with the trip**: the share link carries it (`m=`, also in the compact fallback link; the short-code snapshot already had it), opening a shared link restores it, and the saved `.kyt` file keeps it with the trip.
+    - **Save PDF** adds a "Travelling in <month>" box after At a glance (closures, wet, hot, typical weather per city), only when a month is set (also read from a shared link).
+    - The month rules moved to one place (`KYT.ui.monthNotes`) used by the Day Plan, the start dialog and the PDF.
+    - **Tests:** 4 added (09, 13).
+75. **Saving a step waits for the device; Open no longer silently replaces (service worker cache `kyt-v109`)**
+    - **D3:** Save on the step form now waits for the device write before the form closes (the button is disabled meanwhile), and the four trip writes start together. Leaving the page right after Save can no longer lose the edit. This was the cause of the flaky "web link attachment" test, which now waits for the form to close.
+    - **D4:** Open, on a device that already has trips, asks: **Add the file to what is here** (keeps everything here, adds passport cities, planned trips and past trips the file has and this device does not; same id keeps this device's version; the current trip is kept, or taken from the file if this device has none), **Replace what is here with the file**, **Save what is here to a file first**, or Cancel. Both lists (in the file, on this device) are shown. A device with nothing on it still gets the plain confirm.
+    - **D5, D6** closed: they only concerned the removed Suggest a plan.
+    - **Tests:** 5 added (01, 06); 4 older tests now wait for the form to close.
+76. **Trek attribute removed, Hindi in PDFs, reorder days, PDF offline, one-command releases (service worker cache `kyt-v110`)**
+    - **D7:** the city-level `effort` field (16 unreviewed "trek" cities, including Pushkar and Gokarna) and the passport **Effort** filter are removed. Per-place walking badges and access notes (Kedarnath "On foot") stay.
+    - **D8:** Hindi, Marathi and other **Devanagari** text in a trip prints correctly in the PDF. Those words are set in Noto Sans Devanagari (kept in `lib/fonts`, loaded only when a document has Devanagari); everything else stays in Roboto. Other Indian scripts (Tamil, Telugu, Bengali and so on) still need their own font. The Memory Album PDF is not covered yet.
+    - **D9:** the Day Plan has **Earlier** and **Later** on each day, swapping the day with its neighbour, steps and times with it; the chosen-cities list follows. If a travel step is involved it asks first, since its wording does not change.
+    - **D10:** pdfMake and its fonts are now bundled in `lib/` and kept in their own cache (`kyt-lib-v1`) that a release does not wipe, so the PDF works offline after the first online visit, and an update does not re-download 2.6 MB.
+    - **D11:** `npm run bump` sets the service worker cache name, the footer version and every page's `?v=` together; tests fail if any of them differ. All `?v=` now equal the app version.
+    - **Tests:** 10 added (04, 05, 06, 09, 13). The test harness stubs the PDF library by default; `newPhone(browser, { realPdf: true })` loads the real one.
+77. **Nights and Review for stays; cities movable with steps (service worker cache `kyt-v111`)**
+    - **Cities can be reordered after the plan has steps** (D9 as you meant it, on the destination chips). A city's days move together with their steps and the days are renumbered; if there are travel steps it asks first, since their wording does not change.
+    - **One stay entry per night, shown as one stay.** Consecutive nights in the same city at the same place read "Check-in 21:00 · night 1 of 3", "Night 2 of 3", "Night 3 of 3 · Check-out 11:00", in the Day Plan and in Save PDF. Nothing new is stored.
+    - **Stay at Hotel X again tonight:** the stay suggestion after a night in the same city adds the next night in one tap and moves the check-out to it.
+    - **Nights picker** in Add a stay (1 to 7): adds a stay on each following day while those days are in the same city, with the check-out on the last night. It stops, and says why, if a day ends in another city, already has a stay, or does not exist.
+    - **Review** (collapsed line, "n to look at") lists: a night with no stay, a stay in a different city than you end the day in, check-in before the day's last step ends, check-out after you leave next morning, two stays on one night, and (as a soft note) a stay on the last day. Each row has Add stay or Review step. Nothing blocks.
+    - **Tests:** 10 added (09, 13). Test hook `KYT.virtualTrips.redrawPlan()`.
+78. **Past trips plan again exactly; weather link where figures are untrustworthy; shorter-risk share codes; testgmap removed (service worker cache `kyt-v112`)**
+    - **D13:** a trip started from a plan now records each step's type and city, and the origin on its first step. "Plan this again" uses them, so the origin and cities come back as planned instead of being guessed from the text. Trips ended before this change still use the old guess. Photos that were shrunk cannot be restored, and a past trip still has no PDF or album (both stay open).
+    - **D14:** Mawlynnong, Bhimashankar and Tirupati show **Check the current weather** (a web search, opens in a new tab) in place of "When to go" seasons, and their figures are removed from `data/weather.js`. The update tool skips cities marked `weatherLink`.
+    - **D15 (needs the worker redeployed):** share codes are now 2 characters for the day (days since 2024-01-01, repeating every 1,296 days) plus 4 random characters from crypto, still 6 in all. The worker also looks for the code first and tries again on a clash. Old links keep working.
+    - **D17:** `testgmap.html` deleted.
+    - **Tests:** 7 added (06, 12, 14).
 
-68. **Google Maps Place IDs for all 159 cities and 535 attraction beats (`data/cities.js`, TODO P2.8)**
+79. **Home page revamp and 320 px toolbar (v113)**
+   - Home page is now flat: light header with one blue accent, a single solid primary action ("Start a Virtual Trip", or "View Current Trip" for returning users) and plain hairline-separated rows instead of a boxed card with shadows and coloured badges. Shorter intro copy; the mountain ridge, the "Trip Menu / Quick Access" header and the second accent colour are gone.
+   - Sections below use only white and light grey, with no hard shadows or tilted cards; the closing call to action is the one blue block. Install steps are folded under "Show the steps" (the top "Add to Home Screen" link opens them). Section padding reduced.
+   - Toolbar shrinks on phones under 360 px so Live and Save stay on screen (D16). New tests in tests/e2e/15-layout.test.js.
+
+80. **Indian scripts in every PDF, and advice for high and road-dependent places (v114)**
+   - D8: new `js/pdf-scripts.js` sets Hindi, Bengali, Punjabi, Gujarati, Odia, Tamil, Telugu, Kannada and Malayalam text in Noto Sans fonts (in `lib/fonts`, about 1 MB in all, fetched only when a document has that script, then kept offline). The trip PDF and the Memory Album PDF both use it; English-only documents load nothing extra.
+   - D1, as advice rather than a gate: Sonamarg and Kargil carry a "Recommended: check the road before you go" note about the Zojila road, and any place above 2,500 m with no curated note shows a plain "keep the first day easy" tip. They show in the city sheet, the Day Plan and the PDF, and never change a plan.
+
+81. **Past-trip PDF and a season in the Day Plan (v115)**
+   - D13: a past trip's view has Save as PDF, the same journal PDF a live trip gets (`KYT.social.downloadAlbumPDF` now takes a saved trip). Shrunk photos are not restorable, and the view already says so.
+   - D14: with a travel month chosen, each Day Plan day shows a quiet line with that city's season ("Jaipur in July: hot, about 33°C, wet. Mar to Jun season, wider-area average"). "When to go" now says figures cover the wider area (about 55 km).
+
+82. **Calmer saving, a clearer iPhone save step, a richer home page (v116)** (found testing on an iPhone)
+   - The "Save a copy?" banner fired after only 4 edits and came back on the next edit when dismissed. Now: only for real work left unsaved for a day or more (20 changes, or 40 after a first save), or anything unsaved for 3 days; never in the first session; at most once a week, however it is dismissed. While someone works, the dot on Save is the only signal. "Save now" opens the Save sheet instead of jumping into the share sheet.
+   - The Save sheet says, before the phone's share sheet opens, what will happen: tap Save to Files (iPhone) or Drive, Files, WhatsApp (Android), and that closing it loses nothing. Closing the sheet is no longer shown as a red error.
+   - Home page: the pale header is now a deep-blue gradient with a white primary button and tinted icon chips, a curved edge into the page, soft shadows on the sample cards instead of outlines. Still one blue accent, no boxed card around the actions.
+
+83. **Save goes straight to Downloads on iPhone (v117)**
+   - In Safari (a browser tab) on iPhone and Android, Save now downloads the file directly, like any download, instead of opening the share sheet. The share sheet stays one tap away ("Choose where to send it instead").
+   - In the installed home-screen app the share sheet stays the default, since iOS gives a downloaded blob no clear destination there (not verified on a device); a "Download to my phone instead" link offers the direct route.
+   - Phone downloads use a generic file type so iOS keeps the `.kyt` name.
+
+84. **Home menu animation restored (v118)**
+   - The one-time first-visit "lift and glow" on each option is back (rows lift and light up in turn). Rows also rise in one after another whenever the menu appears, press in on tap, and the arrow slides on hover. All of it is off for people who ask their phone to reduce motion.
+
+85. **Toolbar buttons move like the home menu (v119)**
+   - The top toolbar buttons press in on tap and lift on hover. When something changes (a step, a city, a photo), the Save button lifts and glows twice, at most once a minute, as the gentle cue that there is something to save. It replaces nagging: the banner stays rare. Off under Reduce Motion.
+
+86. **Save and Open work like KYF (v120)** (the first city of a new virtual trip was already prompting to save)
+   - Toolbar Save now saves in one tap, like KYF's Save Data: the file downloads, and a short note says where it went ("Saved as kyt-saved-….kyt, in Downloads") with "Open a file or more" for opening and options. No dialog in between.
+   - Nothing about saving appears while someone works: the Save button animation added in v119 is gone, and the dot on Save shows only once changes have sat unsaved for a day. The one reminder banner is for changes left unsaved 3+ days, once a week at most (a browser can clear a site's data if it is unused for a while).
+   - Home and trip pages keep their "Save or open your trips" link, which opens the Save & Open sheet as before.
+
+87. **Google Maps Place IDs for all 159 cities and 535 attraction beats (`data/cities.js`, TODO P2.8)**
     - **Attraction Classification (`kind: 'place'` vs `kind: 'activity'`):** Audited and tagged all 693 attractions across the catalog. Fixed places (temples, monuments, viewpoints, shrines, lakes) are marked `kind: 'place'`; meal stops, street food trails, shopping walks, boat safaris, and activity tours are marked `kind: 'activity'`. Activities are strictly exempt from `placeId` and `ftid`, preventing unintended place pinning or town overrides.
     - **100% Place ID Resolution:** Resolved canonical Google Place IDs (`ChIJ...`), Google Feature IDs (`ftid`), and coordinates (`lat`, `lng`) for all 535 places across all 16 batches (159 cities) without requiring paid API keys, using automated headless browser lookup and deterministic protobuf Feature ID conversion (`ftidToPlaceId`).
     - **Verification & Click-Through Suite (`testgmap.html`):** Built interactive desktop tool for visual batch-by-batch review with live Google Maps iframe embeds, batch selector (1-16), filters (`All`, `🏛️ Places Only`, `☕ Activities Only`, `Missing Place ID`), direct map links, and persistent verification checklists.
-    - **Edge Cases & Ambiguity Fixes:** Separated Haji Ali Dargah (`ChIJ40INk37O5zsRBY0Hq8dd4NU`) and Shree Mahalaxmi Temple (`ChIJ0T445WzO5zsRYt1jJFF6DOI`) in Mumbai into distinct place beats; corrected distance mismatches (Dubare Elephant Camp in Coorg, Garjiya Devi Temple in Jim Corbett, Grishneshwar Jyotirlinga, Daulatabad Fort, Bibi Ka Maqbara, Adalaj Stepwell, Sardar Sarovar Dam, and Kundalpur Jain Temple).
+    - **Edge Cases & Ambiguity Fixes:** Separated Haji Ali Dargah (`ChIJ40INk37O5zsRBY0Hq8dd4NU`) and Shree Mahalaxmi Temple (`ChIJ0T445WzO5zsRYt1jJFF6DOI`) in Mumbai into distinct place beats; corrected distance mismatches (Dubare Elephant Camp in Coorg, Garjiya Devi Temple in Jim Corbett, Grishneshwar Jyotirlinga, Daulatabad Fort, Bibi Ka Macqbara, Adalaj Stepwell, Sardar Sarovar Dam, and Kundalpur Jain Temple).
     - **Tooling:** Both `admin/enrich_kyt_places.js` and `admin/enrich_kyt_places.py` maintain caching in `admin/places_cache.json` and support batching, status reporting, and safe in-place updates.
 
-69. **High-precision activity search queries (`<title> at <city>`)**
+88. **High-precision activity search queries (`<title> at <city>`)**
     - Updated all 158 activity beats in `data/cities.js` to construct Google Maps search links as `<title> at <city>` (e.g., `Petha & chaat at Kinari Bazaar at Agra`, `Vada pav & street food in Dadar at Mumbai`, `Kerala sadya lunch at Munnar`, `Dal baati churma royal dinner at Jaipur`). Appending the city anchors Google Maps search algorithms directly to relevant local food vendors, restaurants, and activity operators rather than generic town centers.
     - Updated `admin/enrich_kyt_places.js` and `admin/enrich_kyt_places.py` to enforce the `<title> at <city>` format and hardened catalog loading against regex truncation.
     - **Tests:** `admin/tests/core.test.js` (57 passed, 0 failed).
 
-70. **Expanded attraction beats for major cities: Goa, Kashi (Varanasi), Ayodhya, and Udupi**
+89. **Expanded attraction beats for major cities: Goa, Kashi (Varanasi), Ayodhya, and Udupi**
     - **Goa (expanded from 5 to 10 beats):** Added major cultural, temple, beach, and culinary beats: Fontainhas Latin Quarter heritage walk (`place`), Shree Mangesh Mandir darshan in Ponda (`place`), Shri Shanta Durga Temple darshan in Kavlem (`place`), Palolem Beach & crescent bay in South Goa (`place`), and traditional Goan vegetarian breakfast & bhaji trail at Cafe Bhonsle & Cafe Tato in Panaji (`activity`).
     - **Kashi / Varanasi (expanded from 5 to 8 beats):** Added Kaal Bhairav Temple darshan (`place`, Kotwal of Kashi), Sankat Mochan Hanuman Temple darshan (`place`, founded by Tulsidas), and the legendary evening street food feast: Iconic Banarasi chaat trail at Kashi Chaat Bhandar & Deena Chaat Bhandar at Godowlia (`activity`, Tamatar Chaat, Palak Patta Chaat, Dahi Bhalla).
     - **Ayodhya (expanded from 4 to 6 beats):** Added Guptar Ghat riverfront promenade (`place`, site of Rama's Jal Samadhi) and Hanuman Garhi laddoo & Awadhi satvik food trail (`activity`, pure desi ghee Besan Laddoos, Khurchan, Rabdi-Jalebi).
     - **Udupi (expanded from 3 to 5 beats):** Brought Udupi up to catalog standard with Kapu Beach & 1901 British Lighthouse (`place`) and Mitra Samaj & Sri Krishna Matha Anna Brahma dining (`activity`, sacred temple Anna Santharpana and heritage Masala Dosa & Filter Coffee).
     - **Place ID Resolution:** Resolved canonical Google Place IDs (`ChIJ...`), feature IDs (`ftid`), and coordinates for all 8 new places with 0 missing IDs across the 705-attraction catalog (543 places, 162 activities). Synced `admin/places_cache.json` and `data/cities.enriched.js`.
     - **Tests:** `admin/tests/core.test.js` (57 passed, 0 failed).
-
-

@@ -96,7 +96,7 @@ test('every city in data/weather.js gets two or three whole-year seasons, none a
   global.window = {};
   require(path.join(root, 'data', 'cities.js'));
   require(path.join(root, 'data', 'weather.js'));
-  const cities = window.KYT_CITIES.map(c => c.id), weather = window.KYT_WEATHER.cities;
+  const cities = window.KYT_CITIES.filter(c => !c.weatherLink).map(c => c.id), weather = window.KYT_WEATHER.cities;
   delete global.window;
   const missing = cities.filter(id => !weather[id]);
   assert.deepEqual(missing, [], 'every city has weather');
@@ -131,6 +131,26 @@ test('the city sheet shows When to go with two or three seasons, and clears it f
   const shimla = await page.evaluate(() => { KYT.virtualTrips.openCityDetail('shimla', false); return document.getElementById('cd-weather').innerText; });
   assert.match(shimla, /Cold|Cool/, 'a hill city is not shown as hot all year');
   assert.equal(await page.locator('#cd-weather').count(), 1, 'one panel, the old one replaced');
+  await context.close();
+});
+
+test('places without trustworthy figures show a live-forecast link in a new tab, and no made-up seasons (D14)', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await page.goto(env.base + '/virtual_trip.html');
+  await page.fill('#vt-new-name', 'W');
+  await page.click('#btn-vt-create');
+  await page.waitForSelector('#vt-screen-canvas:not(.hidden)');
+  const linked = await page.evaluate(() => KYT_CITIES.filter(c => c.weatherLink).map(c => c.id));
+  assert.deepEqual(linked.sort(), ['bhimashankar', 'mawlynnong', 'tirupati']);
+  for (const id of linked) {
+    const html = await page.evaluate(i => { KYT.virtualTrips.openCityDetail(i, false); return document.getElementById('cd-weather').outerHTML; }, id);
+    assert.match(html, /data-weather-link/);
+    assert.match(html, /target="_blank"/);
+    assert.match(html, /rel="noopener"/);
+    assert.match(html, /google\.com\/search\?q=weather/);
+    assert.doesNotMatch(html, /data-season/, 'no season rows');
+  }
+  assert.equal(await page.evaluate(() => Object.keys(KYT_WEATHER.cities).filter(id => KYT_CITIES.find(c => c.id === id && c.weatherLink)).length), 0, 'no figures kept for them');
   await context.close();
 });
 

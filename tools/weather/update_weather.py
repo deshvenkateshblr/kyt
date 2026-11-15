@@ -90,6 +90,8 @@ def load_cities(path: Path) -> list[dict]:
     cities = _json_after(path.read_text(encoding="utf-8"), "window.KYT_CITIES")
     out = []
     for c in cities:
+        if c.get("weatherLink"):      # hill places the grid cell cannot represent: the app links to a live forecast instead
+            continue
         lat, lng = c.get("lat"), c.get("lng")
         if not isinstance(lat, (int, float)) or not isinstance(lng, (int, float)):
             raise SystemExit(f"{c.get('id')} has no lat/lng in {path}")

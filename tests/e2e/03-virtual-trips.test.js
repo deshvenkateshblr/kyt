@@ -37,7 +37,7 @@ async function openDayPlan(page) {
 async function buildPlan(page) {
   await proceed(page);
   await openDayPlan(page);
-  await page.click('#btn-vt-suggest');
+  await page.evaluate(() => KYT.virtualTrips.seedPlanForTests());
 }
 /** From the Day Plan editor to the trip's plan page (its "View Trip" back button). */
 async function viewTrip(page) {
@@ -132,7 +132,7 @@ test('taste: Culinary intent keeps food stops and drops sightseeing-only stops',
   await openDayPlan(page);
   await page.click('#btn-vt-style-toggle');              // Style sorts suggestions and steers "Suggest a plan"
   await page.click('.vt-chip[data-field="intent"][data-id="culinary"]');
-  await page.click('#btn-vt-suggest');
+  await page.evaluate(() => KYT.virtualTrips.seedPlanForTests());
   await page.waitForSelector('#vt-screen-builder:not(.hidden)');
   const titles = (await stored(page))[0].steps.map(s => s.title);
   assert.ok(titles.includes('Petha & chaat at Kinari Bazaar'), `got: ${titles.join(' | ')}`);
@@ -151,7 +151,7 @@ test('taste: Jain diet never includes a stop that is tagged for other diets only
   await openDayPlan(page);
   await page.click('#btn-vt-style-toggle');
   await page.click('.vt-chip[data-field="diet"][data-id="jain"]');
-  await page.click('#btn-vt-suggest');
+  await page.evaluate(() => KYT.virtualTrips.seedPlanForTests());
   await page.waitForSelector('#vt-screen-builder:not(.hidden)');
   const offenders = await page.evaluate(() => {
     const trip = JSON.parse(localStorage.getItem('kyt_virtual_trips'))[0];
@@ -176,7 +176,7 @@ async function buildToPlanPage(page, name, cities) {
   for (const [q, id] of cities) { await page.fill('#vt-city-search', ''); await addCity(page, q, id); }
   await proceed(page);
   await openDayPlan(page);
-  await page.click('#btn-vt-suggest');
+  await page.evaluate(() => KYT.virtualTrips.seedPlanForTests());
   await viewTrip(page);
 }
 /** Answer the "When does your trip start?" dialog with a date, checking Start is disabled until then. */
@@ -380,7 +380,7 @@ test('generating a day plan leads to trip-detail with Refine with AI, and Edit i
   await page.waitForSelector('#vt-screen-builder:not(.hidden)');
   assert.equal(await page.locator('#vt-stay-modal').count(), 0, 'no stays dialog any more');
   assert.equal((await stored(page))[0].steps, null);
-  await page.click('#btn-vt-suggest');
+  await page.evaluate(() => KYT.virtualTrips.seedPlanForTests());
   assert.match(await page.locator('#vt-itinerary-list').innerText(), /Jaipur/);
   await viewTrip(page);
   assert.ok(page.url().includes('trip_detail.html'));
@@ -438,7 +438,7 @@ test('"Already in destination" is still available and skips Day 0', async () => 
   await addCity(page, 'Jaipur', 'jaipur');
   await proceed(page);
   await openDayPlan(page);
-  await page.click('#btn-vt-suggest');
+  await page.evaluate(() => KYT.virtualTrips.seedPlanForTests());
   await viewTrip(page);
   assert.doesNotMatch(await page.locator('body').innerText(), /DAY 0/i);
   await context.close();

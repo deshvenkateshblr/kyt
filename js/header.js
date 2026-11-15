@@ -180,7 +180,20 @@ KYT.header = (function() {
     const active = options.active || 'view';
 
     // Style the outer container if not already styled
-    el.className = 'w-full max-w-md mx-auto flex justify-between items-center z-[60] bg-white/50 backdrop-blur-md rounded-2xl p-2 border border-white/60 shadow-sm mt-4 sm:mt-8 px-3 sm:px-4 mb-3 relative';
+    if (!document.getElementById('kyt-toolbar-css')) {
+      // Very narrow phones (320 px): the full-size toolbar is about 357 px wide and cut Live off the screen. Tighten it.
+      const st = document.createElement('style');
+      st.id = 'kyt-toolbar-css';
+      st.textContent = '.kyt-toolbar a,.kyt-toolbar button{transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease}' +
+        '.kyt-toolbar a:active,.kyt-toolbar button:active{transform:scale(.94)}' +
+        '@media (hover:hover){.kyt-toolbar a:hover,.kyt-toolbar button:hover{transform:translateY(-2px)}}' +
+        '@media (prefers-reduced-motion:reduce){.kyt-toolbar a,.kyt-toolbar button{transition:none}}' +
+        '@media (max-width: 359px){.kyt-toolbar{padding-left:.375rem!important;padding-right:.375rem!important;gap:.25rem}' +
+        '.kyt-toolbar>div{gap:.25rem!important}.kyt-toolbar a,.kyt-toolbar button{padding-left:.25rem!important;padding-right:.25rem!important;min-width:0!important}' +
+        '.kyt-toolbar>div>a:first-child{width:36px!important;height:36px!important}}';
+      document.head.appendChild(st);
+    }
+    el.className = 'kyt-toolbar w-full max-w-md mx-auto flex justify-between items-center z-[60] bg-white/50 backdrop-blur-md rounded-2xl p-2 border border-white/60 shadow-sm mt-4 sm:mt-8 px-3 sm:px-4 mb-3 relative';
 
     // Determine right button
     let rightBtnHtml = '';
@@ -232,6 +245,13 @@ KYT.header = (function() {
         </a>
       </div>
 
+      <!-- Save: opens Save & Open; the dot shows there are changes not yet saved to a file -->
+      <button type="button" id="kyt-nav-save" data-kyt-backup class="relative flex flex-col items-center gap-0.5 px-1.5 py-1.5 bg-white rounded-xl shadow-sm text-kyt-accent hover:text-blue-600 active:scale-90 transition-all border border-slate-100 min-w-[38px]" title="Save your trips to a file">
+        <i data-lucide="save" class="w-4 h-4"></i>
+        <span class="text-[9px] font-bold text-slate-400 leading-none">Save</span>
+        <span data-kyt-save-dot style="display:none;position:absolute;top:3px;right:5px;width:8px;height:8px;border-radius:9999px;background:#F59E0B;border:1.5px solid #fff"></span>
+      </button>
+
       <!-- Right Action -->
       ${rightBtnHtml}
     `;
@@ -245,6 +265,7 @@ KYT.header = (function() {
       });
     }
 
+    if (window.KYT && KYT.backup && KYT.backup.bind) KYT.backup.bind(el);
     if (window.lucide) {
       lucide.createIcons();
     }

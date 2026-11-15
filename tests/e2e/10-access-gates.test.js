@@ -41,7 +41,7 @@ test('a trek place is never generated as a day trip, a normal place still is', a
     const t = { ...trip, steps: null };
     // suggestPlan builds night stays itself; use a temp trip like it does
     const added = [];
-    KYT.virtualTrips.suggestPlan(Object.assign(t, { days: cities.map((c, i) => ({ id: i + 1, cityId: c })) }));
+    KYT.virtualTrips.seedPlanForTests(Object.assign(t, { days: cities.map((c, i) => ({ id: i + 1, cityId: c })) }));
     return (t.steps || []).map(s => s.title);
   }, cities);
   const gated = await titles(['rishikesh', 'kedarnath', 'kedarnath']);
@@ -109,7 +109,7 @@ async function planFor(page, cityId, query) {
   await page.selectOption('#vt-origin-city', 'bengaluru');
   await page.click('#btn-vt-build');
   await page.waitForSelector('#vt-screen-builder:not(.hidden)');
-  await page.click('#btn-vt-suggest');
+  await page.evaluate(() => KYT.virtualTrips.seedPlanForTests());
   await page.waitForSelector('#vt-day-panel .step-card, #vt-day-panel [data-step-id]');
 }
 
@@ -233,7 +233,7 @@ test('Add travel starts from what is planned: arriving unless the journey in is 
   assert.deepEqual(await fields(), ['Nashik', 'Aurangabad'], 'the next journey leaves Nashik');
   await page.click('#btn-cancel-step-modal');
   // Suggest a plan fills the empty days without a second journey into Nashik
-  await page.click('#btn-vt-suggest');
+  await page.evaluate(() => KYT.virtualTrips.seedPlanForTests());
   await page.click('[data-day-id="2"][role="tab"]');
   const day2 = await page.locator('#vt-day-panel').innerText();
   assert.doesNotMatch(day2, /Travel to Nashik|Travel from Pune to Nashik/, 'no duplicate journey into Nashik');
@@ -258,5 +258,29 @@ test('with two or more cities there is a Google Maps route link in their order',
   assert.equal(await link.getAttribute('target'), '_blank');
   const href = decodeURIComponent(await link.getAttribute('href'));
   assert.match(href, /origin=Pune India&destination=Aurangabad India&waypoints=Nashik India/);
+  await context.close();
+});
+
+test('D1: road and altitude notes are advice, not gates: Zojila road for Sonamarg and Kargil, and a plain high-altitude tip for places above 2,500 m with no curated note', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await open(page);
+  const r = await page.evaluate(() => {
+    const info = id => KYT.ui.accessInfo(KYT_CITIES.find(c => c.id === id));
+    return { sonamarg: info('sonamarg'), kargil: info('kargil'), gulmarg: info('gulmarg'), auli: info('auli'), jaipur: info('jaipur'), leh: info('leh') };
+  });
+  for (const id of ['sonamarg', 'kargil']) {
+    assert.match(r[id].text, /Recommended: check the road/);
+    assert.equal(r[id].gated, false, id + ' is advice, so stays in normal plans');
+    assert.match(r[id].source, /^https:\/\//);
+  }
+  for (const id of ['gulmarg', 'auli']) {
+    assert.match(r[id].text, /Recommended: keep the first day easy/);
+    assert.equal(r[id].gated, false);
+  }
+  assert.equal(r.jaipur, null);
+  assert.equal(r.leh.gated, true, 'the curated Leh rule is unchanged');
+  await page.evaluate(() => KYT.virtualTrips.openCityDetail('gulmarg', false));
+  await page.waitForSelector('#cd-access');
+  assert.match(await page.locator('#cd-access').innerText(), /High altitude/);
   await context.close();
 });

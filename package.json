@@ -7,7 +7,8 @@
     "test:e2e": "node --test --test-concurrency=1 \"tests/e2e/*.test.js\"",
     "test": "npm run test:admin && npm run test:e2e",
     "check-videos": "node scripts/prune_unembeddable_videos.js --dry-run",
-    "prune-videos": "node scripts/prune_unembeddable_videos.js"
+    "prune-videos": "node scripts/prune_unembeddable_videos.js",
+    "bump": "node scripts/bump-version.js"
   },
   "devDependencies": {
     "playwright": "^1.56.0"

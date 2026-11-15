@@ -3,6 +3,36 @@
  * Provides anonymous 60-day Key-Value storage for sharing full AI-refined travel itineraries.
  */
 
+const ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyz';
+const DAY_MS = 86400000;
+const EPOCH = Date.UTC(2024, 0, 1);
+
+/**
+ * A 6-character share code: 2 characters for the day it was made, then 4 random ones. Two shares can only clash when
+ * they are made on the same day (or exactly 1,296 days apart), which cuts the chance enormously without making the link
+ * any longer. The random part comes from crypto, with no bias towards any letter. Old 6-character codes keep working.
+ */
+export function makeCode(now = Date.now(), rand = (n) => crypto.getRandomValues(new Uint8Array(n))) {
+  const day = Math.floor((now - EPOCH) / DAY_MS);
+  const anchor = (((day % 1296) + 1296) % 1296).toString(36).padStart(2, '0');
+  let tail = '';
+  while (tail.length < 4) {
+    for (const b of rand(8)) {
+      if (b < 252 && tail.length < 4) tail += ALPHABET[b % 36];       // 252 = 7 x 36: no letter is likelier than another
+    }
+  }
+  return anchor + tail;
+}
+
+/** Picks a code nobody is using. KV has no "put only if new", so look first and try again on a clash. */
+export async function freeCode(kv, now = Date.now(), rand) {
+  for (let attempt = 0; attempt < 8; attempt++) {
+    const id = makeCode(now, rand);
+    if (!(await kv.get(id))) return id;
+  }
+  return null;
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -29,13 +59,18 @@ export default {
           });
         }
 
-        // Generate a clean, random 6-character alphanumeric code (e.g. "k7x9p2")
-        const id = Math.random().toString(36).substring(2, 8);
-
         // Store in Cloudflare KV with a 60-day auto-expiry (5,184,000 seconds)
         // Zero user data or IP addresses are stored—strictly anonymous itinerary JSON.
+        let savedId;
         if (env.TRIP_KV) {
-          await env.TRIP_KV.put(id, JSON.stringify(tripData), {
+          savedId = await freeCode(env.TRIP_KV);
+          if (!savedId) {
+            return new Response(JSON.stringify({ error: 'Could not find a free code, please try again' }), {
+              status: 503,
+              headers: { ...cors, 'Content-Type': 'application/json' }
+            });
+          }
+          await env.TRIP_KV.put(savedId, JSON.stringify(tripData), {
             expirationTtl: 60 * 86400
           });
         } else {
@@ -45,7 +80,7 @@ export default {
           });
         }
 
-        return new Response(JSON.stringify({ id, success: true }), {
+        return new Response(JSON.stringify({ id: savedId, success: true }), {
           headers: { ...cors, 'Content-Type': 'application/json' }
         });
       } catch (err) {

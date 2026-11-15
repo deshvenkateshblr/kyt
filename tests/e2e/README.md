@@ -23,3 +23,5 @@ Set KYT_CHROMIUM=/path/to/chrome to use an existing browser binary.
 | 11-before-you-go | `beforeYouGo` entries have an official site, a check month and a source on every item, the city sheet shows them under the access note, city cards carry a cue only where notes exist |
 
 Note: tests that reload the page wait for the IndexedDB write to settle first (`waitForSaved` in helpers.js); without that pause a reload within a few ms of a save was seen to return the old value about 1 run in 40.
+
+Note: `newPhone()` silences the "Save a copy?" reminder (so it cannot cover a button mid-test). Pass `{ nudge: true }` to see it.

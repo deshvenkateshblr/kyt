@@ -90,6 +90,7 @@ test('a web link attachment can be added to a step and shows on the Now card', a
   await page.click('#btn-add-link');
   assert.match(await page.locator('#attachment-count-badge').innerText(), /1\/4/);
   await page.click('#btn-save-step');
+  await page.waitForSelector('#step-form-view.hidden', { state: 'attached' });   // the form closes once the write is done (D3)
 
   await page.goto(env.base + '/view_trip.html');
   await page.waitForSelector('#hero-card a[href*="drive.google.com"]');

@@ -65,7 +65,8 @@
       tagline: clean((curated && curated.tagline) || ''),
       origin: trip && trip.originCity && trip.originCity !== 'already_there' ? trip.originCity : '',
       days: daysOf(trip, curated),
-      cities: (cities || []).filter(Boolean)
+      cities: (cities || []).filter(Boolean),
+      month: trip && Number(trip.travelMonth) >= 1 && Number(trip.travelMonth) <= 12 ? Number(trip.travelMonth) : 0
     };
   }
 
@@ -103,7 +104,7 @@
     return { table: { body: [[{ text, fontSize: 7, bold: true, color: '#FFFFFF', fillColor: color, margin: [4, 1, 4, 1] }]] }, layout: FLAT, margin: [0, 1, 0, 3] };
   }
 
-  function stepRow(s) {
+  function stepRow(s, night) {
     const time = s.hour != null ? `${pad2(s.hour)}:${pad2(s.minute || 0)}` : '';
     const body = [];
     if (s.type === 'travel') body.push(chip('TRAVEL', '#0284C7'));
@@ -116,8 +117,13 @@
       if (s.duration) meta.push('about ' + clean(s.duration));
     } else if (s.type === 'stay') {
       meta.push(clean(s.where));
-      meta.push(`Check-in ${time}`.trim());
-      if (s.checkOut) meta.push(`Check-out ${s.checkOut}`);
+      if (night && night.of > 1) {
+        if (night.night === 1) meta.push(`Check-in ${time}`.trim(), `night 1 of ${night.of}`);
+        else { meta.push(`Night ${night.night} of ${night.of}`); if (night.night === night.of && s.checkOut) meta.push(`Check-out ${s.checkOut}`); }
+      } else {
+        meta.push(`Check-in ${time}`.trim());
+        if (s.checkOut) meta.push(`Check-out ${s.checkOut}`);
+      }
     } else {
       if (s.where) meta.push(clean(s.where));
       if (s.durationMin) meta.push(`about ${s.durationMin} min`);
@@ -130,10 +136,10 @@
     return [{ text: time, fontSize: 10, bold: true, color: COLORS.muted, margin: [0, 2, 0, 0] }, { stack: body }];
   }
 
-  function stepsTable(steps) {
+  function stepsTable(steps, runs) {
     if (!steps.length) return { text: 'Nothing planned yet.', italics: true, color: COLORS.muted, fontSize: 10, margin: [0, 4, 0, 0] };
     return {
-      table: { widths: [38, '*'], body: steps.map(stepRow), dontBreakRows: true },
+      table: { widths: [38, '*'], body: steps.map(st => stepRow(st, runs && runs.get(st.id))), dontBreakRows: true },
       layout: { hLineWidth: i => (i === 0 || i === steps.length ? 0 : 0.5), hLineColor: () => COLORS.line, vLineWidth: () => 0, paddingLeft: () => 0, paddingRight: () => 0, paddingTop: () => 7, paddingBottom: () => 7 }
     };
   }
@@ -215,7 +221,16 @@
       content.push({ text: 'AT A GLANCE', fontSize: 9, bold: true, color: COLORS.blue, characterSpacing: 2, margin: [0, 0, 0, 2] });
       content.push({ table: { widths: [44, '*'], body: glance, dontBreakRows: true }, layout: { hLineWidth: i => (i === 0 ? 1 : 0.5), hLineColor: () => COLORS.line, vLineWidth: () => 0, paddingLeft: () => 0, paddingRight: () => 0, paddingTop: () => 6, paddingBottom: () => 6 } });
     }
+    const mNotes = plan.month && deps.monthNotes ? deps.monthNotes(plan.cities, plan.month) : [];
+    if (mNotes.length) {
+      const names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      const bad = mNotes.some(n => n.kind === 'closed' || n.kind === 'wet' || n.kind === 'hot');
+      content.push(panel(bad ? '#D97706' : '#0284C7', bad ? '#FFFBEB' : '#F0F9FF', 'TRAVELLING IN ' + names[plan.month - 1].toUpperCase(),
+        mNotes.map(n => ({ text: [{ text: (n.kind === 'closed' ? 'Closed. ' : n.kind === 'wet' ? 'Wet. ' : n.kind === 'hot' ? 'Hot. ' : ''), bold: true }, clean(n.text)], fontSize: 9.5, color: COLORS.body, margin: [0, 0, 0, 2] }))));
+    }
     content.push({ text: 'Tap a blue "Open in Google Maps" link to see the place or get directions. Sources are numbered, with the full web address printed under each list. Times are indicative: check roads, weather and opening hours close to your day.', fontSize: 8.5, italics: true, color: COLORS.muted, margin: [0, 14, 0, 0] });
+
+    const stayNights = deps.stayRuns ? deps.stayRuns([].concat(...plan.days.map(d => d.steps.map(st => ({ ...st, dayId: d.day }))))) : null;
 
     // Days, each with the panels of the cities it touches
     const placed = new Set();
@@ -224,7 +239,7 @@
       const head = dayHeader(d);
       head.pageBreak = 'before';
       content.push(head);
-      content.push(stepsTable(d.steps));
+      content.push(stepsTable(d.steps, stayNights));
       const names = [];
       d.steps.forEach(s => (s.type === 'travel' ? [s.from, s.to] : [s.cityName]).forEach(n => { const c = n && byName(n); if (c && !names.includes(c.id)) names.push(c.id); }));
       names.forEach(id => {
@@ -265,6 +280,12 @@
     });
   }
 
+  // ── Hindi, Tamil and other Indian scripts: see js/pdf-scripts.js ──────────────────────────────────────
+  const scripts = (typeof module === 'object' && module.exports) ? require('./pdf-scripts.js') : (typeof window !== 'undefined' && window.KYT && window.KYT.pdfScripts);
+  const { splitScripts, withScriptFonts } = scripts || {};
+  const hasDevanagari = doc => !!scripts && scripts.scriptsIn(doc).includes('Deva');   // kept for the tests
+  const hasIndicScript = doc => !!scripts && scripts.hasIndicScript(doc);
+
   /** Builds the PDF and hands it over: the share sheet on a phone, a download elsewhere. Resolves to the file name. */
   async function download(plan) {
     if (typeof pdfMake === 'undefined') throw new Error('The PDF library did not load. Check your connection and try again.');
@@ -276,10 +297,13 @@
     const deps = {
       logo,
       beforeYouGoInfo: ui.beforeYouGoInfo,
+      monthNotes: ui.monthNotes,
+      stayRuns: ui.stayRuns,
       accessInfo: ui.accessInfo,
       seasonsFor: city => (seasons && W && W.cities && W.cities[city.id]) ? seasons.summarise(W.cities[city.id]) : []
     };
     const doc = buildDocDefinition(plan, deps);
+    if (hasIndicScript(doc)) { await scripts.loadFonts(pdfMake, doc); withScriptFonts(doc.content); }
     const fileName = (plan.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_').replace(/^_|_$/g, '').toLowerCase() || 'trip') + '_plan.pdf';
     const pdf = pdfMake.createPdf(doc);
     const phone = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) && navigator.share;
@@ -295,5 +319,5 @@
     return fileName;
   }
 
-  return { collectPlan, buildDocDefinition, download, daysOf, MAX_PLACES, MONTHS };
+  return { collectPlan, buildDocDefinition, download, daysOf, splitScripts, withScriptFonts, hasDevanagari, hasIndicScript, MAX_PLACES, MONTHS };
 });

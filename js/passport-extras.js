@@ -1,6 +1,6 @@
 /**
  * passport-extras.js — extras for visited.html
- *   1. Derived city attributes + the "Filters" sheet (vibe, setting, effort, food, region, state)
+ *   1. Derived city attributes + the "Filters" sheet (vibe, setting, food, region, state)
  *   2. Subtle, collapsible group-by-state rendering
  *   3. India Explorer Passport level (Bronze / Silver / Gold), breadth meters, and the share card (canvas image)
  *
@@ -29,7 +29,6 @@ window.PassportExtras = (function () {
   const GROUPS = [
     { id: 'vibe', label: 'Vibe', options: { spiritual: 'Spiritual', heritage: 'Heritage & culture', nature: 'Nature & beaches', adventure: 'Adventure', foodie: 'Foodie' } },
     { id: 'setting', label: 'Setting', options: { coast: 'Coast & backwaters', hills: 'Hills & forest' } },
-    { id: 'effort', label: 'Effort', options: { easy: 'Easy going', trek: 'Has a trek' } },
     { id: 'food', label: 'Food', options: { veg: 'Veg / satvik', jain: 'Jain-friendly' } },
     { id: 'region', label: 'Region', options: Object.fromEntries(REGIONS.map(r => [r, r])) }
   ];
@@ -44,8 +43,8 @@ window.PassportExtras = (function () {
     city = src(city);
     const beats = city.beats || [];
     const has = (k, f) => beats.some(b => [].concat(b[f] || []).includes(k));
-    // vibe, setting and effort are data: each city in data/cities.js carries "vibes", "setting" and "effort". Food comes from the diet tags on its attractions.
-    const a = { vibe: [].concat(city.vibes || []), setting: [], effort: [city.effort === 'trek' ? 'trek' : 'easy'], food: [], region: [] };
+    // vibe and setting are data: each city in data/cities.js carries "vibes" and "setting". Food comes from the diet tags on its attractions.
+    const a = { vibe: [].concat(city.vibes || []), setting: [], food: [], region: [] };
     if (city.setting === 'coast') a.setting.push('coast');
     if (city.setting === 'hills') a.setting.push('hills');
     if (has('veg', 'diet') || has('satvik', 'diet')) a.food.push('veg');
@@ -55,7 +54,7 @@ window.PassportExtras = (function () {
     return a;
   }
 
-  const filters = { vibe: new Set(), setting: new Set(), effort: new Set(), food: new Set(), region: new Set(), state: '' };
+  const filters = { vibe: new Set(), setting: new Set(), food: new Set(), region: new Set(), state: '' };
   const stateOf = c => c.state || 'Other';
   const activeCount = () => GROUPS.reduce((n, g) => n + filters[g.id].size, 0) + (filters.state ? 1 : 0);
 
