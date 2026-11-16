@@ -541,7 +541,7 @@ What has been built, newest last. Open work lives in [TODO.md](TODO.md); design 
     - Updated `admin/enrich_kyt_places.js` and `admin/enrich_kyt_places.py` to enforce the `<title> at <city>` format and hardened catalog loading against regex truncation.
     - **Tests:** `admin/tests/core.test.js` (57 passed, 0 failed).
 
-89. **Expanded attraction beats for major cities: Goa, Kashi (Varanasi), Ayodhya, and Udupi**
+89. **Expanded attraction beats for major cities: Goa, Kashi (Varanasi), Ayodhya, and Udupi (service worker cache `kyt-v121`)**
     - **Goa (expanded from 5 to 10 beats):** Added major cultural, temple, beach, and culinary beats: Fontainhas Latin Quarter heritage walk (`place`), Shree Mangesh Mandir darshan in Ponda (`place`), Shri Shanta Durga Temple darshan in Kavlem (`place`), Palolem Beach & crescent bay in South Goa (`place`), and traditional Goan vegetarian breakfast & bhaji trail at Cafe Bhonsle & Cafe Tato in Panaji (`activity`).
     - **Kashi / Varanasi (expanded from 5 to 8 beats):** Added Kaal Bhairav Temple darshan (`place`, Kotwal of Kashi), Sankat Mochan Hanuman Temple darshan (`place`, founded by Tulsidas), and the legendary evening street food feast: Iconic Banarasi chaat trail at Kashi Chaat Bhandar & Deena Chaat Bhandar at Godowlia (`activity`, Tamatar Chaat, Palak Patta Chaat, Dahi Bhalla).
     - **Ayodhya (expanded from 4 to 6 beats):** Added Guptar Ghat riverfront promenade (`place`, site of Rama's Jal Samadhi) and Hanuman Garhi laddoo & Awadhi satvik food trail (`activity`, pure desi ghee Besan Laddoos, Khurchan, Rabdi-Jalebi).
