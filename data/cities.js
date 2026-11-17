@@ -1003,6 +1003,234 @@ window.KYT_CITIES = [
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dal%20baati%20churma%20rooftop%20dinner%20at%20Udaipur",
         "notes": "Authentic Mewari dinner of ghee-soaked dal baati, ker sangri, and churma while admiring lighted ghats from a rooftop terrace.",
         "kind": "activity"
+      },
+      {
+        "title": "Bagore Ki Haveli & Dharohar Folk Dance",
+        "icon": "landmark",
+        "where": "Gangaur Ghat Marg, Udaipur",
+        "hour": 19,
+        "intent": [
+          "cultural",
+          "heritage"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bagore%20Ki%20Haveli%2C%20Gangaur%20Ghat%2C%20Udaipur&query_place_id=ChIJA_ZPmxzlZzkRDSB9_ReyOfM",
+        "notes": "18th-century waterfront mansion overlooking Gangaur Ghat with 138 rooms, royal puppet galleries, and the famous evening Dharohar Rajasthani folk music and dance performance.",
+        "kind": "place",
+        "placeId": "ChIJA_ZPmxzlZzkRDSB9_ReyOfM",
+        "ftid": "0x3967e51c9b4ff603:0xf339b217fd7d200d",
+        "lat": 24.5797664,
+        "lng": 73.6822359
+      },
+      {
+        "title": "Jagmandir Island Palace",
+        "icon": "landmark",
+        "where": "Lake Pichola, Udaipur",
+        "hour": 14,
+        "intent": [
+          "cultural",
+          "heritage"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Jagmandir%20Island%20Palace%2C%20Lake%20Pichola%2C%20Udaipur&query_place_id=ChIJuQqJ2YrvZzkRZqYsAYicllI",
+        "notes": "17th-century island palace on Lake Pichola featuring majestic carved stone elephants, the domed Gul Mahal pavilion, and tranquil garden courtyards surrounded by blue waters.",
+        "kind": "place",
+        "placeId": "ChIJuQqJ2YrvZzkRZqYsAYicllI",
+        "ftid": "0x3967ef8ad9890ab9:0x52969c88012ca666",
+        "lat": 24.5675944,
+        "lng": 73.6777615
+      },
+      {
+        "title": "Shri Eklingji Temple (Kailashpuri)",
+        "icon": "landmark",
+        "where": "Kailashpuri, Udaipur",
+        "hour": 7,
+        "intent": [
+          "spiritual",
+          "heritage"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shri%20Eklingji%20Temple%2C%20Kailashpuri%2C%20Udaipur&query_place_id=ChIJNU-cHBPjZzkRGXb5Utw34YA",
+        "notes": "Sacred 8th-century spiritual capital of Mewar founded by Bappa Rawal; an ornate complex of 108 marble temples enshrining the revered four-faced black marble Shiva lingam.",
+        "kind": "place",
+        "placeId": "ChIJNU-cHBPjZzkRGXb5Utw34YA",
+        "ftid": "0x3967e3131c9c4f35:0x80e137dc52f97619",
+        "lat": 24.7470822,
+        "lng": 73.723374
+      },
+      {
+        "title": "Sahastra Bahu (Sas-Bahu) Temples, Nagda",
+        "icon": "landmark",
+        "where": "Nagda, Udaipur",
+        "hour": 9,
+        "intent": [
+          "heritage",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Saas%20Bahu%20Temple%2C%20Nagda%2C%20Udaipur&query_place_id=ChIJCd6EekLiZzkRBJXsotsAe-8",
+        "notes": "Exquisite 10th-century twin sandstone temple marvel dedicated to Lord Vishnu, featuring intricate makara torana archways and celestial apsara carvings.",
+        "kind": "place",
+        "placeId": "ChIJCd6EekLiZzkRBJXsotsAe-8",
+        "ftid": "0x3967e2427a84de09:0xef7b00dba2ec9504",
+        "lat": 24.7351945,
+        "lng": 73.7162806
+      },
+      {
+        "title": "Fateh Sagar Lake & Rani Road Promenade",
+        "icon": "waves",
+        "where": "Fateh Sagar Lake, Udaipur",
+        "hour": 17,
+        "intent": [
+          "nature",
+          "leisure"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Fateh%20Sagar%20Lake%2C%20Udaipur&query_place_id=ChIJ48AqjDzlZzkRuFN73oPrfXk",
+        "notes": "Serene pear-shaped lake flanked by the Aravalli hills, famous for evening strolls along Rani Road, boat rides to Nehru Park island, and scenic lakeside kiosks.",
+        "kind": "place",
+        "placeId": "ChIJ48AqjDzlZzkRuFN73oPrfXk",
+        "ftid": "0x3967e53c8c2ac0e3:0x797deb83de7b53b8",
+        "lat": 24.6013999,
+        "lng": 73.6742232
+      },
+      {
+        "title": "Mansapurna Karni Mata Ropeway & Viewpoint",
+        "icon": "camera",
+        "where": "Deendayal Upadhyay Park, Machla Magra, Udaipur",
+        "hour": 17,
+        "intent": [
+          "adventure",
+          "leisure"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mansapurna%20Karni%20Mata%20Ropeway%2C%20Udaipur&query_place_id=ChIJVVVVpInvZzkRmJ56hj8YKbM",
+        "notes": "Gondola cable car ascending Machla Magra hill to the white Karni Mata temple, offering breathtaking 360-degree sunset panoramas of Lake Pichola, City Palace, and Sajjangarh.",
+        "kind": "place",
+        "placeId": "ChIJVVVVpInvZzkRmJ56hj8YKbM",
+        "ftid": "0x3967ef89a4555555:0xb329183f867a9e98",
+        "lat": 24.5661871,
+        "lng": 73.6850433
+      },
+      {
+        "title": "Natraj Dining Hall traditional Rajasthani thali",
+        "icon": "utensils",
+        "where": "Station Road, City Center, Udaipur",
+        "hour": 13,
+        "intent": [
+          "culinary"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard"
+        ],
+        "mobility": "easy",
+        "diet": [
+          "veg",
+          "satvik",
+          "jain",
+          "any"
+        ],
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Natraj%20Dining%20Hall%2C%20Station%20Road%2C%20Udaipur&query_place_id=ChIJ3d52CYDvZzkRsmm837h6sQM",
+        "notes": "Iconic pure-vegetarian culinary institution serving authentic, unlimited Rajasthani and Gujarati satvik thalis with ker sangri, gatta curry, dal, bati, and piping hot phulkas laced with pure ghee.",
+        "kind": "place",
+        "placeId": "ChIJ3d52CYDvZzkRsmm837h6sQM",
+        "ftid": "0x3967ef800976dedd:0x3b17ab8dfbc69b2",
+        "lat": 24.5723618,
+        "lng": 73.6996646
+      },
+      {
+        "title": "Shilpgram Rural Arts & Crafts Complex",
+        "icon": "landmark",
+        "where": "Near Havala Village, Shilpgram, Udaipur",
+        "hour": 11,
+        "intent": [
+          "cultural",
+          "heritage"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shilpgram%2C%20Udaipur&query_place_id=ChIJZ0sUuinlZzkRxGWDuBs_jSI",
+        "notes": "Sprawling 70-acre living ethnographic museum showcasing traditional mud huts from Rajasthan, Gujarat, and Goa, with live pottery, mirror-work embroidery, weaving, and folk dance performances.",
+        "kind": "place",
+        "placeId": "ChIJZ0sUuinlZzkRxGWDuBs_jSI",
+        "ftid": "0x3967e529ba144b67:0x228d3f1bb88365c4",
+        "lat": 24.6109599,
+        "lng": 73.6615813
       }
     ],
     "aliases": [

@@ -5480,5 +5480,85 @@
     "lng": 79.7041698,
     "distanceKm": 4.7,
     "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kancheepuram%2C%20Tamil%20Nadu%2C%20India&query_place_id=ChIJLfHH4PfCUjoRTSrLsYKGX94"
+  },
+  "beat::udaipur::Bagore Ki Haveli & Dharohar Folk Dance": {
+    "query": "Bagore Ki Haveli, Gangaur Ghat, Udaipur",
+    "resolvedName": "Bagore Ki Haveli",
+    "placeId": "ChIJA_ZPmxzlZzkRDSB9_ReyOfM",
+    "ftid": "0x3967e51c9b4ff603:0xf339b217fd7d200d",
+    "lat": 24.5797664,
+    "lng": 73.6822359,
+    "distanceKm": 0,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Bagore%20Ki%20Haveli%2C%20Gangaur%20Ghat%2C%20Udaipur&query_place_id=ChIJA_ZPmxzlZzkRDSB9_ReyOfM"
+  },
+  "beat::udaipur::Jagmandir Island Palace": {
+    "query": "Jagmandir Island Palace, Lake Pichola, Udaipur",
+    "resolvedName": "Jagmandir Island Palace",
+    "placeId": "ChIJuQqJ2YrvZzkRZqYsAYicllI",
+    "ftid": "0x3967ef8ad9890ab9:0x52969c88012ca666",
+    "lat": 24.5675944,
+    "lng": 73.6777615,
+    "distanceKm": 0,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Jagmandir%20Island%20Palace%2C%20Lake%20Pichola%2C%20Udaipur&query_place_id=ChIJuQqJ2YrvZzkRZqYsAYicllI"
+  },
+  "beat::udaipur::Shri Eklingji Temple (Kailashpuri)": {
+    "query": "Shri Eklingji Temple, Kailashpuri, Udaipur",
+    "resolvedName": "Eklingji Temple",
+    "placeId": "ChIJNU-cHBPjZzkRGXb5Utw34YA",
+    "ftid": "0x3967e3131c9c4f35:0x80e137dc52f97619",
+    "lat": 24.7470822,
+    "lng": 73.723374,
+    "distanceKm": 0,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Shri%20Eklingji%20Temple%2C%20Kailashpuri%2C%20Udaipur&query_place_id=ChIJNU-cHBPjZzkRGXb5Utw34YA"
+  },
+  "beat::udaipur::Sahastra Bahu (Sas-Bahu) Temples, Nagda": {
+    "query": "Saas Bahu Temple, Nagda, Udaipur",
+    "resolvedName": "Sahastra Bahu Temple Nagda Udaipur",
+    "placeId": "ChIJCd6EekLiZzkRBJXsotsAe-8",
+    "ftid": "0x3967e2427a84de09:0xef7b00dba2ec9504",
+    "lat": 24.7351945,
+    "lng": 73.7162806,
+    "distanceKm": 0,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Saas%20Bahu%20Temple%2C%20Nagda%2C%20Udaipur&query_place_id=ChIJCd6EekLiZzkRBJXsotsAe-8"
+  },
+  "beat::udaipur::Fateh Sagar Lake & Rani Road Promenade": {
+    "query": "Fateh Sagar Lake, Udaipur",
+    "resolvedName": "Fateh Sagar Lake",
+    "placeId": "ChIJ48AqjDzlZzkRuFN73oPrfXk",
+    "ftid": "0x3967e53c8c2ac0e3:0x797deb83de7b53b8",
+    "lat": 24.6013999,
+    "lng": 73.6742232,
+    "distanceKm": 0,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Fateh%20Sagar%20Lake%2C%20Udaipur&query_place_id=ChIJ48AqjDzlZzkRuFN73oPrfXk"
+  },
+  "beat::udaipur::Mansapurna Karni Mata Ropeway & Viewpoint": {
+    "query": "Mansapurna Karni Mata Ropeway, Udaipur",
+    "resolvedName": "Mansapurna Karni Mata Ropeway",
+    "placeId": "ChIJVVVVpInvZzkRmJ56hj8YKbM",
+    "ftid": "0x3967ef89a4555555:0xb329183f867a9e98",
+    "lat": 24.5661871,
+    "lng": 73.6850433,
+    "distanceKm": 0,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mansapurna%20Karni%20Mata%20Ropeway%2C%20Udaipur&query_place_id=ChIJVVVVpInvZzkRmJ56hj8YKbM"
+  },
+  "beat::udaipur::Natraj Dining Hall traditional Rajasthani thali": {
+    "query": "Natraj Dining Hall, Station Road, Udaipur",
+    "resolvedName": "Natraj Dining Hall And Restaurant",
+    "placeId": "ChIJ3d52CYDvZzkRsmm837h6sQM",
+    "ftid": "0x3967ef800976dedd:0x3b17ab8dfbc69b2",
+    "lat": 24.5723618,
+    "lng": 73.6996646,
+    "distanceKm": 0,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Natraj%20Dining%20Hall%2C%20Station%20Road%2C%20Udaipur&query_place_id=ChIJ3d52CYDvZzkRsmm837h6sQM"
+  },
+  "beat::udaipur::Shilpgram Rural Arts & Crafts Complex": {
+    "query": "Shilpgram, Udaipur",
+    "resolvedName": "Shilpgram",
+    "placeId": "ChIJZ0sUuinlZzkRxGWDuBs_jSI",
+    "ftid": "0x3967e529ba144b67:0x228d3f1bb88365c4",
+    "lat": 24.6109599,
+    "lng": 73.6615813,
+    "distanceKm": 0,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Shilpgram%2C%20Udaipur&query_place_id=ChIJZ0sUuinlZzkRxGWDuBs_jSI"
   }
 }
