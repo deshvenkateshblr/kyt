@@ -917,11 +917,15 @@
     var steps = [], n = 0;
     trip.days.forEach(function (d) {
       d.steps.forEach(function (s) {
+        var isStay = s.icon === 'hotel' || s.icon === 'bed' || /check[- ]?in|stay/i.test(s.title);
+        var isTravel = TRAVEL_ICONS.indexOf(s.icon) >= 0 || /^board |^travel |transit/i.test(s.title);
+        var type = isStay ? 'stay' : (isTravel ? 'travel' : (s.type || 'stop'));
         steps.push({ id: base + '-' + (n++), dayId: d.day, cityName: d.cityName, title: s.title, notes: s.notes, icon: s.icon,
-          hour: s.hour, minute: s.minute, where: s.where, mapsUrl: s.mapsUrl });
+          hour: s.hour, minute: s.minute, where: s.where, mapsUrl: s.mapsUrl, type: type });
       });
     });
-    return { id: base, name: trip.title, cities: trip.cities.slice(), taste: Object.assign({}, trip.taste), steps: steps, curatedId: trip.id, curatedRev: trip.rev };
+    var days = trip.days.map(function (d) { return { id: d.day, cityId: d.cityId || '' }; });
+    return { id: base, name: trip.title, cities: trip.cities.slice(), days: days, taste: Object.assign({}, trip.taste), steps: steps, curatedId: trip.id, curatedRev: trip.rev };
   }
 
   // ---------------------------------------------------------------- Gemini response helpers

@@ -857,30 +857,111 @@ window.KYT.ui = (function () {
     const baseId = customId || ('idea_' + Date.now().toString(36));
     const steps = [];
     let stepCounter = 0;
+    let activeStay = null;
+    const totalDays = (curatedObj.days || []).length;
 
-    (curatedObj.days || []).forEach(d => {
+    const isStayStep = (s) => {
+      if (s.type === 'stay') return true;
+      if (['utensils', 'coffee', 'landmark', 'waves', 'footprints', 'shopping-bag', 'train-front', 'car', 'bus', 'plane', 'ship'].includes(s.icon)) {
+        return false;
+      }
+      if (s.icon === 'hotel' || s.icon === 'bed' || s.icon === 'bed-double') return true;
+      const t = ((s.title || '') + ' ' + (s.where || '')).toLowerCase();
+      return /hotel check[- ]?in|check[- ]?in to hotel|check[- ]?in & hotel|check-in &|hotel check-in|^stay in|^stay at|overnight stay/i.test(t);
+    };
+
+    const isTravelStep = (s) => {
+      if (s.type === 'travel') return true;
+      if (['plane', 'train-front', 'bus', 'car', 'ship', 'cable-car', 'fuel'].includes(s.icon)) return true;
+      const t = (s.title || '').toLowerCase();
+      return /^board |^travel |^flight |^train |^drive |^cab |^bus |^ferry |transit/i.test(t);
+    };
+
+    const stepCityName = (s, fallbackCity) => {
+      const text = ((s.where || '') + ' ' + (s.title || '')).toLowerCase();
+      if (window.KYT_CITIES && Array.isArray(window.KYT_CITIES)) {
+        for (const c of window.KYT_CITIES) {
+          if (text.includes(c.name.toLowerCase()) || text.includes(c.id.toLowerCase())) return c.name;
+        }
+      }
+      return fallbackCity || 'Destination';
+    };
+
+    (curatedObj.days || []).forEach((d, dayIdx) => {
+      let dayHasStay = false;
+      let lastHour = null;
+      let lastMinute = 0;
+
       (d.steps || []).forEach(s => {
         const h = s.hour != null ? s.hour : 9;
         const m = s.minute || 0;
+        lastHour = h;
+        lastMinute = m;
+
+        const stay = isStayStep(s);
+        const travel = !stay && isTravelStep(s);
+        const type = stay ? 'stay' : (travel ? 'travel' : (s.type || 'stop'));
+        const scName = stepCityName(s, d.cityName);
+
+        if (stay) {
+          dayHasStay = true;
+          activeStay = {
+            where: s.where || scName,
+            cityName: scName,
+            mapsUrl: s.mapsUrl || '',
+            title: s.title
+          };
+        }
+
         const phase = s.phase || hourToPhase(h);
         const suggestedTime = s.suggestedTime || formatSuggestedTime(h, m, phase);
 
         steps.push({
           id: `${baseId}_${++stepCounter}`,
           dayId: d.day,
-          cityName: d.cityName || s.where || 'Destination',
+          cityName: scName,
           title: s.title,
           notes: s.notes || '',
-          where: s.where || d.cityName || 'Destination',
+          where: s.where || scName,
           mapsUrl: s.mapsUrl || '',
           hour: h,
           minute: m,
           phase: phase,
           suggestedTime: suggestedTime,
           verify: Array.isArray(s.verify) ? [...s.verify] : [],
-          icon: s.icon || 'map-pin'
+          icon: s.icon || 'map-pin',
+          type: type,
+          ...(s.durationMin != null ? { durationMin: s.durationMin } : {})
         });
       });
+
+      // Handshake on fluid stays:
+      // If this is not the final departure day and no explicit stay step was scheduled,
+      // propagate the active stay base forward into tonight's schedule.
+      const isLastDay = (dayIdx === totalDays - 1);
+      if (!dayHasStay && !isLastDay && activeStay) {
+        const stayCity = activeStay.cityName || d.cityName || 'Destination';
+        const stayHour = Math.max(lastHour != null ? lastHour + 1 : 21, 21);
+        const cappedHour = stayHour > 23 ? 22 : stayHour;
+
+        steps.push({
+          id: `${baseId}_${++stepCounter}`,
+          dayId: d.day,
+          cityName: stayCity,
+          title: `Stay in ${activeStay.where || stayCity}`,
+          notes: `Overnight stay at your accommodation in ${activeStay.where || stayCity}.`,
+          where: activeStay.where || stayCity,
+          mapsUrl: activeStay.mapsUrl || '',
+          hour: cappedHour,
+          minute: 30,
+          phase: 'night',
+          suggestedTime: `${String(cappedHour).padStart(2, '0')}:30`,
+          verify: [],
+          icon: 'bed-double',
+          type: 'stay',
+          durationMin: 30
+        });
+      }
     });
 
     const fullCities = (curatedObj.cities && curatedObj.cities.length)
@@ -893,6 +974,10 @@ window.KYT.ui = (function () {
       originCity: curatedObj.originCity || 'already_there',
       duration: curatedObj.durationDays || (curatedObj.days ? curatedObj.days.length : fullCities.length),
       cities: fullCities,
+      days: (curatedObj.days || []).map(d => ({
+        id: d.day,
+        cityId: d.cityId || (resolveCity(d.cityName)?.id || '')
+      })),
       taste: {
         intent: curatedObj.taste?.intent || 'spiritual',
         diet: curatedObj.taste?.diet || 'veg',

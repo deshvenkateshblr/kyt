@@ -1402,7 +1402,18 @@ KYT.virtualTrips = (function () {
   /** Every trip has `days` and every step a type; older trips are upgraded the first time they are read. */
   function ensureDays(trip) {
     if (!trip) return trip;
-    if (Array.isArray(trip.steps)) trip.steps.forEach(st => { if (!st.type) st.type = 'stop'; });
+    if (Array.isArray(trip.steps)) {
+      trip.steps.forEach(st => {
+        if (!st.type) {
+          const isStay = (st.icon === 'hotel' || st.icon === 'bed' || st.icon === 'bed-double') ||
+            (!['utensils', 'coffee', 'landmark', 'waves', 'footprints', 'shopping-bag', 'train-front', 'car', 'bus', 'plane', 'ship'].includes(st.icon) &&
+             /hotel check[- ]?in|check[- ]?in to hotel|check[- ]?in & hotel|check-in &|hotel check-in|^stay in|^stay at|overnight stay/i.test((st.title || '') + ' ' + (st.where || '')));
+          const isTravel = ['plane', 'train-front', 'bus', 'car', 'ship', 'cable-car', 'fuel'].includes(st.icon) ||
+            /^board |^travel |^flight |^train |^drive |^cab |^bus |^ferry |transit/i.test(st.title || '');
+          st.type = isStay ? 'stay' : (isTravel ? 'travel' : 'stop');
+        }
+      });
+    }
     if (!Array.isArray(trip.days)) {
       const cities = trip.cities || [];
       const steps = trip.steps || [];
