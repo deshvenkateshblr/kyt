@@ -3,7 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>KYT - AI Curated Trip Ideas</title>
+  <title>Curated Travel Itineraries & Destination Ideas across India — KYT</title>
+  <meta name="description" content="Explore thoughtfully curated travel itineraries across India. Discover spiritual circuits, royal heritage getaways, Vande Bharat coastal journeys, and family vacation plans with realistic day-by-day pacing and temple timings.">
+  <meta name="keywords" content="curated trips India, travel itineraries India, spiritual circuits, Vande Bharat itinerary, Tirupati 3 day trip, Udupi Goa circuit, Kanchipuram itinerary, Udaipur 3 day trip, Statue of Unity Kevadia tour, Mathura Vrindavan itinerary, KYT curated trips">
+  <meta name="author" content="KYT - Know Your Travel">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="./curated_trips.html">
+  <meta name="theme-color" content="#1E1B4B">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="KYT - Know Your Travel">
+  <meta property="og:title" content="Curated Travel Itineraries & Destination Ideas across India — KYT">
+  <meta property="og:description" content="Discover expertly curated travel concepts across India: spiritual pilgrimages, royal heritage circuits, and Vande Bharat weekend getaways with realistic pacing.">
+  <meta property="og:image" content="./icons/KYT.jpg">
+  <meta property="og:url" content="./curated_trips.html">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Curated Travel Itineraries & Destination Ideas across India — KYT">
+  <meta name="twitter:description" content="Discover expertly curated travel concepts across India: spiritual pilgrimages, royal heritage circuits, and Vande Bharat weekend getaways with realistic pacing.">
+  <meta name="twitter:image" content="./icons/KYT.jpg">
+
+  <!-- Schema.org ItemList of Curated Trips -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Curated Travel Itineraries across India",
+    "description": "Comprehensive collection of verified multi-day travel itineraries across India covering spiritual, heritage, and scenic circuits.",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Tirupati: Divine Calling (3 Days)",
+        "description": "A 3-day spiritual pilgrimage from Bengaluru to the sacred hill shrine of Tirumala Venkateswara, Kanipakam Varasiddhi Vinayaka, and Sri Kalahasti Rahu-Ketu Kshetra.",
+        "url": "./trip_detail.html?id=bengaluru-tirupati-divine-calling-long-weekend"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Vande Bharat Coastal & Heritage Circuit: Udupi, Goa & Dharwad (6 Days)",
+        "description": "A 6-day spiritual, cultural, and coastal journey from Bengaluru aboard Vande Bharat Express (Train 26655 & 20662): Udupi Sri Krishna Matha Seva, peaceful Goan heritage & temples, Western Ghats, and Dharwad.",
+        "url": "./trip_detail.html?id=bengaluru-udupi-goa-hubballi-coastal-heritage-vande-bharat-6"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Tirupati: The Divine Hill Shrine (2 Days)",
+        "description": "A 2-day spiritual weekend from Bengaluru focused on Lord Venkateswara Swamy at Tirumala, Padmavathi Ammavari Temple, and peaceful hillside temple atmosphere.",
+        "url": "./trip_detail.html?id=blr-tirupati-the-divine-hill-shrine-weekend-2"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Kanchipuram Divine Heritage: Shiva, Vishnu & Silk Trail (3 Days)",
+        "description": "A 3-day spiritual pilgrimage from Chennai to the City of a Thousand Temples: ancient Pallava stone architecture, sacred Divya Desams, and master silk looms.",
+        "url": "./trip_detail.html?id=chennai-kanchipuram-divine-heritage-spiritual-3d"
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "name": "Mathura & Vrindavan: The Krishna Trail (3 Days)",
+        "description": "A 3-day spiritual journey from Delhi into the heart of Braj: Krishna Janmabhoomi, Banke Bihari, Prem Mandir laser show, Yamuna aarti, and Govardhan Parikrama.",
+        "url": "./trip_detail.html?id=delhi-mathura-vrindavan-the-krishna-trail-long-weekend"
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "name": "Udaipur Royal Lakes & Sacred Mewar Heritage (3 Days)",
+        "description": "A 3-day royal pilgrimage and heritage escape from Mumbai to the City of Lakes: sacred Mewari darshans, island palaces on Lake Pichola, Bagore Ki Haveli folk dance, and authentic satvik thalis.",
+        "url": "./trip_detail.html?id=mumbai-udaipur-royal-lakes-sacred-mewar-3d"
+      },
+      {
+        "@type": "ListItem",
+        "position": 7,
+        "name": "Statue of Unity & Ekta Nagar: Cultural Wonders & Family Safari (3 Days)",
+        "description": "A 3-day family-friendly cultural journey from Ahmedabad to the monumental Statue of Unity: 182-meter Sardar Patel monument, Narmada sunset cruise, jungle safari, and glowing theme gardens.",
+        "url": "./trip_detail.html?id=ahmedabad-kevadia-statue-of-unity-family-cultural-3d"
+      }
+    ]
+  }
+  </script>
   <link rel="icon" type="image/jpeg" href="./icons/KYT.jpg">
   <link rel="stylesheet" href="./css/index.css?v=121">
   <script src="./lib/tailwindcss.js?v=121"></script>
@@ -91,6 +172,58 @@
     <div id="trips-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- Injected by JavaScript -->
     </div>
+
+    <!-- Search Engine Directory & Accessibility Links for Curated Trips -->
+    <section aria-label="Curated Travel Itineraries Directory" class="mt-12 pt-8 border-t border-slate-200/80 text-xs text-slate-500">
+      <h3 class="font-bold text-slate-800 text-sm mb-3 flex items-center gap-2">
+        <i data-lucide="compass" class="w-4 h-4 text-blue-600"></i>
+        <span>Featured Travel Itineraries &amp; Spiritual Circuits</span>
+      </h3>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5">
+        <li class="bg-white p-3.5 rounded-2xl border border-slate-200/90 shadow-2xs hover:border-blue-300 transition-colors">
+          <a href="./trip_detail.html?id=bengaluru-tirupati-divine-calling-long-weekend" class="font-bold text-blue-600 hover:text-blue-800 hover:underline block mb-1 text-xs sm:text-sm">
+            Tirupati: Divine Calling (3 Days) &rarr;
+          </a>
+          <p class="text-slate-500 text-[11px] leading-relaxed">Bengaluru to Tirupati, Tirumala Venkateswara Swamy, Kanipakam &amp; Sri Kalahasti Rahu-Ketu Kshetra.</p>
+        </li>
+        <li class="bg-white p-3.5 rounded-2xl border border-slate-200/90 shadow-2xs hover:border-blue-300 transition-colors">
+          <a href="./trip_detail.html?id=bengaluru-udupi-goa-hubballi-coastal-heritage-vande-bharat-6" class="font-bold text-blue-600 hover:text-blue-800 hover:underline block mb-1 text-xs sm:text-sm">
+            Vande Bharat Coastal &amp; Heritage Circuit (6 Days) &rarr;
+          </a>
+          <p class="text-slate-500 text-[11px] leading-relaxed">Aboard Vande Bharat Express (Train 26655/20662): Udupi Krishna Matha, Goa heritage temples, Western Ghats &amp; Dharwad.</p>
+        </li>
+        <li class="bg-white p-3.5 rounded-2xl border border-slate-200/90 shadow-2xs hover:border-blue-300 transition-colors">
+          <a href="./trip_detail.html?id=blr-tirupati-the-divine-hill-shrine-weekend-2" class="font-bold text-blue-600 hover:text-blue-800 hover:underline block mb-1 text-xs sm:text-sm">
+            Tirupati: The Divine Hill Shrine (2 Days) &rarr;
+          </a>
+          <p class="text-slate-500 text-[11px] leading-relaxed">Weekend spiritual retreat from Bengaluru to Tirumala hill shrine and Padmavathi Ammavari Temple.</p>
+        </li>
+        <li class="bg-white p-3.5 rounded-2xl border border-slate-200/90 shadow-2xs hover:border-blue-300 transition-colors">
+          <a href="./trip_detail.html?id=chennai-kanchipuram-divine-heritage-spiritual-3d" class="font-bold text-blue-600 hover:text-blue-800 hover:underline block mb-1 text-xs sm:text-sm">
+            Kanchipuram Divine Heritage &amp; Silk Trail (3 Days) &rarr;
+          </a>
+          <p class="text-slate-500 text-[11px] leading-relaxed">Chennai to Kanchipuram: Ekambareswarar, Kamakshi Amman, Varadharaja Perumal, Kovil Idlis &amp; master silk looms.</p>
+        </li>
+        <li class="bg-white p-3.5 rounded-2xl border border-slate-200/90 shadow-2xs hover:border-blue-300 transition-colors">
+          <a href="./trip_detail.html?id=delhi-mathura-vrindavan-the-krishna-trail-long-weekend" class="font-bold text-blue-600 hover:text-blue-800 hover:underline block mb-1 text-xs sm:text-sm">
+            Mathura &amp; Vrindavan: The Krishna Trail (3 Days) &rarr;
+          </a>
+          <p class="text-slate-500 text-[11px] leading-relaxed">Delhi into the heart of Braj: Krishna Janmabhoomi, Banke Bihari, Prem Mandir, Yamuna aarti &amp; Govardhan.</p>
+        </li>
+        <li class="bg-white p-3.5 rounded-2xl border border-slate-200/90 shadow-2xs hover:border-blue-300 transition-colors">
+          <a href="./trip_detail.html?id=mumbai-udaipur-royal-lakes-sacred-mewar-3d" class="font-bold text-blue-600 hover:text-blue-800 hover:underline block mb-1 text-xs sm:text-sm">
+            Udaipur Royal Lakes &amp; Sacred Mewar Heritage (3 Days) &rarr;
+          </a>
+          <p class="text-slate-500 text-[11px] leading-relaxed">Mumbai to Udaipur: Lake Pichola cruise, City Palace, Eklingji Shiva temple &amp; Bagore Ki Haveli folk dance.</p>
+        </li>
+        <li class="bg-white p-3.5 rounded-2xl border border-slate-200/90 shadow-2xs hover:border-blue-300 transition-colors">
+          <a href="./trip_detail.html?id=ahmedabad-kevadia-statue-of-unity-family-cultural-3d" class="font-bold text-blue-600 hover:text-blue-800 hover:underline block mb-1 text-xs sm:text-sm">
+            Statue of Unity &amp; Ekta Nagar Family Safari (3 Days) &rarr;
+          </a>
+          <p class="text-slate-500 text-[11px] leading-relaxed">Ahmedabad to Kevadia: 182m statue gallery, laser projection show, jungle safari &amp; Narmada river cruise.</p>
+        </li>
+      </ul>
+    </section>
   </main>
 
   <!-- Full Itinerary Drawer / Modal -->

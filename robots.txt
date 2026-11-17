@@ -1,0 +1,8 @@
+# KYT - Know Your Travel robots.txt
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /scratch/
+Disallow: /node_modules/
+
+Sitemap: https://deshvenkateshblr.github.io/kyt/sitemap.xml

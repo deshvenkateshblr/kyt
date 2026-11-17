@@ -71,9 +71,11 @@
       document.getElementById('trip-title').textContent = tripName;
 
       let cTrip = null;
-      if (curatedParam && window.KYT_CURATED_TRIPS) {
-        cTrip = window.KYT_CURATED_TRIPS.find(t => t.id === curatedParam);
+      if (!cTrip && (curatedParam || tripId) && window.KYT_CURATED_TRIPS) {
+        cTrip = window.KYT_CURATED_TRIPS.find(t => t.id === curatedParam || t.id === tripId);
         if (cTrip) {
+          curatedParam = cTrip.id;
+          tripName = cTrip.title;
           if (cTrip.tagline) {
             const descEl = document.getElementById('trip-desc');
             if (descEl) descEl.textContent = cTrip.tagline;
@@ -775,11 +777,76 @@
         if (window.lucide) lucide.createIcons();
       }
 
+      function updateTripSeo(tripObj) {
+        if (!tripObj) return;
+        const title = tripObj.title || tripObj.name || 'Trip Itinerary';
+        const days = tripObj.durationDays || tripObj.duration || (tripObj.days ? tripObj.days.length : 1);
+        const tagline = tripObj.tagline || (tripObj.taste ? `${tripObj.taste.intent || 'Curated'} ${days}-day trip across India` : 'Day-by-day travel plan across India');
+        const pageTitle = `${title} (${days} Days) — KYT Travel Itinerary`;
+        const pageDesc = `${tagline} Detailed day-by-day itinerary with verified timings, stays, maps, and local tips on KYT.`;
+
+        document.title = pageTitle;
+
+        const setMeta = (selector, attr, val) => {
+          let el = document.querySelector(selector);
+          if (!el) {
+            el = document.createElement('meta');
+            const clean = selector.replace(/[\[\]"']/g, '');
+            const parts = clean.split('=');
+            if (parts.length === 2) el.setAttribute(parts[0], parts[1]);
+            document.head.appendChild(el);
+          }
+          el.setAttribute(attr, val);
+        };
+
+        setMeta('meta[name="description"]', 'content', pageDesc);
+        setMeta('meta[property="og:title"]', 'content', pageTitle);
+        setMeta('meta[property="og:description"]', 'content', pageDesc);
+        setMeta('meta[property="og:url"]', 'content', window.location.href);
+        setMeta('meta[name="twitter:title"]', 'content', pageTitle);
+        setMeta('meta[name="twitter:description"]', 'content', pageDesc);
+
+        // Inject Schema.org TouristTrip JSON-LD
+        let schemaScript = document.getElementById('schema-tourist-trip');
+        if (!schemaScript) {
+          schemaScript = document.createElement('script');
+          schemaScript.id = 'schema-tourist-trip';
+          schemaScript.type = 'application/ld+json';
+          document.head.appendChild(schemaScript);
+        }
+
+        const daysList = (tripObj.days || []).map((d, idx) => ({
+          "@type": "TouristTrip",
+          "name": `Day ${d.day || idx + 1}: ${d.theme || d.cityName || 'Sightseeing'}`,
+          "description": (d.steps || []).map(s => s.title).filter(Boolean).slice(0, 5).join(', ')
+        }));
+
+        const tripSchema = {
+          "@context": "https://schema.org",
+          "@type": "TouristTrip",
+          "name": title,
+          "description": tagline,
+          "touristType": tripObj.taste?.intent || "General",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+          },
+          "itinerary": {
+            "@type": "ItemList",
+            "itemListElement": daysList
+          }
+        };
+        schemaScript.textContent = JSON.stringify(tripSchema, null, 2);
+      }
+
       // Initial render of itinerary if steps exist
       if (loadedVirtualTrip && loadedVirtualTrip.steps && loadedVirtualTrip.steps.length) {
         renderRefinedItinerary(loadedVirtualTrip, cTrip, Boolean(loadedVirtualTrip.id && loadedVirtualTrip.id.startsWith('ai_')));
+        updateTripSeo(loadedVirtualTrip);
       } else if (cTrip && cTrip.days && cTrip.days.length) {
         renderRefinedItinerary(null, cTrip, false);
+        updateTripSeo(cTrip);
       }
 
       // Initialize AI Refine Module
@@ -807,6 +874,7 @@
               const descEl = document.getElementById('trip-desc');
               if (descEl) descEl.textContent = curatedTrip.tagline;
             }
+            updateTripSeo(vTrip || curatedTrip);
 
             renderRefinedItinerary(vTrip, curatedTrip, true);
             renderMetaPills();
