@@ -19631,6 +19631,118 @@ window.KYT_CITIES = [
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kanchipuram%20Silk%20Weavers'%20handloom%20cooperative%20at%20Kancheepuram",
         "notes": "Watch skilled master weavers weave GI-tagged heavy mulberry silk sarees with pure gold zari borders and temple motifs on traditional pit looms.",
         "kind": "activity"
+      },
+      {
+        "title": "Sri Vaikunta Perumal Temple (Three-tiered Pallava marvel)",
+        "icon": "landmark",
+        "where": "Periya Kancheepuram, Tamil Nadu",
+        "hour": 8,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sri%20Vaikunta%20Perumal%20Temple%2C%20Kancheepuram&query_place_id=ChIJx2F_E1nCUjoRlBY8HHhx4Gs",
+        "notes": "8th-century Pallava architectural wonder built by Nandivarman II; features a unique three-tiered sanctum with Lord Vishnu in standing, seated, and reclining postures, and intricate historical bas-relief sculptures.",
+        "kind": "place",
+        "placeId": "ChIJx2F_E1nCUjoRlBY8HHhx4Gs",
+        "ftid": "0x3a52c259137f61c7:0x6be071781c3c1694",
+        "lat": 12.8371145,
+        "lng": 79.7101732
+      },
+      {
+        "title": "Sri Ulagalantha Perumal Temple (Trivikrama Divya Desam)",
+        "icon": "landmark",
+        "where": "Kamakshi Amman Sannadhi St, Kancheepuram",
+        "hour": 10,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sri%20Ulagalantha%20Perumal%20Temple%2C%20Kancheepuram&query_place_id=ChIJBVNtt1DCUjoR_kagF9ZKnYU",
+        "notes": "Ancient Divya Desam dedicated to Lord Vishnu as the gigantic 35-foot Trivikrama (Vamana avatar) with one foot lifted heavenward; uniquely houses four Divya Desams within a single sacred temple enclosure.",
+        "kind": "place",
+        "placeId": "ChIJBVNtt1DCUjoR_kagF9ZKnYU",
+        "lat": 12.8390646,
+        "lng": 79.704797
+      },
+      {
+        "title": "Kanchi Kudil Heritage House & Living Museum",
+        "icon": "camera",
+        "where": "S.V.N. Pillai St, Pillaiyarpalayam, Kancheepuram",
+        "hour": 14,
+        "intent": [
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kanchi%20Kudil%2C%20Kancheepuram&query_place_id=ChIJTw92PFPCUjoR-N5uYAPjj8A",
+        "notes": "A 90-year-old traditional Tamil ancestral home preserved as a living museum; features classic red-oxide floors, wooden pillars, central courtyard (Thotti), vintage artifacts, and traditional living heritage.",
+        "kind": "place",
+        "placeId": "ChIJTw92PFPCUjoR-N5uYAPjj8A",
+        "ftid": "0x3a52c2533c760f4f:0xc08fe303606edef8",
+        "lat": 12.8400556,
+        "lng": 79.6960915
+      },
+      {
+        "title": "Sri Kanchi Kamakoti Peetham (Sankara Matham)",
+        "icon": "landmark",
+        "where": "Salai St, Kancheepuram",
+        "hour": 18,
+        "intent": [
+          "spiritual"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sri%20Kanchi%20Kamakoti%20Peetham%2C%20Kancheepuram&query_place_id=ChIJY1NajmPDUjoR5OepxiZ0iC4",
+        "notes": "Sacred monastic institution established by Adi Shankaracharya; renowned for evening Chandramouleeswara puja, serene spiritual chants, Veda Pathashala, and tranquil courtyard atmosphere.",
+        "kind": "place",
+        "placeId": "ChIJY1NajmPDUjoR5OepxiZ0iC4",
+        "ftid": "0x3a52c3638e5a5363:0x2e887426c6a9e7e4",
+        "lat": 12.8434451,
+        "lng": 79.7009471
       }
     ],
     "aliases": [

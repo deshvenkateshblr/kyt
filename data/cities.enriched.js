@@ -12518,6 +12518,7 @@ window.KYT_CITIES = [
   {
     "id": "mawlynnong",
     "name": "Mawlynnong",
+    "weatherLink": true,
     "icon": "tree-pine",
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mawlynnong%20Meghalaya%20India",
@@ -15092,6 +15093,7 @@ window.KYT_CITIES = [
   {
     "id": "tirupati",
     "name": "Tirupati",
+    "weatherLink": true,
     "icon": "landmark",
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tirupati%20Andhra%20Pradesh%20India",
@@ -19459,7 +19461,7 @@ window.KYT_CITIES = [
     "name": "Kancheepuram",
     "icon": "landmark",
     "dayOffset": 0,
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kancheepuram%20Tamil%20Nadu%20India",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kancheepuram%2C%20Tamil%20Nadu%2C%20India&query_place_id=ChIJLfHH4PfCUjoRTSrLsYKGX94",
     "notes": "The City of a Thousand Temples, renowned for glorious Pallava and Chola temple architecture and world-famous Kanchipuram mulberry silk sarees.",
     "beats": [
       {
@@ -19646,7 +19648,9 @@ window.KYT_CITIES = [
       "spiritual",
       "heritage"
     ],
-    "code": "ka1"
+    "code": "ka1",
+    "placeId": "ChIJLfHH4PfCUjoRTSrLsYKGX94",
+    "ftid": "0x3a52c2f7e0c7f12d:0xde5f8682b1cb2a4d"
   },
   {
     "id": "ujjain",
@@ -20402,6 +20406,7 @@ window.KYT_CITIES = [
   {
     "id": "bhimashankar",
     "name": "Bhimashankar",
+    "weatherLink": true,
     "state": "Maharashtra",
     "description": "An ancient shrine in the Sahyadri mountains, famous for its Jyotirlinga and the lush Bhimashankar Wildlife Sanctuary.",
     "lat": 19.0718,

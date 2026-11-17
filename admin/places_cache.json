@@ -5470,5 +5470,15 @@
     "lng": 74.7367974,
     "distanceKm": 13.4,
     "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kapu%20Light%20House%2C%20Udupi&query_place_id=ChIJ2_IEi1awvDsRbTrYSp0oVHo"
+  },
+  "city::kancheepuram": {
+    "query": "Kancheepuram, Tamil Nadu, India",
+    "resolvedName": "Kanchipuram, Tamil Nadu",
+    "placeId": "ChIJLfHH4PfCUjoRTSrLsYKGX94",
+    "ftid": "0x3a52c2f7e0c7f12d:0xde5f8682b1cb2a4d",
+    "lat": 12.8371787,
+    "lng": 79.7041698,
+    "distanceKm": 4.7,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kancheepuram%2C%20Tamil%20Nadu%2C%20India&query_place_id=ChIJLfHH4PfCUjoRTSrLsYKGX94"
   }
 }

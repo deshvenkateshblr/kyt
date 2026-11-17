@@ -50,7 +50,9 @@ window.KYT.ui = (function () {
     bangalore: 'bengaluru',
     mangalore: 'udupi',
     mangaluru: 'udupi',
-    hubballi: 'hubli'
+    hubballi: 'hubli',
+    kanchipuram: 'kancheepuram',
+    kanchi: 'kancheepuram'
   };
 
   const INTENT_META = {
