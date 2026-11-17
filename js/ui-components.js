@@ -52,7 +52,9 @@ window.KYT.ui = (function () {
     mangaluru: 'udupi',
     hubballi: 'hubli',
     kanchipuram: 'kancheepuram',
-    kanchi: 'kancheepuram'
+    kanchi: 'kancheepuram',
+    'ekta-nagar': 'kevadia',
+    'statue-of-unity': 'kevadia'
   };
 
   const INTENT_META = {

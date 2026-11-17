@@ -5560,5 +5560,95 @@
     "lng": 73.6615813,
     "distanceKm": 0,
     "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Shilpgram%2C%20Udaipur&query_place_id=ChIJZ0sUuinlZzkRxGWDuBs_jSI"
+  },
+  "beat::kevadia::Sardar Patel Zoological Park & Jungle Safari": {
+    "query": "Sardar Patel Zoological Park Jungle Safari, Kevadia",
+    "resolvedName": "Sardar Patel Zoological Park",
+    "placeId": "ChIJBauOyvsdYDkRwmTu_x0wq88",
+    "ftid": "0x39601dfbca8eab05:0xcfab301dffee64c2",
+    "lat": 21.8355631,
+    "lng": 73.7353534,
+    "distanceKm": 0,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sardar%20Patel%20Zoological%20Park%20Jungle%20Safari%2C%20Kevadia&query_place_id=ChIJBauOyvsdYDkRwmTu_x0wq88"
+  },
+  "beat::kevadia::Arogya Van Herbal Wellness Park": {
+    "query": "Arogya Van, Kevadia, Gujarat",
+    "resolvedName": "Arogya Van",
+    "placeId": "ChIJvU6Cgh4dYDkRLg48wqX5wxg",
+    "ftid": "0x39601d1e82824ebd:0x18c3f9a5c23c0e2e",
+    "lat": 21.8792955,
+    "lng": 73.701722,
+    "distanceKm": 0,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Arogya%20Van%2C%20Kevadia%2C%20Gujarat&query_place_id=ChIJvU6Cgh4dYDkRLg48wqX5wxg"
+  },
+  "beat::kevadia::Ekta Cruise & Narmada Sunset Sail": {
+    "query": "Ekta Cruise, Kevadia",
+    "resolvedName": "EKTA Dinner Cruise",
+    "placeId": "ChIJ2ylZyb4dYDkRe-GjJI2ycso",
+    "ftid": "0x39601dbec95929db:0xca72b28d24a3e17b",
+    "lat": 21.8723315,
+    "lng": 73.6937748,
+    "distanceKm": 0,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Ekta%20Cruise%2C%20Kevadia&query_place_id=ChIJ2ylZyb4dYDkRe-GjJI2ycso"
+  },
+  "beat::kevadia::Ekta Mall Pan-India Handicrafts Emporium": {
+    "query": "Ekta Mall, Kevadia, Gujarat",
+    "resolvedName": "Ekta Mall",
+    "placeId": "ChIJu52bM1UdYDkRahZ6HGX-yIs",
+    "ftid": "0x39601d55339b9dbb:0x8bc8fe651c7a166a",
+    "lat": 21.8753966,
+    "lng": 73.6974423,
+    "distanceKm": 0,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Ekta%20Mall%2C%20Kevadia%2C%20Gujarat&query_place_id=ChIJu52bM1UdYDkRahZ6HGX-yIs"
+  },
+  "beat::kevadia::Children Nutrition Park & Nutri Train": {
+    "query": "Children Nutrition Park, Kevadia, Gujarat",
+    "resolvedName": "Children Nutrition Park",
+    "placeId": "ChIJz-Z00gEdYDkRHst2EEsToOI",
+    "ftid": "0x39601d01d274e6cf:0xe2a0134b1076cb1e",
+    "lat": 21.8762864,
+    "lng": 73.6972701,
+    "distanceKm": 0,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Children%20Nutrition%20Park%2C%20Kevadia%2C%20Gujarat&query_place_id=ChIJz-Z00gEdYDkRHst2EEsToOI"
+  },
+  "beat::kevadia::Unity Glow Garden Illuminated Night Walk": {
+    "query": "Ekta Glow Garden, Kevadia, Gujarat",
+    "resolvedName": "Statue of Unity | Unity Glow Garden",
+    "placeId": "ChIJdbaGYi4dYDkRQCra16xhZos",
+    "ftid": "0x39601d2e6286b675:0x8b6661acd7da2a40",
+    "lat": 21.8328329,
+    "lng": 73.7348284,
+    "distanceKm": 0,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Ekta%20Glow%20Garden%2C%20Kevadia%2C%20Gujarat&query_place_id=ChIJdbaGYi4dYDkRQCra16xhZos"
+  },
+  "beat::kevadia::Maze Garden (Shree Yantra) & Miyawaki Forest": {
+    "query": "Maze Garden, Kevadia, Gujarat",
+    "resolvedName": "Maze Garden",
+    "placeId": "ChIJvdfZy40dYDkR2UzJrbop8i8",
+    "ftid": "0x39601d8dcbd9d7bd:0x2ff229baadc94cd9",
+    "lat": 21.8332708,
+    "lng": 73.7351606,
+    "distanceKm": 0,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Maze%20Garden%2C%20Kevadia%2C%20Gujarat&query_place_id=ChIJvdfZy40dYDkR2UzJrbop8i8"
+  },
+  "beat::kevadia::Zarwani Waterfall & Eco-Tourism Sanctuary": {
+    "query": "Zarwani Waterfall, Narmada, Gujarat",
+    "resolvedName": "Zarwani Waterfall",
+    "placeId": "ChIJldHF1uEdYDkRk0J5Tqd4IeA",
+    "ftid": "0x39601de1d6c5d195:0xe02178a74e794293",
+    "lat": 21.8147618,
+    "lng": 73.6888184,
+    "distanceKm": 0,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Zarwani%20Waterfall%2C%20Narmada%2C%20Gujarat&query_place_id=ChIJldHF1uEdYDkRk0J5Tqd4IeA"
+  },
+  "beat::kevadia::Shoolpaneshwar Mahadev Temple": {
+    "query": "Shoolpaneshwar Mahadev Temple, Gujarat",
+    "resolvedName": "Shoolpaneshwar Mahadev Temple",
+    "placeId": "ChIJ1cES_e0cYDkRY76BZScF0Zg",
+    "ftid": "0x39601cedfd12c1d5:0x98d105276581be63",
+    "lat": 21.8600667,
+    "lng": 73.6883389,
+    "distanceKm": 0,
+    "canonicalMapsUrl": "https://www.google.com/maps/search/?api=1&query=Shoolpaneshwar%20Mahadev%20Temple%2C%20Gujarat&query_place_id=ChIJ1cES_e0cYDkRY76BZScF0Zg"
   }
 }

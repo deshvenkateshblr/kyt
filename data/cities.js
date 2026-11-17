@@ -22684,7 +22684,7 @@ window.KYT_CITIES = [
       },
       {
         "title": "Valley of Flowers & Butterfly Garden",
-        "icon": "trees",
+        "icon": "flower-2",
         "where": "Narmada Riverfront, Kevadia",
         "hour": 12,
         "intent": [
@@ -22739,7 +22739,7 @@ window.KYT_CITIES = [
       },
       {
         "title": "Statue of Unity Evening Laser Projection Show",
-        "icon": "sparkles",
+        "icon": "camera",
         "where": "Statue of Unity Complex, Kevadia",
         "hour": 19,
         "intent": [
@@ -22763,6 +22763,254 @@ window.KYT_CITIES = [
         "ftid": "0x39601de496684c2d:0x9637aca1ebfaeaa8",
         "lat": 21.8369146,
         "lng": 73.7272052
+      },
+      {
+        "title": "Sardar Patel Zoological Park & Jungle Safari",
+        "icon": "binoculars",
+        "where": "Ekta Nagar, Kevadia",
+        "hour": 9,
+        "intent": [
+          "nature",
+          "adventure"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sardar%20Patel%20Zoological%20Park%20Jungle%20Safari%2C%20Kevadia&query_place_id=ChIJBauOyvsdYDkRwmTu_x0wq88",
+        "notes": "375-acre state-of-the-art zoological park housing Asiatic lions, royal Bengal tigers, and two geodesic dome aviaries home to vibrant exotic and native bird species.",
+        "kind": "place",
+        "placeId": "ChIJBauOyvsdYDkRwmTu_x0wq88",
+        "ftid": "0x39601dfbca8eab05:0xcfab301dffee64c2",
+        "lat": 21.8355631,
+        "lng": 73.7353534
+      },
+      {
+        "title": "Arogya Van Herbal Wellness Park",
+        "icon": "tree-pine",
+        "where": "Near Shrestha Bharat Bhavan, Kevadia",
+        "hour": 11,
+        "intent": [
+          "nature",
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Arogya%20Van%2C%20Kevadia%2C%20Gujarat&query_place_id=ChIJvU6Cgh4dYDkRLg48wqX5wxg",
+        "notes": "17-acre holistic wellness garden featuring 380 species of Ayurvedic medicinal plants, five healing zones, reflexology paths, and Arogya Kutir indoor health exhibits.",
+        "kind": "place",
+        "placeId": "ChIJvU6Cgh4dYDkRLg48wqX5wxg",
+        "ftid": "0x39601d1e82824ebd:0x18c3f9a5c23c0e2e",
+        "lat": 21.8792955,
+        "lng": 73.701722
+      },
+      {
+        "title": "Ekta Cruise & Narmada Sunset Sail",
+        "icon": "ship",
+        "where": "Shrestha Bharat Bhavan Jetty, Kevadia",
+        "hour": 17,
+        "intent": [
+          "cultural",
+          "adventure"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ekta%20Cruise%2C%20Kevadia&query_place_id=ChIJ2ylZyb4dYDkRe-GjJI2ycso",
+        "notes": "Scenic 40-minute boat cruise along the Narmada River offering grand water-level perspectives of the Statue of Unity, accompanied by live cultural music and performances onboard.",
+        "kind": "place",
+        "placeId": "ChIJ2ylZyb4dYDkRe-GjJI2ycso",
+        "ftid": "0x39601dbec95929db:0xca72b28d24a3e17b",
+        "lat": 21.8723315,
+        "lng": 73.6937748
+      },
+      {
+        "title": "Ekta Mall Pan-India Handicrafts Emporium",
+        "icon": "shopping-bag",
+        "where": "Near Shrestha Bharat Bhavan, Kevadia",
+        "hour": 14,
+        "intent": [
+          "cultural"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ekta%20Mall%2C%20Kevadia%2C%20Gujarat&query_place_id=ChIJu52bM1UdYDkRahZ6HGX-yIs",
+        "notes": "Two-storey 35,000 sq ft handicrafts emporium showcasing authentic traditional handlooms, tribal crafts, and artisanal treasures from all 28 states of India.",
+        "kind": "place",
+        "placeId": "ChIJu52bM1UdYDkRahZ6HGX-yIs",
+        "ftid": "0x39601d55339b9dbb:0x8bc8fe651c7a166a",
+        "lat": 21.8753966,
+        "lng": 73.6974423
+      },
+      {
+        "title": "Children Nutrition Park & Nutri Train",
+        "icon": "landmark",
+        "where": "Near Ekta Mall, Kevadia",
+        "hour": 15,
+        "intent": [
+          "cultural",
+          "leisure"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Children%20Nutrition%20Park%2C%20Kevadia%2C%20Gujarat&query_place_id=ChIJz-Z00gEdYDkRHst2EEsToOI",
+        "notes": "World's first tech-driven theme park on nutrition featuring the 600-meter Nutri Train journey passing through interactive edutainment stations including Phalshaka Griham and NutriHunt.",
+        "kind": "place",
+        "placeId": "ChIJz-Z00gEdYDkRHst2EEsToOI",
+        "ftid": "0x39601d01d274e6cf:0xe2a0134b1076cb1e",
+        "lat": 21.8762864,
+        "lng": 73.6972701
+      },
+      {
+        "title": "Unity Glow Garden Illuminated Night Walk",
+        "icon": "camera",
+        "where": "Near Valley of Flowers, Kevadia",
+        "hour": 20,
+        "intent": [
+          "leisure",
+          "nature"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ekta%20Glow%20Garden%2C%20Kevadia%2C%20Gujarat&query_place_id=ChIJdbaGYi4dYDkRQCra16xhZos",
+        "notes": "Enchanting botanical night garden illuminated by thousands of twinkling optical fiber lights, glowing animal figures, birds, and luminous trees creating a fairy-tale atmosphere.",
+        "kind": "place",
+        "placeId": "ChIJdbaGYi4dYDkRQCra16xhZos",
+        "ftid": "0x39601d2e6286b675:0x8b6661acd7da2a40",
+        "lat": 21.8328329,
+        "lng": 73.7348284
+      },
+      {
+        "title": "Maze Garden (Shree Yantra) & Miyawaki Forest",
+        "icon": "footprints",
+        "where": "Near SoU Bus Station, Kevadia",
+        "hour": 10,
+        "intent": [
+          "nature",
+          "adventure"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Maze%20Garden%2C%20Kevadia%2C%20Gujarat&query_place_id=ChIJvdfZy40dYDkR2UzJrbop8i8",
+        "notes": "Largest maze garden in India spreading across 3 acres with 2.1 km of lush pathways sculpted in the design of the sacred Shree Yantra, flanked by a dense 2-acre Miyawaki native forest.",
+        "kind": "place",
+        "placeId": "ChIJvdfZy40dYDkR2UzJrbop8i8",
+        "ftid": "0x39601d8dcbd9d7bd:0x2ff229baadc94cd9",
+        "lat": 21.8332708,
+        "lng": 73.7351606
+      },
+      {
+        "title": "Zarwani Waterfall & Eco-Tourism Sanctuary",
+        "icon": "waves",
+        "where": "Shoolpaneshwar Wildlife Sanctuary, Dhirkhadi, Gujarat",
+        "hour": 8,
+        "intent": [
+          "nature",
+          "adventure"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Zarwani%20Waterfall%2C%20Narmada%2C%20Gujarat&query_place_id=ChIJldHF1uEdYDkRk0J5Tqd4IeA",
+        "notes": "Perennial forest waterfall cascading into rocky natural pools inside Shoolpaneshwar Sanctuary, surrounded by teak canopy, birdlife, and serene nature trails.",
+        "kind": "place",
+        "placeId": "ChIJldHF1uEdYDkRk0J5Tqd4IeA",
+        "ftid": "0x39601de1d6c5d195:0xe02178a74e794293",
+        "lat": 21.8147618,
+        "lng": 73.6888184
+      },
+      {
+        "title": "Shoolpaneshwar Mahadev Temple",
+        "icon": "landmark",
+        "where": "Rajpipla - Kevadia Road, Gujarat",
+        "hour": 7,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shoolpaneshwar%20Mahadev%20Temple%2C%20Gujarat&query_place_id=ChIJ1cES_e0cYDkRY76BZScF0Zg",
+        "notes": "Ancient sacred temple dedicated to Lord Shiva situated along the holy Narmada River, a revered milestone on the historic Narmada Parikrama pilgrimage trail.",
+        "kind": "place",
+        "placeId": "ChIJ1cES_e0cYDkRY76BZScF0Zg",
+        "ftid": "0x39601cedfd12c1d5:0x98d105276581be63",
+        "lat": 21.8600667,
+        "lng": 73.6883389
       }
     ],
     "aliases": [
