@@ -20410,6 +20410,117 @@ window.KYT_CITIES = [
         "ftid": "0x3bb565bb417decdb:0xfc82bfb2be3ebadc",
         "lat": 16.0861287,
         "lng": 78.8971772
+      },
+      {
+        "title": "Sri Sakshi Ganapathi Swamy Temple",
+        "icon": "landmark",
+        "where": "Srisailam Ghat Road",
+        "hour": 8,
+        "intent": [
+          "spiritual"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short"
+        ],
+        "mobility": "easy",
+        "notes": "Revered shrine of Lord Ganesha holding a writing stylus and book, believed to record the pilgrimage of every devotee visiting Srisailam.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sri%20Sakshi%20Ganapathi%20Swamy%20Temple%2C%20Srisailam&query_place_id=ChIJyxoQen5ltTsRbmjNNkU9gVM",
+        "kind": "place",
+        "placeId": "ChIJyxoQen5ltTsRbmjNNkU9gVM",
+        "ftid": "0x3bb5657e7a101acb:0x53813d4536cd686e",
+        "lat": 16.0576375,
+        "lng": 78.8785156
+      },
+      {
+        "title": "Pathala Ganga & Ropeway",
+        "icon": "waves",
+        "where": "Krishna River Gorge, Srisailam",
+        "hour": 15,
+        "intent": [
+          "spiritual",
+          "nature"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard"
+        ],
+        "mobility": "walk",
+        "notes": "Sacred bathing ghat on the emerald Krishna River downstream of the dam, accessible via scenic cable car ropeway or 500 stone steps.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pathala%20Ganga%2C%20Srisailam&query_place_id=ChIJo6ZfNYBltTsR2QskZrg-aOs",
+        "kind": "place",
+        "placeId": "ChIJo6ZfNYBltTsR2QskZrg-aOs",
+        "ftid": "0x3bb56580355fa6a3:0xeb683eb866240bd9",
+        "lat": 16.0785944,
+        "lng": 78.8786311
+      },
+      {
+        "title": "Paladhara-Panchadhara",
+        "icon": "tree-pine",
+        "where": "Nallamala Forest, Srisailam",
+        "hour": 11,
+        "intent": [
+          "spiritual",
+          "nature"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard"
+        ],
+        "mobility": "walk",
+        "notes": "Serene perennial mountain stream flowing through verdant Nallamala woods where Jagadguru Adi Shankaracharya performed intense penance and composed Sivanandalahari.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Paladhara%20Panchadhara%2C%20Srisailam&query_place_id=ChIJdfpvs31vtTsRUSFTCU0iAow",
+        "kind": "place",
+        "placeId": "ChIJdfpvs31vtTsRUSFTCU0iAow",
+        "ftid": "0x3bb56f7db36ffa75:0x8c02224d09532151",
+        "lat": 16.0532486,
+        "lng": 78.8910292
+      },
+      {
+        "title": "Sri Shikhareshwara Swamy Temple",
+        "icon": "mountain",
+        "where": "Sikharam Peak, Srisailam",
+        "hour": 17,
+        "intent": [
+          "spiritual",
+          "nature"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard"
+        ],
+        "mobility": "walk",
+        "notes": "Highest mountain peak in Srisailam dedicated to Veera Shankara Swamy; according to tradition, viewing the Mallikarjuna temple gopuram through Nandi's horns frees devotees from rebirth.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sri%20Shikhareshwara%20Swamy%20Temple%2C%20Srisailam&query_place_id=ChIJ0elGcPBvtTsRTVyPdoplCHY",
+        "kind": "place",
+        "placeId": "ChIJ0elGcPBvtTsRTVyPdoplCHY",
+        "ftid": "0x3bb56ff07046e9d1:0x7608658a768f5c4d",
+        "lat": 16.0456736,
+        "lng": 78.9159677
       }
     ],
     "setting": "hills",

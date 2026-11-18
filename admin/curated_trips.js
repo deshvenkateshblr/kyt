@@ -2510,6 +2510,308 @@ window.KYT_CURATED_TRIPS = [
   },
   {
     "schema": 1,
+    "id": "hyderabad-srisailam-jyotirlinga-shakti-peeth-2d",
+    "rev": 1,
+    "status": "approved",
+    "title": "Srisailam Divine Gateway: Jyotirlinga & Shakti Peeth Pilgrimage",
+    "tagline": "A sacred 2-day pilgrimage from Hyderabad through the scenic Nallamala forests to Sri Bhramaramba Mallikarjuna Swamy Temple — the holy confluence of Jyotirlinga and Maha Shakti Peeth.",
+    "originCity": "hyderabad",
+    "originName": "Hyderabad",
+    "days": [
+      {
+        "day": 1,
+        "title": "",
+        "cityId": "srisailam",
+        "cityName": "Srisailam",
+        "steps": [
+          {
+            "title": "Depart Hyderabad for Srisailam",
+            "where": "Hyderabad to Srisailam Highway (NH 765)",
+            "hour": 6,
+            "minute": 0,
+            "icon": "car",
+            "mapsUrl": "",
+            "notes": "Begin your spiritual weekend journey early from Hyderabad. Head south along NH 765 through Kalwakurthy and Munnanur toward the Nallamala hill range (~215 km, approx 4.5 to 5 hours).",
+            "verify": []
+          },
+          {
+            "title": "Traditional Andhra Breakfast Halt",
+            "where": "Highway near Kalwakurthy / Dindi",
+            "hour": 8,
+            "minute": 0,
+            "icon": "coffee",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Traditional%20Andhra%20Breakfast%20Halt%2C%20Highway%20near%20Kalwakurthy%20%2F%20Dindi",
+            "notes": "Stop for a fresh, authentic Telugu breakfast featuring hot pesarattu upma, steamed idli, vada, and piping filter coffee.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Scenic Srisailam Dam Viewpoint",
+            "where": "Srisailam Dam, Krishna River",
+            "hour": 10,
+            "minute": 30,
+            "icon": "mountain",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Srisailam%20Dam%2C%20Krishna%20River",
+            "notes": "Pause at the panoramic Srisailam Dam viewpoint. Behold one of India's largest hydroelectric dams cradled between the deep gorges of the Nallamala hills and Krishna river.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Visit Sri Sakshi Ganapathi Swamy Temple",
+            "where": "Srisailam Ghat Road",
+            "hour": 11,
+            "minute": 30,
+            "icon": "landmark",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Visit%20Sri%20Sakshi%20Ganapathi%20Swamy%20Temple%2C%20Srisailam%20Ghat%20Road",
+            "notes": "According to ancient tradition, pilgrims visit Sakshi Ganapathi first upon arrival. The deity holds a gantam (stylus) and book, standing eternal witness to every devotee's pilgrimage to Srisailam.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Hotel Check-in & Freshen Up in Srisailam",
+            "where": "Temple Road / Sunshipenta Road, Srisailam",
+            "hour": 12,
+            "minute": 30,
+            "icon": "bed",
+            "mapsUrl": "",
+            "notes": "Night 1 of 1: Hotel in Srisailam. Check in to your hotel or Devasthanam guesthouse (e.g. APTDC Haritha Srisailam, Grand Akka Mahadevi, or Ganga Sadan) and unpack after the Nallamala forest drive.",
+            "verify": []
+          },
+          {
+            "title": "Satvik Andhra Vegetarian Lunch",
+            "where": "Srisailam Town / Devasthanam Nitya Annadanam",
+            "hour": 13,
+            "minute": 30,
+            "icon": "utensils",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Satvik%20Andhra%20Vegetarian%20Lunch%2C%20Srisailam%20Town%20%2F%20Devasthanam%20Nitya%20Annadanam",
+            "notes": "Partake in traditional Andhra satvik lunch or sacred temple Anna Prasadam served with warm rice, sambar, rasam, and curd.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Pathala Ganga & Scenic Cable Car Ropeway",
+            "where": "Krishna River Gorge, Srisailam",
+            "hour": 15,
+            "minute": 30,
+            "icon": "waves",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Krishna%20River%20Gorge%2C%20Srisailam",
+            "notes": "Ride the thrilling AP Tourism ropeway down into the Krishna River canyon. Sprinkle holy waters of the Krishna River (Pathala Ganga) and take an optional tranquil motorboat cruise through the rocky river gorge.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Evening Darshan at Shri Mallikarjuna Jyotirlinga",
+            "where": "Srisailam Temple Road",
+            "hour": 18,
+            "minute": 0,
+            "icon": "landmark",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Evening%20Darshan%20at%20Shri%20Mallikarjuna%20Jyotirlinga%2C%20Srisailam%20Temple%20Road",
+            "notes": "Enter the magnificent Vijayanagara-era temple complex to offer prayers to Lord Mallikarjuna Swamy (one of the 12 sacred Jyotirlingas). Witness the uplifting evening Deeparadhana and Harathi within the pillared Mukha Mandapam.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Darshan at Sri Bhramaramba Devi Shakti Peeth",
+            "where": "Inside Mallikarjuna Temple Complex",
+            "hour": 19,
+            "minute": 30,
+            "icon": "landmark",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Darshan%20at%20Sri%20Bhramaramba%20Devi%20Shakti%20Peeth%2C%20Inside%20Mallikarjuna%20Temple%20Complex",
+            "notes": "Visit the sanctum of Goddess Bhramaramba Devi, one of the 18 Maha Shakti Peethas (where Sati Devi's neck fell). Seek the divine Mother's grace surrounded by tranquil evening bells.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Relaxed Vegetarian Dinner in Srisailam",
+            "where": "Temple Street, Srisailam",
+            "hour": 20,
+            "minute": 45,
+            "icon": "utensils",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Temple%20Street%2C%20Srisailam",
+            "notes": "Enjoy a light, wholesome vegetarian dinner (ghee dosas or Andhra thali) before retiring for a peaceful night amidst the holy Nallamala hills.",
+            "verify": [],
+            "mapsAuto": true
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "title": "",
+        "cityId": "hyderabad",
+        "cityName": "Hyderabad",
+        "steps": [
+          {
+            "title": "Early Morning Sparsha Darshan & Abhishekam",
+            "where": "Mallikarjuna Swamy Temple Sanctum",
+            "hour": 6,
+            "minute": 0,
+            "icon": "landmark",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Early%20Morning%20Sparsha%20Darshan%20%26%20Abhishekam%2C%20Mallikarjuna%20Swamy%20Temple%20Sanctum",
+            "notes": "Participate in the auspicious morning Sparsha Darshan / Garbhagriha Abhishekam. Srisailam uniquely allows devotees to touch the Swayambhu Linga and perform personal Jalabhishek in traditional attire during morning hours.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Temple Town South Indian Breakfast",
+            "where": "Car Street, Srisailam",
+            "hour": 8,
+            "minute": 30,
+            "icon": "coffee",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Car%20Street%2C%20Srisailam",
+            "notes": "Savor a comforting breakfast of hot Andhra upma, medu vada, and filter coffee at a local restaurant.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Sacred Meditation at Paladhara-Panchadhara",
+            "where": "Nallamala Forest, Srisailam",
+            "hour": 9,
+            "minute": 30,
+            "icon": "tree-pine",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nallamala%20Forest%2C%20Srisailam",
+            "notes": "Descend the tree-shaded stone steps to Paladhara-Panchadhara, where perennial clear streams flow through dense jungle. Pay homage at the shrine where Jagadguru Adi Shankaracharya meditated and composed Sivanandalahari.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Summit Visit to Sri Shikhareshwara Swamy Temple",
+            "where": "Sikharam Peak, Srisailam",
+            "hour": 11,
+            "minute": 0,
+            "icon": "mountain",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sikharam%20Peak%2C%20Srisailam",
+            "notes": "Drive up to Sikharam, the highest mountain peak in Srisailam. Peer between the horns of the stone Nandi statue to glimpse the distant Mallikarjuna temple spire, fulfilling the cherished sacred lore: 'Srisaila Sikharam Drishtva Punarjanma Na Vidyate'.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Hotel Check-out & Andhra Vegetarian Lunch",
+            "where": "Srisailam Town",
+            "hour": 12,
+            "minute": 30,
+            "icon": "utensils",
+            "mapsUrl": "",
+            "notes": "Check out of your hotel and enjoy a hearty Andhra thali lunch with fresh gunpowder (kandi podi), ghee, sambar, and crisps.",
+            "verify": []
+          },
+          {
+            "title": "Scenic Forest Highway Drive to Hyderabad",
+            "where": "Srisailam to Hyderabad Highway (NH 765)",
+            "hour": 14,
+            "minute": 0,
+            "icon": "car",
+            "mapsUrl": "",
+            "notes": "Begin your return journey through the verdant Amrabad Tiger Reserve and Nallamala forests towards Hyderabad (~215 km, approx 4.5 hours).",
+            "verify": []
+          },
+          {
+            "title": "Evening Tea & Snacks near Dindi",
+            "where": "NH 765 Highway, Dindi",
+            "hour": 16,
+            "minute": 30,
+            "icon": "coffee",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=NH%20765%20Highway%2C%20Dindi",
+            "notes": "Stop for hot tea, mirchi bajji, and refreshments by the roadside near Dindi reservoir.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Arrive back in Hyderabad with Divine Blessings",
+            "where": "Hyderabad City Center / Home",
+            "hour": 19,
+            "minute": 0,
+            "icon": "map-pin",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Arrive%20back%20in%20Hyderabad%20with%20Divine%20Blessings%2C%20Hyderabad%20City%20Center%20%2F%20Home",
+            "notes": "Reach Hyderabad by early evening, peacefully concluding your deeply fulfilling 2-day pilgrimage to the Jyotirlinga and Shakti Peeth of Srisailam.",
+            "verify": [],
+            "mapsAuto": true
+          }
+        ]
+      }
+    ],
+    "durationDays": 2,
+    "kind": "weekend",
+    "bestMonths": [
+      1,
+      2,
+      3,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "faiths": [],
+    "taste": {
+      "intent": "spiritual",
+      "diet": "veg",
+      "pace": "standard"
+    },
+    "audience": [],
+    "budget": "mid",
+    "track": "",
+    "ideaId": "",
+    "variantOf": "",
+    "transport": {
+      "mode": "road",
+      "note": "",
+      "approxTravelHours": null
+    },
+    "cities": [
+      "hyderabad",
+      "srisailam"
+    ],
+    "highlights": [
+      "Rare confluence of Lord Shiva's Mallikarjuna Jyotirlinga and Goddess Parvati's Bhramaramba Maha Shakti Peeth",
+      "Scenic road trip through the Nallamala hills and Amrabad Tiger Reserve with a pause at Srisailam Dam",
+      "Pathala Ganga ropeway descent down to the emerald waters of River Krishna for holy snanam",
+      "Traditional initial darshan at Sri Sakshi Ganapathi Swamy Temple to register your pilgrimage presence",
+      "Sacred visit to Paladhara-Panchadhara where Adi Shankaracharya composed Sivanandalahari and panoramic views from Sikharam"
+    ],
+    "tips": [],
+    "beforeYouGo": [
+      {
+        "type": "rules",
+        "text": "Strict Dress Code: Traditional Hindu attire is strictly enforced for entering the inner sanctum and for Sparsha Darshan / Abhishekam. Men must wear dhoti with uttareeyam (or white kurta-pyjama), and women must wear sarees or churidars with dupatta."
+      },
+      {
+        "type": "timing",
+        "text": "Forest Ghat Road Timings: The Nallamala forest checkpost at Mannanur is open from 06:00 AM to 09:00 PM. Night driving through the tiger reserve is prohibited."
+      },
+      {
+        "type": "booking",
+        "text": "Online Darshan & Seva Booking: Book Sparsha Darshan, Rudrabhishekam, and accommodation in advance via the official portal srisailadevasthanam.org, especially for weekend visits."
+      },
+      {
+        "type": "other",
+        "text": "Pathala Ganga Access: You can descend to Pathala Ganga either via the modern AP Tourism ropeway (cable car) or down 500 stone steps. Ropeway operates from 06:00 AM to 05:30 PM."
+      }
+    ],
+    "specialDays": [
+      {
+        "name": "Maha Shivratri Brahmotsavam",
+        "when": "February / March (7-day festival)",
+        "effect": "festival",
+        "note": "Grand annual chariot procession (Rathotsavam) and Lingodbhava Abhishekam. Attracts hundreds of thousands of pilgrims; mandatory queue waiting times of 8-12 hours."
+      },
+      {
+        "name": "Karthika Masam (Mondays)",
+        "when": "October / November",
+        "effect": "festival",
+        "note": "Auspicious Shiva month featuring Lakshadeepotsavam (lighting of one lakh lamps) and holy dips in Pathala Ganga."
+      }
+    ],
+    "sources": [],
+    "generated": {
+      "via": "manual",
+      "model": "",
+      "at": ""
+    },
+    "updatedAt": ""
+  },
+  {
+    "schema": 1,
     "id": "mumbai-udaipur-royal-lakes-sacred-mewar-3d",
     "rev": 1,
     "status": "approved",
