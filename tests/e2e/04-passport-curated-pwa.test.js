@@ -98,25 +98,26 @@ test('passport search filters cities by name, alias, and state, with clear searc
 });
 
 // ── Curated trips ───────────────────────────────────────────────────────────
+// The page also lists every trip in a "Featured Travel Itineraries" link block for search engines, so the list is read from #trips-grid and the Tirupati trip is picked by its title.
 test('curated trips list shows the approved trips and the filter narrows by travel style', async () => {
   const { context, page } = await newPhone(env.browser);
   await page.goto(env.base + '/curated_trips.html');
   await page.waitForSelector('#filter-pills');
-  assert.match(await page.locator('body').innerText(), /Tirupati: Divine Calling/);
-  assert.match(await page.locator('body').innerText(), /Showing \d+ trips?\b/);
+  assert.match(await page.locator('#trips-grid').innerText(), /Tirupati: Divine Calling/);
+  assert.match(await page.locator('#trip-count').innerText(), /Showing \d+ trips?\b/);
 
   await page.click('.filter-pill[data-filter="culinary"]');
-  assert.doesNotMatch(await page.locator('body').innerText(), /Tirupati: Divine Calling/);
+  assert.doesNotMatch(await page.locator('#trips-grid').innerText(), /Tirupati: Divine Calling/);
   await page.click('.filter-pill[data-filter="all"]');
-  assert.match(await page.locator('body').innerText(), /Tirupati: Divine Calling/);
+  assert.match(await page.locator('#trips-grid').innerText(), /Tirupati: Divine Calling/);
   await context.close();
 });
 
 test('opening a curated trip card previews its highlights and day-by-day plan', async () => {
   const { context, page } = await newPhone(env.browser);
   await page.goto(env.base + '/curated_trips.html');
-  await page.waitForSelector('[role="button"][title^="Click to preview"]');
-  await page.click('[role="button"][title^="Click to preview"]');
+  await page.locator('[role="button"][title^="Click to preview"]', { hasText: 'Tirupati: Divine Calling' }).first().waitFor();
+  await page.locator('[role="button"][title^="Click to preview"]', { hasText: 'Tirupati: Divine Calling' }).first().click();
   await page.waitForFunction(() => /Tirupati: Divine Calling/.test(document.getElementById('modal-title').textContent));
   assert.match(await page.locator('#modal-days').innerText(), /Journey from Bengaluru to Tirupati/);
   assert.ok((await page.locator('#modal-highlights li').count()) > 0);
@@ -126,8 +127,8 @@ test('opening a curated trip card previews its highlights and day-by-day plan', 
 test('"Open in Virtual Trips" on a curated trip saves it with its steps and opens it', async () => {
   const { context, page } = await newPhone(env.browser);
   await page.goto(env.base + '/curated_trips.html');
-  await page.waitForSelector('[role="button"][title^="Click to preview"]');
-  await page.click('[role="button"][title^="Click to preview"]');
+  await page.locator('[role="button"][title^="Click to preview"]', { hasText: 'Tirupati: Divine Calling' }).first().waitFor();
+  await page.locator('[role="button"][title^="Click to preview"]', { hasText: 'Tirupati: Divine Calling' }).first().click();
   await page.waitForSelector('#modal-title:not(:empty)');
   await page.click('#btn-open-virtual-trips');
   await page.waitForURL('**/virtual_trip.html**');
@@ -143,8 +144,8 @@ test('sharing a curated trip produces a link to the detail page with its cities 
   const { context, page } = await newPhone(env.browser);
   await context.grantPermissions(['clipboard-read', 'clipboard-write'], { origin: env.base });
   await page.goto(env.base + '/curated_trips.html');
-  await page.waitForSelector('[role="button"][title^="Click to preview"]');
-  await page.click('[role="button"][title^="Click to preview"]');
+  await page.locator('[role="button"][title^="Click to preview"]', { hasText: 'Tirupati: Divine Calling' }).first().waitFor();
+  await page.locator('[role="button"][title^="Click to preview"]', { hasText: 'Tirupati: Divine Calling' }).first().click();
   await page.waitForSelector('#btn-share-curated-idea');
   await page.evaluate(() => { navigator.share = undefined; });
   await page.click('#btn-share-curated-idea');
