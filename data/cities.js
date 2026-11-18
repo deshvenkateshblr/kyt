@@ -7314,9 +7314,10 @@ window.KYT_CITIES = [
       }
     ],
     "aliases": [
+      "Chhatrapati Sambhajinagar",
       "Chhatrapati Sambhaji Nagar",
-      "Sambhaji Nagar",
-      "Sambhajinagar"
+      "Sambhajinagar",
+      "Sambhaji Nagar"
     ],
     "lat": 19.877263,
     "lng": 75.3390241,
@@ -20942,6 +20943,93 @@ window.KYT_CITIES = [
         "ftid": "0x3bddea54b213a9d7:0xc2f9ac85ac767a9d",
         "lat": 20.0095493,
         "lng": 73.7918777
+      },
+      {
+        "title": "Shree Kalaram Sansthan Mandir",
+        "icon": "landmark",
+        "where": "Panchavati, Nashik",
+        "hour": 10,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "walk",
+        "notes": "Historic 1782 black stone temple dedicated to Lord Rama, Lakshmana, and Sita, built by Sardar Rangarao Odhekar in Panchavati.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shree%20Kalaram%20Sansthan%20Mandir%2C%20Nashik&query_place_id=ChIJYfaTr1Tq3TsRVw6Ja6W62SQ",
+        "kind": "place",
+        "placeId": "ChIJYfaTr1Tq3TsRVw6Ja6W62SQ",
+        "ftid": "0x3bddea54af93f661:0x24d9baa56b890e57",
+        "lat": 20.0069904,
+        "lng": 73.7952288
+      },
+      {
+        "title": "Ramkund & Godavari Ghats",
+        "icon": "landmark",
+        "where": "Panchavati, Nashik",
+        "hour": 18,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "walk",
+        "notes": "Sacred bathing ghat on the banks of Godavari river where Lord Rama is believed to have bathed, renowned for serene evening aarti.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ramkund%2C%20Panchavati%2C%20Nashik&query_place_id=ChIJvb7LjKzr3TsRK77FHqC3Nhc",
+        "kind": "place",
+        "placeId": "ChIJvb7LjKzr3TsRK77FHqC3Nhc",
+        "ftid": "0x3bddebac8ccbbebd:0x1736b7a01ec5be2b",
+        "lat": 20.0086696,
+        "lng": 73.7924549
+      },
+      {
+        "title": "Muktidham Mandir",
+        "icon": "landmark",
+        "where": "Nashik Road",
+        "hour": 12,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "short",
+          "standard"
+        ],
+        "mobility": "easy",
+        "notes": "Striking pure white Makrana marble temple complex featuring replicas of the 12 Jyotirlingas and Bhagavad Gita chapters inscribed on its walls.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Muktidham%20Mandir%2C%20Nashik&query_place_id=ChIJJXolz1aV3TsRYF0vPu-MYKA",
+        "kind": "place",
+        "placeId": "ChIJJXolz1aV3TsRYF0vPu-MYKA",
+        "ftid": "0x3bdd9556cf257a25:0xa0608cef3e2f5d60",
+        "lat": 19.9516144,
+        "lng": 73.8367075
       },
       {
         "title": "Sula Vineyards",
