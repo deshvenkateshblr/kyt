@@ -715,21 +715,26 @@
           </div>
         ` : '';
 
-        const bygHtml = (curatedTrip && curatedTrip.beforeYouGo && curatedTrip.beforeYouGo.length) ? `
-          <div class="p-4 bg-amber-50/70 border border-amber-200/70 rounded-2xl">
-            <h4 class="text-xs font-black uppercase tracking-wider text-amber-900 mb-2 flex items-center gap-1.5">
-              <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-amber-600"></i> Before You Go
-            </h4>
-            <div class="space-y-1.5 text-xs text-amber-900 font-medium">
-              ${curatedTrip.beforeYouGo.map(b => `
-                <div class="flex items-start gap-2">
-                  <span class="font-bold uppercase text-[10px] px-1.5 py-0.5 bg-amber-200/60 rounded text-amber-800">${KYT.utils.escapeHTML(b.type || 'info')}</span>
-                  <span>${KYT.utils.escapeHTML(b.text || b)}</span>
+        const activeTrip = curatedTrip || vTrip || {};
+        const bygHtml = (window.KYT && window.KYT.ui && typeof window.KYT.ui.renderTripBeforeYouGo === 'function')
+          ? window.KYT.ui.renderTripBeforeYouGo(activeTrip, window.KYT_CITIES, {
+              title: 'Before You Go & Destination Guidelines'
+            })
+          : ((activeTrip.beforeYouGo && activeTrip.beforeYouGo.length) ? `
+              <div class="p-4 bg-amber-50/70 border border-amber-200/70 rounded-2xl">
+                <h4 class="text-xs font-black uppercase tracking-wider text-amber-900 mb-2 flex items-center gap-1.5">
+                  <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-amber-600"></i> Before You Go
+                </h4>
+                <div class="space-y-1.5 text-xs text-amber-900 font-medium">
+                  ${activeTrip.beforeYouGo.map(b => `
+                    <div class="flex items-start gap-2">
+                      <span class="font-bold uppercase text-[10px] px-1.5 py-0.5 bg-amber-200/60 rounded text-amber-800">${KYT.utils.escapeHTML(b.type || 'info')}</span>
+                      <span>${KYT.utils.escapeHTML(b.text || b)}</span>
+                    </div>
+                  `).join('')}
                 </div>
-              `).join('')}
-            </div>
-          </div>
-        ` : '';
+              </div>
+            ` : '');
 
         const customizeUrl = targetId ? `virtual_trip.html?id=${encodeURIComponent(targetId)}` : `virtual_trip.html${window.location.search}`;
 

@@ -217,6 +217,18 @@
         </li>
       `).join('');
 
+      // Before You Go & Destination Guidelines
+      const bygContainer = document.getElementById('modal-byg-container');
+      if (bygContainer) {
+        if (window.KYT && window.KYT.ui && typeof window.KYT.ui.renderTripBeforeYouGo === 'function') {
+          bygContainer.innerHTML = KYT.ui.renderTripBeforeYouGo(trip, window.KYT_CITIES, {
+            title: 'Before You Go & Destination Guidelines'
+          });
+        } else {
+          bygContainer.innerHTML = '';
+        }
+      }
+
       // Open Modal
       const modal = document.getElementById('detail-modal');
       const panel = document.getElementById('detail-panel');

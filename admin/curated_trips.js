@@ -1648,7 +1648,24 @@ window.KYT_CURATED_TRIPS = [
       "Strict dress code applies: Dhoti/Kurta for men; Saree, half-saree, or Chudidar with dupatta for women.",
       "Carry the exact original physical ID card that you used while booking your tickets."
     ],
-    "beforeYouGo": [],
+    "beforeYouGo": [
+      {
+        "type": "booking",
+        "text": "Special entry darshan, sevas and accommodation must be booked online ahead through official TTD monthly quota releases on ttdevasthanams.ap.gov.in."
+      },
+      {
+        "type": "dress",
+        "text": "Strict traditional dress code: dhoti or pyjama with upper cloth for men; saree, half-saree, or churidar with dupatta for women. Western attire and jeans are not permitted in darshan queues."
+      },
+      {
+        "type": "id",
+        "text": "Carry original valid government photo ID (Aadhaar, passport, or voter ID) matching the ID entered during online darshan token booking."
+      },
+      {
+        "type": "rules",
+        "text": "Mobile phones, cameras, smartwatches, and all electronic gadgets are strictly banned inside the sanctum complex; free secure lockers are available near Vaikuntam Queue Complex."
+      }
+    ],
     "specialDays": [],
     "sources": [],
     "generated": {
