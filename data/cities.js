@@ -1507,6 +1507,34 @@ window.KYT_CITIES = [
         "ftid": "0x398e2e1e04411f67:0xa61aef36a11cc83c",
         "lat": 25.3062539,
         "lng": 83.0102193
+      },
+      {
+        "title": "Assi Ghat & Subah-e-Banaras",
+        "icon": "sun",
+        "where": "Assi Ghat, Varanasi",
+        "hour": 5,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard"
+        ],
+        "mobility": "walk",
+        "notes": "Vibrant southern ghat celebrated for Subah-e-Banaras dawn rituals, Vedic yajna, morning Ganga aarti, and classical Indian music concerts.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Assi%20Ghat%2C%20Varanasi&query_place_id=ChIJtQtO8e0xjjkRjFhDS1MEuIA",
+        "kind": "place",
+        "placeId": "ChIJtQtO8e0xjjkRjFhDS1MEuIA",
+        "ftid": "0x398e31edf14e0bb5:0x80b804534b43588c",
+        "lat": 25.289431,
+        "lng": 83.0015729
       }
     ],
     "aliases": [

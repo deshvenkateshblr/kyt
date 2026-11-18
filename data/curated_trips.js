@@ -2510,6 +2510,442 @@ window.KYT_CURATED_TRIPS = [
   },
   {
     "schema": 1,
+    "id": "delhi-varanasi-vande-bharat-spiritual-3d",
+    "rev": 1,
+    "status": "approved",
+    "title": "Kashi Divine Corridor: Delhi to Varanasi Vande Bharat Circuit",
+    "tagline": "A sublime 3-day spiritual pilgrimage from Delhi to the eternal city of Varanasi aboard the Vande Bharat Express, covering Kashi Vishwanath, Sarnath, ancient ghats, and Ganga Aarti.",
+    "originCity": "delhi",
+    "originName": "Delhi",
+    "days": [
+      {
+        "day": 1,
+        "title": "",
+        "cityId": "varanasi",
+        "cityName": "Varanasi",
+        "steps": [
+          {
+            "title": "Arrive at Varanasi Junction (BSB)",
+            "where": "Varanasi Junction (BSB) Railway Station",
+            "hour": 7,
+            "minute": 15,
+            "icon": "train-front",
+            "mapsUrl": "",
+            "notes": "Arrive at Varanasi Junction refreshed aboard the overnight Vande Bharat Sleeper Express (Train 27422 from New Delhi, departed 21:40). Board your pre-arranged cab/auto to your hotel near the ghats or cantonment area (~5 km).",
+            "verify": []
+          },
+          {
+            "title": "Hotel Check-in & Freshen Up in Varanasi",
+            "where": "Ghats / Cantt, Varanasi",
+            "hour": 8,
+            "minute": 15,
+            "icon": "bed",
+            "mapsUrl": "",
+            "notes": "Night 1 of 2: Hotel in Varanasi. Check in to your hotel (e.g. BrijRama Palace, Taj Ganges, Radisson, or a boutique heritage haveli by the ghats) and freshen up.",
+            "verify": []
+          },
+          {
+            "title": "Traditional Banarasi Breakfast in Old City",
+            "where": "Kachori Gali / Chowk, Varanasi",
+            "hour": 9,
+            "minute": 15,
+            "icon": "coffee",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kachori%20Gali%20%2F%20Chowk%2C%20Varanasi",
+            "notes": "Relish an authentic Banarasi breakfast of freshly fried crispy kachoris served with spicy aloo-chana sabzi, jalebi, and kulhad chai.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Darshan at Shri Kashi Vishwanath Temple Corridor",
+            "where": "Kashi Vishwanath Temple Corridor",
+            "hour": 10,
+            "minute": 15,
+            "icon": "landmark",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Darshan%20at%20Shri%20Kashi%20Vishwanath%20Temple%20Corridor",
+            "notes": "Enter through the grand Kashi Vishwanath Corridor connecting the holy Ganges directly to the sanctum. Offer prayers and Jalabhishek at the golden-spired Jyotirlinga shrine during morning general darshan hours (04:00 AM - 11:00 AM).",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Darshan at Maa Annapurna Mandir",
+            "where": "Adjacent to Kashi Vishwanath, Varanasi",
+            "hour": 12,
+            "minute": 15,
+            "icon": "landmark",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Adjacent%20to%20Kashi%20Vishwanath%2C%20Varanasi",
+            "notes": "Visit the revered Maa Annapurna Temple, dedicated to the Goddess of Nourishment who fed Lord Shiva himself. Devotees pray here to ensure perpetual prosperity and food.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Wholesome Satvik Vegetarian Lunch",
+            "where": "Godowlia / Old City, Varanasi",
+            "hour": 13,
+            "minute": 15,
+            "icon": "utensils",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Godowlia%20%2F%20Old%20City%2C%20Varanasi",
+            "notes": "Enjoy a pure vegetarian North Indian thali featuring seasonal sabzis, dal makhani, paneer, and tandoori rotis.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Seek Blessings at Shri Kaal Bhairav Temple",
+            "where": "Visheshwarganj, Varanasi",
+            "hour": 15,
+            "minute": 0,
+            "icon": "landmark",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Visheshwarganj%2C%20Varanasi",
+            "notes": "Visit Kaal Bhairav, revered as the fierce 'Kotwal' (Police Chief/Guardian Deity) of Kashi. According to tradition, no pilgrimage to Varanasi is complete without receiving his permission and sacred black protection thread.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Sunset Wooden Boat Cruise along the Ghats",
+            "where": "Dashashwamedh Ghat to Manikarnika Ghat",
+            "hour": 17,
+            "minute": 15,
+            "icon": "ship",
+            "mapsUrl": "",
+            "notes": "Board a traditional wooden bajra or boat as evening approaches. Drift along the sacred riverfront, watching the historic palaces, bathers, and the eternal fires at sacred Manikarnika Ghat.",
+            "verify": []
+          },
+          {
+            "title": "Witness Grand Ganga Aarti at Dashashwamedh Ghat",
+            "where": "Dashashwamedh Ghat, Varanasi",
+            "hour": 18,
+            "minute": 45,
+            "icon": "camera",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dashashwamedh%20Ghat%2C%20Varanasi",
+            "notes": "Experience the world-renowned evening Ganga Aarti. Seven young priests dressed in silk perform choreographed rituals with massive multi-tiered brass lamps, rhythmic bells, and conch shells while thousands of floating diyas illuminate the Ganges.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Iconic Banarasi Chaat & Thandai Dinner Trail",
+            "where": "Kashi Chaat Bhandar, Godowlia",
+            "hour": 20,
+            "minute": 30,
+            "icon": "utensils",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kashi%20Chaat%20Bhandar%2C%20Godowlia",
+            "notes": "Savor Varanasi's legendary street foods at Kashi Chaat Bhandar or Deena Chaat Bhandar: warm tamatar chaat, palak patta chaat, dahi puri, and a clay-kulhad glass of kesar thandai.",
+            "verify": [],
+            "mapsAuto": true
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "title": "",
+        "cityId": "sarnath",
+        "cityName": "Sarnath",
+        "steps": [
+          {
+            "title": "Subah-e-Banaras Dawn Rituals at Assi Ghat",
+            "where": "Assi Ghat, Varanasi",
+            "hour": 5,
+            "minute": 15,
+            "icon": "sun",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Assi%20Ghat%2C%20Varanasi",
+            "notes": "Wake up early for the sublime 'Subah-e-Banaras' at Assi Ghat. Witness dawn Vedic yajna ceremonies, morning Ganga aarti, and soul-stirring classical shehnai and sitar recitals as the sunrise turns the river golden.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Sunrise Rowing Boat Ride along Ancient Ghats",
+            "where": "Assi Ghat to Panchganga Ghat",
+            "hour": 6,
+            "minute": 30,
+            "icon": "ship",
+            "mapsUrl": "",
+            "notes": "Glides past 84 stone ghats in the peaceful morning mist. Observe pilgrims taking holy morning dips, sadhus performing Surya Namaskar, and the exquisite riverfront architecture of Maratha and Scindia dynasties.",
+            "verify": []
+          },
+          {
+            "title": "Morning Lassi & Banarasi Sweet Tasting",
+            "where": "Assi Ghat / Pehalwan Lassi",
+            "hour": 8,
+            "minute": 15,
+            "icon": "coffee",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Morning%20Lassi%20%26%20Banarasi%20Sweet%20Tasting%2C%20Assi%20Ghat%20%2F%20Pehalwan%20Lassi",
+            "notes": "Enjoy a rich Banarasi malyo (makhan malai froth in winter) or thick rabdi lassi served in traditional terracotta cups.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Drive to Sarnath Buddhist Pilgrimage Center",
+            "where": "Varanasi to Sarnath (~10 km)",
+            "hour": 9,
+            "minute": 30,
+            "icon": "car",
+            "mapsUrl": "",
+            "notes": "Drive northeast towards the serene deer park of Sarnath (~10 km, approx 30 minutes), where Gautama Buddha delivered his momentous First Sermon setting in motion the Wheel of Dharma.",
+            "verify": []
+          },
+          {
+            "title": "Explore Dhamek Stupa & Deer Park (Isipatana)",
+            "where": "Sarnath, Varanasi District",
+            "hour": 10,
+            "minute": 15,
+            "icon": "landmark",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sarnath%2C%20Varanasi%20District",
+            "notes": "Marvel at the monumental 43.6-meter-high Dhamek Stupa, built by Emperor Ashoka in 249 BCE. Walk among the tranquil ruins of ancient monasteries and the sacred Deer Park where Buddha preached to his first five disciples.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Sarnath Archaeological Museum (Lion Capital of Ashoka)",
+            "where": "Sarnath Museum, Varanasi",
+            "hour": 11,
+            "minute": 45,
+            "icon": "landmark",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sarnath%20Museum%2C%20Varanasi",
+            "notes": "View the original 3rd-century BCE polished sandstone Lion Capital of Ashoka (the National Emblem of India) and masterworks of Gupta Buddhist sculpture. (Note: Closed on Fridays).",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Peaceful Garden Lunch at Sarnath",
+            "where": "Sarnath Heritage Restaurant",
+            "hour": 13,
+            "minute": 15,
+            "icon": "utensils",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Peaceful%20Garden%20Lunch%20at%20Sarnath%2C%20Sarnath%20Heritage%20Restaurant",
+            "notes": "Enjoy a leisurely pure-vegetarian Indian or Continental lunch in a quiet garden setting before returning to Varanasi city.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Visit Ramnagar Fort & Vintage Royal Museum",
+            "where": "Ramnagar, Eastern Ganga Bank",
+            "hour": 15,
+            "minute": 30,
+            "icon": "castle",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Ramnagar%2C%20Eastern%20Ganga%20Bank",
+            "notes": "Visit the 18th-century red sandstone fort of the Maharaja of Kashi across the river. Explore the vintage museum showcasing antique royal palanquins, vintage cars, ivory carvings, and astronomical clocks.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Evening Saptarishi Aarti at Kashi Vishwanath",
+            "where": "Kashi Vishwanath Temple Sanctum",
+            "hour": 18,
+            "minute": 30,
+            "icon": "landmark",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Evening%20Saptarishi%20Aarti%20at%20Kashi%20Vishwanath%2C%20Kashi%20Vishwanath%20Temple%20Sanctum",
+            "notes": "Attend the divine Saptarishi Aarti (07:00 PM - 08:15 PM, arrive by 18:30). Seven different Vedic priests perform simultaneous rituals to the Jyotirlinga, chanting ancient stotras in a profoundly sacred ambience.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Authentic Baati Chokha Purvanchali Dinner",
+            "where": "Baati Chokha, Anand Mandir Cinema Road, Varanasi",
+            "hour": 20,
+            "minute": 30,
+            "icon": "utensils",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Baati%20Chokha%2C%20Anand%20Mandir%20Cinema%20Road%2C%20Varanasi",
+            "notes": "Savor traditional Purvanchali cuisine: roasted sattu baatis dipped in desi ghee with spiced roasted eggplant chokha and sweet kheer.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Return to Hotel & Overnight Stay in Varanasi",
+            "where": "Ghats / Cantt, Varanasi",
+            "hour": 21,
+            "minute": 45,
+            "icon": "bed",
+            "mapsUrl": "",
+            "notes": "Night 2 of 2: Hotel in Varanasi. Return to your hotel after the soulful Saptarishi Aarti and Baati Chokha dinner for a peaceful overnight stay.",
+            "verify": []
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "title": "",
+        "cityId": "varanasi",
+        "cityName": "Varanasi",
+        "steps": [
+          {
+            "title": "Morning Darshan at Sankat Mochan Hanuman Temple",
+            "where": "Saket Nagar, Southern Varanasi",
+            "hour": 6,
+            "minute": 30,
+            "icon": "landmark",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Saket%20Nagar%2C%20Southern%20Varanasi",
+            "notes": "Visit the sacred Sankat Mochan temple founded by Goswami Tulsidas. Early morning hours are ideal to recite the Hanuman Chalisa and partake in the temple's famous besan laddoo prasad before the temple closes for the afternoon at noon.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Visit Tulsi Manas Mandir & Durga Kund",
+            "where": "Durgakund Road, Varanasi",
+            "hour": 8,
+            "minute": 0,
+            "icon": "landmark",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Durgakund%20Road%2C%20Varanasi",
+            "notes": "Visit the white marble Tulsi Manas Mandir where Tulsidas composed the Ramcharitmanas, featuring walls engraved with verses. Next, visit the nearby 18th-century ochre-red Durga Kund Mandir.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "South Indian Breakfast at Southern Varanasi",
+            "where": "Durgakund / Lanka, Varanasi",
+            "hour": 9,
+            "minute": 30,
+            "icon": "coffee",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Durgakund%20%2F%20Lanka%2C%20Varanasi",
+            "notes": "Enjoy a hearty South Indian breakfast of crispy masala dosa, idli, and filter coffee at a popular local restaurant near BHU gate.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Explore Banaras Hindu University (BHU) & New Vishwanath Temple",
+            "where": "BHU Campus, Varanasi",
+            "hour": 10,
+            "minute": 30,
+            "icon": "landmark",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=BHU%20Campus%2C%20Varanasi",
+            "notes": "Tour the green 1,300-acre campus founded by Mahamana Pandit Madan Mohan Malaviya. Visit the Shri Vishwanath Mandir (Birla Temple), renowned for having the tallest temple shikhara in Asia.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Hotel Check-out & Farewell Banarasi Lunch",
+            "where": "Cantonment / Mall Road, Varanasi",
+            "hour": 12,
+            "minute": 45,
+            "icon": "utensils",
+            "mapsUrl": "",
+            "notes": "Check out of your hotel, store your luggage, and enjoy a relaxed vegetarian lunch featuring Awadhi delicacies, paneer tikka, and saffron pulao.",
+            "verify": []
+          },
+          {
+            "title": "Banarasi Silk Weaving Heritage & Handloom Shopping",
+            "where": "Madanpura / Chowk, Varanasi",
+            "hour": 14,
+            "minute": 45,
+            "icon": "shopping-bag",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Madanpura%20%2F%20Chowk%2C%20Varanasi",
+            "notes": "Witness master weavers working on intricate wooden jacquard looms to craft world-famous GI-tagged pure Banarasi Katan silk sarees, brocades, and dupattas directly from cooperative stores.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Sunset Visit to Namo Ghat",
+            "where": "Namo Ghat, Northern Varanasi",
+            "hour": 17,
+            "minute": 15,
+            "icon": "camera",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Namo%20Ghat%2C%20Northern%20Varanasi",
+            "notes": "Visit the stunning newly developed Namo Ghat, famous for its colossal 'Namaste' folded hands sculptures rising from the riverbank against the evening sky.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Pre-Departure Dinner & Banarasi Meetha Paan",
+            "where": "Near Varanasi Cantt Station",
+            "hour": 19,
+            "minute": 15,
+            "icon": "utensils",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pre-Departure%20Dinner%20%26%20Banarasi%20Meetha%20Paan%2C%20Near%20Varanasi%20Cantt%20Station",
+            "notes": "Enjoy a light dinner near the station and conclude with a legendary Banarasi meetha paan topped with gulkand, supari, and silver leaf.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Board Overnight Vande Bharat Sleeper to Delhi",
+            "where": "Varanasi Junction (BSB) Platform",
+            "hour": 20,
+            "minute": 15,
+            "icon": "train-front",
+            "mapsUrl": "",
+            "notes": "Arrive at Varanasi Junction (BSB) to board the state-of-the-art overnight Vande Bharat Sleeper Express (Train 27421). Train departs at 20:50 sharp, speeding through Prayagraj and Kanpur Central overnight to reach New Delhi (NDLS) at 06:10 AM the next morning.",
+            "verify": []
+          }
+        ]
+      }
+    ],
+    "durationDays": 3,
+    "kind": "long-weekend",
+    "bestMonths": [
+      1,
+      2,
+      3,
+      10,
+      11,
+      12
+    ],
+    "faiths": [],
+    "taste": {
+      "intent": "spiritual",
+      "diet": "veg",
+      "pace": "standard"
+    },
+    "audience": [],
+    "budget": "mid",
+    "track": "",
+    "ideaId": "",
+    "variantOf": "",
+    "transport": {
+      "mode": "road",
+      "note": "",
+      "approxTravelHours": null
+    },
+    "cities": [
+      "delhi",
+      "varanasi",
+      "sarnath"
+    ],
+    "highlights": [
+      "High-speed journeys connecting New Delhi and Varanasi via Vande Bharat Express (Overnight Sleeper Train 27422/27421 or Day Train 22436/22435)",
+      "Sacred Darshan at Shri Kashi Vishwanath Jyotirlinga through the magnificent newly expanded Ganga corridor",
+      "Witnessing the world-renowned grand evening Ganga Aarti at Dashashwamedh Ghat and Subah-e-Banaras dawn rituals at Assi Ghat",
+      "Excursion to sacred Sarnath where Lord Buddha preached his first sermon, exploring Dhamek Stupa and Lion Capital Museum",
+      "Traditional darshans at Kaal Bhairav (Kotwal of Kashi), Sankat Mochan Hanuman, and savoring authentic Banarasi kachori, chaat & paan"
+    ],
+    "tips": [],
+    "beforeYouGo": [
+      {
+        "type": "timing",
+        "text": "Vande Bharat Train Schedule: Overnight Vande Bharat Sleeper (Train 27422) departs NDLS at 21:40 arriving BSB at 07:10 AM; return (Train 27421) departs BSB at 20:50 arriving NDLS at 06:10 AM. Daytime Vande Bharat (Train 22436/22435) departs NDLS at 06:00 AM (8 hrs journey)."
+      },
+      {
+        "type": "booking",
+        "text": "Kashi Vishwanath Darshan & Aartis: Book Sugam Darshan passes, Mangala Aarti (03:00-04:00 AM), or Saptarishi Aarti (07:00-08:15 PM) online at shrikashivishwanath.org well in advance."
+      },
+      {
+        "type": "rules",
+        "text": "Temple Security & Guidelines: Mobile phones, electronic items, leather belts, and bags are prohibited inside the Kashi Vishwanath sanctum; free/nominal lockers are available at the corridor entry gates."
+      },
+      {
+        "type": "timing",
+        "text": "Temple & Monument Hours: Sankat Mochan closes 12:00 PM to 04:00 PM; Kaal Bhairav closes 01:30 PM to 04:30 PM; Sarnath Archaeological Museum remains closed on Fridays."
+      }
+    ],
+    "specialDays": [
+      {
+        "name": "Dev Deepawali (Kartik Purnima)",
+        "when": "November (Full Moon night)",
+        "effect": "festival",
+        "note": "All 84 ghats are illuminated with over one million earthen diyas; massive crowds and riverfront celebrations. Pre-booking boats and hotels months in advance is essential."
+      },
+      {
+        "name": "Maha Shivratri",
+        "when": "February / March (Phalguna Krishna Chaturdashi)",
+        "effect": "special-darshan",
+        "note": "Shiv Barat procession and continuous 24-hour Abhishek at Kashi Vishwanath. Expect darshan queues of 6-10 hours."
+      }
+    ],
+    "sources": [],
+    "generated": {
+      "via": "manual",
+      "model": "",
+      "at": ""
+    },
+    "updatedAt": ""
+  },
+  {
+    "schema": 1,
     "id": "hyderabad-srisailam-jyotirlinga-shakti-peeth-2d",
     "rev": 1,
     "status": "approved",
