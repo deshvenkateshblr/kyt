@@ -3248,6 +3248,323 @@ window.KYT_CURATED_TRIPS = [
   },
   {
     "schema": 1,
+    "id": "kolkata-siliguri-vande-bharat-dooars-3d",
+    "rev": 1,
+    "status": "approved",
+    "title": "Gateway to the Himalayas: Kolkata to Siliguri & Dooars Vande Bharat Circuit",
+    "tagline": "A scenic 3-day gateway escape from Kolkata to Siliguri aboard the Howrah–NJP Vande Bharat Express, exploring Bengal Safari wildlife, Sevoke Kali Mandir, the iconic Coronation Bridge over the Teesta gorge, Salugara Monastery, and Terai tea estates.",
+    "originCity": "kolkata",
+    "originName": "Kolkata",
+    "durationDays": 3,
+    "kind": "long-weekend",
+    "bestMonths": [
+      1,
+      2,
+      3,
+      10,
+      11,
+      12
+    ],
+    "faiths": [],
+    "taste": {
+      "intent": "nature",
+      "diet": "any",
+      "pace": "standard"
+    },
+    "audience": [],
+    "budget": "mid",
+    "track": "",
+    "ideaId": "",
+    "variantOf": "",
+    "transport": {
+      "mode": "train",
+      "note": "Howrah – New Jalpaiguri Vande Bharat Express (Train 22301 / 22302)",
+      "approxTravelHours": 7.5
+    },
+    "cities": [
+      "kolkata",
+      "siliguri"
+    ],
+    "highlights": [
+      "High-speed daytime rail journey connecting Kolkata and North Bengal aboard the Howrah–NJP Vande Bharat Express (Train 22301/22302)",
+      "Thrilling open safari through Bengal Safari Park spotting Royal Bengal tigers, leopards, Asiatic black bears, and rhinos",
+      "Panoramic cliffside darshan at Sevoke Kali Mandir overlooking the turquoise Teesta River gorge",
+      "Walking across the historic 1941 British-era pink Coronation Bridge (Baghpool) spanning the deep Teesta canyon",
+      "Spiritual tranquility at Salugara Monastery's 100-foot stupa and evening aarti at ISKCON Siliguri",
+      "Scenic morning drive to Dudhia on the Balason riverbed and tasting factory-fresh Darjeeling orthodox tea"
+    ],
+    "tips": [],
+    "beforeYouGo": [
+      {
+        "type": "timing",
+        "text": "Vande Bharat Train Schedule: Train 22301 departs Howrah (HWH) at 05:55 AM arriving New Jalpaiguri (NJP) at 13:25 (1:25 PM). Return Train 22302 departs NJP at 15:05 (3:05 PM) arriving Howrah at 22:35 (10:35 PM). Runs 6 days a week (except Wednesdays)."
+      },
+      {
+        "type": "booking",
+        "text": "Bengal Safari Booking: Book open jeep or bus safari slots in advance via the West Bengal Forest Development Corporation portal (onlinebengalsafari.in). Closed on Mondays."
+      },
+      {
+        "type": "rules",
+        "text": "Coronation Bridge Safety: Pedestrians walking across Coronation Bridge should stay on designated walkways and exercise care as national highway vehicle traffic shares the bridge."
+      },
+      {
+        "type": "timing",
+        "text": "Tea Garden Purchases: Purchase certified Darjeeling orthodox and Dooars CTC teas directly from authorized tea board lounges or reputed estate boutiques in Siliguri."
+      }
+    ],
+    "specialDays": [
+      {
+        "name": "Durga Puja & Bijoya Dashami",
+        "when": "October / November (Ashvin month)",
+        "effect": "festival",
+        "note": "Vibrant pandals, illuminated streets, and massive cultural celebrations across both Kolkata and Siliguri."
+      },
+      {
+        "name": "Losar & Tibetan New Year",
+        "when": "February (Tibetan Lunar Calendar)",
+        "effect": "festival",
+        "note": "Special prayer flags, butter lamp illuminations, and ceremonial chants at Salugara Monastery."
+      }
+    ],
+    "sources": [],
+    "generated": {
+      "via": "manual",
+      "model": "",
+      "at": ""
+    },
+    "updatedAt": "",
+    "days": [
+      {
+        "day": 1,
+        "title": "",
+        "cityId": "siliguri",
+        "cityName": "Siliguri",
+        "steps": [
+          {
+            "title": "Board Howrah to NJP Vande Bharat Express",
+            "where": "Howrah Junction (HWH) Platform",
+            "hour": 5,
+            "minute": 30,
+            "icon": "train-front",
+            "mapsUrl": "",
+            "notes": "Board the morning Vande Bharat Express (Train 22301) departing Howrah at 05:55 AM sharp. Enjoy panoramic window views of rural Bengal as the semi-high-speed train glides past Bolpur and Malda Town. Hot breakfast and refreshments served on board.",
+            "verify": []
+          },
+          {
+            "title": "Arrive at New Jalpaiguri Junction (NJP)",
+            "where": "New Jalpaiguri Junction (NJP) Railway Station",
+            "hour": 13,
+            "minute": 25,
+            "icon": "train-front",
+            "mapsUrl": "",
+            "notes": "Pull in at New Jalpaiguri Junction (NJP) at 1:25 PM (journey time 7h 30m). Meet your pre-arranged cab or taxi for the short transfer into central Siliguri (~6 km, 20 mins).",
+            "verify": []
+          },
+          {
+            "title": "Hotel Check-in & Freshen Up in Siliguri",
+            "where": "Sevoke Road / Hill Cart Road, Siliguri",
+            "hour": 14,
+            "minute": 0,
+            "icon": "bed",
+            "mapsUrl": "",
+            "notes": "Night 1 of 2: Hotel in Siliguri. Check into your hotel (e.g. Courtyard by Marriott, Lemon Tree Hotel, Sinclairs Siliguri, or Hotel Montana Vista) and freshen up after the morning journey.",
+            "verify": []
+          },
+          {
+            "title": "Visit Salugara Monastery & 100-foot Stupa",
+            "where": "Salugara, Siliguri",
+            "hour": 15,
+            "minute": 30,
+            "icon": "landmark",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Salugara%20Monastery%2C%20Siliguri&query_place_id=ChIJnZgIzmBA5DkR0ScS3OW4bkU",
+            "notes": "Drive north along Sevoke Road to Salugara Monastery, established by Tibetan lama Kalu Rinpoche. Circumambulate the serene 100-foot Buddhist stupa, believed to enshrine five sacred relics of Lord Buddha, spinning prayer wheels amidst fluttering prayer flags.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Hong Kong Market & Bidhan Market Exploration",
+            "where": "Hong Kong Market, Siliguri",
+            "hour": 17,
+            "minute": 30,
+            "icon": "shopping-bag",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hong%20Kong%20Market%20%26%20momo%20feast%20at%20Siliguri",
+            "notes": "Explore Siliguri's most buzzing trade bazaar. Browse through imported electronics, Tibetan winter garments, authentic Pashmina shawls, and premium Darjeeling orthodox tea leaves in Bidhan Market.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Evening Momos, Thukpa & Traditional Dinner",
+            "where": "Sevoke Road / Hill Cart Road, Siliguri",
+            "hour": 19,
+            "minute": 30,
+            "icon": "utensils",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sevoke%20Road%20%2F%20Hill%20Cart%20Road%2C%20Siliguri",
+            "notes": "Indulge in Siliguri's famous culinary delights: piping-hot Darjeeling-style steamed momos with fiery red chili-garlic chutney, followed by a sumptuous North Bengal dinner (try Bhojohori Manna or Radhuni for shukto, bhetki macher paturi, or kosha mangsho) before retiring to your hotel.",
+            "verify": [],
+            "mapsAuto": true
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "title": "",
+        "cityId": "siliguri",
+        "cityName": "Siliguri",
+        "steps": [
+          {
+            "title": "Fresh Himalayan Foothills Breakfast",
+            "where": "Hotel Restaurant, Siliguri",
+            "hour": 8,
+            "minute": 0,
+            "icon": "coffee",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hotel%20Restaurant%2C%20Siliguri",
+            "notes": "Begin the day with a wholesome buffet breakfast featuring warm North Bengal style aloor dum with luchi or kachori, fresh fruits, and hot Darjeeling tea.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Wildlife Safari at Bengal Safari (North Bengal Wild Animals Park)",
+            "where": "Bengal Safari, Sevoke Rd, Siliguri",
+            "hour": 9,
+            "minute": 0,
+            "icon": "camera",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bengal%20Safari%2C%20Siliguri&query_place_id=ChIJb5DAMIY_5DkRflixFKIJ1oM",
+            "notes": "Embark on an open safari bus through Bengal Safari Park. Spot majestic Royal Bengal tigers, Asiatic black bears, leopards, spotted deer, and greater one-horned rhinos roaming in expansive natural enclosures amidst sal and teak woodlands.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Forest Highway Lunch Halt",
+            "where": "Sevoke Road Dhaba Corridor",
+            "hour": 12,
+            "minute": 30,
+            "icon": "utensils",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sevoke%20Road%20Dhaba%20Corridor",
+            "notes": "Enjoy a hearty lunch at a countryside highway restaurant or dhaba on Sevoke Road, tasting local specialties and refreshing fresh lime soda.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Darshan at Sevoke Kali Mandir overlooking Teesta River",
+            "where": "Sevoke Kali Mandir, Sevoke, Siliguri",
+            "hour": 14,
+            "minute": 0,
+            "icon": "landmark",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sevoke%20Kali%20Mandir%2C%20Siliguri&query_place_id=ChIJX0vjgPE95DkRU52OKdIovvQ",
+            "notes": "Drive through the sal forest corridor of Mahananda Wildlife Sanctuary to the cliffside Sevoke Kali Mandir. Climb the sheltered stairs to seek blessings at the sacred Kali shrine while admiring breath-taking bird's-eye vistas of the emerald Teesta River emerging from the Himalayas.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Walk & Photo Stop at Iconic Coronation Bridge (Baghpool)",
+            "where": "Coronation Bridge, Sevoke",
+            "hour": 15,
+            "minute": 30,
+            "icon": "camera",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Coronation%20Bridge%2C%20Sevoke",
+            "notes": "Walk across the historic Coronation Bridge (also known as Baghpool due to the sculpted tiger statues guarding both ends), built in 1941 to commemorate King George VI's coronation. Admire its dramatic single-span cantilever reinforced concrete arch spanning 200 feet above the gushing Teesta gorge.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Evening Aarti & Stroll at ISKCON Temple Siliguri",
+            "where": "ISKCON Temple Siliguri, Gitalpara",
+            "hour": 17,
+            "minute": 30,
+            "icon": "landmark",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=ISKCON%20Temple%20Siliguri&query_place_id=ChIJwX5Scp1B5DkRQLY-jqmT31M",
+            "notes": "Visit Sri Sri Radha Madhav Sundar Mandir (ISKCON Siliguri), the largest spiritual complex in the region. Participate in the peaceful Sandhya Aarti, take a serene stroll through the illuminated lotus fountains and landscaped gardens, and sample sweets at Govinda's.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Return to Hotel & Overnight Stay in Siliguri",
+            "where": "Hotel in Siliguri",
+            "hour": 20,
+            "minute": 30,
+            "icon": "bed",
+            "mapsUrl": "",
+            "notes": "Night 2 of 2: Hotel in Siliguri. Savor dinner at the hotel or a local multi-cuisine eatery and unwind for the night.",
+            "verify": []
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "title": "",
+        "cityId": "siliguri",
+        "cityName": "Siliguri",
+        "steps": [
+          {
+            "title": "Morning Scenic Drive to Dudhia on Balason River",
+            "where": "Siliguri to Dudhia (via Sukna & Panighatta)",
+            "hour": 7,
+            "minute": 30,
+            "icon": "car",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Dudhia%2C%20Balason%20River",
+            "notes": "Take a picturesque morning drive (~25 km, 45 mins) toward the rolling foothills of Mirik and Kurseong. Halt at Dudhia on the wide, pebble-strewn riverbed of the Balason River, surrounded by forested slopes and crisp Himalayan morning air.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Tea Garden Walk & Orthodox Tea Tasting",
+            "where": "Terai Tea Gardens & Boutique Tea Lounge, Siliguri",
+            "hour": 9,
+            "minute": 30,
+            "icon": "coffee",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Terai%20Tea%20Gardens%2C%20Siliguri",
+            "notes": "Walk along the lush green borders of foothill tea plantations. Visit a recognized Siliguri tea boutique to learn the nuances of first-flush, second-flush, and autumnal Darjeeling and Dooars CTC teas, purchasing factory-fresh vacuum-sealed packs.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Hotel Check-out & Farewell Lunch in Siliguri",
+            "where": "Central Siliguri",
+            "hour": 12,
+            "minute": 0,
+            "icon": "utensils",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Central%20Siliguri",
+            "notes": "Return to the hotel, complete check-out formalities, and enjoy a relaxed lunch featuring local delicacies, Bengali mishti (chhanar payesh or baked rasgulla), or continental fare.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Transfer to New Jalpaiguri Junction (NJP)",
+            "where": "Siliguri to NJP Railway Station",
+            "hour": 14,
+            "minute": 0,
+            "icon": "car",
+            "mapsUrl": "https://www.google.com/maps/search/?api=1&query=New%20Jalpaiguri%20Railway%20Station",
+            "notes": "Take an easy 20-minute cab transfer from central Siliguri to New Jalpaiguri (NJP) Railway Station. Reach Platform 1 by 14:20 PM for smooth boarding.",
+            "verify": [],
+            "mapsAuto": true
+          },
+          {
+            "title": "Board Return Vande Bharat Express to Howrah",
+            "where": "New Jalpaiguri Junction (NJP) Platform",
+            "hour": 15,
+            "minute": 5,
+            "icon": "train-front",
+            "mapsUrl": "",
+            "notes": "Board the return Vande Bharat Express (Train 22302) departing NJP at 15:05 PM (3:05 PM). Enjoy high-speed travel through Barsoi, Malda Town, and Bolpur Shantiniketan. Evening tea, snacks, and freshly prepared dinner are served at your seat.",
+            "verify": []
+          },
+          {
+            "title": "Arrive at Howrah Junction (HWH)",
+            "where": "Howrah Junction (HWH) Railway Station",
+            "hour": 22,
+            "minute": 35,
+            "icon": "train-front",
+            "mapsUrl": "",
+            "notes": "Arrive smoothly at Howrah Junction at 22:35 (10:35 PM), concluding a memorable 3-day gateway escape to Siliguri and the Eastern Himalayan foothills!",
+            "verify": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "schema": 1,
     "id": "mumbai-udaipur-royal-lakes-sacred-mewar-3d",
     "rev": 1,
     "status": "approved",

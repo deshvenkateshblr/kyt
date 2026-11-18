@@ -18536,9 +18536,13 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "easy",
-        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bengal%20Safari%20(North%20Bengal%20Wild%20Animals%20Park)%20at%20Siliguri",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bengal%20Safari%2C%20Siliguri&query_place_id=ChIJb5DAMIY_5DkRflixFKIJ1oM",
         "notes": "Open safari buses taking visitors through natural enclosures of Royal Bengal tigers, Asiatic black bears, leopards, and rhinos.",
-        "kind": "activity"
+        "kind": "place",
+        "placeId": "ChIJb5DAMIY_5DkRflixFKIJ1oM",
+        "ftid": "0x39e43f8630c0906f:0x83d609a214b1587e",
+        "lat": 26.791926,
+        "lng": 88.449234
       },
       {
         "title": "Hong Kong Market & momo feast",
@@ -18567,10 +18571,69 @@ window.KYT_CITIES = [
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hong%20Kong%20Market%20%26%20momo%20feast%20at%20Siliguri",
         "notes": "Lively shopping bazaar for imported gadgets, Tibetan woolens, and handicrafts, paired with Darjeeling-style steamed chicken momos and thukpa.",
         "kind": "activity"
+      },
+      {
+        "title": "Sevoke Kali Mandir & Coronation Bridge",
+        "icon": "landmark",
+        "where": "Sevoke, Siliguri",
+        "hour": 9,
+        "intent": [
+          "spiritual",
+          "nature"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard"
+        ],
+        "mobility": "walk",
+        "notes": "Revered cliffside temple of Goddess Kali overlooking the emerald Teesta river and the iconic British-era pink Coronation Bridge arching across the gorge.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sevoke%20Kali%20Mandir%2C%20Siliguri&query_place_id=ChIJX0vjgPE95DkRU52OKdIovvQ",
+        "kind": "place",
+        "placeId": "ChIJX0vjgPE95DkRU52OKdIovvQ",
+        "ftid": "0x39e43df180e34b5f:0xf4be28d2298e9d53",
+        "lat": 26.9003956,
+        "lng": 88.4537391
+      },
+      {
+        "title": "ISKCON Temple Siliguri",
+        "icon": "landmark",
+        "where": "Gitalpara, Siliguri",
+        "hour": 17,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard"
+        ],
+        "mobility": "easy",
+        "notes": "Sri Sri Radha Madhav Sundar Mandir, the largest Krishna temple complex in Northeast India, featuring manicured gardens, evening aarti, and Govinda's restaurant.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=ISKCON%20Temple%20Siliguri&query_place_id=ChIJwX5Scp1B5DkRQLY-jqmT31M",
+        "kind": "place",
+        "placeId": "ChIJwX5Scp1B5DkRQLY-jqmT31M",
+        "ftid": "0x39e4419d72527ec1:0x53df93a98e3eb640",
+        "lat": 26.7081518,
+        "lng": 88.4053955
       }
     ],
     "aliases": [
-      "Gateway to Northeast"
+      "New Jalpaiguri",
+      "NJP",
+      "Gateway to Northeast",
+      "Siliguri City"
     ],
     "lat": 26.7164127,
     "lng": 88.4309916,
