@@ -6749,11 +6749,87 @@ window.KYT_CITIES = [
         "ftid": "0x3ba66d88a8d13789:0xd47bcc0d3875a678",
         "lat": 11.5424566,
         "lng": 76.0272233
+      },
+      {
+        "title": "Thirunelli Temple (Thekkan Kashi) & Papanasini stream",
+        "icon": "landmark",
+        "where": "Thirunelli, Wayanad",
+        "hour": 8,
+        "intent": [
+          "spiritual",
+          "heritage"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard"
+        ],
+        "mobility": "walk",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thirunelli%20Temple%2C%20Wayanad",
+        "notes": "Ancient Maha Vishnu shrine perched at the base of Brahmagiri hills, featuring 30 granite pillars, sacred Papanasini stream for ancestral rituals, and mountain stream waters.",
+        "kind": "place"
+      },
+      {
+        "title": "Wayanad Wildlife Sanctuary (Muthanga Safari)",
+        "icon": "tree-pine",
+        "where": "Muthanga, Wayanad",
+        "hour": 7,
+        "intent": [
+          "adventure",
+          "nature"
+        ],
+        "faith": [
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard"
+        ],
+        "mobility": "easy",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Wayanad%20Wildlife%20Sanctuary%20Muthanga%2C%20Wayanad",
+        "notes": "Part of the Nilgiri Biosphere Reserve contiguous with Bandipur and Mudumalai, famous for spotted deer, wild boars, peacocks, and herds of wild Asian elephants.",
+        "kind": "place"
       }
     ],
+    "beforeYouGo": {
+      "official": "https://wayanad.gov.in/",
+      "checked": "2026-11",
+      "items": [
+        {
+          "kind": "rule",
+          "text": "Bandipur / Muthanga Forest Night Traffic Ban: NH 766 through Bandipur Tiger Reserve is strictly closed to vehicular traffic from 9:00 PM to 6:00 AM. Plan your drive to clear the Gundlupet forest gate before 9:00 PM.",
+          "source": "https://wayanad.gov.in/"
+        },
+        {
+          "kind": "book",
+          "text": "Edakkal Caves & Kuruva Island Entry: Daily entry passes are capped by the Wayanad DTPC. Arrive early in the morning to purchase tickets; Edakkal Caves remain closed on Mondays.",
+          "source": "https://www.keralatourism.org/destination/wayanad/"
+        },
+        {
+          "kind": "permit",
+          "text": "Chembra Peak Trekking Permits: Prior trekking pass from the South Wayanad Forest Development Agency (VSS Meppadi) is required; daily entry is limited to 200 trekkers, issuing stops at 12:00 PM.",
+          "source": "https://wayanad.gov.in/"
+        },
+        {
+          "kind": "rule",
+          "text": "Waterfalls & Monsoon Guidelines: Soochipara and Meenmutty falls may have restricted access or pool bathing bans during peak southwest monsoon flow (July–August) for visitor safety.",
+          "source": "https://www.keralatourism.org/destination/wayanad/"
+        }
+      ]
+    },
     "aliases": [
       "Kalpetta",
-      "Sulthan Bathery"
+      "Sulthan Bathery",
+      "Vythiri",
+      "Mananthavady",
+      "Waynad"
     ],
     "lat": 11.7151291,
     "lng": 76.1271185,
