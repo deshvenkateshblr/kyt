@@ -1,7 +1,7 @@
 # KYT: Prioritized TODO
 
 The single list of open work. Done work is in [CHANGELOG.md](CHANGELOG.md). Design intent and architecture are in [kyt_product_specification_roadmap.md](kyt_product_specification_roadmap.md).
-Last reviewed: 3 Nov 2026, against service worker cache kyt-v101.
+Last reviewed: 19 Nov 2026, against service worker cache kyt-v122.
 
 **How to use this file:** keep every open item here and nowhere else. When something ships, move it to the changelog. Other docs link here instead of keeping their own TODO lists.
 
@@ -63,6 +63,7 @@ Clear. The contradictions in generated days and the explainer on every generated
 | P3.3 | **Video language toggle** (English or Hindi). Depends on the audience question below. | The data has a language field; there is no user setting. | `build_city_details.md` §1 |
 | P3.4 | **Drag chips between days** in the day plan. | Steps already reorder and delete; cross-day drag is a convenience. | Old backlog |
 | P3.5 | **Explorer Quests in Passport (`visited.html`).** Curated cultural & geographical hit-lists (<15 cities each: 12 Jyotirlingas, Maha Vishnu, Sapta Moksha Puri, Sapta Nadi, Top 10 UNESCO, Maratha Forts, Toy Trains, etc.) with live stamp progress, quest banners, and passport badges. Steps 1-4 complete. See [explorer_quests_spec.md](explorer_quests_spec.md). | Transforms 159 destinations into inspiring, bite-sized travel quests instead of burying them inside generic filters; achieves >94% city coverage. | Spec doc |
+| P3.6 | **Passport loop leftovers** (CHANGELOG 90 shipped celebrations, next quest, plan-from-quest, shared-view calls to action). Left: (a) celebrate at "End trip" itself, not only when Passport next opens; (b) "Plan this trip" ignores the trip's length and caps at five places, so ask how many days; (c) a quest page for sharing one quest, not only the sender's nearest; (d) call-to-action bar on the curated trip preview and the public Passport card if either becomes a real public page; (e) check the new line on the share card and the confetti on a real phone (V1). | The loop only works if stamping leads somewhere. | Ending a trip stamps its cities and then goes to Virtual Trips, so the celebration waits for the next Passport visit. |
 
 ## P4: Later, or not traveller-facing
 

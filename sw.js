@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kyt-v121';
+const CACHE_NAME = 'kyt-v122';
 
 // Big third-party files (the PDF library and the Hindi font) live in their own cache, which a release does not
 // wipe, so they are downloaded once and then work offline.
@@ -45,6 +45,7 @@ const APP_SHELL = [
   './visited.html',
   './js/passport-store.js',
   './js/passport-extras.js',
+  './js/journey.js',
   './js/page-home.js',
   './js/page-passport.js',
   './js/page-curated.js',

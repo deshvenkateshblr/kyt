@@ -1137,6 +1137,7 @@
       const initialCity = params.get('city');
       if (initialCity) {
         KYT.ui.cityDetail.open(initialCity, false);
+        if (!params.get('id') && window.KYT.journey) KYT.journey.showSharedCta('city');
       }
 
       // ── Start this trip ─────────────────────────────────────────────────────────
@@ -1206,6 +1207,11 @@
           }
         });
       }
+
+      // Someone who opened a shared link, not their own trip, is shown how to make one of their own
+      const cameFromHere = document.referrer && (() => { try { return new URL(document.referrer).origin === window.location.origin; } catch (e) { return false; } })();
+      const sharedArrival = Boolean(params.get('c') || params.get('plan') || aiParam || (!params.get('id') && citiesParam && !cameFromHere));
+      if (sharedArrival && window.KYT && KYT.journey) KYT.journey.showSharedCta('trip');
 
       lucide.createIcons();
     });

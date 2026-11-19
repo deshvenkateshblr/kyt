@@ -35,12 +35,15 @@
       window.unmarkVisited = function(cityId) {
       if (window.PassportStore.lockCity(cityId)) {
       renderCities();
+      if (window.KYT && KYT.journey) KYT.journey.afterUnstamp();
       }
       };
 
       window.markVisited = function(cityId) {
+      const before = window.KYT && KYT.journey ? KYT.journey.snapshot() : null;
       if (window.PassportStore.unlockCity(cityId)) {
       renderCities();
+      if (before) KYT.journey.afterStamp(before, cityId);
       }
       };
 
@@ -87,6 +90,7 @@
       }
       updateFloatingCounter(visitedCount, totalCitiesCount);
       PassportExtras.renderStrength(document.getElementById('passport-strength'), allCities);
+      if (window.KYT && KYT.journey) KYT.journey.renderNextQuest(document.getElementById('passport-next-quest'));
       const shareBtn = document.getElementById('btn-share-passport');
       if (shareBtn) { shareBtn.disabled = visitedCount === 0; shareBtn.title = visitedCount === 0 ? 'Stamp a city first' : ''; }
       const progressBar = document.getElementById('verified-progress-bar');
@@ -156,6 +160,13 @@
         const qSeen = activeQuest.cityIds.filter(id => visitedSet.has(id)).length;
         const qPct = qTotal > 0 ? Math.round((qSeen / qTotal) * 100) : 0;
         const isComplete = qSeen === qTotal && qTotal > 0;
+
+        const planEl = document.getElementById('quest-plan-link');
+        if (planEl) {
+          const canPlan = activeQuest.id !== 'all' && !isComplete && window.KYT && KYT.journey;
+          planEl.classList.toggle('hidden', !canPlan);
+          if (canPlan) planEl.href = KYT.journey.planUrl(activeQuest.id);
+        }
 
         if (questStatsEl) {
           if (isComplete) {
@@ -253,6 +264,12 @@
 
       // Filters sheet, active chips, state groups, share
       PassportExtras.init({ onChange: renderCities, getCities: () => baseList(window.PassportStore.getPassportCities()) });
+      if (window.KYT && KYT.journey) {
+        const qp = new URLSearchParams(window.location.search).get('quest');
+        if (qp && KYT.journey.questById(qp)) { PassportExtras.setActiveQuest(qp); renderCities(); }
+        KYT.journey.renderPassportInvite();
+        setTimeout(() => KYT.journey.reconcile(), 400);
+      }
       const btnQuests = document.getElementById('btn-open-quests');
       if (btnQuests) btnQuests.addEventListener('click', () => PassportExtras.openQuestsSheet());
       const btnClearQuest = document.getElementById('btn-clear-quest');
@@ -322,5 +339,5 @@
       if (navigator.share) navigator.share(data).catch(() => {}); else if (navigator.clipboard) navigator.clipboard.writeText(url.toString()).catch(() => {});
       });
       const initial = new URLSearchParams(window.location.search).get('city');
-      if (initial) open(initial, false);
+      if (initial) { open(initial, false); if (window.KYT && KYT.journey) KYT.journey.showSharedCta('city'); }
       })();

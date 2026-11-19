@@ -2893,6 +2893,25 @@ KYT.virtualTrips = (function () {
     if (window.location.pathname.includes('virtual_trip.html')) {
       openHub();
 
+      // "Plan this trip" from a Passport quest: a new trip holding the quest's nearest unstamped places
+      const questParam = params.get('quest');
+      if (questParam) {
+        const url = new URL(window.location.href);
+        url.searchParams.delete('quest');
+        window.history.replaceState({}, '', url.toString());
+        const plan = window.KYT && KYT.journey ? KYT.journey.planFor(questParam) : null;
+        if (plan) {
+          const questTrip = { id: Date.now().toString(), name: plan.name, originCity: getRememberedOrigin(), cities: [], days: [],
+            taste: { ...DEFAULT_TASTE }, steps: null };
+          plan.cities.forEach(c => addCityToTrip(questTrip, c));
+          vtrips.push(questTrip);
+          saveVTrips();
+          currentTripId = questTrip.id;
+          openCanvas(questTrip.id);
+          return;
+        }
+      }
+
       let activeTripId = localTripId;
       const aiParam = params.get('ai');
       if (aiParam && (!activeTripId || !vtrips.some(t => t.id === activeTripId))) {
@@ -3030,6 +3049,7 @@ KYT.virtualTrips = (function () {
     }
 
     if (sharedCity) {
+      if (window.KYT && KYT.journey) KYT.journey.showSharedCta('city');
       setTimeout(() => {
         openCityDetail(sharedCity, false);
       }, 100);

@@ -1507,6 +1507,10 @@ window.KYT.ui = (function () {
       if (bygHtml && attrList && attrList.parentElement) {
         attrList.parentElement.insertAdjacentHTML('beforebegin', bygHtml);
       }
+      const oldCq = document.getElementById('cd-quests');
+      if (oldCq) oldCq.remove();
+      const cqHtml = window.KYT && KYT.journey ? KYT.journey.renderCityQuests(city.id, 'cd-quests') : '';
+      if (cqHtml && attrList && attrList.parentElement) attrList.parentElement.insertAdjacentHTML('beforebegin', cqHtml);
       const oldWx = document.getElementById('cd-weather');
       if (oldWx) oldWx.remove();
       const wxHtml = renderWeatherSeasons(city, 'cd-weather');

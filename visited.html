@@ -25,12 +25,12 @@
   <meta name="twitter:description" content="Track your travels across India with the KYT Explorer Passport. Log visited destinations and unlock explorer badges.">
   <meta name="twitter:image" content="./icons/KYT.jpg">
         <link rel="icon" type="image/jpeg" href="./icons/KYT.jpg">
-          <link rel="stylesheet" href="./css/index.css?v=121">
-            <script src="./lib/tailwindcss.js?v=121"></script>
+          <link rel="stylesheet" href="./css/index.css?v=122">
+            <script src="./lib/tailwindcss.js?v=122"></script>
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
             <link href="https://fonts.googleapis.com/css2?family=Doto:ROND,wght@100,700;100,800;100,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-                  <script src="./lib/lucide.js?v=121"></script>
+                  <script src="./lib/lucide.js?v=122"></script>
                   <style>
                     body {
                     background-color: #f8fafc;
@@ -102,6 +102,8 @@
 
             <div id="passport-strength" class="mt-5 max-w-md lg:max-w-none w-full bg-white/5 border border-white/10 rounded-2xl p-3.5 lg:p-5 lg:mt-0 lg:col-start-2 lg:row-start-1 lg:row-span-2"></div>
 
+            <div id="passport-next-quest" class="mt-4 max-w-md lg:max-w-none w-full bg-white/5 border border-white/10 rounded-2xl p-3.5 lg:col-start-2"></div>
+
             <div class="mt-4 flex flex-wrap items-center gap-3 lg:col-start-1 lg:row-start-2">
               <button type="button" id="btn-open-map-view" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-900 text-amber-300 border border-amber-400/40 text-sm font-extrabold shadow-md transition-all hover:scale-[1.02] active:scale-95 cursor-pointer">
                 <i data-lucide="map" class="w-4 h-4 text-amber-300"></i>
@@ -115,6 +117,8 @@
           </div>
         </div>
       </section>
+
+      <div id="passport-invite" class="hidden max-w-6xl mx-auto px-4 w-full mb-3"></div>
 
       <!-- Search, Filter & Sort Bar -->
       <section class="max-w-6xl mx-auto px-4 w-full">
@@ -196,6 +200,7 @@
             </div>
             <div class="flex items-center gap-2 shrink-0 self-start sm:self-center">
               <div id="quest-explainer-stats"></div>
+              <a id="quest-plan-link" href="virtual_trip.html" class="hidden px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold">Plan this trip</a>
               <button type="button" id="btn-clear-quest" class="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-blue-100/60 rounded-full transition-colors cursor-pointer" title="Exit Quest" aria-label="Exit Quest">
                 <i data-lucide="x" class="w-4 h-4"></i>
               </button>
@@ -359,19 +364,20 @@
       </div>
     </div>
 
-    <script src="./data/cities.js?v=121"></script>
-    <script src="./data/weather.js?v=121"></script>
-    <script src="./js/weather-seasons.js?v=121"></script>
-    <script src="./data/quests.js?v=121"></script>
-    <script src="./data/distance_matrix.js?v=121"></script>
-    <script src="./data/city_videos_data.js?v=121"></script>
-    <script src="./data/india-map.js?v=121"></script>
-    <script src="./js/passport-store.js?v=121"></script>
-    <script src="./js/passport-extras.js?v=121"></script>
-    <script src="./js/backup.js?v=121"></script>
-    <script src="./js/ui-components.js?v=121"></script>
-    <script src="./js/header.js?v=121"></script>
-    <script src="./js/page-passport.js?v=121"></script>
-    <script src="./js/footer.js?v=121"></script>
+    <script src="./data/cities.js?v=122"></script>
+    <script src="./data/weather.js?v=122"></script>
+    <script src="./js/weather-seasons.js?v=122"></script>
+    <script src="./data/quests.js?v=122"></script>
+    <script src="./data/distance_matrix.js?v=122"></script>
+    <script src="./data/city_videos_data.js?v=122"></script>
+    <script src="./data/india-map.js?v=122"></script>
+    <script src="./js/passport-store.js?v=122"></script>
+    <script src="./js/passport-extras.js?v=122"></script>
+    <script src="./js/journey.js?v=122"></script>
+    <script src="./js/backup.js?v=122"></script>
+    <script src="./js/ui-components.js?v=122"></script>
+    <script src="./js/header.js?v=122"></script>
+    <script src="./js/page-passport.js?v=122"></script>
+    <script src="./js/footer.js?v=122"></script>
 </body>
 </html>

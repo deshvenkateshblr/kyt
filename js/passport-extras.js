@@ -745,6 +745,9 @@ window.PassportExtras = (function () {
         ctx.fillText(nm, gx + 40 + col * (L.colW + L.gap), gy + 78 + 18 + L.size + row * L.lh, L.colW);
       });
     }
+    // an invitation on the card itself: the picture is what travels, so the way in has to be on it
+    ctx.textAlign = 'center'; ctx.fillStyle = NAVY; ctx.font = F(800, 21);
+    ctx.fillText('How much of India have you seen? Stamp yours free: vividnova.com/kyt', W / 2, H - 38, W - 150);
     return S;
   }
 
@@ -779,6 +782,7 @@ window.PassportExtras = (function () {
           </div>
           <p class="text-[11px] text-slate-400 mt-1">Untick to share only the numbers. Dates are never shown.</p>
           <div class="flex gap-2.5 mt-3"><button type="button" id="sh-save" class="flex-1 py-3 rounded-xl bg-slate-100 text-slate-800 font-bold text-sm">Save image</button>
+            <button type="button" id="sh-copy" class="flex-1 py-3 rounded-xl bg-slate-100 text-slate-800 font-bold text-sm">Copy link</button>
             <button type="button" id="sh-share" class="flex-1 py-3 rounded-xl bg-blue-600 text-white font-bold text-sm">Share</button></div>
         </div>`;
       document.body.appendChild(overlay);
@@ -840,11 +844,18 @@ window.PassportExtras = (function () {
     const toBlob = () => new Promise(res => canvas.toBlob(res, 'image/png'));
     const download = async () => { const a = document.createElement('a'); a.href = URL.createObjectURL(await toBlob()); a.download = 'my-india-kyt.png'; document.body.appendChild(a); a.click(); a.remove(); };
     overlay.querySelector('#sh-save').onclick = download;
+    const shareLink = () => (window.KYT && KYT.journey) ? KYT.journey.passportShareUrl() : 'https://vividnova.com/kyt/visited.html?from=share';
+    overlay.querySelector('#sh-copy').onclick = async (e) => {
+      const btn = e.currentTarget, was = btn.textContent;
+      try { await navigator.clipboard.writeText(shareLink()); btn.textContent = 'Link copied'; } catch (err) { btn.textContent = shareLink(); }
+      setTimeout(() => { btn.textContent = was; }, 2200);
+    };
     overlay.querySelector('#sh-share').onclick = async () => {
       const file = new File([await toBlob()], 'my-india-kyt.png', { type: 'image/png' });
-      const text = `${visited.length} cities stamped on my India Explorer Passport (${persona(visited).title} level). Your turn: how much of India have you seen? vividnova.com/kyt`;
+      const link = (window.KYT && KYT.journey) ? KYT.journey.passportShareUrl() : 'https://vividnova.com/kyt/visited.html?from=share';
+      const text = `${visited.length} cities stamped on my India Explorer Passport (${persona(visited).title} level). Your turn: how much of India have you seen? Stamp yours free: ${link}`;
       try {
-        if (navigator.canShare && navigator.canShare({ files: [file] })) await navigator.share({ files: [file], title: 'My India so far', text });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) await navigator.share({ files: [file], title: 'My India so far', text, url: link });
         else await download();
       } catch (e) { /* user cancelled the share sheet */ }
     };
@@ -1387,6 +1398,6 @@ window.PassportExtras = (function () {
 
   return { init, apply, attrs, filters, activeCount, openSheet, closeSheet, resetFilters, removeChip, renderChips,
            renderGrouped, toggleState, openShare, drawCard, drawSeal, persona, stats, meters, renderStrength, ready, LEVELS,
-           openQuestsSheet, closeQuestsSheet, getActiveQuest, setActiveQuest, getTopQuests,
+           openQuestsSheet, closeQuestsSheet, getActiveQuest, setActiveQuest, getTopQuests, notifyChange: () => onChange(),
            openMapModal, exportMapPoster };
 })();
