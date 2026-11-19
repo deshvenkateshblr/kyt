@@ -145,63 +145,143 @@
                                 .k-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 28px; background: var(--paper); border-radius: 28px 28px 0 0; }
                                 .k-hero::before { content: ""; position: absolute; right: -60px; top: 90px; width: 260px; height: 260px; border-radius: 50%; border: 1.5px dashed rgba(255,255,255,.22); pointer-events: none; }
                                 .k-hero .k-wrap { position: relative; z-index: 1; }
-                                .k-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 16px; }
-                                .k-brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
-                                .k-brand-badge { display: inline-flex; align-items: center; justify-content: center; background: #fff; padding: 3px 7px; border-radius: 12px; height: 40px; box-shadow: 0 6px 16px rgba(8,20,64,.28); }
-                                .k-brand-badge img { height: 26px; width: auto; max-width: 60px; object-fit: contain; }
+                                .k-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 14px; }
+                                .k-brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; flex-shrink: 0; }
+                                .k-brand-badge { display: inline-flex; align-items: center; justify-content: center; background: #fff; padding: 3px 7px; border-radius: 12px; height: 38px; box-shadow: 0 6px 16px rgba(8,20,64,.28); }
+                                .k-brand-badge img { height: 24px; width: auto; max-width: 56px; object-fit: contain; }
                                 .k-brand-text { display: flex; flex-direction: column; line-height: 1.15; }
-                                .k-brand-name { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em; }
-                                .k-brand-tagline { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.06em; color: rgba(255,255,255,.78); text-transform: uppercase; }
-                                .k-install-btn { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 0.84rem; color: #fff; text-decoration: none; padding: 8px 12px; white-space: nowrap; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; background: rgba(255,255,255,.1); }
-                                .k-install-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
-                                .k-hero-grid { display: grid; gap: 22px; padding-top: clamp(22px, 4vw, 44px); padding-bottom: clamp(52px, 7vw, 84px); }
+                                .k-brand-name { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; }
+                                .k-brand-tagline { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.06em; color: rgba(255,255,255,.78); text-transform: uppercase; }
+                                .k-top-actions { display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; }
+                                .k-top-btn { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 0.82rem; color: #fff; text-decoration: none; padding: 7px 11px; white-space: nowrap; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; background: rgba(255,255,255,.1); cursor: pointer; font-family: inherit; transition: background-color 0.15s ease; }
+                                .k-top-btn:hover { background: rgba(255,255,255,.2); }
+                                .k-top-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+                                .k-install-btn { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 0.82rem; color: #fff; text-decoration: none; padding: 7px 11px; white-space: nowrap; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; background: rgba(255,255,255,.1); }
+                                .k-install-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+                                /* Centered Hero Layout */
+                                .k-hero-grid { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; padding-top: clamp(14px, 2.5vw, 28px); padding-bottom: clamp(36px, 5vw, 68px); width: 100%; }
                                 .k-hero-grid > * { min-width: 0; }
+                                .k-hero-text { text-align: center; max-width: 56ch; margin: 0 auto; }
+                                .k-hero-text .k-h1 { font-size: clamp(1.75rem, 5.5vw, 2.75rem); line-height: 1.05; letter-spacing: -0.035em; font-weight: 800; }
+                                .k-hero-text .k-h1 span { display: inline; }
                                 .k-h1 span.k-accent { color: #BFD7FF; }
-                                .k-hero .k-lead { margin-top: 14px; color: rgba(255,255,255,.86); }
-                                @media (min-width: 900px) { .k-hero-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); column-gap: 64px; align-items: center; } }
+                                .k-hero .k-lead { margin: 8px auto 0; font-size: clamp(0.92rem, 2vw, 1.12rem); line-height: 1.4; color: rgba(255,255,255,.86); max-width: 50ch; }
+
+                                /* Mobile responsive header collapse */
                                 @media (max-width: 480px) {
-                                .k-wrap { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
-                                .k-install-btn .k-install-long { display: none; }
+                                  .k-wrap { padding-left: max(14px, env(safe-area-inset-left)); padding-right: max(14px, env(safe-area-inset-right)); }
+                                  .k-install-btn .k-install-long { display: none; }
+                                }
+                                @media (max-width: 360px) {
+                                  .k-top { gap: 4px; padding-top: 10px; }
+                                  .k-top-actions { gap: 4px; }
+                                  .k-top-btn { padding: 6px 8px; }
+                                  .k-top-btn .k-btn-text { display: none; }
+                                  .k-install-btn { padding: 6px 8px; }
+                                  .k-brand-tagline { display: none; }
+                                }
+                                @media (max-width: 320px) {
+                                  .k-brand-text { display: none; }
+                                  .k-top-btn { padding: 5px 7px; }
+                                  .k-install-btn { padding: 5px 7px; }
                                 }
 
-                                /* The action list: no card, no frame. One solid primary button, then plain rows split by hairlines. */
-                                .k-menu-section { width: 100%; max-width: 480px; }
-                                #launch { scroll-margin-top: 16px; }
-                                .k-loading { color: rgba(255,255,255,.85); font-weight: 700; padding: 12px 0; }
-                                .k-launch { display: block; }
+                                /* The action menu container */
+                                .k-menu-section { width: 100%; max-width: 480px; margin: 0 auto; text-align: left; }
+                                #launch { scroll-margin-top: 16px; width: 100%; }
+                                .k-loading { color: rgba(255,255,255,.85); font-weight: 700; padding: 12px 0; text-align: center; }
+                                .k-launch { display: flex; flex-direction: column; gap: 8px; }
                                 .k-launch.hidden { display: none; }
-                                .k-option-card { display: flex; align-items: center; gap: 14px; min-height: 62px; padding: 12px 4px; text-decoration: none; color: #fff; border-top: 1px solid rgba(255,255,255,.16); -webkit-tap-highlight-color: transparent; transition: background-color 0.25s ease; }
-                                .k-option-card:active { background: rgba(255,255,255,.1); transform: scale(.98); }
-                                .k-option-icon { width: 38px; height: 38px; padding: 8px; border-radius: 12px; flex: none; color: #fff; background: rgba(255,255,255,.14); }
+
+                                /* Options cards: base styling (mobile flat rows / compact cards) */
+                                .k-option-card {
+                                  display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 10px 14px;
+                                  text-decoration: none; color: #fff; border-top: 1px solid rgba(255,255,255,.16);
+                                  border-bottom: 1px solid rgba(255,255,255,.16); border-left: 0; border-right: 0;
+                                  border-radius: 14px; background: rgba(255,255,255,.07); box-shadow: none;
+                                  -webkit-tap-highlight-color: transparent; transition: background-color 0.25s ease, transform 0.2s ease;
+                                }
+                                .k-launch .k-option-card:first-child { border-top: 0; }
+                                .k-option-card:active { background: rgba(255,255,255,.14); transform: scale(.985); }
+                                .k-option-icon { width: 36px; height: 36px; padding: 7px; border-radius: 11px; flex: none; color: #fff; background: rgba(255,255,255,.14); }
                                 .k-option-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
-                                .k-option-title { font-weight: 800; font-size: 1rem; letter-spacing: -0.01em; line-height: 1.25; }
-                                .k-option-desc { font-size: 0.86rem; font-weight: 500; color: rgba(255,255,255,.78); line-height: 1.35; }
-                                .k-option-arrow { width: 18px; height: 18px; flex: none; color: rgba(255,255,255,.6); }
-                                .k-option-card.k-option-primary { background: #fff; color: var(--dusk); border: 0; border-radius: 16px; padding: 14px 16px; margin: 6px 0; box-shadow: 0 10px 24px rgba(8,20,64,.3); }
+                                .k-option-title { font-weight: 800; font-size: 0.98rem; letter-spacing: -0.01em; line-height: 1.25; }
+                                .k-option-desc { font-size: 0.84rem; font-weight: 500; color: rgba(255,255,255,.78); line-height: 1.3; }
+                                .k-option-arrow { width: 18px; height: 18px; flex: none; color: rgba(255,255,255,.6); transition: transform 0.25s ease; }
+                                @media (hover: hover) { .k-option-card:hover .k-option-arrow { transform: translateX(3px); } }
+
+                                /* Primary Card */
+                                .k-option-card.k-option-primary {
+                                  background: #fff; color: var(--dusk); border: 0; border-radius: 16px;
+                                  padding: 12px 16px; margin: 2px 0; box-shadow: 0 10px 24px rgba(8,20,64,.3);
+                                }
                                 .k-option-primary .k-option-icon { color: #fff; background: var(--sky-deep); }
                                 .k-option-primary .k-option-arrow { color: var(--sky-deep); }
                                 .k-option-primary .k-option-desc { color: #475569; }
                                 .k-option-primary:active { background: #EEF3FD; }
                                 .k-option-primary + .k-option-card { border-top: 0; }
-                                .k-launch .k-option-card:first-child { border-top: 0; }
-                                @media (hover: hover) { .k-option-card:hover { background: rgba(255,255,255,.08); } .k-option-primary:hover { background: #F3F7FF; } }
-                                .k-option-card:last-child { border-bottom: 1px solid rgba(255,255,255,.16); }
-                                /* One-time first-visit hint, driven by js/index.js: the row lights up as a hover would */
-                                .k-option-card.k-nudge { transform: translateY(-3px) scale(1.02); background: rgba(255,255,255,.2); box-shadow: 0 14px 26px -8px rgba(5,15,60,.55); border-radius: 14px; }
-                                .k-option-card.k-option-primary.k-nudge { background: #fff; box-shadow: 0 18px 34px -8px rgba(5,15,60,.6); }
+                                @media (hover: hover) { .k-option-card:hover { background: rgba(255,255,255,.12); } .k-option-primary:hover { background: #F3F7FF; } }
+
+                                /* One-time first-visit hint */
+                                .k-option-card.k-nudge { transform: translateY(-2px) scale(1.015); background: rgba(255,255,255,.2); box-shadow: 0 12px 24px -6px rgba(5,15,60,.55); }
+                                .k-option-card.k-option-primary.k-nudge { background: #fff; box-shadow: 0 16px 30px -6px rgba(5,15,60,.6); }
                                 .k-option-card.k-nudge .k-option-arrow { transform: translateX(3px); }
                                 .k-option-card.k-option-primary.k-nudge .k-option-arrow { color: var(--sky-deep); }
-                                .k-option-arrow { transition: transform 0.25s ease; }
-                                @media (hover: hover) { .k-option-card:hover .k-option-arrow { transform: translateX(4px); } }
-                                /* Rows rise in one after another when the menu appears (the fill is 'backwards' so the one-time nudge below can still move them) */
-                                @keyframes k-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-                                .k-launch .k-option-card { animation: k-rise .5s cubic-bezier(.2,.8,.2,1) backwards; }
-                                .k-launch .k-option-card:nth-child(2) { animation-delay: .07s; } .k-launch .k-option-card:nth-child(3) { animation-delay: .14s; }
-                                .k-launch .k-option-card:nth-child(4) { animation-delay: .21s; } .k-launch .k-option-card:nth-child(5) { animation-delay: .28s; }
-                                .k-option-card { transition: background-color .25s ease, transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease; }
+
+                                /* Animations */
+                                @keyframes k-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+                                .k-launch .k-option-card { animation: k-rise .45s cubic-bezier(.2,.8,.2,1) backwards; }
+                                .k-launch .k-option-card:nth-child(2) { animation-delay: .06s; }
+                                .k-launch .k-option-card:nth-child(3) { animation-delay: .12s; }
+                                .k-launch .k-option-card:nth-child(4) { animation-delay: .18s; }
                                 .k-launch :focus-visible, .k-hero :focus-visible { outline-color: #fff; }
-                                .k-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 14px; margin-top: 12px; font-size: 0.86rem; color: rgba(255,255,255,.82); font-weight: 600; }
-                                .k-backup-link { background: none; border: 0; padding: 10px 0; min-height: 44px; font: 700 0.86rem/1.2 inherit; color: #fff; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+                                /* Meta info row under launcher */
+                                .k-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; text-align: center; gap: 4px 16px; margin-top: 12px; font-size: 0.84rem; color: rgba(255,255,255,.82); font-weight: 600; }
+                                .k-backup-link { background: none; border: 0; padding: 6px 0; min-height: 38px; font: 700 0.84rem/1.2 inherit; color: #fff; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+                                /* ------------------------------------------------------------------
+                                Desktop 2x2 Grid (min-width: 768px)
+                                ------------------------------------------------------------------ */
+                                @media (min-width: 768px) {
+                                  .k-hero-grid { gap: 24px; padding-top: clamp(24px, 4vw, 40px); padding-bottom: clamp(48px, 6vw, 76px); }
+                                  .k-menu-section { max-width: 880px; }
+                                  #options-container,
+                                  noscript .k-launch {
+                                    display: grid !important;
+                                    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                                    gap: 16px !important;
+                                  }
+                                  #options-container.hidden {
+                                    display: none !important;
+                                  }
+                                  .k-option-card {
+                                    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+                                    border-radius: 18px !important;
+                                    padding: 20px !important;
+                                    min-height: 80px;
+                                    background: rgba(255, 255, 255, 0.1) !important;
+                                    margin: 0 !important;
+                                  }
+                                  .k-option-card:hover {
+                                    background: rgba(255, 255, 255, 0.18) !important;
+                                    transform: translateY(-2px);
+                                  }
+                                  .k-option-card.k-option-primary {
+                                    background: #fff !important;
+                                    color: var(--dusk) !important;
+                                    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+                                    box-shadow: 0 14px 30px rgba(8, 20, 64, 0.35) !important;
+                                  }
+                                  .k-option-card.k-option-primary:hover {
+                                    background: #F3F7FF !important;
+                                  }
+                                  .k-option-icon { width: 44px; height: 44px; padding: 9px; border-radius: 14px; }
+                                  .k-option-title { font-size: 1.08rem; }
+                                  .k-option-desc { font-size: 0.88rem; }
+                                  .k-meta { margin-top: 18px; }
+                                }
                                 .k-device-note { margin: 14px 0 0; padding: 0; color: var(--muted); font-size: 0.86rem; line-height: 1.5; }
 
                                 /* ------------------------------------------------------------------
@@ -518,23 +598,33 @@
               <span class="k-brand-tagline">Know Your Travel</span>
             </span>
           </a>
-          <a class="k-install-btn" href="#home-screen">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="5" y="2" width="14" height="20" rx="3" ry="3"/>
-              <path d="M12 18h.01"/>
-              <path d="M12 7v5m0 0l-2-2m2 2l2-2"/>
-            </svg>
-            <span>Add to Home<span class="k-install-long"> Screen</span></span>
-          </a>
+          <div class="k-top-actions">
+            <button type="button" class="k-top-btn" data-kyt-backup aria-label="Save or open your trips">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                <polyline points="17 21 17 13 7 13 7 21"/>
+                <polyline points="7 3 7 8 15 8"/>
+              </svg>
+              <span class="k-btn-text">Save / Open</span>
+            </button>
+            <a class="k-install-btn" href="#home-screen">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="5" y="2" width="14" height="20" rx="3" ry="3"/>
+                <path d="M12 18h.01"/>
+                <path d="M12 7v5m0 0l-2-2m2 2l2-2"/>
+              </svg>
+              <span>Add to Home<span class="k-install-long"> Screen</span></span>
+            </a>
+          </div>
         </div>
 
         <div class="k-hero-grid">
           <div class="k-hero-text">
             <h1 class="k-h1">
-              <span>Know your travel.</span>
+              <span>Know your travel. </span>
               <span class="k-accent">Plan it your way.</span>
             </h1>
-            <p class="k-lead">Map out your route step by step, keep tickets and memories in your pocket, and share the plan with the people riding with you.</p>
+            <p class="k-lead">Map out your route step by step, keep tickets in your pocket, and share the plan with family.</p>
           </div>
 
           <section class="k-menu-section" aria-label="Trip Menu">
@@ -552,7 +642,6 @@
             </div>
             <div class="k-meta">
               <span>No sign-up. Trips stay on your phone.</span>
-              <button type="button" class="k-backup-link" data-kyt-backup>Save or open your trips</button>
               <a href="configure_trip.html" class="k-backup-link">Build manual steps</a>
             </div>
           </section>
