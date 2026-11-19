@@ -10,21 +10,25 @@ document.addEventListener('DOMContentLoaded', async () => {
   container.classList.remove('hidden');
 
   // One flat list: a solid primary action, then plain rows. Rows are links, so the whole row is the tap target.
-  const row = (href, icon, title, desc, primary) =>
+  const row = (href, icon, phase, title, desc, primary) =>
     `<a href="${href}" class="k-option-card${primary ? ' k-option-primary' : ''}">` +
       `<i data-lucide="${icon}" class="k-option-icon"></i>` +
-      `<span class="k-option-body"><span class="k-option-title">${title}</span><span class="k-option-desc">${desc}</span></span>` +
+      `<span class="k-option-body">` +
+        `<span class="k-option-phase">${phase}</span>` +
+        `<span class="k-option-title">${title}</span>` +
+        `<span class="k-option-desc">${desc}</span>` +
+      `</span>` +
       `<i data-lucide="chevron-right" class="k-option-arrow"></i></a>`;
 
   const html = isReturningUser
-    ? row('view_trip.html', 'plane', 'Trip Companion', 'Live schedule, tickets, maps & photos.', true) +
-      row('virtual_trip.html', 'compass', 'Plan a Trip', 'Build a custom day-by-day itinerary.') +
-      row('curated_trips.html', 'sparkles', 'Explore Ideas', 'Curated routes & 159+ city guides.') +
-      row('visited.html', 'stamp', 'Travel Passport', 'Log visited places & create share cards.')
-    : row('curated_trips.html', 'sparkles', 'Explore Ideas', 'Curated routes & 159+ city guides.') +
-      row('virtual_trip.html', 'compass', 'Plan a Trip', 'Build a custom day-by-day itinerary.', true) +
-      row('view_trip.html', 'plane', 'Trip Companion', 'Open your live itinerary, tickets & maps.') +
-      row('visited.html', 'stamp', 'Travel Passport', 'Log visited places & create share cards.');
+    ? row('view_trip.html', 'plane', 'ON THE ROAD', 'Trip Companion', 'Live schedule, tickets, maps & photos.', true) +
+      row('virtual_trip.html', 'compass', 'BEFORE YOU GO', 'Plan a Trip', 'Build a custom day-by-day itinerary.') +
+      row('curated_trips.html', 'sparkles', 'BEFORE YOU GO', 'Explore Ideas', 'Curated routes & 159+ city guides.') +
+      row('visited.html', 'stamp', 'MEMORIES & STAMPS', 'Travel Passport', 'Log visited places & create share cards.')
+    : row('curated_trips.html', 'sparkles', 'BEFORE YOU GO', 'Explore Ideas', 'Curated routes & 159+ city guides.') +
+      row('virtual_trip.html', 'compass', 'BEFORE YOU GO', 'Plan a Trip', 'Build a custom day-by-day itinerary.', true) +
+      row('view_trip.html', 'plane', 'ON THE ROAD', 'Trip Companion', 'Open your live itinerary, tickets & maps.') +
+      row('visited.html', 'stamp', 'MEMORIES & STAMPS', 'Travel Passport', 'Log visited places & create share cards.');
 
   container.innerHTML = html;
   lucide.createIcons();

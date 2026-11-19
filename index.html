@@ -206,6 +206,7 @@
                                 .k-option-card:active { background: rgba(255,255,255,.14); transform: scale(.985); }
                                 .k-option-icon { width: 36px; height: 36px; padding: 7px; border-radius: 11px; flex: none; color: #fff; background: rgba(255,255,255,.14); }
                                 .k-option-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+                                .k-option-phase { font-size: 0.625rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255, 255, 255, 0.72); line-height: 1.1; margin-bottom: 2px; }
                                 .k-option-title { font-weight: 800; font-size: 0.98rem; letter-spacing: -0.01em; line-height: 1.25; }
                                 .k-option-desc { font-size: 0.84rem; font-weight: 500; color: rgba(255,255,255,.78); line-height: 1.3; }
                                 .k-option-arrow { width: 18px; height: 18px; flex: none; color: rgba(255,255,255,.6); transition: transform 0.25s ease; }
@@ -216,6 +217,7 @@
                                   background: #fff; color: var(--dusk); border: 0; border-radius: 16px;
                                   padding: 12px 16px; margin: 2px 0; box-shadow: 0 10px 24px rgba(8,20,64,.3);
                                 }
+                                .k-option-primary .k-option-phase { color: var(--sky-deep); }
                                 .k-option-primary .k-option-icon { color: #fff; background: var(--sky-deep); }
                                 .k-option-primary .k-option-arrow { color: var(--sky-deep); }
                                 .k-option-primary .k-option-desc { color: #475569; }
@@ -278,267 +280,71 @@
                                     background: #F3F7FF !important;
                                   }
                                   .k-option-icon { width: 44px; height: 44px; padding: 9px; border-radius: 14px; }
+                                  .k-option-phase { font-size: 0.68rem; margin-bottom: 3px; }
                                   .k-option-title { font-size: 1.08rem; }
                                   .k-option-desc { font-size: 0.88rem; }
                                   .k-meta { margin-top: 18px; }
                                 }
                                 .k-device-note { margin: 14px 0 0; padding: 0; color: var(--muted); font-size: 0.86rem; line-height: 1.5; }
 
-                                /* ------------------------------------------------------------------
-                                The demo phone: plan a day, add photos, finish it, get the seal.
-                                ------------------------------------------------------------------ */
-                                .k-demo { display: grid; justify-items: center; gap: 16px; margin-top: 40px; }
-                                @media (min-width: 900px) { .k-demo { margin-top: 0; } }
-                                .k-phone { width: min(300px, 80vw); padding: 9px; border-radius: 40px; background: #0A1020; box-shadow: 0 34px 60px -26px rgba(4, 12, 46, 0.75); color: var(--ink); }
-                                .k-screen { position: relative; height: 560px; border-radius: 32px; background: var(--paper); padding: 12px 14px 14px; overflow: hidden; display: flex; flex-direction: column; }
-                                .k-status { display: flex; align-items: center; justify-content: space-between; font-size: 0.8rem; font-weight: 700; padding: 2px 6px 0; min-height: 24px; }
-                                .k-batt { width: 22px; height: 11px; border: 2px solid var(--ink); border-radius: 4px; position: relative; }
-                                .k-batt::before { content: ""; position: absolute; inset: 1px; right: 4px; background: var(--ink); border-radius: 1px; }
-                                .k-day { margin-top: 16px; display: flex; align-items: baseline; justify-content: space-between; }
-                                .k-day strong { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.02em; }
-                                .k-day span { font-size: 0.78rem; color: var(--muted); font-weight: 700; }
-                                .k-prog { display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px; margin: 10px 0 16px; }
-                                .k-prog i { height: 5px; border-radius: 3px; background: #D6DFEE; }
-                                .k-prog i.d { background: var(--sky); } .k-prog i.n { background: var(--marigold); }
+                                 /* ------------------------------------------------------------------
+                                 Sections
+                                 ------------------------------------------------------------------ */
+                                 .k-sec { padding-top: clamp(36px, 6vw, 72px); padding-bottom: clamp(36px, 6vw, 72px); }
+                                 .k-sec.k-white { background: #fff; }
+                                 .k-sec .k-h2 { color: var(--dusk); }
 
-                                .k-ticket { position: relative; background: #fff; border: 1px solid #DCE4F2; border-radius: 20px; }
-                                .k-ticket-top { padding: 16px 16px 16px; }
-                                .k-ticket-row { display: flex; align-items: center; justify-content: space-between; }
-                                .k-chip { display: inline-block; padding: 3px 11px; border-radius: 999px; background: var(--marigold); font-size: 0.74rem; font-weight: 800; }
-                                .k-time { font-weight: 800; font-size: 1.05rem; letter-spacing: -0.01em; }
-                                .k-ticket h3 { margin-top: 12px; font-size: 1.4rem; line-height: 1.12; font-weight: 800; letter-spacing: -0.03em; }
-                                .k-where { margin-top: 8px; display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 0.86rem; font-weight: 700; }
-                                .k-where svg { width: 15px; height: 15px; }
-                                .k-photo { margin-top: 12px; height: 78px; border-radius: 12px; overflow: hidden; }
-                                .k-photo[hidden] { display: none; }
-                                .k-photo svg { width: 100%; height: 100%; }
-                                .k-perf { position: relative; border-top: 2px dashed var(--line); }
-                                .k-perf::before, .k-perf::after { content: ""; position: absolute; top: -11px; width: 20px; height: 20px; border-radius: 50%; background: var(--paper); border: 1px solid #DCE4F2; }
-                                .k-perf::before { left: -11px; clip-path: inset(0 0 0 50%); } .k-perf::after { right: -11px; clip-path: inset(0 50% 0 0); }
-                                .k-ticket-bot { display: grid; grid-template-columns: 1.15fr 1fr; gap: 8px; padding: 14px; }
-                                .k-mini { white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; border-radius: 12px; font: inherit; font-size: 0.9rem; font-weight: 800; border: 2px solid transparent; cursor: pointer; }
-                                .k-mini svg { width: 17px; height: 17px; }
-                                .k-mini--photo { background: #FFF1D0; color: #6B4200; }
-                                .k-mini--photo:hover { background: #FFE7B0; }
-                                .k-mini--photo[aria-pressed="true"] { background: var(--marigold); color: var(--ink); }
-                                .k-mini--done { background: var(--dusk); color: #fff; }
-                                .k-mini--done:hover { background: #12306E; }
-                                .k-mini:focus-visible { outline-color: var(--sky-deep); }
-                                .k-swap { animation: k-in 0.26s ease-out; }
-                                @keyframes k-in { from { opacity: 0; transform: translateX(26px); } to { opacity: 1; transform: none; } }
+                                 /* ------------------------------------------------------------------
+                                 Why KYT (3-column summary)
+                                 ------------------------------------------------------------------ */
+                                 .k-why { background: #F8FAFC; border-bottom: 1px solid #E2E8F0; }
+                                 .k-why-header { text-align: center; max-width: 60ch; margin: 0 auto 32px; }
+                                 .k-why-pill { display: inline-block; padding: 4px 12px; border-radius: 999px; background: rgba(37,99,235,0.1); color: var(--sky-deep); font-weight: 800; font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
+                                 .k-why-grid { display: grid; gap: 20px; }
+                                 @media (min-width: 768px) { .k-why-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; } }
+                                 .k-why-card { background: #fff; padding: 26px 22px; border-radius: 20px; border: 1px solid #E2E8F0; box-shadow: 0 4px 16px rgba(15,23,42,0.04); display: flex; flex-direction: column; gap: 10px; text-align: left; }
+                                 .k-why-icon { width: 44px; height: 44px; border-radius: 12px; background: #EEF3FD; color: var(--sky-deep); display: flex; align-items: center; justify-content: center; }
+                                 .k-why-icon svg { width: 22px; height: 22px; }
+                                 .k-why-card .k-h3 { font-size: 1.12rem; font-weight: 800; color: var(--ink); margin: 0; }
+                                 .k-why-card .k-p { font-size: 0.88rem; line-height: 1.5; color: var(--muted); margin: 0; }
 
-                                .k-next { margin-top: 12px; padding: 12px 14px; border: 1px solid #DCE4F2; border-radius: 16px; background: #fff; opacity: 0.85; font-size: 0.95rem; display: grid; gap: 2px; }
-                                .k-next span { color: var(--muted); font-weight: 700; font-size: 0.8rem; }
-                                .k-next b { font-weight: 800; }
-                                .k-next[hidden], .k-end[hidden], .k-ticket[hidden] { display: none; }
+                                 /* ------------------------------------------------------------------
+                                 Home screen / Add to Home instructions
+                                 ------------------------------------------------------------------ */
+                                 .k-fold { margin-top: 24px; }
+                                 .k-fold > summary { cursor: pointer; font-weight: 800; color: var(--sky-deep); padding: 12px 0; min-height: 44px; list-style: none; }
+                                 .k-fold > summary::-webkit-details-marker { display: none; }
+                                 .k-fold > summary::after { content: " \25BE"; }
+                                 .k-fold[open] > summary::after { content: " \25B4"; }
+                                 .k-how { display: grid; gap: 24px; margin-top: 20px; }
+                                 @media (min-width: 760px) { .k-how { grid-template-columns: 1fr 1fr; gap: 32px; } }
+                                 .k-device-card { background: #fff; border: 1.5px solid var(--line); border-radius: 20px; padding: 22px 20px; box-shadow: 0 4px 16px rgba(11,31,77,0.04); }
+                                 .k-device-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--paper); }
+                                 .k-device-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+                                 .k-device-apple { background: #F1F5F9; color: #0F172A; }
+                                 .k-device-android { background: #ECFDF5; color: #059669; }
+                                 .k-device-sub { display: block; font-size: 0.8rem; font-weight: 700; color: var(--muted); margin-top: 1px; }
+                                 .k-steps { display: grid; gap: 12px; list-style: none; padding: 0; margin: 0; }
+                                 .k-steps li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.94rem; line-height: 1.45; color: var(--ink); }
+                                 .k-step-num { display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--mist); color: var(--sky-deep); font-weight: 800; font-size: 0.8rem; flex-shrink: 0; margin-top: 2px; }
+                                 .k-inline-icon { display: inline-flex; align-items: center; justify-content: center; padding: 2px 6px; background: #EEF2F6; border-radius: 5px; font-weight: 800; font-size: 0.82rem; vertical-align: middle; color: var(--sky-deep); }
+                                 .k-offline-banner { margin-top: 28px; display: flex; align-items: flex-start; gap: 14px; background: #EFF6FF; border: 1.5px solid #BFDBFE; border-radius: 16px; padding: 18px 20px; color: #1E40AF; }
+                                 .k-offline-icon { width: 36px; height: 36px; border-radius: 10px; background: #DBEAFE; color: #2563EB; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+                                 .k-offline-text { font-size: 0.92rem; line-height: 1.5; }
+                                 .k-offline-text strong { display: block; font-weight: 800; margin-bottom: 2px; color: #1E3A8A; }
 
-                                .k-end { margin-top: 2px; display: grid; justify-items: start; gap: 8px; }
-                                .k-end .k-seal { width: 112px; height: 112px; color: var(--sky-deep); transform: rotate(-12deg); }
-                                .k-end.k-stampin .k-seal { animation: k-stamp 0.5s cubic-bezier(0.2, 1.5, 0.4, 1); }
-                                @keyframes k-stamp { from { opacity: 0; transform: rotate(-28deg) scale(1.9); } to { opacity: 1; transform: rotate(-12deg) scale(1); } }
-                                .k-end strong { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.02em; }
-                                .k-end p { color: var(--muted); font-size: 0.88rem; }
-                                .k-tiles { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 2px; }
-                                .k-tiles span { display: block; aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden; background: transparent; border: 2px dashed var(--line); }
-                                .k-tiles span.has { border: 0; }
-                                .k-tiles svg { width: 100%; height: 100%; }
-                                .k-end .k-mini { width: 100%; margin-top: 4px; }
-                                .k-hint { font-size: 0.9rem; color: #fff; text-align: center; max-width: 32ch; }
+                                 /* ------------------------------------------------------------------
+                                 Minimal Footer
+                                 ------------------------------------------------------------------ */
+                                 .k-foot-minimal { padding: 28px 0 20px; background: #F8FAFC; border-top: 1px solid #E2E8F0; text-align: center; }
+                                 .k-foot-content { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; font-size: 0.84rem; color: var(--muted); font-weight: 600; }
+                                 .k-foot-content a { color: var(--sky-deep); text-decoration: underline; text-underline-offset: 3px; font-weight: 700; }
 
-                                /* ------------------------------------------------------------------
-                                Sections
-                                ------------------------------------------------------------------ */
-                                .k-sec { padding-top: clamp(36px, 6vw, 72px); padding-bottom: clamp(36px, 6vw, 72px); }
-                                .k-dark { background: var(--dusk); color: #fff; }
-                                .k-mist { background: var(--mist); }
-                                .k-white { background: #fff; }
-                                .k-gold { background: var(--marigold); color: var(--ink); }
-                                .k-two { display: grid; gap: 40px; }
-                                @media (min-width: 860px) { .k-two { grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; } }
-
-                                /* plan: timeline */
-                                .k-facts { margin-top: 26px; display: grid; gap: 10px; }
-                                .k-facts li { font-weight: 700; padding-left: 18px; position: relative; }
-                                .k-facts li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 8px; height: 8px; border-radius: 2px; background: var(--sky); }
-                                .k-line { display: grid; gap: 10px; }
-                                .k-line li { display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 14px 16px; border-radius: 16px; background: rgba(255, 255, 255, 0.55); font-weight: 700; }
-                                .k-line .t { color: var(--muted); font-size: 0.9rem; padding-top: 2px; }
-                                .k-line .done { color: #5B6B84; }
-                                .k-line .done span:last-child { text-decoration: line-through; text-decoration-thickness: 2px; }
-                                .k-line .now { background: #fff; border: 2px solid var(--ink); padding: 18px 16px; box-shadow: 6px 6px 0 var(--marigold); }
-                                .k-line .now .t { color: var(--ink); }
-                                .k-line .now strong { display: block; font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
-                                .k-line .now small { display: block; margin-top: 4px; color: var(--muted); font-weight: 700; font-size: 0.86rem; }
-                                .k-line .later { background: transparent; border: 2px dashed #8CA4D0; color: #3A4E73; }
-
-                                /* memory book page */
-                                .k-book { width: 100%; max-width: 420px; justify-self: center; background: #fff; border: 2px solid var(--ink); border-radius: 6px 18px 18px 6px; padding: 22px 20px 20px 26px; box-shadow: -8px 8px 0 var(--mist), -8px 8px 0 2px var(--ink); transform: rotate(-1.2deg); position: relative; }
-                                .k-book::before { content: ""; position: absolute; left: 10px; top: 14px; bottom: 14px; border-left: 2px dashed var(--line); }
-                                .k-book h3 { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; }
-                                .k-book small { color: var(--muted); font-weight: 700; font-size: 0.82rem; }
-                                .k-book ul { margin-top: 14px; display: grid; gap: 14px; }
-                                .k-book li { display: grid; grid-template-columns: 112px 1fr; gap: 14px; align-items: center; }
-                                .k-book li svg { width: 112px; height: 76px; border-radius: 10px; }
-                                .k-book li strong { display: block; font-weight: 800; line-height: 1.2; }
-                                .k-book li span { color: var(--muted); font-size: 0.86rem; font-weight: 700; }
-
-
-                                /* city card */
-                                .k-city { width: 100%; max-width: 420px; justify-self: center; background: #fff; border: 2px solid var(--ink); border-radius: 18px; overflow: hidden; box-shadow: 8px 8px 0 var(--mist), 8px 8px 0 2px var(--ink); }
-                                .k-city-vid { position: relative; aspect-ratio: 16 / 9; background: var(--dusk); display: grid; place-items: center; }
-                                .k-city-vid svg.bg { position: absolute; inset: 0; width: 100%; height: 100%; }
-                                .k-play { position: relative; width: 58px; height: 58px; border-radius: 50%; background: var(--marigold); border: 2px solid var(--ink); display: grid; place-items: center; }
-                                .k-play::after { content: ""; border-left: 16px solid var(--ink); border-top: 10px solid transparent; border-bottom: 10px solid transparent; margin-left: 4px; }
-                                .k-city-vid em { position: absolute; left: 12px; bottom: 10px; font-style: normal; font-weight: 800; font-size: 0.82rem; color: #fff; }
-                                .k-city-body { padding: 16px 18px 18px; }
-                                .k-city-body h3 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; }
-                                .k-city-body > small { color: var(--muted); font-weight: 700; font-size: 0.82rem; }
-                                .k-city-body ul { margin-top: 12px; display: grid; gap: 0; }
-                                .k-city-body li { display: grid; grid-template-columns: 52px 1fr; gap: 10px; padding: 9px 0; border-top: 1.5px solid var(--line); font-weight: 700; line-height: 1.25; }
-                                .k-city-body li span { color: var(--muted); font-size: 0.86rem; }
-                                .k-city-add { margin-top: 12px; display: block; text-align: center; padding: 12px; border-radius: 12px; background: var(--ink); color: #fff; font-weight: 800; }
-
-                                /* taste */
-                                .k-taste { display: grid; gap: 22px; margin-top: 34px; }
-                                .k-taste dt { font-weight: 800; margin-bottom: 8px; }
-                                .k-taste dd { display: flex; flex-wrap: wrap; gap: 8px; }
-                                .k-pill { display: inline-block; padding: 8px 16px; border: 2px solid var(--ink); border-radius: 999px; font-weight: 700; font-size: 0.95rem; }
-                                .k-pill.on { background: var(--ink); color: #fff; }
-                                .k-cap { margin-top: 14px; font-size: 0.85rem; color: var(--muted); }
-                                .k-big { margin-top: 36px; font-size: clamp(1.4rem, 4.6vw, 2rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1.2; max-width: 24ch; }
-
-                                /* seals */
-                                .k-seal svg { width: 100%; height: 100%; }
-                                .k-seals { position: relative; width: 100%; max-width: 400px; height: 330px; justify-self: center; overflow: hidden; }
-                                .k-seals .k-seal { position: absolute; }
-                                .k-seals .a { left: 0; top: 0; width: 190px; height: 190px; color: var(--sky-deep); transform: rotate(-10deg); }
-                                .k-seals .b { right: 0; top: 46px; width: 170px; height: 170px; color: #B45309; transform: rotate(8deg); }
-                                .k-seals .c { left: 24%; top: 178px; width: 150px; height: 150px; color: var(--dusk); transform: rotate(-4deg); }
-
-                                /* sharing */
-                                .k-send { width: 100%; max-width: 420px; justify-self: center; display: grid; gap: 0; }
-                                .k-mail { padding: 12px 16px; border: 2px dashed var(--line); border-radius: 14px; color: var(--muted); font-weight: 700; font-size: 0.92rem; }
-                                .k-mail s { text-decoration-thickness: 2px; }
-                                .k-link { position: relative; margin: 22px 0; padding: 16px 18px; border-radius: 16px; background: var(--dusk); color: #fff; font-weight: 800; box-shadow: 6px 6px 0 var(--marigold); }
-                                .k-link small { display: block; margin-top: 2px; color: var(--dusk-soft); font-weight: 700; font-size: 0.84rem; }
-                                .k-copies { display: grid; gap: 10px; padding-left: 22px; border-left: 3px solid var(--sky); margin-left: 14px; }
-                                .k-copies li { position: relative; padding: 12px 14px; border-radius: 14px; background: var(--paper); border: 1px solid var(--line); font-weight: 700; }
-                                .k-copies li::before { content: ""; position: absolute; left: -25px; top: 50%; width: 22px; border-top: 3px solid var(--sky); }
-                                .k-copies b { font-weight: 800; }
-
-                                /* compare */
-                                .k-cmp { width: 100%; margin-top: 32px; border-collapse: collapse; font-size: 0.95rem; }
-                                .k-cmp th, .k-cmp td { text-align: left; vertical-align: top; padding: 14px 10px 14px 0; border-top: 1px solid var(--line); }
-                                .k-cmp thead th { border-top: 0; font-size: 0.85rem; color: var(--muted); }
-                                .k-cmp thead th:last-child { color: var(--sky-deep); }
-                                .k-cmp tbody th { font-weight: 700; color: var(--muted); width: 24%; }
-                                .k-cmp td:nth-child(2) { color: var(--muted); }
-                                .k-cmp td:last-child { font-weight: 800; padding-right: 0; }
-                                @media (min-width: 700px) { .k-cmp { font-size: 1.05rem; } .k-cmp th, .k-cmp td { padding: 18px 16px 18px 0; } }
-
-                                /* privacy */
-                                .k-ticks { margin-top: 28px; display: grid; gap: 14px; }
-                                .k-ticks li { position: relative; padding-left: 36px; font-weight: 700; }
-                                .k-ticks li::before { content: ""; position: absolute; left: 0; top: 2px; width: 22px; height: 22px; border-radius: 50%; background: var(--marigold); }
-                                .k-ticks li::after { content: ""; position: absolute; left: 7px; top: 7px; width: 6px; height: 10px; border: solid var(--dusk); border-width: 0 3px 3px 0; transform: rotate(45deg) scale(0.85); transform-origin: 60% 60%; }
-                                .k-flow { width: 100%; max-width: 440px; justify-self: center; }
-
-                                /* coming soon */
-                                .k-soon { display: inline-block; margin-bottom: 18px; padding: 5px 14px; border-radius: 999px; background: var(--ink); color: #fff; font-weight: 800; font-size: 0.85rem; }
-                                .k-gold .k-p { color: #3B2A00; }
-                                .k-board { display: grid; }
-                                .k-board li { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 14px 0; border-top: 2px solid var(--ink); font-size: clamp(1.5rem, 5vw, 2.2rem); font-weight: 800; letter-spacing: -0.03em; }
-                                .k-board li:last-child { border-bottom: 2px solid var(--ink); }
-                                .k-board small { font-size: 0.85rem; font-weight: 700; letter-spacing: 0; text-align: right; }
-
-                                /* home screen */
-                                .k-how { display: grid; gap: 24px; margin-top: 32px; }
-                                @media (min-width: 760px) { .k-how { grid-template-columns: 1fr 1fr; gap: 32px; } }
-                                .k-device-card {
-                                background: #fff; border: 1.5px solid var(--line); border-radius: 22px; padding: 26px 24px;
-                                box-shadow: 0 4px 20px rgba(11, 31, 77, 0.05); transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-                                }
-                                .k-device-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(11, 31, 77, 0.09); border-color: var(--sky); }
-                                .k-device-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--paper); }
-                                .k-device-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-                                .k-device-apple { background: #F1F5F9; color: #0F172A; }
-                                .k-device-android { background: #ECFDF5; color: #059669; }
-                                .k-device-sub { display: block; font-size: 0.82rem; font-weight: 700; color: var(--muted); margin-top: 2px; }
-                                .k-steps { display: grid; gap: 14px; list-style: none; padding: 0; margin: 0; }
-                                .k-steps li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.98rem; line-height: 1.5; color: var(--ink); }
-                                .k-step-num { display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--mist); color: var(--sky-deep); font-weight: 800; font-size: 0.82rem; flex-shrink: 0; margin-top: 2px; }
-                                .k-inline-icon { display: inline-flex; align-items: center; justify-content: center; padding: 2px 7px; background: #EEF2F6; border-radius: 6px; font-weight: 800; font-size: 0.85rem; vertical-align: middle; color: var(--sky-deep); }
-                                .k-offline-banner {
-                                margin-top: 32px; display: flex; align-items: flex-start; gap: 16px; background: #EFF6FF; border: 1.5px solid #BFDBFE;
-                                border-radius: 18px; padding: 20px 22px; color: #1E40AF;
-                                }
-                                .k-offline-icon { width: 40px; height: 40px; border-radius: 12px; background: #DBEAFE; color: #2563EB; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-                                .k-offline-text { font-size: 0.95rem; line-height: 1.55; }
-                                .k-offline-text strong { display: block; font-weight: 800; margin-bottom: 2px; color: #1E3A8A; }
-
-                                /* closing */
-                                .k-end-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-                                .k-foot { margin-top: 56px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.2); display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; font-size: 0.88rem; color: var(--dusk-soft); }
-                                .k-foot a { text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
-                                @media (max-width: 480px) { .k-end-cta .k-btn { width: 100%; } .k-book li { grid-template-columns: 96px 1fr; } .k-book li svg { width: 96px; height: 68px; } }
-
-
-                                /* ------------------------------------------------------------------
-                                Flat theme: one blue accent on white and light grey. No hard shadows, no tilted cards, no second accent colour.
-                                ------------------------------------------------------------------ */
-                                .k-mist, .k-gold { background: var(--paper); }
-                                .k-sec { background: var(--paper); }
-                                .k-sec.k-white { background: #fff; }
-                                .k-sec .k-h2 { color: var(--dusk); }
-                                .k-sec.k-white .k-h2, .k-mist .k-h2 { color: var(--dusk); }
-                                .k-dark { background: #fff; color: var(--ink); }
-                                .k-dark .k-p, .k-gold .k-p { color: var(--muted); }
-                                .k-line li { background: #fff; border: 0; box-shadow: 0 1px 2px rgba(15,35,90,.06), 0 6px 16px rgba(15,35,90,.06); }
-                                .k-line .now { box-shadow: 0 0 0 2px var(--sky-deep), 0 10px 24px rgba(29,78,216,.18); }
-                                .k-line .later { background: transparent; border: 1px dashed #B6C5E4; }
-                                .k-book { border: 0; border-radius: 18px; box-shadow: 0 2px 4px rgba(15,35,90,.06), 0 14px 30px rgba(15,35,90,.12); transform: none; }
-                                .k-book::before { display: none; }
-                                .k-city { border: 0; box-shadow: 0 2px 4px rgba(15,35,90,.06), 0 14px 30px rgba(15,35,90,.12); }
-                                .k-play { background: var(--sky-deep); border-color: #fff; }
-                                .k-play::after { border-left-color: #fff; }
-                                .k-city-add { background: var(--sky-deep); }
-                                .k-pill { border: 1px solid var(--line); background: #fff; }
-                                .k-pill.on { background: var(--sky-deep); border-color: var(--sky-deep); }
-                                .k-link { background: var(--sky-deep); box-shadow: none; }
-                                .k-link small { color: rgba(255, 255, 255, 0.85); }
-                                .k-ticks li::before { background: var(--sky-deep); }
-                                .k-ticks li::after { border-color: #fff; }
-                                .k-soon { background: var(--sky-deep); }
-                                .k-board li { border-top: 1px solid var(--line); }
-                                .k-board li:last-child { border-bottom: 1px solid var(--line); }
-                                .k-seals .b { color: var(--sky); } .k-seals .c { color: var(--sky-deep); }
-                                .k-fold { margin-top: 24px; }
-                                .k-fold > summary { cursor: pointer; font-weight: 800; color: var(--sky-deep); padding: 12px 0; min-height: 44px; list-style: none; }
-                                .k-fold > summary::-webkit-details-marker { display: none; }
-                                .k-fold > summary::after { content: " \25BE"; }
-                                .k-fold[open] > summary::after { content: " \25B4"; }
-                                .k-device-card { background: none; border: 0; border-top: 1px solid #E3E9F4; border-radius: 0; box-shadow: none; padding: 20px 0 6px; transition: none; }
-                                .k-device-card:hover { transform: none; box-shadow: none; border-color: #E3E9F4; }
-                                .k-device-header { border-bottom: 0; padding-bottom: 0; margin-bottom: 14px; }
-                                .k-device-apple, .k-device-android { background: none; color: var(--sky-deep); }
-                                .k-offline-banner { background: none; border: 0; border-top: 1px solid #E3E9F4; border-radius: 0; padding: 20px 0 0; color: var(--muted); }
-                                .k-offline-icon { display: none; }
-                                .k-offline-text strong { color: var(--ink); display: inline; }
-                                .k-final { background: var(--sky-deep); color: #fff; }
-                                .k-final .k-h2 { max-width: 20ch; }
-                                .k-final .k-btn--gold { background: #fff; color: var(--sky-deep); }
-                                .k-final .k-btn--gold:hover { background: #EEF3FD; }
-                                .k-end-cta { align-items: center; gap: 8px 22px; }
-                                .k-quiet { color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; padding: 10px 0; }
-                                .k-final :focus-visible { outline-color: #fff; }
-                                .k-foot { border-top-color: rgba(255, 255, 255, 0.25); color: rgba(255, 255, 255, 0.85); }
-                                @media (max-width: 480px) { .k-end-cta .k-btn { width: 100%; } }
-
-                                @media (prefers-reduced-motion: reduce) {
-                                html { scroll-behavior: auto; }
-                                *, *::before, *::after { animation: none !important; transition: none !important; }
-                                }
-                              </style>
+                                 @media (prefers-reduced-motion: reduce) {
+                                   html { scroll-behavior: auto; }
+                                   *, *::before, *::after { animation: none !important; transition: none !important; }
+                                 }
+                               </style>
                             </head>
   <body>
 
@@ -556,37 +362,7 @@
         <circle cx="12" cy="13" r="3.5"/>
       </symbol>
 
-      <!-- Lotus Mahal -->
-      <symbol id="p-a" viewBox="0 0 120 80" preserveAspectRatio="xMidYMid slice">
-        <rect width="120" height="80" fill="#FFD58A"/>
-        <circle cx="96" cy="20" r="10" fill="#FFF3D1"/>
-        <rect y="62" width="120" height="18" fill="#B8864B"/>
-        <rect x="32" y="44" width="56" height="18" fill="#9C5A2E"/>
-        <path d="M40 62v-7a4.5 4.5 0 0 1 9 0v7zM55.5 62v-7a4.5 4.5 0 0 1 9 0v7zM71 62v-7a4.5 4.5 0 0 1 9 0v7z" fill="#FFD58A"/>
-        <path d="M36 44a8 8 0 0 1 16 0zM68 44a8 8 0 0 1 16 0z" fill="#7A3E1D"/>
-        <path d="M50 44a10 10 0 0 1 20 0z" fill="#7A3E1D"/>
-        <rect x="59" y="28" width="2" height="6" fill="#7A3E1D"/>
-      </symbol>
-      <!-- Elephant Stables -->
-      <symbol id="p-b" viewBox="0 0 120 80" preserveAspectRatio="xMidYMid slice">
-        <rect width="120" height="80" fill="#BFD8FF"/>
-        <circle cx="20" cy="18" r="9" fill="#FFF6DA"/>
-        <rect y="64" width="120" height="16" fill="#C9B27A"/>
-        <rect x="10" y="44" width="100" height="20" fill="#E3C9A0"/>
-        <path d="M14 44a9 9 0 0 1 18 0zM34 44a9 9 0 0 1 18 0zM54 44a9 9 0 0 1 18 0zM74 44a9 9 0 0 1 18 0zM94 44a9 9 0 0 1 14 0z" fill="#C79B63"/>
-        <path d="M17 64v-8a6 6 0 0 1 12 0v8zM37 64v-8a6 6 0 0 1 12 0v8zM57 64v-8a6 6 0 0 1 12 0v8zM77 64v-8a6 6 0 0 1 12 0v8z" fill="#8A5A3C"/>
-      </symbol>
-      <!-- Boulders by the Tungabhadra -->
-      <symbol id="p-c" viewBox="0 0 120 80" preserveAspectRatio="xMidYMid slice">
-        <rect width="120" height="80" fill="#FFB3A0"/>
-        <circle cx="30" cy="30" r="12" fill="#FFE4B5"/>
-        <rect y="60" width="120" height="20" fill="#5C8FB8"/>
-        <path d="M0 68q10-4 20 0t20 0 20 0 20 0 20 0 20 0" fill="none" stroke="#A9CCE8" stroke-width="2"/>
-        <ellipse cx="34" cy="58" rx="24" ry="15" fill="#7B5B4C"/>
-        <ellipse cx="68" cy="52" rx="19" ry="21" fill="#8C6A59"/>
-        <ellipse cx="96" cy="60" rx="20" ry="12" fill="#6B4A3A"/>
-      </symbol>
-    </svg>
+      </svg>
 
     <header class="k-hero">
       <div class="k-wrap">
@@ -633,10 +409,10 @@
               <div id="options-container" class="k-launch hidden"></div>
               <noscript>
                 <div class="k-launch">
-                  <a href="curated_trips.html" class="k-option-card"><span class="k-option-body"><span class="k-option-title">Explore Ideas</span><span class="k-option-desc">Curated routes &amp; 159+ city guides.</span></span></a>
-                  <a href="virtual_trip.html" class="k-option-card k-option-primary"><span class="k-option-body"><span class="k-option-title">Plan a Trip</span><span class="k-option-desc">Build a custom day-by-day itinerary.</span></span></a>
-                  <a href="view_trip.html" class="k-option-card"><span class="k-option-body"><span class="k-option-title">Trip Companion</span><span class="k-option-desc">Open your live itinerary, tickets &amp; maps.</span></span></a>
-                  <a href="visited.html" class="k-option-card"><span class="k-option-body"><span class="k-option-title">Travel Passport</span><span class="k-option-desc">Log visited places &amp; create share cards.</span></span></a>
+                  <a href="curated_trips.html" class="k-option-card"><span class="k-option-body"><span class="k-option-phase">BEFORE YOU GO</span><span class="k-option-title">Explore Ideas</span><span class="k-option-desc">Curated routes &amp; 159+ city guides.</span></span></a>
+                  <a href="virtual_trip.html" class="k-option-card k-option-primary"><span class="k-option-body"><span class="k-option-phase">BEFORE YOU GO</span><span class="k-option-title">Plan a Trip</span><span class="k-option-desc">Build a custom day-by-day itinerary.</span></span></a>
+                  <a href="view_trip.html" class="k-option-card"><span class="k-option-body"><span class="k-option-phase">ON THE ROAD</span><span class="k-option-title">Trip Companion</span><span class="k-option-desc">Open your live itinerary, tickets &amp; maps.</span></span></a>
+                  <a href="visited.html" class="k-option-card"><span class="k-option-body"><span class="k-option-phase">MEMORIES &amp; STAMPS</span><span class="k-option-title">Travel Passport</span><span class="k-option-desc">Log visited places &amp; create share cards.</span></span></a>
                 </div>
               </noscript>
             </div>
@@ -650,413 +426,132 @@
     </header>
 
     <main>
-      <!-- 1. Plan it your way -->
-      <section class="k-sec" aria-labelledby="h-plan">
-        <div class="k-wrap k-two">
-          <div>
-            <h2 class="k-h2" id="h-plan">Plan it exactly the way you want.</h2>
-            <p class="k-p">Your trip is a list of steps, and every step is yours to shape: what it is, when, and where. Add a Google Maps link, a note, a ticket or a PDF. Move steps around when the day changes. On the day, KYT shows the step you're on.</p>
-            <ul class="k-facts">
-              <li>Flights, meals, sights and rest stops are all just steps</li>
-              <li>Reorder steps whenever plans change</li>
-              <li>Keep each ticket or PDF with the step it belongs to</li>
-            </ul>
-          </div>
-          <ol class="k-line" aria-label="A sample morning in Hampi">
-            <li class="done">
-              <span class="t">08:00</span>
-              <span>Breakfast near the bazaar</span>
-            </li>
-            <li class="done">
-              <span class="t">09:30</span>
-              <span>Lotus Mahal</span>
-            </li>
-            <li class="now">
-              <span class="t">10:45</span>
-              <span>
-                <strong>Elephant Stables</strong>
-                <small>Zenana Enclosure, Hampi</small>
-              </span>
-            </li>
-            <li class="later">
-              <span class="t">+5</span>
-              <span>more steps, waiting until you need them</span>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <!-- 2. Photos on every step -->
-      <section class="k-sec k-mist" aria-labelledby="h-album">
-        <div class="k-wrap k-two">
-          <div>
-            <h2 class="k-h2" id="h-album">Every step gets its own photos.</h2>
-            <p class="k-p">Add photos to the step they belong to, right when you take them. When the trip is over, KYT lines them up day by day, step by step, in a memory book you can print or save as a PDF.</p>
-            <ul class="k-facts">
-              <li>No more scrolling a camera roll to find the temple</li>
-              <li>The plan you made becomes the story you tell</li>
-            </ul>
-          </div>
-          <div class="k-book" role="img" aria-label="A memory book page: Hampi, day 2, with a photo for each step">
-            <h3>Hampi, day 2</h3>
-            <small>Your memory book</small>
-            <ul aria-hidden="true">
-              <li>
-                <svg viewBox="0 0 120 80" preserveAspectRatio="xMidYMid slice">
-                  <use href="#p-a" width="120" height="80"/>
-                </svg>
-                <div>
-                  <strong>Lotus Mahal</strong>
-                  <span>09:30</span>
-                </div>
-              </li>
-              <li>
-                <svg viewBox="0 0 120 80" preserveAspectRatio="xMidYMid slice">
-                  <use href="#p-b" width="120" height="80"/>
-                </svg>
-                <div>
-                  <strong>Elephant Stables</strong>
-                  <span>10:45</span>
-                </div>
-              </li>
-              <li>
-                <svg viewBox="0 0 120 80" preserveAspectRatio="xMidYMid slice">
-                  <use href="#p-c" width="120" height="80"/>
-                </svg>
-                <div>
-                  <strong>Lunch by the Tungabhadra</strong>
-                  <span>13:00</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- 3. Cities come alive -->
-      <section class="k-sec k-white" aria-labelledby="h-city">
-        <div class="k-wrap k-two">
-          <div>
-            <h2 class="k-h2" id="h-city">Every city comes with things to see, and videos to watch.</h2>
-            <p class="k-p">Open any of 159 cities and KYT lays out its places to see, with a suggested time of day for each. Then watch popular travel videos about the city, right on the page, before you decide to go.</p>
-            <ul class="k-facts">
-              <li>Places to see, each with a suggested time of day</li>
-              <li>Popular travel videos for the city, from creators who've been</li>
-              <li>Nearby cities, so one trip can grow into two</li>
-            </ul>
-          </div>
-          <div class="k-city" role="img" aria-label="A city page for Jaipur: a travel video, places to see with suggested times, and a button to add the city to your trip">
-            <div class="k-city-vid" aria-hidden="true">
-              <svg class="bg" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice">
-                <rect width="320" height="180" fill="#0B1F4D"/>
-                <circle cx="250" cy="52" r="22" fill="#2563EB"/>
-                <path d="M0 130 L50 96 L96 124 L150 82 L214 128 L268 92 L320 122 V180 H0Z" fill="#1D4ED8"/>
-                <path d="M0 154 L70 124 L140 150 L220 118 L320 150 V180 H0Z" fill="#2563EB"/>
-              </svg>
-              <span class="k-play"></span>
-              <em>Jaipur travel guides</em>
-            </div>
-            <div class="k-city-body" aria-hidden="true">
-              <h3>Jaipur</h3>
-              <small>Rajasthan</small>
-              <ul>
-                <li>
-                  <span>08:00</span>Hawa Mahal morning view
-                </li>
-                <li>
-                  <span>10:00</span>Amber Fort &amp; Sheesh Mahal
-                </li>
-                <li>
-                  <span>13:00</span>City Palace &amp; Jantar Mantar
-                </li>
-                <li>
-                  <span>16:00</span>Johari Bazaar &amp; Bapu Bazaar shopping
-                </li>
-                <li>
-                  <span>18:00</span>Nahargarh Fort sunset
-                </li>
-              </ul>
-              <span class="k-city-add">Add to my trip</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 3b. Explore by taste -->
-      <section class="k-sec" aria-labelledby="h-taste">
+      <!-- Why KYT: 3-column summary -->
+      <section class="k-sec k-why" aria-labelledby="h-why">
         <div class="k-wrap">
-          <h2 class="k-h2" id="h-taste">Not sure where to go? Start with how you like to travel.</h2>
-          <p class="k-p">Explore Indian destinations virtually. Say what draws you, what you eat and how fast you like to go, and KYT narrows the cities to the ones that suit you.</p>
-          <dl class="k-taste">
-            <div>
-              <dt>What draws you</dt>
-              <dd>
-                <span class="k-pill on">Spiritual</span>
-                <span class="k-pill">Cultural</span>
-                <span class="k-pill">Adventure</span>
-                <span class="k-pill">Culinary</span>
-                <span class="k-pill">A bit of everything</span>
-              </dd>
+          <div class="k-why-header">
+            <span class="k-why-pill">Why KYT</span>
+            <h2 class="k-h2" id="h-why">Designed for travel, not for selling bookings.</h2>
+            <p class="k-p">KYT runs completely in your browser, stays private, and works even when you're 30,000 feet in the air or off the grid.</p>
+          </div>
+          <div class="k-why-grid">
+            <div class="k-why-card">
+              <div class="k-why-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+              </div>
+              <h3 class="k-h3">Offline-First &amp; Private</h3>
+              <p class="k-p">No account, no tracking, and no servers. All your itineraries, bookings, and notes remain stored securely on your own device.</p>
             </div>
-            <div>
-              <dt>What you eat</dt>
-              <dd>
-                <span class="k-pill">Anything</span>
-                <span class="k-pill">Vegetarian</span>
-                <span class="k-pill">Jain</span>
-                <span class="k-pill on">Satvik</span>
-              </dd>
+            <div class="k-why-card">
+              <div class="k-why-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="9 11 12 14 22 4"/>
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                </svg>
+              </div>
+              <h3 class="k-h3">Step-by-Step Control</h3>
+              <p class="k-p">Map out your day hour by hour. Keep Google Maps directions, tickets, and entry passes right next to the step they belong to.</p>
             </div>
-            <div>
-              <dt>Your pace</dt>
-              <dd>
-                <span class="k-pill">Short</span>
-                <span class="k-pill">Standard</span>
-                <span class="k-pill on">Deep</span>
-              </dd>
+            <div class="k-why-card">
+              <div class="k-why-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                </svg>
+              </div>
+              <h3 class="k-h3">Shareable Memory Books</h3>
+              <p class="k-p">Add photos directly to each stop as you travel. Turn your finished trip into a printable travel log or share a copy with family.</p>
             </div>
-          </dl>
-          <p class="k-cap">An example. In the app you choose your own mix.</p>
-          <p class="k-big">159 cities across 31 states and union territories, with 674 places to see.</p>
-        </div>
-      </section>
-
-      <!-- 4. The seal -->
-      <section class="k-sec k-white" aria-labelledby="h-seal">
-        <div class="k-wrap k-two">
-          <div>
-            <h2 class="k-h2" id="h-seal">Earn a seal for every place you've been.</h2>
-            <p class="k-p">Mark a destination as visited and it gets the Been There Done That seal in your digital passport. KYT adds up your miles, your days on the road and the things you did. Finish a trip and it makes a memory card, as a PDF, to share.</p>
-          </div>
-          <div class="k-seals" role="img" aria-label="Been There Done That seals for Hampi, Varanasi and Jaisalmer">
-            <div class="k-seal a" data-city="HAMPI" data-sub="DAY 2"></div>
-            <div class="k-seal b" data-city="VARANASI" data-sub="GHATS"></div>
-            <div class="k-seal c" data-city="JAISALMER" data-sub="DESERT"></div>
           </div>
         </div>
       </section>
 
-      <!-- 5. Sharing -->
-      <section class="k-sec k-mist" aria-labelledby="h-share">
-        <div class="k-wrap k-two">
-          <div>
-            <h2 class="k-h2" id="h-share">Hassle-free sharing with friends and family.</h2>
-            <p class="k-p">No more long emails about who is booking what. Share the plan with one tap, as a link or a small file. Everyone who opens it gets their own copy, and adds their own tickets, documents and maps.</p>
-            <p class="k-p">No sign-up, and no waiting to be invited.</p>
-          </div>
-          <div class="k-send">
-            <p class="k-mail">
-              <s>Fwd: Re: Hampi plan v7 (final) (really final)</s>
-            </p>
-            <div class="k-link">
-              One link, sent once<small>Everyone opens it on their own phone</small>
-            </div>
-            <ul class="k-copies">
-              <li>
-                <b>Asha</b> adds her train ticket
-              </li>
-              <li>
-                <b>Rohan</b> pins his hotel on the map
-              </li>
-              <li>
-                <b>Mum</b> saves the temple pass
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- 6. Different -->
-      <section class="k-sec" aria-labelledby="h-cmp">
-        <div class="k-wrap">
-          <h2 class="k-h2" id="h-cmp">Booking sites sell. KYT helps you plan.</h2>
-          <p class="k-p">KYT doesn't sell tickets or rooms. It helps you design a trip you'll enjoy and remember. Book wherever you like.</p>
-          <table class="k-cmp">
-            <thead>
-              <tr>
-                <th scope="col">
-                  <span class="k-sr">Topic</span>
-                </th>
-                <th scope="col">Most booking sites</th>
-                <th scope="col">KYT</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Built for</th>
-                <td>Selling tickets and stays</td>
-                <td>Building the trip you imagine</td>
-              </tr>
-              <tr>
-                <th scope="row">Your plan</th>
-                <td>A cart and a confirmation email</td>
-                <td>Steps in your order, with maps and notes</td>
-              </tr>
-              <tr>
-                <th scope="row">Finding a place</th>
-                <td>Sorted by price and offers</td>
-                <td>Chosen by your taste: interest, food and pace</td>
-              </tr>
-              <tr>
-                <th scope="row">Knowing a place</th>
-                <td>A listing and a few photos</td>
-                <td>Places to see, plus popular travel videos for the city</td>
-              </tr>
-              <tr>
-                <th scope="row">Memories</th>
-                <td>The trip ends at check-out</td>
-                <td>Photos kept on every step, as a memory book</td>
-              </tr>
-              <tr>
-                <th scope="row">Sharing</th>
-                <td>Forward the confirmation</td>
-                <td>One link, and everyone keeps their own copy</td>
-              </tr>
-              <tr>
-                <th scope="row">Your account</th>
-                <td>Sign up and sign in</td>
-                <td>None. Your trips stay on your phone</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- 7. Privacy + flight mode -->
-      <section class="k-sec k-white" aria-labelledby="h-privacy">
-        <div class="k-wrap k-two">
-          <div>
-            <h2 class="k-h2" id="h-privacy">Your plans stay on your phone.</h2>
-            <p class="k-p">There is no sign-up and no KYT server. Your itinerary, notes, photos and bookings are saved on this device, and the documents you attach are read right there too.</p>
-            <ul class="k-ticks">
-              <li>No account to create</li>
-              <li>No cloud sync to switch on</li>
-              <li>Works in flight mode, so you can sort photos and add notes at 30,000 feet</li>
-            </ul>
-          </div>
-          <svg class="k-flow" viewBox="0 0 360 230" role="img" aria-labelledby="flowT flowD">
-            <title id="flowT">Your plans stay on your phone</title>
-            <desc id="flowD">A phone holding your trip, with a blocked line to a server. Nothing is sent.</desc>
-            <rect x="22" y="26" width="112" height="182" rx="20" fill="#12306E" stroke="#2563EB" stroke-width="4"/>
-            <rect x="40" y="52" width="76" height="12" rx="6" fill="#2563EB"/>
-            <rect x="40" y="76" width="60" height="8" rx="4" fill="#5C79B8"/>
-            <rect x="40" y="94" width="68" height="8" rx="4" fill="#5C79B8"/>
-            <rect x="40" y="124" width="76" height="48" rx="10" fill="#1B3F86"/>
-            <path d="M52 148l8 8 16-18" fill="none" stroke="#2563EB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="78" y="226" text-anchor="middle" fill="#fff" font-size="13" font-weight="800" font-family="inherit">Your phone</text>
-            <path d="M138 118 H220" stroke="#6C86BF" stroke-width="3" stroke-dasharray="6 7" stroke-linecap="round"/>
-            <circle cx="180" cy="118" r="17" fill="#0B1F4D" stroke="#FF8A80" stroke-width="3.5"/>
-            <path d="M172 110l16 16M188 110l-16 16" stroke="#FF8A80" stroke-width="3.5" stroke-linecap="round"/>
-            <path d="M262 150h56a26 26 0 0 0 3-51 34 34 0 0 0-64-6 28 28 0 0 0 5 57z" fill="none" stroke="#6C86BF" stroke-width="3.5" stroke-dasharray="6 7" stroke-linejoin="round"/>
-            <text x="290" y="184" text-anchor="middle" fill="#B9C8E8" font-size="13" font-weight="800" font-family="inherit">A server</text>
-            <text x="290" y="210" text-anchor="middle" fill="#B9C8E8" font-size="12" font-weight="700" font-family="inherit">Nothing sent</text>
-          </svg>
-        </div>
-      </section>
-
-      <!-- 8. Coming soon -->
-      <section class="k-sec" aria-labelledby="h-soon">
-        <div class="k-wrap k-two">
-          <div>
-            <span class="k-soon">Curated trips</span>
-            <h2 class="k-h2" id="h-soon">Start from a ready-made weekend.</h2>
-            <p class="k-p">Hand-picked long-weekend trips with day-by-day plans and festival dates. Open one, then make it yours. More are being added.</p>
-          </div>
-          <ul class="k-board" aria-label="Curated trips available now">
-            <li>
-              Delhi <small>Mathura &amp; Vrindavan</small>
-            </li>
-            <li>
-              Bengaluru <small>Tirupati, two ways</small>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- 9. Home screen -->
+      <!-- Home Screen / Offline Setup -->
       <section class="k-sec k-white" id="home-screen" aria-labelledby="h-home">
         <div class="k-wrap">
           <h2 class="k-h2" id="h-home">Add KYT to your home screen.</h2>
           <p class="k-p">There is no app store and nothing to download. KYT opens full screen, like any app on your phone.</p>
           <details class="k-fold">
-          <summary>Show the steps</summary>
-          <div class="k-how">
-            <div class="k-device-card">
-              <div class="k-device-header">
-                <div class="k-device-icon k-device-apple">
-                  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.38c.62-.75 1.04-1.8 1.01-2.85-.9.04-2 .6-2.65 1.34-.56.64-1.06 1.7-1 2.76 1 .08 2.02-.5 2.64-1.25z"/>
-                  </svg>
+            <summary>Show the steps</summary>
+            <div class="k-how">
+              <div class="k-device-card">
+                <div class="k-device-header">
+                  <div class="k-device-icon k-device-apple">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.38c.62-.75 1.04-1.8 1.01-2.85-.9.04-2 .6-2.65 1.34-.56.64-1.06 1.7-1 2.76 1 .08 2.02-.5 2.64-1.25z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="k-h3">iPhone &amp; iPad</h3>
+                    <span class="k-device-sub">Safari browser</span>
+                  </div>
                 </div>
-                <div>
-                  <h3 class="k-h3">iPhone &amp; iPad</h3>
-                  <span class="k-device-sub">Safari browser</span>
-                </div>
+                <ol class="k-steps">
+                  <li>
+                    <span class="k-step-num">1</span>
+                    <span>
+                      Tap the <strong>Share</strong> button <span class="k-inline-icon">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                          <polyline points="16 6 12 2 8 6"/>
+                          <line x1="12" y1="2" x2="12" y2="15"/>
+                        </svg>
+                      </span> in Safari's bottom toolbar.
+                    </span>
+                  </li>
+                  <li>
+                    <span class="k-step-num">2</span>
+                    <span>
+                      Scroll down and choose <strong>Add to Home Screen</strong>.
+                    </span>
+                  </li>
+                  <li>
+                    <span class="k-step-num">3</span>
+                    <span>
+                      Tap <strong>Add</strong> in the top right corner.
+                    </span>
+                  </li>
+                </ol>
+                <p class="k-device-note"><strong>Already using KYT in Safari?</strong> The Home Screen app keeps its own storage and starts empty. Before adding it, tap <em>Save or open your trips</em> in the menu above and save a file. Then open the Home Screen app and open that file there.</p>
               </div>
-              <ol class="k-steps">
-                <li>
-                  <span class="k-step-num">1</span>
-                  <span>
-                    Tap the <strong>Share</strong> button <span class="k-inline-icon">
-                      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-                        <polyline points="16 6 12 2 8 6"/>
-                        <line x1="12" y1="2" x2="12" y2="15"/>
-                      </svg>
-                    </span> in Safari's bottom toolbar.
-                  </span>
-                </li>
-                <li>
-                  <span class="k-step-num">2</span>
-                  <span>
-                    Scroll down and choose <strong>Add to Home Screen</strong>.
-                  </span>
-                </li>
-                <li>
-                  <span class="k-step-num">3</span>
-                  <span>
-                    Tap <strong>Add</strong> in the top right corner.
-                  </span>
-                </li>
-              </ol>
-              <p class="k-device-note"><strong>Already using KYT in Safari?</strong> The Home Screen app keeps its own storage and starts empty. Before adding it, tap <em>Save or open your trips</em> in the menu above and save a file. Then open the Home Screen app and open that file there.</p>
-            </div>
 
-            <div class="k-device-card">
-              <div class="k-device-header">
-                <div class="k-device-icon k-device-android">
-                  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
-                    <path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-4.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 2.23 12.95 2 12 2c-.96 0-1.86.23-2.66.63L7.85 1.14c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.73 4.29 5.65 6.01 5.52 8h12.95c-.12-1.99-1.2-3.71-2.94-4.84zM10 6c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm4 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
-                  </svg>
+              <div class="k-device-card">
+                <div class="k-device-header">
+                  <div class="k-device-icon k-device-android">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+                      <path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-4.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 2.23 12.95 2 12 2c-.96 0-1.86.23-2.66.63L7.85 1.14c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.73 4.29 5.65 6.01 5.52 8h12.95c-.12-1.99-1.2-3.71-2.94-4.84zM10 6c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm4 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="k-h3">Android</h3>
+                    <span class="k-device-sub">Chrome browser</span>
+                  </div>
                 </div>
-                <div>
-                  <h3 class="k-h3">Android</h3>
-                  <span class="k-device-sub">Chrome browser</span>
-                </div>
+                <ol class="k-steps">
+                  <li>
+                    <span class="k-step-num">1</span>
+                    <span>
+                      Tap the <strong>More</strong> menu <span class="k-inline-icon">&#8942;</span> in Chrome.
+                    </span>
+                  </li>
+                  <li>
+                    <span class="k-step-num">2</span>
+                    <span>
+                      Choose <strong>Add to Home screen</strong> or <strong>Install app</strong>.
+                    </span>
+                  </li>
+                  <li>
+                    <span class="k-step-num">3</span>
+                    <span>
+                      Tap <strong>Install</strong> or <strong>Add</strong> to place KYT on your screen.
+                    </span>
+                  </li>
+                </ol>
               </div>
-              <ol class="k-steps">
-                <li>
-                  <span class="k-step-num">1</span>
-                  <span>
-                    Tap the <strong>More</strong> menu <span class="k-inline-icon">⋮</span> in Chrome.
-                  </span>
-                </li>
-                <li>
-                  <span class="k-step-num">2</span>
-                  <span>
-                    Choose <strong>Add to Home screen</strong> or <strong>Install app</strong>.
-                  </span>
-                </li>
-                <li>
-                  <span class="k-step-num">3</span>
-                  <span>
-                    Tap <strong>Install</strong> or <strong>Add</strong> to place KYT on your screen.
-                  </span>
-                </li>
-              </ol>
             </div>
-          </div>
-
           </details>
 
           <div class="k-offline-banner">
@@ -1073,22 +568,13 @@
         </div>
       </section>
 
-      <!-- 10. Close -->
-      <section class="k-sec k-final" aria-labelledby="h-go">
-        <div class="k-wrap">
-          <h2 class="k-h2" id="h-go">Pick a place. Plan the first step.</h2>
-          <div class="k-end-cta">
-            <a class="k-btn k-btn--gold" href="virtual_trip.html">Start a new virtual trip</a>
-            <a class="k-quiet" href="curated_trips.html">AI Curated Trips</a>
-            <a class="k-quiet" href="configure_trip.html">Build a trip manually</a>
-            <a class="k-quiet" href="visited.html">My digital passport</a>
-          </div>
-          <div class="k-foot">
-            <span>KYT, Know Your Travel. Your trips stay on your device.</span>
-            <a href="#launch">Back to the top</a>
-          </div>
+      <!-- Minimal footer -->
+      <footer class="k-foot-minimal">
+        <div class="k-wrap k-foot-content">
+          <span>KYT, Know Your Travel &bull; Your trips stay on your device.</span>
+          <a href="#launch">Back to the top &uarr;</a>
         </div>
-      </section>
+      </footer>
     </main>
 
     <script src="./lib/lucide.js?v=122"></script>
