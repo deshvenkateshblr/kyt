@@ -16,16 +16,21 @@ document.addEventListener('DOMContentLoaded', async () => {
       `<span class="k-option-body"><span class="k-option-title">${title}</span><span class="k-option-desc">${desc}</span></span>` +
       `<i data-lucide="chevron-right" class="k-option-arrow"></i></a>`;
 
+  const subLink = isReturningUser
+    ? `<div class="k-sub-row"><a href="configure_trip.html" class="k-sub-link">Edit live steps, times &amp; tickets &rarr;</a></div>`
+    : `<div class="k-sub-row"><a href="configure_trip.html" class="k-sub-link">Have tickets booked? Build steps manually &rarr;</a></div>`;
+
   const html = isReturningUser
-    ? row('view_trip.html', 'plane', 'View Current Trip', 'Your live itinerary, tickets and photos.', true) +
-      row('configure_trip.html', 'settings-2', 'Edit Live Itinerary', 'Add steps, change times, attach tickets.') +
-      row('virtual_trip.html', 'compass', 'My Virtual Trips', 'Your saved multi-city plans.') +
-      row('curated_trips.html', 'sparkles', 'AI Curated Journeys', 'Ready-made trips with day-by-day plans.') +
-      row('visited.html', 'stamp', 'India Explorer Passport', 'Stamp the places you have been.')
-    : row('virtual_trip.html', 'compass', 'Start a Virtual Trip', 'Pick cities and get a day-by-day plan.', true) +
-      row('configure_trip.html', 'calendar-check-2', 'Upcoming Trip', 'Tickets and hotels already booked? Start here.') +
-      row('curated_trips.html', 'sparkles', 'AI Curated Journeys', 'Not sure where to go? Start with ideas.') +
-      row('visited.html', 'stamp', 'India Explorer Passport', 'Mark places you have visited and share a card.');
+    ? row('view_trip.html', 'plane', 'Trip Companion', 'Live schedule, tickets, maps & photos.', true) +
+      subLink +
+      row('virtual_trip.html', 'compass', 'Plan a Trip', 'Build a custom day-by-day itinerary.') +
+      row('curated_trips.html', 'sparkles', 'Explore Ideas', 'Curated routes & 159+ city guides.') +
+      row('visited.html', 'stamp', 'Travel Passport', 'Log visited places & create share cards.')
+    : row('virtual_trip.html', 'compass', 'Plan a Trip', 'Build a custom day-by-day itinerary.', true) +
+      subLink +
+      row('curated_trips.html', 'sparkles', 'Explore Ideas', 'Curated routes & 159+ city guides.') +
+      row('view_trip.html', 'plane', 'Trip Companion', 'Live schedule, tickets, maps & photos.') +
+      row('visited.html', 'stamp', 'Travel Passport', 'Log visited places & create share cards.');
 
   container.innerHTML = html;
   lucide.createIcons();

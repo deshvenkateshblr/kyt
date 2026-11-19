@@ -22,12 +22,12 @@ async function addStep(page, title, where) {
   await page.waitForSelector('#step-form-view.hidden', { state: 'attached' });   // the form closes once the device write is done
 }
 
-test('new user sees the new-user launcher with all four entry points', async () => {
+test('new user sees the new-user launcher with all entry points', async () => {
   const { context, page } = await newPhone(env.browser);
   await page.goto(env.base + '/index.html');
   await page.waitForSelector('#options-container a');
   const hrefs = await page.$$eval('#options-container a', as => as.map(a => a.getAttribute('href')));
-  assert.deepEqual(hrefs.sort(), ['configure_trip.html', 'curated_trips.html', 'virtual_trip.html', 'visited.html']);
+  assert.deepEqual(hrefs.sort(), ['configure_trip.html', 'curated_trips.html', 'view_trip.html', 'virtual_trip.html', 'visited.html']);
   await context.close();
 });
 
@@ -197,7 +197,7 @@ test('End Current Trip clears the live trip (kept in Past trips) and the launche
   await page.waitForURL('**/virtual_trip.html');
   await page.goto(env.base + '/index.html');
   await page.waitForSelector('#options-container a');
-  assert.equal(await page.locator('#options-container a[href="view_trip.html"]').count(), 0);
+  assert.match(await page.locator('.k-option-primary').first().getAttribute('href'), /virtual_trip/);
   await context.close();
 });
 
