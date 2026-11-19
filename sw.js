@@ -51,6 +51,8 @@ const APP_SHELL = [
   './js/page-curated.js',
   './js/page-trip-detail.js',
   './data/cities.js',
+  './data/distance_matrix.js',
+  './data/city_videos_data.js',
   './data/weather.js',
   './js/weather-seasons.js',
   './js/pdf-scripts.js',
