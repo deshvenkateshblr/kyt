@@ -1,0 +1,362 @@
+{
+  "schema": 1,
+  "id": "bangalore-wayanad-misty-hills-wildlife-3d",
+  "rev": 1,
+  "status": "approved",
+  "title": "Misty Hills & Wildlife Corridor: Bangalore to Wayanad Road Trip",
+  "tagline": "A scenic 3-day road getaway from Bangalore through the Bandipur tiger reserve to Wayanad: prehistoric Edakkal Caves, Banasura Sagar Dam speed boating, Soochipara Falls, ancient Thirunelli Temple, and emerald tea plantations.",
+  "originCity": "bengaluru",
+  "originName": "Bengaluru",
+  "durationDays": 3,
+  "kind": "weekend",
+  "bestMonths": [
+    1,
+    2,
+    3,
+    9,
+    10,
+    11,
+    12
+  ],
+  "faiths": [],
+  "taste": {
+    "intent": "nature",
+    "diet": "any",
+    "pace": "standard"
+  },
+  "audience": [],
+  "budget": "mid",
+  "track": "",
+  "ideaId": "",
+  "variantOf": "",
+  "transport": {
+    "mode": "road",
+    "note": "Scenic drive via Bengaluru-Mysuru Expressway (NH 275) and Bandipur-Muthanga wildlife corridor (NH 766)",
+    "approxTravelHours": 6
+  },
+  "cities": [
+    "bengaluru",
+    "wayanad"
+  ],
+  "highlights": [
+    "Scenic road trip along the Bengaluru–Mysuru Expressway and through the lush Bandipur–Muthanga elephant corridor",
+    "Climbing Ambukuthi Mala to marvel at 8,000-year-old Neolithic rock carvings inside Edakkal Caves",
+    "High-speed boat ride across island-studded waters at Banasura Sagar Dam, India's largest earthen dam",
+    "Trek through rainforest canopy to the roaring three-tiered cascade at Soochipara Waterfalls",
+    "Serene morning visit to 1,000-year-old Thirunelli Temple and sacred mountain spring Papanasini tucked into Brahmagiri hills",
+    "Savoring traditional Malabar cuisine (appam with vegetable stew, Malabar parotta, and Kerala sadya)"
+  ],
+  "tips": [],
+  "beforeYouGo": [
+    {
+      "type": "timing",
+      "text": "Bandipur Night Traffic Curfew: NH 766 passing through Bandipur Tiger Reserve is strictly closed to vehicular traffic from 9:00 PM to 6:00 AM. Clear the Gundlupet checkpost before 9:00 PM to avoid being stranded."
+    },
+    {
+      "type": "booking",
+      "text": "Edakkal Caves Entry Passes: Visitor entry is capped daily by Wayanad DTPC. Arrive before 10:00 AM to secure entry tickets; note that Edakkal Caves remain closed on Mondays."
+    },
+    {
+      "type": "rules",
+      "text": "Forest Driving Guidelines: Speed limit in Bandipur and Muthanga is 30 km/h; honking, stopping to photograph wild animals, or stepping out of vehicles is strictly illegal and penalized."
+    },
+    {
+      "type": "dress",
+      "text": "Trekking Footwear & Attire: Wear sturdy grip walking shoes with salt/leech protection socks for Edakkal Caves and Soochipara Falls, especially during monsoon or humid mornings."
+    }
+  ],
+  "specialDays": [
+    {
+      "name": "Onam Festival",
+      "when": "August / September (Chingam month)",
+      "effect": "festival",
+      "note": "Grand floral carpets (pookkalam), cultural Kathakali performances, and elaborate traditional Onam Sadya feasts across Wayanad resorts."
+    },
+    {
+      "name": "Maha Shivratri at Thirunelli",
+      "when": "February / March (Phalguna month)",
+      "effect": "crowded",
+      "note": "Devotees gather for ancestral rites (Bali tharpanam) at Papanasini stream; heavy morning temple footfall."
+    }
+  ],
+  "sources": [],
+  "generated": {
+    "via": "manual",
+    "model": "",
+    "at": ""
+  },
+  "updatedAt": "",
+  "days": [
+    {
+      "day": 1,
+      "title": "",
+      "cityId": "wayanad",
+      "cityName": "Wayanad",
+      "steps": [
+        {
+          "title": "Depart Bangalore via Mysuru Expressway",
+          "where": "Bengaluru to Mysuru Expressway (NH 275)",
+          "hour": 6,
+          "minute": 0,
+          "icon": "car",
+          "mapsUrl": "",
+          "notes": "Start early from Bangalore to beat city outbound traffic. Cruise swiftly on the 10-lane Bengaluru–Mysuru Access-Controlled Expressway (NH 275) toward Mandya.",
+          "verify": []
+        },
+        {
+          "title": "Maddur Vada & Filter Coffee Breakfast Halt",
+          "where": "Expressway Highway Rest Stop, Maddur",
+          "hour": 7,
+          "minute": 45,
+          "icon": "coffee",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Expressway%20Highway%20Rest%20Stop%2C%20Maddur",
+          "notes": "Halt for a classic Karnataka highway breakfast: freshly fried crispy Maddur vadas, soft thatte idlis with coconut chutney, and piping-hot South Indian filter coffee.",
+          "verify": [],
+          "mapsAuto": true
+        },
+        {
+          "title": "Forest Drive through Bandipur & Muthanga Corridor",
+          "where": "Bandipur Tiger Reserve to Muthanga Checkpost (NH 766)",
+          "hour": 11,
+          "minute": 0,
+          "icon": "car",
+          "mapsUrl": "",
+          "notes": "Pass through historic Nanjangud and Gundlupet into the dense Nilgiri Biosphere jungle corridor. Maintain 30 km/h and watch for herds of chital deer, wild boars, langurs, and wild Asian elephants grazing near the highway.",
+          "verify": []
+        },
+        {
+          "title": "Authentic Malabar Lunch in Sulthan Bathery",
+          "where": "Sulthan Bathery, Wayanad",
+          "hour": 13,
+          "minute": 0,
+          "icon": "utensils",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sulthan%20Bathery%2C%20Wayanad",
+          "notes": "Cross the Kerala border into Sulthan Bathery. Savor authentic Kerala meals served on banana leaf with parippu, sambar, thoran, avial, and warm payasam.",
+          "verify": [],
+          "mapsAuto": true
+        },
+        {
+          "title": "Resort Check-in & Freshen Up in Wayanad",
+          "where": "Resort in Kalpetta / Vythiri / Sulthan Bathery",
+          "hour": 14,
+          "minute": 0,
+          "icon": "bed",
+          "mapsUrl": "",
+          "notes": "Night 1 of 2: Resort in Wayanad. Check into your tranquil rainforest resort or heritage coffee plantation estate and freshen up amidst the cool mountain breeze.",
+          "verify": []
+        },
+        {
+          "title": "Trek to Prehistoric Edakkal Caves",
+          "where": "Edakkal Caves, Nenmeni, Wayanad",
+          "hour": 15,
+          "minute": 30,
+          "icon": "landmark",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Edakkal%20Caves%2C%20Wayanad&query_place_id=ChIJ43AFxSIPpjsR3-Cpk3Ypcds",
+          "notes": "Climb the scenic slopes of Ambukuthi Mala to reach the natural rock split of Edakkal Caves (3,900 ft). Examine rare Stone Age petroglyphs and human/animal engravings dating from 6,000 BCE to 1,000 BCE, accompanied by sweeping valley panoramas.",
+          "verify": [],
+          "mapsAuto": true
+        },
+        {
+          "title": "Wayanad Spices & Coffee Plantation Market Walk",
+          "where": "Kalpetta Town Market, Wayanad",
+          "hour": 18,
+          "minute": 0,
+          "icon": "shopping-bag",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kalpetta%20Town%20Market%2C%20Wayanad",
+          "notes": "Browse local stalls for farm-fresh GI-tagged Wayanad black pepper, green cardamom, cinnamon, cloves, pure stingless bee honey, and single-origin Wayanad Robusta coffee beans.",
+          "verify": [],
+          "mapsAuto": true
+        },
+        {
+          "title": "Traditional Kerala Dinner & Plantation Rest",
+          "where": "Resort Restaurant, Wayanad",
+          "hour": 20,
+          "minute": 0,
+          "icon": "utensils",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Resort%20Restaurant%2C%20Wayanad",
+          "notes": "Enjoy hot flaky Malabar parottas with vegetable stew or spicy Kerala chicken curry, ending with tender coconut soufflé before retiring to your room.",
+          "verify": [],
+          "mapsAuto": true
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "",
+      "cityId": "wayanad",
+      "cityName": "Wayanad",
+      "steps": [
+        {
+          "title": "Rainforest Breakfast with Fresh Tropical Fruits",
+          "where": "Resort Dining, Wayanad",
+          "hour": 8,
+          "minute": 0,
+          "icon": "coffee",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Resort%20Dining%2C%20Wayanad",
+          "notes": "Start your morning with freshly steamed idiyappam (string hoppers) with sweet coconut milk, warm puttu with kadala curry, and steaming Kerala black pepper chai.",
+          "verify": [],
+          "mapsAuto": true
+        },
+        {
+          "title": "Speed Boating at Banasura Sagar Dam",
+          "where": "Banasura Sagar Dam, Padinjarathara, Wayanad",
+          "hour": 9,
+          "minute": 30,
+          "icon": "waves",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Banasura%20Sagar%20Dam%20%26%20speed%20boating%20at%20Wayanad",
+          "notes": "Explore India's largest earth dam, built with massive boulders and packed earth across the Karamanathodu tributary. Board an exhilarating speed boat that weaves past emerald hillock islands set against the mist-veiled Banasura Peak.",
+          "verify": [],
+          "mapsAuto": true
+        },
+        {
+          "title": "Emerald Tea Plantation Walk & Tea Tasting",
+          "where": "Pozhuthana / Vythiri Tea Estates, Wayanad",
+          "hour": 12,
+          "minute": 0,
+          "icon": "coffee",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pozhuthana%20Tea%20Estates%2C%20Wayanad",
+          "notes": "Stroll along the contoured emerald slopes of high-altitude tea plantations. Observe tea plucking techniques and sample fragrant white tea, orthodox black tea, and green tea at an estate boutique.",
+          "verify": [],
+          "mapsAuto": true
+        },
+        {
+          "title": "Plantation Lunch Halt",
+          "where": "Vythiri Corridor, Wayanad",
+          "hour": 13,
+          "minute": 15,
+          "icon": "utensils",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Vythiri%20Corridor%2C%20Wayanad",
+          "notes": "Relax over a light lunch featuring local spices, fresh coconut water, and traditional Malabar vegetable preparations.",
+          "verify": [],
+          "mapsAuto": true
+        },
+        {
+          "title": "Trek to Soochipara Waterfalls (Sentinel Rock)",
+          "where": "Soochipara Falls, Vellarimala, Wayanad",
+          "hour": 14,
+          "minute": 45,
+          "icon": "tree-pine",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Soochipara%20Falls%2C%20Wayanad&query_place_id=ChIJqTpaOG4TpjsR0mtwt8jyxkw",
+          "notes": "Hike 1.5 km down through dense moist deciduous forest to witness the roaring three-tiered 200m waterfall plunging into a natural rock pool surrounded by towering cliff faces.",
+          "verify": [],
+          "mapsAuto": true
+        },
+        {
+          "title": "Pedal Boating & Sunset Walk at Pookode Lake",
+          "where": "Pookode Lake, Vythiri, Wayanad",
+          "hour": 17,
+          "minute": 0,
+          "icon": "camera",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pookode%20Lake%2C%20Wayanad&query_place_id=ChIJiTfRqIhtpjsReKZ1OA3Me9Q",
+          "notes": "Visit the natural freshwater lake shaped curiously like India's geographical outline. Take a tranquil pedal boat ride amidst blue water lilies, walk the perimeter path under bamboo groves, and browse the handicraft shop.",
+          "verify": [],
+          "mapsAuto": true
+        },
+        {
+          "title": "Dusk Vistas at Lakkidi View Point",
+          "where": "Lakkidi View Point, Thamarassery Ghat",
+          "hour": 18,
+          "minute": 30,
+          "icon": "camera",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lakkidi%20View%20Point%2C%20Wayanad",
+          "notes": "Pause at the gateway to Wayanad atop the Thamarassery Ghat Pass (700m). Watch the setting sun bathe the deep forest canyons and the nine hairpin bends winding down toward Calicut.",
+          "verify": [],
+          "mapsAuto": true
+        },
+        {
+          "title": "Return to Resort & Overnight Stay in Wayanad",
+          "where": "Resort in Wayanad",
+          "hour": 20,
+          "minute": 30,
+          "icon": "bed",
+          "mapsUrl": "",
+          "notes": "Night 2 of 2: Resort in Wayanad. Savor a candle-lit plantation dinner and unwind under the starlit mountain sky.",
+          "verify": []
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "",
+      "cityId": "wayanad",
+      "cityName": "Wayanad",
+      "steps": [
+        {
+          "title": "Scenic Morning Drive to Thirunelli",
+          "where": "Mananthavady to Thirunelli Ghat Road",
+          "hour": 7,
+          "minute": 0,
+          "icon": "car",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thirunelli%2C%20Wayanad",
+          "notes": "Take an invigorating morning drive through misty reserve forests and bamboo thickets toward the Brahmagiri mountain range on the northern edge of Wayanad.",
+          "verify": [],
+          "mapsAuto": true
+        },
+        {
+          "title": "Darshan at Ancient Thirunelli Temple & Papanasini",
+          "where": "Thirunelli Temple, Thirunelli, Wayanad",
+          "hour": 8,
+          "minute": 15,
+          "icon": "landmark",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Thirunelli%20Temple%2C%20Wayanad",
+          "notes": "Visit the 30-pillar granite Maha Vishnu shrine, often called the 'Kashi of the South' (Thekkan Kashi). Walk down the stone pathway to the crystal-clear mountain stream Papanasini, revered for its purifying natural spring waters.",
+          "verify": [],
+          "mapsAuto": true
+        },
+        {
+          "title": "Bamboo Rafting Experience at Kuruva Dweep",
+          "where": "Kuruvadweep (Kuruva Island), Kabini River",
+          "hour": 10,
+          "minute": 30,
+          "icon": "waves",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kuruvadweep%2C%20Wayanad",
+          "notes": "Experience traditional bamboo pole rafting across the forested delta of Kabini River tributaries, exploring a cluster of 950 acres of uninhabited evergreen river islets teeming with orchids and butterflies.",
+          "verify": [],
+          "mapsAuto": true
+        },
+        {
+          "title": "Resort Check-out & Farewell Malabar Lunch",
+          "where": "Mananthavady / Sulthan Bathery",
+          "hour": 12,
+          "minute": 45,
+          "icon": "utensils",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Mananthavady%20%2F%20Sulthan%20Bathery%2C%20Wayanad",
+          "notes": "Complete resort check-out formalities and enjoy a final traditional Kerala lunch before starting the return journey to Bangalore.",
+          "verify": [],
+          "mapsAuto": true
+        },
+        {
+          "title": "Return Wildlife Drive through Muthanga & Bandipur",
+          "where": "Muthanga & Bandipur Tiger Reserve Corridor (NH 766)",
+          "hour": 14,
+          "minute": 15,
+          "icon": "car",
+          "mapsUrl": "",
+          "notes": "Begin the return highway drive crossing the Kerala–Karnataka border. Clear the Bandipur forest corridor during broad daylight, well before the 9:00 PM night traffic curfew.",
+          "verify": []
+        },
+        {
+          "title": "Coffee & Snacks Halt near Gundlupet / Mysuru",
+          "where": "Gundlupet to Mysuru Ring Road",
+          "hour": 16,
+          "minute": 30,
+          "icon": "coffee",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Gundlupet%20to%20Mysuru%20Ring%20Road",
+          "notes": "Take a refreshing tea and snack break while passing scenic marigold and sunflower farmlands around Gundlupet.",
+          "verify": [],
+          "mapsAuto": true
+        },
+        {
+          "title": "Expressway Drive & Arrival in Bangalore",
+          "where": "Mysuru to Bengaluru Expressway (NH 275)",
+          "hour": 18,
+          "minute": 0,
+          "icon": "car",
+          "mapsUrl": "",
+          "notes": "Join the Mysuru–Bengaluru Expressway for a fast, relaxed final stretch, arriving back in Bangalore by ~8:30 PM, concluding a refreshing 3-day Wayanad hill and wildlife vacation!",
+          "verify": []
+        }
+      ]
+    }
+  ]
+}
