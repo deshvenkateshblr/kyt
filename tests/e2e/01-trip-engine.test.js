@@ -27,7 +27,7 @@ test('new user sees the new-user launcher with all entry points', async () => {
   await page.goto(env.base + '/index.html');
   await page.waitForSelector('#options-container a');
   const hrefs = await page.$$eval('#options-container a', as => as.map(a => a.getAttribute('href')));
-  assert.deepEqual(hrefs.sort(), ['configure_trip.html', 'curated_trips.html', 'view_trip.html', 'virtual_trip.html', 'visited.html']);
+  assert.deepEqual(hrefs.sort(), ['curated_trips.html', 'view_trip.html', 'virtual_trip.html', 'visited.html']);
   await context.close();
 });
 

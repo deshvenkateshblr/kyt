@@ -16,20 +16,14 @@ document.addEventListener('DOMContentLoaded', async () => {
       `<span class="k-option-body"><span class="k-option-title">${title}</span><span class="k-option-desc">${desc}</span></span>` +
       `<i data-lucide="chevron-right" class="k-option-arrow"></i></a>`;
 
-  const subLink = isReturningUser
-    ? `<div class="k-sub-row"><a href="configure_trip.html" class="k-sub-link">Edit live steps, times &amp; tickets &rarr;</a></div>`
-    : `<div class="k-sub-row"><a href="configure_trip.html" class="k-sub-link">Have tickets booked? Build steps manually &rarr;</a></div>`;
-
   const html = isReturningUser
     ? row('view_trip.html', 'plane', 'Trip Companion', 'Live schedule, tickets, maps & photos.', true) +
-      subLink +
       row('virtual_trip.html', 'compass', 'Plan a Trip', 'Build a custom day-by-day itinerary.') +
       row('curated_trips.html', 'sparkles', 'Explore Ideas', 'Curated routes & 159+ city guides.') +
       row('visited.html', 'stamp', 'Travel Passport', 'Log visited places & create share cards.')
-    : row('virtual_trip.html', 'compass', 'Plan a Trip', 'Build a custom day-by-day itinerary.', true) +
-      subLink +
-      row('curated_trips.html', 'sparkles', 'Explore Ideas', 'Curated routes & 159+ city guides.') +
-      row('view_trip.html', 'plane', 'Trip Companion', 'Live schedule, tickets, maps & photos.') +
+    : row('curated_trips.html', 'sparkles', 'Explore Ideas', 'Curated routes & 159+ city guides.') +
+      row('virtual_trip.html', 'compass', 'Plan a Trip', 'Build a custom day-by-day itinerary.', true) +
+      row('view_trip.html', 'plane', 'Trip Companion', 'Open your live itinerary, tickets & maps.') +
       row('visited.html', 'stamp', 'Travel Passport', 'Log visited places & create share cards.');
 
   container.innerHTML = html;

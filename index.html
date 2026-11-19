@@ -177,16 +177,13 @@
                                 .k-option-title { font-weight: 800; font-size: 1rem; letter-spacing: -0.01em; line-height: 1.25; }
                                 .k-option-desc { font-size: 0.86rem; font-weight: 500; color: rgba(255,255,255,.78); line-height: 1.35; }
                                 .k-option-arrow { width: 18px; height: 18px; flex: none; color: rgba(255,255,255,.6); }
-                                .k-option-card.k-option-primary { background: #fff; color: var(--dusk); border: 0; border-radius: 16px; padding: 14px 16px; margin-bottom: 6px; box-shadow: 0 10px 24px rgba(8,20,64,.3); }
+                                .k-option-card.k-option-primary { background: #fff; color: var(--dusk); border: 0; border-radius: 16px; padding: 14px 16px; margin: 6px 0; box-shadow: 0 10px 24px rgba(8,20,64,.3); }
                                 .k-option-primary .k-option-icon { color: #fff; background: var(--sky-deep); }
                                 .k-option-primary .k-option-arrow { color: var(--sky-deep); }
                                 .k-option-primary .k-option-desc { color: #475569; }
                                 .k-option-primary:active { background: #EEF3FD; }
                                 .k-option-primary + .k-option-card { border-top: 0; }
-                                .k-sub-row { margin: -2px 0 10px 4px; padding: 2px 0; }
-                                .k-sub-link { font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,.82); text-decoration: underline; text-underline-offset: 3px; display: inline-flex; align-items: center; gap: 4px; }
-                                .k-sub-link:hover { color: #fff; }
-                                .k-sub-row + .k-option-card { border-top: 1px solid rgba(255,255,255,.16); }
+                                .k-launch .k-option-card:first-child { border-top: 0; }
                                 @media (hover: hover) { .k-option-card:hover { background: rgba(255,255,255,.08); } .k-option-primary:hover { background: #F3F7FF; } }
                                 .k-option-card:last-child { border-bottom: 1px solid rgba(255,255,255,.16); }
                                 /* One-time first-visit hint, driven by js/index.js: the row lights up as a hover would */
@@ -546,10 +543,9 @@
               <div id="options-container" class="k-launch hidden"></div>
               <noscript>
                 <div class="k-launch">
-                  <a href="virtual_trip.html" class="k-option-card k-option-primary"><span class="k-option-body"><span class="k-option-title">Plan a Trip</span><span class="k-option-desc">Build a custom day-by-day itinerary.</span></span></a>
-                  <div class="k-sub-row"><a href="configure_trip.html" class="k-sub-link">Have tickets booked? Build steps manually &rarr;</a></div>
                   <a href="curated_trips.html" class="k-option-card"><span class="k-option-body"><span class="k-option-title">Explore Ideas</span><span class="k-option-desc">Curated routes &amp; 159+ city guides.</span></span></a>
-                  <a href="view_trip.html" class="k-option-card"><span class="k-option-body"><span class="k-option-title">Trip Companion</span><span class="k-option-desc">Live schedule, tickets, maps &amp; photos.</span></span></a>
+                  <a href="virtual_trip.html" class="k-option-card k-option-primary"><span class="k-option-body"><span class="k-option-title">Plan a Trip</span><span class="k-option-desc">Build a custom day-by-day itinerary.</span></span></a>
+                  <a href="view_trip.html" class="k-option-card"><span class="k-option-body"><span class="k-option-title">Trip Companion</span><span class="k-option-desc">Open your live itinerary, tickets &amp; maps.</span></span></a>
                   <a href="visited.html" class="k-option-card"><span class="k-option-body"><span class="k-option-title">Travel Passport</span><span class="k-option-desc">Log visited places &amp; create share cards.</span></span></a>
                 </div>
               </noscript>
@@ -557,6 +553,7 @@
             <div class="k-meta">
               <span>No sign-up. Trips stay on your phone.</span>
               <button type="button" class="k-backup-link" data-kyt-backup>Save or open your trips</button>
+              <a href="configure_trip.html" class="k-backup-link">Build manual steps</a>
             </div>
           </section>
         </div>
