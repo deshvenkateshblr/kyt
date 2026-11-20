@@ -87,23 +87,38 @@
       <a href="index.html" class="shrink-0 bg-white rounded-xl shadow-sm hover:scale-105 active:scale-95 transition-transform border border-slate-100 overflow-hidden flex items-center justify-center w-[44px] h-[44px]" title="Home">
         <img src="icons/KYT.jpg" alt="KYT" class="w-full h-full object-contain rounded-xl">
       </a>
-      <button id="btn-open-virtual-trips" class="flex flex-col items-center gap-0.5 px-2 py-1.5 bg-white rounded-xl shadow-sm text-kyt-accent hover:text-blue-600 active:scale-90 transition-all border border-slate-100 min-w-[42px]" title="My Virtual Trips">
-        <i data-lucide="compass" class="w-4 h-4"></i>
-        <span class="text-[9px] font-bold text-slate-400 leading-none">Trips</span>
-      </button>
-      <a href="curated_trips.html" id="btn-open-curated-trips" class="flex flex-col items-center gap-0.5 px-2 py-1.5 bg-white rounded-xl shadow-sm text-kyt-accent hover:text-blue-600 active:scale-90 transition-all border border-slate-100 min-w-[42px]" title="AI Curated Trips">
+      <a href="curated_trips.html" id="kyt-nav-curated" class="flex flex-col items-center gap-0.5 px-2 py-1.5 bg-white rounded-xl shadow-sm text-kyt-accent hover:text-blue-600 active:scale-90 transition-all border border-slate-100 min-w-[42px]" title="Explore Ideas">
         <i data-lucide="sparkles" class="w-4 h-4"></i>
-        <span class="text-[9px] font-bold text-slate-400 leading-none">Curated</span>
+        <span class="text-[9px] font-bold text-slate-400 leading-none">Explore</span>
       </a>
-      <button id="btn-open-album" onclick="KYT.social.openAlbum()" class="flex flex-col items-center gap-0.5 px-2 py-1.5 bg-white rounded-xl shadow-sm text-kyt-accent hover:text-blue-600 active:scale-90 transition-all border border-slate-100 min-w-[42px]" title="Memory Book">
+      <a href="virtual_trip.html" id="kyt-nav-trips" class="flex flex-col items-center gap-0.5 px-2 py-1.5 bg-white rounded-xl shadow-sm text-kyt-accent hover:text-blue-600 active:scale-90 transition-all border border-slate-100 min-w-[42px]" title="Plan a Trip">
+        <i data-lucide="compass" class="w-4 h-4"></i>
+        <span class="text-[9px] font-bold text-slate-400 leading-none">Plan</span>
+      </a>
+      <a href="view_trip.html" id="kyt-nav-live" class="flex flex-col items-center gap-0.5 px-2 py-1.5 bg-white rounded-xl shadow-sm text-blue-600 ring-2 ring-blue-500/20 hover:text-blue-600 active:scale-90 transition-all border border-slate-100 min-w-[42px]" title="Trip Companion">
+        <i data-lucide="plane" class="w-4 h-4"></i>
+        <span class="text-[9px] font-bold text-blue-600 leading-none">Companion</span>
+      </a>
+      <a href="visited.html" id="kyt-nav-passport" class="flex flex-col items-center gap-0.5 px-2 py-1.5 bg-white rounded-xl shadow-sm text-kyt-accent hover:text-blue-600 active:scale-90 transition-all border border-slate-100 min-w-[42px]" title="Digital Passport">
+        <i data-lucide="stamp" class="w-4 h-4"></i>
+        <span class="text-[9px] font-bold text-slate-400 leading-none">Passport</span>
+      </a>
+    </div>
+    <div class="flex items-center gap-1.5 sm:gap-2">
+      <button type="button" id="kyt-nav-album" class="flex flex-col items-center gap-0.5 px-2 py-1.5 bg-white rounded-xl shadow-sm text-kyt-accent hover:text-blue-600 active:scale-90 transition-all border border-slate-100 min-w-[42px]" title="Memory Book">
         <i data-lucide="images" class="w-4 h-4"></i>
         <span class="text-[9px] font-bold text-slate-400 leading-none">Album</span>
       </button>
+      <button type="button" id="kyt-nav-save" data-kyt-backup class="relative flex flex-col items-center gap-0.5 px-1.5 py-1.5 bg-white rounded-xl shadow-sm text-kyt-accent hover:text-blue-600 active:scale-90 transition-all border border-slate-100 min-w-[38px]" title="Save your trips to a file">
+        <i data-lucide="save" class="w-4 h-4"></i>
+        <span class="text-[9px] font-bold text-slate-400 leading-none">Save</span>
+        <span data-kyt-save-dot style="display:none;position:absolute;top:3px;right:5px;width:8px;height:8px;border-radius:9999px;background:#F59E0B;border:1.5px solid #fff"></span>
+      </button>
+      <button type="button" id="btn-edit-trip" onclick="window.location.href='configure_trip.html'" class="flex flex-col items-center gap-0.5 px-2 py-1.5 bg-white rounded-xl shadow-sm text-kyt-subtext hover:text-kyt-text active:scale-90 transition-all border border-slate-100 min-w-[42px]" title="Edit Itinerary">
+        <i data-lucide="settings-2" class="w-4 h-4"></i>
+        <span class="text-[9px] font-bold text-slate-400 leading-none">Edit</span>
+      </button>
     </div>
-    <button id="btn-edit-trip" class="flex flex-col items-center gap-0.5 px-2 py-1.5 bg-white rounded-xl shadow-sm text-kyt-subtext hover:text-kyt-text active:scale-90 transition-all border border-slate-100 min-w-[42px]" title="Edit Itinerary">
-      <i data-lucide="settings-2" class="w-4 h-4"></i>
-      <span class="text-[9px] font-bold text-slate-400 leading-none">Edit</span>
-    </button>
   </header>
 
   <main id="main-view" class="w-full max-w-md px-4 pb-8 flex-1 flex flex-col relative h-full transition-opacity duration-300">
