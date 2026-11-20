@@ -19,7 +19,7 @@
     const body = encodeURIComponent(`\n\n\n(Sent from KYT, page: ${page})`);
     const wrap = document.createElement('div');
     wrap.id = 'kyt-feedback-footer';
-    wrap.style.cssText = 'box-sizing:border-box;width:100%;padding:6px 12px calc(6px + env(safe-area-inset-bottom));text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font:600 12px/1.6 system-ui,-apple-system,sans-serif;color:#64748B;background:#F8FAFC;border-top:1px solid #E2E8F0;';
+    wrap.style.cssText = 'box-sizing:border-box;width:100%;position:sticky;bottom:0;left:0;z-index:40;padding:6px 8px calc(6px + env(safe-area-inset-bottom));text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font:600 11.5px/1.5 system-ui,-apple-system,sans-serif;color:#64748B;background:rgba(248,250,252,0.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid #E2E8F0;';
     const link = 'color:#1D4ED8;font-weight:800;text-decoration:underline;text-underline-offset:3px';
     wrap.innerHTML = `Feedback: <a href="mailto:${FEEDBACK_EMAIL}?subject=${subject}&body=${body}" style="${link}">${FEEDBACK_EMAIL}</a> · <span id="kyt-version">v${APP_VERSION}</span> · <a href="#" id="kyt-refresh" style="color:#64748B;text-decoration:underline;text-underline-offset:2px">Refresh app</a>`;
     const ver = wrap;

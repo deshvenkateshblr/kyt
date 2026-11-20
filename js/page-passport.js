@@ -13,7 +13,7 @@
       // Floating counter + jump to top: visible once the hero has scrolled away, bottom right within thumb reach.
       const floatBtn = document.createElement('button');
       floatBtn.type = 'button'; floatBtn.id = 'passport-float';
-      floatBtn.style.cssText = 'position:fixed;left:14px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:70;display:none;align-items:center;gap:8px;padding:12px 16px;min-height:48px;border:0;border-radius:999px;background:#0F172A;color:#fff;font:800 15px system-ui,-apple-system,sans-serif;box-shadow:0 10px 24px rgba(15,23,42,.4);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .18s ease';
+      floatBtn.style.cssText = 'position:fixed;left:14px;bottom:calc(44px + env(safe-area-inset-bottom));z-index:70;display:none;align-items:center;gap:8px;padding:12px 16px;min-height:48px;border:0;border-radius:999px;background:#0F172A;color:#fff;font:800 15px system-ui,-apple-system,sans-serif;box-shadow:0 10px 24px rgba(15,23,42,.4);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .18s ease';
       document.body.appendChild(floatBtn);
       floatBtn.addEventListener('click', () => {
         const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
