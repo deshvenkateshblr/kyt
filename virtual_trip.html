@@ -718,16 +718,16 @@
     <!-- --- HUB: Trip list ------------------------------------------------ -->
     <div id="vt-screen-hub" class="flex-1 overflow-y-auto p-4 max-w-4xl mx-auto w-full space-y-4">
       <!-- Create new trip -->
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
-        <p class="text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-2">Plan a new trip</p>
-        <div class="flex gap-2">
-          <input type="text" id="vt-new-name" placeholder="Trip name (optional — e.g. Rajasthan Road Trip)"
-            class="flex-1 min-w-0 bg-slate-50 border border-slate-100 rounded-xl px-4 py-2.5 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder:font-normal placeholder:text-slate-300">
-          <button id="btn-vt-create"
-            class="bg-blue-600 text-white font-bold px-5 py-2.5 rounded-xl text-sm hover:bg-blue-700 active:scale-95 transition-all shrink-0 flex items-center gap-1.5">
-            <i data-lucide="plus" class="w-4 h-4"></i> Create
-          </button>
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 flex items-center justify-between gap-3">
+        <div>
+          <h2 class="text-base font-black text-slate-800">Plan a new trip</h2>
+          <p class="text-xs text-slate-400 mt-0.5">Pick destinations and KYT builds your itinerary</p>
         </div>
+        <button id="btn-vt-create"
+          class="bg-blue-600 text-white font-bold px-6 py-2.5 rounded-xl text-sm hover:bg-blue-700 active:scale-95 transition-all shrink-0 flex items-center gap-1.5 shadow-xs cursor-pointer">
+          <i data-lucide="plus" class="w-4 h-4"></i> Create
+        </button>
+        <input type="text" id="vt-new-name" class="sr-only" tabindex="-1" aria-hidden="true" style="position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px;">
       </div>
       <!-- Trip cards injected here -->
       <div id="vt-list" class="space-y-3"></div>
@@ -863,6 +863,10 @@
             <label for="vt-step-time" id="vt-step-time-label" class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">When</label>
             <input type="time" id="vt-step-time" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
           </div>
+          <div id="vt-step-duration-wrap">
+            <label for="vt-step-duration" class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">Duration (hours)</label>
+            <input type="text" id="vt-step-duration" maxlength="30" placeholder="e.g. 1.5 h or 2 h" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          </div>
           <div id="vt-stay-nights-wrap" class="hidden">
             <label for="vt-stay-nights" class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">Nights</label>
             <select id="vt-stay-nights" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option></select>
@@ -871,7 +875,7 @@
             <label for="vt-stay-out" class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">Check-out (optional)</label>
             <input type="time" id="vt-stay-out" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
           </div>
-          <div id="vt-step-where-wrap">
+          <div id="vt-step-where-wrap" class="col-span-2">
             <label for="vt-step-where" class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">Where</label>
             <input type="text" id="vt-step-where" maxlength="120" placeholder="Place or area" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
           </div>

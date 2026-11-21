@@ -1758,6 +1758,7 @@ KYT.virtualTrips = (function () {
   let styleOpen = false;       // the "style of suggestions" chips are shown
   let builderTripId = null;
   let activeDrawerCityId = null; // currently selected city tab in suggestions drawer for multi-city days
+  let showAllCitySpots = false;  // toggle to view spots already planned on other days
 
   function currentDrawerCity(trip, dayId, requestedCityId) {
     const dayCities = citiesOfDay(trip, dayId);
@@ -1840,7 +1841,7 @@ KYT.virtualTrips = (function () {
 
   function addBeatStep(trip, dayId, beatIndex, targetCityId) {
     const city = (targetCityId && (cityById(targetCityId) || cityByName(targetCityId))) || currentDrawerCity(trip, dayId);
-    const sg = suggestionsFor(trip, dayId, city ? city.id : null);
+    const sg = suggestionsFor(trip, dayId, city ? city.id : null, showAllCitySpots);
     const beat = sg.all[beatIndex];
     if (!beat || !city) return;
     const dur = beat.durationMin || defaultStepDuration(beat);
@@ -1976,6 +1977,7 @@ KYT.virtualTrips = (function () {
     $('vt-fields-travel').classList.toggle('hidden', kind !== 'travel');
     $('vt-fields-stay').classList.toggle('hidden', kind !== 'stay');
     $('vt-step-where-wrap').classList.toggle('hidden', kind !== 'stop');
+    if ($('vt-step-duration-wrap')) $('vt-step-duration-wrap').classList.toggle('hidden', kind !== 'stop');
     $('vt-step-time-label').textContent = kind === 'travel' ? 'Leaves' : (kind === 'stay' ? 'Check-in' : 'When');
     $('vt-stay-out-wrap').classList.toggle('hidden', kind !== 'stay');
     $('vt-stay-nights-wrap').classList.toggle('hidden', !(kind === 'stay' && ctx.mode !== 'edit'));
@@ -1984,10 +1986,11 @@ KYT.virtualTrips = (function () {
     $('vt-step-modal-title').textContent = ctx.mode === 'edit' ? `Edit ${noun}` :
       `Add ${kind === 'stop' ? 'a stop' : (kind === 'stay' ? 'a stay' : 'travel')} to Day ${ctx.dayId}`;
 
-    const set = (id, v) => { $(id).value = v == null ? '' : v; };
+    const set = (id, v) => { if ($(id)) $(id).value = v == null ? '' : v; };
     if (step) {
       set('vt-step-title', step.title);
       set('vt-step-where', step.where);
+      set('vt-step-duration', step.durationMin ? formatDuration(step.durationMin) : (step.duration || ''));
       set('vt-travel-from', step.from); set('vt-travel-to', step.to);
       set('vt-travel-mode', step.mode || 'road'); set('vt-travel-duration', step.duration);
       $('vt-travel-overnight').checked = Boolean(step.overnight);
@@ -1997,6 +2000,7 @@ KYT.virtualTrips = (function () {
       set('vt-step-notes', step.notes);
     } else {
       set('vt-step-title', ''); set('vt-step-where', '');
+      set('vt-step-duration', '1.5 h');
       set('vt-travel-from', pre.from); set('vt-travel-to', pre.to);
       set('vt-travel-mode', pre.mode || 'road'); set('vt-travel-duration', pre.duration || '');
       $('vt-travel-overnight').checked = Boolean(pre.overnight);
@@ -2073,11 +2077,22 @@ KYT.virtualTrips = (function () {
     if (kind === 'stop') {
       if (!val('vt-step-title')) return fail('Give the stop a name.', 'vt-step-title');
       const where = val('vt-step-where');
-      const durMin = defaultStepDuration({ title: val('vt-step-title'), where, icon: 'map-pin' });
+      const rawDur = val('vt-step-duration');
+      let durMin = null;
+      if (rawDur) {
+        if (/^\d+(\.\d+)?$/.test(rawDur)) {
+          durMin = Math.round(parseFloat(rawDur) * 60);
+        } else {
+          durMin = parseDurationMinutes(rawDur);
+        }
+      }
+      if (!durMin || durMin <= 0) {
+        durMin = defaultStepDuration({ title: val('vt-step-title'), where, icon: 'map-pin' });
+      }
       fields = {
         title: val('vt-step-title'), where,
         mapsUrl: mapsSearch((where || val('vt-step-title')) + ' ' + (where && cityByName(where) ? '' : cityName)),
-        icon: 'map-pin', durationMin: durMin
+        icon: 'map-pin', durationMin: durMin, duration: formatDuration(durMin)
       };
     } else if (kind === 'travel') {
       if (!val('vt-travel-from') || !val('vt-travel-to')) return fail('Say where you travel from and to.', val('vt-travel-from') ? 'vt-travel-to' : 'vt-travel-from');
@@ -2132,13 +2147,31 @@ KYT.virtualTrips = (function () {
   const EFFORT_LABEL = { easy: 'Easy', walk: 'Some walking', moderate: 'Moderate', hard: 'Demanding', trek: 'Trek' };
 
   /** The city's attractions that are not in the plan yet: ones that fit the chosen style first. */
-  function suggestionsFor(trip, dayId, targetCityId) {
+  function suggestionsFor(trip, dayId, targetCityId, showAll = false) {
     const city = targetCityId ? (cityById(targetCityId) || cityByName(targetCityId)) : currentDrawerCity(trip, dayId);
-    const used = new Set((trip.steps || []).map(s => s.src || s.title));
-    const beats = city ? (city.beats || []).filter(b => !used.has(b.title)) : [];
+    const todaySteps = stepsOfDay(trip, dayId);
+    const usedToday = new Set(todaySteps.map(s => s.src || s.title));
+    const otherDaySteps = (trip.steps || []).filter(s => Number(s.dayId) !== Number(dayId));
+    const usedOtherDaysMap = new Map();
+    otherDaySteps.forEach(s => {
+      const key = s.src || s.title;
+      if (!usedOtherDaysMap.has(key)) usedOtherDaysMap.set(key, s.dayId);
+    });
+
+    const beats = city ? (city.beats || []).filter(b => {
+      if (usedToday.has(b.title)) return false;
+      if (!showAll && usedOtherDaysMap.has(b.title)) return false;
+      return true;
+    }).map(b => {
+      const otherDayId = usedOtherDaysMap.get(b.title);
+      return otherDayId != null ? { ...b, otherDayId } : b;
+    }) : [];
+
     const fits = beats.filter(b => beatMatches(b, trip.taste)).sort((a, b) => (a.hour || 0) - (b.hour || 0));
     const others = beats.filter(b => !fits.includes(b)).sort((a, b) => (a.hour || 0) - (b.hour || 0));
-    return { fits, others, all: fits.concat(others), city };
+    const hasOtherDaySpots = city ? (city.beats || []).some(b => !usedToday.has(b.title) && usedOtherDaysMap.has(b.title)) : false;
+
+    return { fits, others, all: fits.concat(others), city, hasOtherDaySpots };
   }
 
   /** Where "Add travel" starts: if the journey into this day's city is already planned (yesterday or today) the next one leaves it, otherwise it arrives. */
@@ -2421,17 +2454,18 @@ KYT.virtualTrips = (function () {
 
     // 4. Suggestions for this day's active city, in the chosen style
     const drawerCity = currentDrawerCity(trip, day.id);
-    const sg = suggestionsFor(trip, day.id, drawerCity ? drawerCity.id : null);
+    const sg = suggestionsFor(trip, day.id, drawerCity ? drawerCity.id : null, showAllCitySpots);
     const row = (b, i) => {
       const effort = EFFORT_LABEL[b.mobility] || '';
       const diet = Array.isArray(b.diet) && !b.diet.includes('any') ? b.diet.map(x => ({ veg: 'Veg', jain: 'Jain', satvik: 'No onion-garlic' }[x] || x)).join(' / ') : '';
       const badge = t => `<span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded-md">${esc(t)}</span>`;
+      const otherDayBadge = b.otherDayId != null ? `<span class="text-[10px] font-bold text-amber-700 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded-md">Planned in Day ${b.otherDayId}</span>` : '';
       return `
         <div class="flex items-start gap-2.5 p-3 bg-white rounded-xl border border-slate-100">
           <div class="p-1.5 bg-slate-50 text-slate-500 rounded-lg shrink-0"><i data-lucide="${esc(b.icon || 'map-pin')}" class="w-4 h-4"></i></div>
           <div class="flex-1 min-w-0">
             <p class="text-sm font-bold text-slate-800 leading-tight">${esc(b.title)}</p>
-            <div class="flex flex-wrap items-center gap-1 mt-1">${badge(TIME_OF_DAY(b.hour != null ? b.hour : 10))}${effort ? badge(effort) : ''}${diet ? badge(diet) : ''}</div>
+            <div class="flex flex-wrap items-center gap-1 mt-1">${otherDayBadge}${badge(TIME_OF_DAY(b.hour != null ? b.hour : 10))}${effort ? badge(effort) : ''}${diet ? badge(diet) : ''}</div>
             ${b.notes ? `<p class="text-[11px] text-slate-500 leading-snug mt-1 line-clamp-2">${esc(b.notes)}</p>` : ''}
           </div>
           <button type="button" data-add-beat="${i}" class="shrink-0 ${btn} bg-blue-600 text-white hover:bg-blue-700" aria-label="Add ${esc(b.title)}">Add +</button>
@@ -2449,12 +2483,20 @@ KYT.virtualTrips = (function () {
               }).join('')}
             </div>
           ` : ''}
-          <p class="text-xs font-black uppercase text-slate-700 tracking-wider">${drawerCity ? 'Things to do in ' + esc(drawerCity.name) : 'Suggestions'}</p>
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <p class="text-xs font-black uppercase text-slate-700 tracking-wider">${drawerCity ? 'Things to do in ' + esc(drawerCity.name) : 'Suggestions'}</p>
+            ${sg.hasOtherDaySpots ? `
+              <button type="button" id="btn-toggle-all-spots" class="text-[11px] font-bold text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-2.5 py-1 rounded-full flex items-center gap-1 cursor-pointer transition-colors">
+                <i data-lucide="${showAllCitySpots ? 'eye-off' : 'repeat'}" class="w-3 h-3"></i>
+                <span>${showAllCitySpots ? 'Hide other days\' spots' : 'View spots from other days'}</span>
+              </button>
+            ` : ''}
+          </div>
           <div id="vt-suggestions" class="space-y-2">
             ${sg.all.length ? sg.fits.map((b, i) => row(b, i)).join('') +
               (sg.fits.length && sg.others.length ? `<p class="text-[11px] font-black uppercase tracking-wider text-slate-400 pt-1">More in ${esc(city.name)}</p>` : '') +
               sg.others.map((b, i) => row(b, sg.fits.length + i)).join('')
-              : `<p class="text-xs text-slate-500 bg-white/70 border border-dashed border-slate-300 rounded-xl px-3.5 py-3">${city ? 'Everything we list for ' + esc(city.name) + ' is already in your plan.' : 'Choose a city for this day.'} Add your own stops above.</p>`}
+              : `<p class="text-xs text-slate-500 bg-white/70 border border-dashed border-slate-300 rounded-xl px-3.5 py-3">${city ? (sg.hasOtherDaySpots ? `All listed spots for ${esc(city.name)} are currently planned on other days. <button type="button" id="btn-toggle-all-spots" class="font-bold text-blue-600 hover:underline">View & add them to Day ${day.id} as well</button>, or add your own stops above.` : 'Everything we list for ' + esc(city.name) + ' is already in your plan. Add your own stops above.') : 'Choose a city for this day.'}</p>`}
           </div>
         </div>
       </section>`;
@@ -2493,7 +2535,7 @@ KYT.virtualTrips = (function () {
     const t = e.target;
     const q = sel => t.closest(sel);
     const nextDayBtn = q('#btn-vt-next-day');
-    if (nextDayBtn) { activeDayId = Number(nextDayBtn.dataset.dayId); renderBuilder(); const sc = document.getElementById('vt-screen-builder'); if (sc) sc.scrollTop = 0; return; }
+    if (nextDayBtn) { activeDayId = Number(nextDayBtn.dataset.dayId); showAllCitySpots = false; renderBuilder(); const sc = document.getElementById('vt-screen-builder'); if (sc) sc.scrollTop = 0; return; }
     if (q('#btn-vt-view-trip')) { window.location.href = `trip_detail.html?id=${encodeURIComponent(trip.id)}`; return; }
     const drawerCityBtn = q('[data-drawer-city]');
     if (drawerCityBtn) {
@@ -2502,7 +2544,7 @@ KYT.virtualTrips = (function () {
       return;
     }
     const dayTab = q('[data-day-id][role="tab"]');
-    if (dayTab) { activeDayId = Number(dayTab.dataset.dayId); activeDrawerCityId = null; renderBuilder(); return; }
+    if (dayTab) { activeDayId = Number(dayTab.dataset.dayId); activeDrawerCityId = null; showAllCitySpots = false; renderBuilder(); return; }
     if (q('#btn-vt-add-day')) {
       const days = sortedDays(trip);
       const last = days[days.length - 1];
@@ -2533,6 +2575,7 @@ KYT.virtualTrips = (function () {
       return;
     }
     if (q('#btn-vt-add-own')) { openStepEditor({ mode: 'add', kind: 'stop', dayId: activeDayId }); return; }
+    if (q('#btn-toggle-all-spots')) { showAllCitySpots = !showAllCitySpots; renderBuilder(); return; }
     if (q('#btn-vt-add-travel')) { openStepEditor({ mode: 'add', kind: 'travel', dayId: activeDayId, prefill: travelPrefill(trip, activeDayId) }); return; }
     if (q('#btn-vt-add-stay')) { openStepEditor({ mode: 'add', kind: 'stay', dayId: activeDayId }); return; }
     if (q('#btn-vt-review-toggle')) { reviewOpen = !reviewOpen; renderBuilder(); return; }

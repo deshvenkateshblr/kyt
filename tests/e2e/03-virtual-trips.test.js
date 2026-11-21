@@ -536,3 +536,67 @@ test('home menu: first visit lights each option in turn once, then never again; 
   assert.equal(await p2.evaluate(() => localStorage.getItem('kyt_home_nudged')), null);
   await rm.close();
 });
+
+test('custom step editor allows specifying hours/duration instead of default 90m', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openHub(page);
+  await page.click('#btn-vt-create');
+  page.__origin = 'bengaluru';
+  await addCity(page, 'Udupi', 'udupi');
+  await proceed(page);
+  await openDayPlan(page);
+
+  await page.click('#btn-vt-add-own');
+  await page.waitForSelector('#vt-step-modal:not(.hidden)');
+  assert.equal(await page.locator('#vt-step-duration-wrap').isVisible(), true);
+  await page.fill('#vt-step-title', 'Sunset Boat Cruise');
+  await page.fill('#vt-step-duration', '2.5');
+  await page.click('#btn-save-vt-step');
+  await page.waitForSelector('#vt-step-modal', { state: 'hidden' });
+
+  const trips = await stored(page);
+  const customStep = (trips[0].steps || []).find(s => s.title === 'Sunset Boat Cruise');
+  assert.ok(customStep, 'custom step was saved');
+  assert.equal(customStep.durationMin, 150, '2.5 hours parsed to 150 minutes');
+  await context.close();
+});
+
+test('different day on same city allows viewing and re-adding spots from other days', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openHub(page);
+  await page.click('#btn-vt-create');
+  page.__origin = 'bengaluru';
+  await addCity(page, 'Udupi', 'udupi');
+  await proceed(page);
+  await openDayPlan(page);
+
+  // Add first beat to Day 1
+  await page.locator('[data-add-beat]').first().click();
+
+  // Add Day 2 in same city
+  await page.click('#btn-vt-add-day');
+  assert.match(await page.locator('button[role="tab"][aria-selected="true"]').innerText(), /Day 2/);
+
+  // Verify the beat added to Day 1 is not in the default Day 2 suggestions
+  const initialDay2Beats = await page.locator('#vt-suggestions').innerText();
+  assert.ok(!initialDay2Beats.includes('Planned in Day 1'));
+
+  // Toggle "View spots from other days"
+  assert.equal(await page.locator('#btn-toggle-all-spots').isVisible(), true);
+  await page.click('#btn-toggle-all-spots');
+
+  // Verify other day spot is now visible with "Planned in Day 1" badge
+  assert.match(await page.locator('#vt-suggestions').innerText(), /Planned in Day 1/);
+
+  // Re-add that spot to Day 2
+  await page.locator('[data-add-beat]').first().click();
+
+  const trips = await stored(page);
+  const day1Steps = (trips[0].steps || []).filter(s => Number(s.dayId) === 1);
+  const day2Steps = (trips[0].steps || []).filter(s => Number(s.dayId) === 2);
+  assert.equal(day1Steps.length, 1);
+  assert.equal(day2Steps.length, 1);
+  assert.equal(day1Steps[0].title, day2Steps[0].title, 'spot is planned on both Day 1 and Day 2');
+
+  await context.close();
+});
