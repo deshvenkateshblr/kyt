@@ -1867,14 +1867,14 @@ KYT.virtualTrips = (function () {
     renderBuilder();
   }
 
-  /** Check-in time for a night on a day: 21:00, or 15 minutes after the day's last step ends if that is later (never past 23:30). */
+  /** Check-in time for a night on a day: 15 minutes after the day's last step ends (capped at 23:30), or 21:00 if the day has no prior steps. */
   function stayTimeFor(trip, dayId) {
     const mine = stepsOfDay(trip, dayId).filter(x => x.type !== 'stay');
     let mins = 21 * 60;
     if (mine.length) {
       const last = mine[mine.length - 1];
       const lastEnd = (last.hour || 0) * 60 + (last.minute || 0) + (last.durationMin || defaultStepDuration(last));
-      mins = Math.min(Math.max(lastEnd + 15, 21 * 60), 23 * 60 + 30);
+      mins = Math.min(lastEnd + 15, 23 * 60 + 30);
     }
     return { h: Math.floor(mins / 60), m: mins % 60 };
   }
@@ -2005,14 +2005,13 @@ KYT.virtualTrips = (function () {
       set('vt-travel-mode', pre.mode || 'road'); set('vt-travel-duration', pre.duration || '');
       $('vt-travel-overnight').checked = Boolean(pre.overnight);
       set('vt-stay-place', ''); set('vt-stay-out', '');
-      const mine = stepsOfDay(trip, ctx.dayId);
+      const mine = stepsOfDay(trip, ctx.dayId).filter(x => x.type !== 'stay');
       let after = null;                                   // 15 minutes after the day's last step ends
       if (mine.length) {
         const last = mine[mine.length - 1];
         after = Math.min((last.hour || 0) * 60 + (last.minute || 0) + (last.durationMin || defaultStepDuration(last)) + 15, 23 * 60 + 45);
       }
-      let dflt = kind === 'travel' && pre.hour != null ? pre.hour * 60 : (after != null ? after : 9 * 60);
-      if (kind === 'stay') dflt = Math.max(dflt, 21 * 60);
+      let dflt = kind === 'travel' && pre.hour != null ? pre.hour * 60 : (after != null ? after : (kind === 'stay' ? 21 * 60 : 9 * 60));
       const t = freeTime(trip, ctx.dayId, Math.floor(dflt / 60), dflt % 60);
       set('vt-step-time', `${pad2(t.h)}:${pad2(t.m)}`);
       set('vt-step-notes', '');

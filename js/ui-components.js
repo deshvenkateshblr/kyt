@@ -831,11 +831,14 @@ window.KYT.ui = (function () {
       if (step.hour != null) {
         const startStr = `${pad2(step.hour)}:${pad2(step.minute || 0)}`;
         if (step.type === 'stay') {
+          const endStr = step.endHour != null ? `${pad2(step.endHour)}:${pad2(step.endMinute || 0)}` : '';
+          const checkInWindow = endStr ? `${startStr} – ${endStr}` : startStr;
           const n = options.night;
+          const checkOutPart = step.checkOut ? ` · Check-out ${step.checkOut}` : '';
           if (n && n.of > 1) {
-            timeWindowStr = n.night === 1 ? `Check-in ${startStr} · night 1 of ${n.of}`
-              : (n.night === n.of ? `Night ${n.night} of ${n.of}${step.checkOut ? ' · Check-out ' + step.checkOut : ''}` : `Night ${n.night} of ${n.of}`);
-          } else timeWindowStr = `Check-in ${startStr}${step.checkOut ? ' · Check-out ' + step.checkOut : ''}`;
+            timeWindowStr = n.night === 1 ? `Check-in ${checkInWindow} · night 1 of ${n.of}`
+              : (n.night === n.of ? `Night ${n.night} of ${n.of}${checkOutPart}` : `Night ${n.night} of ${n.of}`);
+          } else timeWindowStr = `Check-in ${checkInWindow}${checkOutPart}`;
         } else if (step.endHour != null) {
           const endStr = `${pad2(step.endHour)}:${pad2(step.endMinute || 0)}`;
           const dur = step.durationMin || ((step.endHour * 60 + step.endMinute) - (step.hour * 60 + (step.minute || 0)));
@@ -891,8 +894,8 @@ window.KYT.ui = (function () {
       const pad2 = n => String(n).padStart(2, '0');
       const startStr = `${pad2(step.hour != null ? step.hour : 9)}:${pad2(step.minute || 0)}`;
       let timeStr = startStr;
-      const isStay = step.type === 'stay';   // a stay has a check-in and, if the user sets one, a check-out: no duration
-      if (step.endHour != null && !isStay) {
+      const isStay = step.type === 'stay';
+      if (step.endHour != null) {
         timeStr = `${startStr} – ${pad2(step.endHour)}:${pad2(step.endMinute || 0)}`;
       }
       const verifyTags = (step.verify || []).map(v => `

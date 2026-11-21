@@ -209,8 +209,9 @@ test('a stay is a step of its own: suggested for each night, editable, and not o
   assert.equal(s.hour, 19);
   assert.equal(s.checkOut, '11:00');
   const row = await card(page, 'Stay in Hotel Sunrise').innerText();
-  assert.match(row, /Check-in 19:00 · Check-out 11:00/);
-  assert.doesNotMatch(row, /30m|19:30/, 'no placeholder duration on a stay');
+  assert.match(row, /Check-in 19:00 – 19:30 · Check-out 11:00/);
+  assert.doesNotMatch(row, /30m/, 'no placeholder duration on a stay');
+  assert.match(row, /19:00 – 19:30/, '30m check-in window alone');
   await card(page, 'Stay in Hotel Sunrise').getByRole('button', { name: 'Edit stop' }).click();
   assert.equal(await page.inputValue('#vt-stay-out'), '11:00', 'the check-out is remembered');
   await page.click('#btn-cancel-step-modal');
@@ -321,7 +322,7 @@ test('Suggest a plan follows each day\'s own city, and days in the same city do 
   await context.close();
 });
 
-test('a stay row shows check-in and check-out, never "~30 mins"', async () => {
+test('a stay row shows check-in window and check-out, never "~30 mins"', async () => {
   const { context, page } = await newPhone(env.browser);
   await page.goto(env.base + '/virtual_trip.html');
   const html = await page.evaluate(() => {
@@ -330,7 +331,7 @@ test('a stay row shows check-in and check-out, never "~30 mins"', async () => {
     return { plain: r(base), out: r({ ...base, checkOut: '11:00' }), stop: r({ ...base, type: 'stop', title: 'Fort', icon: 'map-pin', durationMin: 90 }) };
   });
   assert.doesNotMatch(html.plain, /mins/, 'no made-up duration on a stay');
-  assert.doesNotMatch(html.plain, /21:00 – 21:30/, 'no end time either');
+  assert.match(html.plain, /21:00 – 21:30/, '30m check-in window alone');
   assert.match(html.plain, /21:00/);
   assert.match(html.out, /Check-out 11:00/);
   assert.match(html.stop, /~90 mins/, 'stops keep their duration');
@@ -499,7 +500,7 @@ test('moveDay refuses to move off either end', async () => {
 });
 
 // ── Stays: one entry per night, shown as one stay; a Review list for what looks off (D12) ───────────────
-const stayStep = (id, dayId, where, extra = {}) => ({ id, dayId, type: 'stay', cityName: 'Agra', title: 'Stay in ' + where, where, hour: 21, minute: 0, durationMin: 30, icon: 'bed-double', ...extra });
+const stayStep = (id, dayId, where, extra = {}) => ({ id, dayId, type: 'stay', cityName: 'Agra', title: 'Stay in ' + where, where, hour: 21, minute: 0, endHour: 21, endMinute: 30, durationMin: 30, icon: 'bed-double', ...extra });
 const stopStep = (id, dayId, title, hour, extra = {}) => ({ id, dayId, type: 'stop', cityName: 'Agra', title, where: title, hour, minute: 0, durationMin: 90, icon: 'map-pin', ...extra });
 /** One city, three days, and exactly the steps given. */
 async function threeDays(page, steps) {
@@ -517,7 +518,7 @@ async function threeDays(page, steps) {
 test('consecutive nights at one place read as one stay: check-in on night 1, check-out on the last night', async () => {
   const { context, page } = await newPhone(env.browser);
   await threeDays(page, [stopStep('a', 1, 'Taj Mahal', 9), stayStep('s1', 1, 'Hotel Taj'), stopStep('b', 2, 'Agra Fort', 9), stayStep('s2', 2, 'Hotel Taj', { checkOut: '11:00' }), stopStep('c', 3, 'Mehtab Bagh', 9)]);
-  assert.match(await card(page, 'Stay in Hotel Taj').innerText(), /Check-in 21:00 · night 1 of 2/);
+  assert.match(await card(page, 'Stay in Hotel Taj').innerText(), /Check-in 21:00 – 21:30 · night 1 of 2/);
   await tab(page, 2).click();
   const t2 = await card(page, 'Stay in Hotel Taj').innerText();
   assert.match(t2, /Night 2 of 2 · Check-out 11:00/);
@@ -550,7 +551,7 @@ test('the Nights picker adds a stay for each night and stops, saying why, when t
   await page.click('#btn-save-vt-step');
   let stays = (await stored(page))[0].steps.filter(x => x.type === 'stay').sort((a, b) => a.dayId - b.dayId);
   assert.deepEqual(stays.map(x => [x.dayId, x.where, x.checkOut || '']), [[1, 'Hotel Taj', ''], [2, 'Hotel Taj', '10:30']]);
-  assert.ok(stays[1].hour >= 21, 'a later night checks in at 21:00 or after the day\'s last step');
+  assert.ok(stays[1].hour === 10 && stays[1].minute === 45, 'a later night checks in after the day\'s last step on the timeline');
   // asking for more nights than days left: adds what fits and says so
   await tab(page, 3).click();
   await page.click('#btn-vt-add-stay');
@@ -645,3 +646,34 @@ test('moving a city with steps moves its days and steps with it and renumbers th
   assert.equal(t.steps.length, before.steps.length);
   await context.close();
 });
+
+test('adding a stay on a day with steps uses the next timeline slot (not 21:00) with a 30m check-in window', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openPlan(page);
+  // Add a stop: Taj Mahal (starts at sunrise 06:00, default 90 min duration, ends at 07:30)
+  await page.locator('[data-add-beat]').first().click();
+  const cardText = await card(page, 'Taj Mahal').innerText();
+  assert.match(cardText, /06:00/);
+  // Now add a stay via hint
+  const hint = page.locator('[data-hint="stay"]');
+  assert.match(await hint.innerText(), /Stay in Agra tonight/);
+  await hint.click();
+  const stay = dayOf((await stored(page))[0], 1).find(x => x.type === 'stay');
+  assert.ok(stay, 'stay was created');
+  // Must use next slot on timeline (07:45, not 21:00)
+  assert.equal(stay.hour, 7);
+  assert.equal(stay.minute, 45);
+  assert.equal(stay.durationMin, 30);
+  const stayCard = await card(page, 'Stay in Agra').innerText();
+  assert.match(stayCard, /Check-in 07:45 – 08:15/);
+  assert.doesNotMatch(stayCard, /~30 mins|30m/, '30m is check-in window alone, not stay duration');
+
+  // When checkout is entered, stay time is till checkout
+  await card(page, 'Stay in Agra').getByRole('button', { name: 'Edit stop' }).click();
+  await page.fill('#vt-stay-out', '11:00');
+  await page.click('#btn-save-vt-step');
+  const updatedStayCard = await card(page, 'Stay in Agra').innerText();
+  assert.match(updatedStayCard, /Check-in 07:45 – 08:15 · Check-out 11:00/);
+  await context.close();
+});
+
