@@ -53,6 +53,9 @@ test('empty hub allows creating trip with blank name; defaults to My Trip and op
   assert.match(await page.locator('#vt-list').innerText(), /Plan Your Dream Trip/);
   await page.click('#btn-vt-create');                   // blank name
   assert.equal((await stored(page)).length, 1);
+  const trips = await stored(page);
+  assert.equal(trips[0].name, 'My Trip');
+  assert.equal(trips[0].isAutoNamed, true);
   assert.equal(await page.locator('#vt-screen-canvas').isVisible(), true);
   assert.equal(await page.locator('#vt-edit-name').inputValue(), 'My Trip');
   assert.equal(await page.locator('#vt-name-nudge').isVisible(), true);
@@ -457,6 +460,7 @@ test('blank trip name auto-generates smart title as cities are added and nudges 
 
   await addCity(page, 'Agra', 'agra');
   assert.equal(await page.locator('#vt-edit-name').inputValue(), 'Trip to Agra');
+  assert.equal(await page.locator('#vt-name-nudge').isVisible(), true);
 
   await addCity(page, 'Jaipur', 'jaipur');
   assert.equal(await page.locator('#vt-edit-name').inputValue(), 'Agra & Jaipur Trip');
@@ -465,12 +469,27 @@ test('blank trip name auto-generates smart title as cities are added and nudges 
   await page.click('#vt-name-nudge');
   assert.equal(await page.evaluate(() => document.activeElement.id), 'vt-edit-name');
 
-  // Typing a custom name clears isAutoNamed and hides nudge
-  await page.fill('#vt-edit-name', 'Custom North India Tour');
+  // Manually edit #vt-edit-name to 'Golden Triangle' and trigger change
+  await page.fill('#vt-edit-name', 'Golden Triangle');
   await page.locator('#vt-edit-name').dispatchEvent('change');
   assert.equal(await page.locator('#vt-name-nudge').isVisible(), false);
-  const trips = await stored(page);
-  assert.equal(trips[0].name, 'Custom North India Tour');
+  let trips = await stored(page);
+  assert.equal(trips[0].name, 'Golden Triangle');
+  assert.equal(trips[0].isAutoNamed, false);
+
+  // Adding another city does not overwrite 'Golden Triangle'
+  await addCity(page, 'Delhi', 'delhi');
+  assert.equal(await page.locator('#vt-edit-name').inputValue(), 'Golden Triangle');
+  trips = await stored(page);
+  assert.equal(trips[0].name, 'Golden Triangle');
+  assert.equal(trips[0].isAutoNamed, false);
+  assert.equal(await page.locator('#vt-name-nudge').isVisible(), false);
+
+  // Removing a city does not overwrite 'Golden Triangle'
+  await page.locator('.vt-selected-city-chip .btn-del-city').last().click();
+  assert.equal(await page.locator('#vt-edit-name').inputValue(), 'Golden Triangle');
+  trips = await stored(page);
+  assert.equal(trips[0].name, 'Golden Triangle');
   assert.equal(trips[0].isAutoNamed, false);
 
   await context.close();
