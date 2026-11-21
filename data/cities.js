@@ -22046,7 +22046,7 @@ window.KYT_CITIES = [
     "code": "udp",
     "name": "Udupi",
     "state": "Karnataka",
-    "description": "A coastal city renowned for its Hindu temples, particularly the 13th-century Sri Krishna Matha, and its unique local cuisine.",
+    "description": "A coastal spiritual and cultural capital renowned for Sri Krishna Matha, the ancient Sri Anantheshwara Temple, holy Pajaka Kshetra, scenic beaches, and world-famous Udupi cuisine.",
     "lat": 13.3409,
     "lng": 74.7421,
     "tags": [
@@ -22055,6 +22055,32 @@ window.KYT_CITIES = [
       "Culinary"
     ],
     "beats": [
+      {
+        "title": "Sri Anantheshwara & Chandramouleshwara Temples",
+        "icon": "landmark",
+        "where": "Car Street, Udupi",
+        "hour": 6,
+        "intent": [
+          "spiritual",
+          "cultural"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard"
+        ],
+        "mobility": "walk",
+        "notes": "Udupi's most ancient sanctum (8th-century CE Alupa dynasty), dedicated to Lord Shiva/Parashurama. By sacred tradition, pilgrims offer worship here and at facing Sri Chandramouleshwara Temple before entering Sri Krishna Matha. Celebrated as the shrine where Acharya Sri Madhvacharya taught and meditated.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sri%20Anantheshwara%20Temple%2C%20Car%20Street%2C%20Udupi",
+        "kind": "place",
+        "lat": 13.34145,
+        "lng": 74.75235
+      },
       {
         "title": "Sri Krishna Matha",
         "icon": "landmark",
@@ -22075,7 +22101,7 @@ window.KYT_CITIES = [
           "standard"
         ],
         "mobility": "walk",
-        "notes": "A famous Hindu temple dedicated to Lord Krishna, known for the 'Kanakana Kindi' window.",
+        "notes": "A famous 13th-century Hindu temple and matha founded by Sri Madhvacharya, revered for the silver-plated Kanakana Kindi window, golden chariot, and eternal ghee lamp.",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sri%20Krishna%20Matha%2C%20Udupi&query_place_id=ChIJ8WhL-6G7vDsRLmGC0YfatfY",
         "kind": "place",
         "placeId": "ChIJ8WhL-6G7vDsRLmGC0YfatfY",
@@ -22102,7 +22128,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "boat",
-        "notes": "Known for its distinctive hexagonal basalt rock formations.",
+        "notes": "A Geological Monument of India renowned for its distinctive hexagonal column basalt rock formations formed by prehistoric sub-volcanic activity.",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=St.%20Mary's%20Island%2C%20Malpe%2C%20Udupi&query_place_id=ChIJfauSXsG_vDsRHoFf0928arc",
         "kind": "place",
         "placeId": "ChIJfauSXsG_vDsRHoFf0928arc",
@@ -22139,10 +22165,38 @@ window.KYT_CITIES = [
         "kind": "activity"
       },
       {
-        "title": "Malpe Beach",
+        "title": "Pajaka Kshetra & Kunjarugiri",
+        "icon": "landmark",
+        "where": "Pajaka, 12 km Southeast of Udupi",
+        "hour": 15,
+        "intent": [
+          "spiritual",
+          "cultural",
+          "nature"
+        ],
+        "faith": [
+          "hindu",
+          "any"
+        ],
+        "party": [
+          "any"
+        ],
+        "pace": [
+          "standard",
+          "deep"
+        ],
+        "mobility": "easy",
+        "notes": "Revered holy birthplace of Sri Madhvacharya (founder of Dvaita Vedanta), featuring his ancestral house, childhood footprints, and four sacred teerthas. Overlooked by the scenic hilltop Sri Durga Devi Temple at Kunjarugiri with panoramic coastal vistas.",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Pajaka%20Kshetra%20Udupi%20Karnataka",
+        "kind": "place",
+        "lat": 13.2842,
+        "lng": 74.7967
+      },
+      {
+        "title": "Malpe Beach & Sea Walk",
         "icon": "sun",
         "where": "6 km from Udupi",
-        "hour": 16,
+        "hour": 17,
         "intent": [
           "leisure",
           "nature"
@@ -22158,7 +22212,7 @@ window.KYT_CITIES = [
           "deep"
         ],
         "mobility": "easy",
-        "notes": "A pristine beach offering water sports and ferries to St. Mary's Island.",
+        "notes": "A pristine silver sand beach featuring Karnataka's first sea-walk way protruding into the Arabian Sea, watersports, and tranquil coastal breezes.",
         "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Malpe%20Beach%2C%20Udupi&query_place_id=ChIJvbn4Pxq8vDsRwrmrwUG9XXw",
         "kind": "place",
         "placeId": "ChIJvbn4Pxq8vDsRwrmrwUG9XXw",
@@ -22170,7 +22224,7 @@ window.KYT_CITIES = [
         "title": "Kapu Beach & 1901 Lighthouse",
         "icon": "landmark",
         "where": "Kaup, 13 km South of Udupi",
-        "hour": 17,
+        "hour": 18,
         "intent": [
           "nature",
           "cultural"
@@ -22195,14 +22249,19 @@ window.KYT_CITIES = [
         "lng": 74.7367974
       }
     ],
-    "notes": "A coastal city renowned for its Hindu temples, particularly the 13th-century Sri Krishna Matha, and its unique local cuisine.",
+    "notes": "A coastal spiritual and cultural capital renowned for Sri Krishna Matha, the ancient Sri Anantheshwara Temple, holy Pajaka Kshetra, scenic beaches, and world-famous Udupi cuisine.",
     "icon": "landmark",
     "dayOffset": 0,
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Udupi%20Karnataka%20India",
     "district": "Udupi",
     "aliases": [
       "Odipu",
-      "Udupi Krishna"
+      "Udupi Krishna",
+      "Pajaka",
+      "Pajaka Kshetra",
+      "Kunjarugiri",
+      "Anantheshwara",
+      "Ananteshwara"
     ]
   },
   {
