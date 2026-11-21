@@ -47,12 +47,15 @@ async function viewTrip(page) {
 }
 const stored = page => page.evaluate(() => JSON.parse(localStorage.getItem('kyt_virtual_trips') || '[]'));
 
-test('empty hub invites the user to name a trip; blank names are ignored', async () => {
+test('empty hub allows creating trip with blank name; defaults to My Trip and opens canvas', async () => {
   const { context, page } = await newPhone(env.browser);
   await openHub(page);
   assert.match(await page.locator('#vt-list').innerText(), /Plan Your Dream Trip/);
   await page.click('#btn-vt-create');                   // blank name
-  assert.equal((await stored(page)).length, 0);
+  assert.equal((await stored(page)).length, 1);
+  assert.equal(await page.locator('#vt-screen-canvas').isVisible(), true);
+  assert.equal(await page.locator('#vt-edit-name').inputValue(), 'My Trip');
+  assert.equal(await page.locator('#vt-name-nudge').isVisible(), true);
   await context.close();
 });
 
@@ -444,13 +447,32 @@ test('"Already in destination" is still available and skips Day 0', async () => 
   await context.close();
 });
 
-test('blank trip name: Create gives feedback instead of silently doing nothing', async () => {
+test('blank trip name auto-generates smart title as cities are added and nudges rename', async () => {
   const { context, page } = await newPhone(env.browser);
   await openHub(page);
   await page.click('#btn-vt-create');
-  assert.equal(await page.locator('#vt-screen-canvas').isHidden(), true);
-  assert.match(await page.locator('#vt-new-name').getAttribute('placeholder'), /name/i);
-  assert.equal(await page.evaluate(() => document.activeElement.id), 'vt-new-name');
+  assert.equal(await page.locator('#vt-screen-canvas').isVisible(), true);
+  assert.equal(await page.locator('#vt-edit-name').inputValue(), 'My Trip');
+  assert.equal(await page.locator('#vt-name-nudge').isVisible(), true);
+
+  await addCity(page, 'Agra', 'agra');
+  assert.equal(await page.locator('#vt-edit-name').inputValue(), 'Trip to Agra');
+
+  await addCity(page, 'Jaipur', 'jaipur');
+  assert.equal(await page.locator('#vt-edit-name').inputValue(), 'Agra & Jaipur Trip');
+
+  // Clicking rename nudge focuses input and selects text
+  await page.click('#vt-name-nudge');
+  assert.equal(await page.evaluate(() => document.activeElement.id), 'vt-edit-name');
+
+  // Typing a custom name clears isAutoNamed and hides nudge
+  await page.fill('#vt-edit-name', 'Custom North India Tour');
+  await page.locator('#vt-edit-name').dispatchEvent('change');
+  assert.equal(await page.locator('#vt-name-nudge').isVisible(), false);
+  const trips = await stored(page);
+  assert.equal(trips[0].name, 'Custom North India Tour');
+  assert.equal(trips[0].isAutoNamed, false);
+
   await context.close();
 });
 

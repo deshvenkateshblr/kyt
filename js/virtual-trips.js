@@ -87,6 +87,7 @@ KYT.virtualTrips = (function () {
 
     // Canvas
     editNameInput: document.getElementById('vt-edit-name'),
+    nameNudge: document.getElementById('vt-name-nudge'),
     originCitySelect: document.getElementById('vt-origin-city'),
     originDesc: document.getElementById('vt-origin-desc'),
     selectedCitiesRoot: document.getElementById('vt-selected-cities'),
@@ -121,6 +122,7 @@ KYT.virtualTrips = (function () {
       trip = {
         id: Date.now().toString(),
         name: 'My Trip',
+        isAutoNamed: true,
         originCity: getRememberedOrigin(),
         cities: [],
         days: [],
@@ -137,17 +139,14 @@ KYT.virtualTrips = (function () {
 
   // --- Actions ---
   function createNewTrip() {
-    const name = DOM.newNameInput.value.trim();
-    if (!name) {
-      DOM.newNameInput.classList.add('ring-2', 'ring-red-400');
-      DOM.newNameInput.placeholder = 'Give your trip a name first';
-      DOM.newNameInput.focus();
-      return;
-    }
+    const rawName = DOM.newNameInput.value.trim();
+    const isAutoNamed = !rawName;
+    const name = rawName || 'My Trip';
     const origin = (DOM.originCitySelect && DOM.originCitySelect.value) || getRememberedOrigin();
     const newTrip = {
       id: Date.now().toString(),
       name,
+      isAutoNamed,
       originCity: origin,
       cities: [],
       days: [],
@@ -157,6 +156,7 @@ KYT.virtualTrips = (function () {
     vtrips.push(newTrip);
     saveVTrips();
     DOM.newNameInput.value = '';
+    DOM.newNameInput.classList.remove('ring-2', 'ring-red-400');
     openCanvas(newTrip.id);
   }
 
@@ -263,6 +263,20 @@ KYT.virtualTrips = (function () {
   function shareCurrentTrip() {
     const trip = getActiveTrip();
     if (!trip || !trip.cities.length) return alert('Add some cities to share this trip!');
+
+    if (trip.isAutoNamed) {
+      const custom = window.prompt('Give your trip a custom name before sharing (or keep as is):', trip.name);
+      if (custom && custom.trim() && custom.trim() !== trip.name) {
+        trip.name = custom.trim();
+        trip.isAutoNamed = false;
+        if (DOM.editNameInput) DOM.editNameInput.value = trip.name;
+        saveVTrips();
+        if (DOM.nameNudge) {
+          DOM.nameNudge.classList.add('hidden');
+          DOM.nameNudge.classList.remove('inline-flex');
+        }
+      }
+    }
 
     const url = new URL(window.location.href);
     url.pathname = url.pathname.replace(/\/[^\/]*$/, '/trip_detail.html');
@@ -399,7 +413,7 @@ KYT.virtualTrips = (function () {
           <p class="text-sm text-slate-400 leading-relaxed max-w-xs mx-auto mb-4">
             Pick cities, set your travel style, and KYT builds your day-by-day itinerary automatically.
           </p>
-          <p class="text-xs text-slate-400">Type a trip name above to get started ↑</p>
+          <p class="text-xs text-slate-400">Type a name above or tap Create to start picking cities ↑</p>
         </div>`;
       return;
     }
@@ -497,6 +511,10 @@ KYT.virtualTrips = (function () {
     if (!trip) return;
 
     DOM.editNameInput.value = trip.name;
+    if (DOM.nameNudge) {
+      DOM.nameNudge.classList.toggle('hidden', !trip.isAutoNamed);
+      DOM.nameNudge.classList.toggle('inline-flex', !!trip.isAutoNamed);
+    }
     populateOriginSelector(trip.originCity || '');
     updateOriginDesc(trip);
 
@@ -1458,11 +1476,40 @@ KYT.virtualTrips = (function () {
     }
     syncDuration(trip);
   }
+  function getCityDisplayName(cityId) {
+    if (!cityId) return '';
+    if (window.KYT && KYT.ui && KYT.ui.resolveCity) {
+      const c = KYT.ui.resolveCity(cityId);
+      if (c && c.name) return c.name;
+    }
+    const c = cityById(cityId);
+    return c ? c.name : (cityId.charAt(0).toUpperCase() + cityId.slice(1));
+  }
+
+  function computeSmartTripName(cities) {
+    if (!cities || !cities.length) return 'My Trip';
+    const names = cities.map(getCityDisplayName).filter(Boolean);
+    if (!names.length) return 'My Trip';
+    if (names.length === 1) return `Trip to ${names[0]}`;
+    if (names.length === 2) return `${names[0]} & ${names[1]} Trip`;
+    if (names.length === 3) return `${names[0]}, ${names[1]} & ${names[2]}`;
+    return `${names[0]}, ${names[1]} & ${names.length - 2} more`;
+  }
+
+  function updateTripSmartName(trip) {
+    if (!trip || !trip.isAutoNamed) return;
+    trip.name = computeSmartTripName(trip.cities);
+    if (DOM.editNameInput && getActiveTrip() && getActiveTrip().id === trip.id) {
+      DOM.editNameInput.value = trip.name;
+    }
+  }
+
   function addCityToTrip(trip, cityId) {
     if (trip.cities.includes(cityId)) return false;
     ensureDays(trip);
     trip.cities.push(cityId);
     addDay(trip, cityId);
+    updateTripSmartName(trip);
     return true;
   }
   /**
@@ -1483,6 +1530,7 @@ KYT.virtualTrips = (function () {
     const order = [];
     sortedDays(trip).filter(d => d.id >= 1).forEach(d => { if (d.cityId && !order.includes(d.cityId)) order.push(d.cityId); });
     trip.cities = order.filter(id => trip.cities.includes(id)).concat(trip.cities.filter(id => !order.includes(id)));
+    updateTripSmartName(trip);
     return other;
   }
   function removeCityFromTrip(trip, cityId) {
@@ -1491,6 +1539,7 @@ KYT.virtualTrips = (function () {
     trip.days.filter(d => d.cityId === cityId && d.id >= 1).map(d => d.id).sort((a, b) => b - a)
       .forEach(id => removeDay(trip, id));
     if (!trip.steps || !trip.steps.length) trip.steps = null;
+    updateTripSmartName(trip);
   }
 
   /**
@@ -1507,6 +1556,7 @@ KYT.virtualTrips = (function () {
     (trip.steps || []).forEach(st => { const n = renumber.get(Number(st.dayId)); if (n != null) st.dayId = n; });
     ordered.forEach((d, k) => { d.id = k + 1; });
     sortAllSteps(trip);
+    updateTripSmartName(trip);
   }
 
   /** Moving a city moves its days with it; travel steps keep their wording, so ask first when there are any. */
@@ -2210,6 +2260,10 @@ KYT.virtualTrips = (function () {
     ensureDays(trip);
     const esc = KYT.utils.escapeHTML;
     if (DOM.editNameInput) DOM.editNameInput.value = trip.name;
+    if (DOM.nameNudge) {
+      DOM.nameNudge.classList.toggle('hidden', !trip.isAutoNamed);
+      DOM.nameNudge.classList.toggle('inline-flex', !!trip.isAutoNamed);
+    }
     if (builderTripId !== trip.id) { builderTripId = trip.id; activeDayId = null; styleOpen = false; }
     const days = sortedDays(trip);
     syncBackButton(trip);
@@ -2635,7 +2689,34 @@ KYT.virtualTrips = (function () {
     if (DOM.editNameInput) {
       DOM.editNameInput.addEventListener('change', e => {
         const trip = getActiveTrip();
-        if (trip) { trip.name = e.target.value.trim() || 'Untitled Trip'; saveVTrips(); }
+        if (trip) {
+          trip.name = e.target.value.trim() || 'Untitled Trip';
+          trip.isAutoNamed = false;
+          saveVTrips();
+          if (DOM.nameNudge) {
+            DOM.nameNudge.classList.add('hidden');
+            DOM.nameNudge.classList.remove('inline-flex');
+          }
+        }
+      });
+      DOM.editNameInput.addEventListener('input', () => {
+        const trip = getActiveTrip();
+        if (trip && trip.isAutoNamed) {
+          trip.isAutoNamed = false;
+          if (DOM.nameNudge) {
+            DOM.nameNudge.classList.add('hidden');
+            DOM.nameNudge.classList.remove('inline-flex');
+          }
+        }
+      });
+    }
+
+    if (DOM.nameNudge) {
+      DOM.nameNudge.addEventListener('click', () => {
+        if (DOM.editNameInput) {
+          DOM.editNameInput.focus();
+          DOM.editNameInput.select();
+        }
       });
     }
 
