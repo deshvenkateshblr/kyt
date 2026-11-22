@@ -832,9 +832,10 @@ window.KYT.ui = (function () {
         const startStr = `${pad2(step.hour)}:${pad2(step.minute || 0)}`;
         if (step.type === 'stay') {
           const endStr = step.endHour != null ? `${pad2(step.endHour)}:${pad2(step.endMinute || 0)}` : '';
-          const checkInWindow = endStr ? `${startStr} – ${endStr}` : startStr;
+          const checkInWindow = (endStr && endStr !== startStr) ? `${startStr} – ${endStr}` : startStr;
           const n = options.night;
-          const checkOutPart = step.checkOut ? ` · Check-out ${step.checkOut}` : '';
+          const checkOutTime = step.checkOut || '14:00';
+          const checkOutPart = ` · Check-out ${checkOutTime}`;
           if (n && n.of > 1) {
             timeWindowStr = n.night === 1 ? `Check-in ${checkInWindow} · night 1 of ${n.of}`
               : (n.night === n.of ? `Night ${n.night} of ${n.of}${checkOutPart}` : `Night ${n.night} of ${n.of}`);
@@ -880,8 +881,10 @@ window.KYT.ui = (function () {
             ${verifyTags}
             ${mapsLink}
             <div class="flex items-center justify-end gap-0.5 mt-1.5 -mb-1.5 -mr-1.5">
-              <button type="button" class="${actionBtn}" onclick="moveVirtualTripStep('${sid}', -1)" ${options.isFirst ? 'disabled' : ''} title="Move earlier" aria-label="Move earlier"><i data-lucide="chevron-up" class="w-4 h-4"></i></button>
-              <button type="button" class="${actionBtn}" onclick="moveVirtualTripStep('${sid}', 1)" ${options.isLast ? 'disabled' : ''} title="Move later" aria-label="Move later"><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+              ${(!options.isStaySection && step.type !== 'stay') ? `
+                <button type="button" class="${actionBtn}" onclick="moveVirtualTripStep('${sid}', -1)" ${options.isFirst ? 'disabled' : ''} title="Move earlier" aria-label="Move earlier"><i data-lucide="chevron-up" class="w-4 h-4"></i></button>
+                <button type="button" class="${actionBtn}" onclick="moveVirtualTripStep('${sid}', 1)" ${options.isLast ? 'disabled' : ''} title="Move later" aria-label="Move later"><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+              ` : ''}
               <button type="button" class="${actionBtn}" onclick="editVirtualTripStep('${sid}')" title="Edit" aria-label="Edit stop"><i data-lucide="pencil" class="w-4 h-4"></i></button>
               <button type="button" class="p-2 rounded-lg text-slate-300 hover:text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer" onclick="deleteVirtualTripStep('${sid}')" title="Delete step" aria-label="Delete stop"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
             </div>

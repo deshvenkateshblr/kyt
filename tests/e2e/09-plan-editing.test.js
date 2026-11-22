@@ -597,7 +597,7 @@ test('reviewTrip flags a stay in the wrong city, an early check-in, a late check
     const trip = {
       cities: ['agra', 'jaipur'], originCity: 'delhi', days: [{ id: 1, cityId: 'agra' }, { id: 2, cityId: 'jaipur' }],
       steps: [
-        { id: 'a', dayId: 1, type: 'stop', cityName: 'Agra', title: 'Dinner', hour: 20, minute: 0, durationMin: 150 },
+        { id: 'a', dayId: 1, type: 'travel', cityName: 'Agra', title: 'Drive to Agra', from: 'Delhi', to: 'Agra', hour: 18, minute: 0, durationMin: 240 },
         { id: 's1', dayId: 1, type: 'stay', cityName: 'Jaipur', title: 'Stay', where: 'Hotel', hour: 21, minute: 0, durationMin: 30 },
         { id: 's1b', dayId: 1, type: 'stay', cityName: 'Agra', title: 'Stay', where: 'Hotel 2', hour: 23, minute: 0, durationMin: 30, checkOut: '11:00' },
         { id: 't', dayId: 2, type: 'travel', cityName: 'Jaipur', title: 'Travel', from: 'Agra', to: 'Jaipur', hour: 6, minute: 0, durationMin: 240 },
@@ -612,11 +612,17 @@ test('reviewTrip flags a stay in the wrong city, an early check-in, a late check
 
 test('a Review step button opens that step to correct it', async () => {
   const { context, page } = await newPhone(env.browser);
-  await threeDays(page, [stopStep('a', 1, 'Taj Mahal', 9), stayStep('s1', 1, 'Hotel Taj', { hour: 8 }), stopStep('b', 2, 'Agra Fort', 9), stayStep('s2', 2, 'Hotel Taj'), stopStep('c', 3, 'Mehtab Bagh', 9)]);
+  await threeDays(page, [
+    { id: 'tr', dayId: 1, type: 'travel', cityName: 'Agra', title: 'Drive to Agra', from: 'Delhi', to: 'Agra', hour: 6, minute: 0, durationMin: 240, icon: 'car' },
+    stayStep('s1', 1, 'Hotel Taj', { hour: 8 }),
+    stopStep('b', 2, 'Agra Fort', 9),
+    stayStep('s2', 2, 'Hotel Taj'),
+    stopStep('c', 3, 'Mehtab Bagh', 9)
+  ]);
   await page.click('#btn-vt-review-toggle');
   const row = page.locator('#vt-review li[data-review="early-checkin"]');
   assert.equal(await row.count(), 1);
-  assert.match(await row.innerText(), /Day 1: check-in 08:00 is before your last step ends/);
+  assert.match(await row.innerText(), /Day 1: check-in 08:00 is before your travel arrives/);
   await row.locator('button').click();
   await page.waitForSelector('#vt-step-modal:not(.hidden)');
   assert.equal(await page.inputValue('#vt-step-time'), '08:00');
@@ -663,9 +669,9 @@ test('adding a stay on a day with steps uses the next timeline slot (not 21:00) 
   // Must use next slot on timeline (07:45, not 21:00)
   assert.equal(stay.hour, 7);
   assert.equal(stay.minute, 45);
-  assert.equal(stay.durationMin, 30);
   const stayCard = await card(page, 'Stay in Agra').innerText();
   assert.match(stayCard, /Check-in 07:45 – 08:15/);
+  assert.match(stayCard, /Check-out 14:00/, 'defaults to 14:00 checkout automatically');
   assert.doesNotMatch(stayCard, /~30 mins|30m/, '30m is check-in window alone, not stay duration');
 
   // When checkout is entered, stay time is till checkout
