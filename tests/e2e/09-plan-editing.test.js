@@ -683,3 +683,53 @@ test('adding a stay on a day with steps uses the next timeline slot (not 21:00) 
   await context.close();
 });
 
+test('adding a stop to a day with an existing stay starts at default/morning time, not 23:45', async () => {
+  const { context, page } = await newPhone(env.browser);
+  await openPlan(page);
+  // Add stay first to Day 1
+  const hint = page.locator('[data-hint="stay"]');
+  await hint.click();
+  const stay = dayOf((await stored(page))[0], 1).find(x => x.type === 'stay');
+  assert.ok(stay, 'stay was created on Day 1');
+  assert.equal(stay.hour, 21, 'stay check-in starts at 21:00 when day has no daytime activities');
+
+  // Now add Taj Mahal (suggestion) to Day 1 which already has the stay
+  await page.locator('[data-add-beat]').first().click();
+  const tajStep = dayOf((await stored(page))[0], 1).find(x => x.title === 'Taj Mahal');
+  assert.ok(tajStep, 'Taj Mahal was added');
+  // Must NOT start at 23:45
+  assert.notEqual(tajStep.hour, 23, 'must not be scheduled at 23:45');
+  assert.equal(tajStep.hour, 6, 'Taj Mahal starts at its preferred sunrise hour 06:00, not 23:45');
+
+  // Also verify "Add your own stop" on Day 1 defaults to 07:45 (after Taj Mahal 06:00-07:30 + 15m), NOT 23:45
+  await page.click('#btn-vt-add-own');
+  const timeVal = await page.inputValue('#vt-step-time');
+  assert.equal(timeVal, '07:45', 'own stop defaults to 07:45 following daytime stop, not 23:45');
+  await page.click('#btn-cancel-step-modal');
+
+  // Add a second suggestion (e.g. Agra Fort) to Day 1: must also follow 07:45, NOT 23:45
+  await page.locator('[data-add-beat]').first().click();
+  const agraFort = dayOf((await stored(page))[0], 1).find(x => x.title !== 'Taj Mahal' && x.type !== 'stay');
+  assert.ok(agraFort, 'second stop was added');
+  assert.equal(agraFort.hour, 7);
+  assert.equal(agraFort.minute, 45);
+
+  // Now switch to Day 2 and add a stay via modal
+  await page.click('[data-day-id="2"]');
+  await page.click('#btn-vt-add-stay');
+  await page.click('#btn-save-vt-step');
+  const stayDay2 = dayOf((await stored(page))[0], 2).find(x => x.type === 'stay');
+  assert.ok(stayDay2, 'stay was created on Day 2');
+  assert.equal(stayDay2.hour, 21, 'starts at 21:00');
+
+  // Add Amber Palace / Fort (suggestion on Day 2 in Jaipur)
+  await page.locator('[data-add-beat]').first().click();
+  const beatDay2 = dayOf((await stored(page))[0], 2).find(x => x.type !== 'stay');
+  assert.ok(beatDay2, 'stop was added to Day 2');
+  assert.notEqual(beatDay2.hour, 23, 'must not be scheduled at 23:45');
+  assert.ok(beatDay2.hour <= 10, 'starts in morning, not 23:45');
+
+  await context.close();
+});
+
+

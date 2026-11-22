@@ -1861,14 +1861,16 @@ KYT.virtualTrips = (function () {
     return `https://www.google.com/maps/dir/?api=1&${originParam}&${destParam}` + (gm ? `&travelmode=${gm}` : '');
   }
   /** No two steps of a day start at the same minute: nudge by a quarter hour. */
-  function freeTime(trip, dayId, h, m) {
-    const taken = new Set(stepsOfDay(trip, dayId).map(s => (s.hour || 0) * 60 + (s.minute || 0)));
+  function freeTime(trip, dayId, h, m, forStay = false) {
+    const taken = new Set(stepsOfDay(trip, dayId)
+      .filter(s => (forStay ? s.type === 'stay' : s.type !== 'stay'))
+      .map(s => (s.hour || 0) * 60 + (s.minute || 0)));
     let t = h * 60 + m;
     while (taken.has(t) && t < 23 * 60 + 45) t += 15;
     return { h: Math.floor(t / 60), m: t % 60 };
   }
   function pushStep(trip, step, h, m) {
-    const t = freeTime(trip, step.dayId, h, m);
+    const t = freeTime(trip, step.dayId, h, m, step.type === 'stay');
     setStepTime(step, t.h, t.m, step.durationMin);
     if (!trip.steps) trip.steps = [];
     trip.steps.push(step);
@@ -1881,7 +1883,7 @@ KYT.virtualTrips = (function () {
     const beat = sg.all[beatIndex];
     if (!beat || !city) return;
     const dur = beat.durationMin || defaultStepDuration(beat);
-    const mine = stepsOfDay(trip, dayId);
+    const mine = stepsOfDay(trip, dayId).filter(x => x.type !== 'stay');
     let h, m;
     if (mine.length > 0) {
       const last = mine[mine.length - 1];
@@ -1964,8 +1966,9 @@ KYT.virtualTrips = (function () {
     if (!trip || !trip.steps) return;
     const i = trip.steps.findIndex(s => s.id === stepId);
     if (i < 0) return;
-    const day = stepsOfDay(trip, Number(trip.steps[i].dayId));
+    const day = stepsOfDay(trip, Number(trip.steps[i].dayId)).filter(s => s.type !== 'stay');
     const k = day.findIndex(s => s.id === stepId);
+    if (k < 0) return;
     const other = day[k + dir];
     if (!other) return;
     const a = trip.steps[i];
@@ -2051,7 +2054,7 @@ KYT.virtualTrips = (function () {
         after = Math.min((last.hour || 0) * 60 + (last.minute || 0) + (last.durationMin || defaultStepDuration(last)) + 15, 23 * 60 + 45);
       }
       let dflt = kind === 'travel' && pre.hour != null ? pre.hour * 60 : (after != null ? after : (kind === 'stay' ? 21 * 60 : 9 * 60));
-      const t = freeTime(trip, ctx.dayId, Math.floor(dflt / 60), dflt % 60);
+      const t = freeTime(trip, ctx.dayId, Math.floor(dflt / 60), dflt % 60, kind === 'stay');
       set('vt-step-time', `${pad2(t.h)}:${pad2(t.m)}`);
       set('vt-step-notes', '');
     }
@@ -2230,14 +2233,15 @@ KYT.virtualTrips = (function () {
     const prev = idx > 0 ? days[idx - 1] : null;
     const next = idx >= 0 && idx < days.length - 1 ? days[idx + 1] : null;
     const mine = stepsOfDay(trip, dayId);
+    const daytimeSteps = mine.filter(s => s.type !== 'stay');
     const dCities = citiesOfDay(trip, dayId);
     const currentCity = dCities[dCities.length - 1] || city;
-    const hasSteps = mine.length > 0;
+    const hasSteps = daytimeSteps.length > 0;
     const isLast = idx === days.length - 1;
 
     let depHour = 17;
     if (hasSteps) {
-      const last = mine[mine.length - 1];
+      const last = daytimeSteps[daytimeSteps.length - 1];
       const lastDur = last.durationMin || defaultStepDuration(last);
       const lastEnd = (last.hour || 0) * 60 + (last.minute || 0) + lastDur;
       const nextM = Math.min(lastEnd + 15, 23 * 60);
@@ -2285,8 +2289,9 @@ KYT.virtualTrips = (function () {
     const hasTravelIn = !mine.some(s => s.type === 'travel' && s.to === city.name) && !travelTo(prevSteps, city.name);
     
     let depHour = 17;
-    if (mine.length > 0) {
-      const last = mine[mine.length - 1];
+    const daytimeSteps = mine.filter(x => x.type !== 'stay');
+    if (daytimeSteps.length > 0) {
+      const last = daytimeSteps[daytimeSteps.length - 1];
       const lastDur = last.durationMin || defaultStepDuration(last);
       const lastEnd = (last.hour || 0) * 60 + (last.minute || 0) + lastDur;
       depHour = Math.min(23, Math.floor((lastEnd + 15) / 60));
