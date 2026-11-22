@@ -139,7 +139,7 @@ KYT.virtualTrips = (function () {
 
   // --- Actions ---
   function createNewTrip() {
-    const rawName = DOM.newNameInput.value.trim();
+    const rawName = DOM.newNameInput ? DOM.newNameInput.value.trim() : '';
     const isAutoNamed = !rawName;
     const name = rawName || 'My Trip';
     const origin = (DOM.originCitySelect && DOM.originCitySelect.value) || getRememberedOrigin();
@@ -155,8 +155,10 @@ KYT.virtualTrips = (function () {
     };
     vtrips.push(newTrip);
     saveVTrips();
-    DOM.newNameInput.value = '';
-    DOM.newNameInput.classList.remove('ring-2', 'ring-red-400');
+    if (DOM.newNameInput) {
+      DOM.newNameInput.value = '';
+      DOM.newNameInput.classList.remove('ring-2', 'ring-red-400');
+    }
     openCanvas(newTrip.id);
   }
 
@@ -407,18 +409,23 @@ KYT.virtualTrips = (function () {
   function renderHub() {
     if (vtrips.length === 0) {
       DOM.listRoot.innerHTML = `
-        <div class="text-center p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
+        <div class="text-center p-8 bg-white rounded-3xl border border-slate-200/80 shadow-sm">
           <div class="text-5xl mb-4">🧭</div>
-          <h3 class="font-black text-slate-800 text-lg mb-2">Plan Your Dream Trip</h3>
-          <p class="text-sm text-slate-400 leading-relaxed max-w-xs mx-auto mb-4">
+          <h3 class="font-black text-slate-800 text-lg sm:text-xl mb-2">
+            <a href="#" id="btn-vt-create" class="text-blue-600 hover:text-blue-700 underline underline-offset-4 cursor-pointer inline-flex items-center gap-1.5 transition-colors">
+              Plan Your Dream Trip <i data-lucide="arrow-right" class="w-5 h-5 inline"></i>
+            </a>
+          </h3>
+          <p class="text-sm text-slate-500 leading-relaxed max-w-sm mx-auto mt-2">
             Pick cities, set your travel style, and KYT builds your day-by-day itinerary automatically.
           </p>
-          <p class="text-xs text-slate-400">Type a name above or tap Create to start picking cities ↑</p>
         </div>`;
+      DOM.btnCreate = document.getElementById('btn-vt-create');
+      if (window.lucide) lucide.createIcons();
       return;
     }
 
-    DOM.listRoot.innerHTML = vtrips.map(vt => {
+    const cardsHtml = vtrips.map(vt => {
       let citiesPreview = vt.cities.map(cId => {
         const city = window.KYT_CITIES.find(c => c.id === cId);
         return city ? city.name : 'Unknown';
@@ -439,6 +446,20 @@ KYT.virtualTrips = (function () {
         </article>
       `;
     }).join('');
+
+    DOM.listRoot.innerHTML = `
+      <div class="flex items-center justify-between px-1 mb-2">
+        <h2 class="text-xs font-black uppercase text-slate-500 tracking-wider">Your Trips</h2>
+        <a href="#" id="btn-vt-create" class="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-700 underline underline-offset-2 cursor-pointer bg-blue-50/80 hover:bg-blue-100 px-3 py-1.5 rounded-full transition-colors">
+          <i data-lucide="plus" class="w-3.5 h-3.5"></i> Plan your dream trip
+        </a>
+      </div>
+      <div class="space-y-3">
+        ${cardsHtml}
+      </div>
+    `;
+    DOM.btnCreate = document.getElementById('btn-vt-create');
+    if (window.lucide) lucide.createIcons();
   }
 
   function populateOriginSelector(currentOrigin) {
@@ -2704,12 +2725,19 @@ KYT.virtualTrips = (function () {
 
     // ── Hub ──
     if (DOM.newNameInput) DOM.newNameInput.addEventListener('input', () => DOM.newNameInput.classList.remove('ring-2', 'ring-red-400'));
-    if (DOM.btnCreate) DOM.btnCreate.addEventListener('click', createNewTrip);
     if (DOM.newNameInput) {
       DOM.newNameInput.addEventListener('keypress', e => {
         if (e.key === 'Enter') createNewTrip();
       });
     }
+
+    document.addEventListener('click', e => {
+      const createBtn = e.target.closest('#btn-vt-create');
+      if (createBtn) {
+        e.preventDefault();
+        createNewTrip();
+      }
+    });
 
     if (DOM.listRoot) {
       DOM.listRoot.addEventListener('click', e => {
